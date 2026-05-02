@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Middle School - English Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .dark .tab-active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 0 25px rgba(240, 147, 251, 0.6);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .skill-badge {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .skill-badge:nth-child(2) { animation-delay: 0.1s; }
+        .skill-badge:nth-child(3) { animation-delay: 0.2s; }
+        .skill-badge:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="hub.html" class="w-12 h-12 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-user-graduate text-white"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <a href="hub.html" class="text-xl md:text-2xl font-bold hover:text-emerald-300 transition-colors">Middle School</a>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-lg font-semibold text-emerald-300">English</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full text-sm font-bold">Ages 11-12</span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
+                Advanced Literary Analysis & Academic Writing
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                Developing sophisticated literary analysis, advanced academic writing, critical thinking, and research skills through complex literature, scholarly writing, and intellectual discourse.
+            </p>
+        </section>
+
+        <!-- Weekly Schedule -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-clock mr-4 text-emerald-400"></i>
+                Weekly Schedule (Ages 11-12)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-sun text-yellow-400 mr-2"></i>
+                        <span class="font-bold text-lg">9:00 - 10:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Advanced Literary Analysis</p>
+                    <p class="text-xs text-gray-400">Critical theory, interpretation</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-pen text-orange-400 mr-2"></i>
+                        <span class="font-bold text-lg">10:30 - 12:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Academic Research & Writing</p>
+                    <p class="text-xs text-gray-400">Scholarly papers, citations</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-apple-alt text-green-400 mr-2"></i>
+                        <span class="font-bold text-lg">12:00 - 13:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Lunch & Literary Seminar</p>
+                    <p class="text-xs text-gray-400">Book discussions, analysis</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-language text-purple-400 mr-2"></i>
+                        <span class="font-bold text-lg">13:00 - 14:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Advanced Linguistics</p>
+                    <p class="text-xs text-gray-400">Language structure, etymology</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-comments text-pink-400 mr-2"></i>
+                        <span class="font-bold text-lg">14:30 - 15:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Academic Debate & Discourse</p>
+                    <p class="text-xs text-gray-400">Scholarly argumentation</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-book-open text-red-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:30 - 16:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">World Literature & Culture</p>
+                    <p class="text-xs text-gray-400">Global perspectives, analysis</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-edit text-indigo-400 mr-2"></i>
+                        <span class="font-bold text-lg">16:30 - 17:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Writing Workshop</p>
+                    <p class="text-xs text-gray-400">Peer review, publication</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-home text-cyan-400 mr-2"></i>
+                        <span class="font-bold text-lg">17:00 - 17:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Independent Reading</p>
+                    <p class="text-xs text-gray-400">Scholarly texts, journals</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- English Skills Overview -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-book-reader mr-4 text-emerald-400"></i>
+                Core Literacy Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-book text-blue-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Literary Theory</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Critical analysis</p>
+                    <p class="text-xs text-gray-400">Literary criticism, interpretation</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-pen-fancy text-green-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Scholarly Writing</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Academic research</p>
+                    <p class="text-xs text-gray-400">Research papers, publication</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-gavel text-purple-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Academic Discourse</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Scholarly debate</p>
+                    <p class="text-xs text-gray-400">Critical thinking, argumentation</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-globe text-orange-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Global Literature</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">World cultures</p>
+                    <p class="text-xs text-gray-400">Cross-cultural analysis, perspectives</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Themes Navigation -->
+        <section class="mb-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calendar-alt mr-4 text-emerald-400"></i>
+                Monthly Literacy Themes
+            </h3>
+            <div class="flex flex-wrap gap-3 mb-8" id="monthTabs">
+                <!-- Month tabs will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Month Content -->
+        <section id="monthContent" class="glass-morphism rounded-2xl p-8 card-hover">
+            <!-- Dynamic content will be loaded here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">© 2024 Middle School English Curriculum. Building advanced literacy skills, scholarly writing, and critical thinking for academic excellence and intellectual development.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Monthly English curriculum data for ages 11-12 (Middle School)
+        const curriculumData = {
+            'September': {
+                icon: 'fa-book-reader',
+                color: 'from-blue-400 to-indigo-500',
+                focus: 'Literary Theory & Critical Analysis',
+                skills: ['Literary criticism', 'Critical theory', 'Textual analysis', 'Scholarly interpretation'],
+                weeks: [
+                    'Introduction to literary criticism: formalism, structuralism, and post-structuralism',
+                    'Critical theory applications: Marxist, feminist, and postcolonial perspectives',
+                    'Advanced textual analysis: close reading, intertextuality, and literary devices',
+                    'Scholarly interpretation: thesis development, evidence integration, and academic argumentation'
+                ],
+                project: 'Write a scholarly literary analysis paper applying critical theory to classic literature',
+                materials: ['Literary theory texts', 'Critical analysis guides', 'Scholarly journals', 'Academic writing resources']
+            },
+            'October': {
+                icon: 'fa-pen',
+                color: 'from-orange-400 to-red-500',
+                focus: 'Advanced Academic Research',
+                skills: ['Research methodology', 'Source evaluation', 'Academic integrity', 'Scholarly writing'],
+                weeks: [
+                    'Advanced research methodology: qualitative and quantitative approaches in literary studies',
+                    'Source evaluation and synthesis: primary sources, secondary sources, and scholarly databases',
+                    'Academic integrity and ethics: proper citation, avoiding plagiarism, and scholarly responsibility',
+                    'Scholarly writing conventions: academic tone, structure, and discipline-specific requirements'
+                ],
+                project: 'Conduct original literary research and write a scholarly paper for academic publication',
+                materials: ['Research databases', 'Citation management software', 'Academic style guides', 'Scholarly writing resources']
+            },
+            'November': {
+                icon: 'fa-language',
+                color: 'from-purple-400 to-pink-500',
+                focus: 'Advanced Linguistics & Etymology',
+                skills: ['Linguistic analysis', 'Etymology', 'Language evolution', 'Semantic analysis'],
+                weeks: [
+                    'Advanced linguistic analysis: phonology, morphology, and syntax in literary contexts',
+                    'Etymology and word origins: historical development and semantic change',
+                    'Language evolution and sociolinguistics: dialects, language change, and cultural influence',
+                    'Semantic analysis: connotation, denotation, and linguistic meaning in literature'
+                ],
+                project: 'Create comprehensive linguistic analysis of literary text with etymological research',
+                materials: ['Linguistics textbooks', 'Etymology dictionaries', 'Language analysis software', 'Historical language resources']
+            },
+            'December': {
+                icon: 'fa-book',
+                color: 'from-green-400 to-emerald-500',
+                focus: 'Classical & World Literature',
+                skills: ['Classical literature', 'World epics', 'Cultural analysis', 'Comparative literature'],
+                weeks: [
+                    'Classical literature analysis: Greek and Roman epics, tragedy, and philosophy',
+                    'World literature epics: Mahabharata, Ramayana, Journey to the West, and global narratives',
+                    'Cultural analysis through literature: historical context, cultural values, and societal reflection',
+                    'Comparative literature: cross-cultural themes, universal human experiences, and literary connections'
+                ],
+                project: 'Complete comparative literature study analyzing themes across classical and world literature',
+                materials: ['Classical texts', 'World literature anthologies', 'Cultural analysis guides', 'Comparative literature resources']
+            },
+            'January': {
+                icon: 'fa-gavel',
+                color: 'from-cyan-400 to-blue-500',
+                focus: 'Academic Debate & Scholarly Discourse',
+                skills: ['Scholarly argumentation', 'Academic debate', 'Critical thinking', 'Intellectual discourse'],
+                weeks: [
+                    'Scholarly argumentation: logical reasoning, evidence-based claims, and academic persuasion',
+                    'Academic debate formats: parliamentary debate, policy debate, and scholarly discussion',
+                    'Critical thinking in academic contexts: logical fallacies, bias identification, and evidence evaluation',
+                    'Intellectual discourse: seminar participation, scholarly discussion, and academic presentation'
+                ],
+                project: 'Participate in academic debate tournament with scholarly argumentation and research',
+                materials: ['Debate guides', 'Academic argument resources', 'Critical thinking tools', 'Scholarly discourse materials']
+            },
+            'February': {
+                icon: 'fa-newspaper',
+                color: 'from-red-400 to-pink-500',
+                focus: 'Advanced Journalism & Media Studies',
+                skills: ['Investigative journalism', 'Media analysis', 'Digital literacy', 'Scholarly publishing'],
+                weeks: [
+                    'Investigative journalism: research methods, source protection, and ethical reporting',
+                    'Media analysis: critical evaluation of news sources, bias identification, and media literacy',
+                    'Digital literacy and scholarly communication: online research, digital archives, and academic publishing',
+                    'Media ethics and responsibility: journalistic standards, truth in reporting, and social impact'
+                ],
+                project: 'Create investigative journalism piece with scholarly analysis and media critique',
+                materials: ['Journalism resources', 'Media analysis tools', 'Digital literacy guides', 'Ethical reporting standards']
+            },
+            'March': {
+                icon: 'fa-feather',
+                color: 'from-yellow-400 to-orange-500',
+                focus: 'Creative Writing & Literary Publication',
+                skills: ['Advanced creative writing', 'Literary publication', 'Editing', 'Author voice'],
+                weeks: [
+                    'Advanced creative writing: narrative techniques, point of view mastery, and stylistic development',
+                    'Literary publication process: manuscript preparation, submission guidelines, and publishing industry',
+                    'Professional editing: developmental editing, line editing, and copyediting for publication',
+                    'Author voice development: finding unique style, genre specialization, and literary branding'
+                ],
+                project: 'Write and prepare literary work for professional publication with editing and submission',
+                materials: ['Creative writing guides', 'Publishing resources', 'Editing tools', 'Author development materials']
+            },
+            'April': {
+                icon: 'fa-theater-masks',
+                color: 'from-indigo-400 to-purple-500',
+                focus: 'Dramatic Literature & Performance Studies',
+                skills: ['Dramatic analysis', 'Performance theory', 'Playwriting', 'Theatrical criticism'],
+                weeks: [
+                    'Dramatic literature analysis: classical and contemporary plays, dramatic structure, and theatrical conventions',
+                    'Performance theory: method acting, Brechtian techniques, and contemporary performance practices',
+                    'Advanced playwriting: dialogue, character development, and dramatic structure',
+                    'Theatrical criticism: performance analysis, production evaluation, and scholarly theater writing'
+                ],
+                project: 'Write and analyze original dramatic work with performance theory application',
+                materials: ['Dramatic texts', 'Performance theory resources', 'Playwriting guides', 'Theatrical criticism materials']
+            },
+            'May': {
+                icon: 'fa-globe',
+                color: 'from-teal-400 to-green-500',
+                focus: 'Global Literature & Cultural Studies',
+                skills: ['Postcolonial literature', 'Cultural theory', 'Global perspectives', 'Cross-cultural analysis'],
+                weeks: [
+                    'Postcolonial literature: themes of identity, resistance, and cultural hybridity',
+                    'Cultural theory applications: identity politics, cultural hegemony, and resistance literature',
+                    'Global perspectives: contemporary world literature, diaspora writing, and transnational narratives',
+                    'Cross-cultural analysis: comparative cultural studies, global issues, and universal themes'
+                ],
+                project: 'Complete comprehensive cultural studies project analyzing global literature and cultural perspectives',
+                materials: ['Postcolonial texts', 'Cultural theory resources', 'Global literature anthologies', 'Cross-cultural analysis tools']
+            },
+            'June': {
+                icon: 'fa-graduation-cap',
+                color: 'from-amber-400 to-orange-500',
+                focus: 'Scholarly Portfolio & Academic Achievement',
+                skills: ['Portfolio compilation', 'Academic presentation', 'Publication', 'Future planning'],
+                weeks: [
+                    'Scholarly portfolio compilation: best works, research papers, and academic achievements',
+                    'Academic presentation skills: conference presentations, scholarly talks, and defense preparation',
+                    'Publication and dissemination: academic journals, conferences, and scholarly communication',
+                    'Future academic planning: advanced study preparation, career pathways, and intellectual development'
+                ],
+                project: 'Create comprehensive scholarly portfolio showcasing academic achievements and future plans',
+                materials: ['Portfolio resources', 'Presentation tools', 'Publication guides', 'Academic planning materials']
+            }
+        };
+
+        let currentMonth = 'September';
+        let isDarkMode = true;
+
+        // Initialize the app
+        function init() {
+            createMonthTabs();
+            loadMonthContent('September');
+        }
+
+        // Create month navigation tabs
+        function createMonthTabs() {
+            const tabsContainer = document.getElementById('monthTabs');
+            const months = Object.keys(curriculumData);
+            
+            months.forEach(month => {
+                const button = document.createElement('button');
+                button.className = `px-5 py-3 rounded-full glass-morphism transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                    month === currentMonth ? 'tab-active' : ''
+                }`;
+                button.innerHTML = `<i class="fas ${curriculumData[month].icon} mr-2"></i>${month}`;
+                button.onclick = () => selectMonth(month);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Select and load month content
+        function selectMonth(month) {
+            currentMonth = month;
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('#monthTabs button');
+            tabs.forEach((tab, index) => {
+                if (Object.keys(curriculumData)[index] === month) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+            
+            loadMonthContent(month);
+        }
+
+        // Load month content
+        function loadMonthContent(month) {
+            const data = curriculumData[month];
+            const content = document.getElementById('monthContent');
+            
+            content.innerHTML = `
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-3xl font-bold flex items-center">
+                            <i class="fas ${data.icon} mr-4 text-gradient bg-gradient-to-r ${data.color} bg-clip-text text-transparent"></i>
+                            ${month}
+                        </h4>
+                        <span class="px-4 py-2 rounded-full bg-gradient-to-r ${data.color} text-sm font-semibold">
+                            ${data.focus}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-emerald-300 text-lg">Literacy Skills Focus</h5>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            ${data.skills.map((skill, index) => `
+                                <span class="skill-badge px-4 py-2 bg-white/10 rounded-full text-sm font-medium">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-emerald-300 text-lg">Weekly Literacy Topics</h5>
+                        <div class="space-y-4">
+                            ${data.weeks.map((week, index) => `
+                                <div class="border border-white/10 rounded-xl overflow-hidden">
+                                    <div class="flex items-start p-4 cursor-pointer hover:bg-white/5 transition" onclick="toggleWeekDetails('${month}-${index}')">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r ${data.color} flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                            ${index + 1}
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-300 leading-relaxed">${week}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Click for activities</p>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-${month}-${index}"></i>
+                                    </div>
+                                    <div class="hidden bg-white/5 border-t border-white/10 p-4" id="details-${month}-${index}">
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-book text-blue-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-blue-300">Reading Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekReading(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-pen text-green-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-green-300">Writing Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekWriting(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-comments text-purple-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-purple-300">Discourse Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekDiscourse(month, index)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-emerald-300 text-lg">Monthly Literacy Project</h5>
+                        <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+                            <p class="text-sm text-gray-300 leading-relaxed">${data.project}</p>
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-emerald-300 text-lg">Materials Needed</h5>
+                        <div class="space-y-3">
+                            ${data.materials.map(material => `
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span class="text-sm text-gray-300">${material}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <div class="flex items-center justify-between">
+                        <button onclick="selectMonth('${getPreviousMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="selectMonth('${getNextMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            Next<i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get previous month
+        function getPreviousMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index > 0 ? months[index - 1] : month;
+        }
+
+        // Get next month
+        function getNextMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index < months.length - 1 ? months[index + 1] : month;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Toggle week details
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const icon = document.getElementById(`icon-${weekId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Get week reading activities
+        function getWeekReading(month, weekIndex) {
+            const readingActivities = {
+                'September': [
+                    'Critical theory reading with formalist, structuralist, and post-structuralist analysis',
+                    'Literary criticism application with Marxist, feminist, and postcolonial perspectives',
+                    'Advanced textual analysis with close reading and intertextual connections',
+                    'Scholarly interpretation with thesis development and evidence integration'
+                ],
+                'October': [
+                    'Research methodology reading with qualitative and quantitative approaches',
+                    'Source evaluation reading with primary and secondary source analysis',
+                    'Academic integrity reading with citation standards and scholarly ethics',
+                    'Scholarly writing reading with academic conventions and discipline requirements'
+                ],
+                'November': [
+                    'Linguistic analysis reading with phonology, morphology, and syntax studies',
+                    'Etymology reading with word origins and historical development',
+                    'Language evolution reading with sociolinguistics and cultural influence',
+                    'Semantic analysis reading with connotation, denotation, and meaning studies'
+                ],
+                'December': [
+                    'Classical literature reading with Greek and Roman epics and philosophy',
+                    'World literature reading with global epics and cultural narratives',
+                    'Cultural analysis reading with historical context and societal reflection',
+                    'Comparative literature reading with cross-cultural themes and connections'
+                ],
+                'January': [
+                    'Scholarly argumentation reading with logical reasoning and evidence-based claims',
+                    'Academic debate reading with parliamentary and policy debate formats',
+                    'Critical thinking reading with logical fallacies and bias identification',
+                    'Intellectual discourse reading with seminar participation and scholarly discussion'
+                ],
+                'February': [
+                    'Investigative journalism reading with research methods and ethical reporting',
+                    'Media analysis reading with critical evaluation and bias identification',
+                    'Digital literacy reading with online research and academic publishing',
+                    'Media ethics reading with journalistic standards and social responsibility'
+                ],
+                'March': [
+                    'Advanced creative writing reading with narrative techniques and stylistic development',
+                    'Literary publication reading with manuscript preparation and industry standards',
+                    'Professional editing reading with developmental and line editing techniques',
+                    'Author voice reading with style development and literary branding'
+                ],
+                'April': [
+                    'Dramatic literature reading with classical and contemporary plays',
+                    'Performance theory reading with method acting and contemporary practices',
+                    'Advanced playwriting reading with dialogue and dramatic structure',
+                    'Theatrical criticism reading with performance analysis and scholarly writing'
+                ],
+                'May': [
+                    'Postcolonial literature reading with identity, resistance, and cultural themes',
+                    'Cultural theory reading with identity politics and cultural hegemony',
+                    'Global perspectives reading with contemporary world literature and diaspora writing',
+                    'Cross-cultural analysis reading with comparative studies and universal themes'
+                ],
+                'June': [
+                    'Scholarly portfolio reading with best works and academic achievements',
+                    'Academic presentation reading with conference talks and defense preparation',
+                    'Publication reading with academic journals and scholarly communication',
+                    'Future planning reading with advanced study and career pathway preparation'
+                ]
+            };
+            return readingActivities[month][weekIndex] || 'Advanced scholarly reading and analysis';
+        }
+
+        // Get week writing activities
+        function getWeekWriting(month, weekIndex) {
+            const writingActivities = {
+                'September': [
+                    'Literary criticism writing with formalist and structuralist analysis',
+                    'Critical theory application writing with Marxist and feminist perspectives',
+                    'Textual analysis writing with close reading and intertextual connections',
+                    'Scholarly interpretation writing with thesis development and academic argumentation'
+                ],
+                'October': [
+                    'Research methodology writing with qualitative and quantitative approaches',
+                    'Source evaluation writing with primary and secondary source synthesis',
+                    'Academic integrity writing with proper citation and scholarly responsibility',
+                    'Scholarly writing with academic tone and discipline-specific conventions'
+                ],
+                'November': [
+                    'Linguistic analysis writing with phonology and morphology studies',
+                    'Etymology writing with word origins and historical development',
+                    'Language evolution writing with sociolinguistics and cultural influence',
+                    'Semantic analysis writing with connotation and meaning studies'
+                ],
+                'December': [
+                    'Classical literature analysis with Greek and Roman epic interpretation',
+                    'World literature writing with global epic analysis and cultural narratives',
+                    'Cultural analysis writing with historical context and societal reflection',
+                    'Comparative literature writing with cross-cultural themes and connections'
+                ],
+                'January': [
+                    'Scholarly argumentation writing with logical reasoning and evidence-based claims',
+                    'Academic debate writing with parliamentary and policy debate preparation',
+                    'Critical thinking writing with logical fallacy analysis and bias identification',
+                    'Intellectual discourse writing with seminar participation and scholarly discussion'
+                ],
+                'February': [
+                    'Investigative journalism writing with research methods and ethical reporting',
+                    'Media analysis writing with critical evaluation and bias identification',
+                    'Digital literacy writing with online research and academic publishing',
+                    'Media ethics writing with journalistic standards and social responsibility'
+                ],
+                'March': [
+                    'Advanced creative writing with narrative techniques and stylistic development',
+                    'Literary publication writing with manuscript preparation and industry standards',
+                    'Professional editing with developmental and line editing techniques',
+                    'Author voice development with style and literary branding'
+                ],
+                'April': [
+                    'Dramatic literature analysis with classical and contemporary play interpretation',
+                    'Performance theory writing with method acting and contemporary practices',
+                    'Advanced playwriting with dialogue and dramatic structure development',
+                    'Theatrical criticism with performance analysis and scholarly writing'
+                ],
+                'May': [
+                    'Postcolonial literature analysis with identity, resistance, and cultural themes',
+                    'Cultural theory writing with identity politics and cultural hegemony analysis',
+                    'Global perspectives writing with contemporary world literature and diaspora analysis',
+                    'Cross-cultural analysis with comparative studies and universal themes'
+                ],
+                'June': [
+                    'Scholarly portfolio compilation with best works and academic achievements',
+                    'Academic presentation writing with conference talks and defense preparation',
+                    'Publication writing with academic journals and scholarly communication',
+                    'Future planning writing with advanced study and career pathway preparation'
+                ]
+            };
+            return writingActivities[month][weekIndex] || 'Advanced scholarly writing and composition';
+        }
+
+        // Get week discourse activities
+        function getWeekDiscourse(month, weekIndex) {
+            const discourseActivities = {
+                'September': [
+                    'Literary theory discussions with critical analysis and scholarly interpretation',
+                    'Critical theory seminars with Marxist, feminist, and postcolonial perspectives',
+                    'Textual analysis discussions with close reading and intertextual connections',
+                    'Scholarly interpretation debates with thesis development and evidence integration'
+                ],
+                'October': [
+                    'Research methodology discussions with qualitative and quantitative approaches',
+                    'Source evaluation seminars with primary and secondary source analysis',
+                    'Academic integrity discussions with citation standards and scholarly ethics',
+                    'Scholarly writing workshops with academic conventions and discipline requirements'
+                ],
+                'November': [
+                    'Linguistic analysis discussions with phonology, morphology, and syntax studies',
+                    'Etymology seminars with word origins and historical development',
+                    'Language evolution discussions with sociolinguistics and cultural influence',
+                    'Semantic analysis seminars with connotation, denotation, and meaning studies'
+                ],
+                'December': [
+                    'Classical literature discussions with Greek and Roman epics and philosophy',
+                    'World literature seminars with global epics and cultural narratives',
+                    'Cultural analysis discussions with historical context and societal reflection',
+                    'Comparative literature seminars with cross-cultural themes and connections'
+                ],
+                'January': [
+                    'Scholarly argumentation debates with logical reasoning and evidence-based claims',
+                    'Academic debate practice with parliamentary and policy debate formats',
+                    'Critical thinking discussions with logical fallacies and bias identification',
+                    'Intellectual discourse seminars with scholarly discussion and academic presentation'
+                ],
+                'February': [
+                    'Investigative journalism discussions with research methods and ethical reporting',
+                    'Media analysis seminars with critical evaluation and bias identification',
+                    'Digital literacy discussions with online research and academic publishing',
+                    'Media ethics debates with journalistic standards and social responsibility'
+                ],
+                'March': [
+                    'Creative writing workshops with narrative techniques and stylistic development',
+                    'Literary publication seminars with manuscript preparation and industry standards',
+                    'Professional editing workshops with developmental and line editing techniques',
+                    'Author voice development discussions with style and literary branding'
+                ],
+                'April': [
+                    'Dramatic literature discussions with classical and contemporary plays',
+                    'Performance theory seminars with method acting and contemporary practices',
+                    'Playwriting workshops with dialogue and dramatic structure development',
+                    'Theatrical criticism discussions with performance analysis and scholarly writing'
+                ],
+                'May': [
+                    'Postcolonial literature discussions with identity, resistance, and cultural themes',
+                    'Cultural theory seminars with identity politics and cultural hegemony',
+                    'Global perspectives discussions with contemporary world literature and diaspora writing',
+                    'Cross-cultural analysis seminars with comparative studies and universal themes'
+                ],
+                'June': [
+                    'Scholarly portfolio presentations with best works and academic achievements',
+                    'Academic presentation practice with conference talks and defense preparation',
+                    'Publication seminars with academic journals and scholarly communication',
+                    'Future planning discussions with advanced study and career pathway preparation'
+                ]
+            };
+            return discourseActivities[month][weekIndex] || 'Advanced scholarly discourse and communication';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
