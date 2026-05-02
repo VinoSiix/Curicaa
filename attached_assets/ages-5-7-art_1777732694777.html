@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Early Elementary - Art & PE Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .dark .tab-active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 0 25px rgba(240, 147, 251, 0.6);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .skill-badge {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .skill-badge:nth-child(2) { animation-delay: 0.1s; }
+        .skill-badge:nth-child(3) { animation-delay: 0.2s; }
+        .skill-badge:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="hub.html" class="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-child text-white"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <a href="hub.html" class="text-xl md:text-2xl font-bold hover:text-purple-300 transition-colors">Early Elementary</a>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-lg font-semibold text-pink-300">Art & PE</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-sm font-bold">Ages 5-7</span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
+                Creative Movement & Art
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                Developing creativity, coordination, and self-expression through art projects, music, movement, and physical activities designed for young learners.
+            </p>
+        </section>
+
+        <!-- Weekly Schedule -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-clock mr-4 text-purple-400"></i>
+                Weekly Schedule (Ages 5-7)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-sun text-yellow-400 mr-2"></i>
+                        <span class="font-bold text-lg">9:00 - 10:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Morning Movement</p>
+                    <p class="text-xs text-gray-400">Stretching, dance, rhythm</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-palette text-orange-400 mr-2"></i>
+                        <span class="font-bold text-lg">10:00 - 11:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Art Exploration</p>
+                    <p class="text-xs text-gray-400">Painting, drawing, crafts</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-apple-alt text-green-400 mr-2"></i>
+                        <span class="font-bold text-lg">11:00 - 12:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Music & Movement</p>
+                    <p class="text-xs text-gray-400">Songs, instruments, dance</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-cloud text-blue-400 mr-2"></i>
+                        <span class="font-bold text-lg">12:00 - 13:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Lunch & Creative Talk</p>
+                    <p class="text-xs text-gray-400">Art discussions, sharing</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-running text-purple-400 mr-2"></i>
+                        <span class="font-bold text-lg">13:00 - 14:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Physical Games</p>
+                    <p class="text-xs text-gray-400">Coordination, teamwork</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-paint-brush text-pink-400 mr-2"></i>
+                        <span class="font-bold text-lg">14:00 - 15:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Creative Arts</p>
+                    <p class="text-xs text-gray-400">Sculpture, collage, crafts</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-music text-red-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:00 - 15:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Drama & Performance</p>
+                    <p class="text-xs text-gray-400">Role-play, puppet shows</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-home text-indigo-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:30 - 16:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Art Share & Cool Down</p>
+                    <p class="text-xs text-gray-400">Show artwork, stretching</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Art & PE Skills Overview -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-palette mr-4 text-pink-400"></i>
+                Core Creative & Physical Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-paint-brush text-blue-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Fine Motor Skills</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Drawing, cutting</p>
+                    <p class="text-xs text-gray-400">Hand coordination</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-running text-green-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Gross Motor Skills</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Jumping, throwing</p>
+                    <p class="text-xs text-gray-400">Balance, coordination</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-music text-orange-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Rhythm & Movement</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Dance, music</p>
+                    <p class="text-xs text-gray-400">Body awareness</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-heart text-purple-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Self-Expression</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Creativity</p>
+                    <p class="text-xs text-gray-400">Emotional expression</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Themes Navigation -->
+        <section class="mb-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calendar-alt mr-4 text-pink-400"></i>
+                Monthly Creative Themes
+            </h3>
+            <div class="flex flex-wrap gap-3 mb-8" id="monthTabs">
+                <!-- Month tabs will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Month Content -->
+        <section id="monthContent" class="glass-morphism rounded-2xl p-8 card-hover">
+            <!-- Dynamic content will be loaded here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">© 2024 Early Elementary Art & PE Curriculum. Nurturing creativity and healthy development.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Monthly Art & PE curriculum data for ages 5-7
+        const curriculumData = {
+            'September': {
+                icon: 'fa-palette',
+                color: 'from-pink-400 to-purple-500',
+                focus: 'Colors & Shapes',
+                skills: ['Primary colors', 'Basic shapes', 'Color mixing', 'Shape recognition'],
+                weeks: [
+                    'Primary colors exploration with red, blue, yellow painting activities',
+                    'Basic shapes introduction: circle, square, triangle with drawing and cutting',
+                    'Color mixing experiments with primary colors creating secondary colors',
+                    'Shape and color art projects combining learned concepts'
+                ],
+                project: 'Create a colorful shape collage demonstrating color mixing and shape recognition',
+                materials: ['Paint', 'Brushes', 'Construction paper', 'Scissors', 'Glue', 'Shape templates']
+            },
+            'October': {
+                icon: 'fa-leaf',
+                color: 'from-orange-400 to-red-500',
+                focus: 'Nature Art & Movement',
+                skills: ['Nature materials', 'Seasonal art', 'Outdoor movement', 'Nature observation'],
+                weeks: [
+                    'Nature art with leaves, twigs, and natural materials collage',
+                    'Seasonal art projects focusing on fall colors and changes',
+                    'Outdoor movement games with nature themes and exploration',
+                    'Nature-inspired art and movement combining observation and creativity'
+                ],
+                project: 'Nature art portfolio with outdoor movement documentation',
+                materials: ['Natural materials', 'Art supplies', 'Movement props', 'Nature collection bags']
+            },
+            'November': {
+                icon: 'fa-theater-masks',
+                color: 'from-yellow-400 to-orange-500',
+                focus: 'Drama & Expression',
+                skills: ['Role-playing', 'Emotional expression', 'Puppet making', 'Storytelling'],
+                weeks: [
+                    'Basic role-playing with familiar characters and situations',
+                    'Emotional expression through movement and facial expressions',
+                    'Simple puppet making with socks and paper materials',
+                    'Storytelling with puppets and dramatic play activities'
+                ],
+                project: 'Class puppet show with original characters and story',
+                materials: ['Puppet materials', 'Costume props', 'Story props', 'Stage materials']
+            },
+            'December': {
+                icon: 'fa-snowflake',
+                color: 'from-cyan-400 to-blue-500',
+                focus: 'Winter Crafts & Dance',
+                skills: ['Holiday crafts', 'Winter themes', 'Dance routines', 'Coordination'],
+                weeks: [
+                    'Winter holiday crafts with seasonal themes and decorations',
+                    'Winter art projects focusing on snow, ice, and cold weather',
+                    'Simple dance routines with winter and holiday music',
+                    'Coordination activities with holiday movement games'
+                ],
+                project: 'Winter craft collection with holiday dance performance',
+                materials: ['Holiday craft materials', 'Winter art supplies', 'Music player', 'Dance props']
+            },
+            'January': {
+                icon: 'fa-music',
+                color: 'from-purple-400 to-pink-500',
+                focus: 'Music & Rhythm',
+                skills: ['Simple instruments', 'Rhythm patterns', 'Music movement', 'Sound exploration'],
+                weeks: [
+                    'Simple instrument making with household and craft materials',
+                    'Rhythm pattern exploration with clapping, stomping, and instruments',
+                    'Music and movement activities with different tempos and styles',
+                    'Sound exploration with voice, body percussion, and instruments'
+                ],
+                project: 'Class band with homemade instruments and rhythm performance',
+                materials: ['Instrument materials', 'Rhythm tools', 'Music player', 'Sound makers']
+            },
+            'February': {
+                icon: 'fa-heart',
+                color: 'from-red-400 to-pink-500',
+                focus: 'Friendship & Teamwork',
+                skills: ['Cooperative games', 'Partner activities', 'Group art', 'Social skills'],
+                weeks: [
+                    'Cooperative movement games requiring teamwork and communication',
+                    'Partner art activities with collaborative drawing and painting',
+                    'Group art projects creating large-scale murals and displays',
+                    'Social skill development through sharing and creative cooperation'
+                ],
+                project: 'Friendship mural with cooperative game documentation',
+                materials: ['Large paper', 'Group art supplies', 'Team game materials', 'Cooperation tools']
+            },
+            'March': {
+                icon: 'fa-star',
+                color: 'from-green-400 to-emerald-500',
+                focus: 'Performance & Dance',
+                skills: ['Dance routines', 'Performance skills', 'Choreography', 'Stage presence'],
+                weeks: [
+                    'Simple dance routines with basic steps and movements',
+                    'Performance skills practice with stage presence and confidence',
+                    'Basic choreography creating simple movement sequences',
+                    'Stage performance preparation with audience and presentation skills'
+                ],
+                project: 'Class dance performance with original choreography',
+                materials: ['Dance music', 'Costume materials', 'Stage props', 'Performance space']
+            },
+            'April': {
+                icon: 'fa-paint-brush',
+                color: 'from-blue-400 to-indigo-500',
+                focus: 'Advanced Art Techniques',
+                skills: ['Painting techniques', '3D art', 'Texture exploration', 'Art appreciation'],
+                weeks: [
+                    'Advanced painting techniques with brushes, sponges, and tools',
+                    '3D art creation with clay, paper, and sculpture materials',
+                    'Texture exploration with different materials and surfaces',
+                    'Art appreciation discussing famous artists and techniques'
+                ],
+                project: 'Art gallery with advanced technique demonstrations',
+                materials: ['Advanced art supplies', 'Sculpture materials', 'Texture tools', 'Art books']
+            },
+            'May': {
+                icon: 'fa-flower',
+                color: 'from-pink-400 to-purple-500',
+                focus: 'Spring & Growth',
+                skills: ['Nature art', 'Growth themes', 'Outdoor activities', 'Environmental art'],
+                weeks: [
+                    'Spring nature art with flowers, plants, and growth themes',
+                    'Growth-themed art projects tracking personal and plant development',
+                    'Outdoor art activities using natural environments as inspiration',
+                    'Environmental art creating temporary installations with natural materials'
+                ],
+                project: 'Spring garden art project with growth documentation',
+                materials: ['Garden materials', 'Nature art supplies', 'Growth tracking tools', 'Outdoor art materials']
+            },
+            'June': {
+                icon: 'fa-trophy',
+                color: 'from-amber-400 to-orange-500',
+                focus: 'Creative Celebration',
+                skills: ['Portfolio review', 'Performance showcase', 'Art exhibition', 'Achievement celebration'],
+                weeks: [
+                    'Portfolio review organizing and reflecting on yearly art achievements',
+                    'Performance showcase preparing and presenting favorite movement pieces',
+                    'Art exhibition setting up and displaying yearly creative work',
+                    'Achievement celebration recognizing growth and creative accomplishments'
+                ],
+                project: 'Yearly creative showcase with portfolio and performance celebration',
+                materials: ['Portfolio materials', 'Exhibition supplies', 'Performance props', 'Award materials']
+            }
+        };
+
+        let currentMonth = 'September';
+        let isDarkMode = true;
+
+        // Initialize the app
+        function init() {
+            createMonthTabs();
+            loadMonthContent('September');
+        }
+
+        // Create month navigation tabs
+        function createMonthTabs() {
+            const tabsContainer = document.getElementById('monthTabs');
+            const months = Object.keys(curriculumData);
+            
+            months.forEach(month => {
+                const button = document.createElement('button');
+                button.className = `px-5 py-3 rounded-full glass-morphism transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                    month === currentMonth ? 'tab-active' : ''
+                }`;
+                button.innerHTML = `<i class="fas ${curriculumData[month].icon} mr-2"></i>${month}`;
+                button.onclick = () => selectMonth(month);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Select and load month content
+        function selectMonth(month) {
+            currentMonth = month;
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('#monthTabs button');
+            tabs.forEach((tab, index) => {
+                if (Object.keys(curriculumData)[index] === month) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+            
+            loadMonthContent(month);
+        }
+
+        // Load month content
+        function loadMonthContent(month) {
+            const data = curriculumData[month];
+            const content = document.getElementById('monthContent');
+            
+            content.innerHTML = `
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-3xl font-bold flex items-center">
+                            <i class="fas ${data.icon} mr-4 text-gradient bg-gradient-to-r ${data.color} bg-clip-text text-transparent"></i>
+                            ${month}
+                        </h4>
+                        <span class="px-4 py-2 rounded-full bg-gradient-to-r ${data.color} text-sm font-semibold">
+                            ${data.focus}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-pink-300 text-lg">Creative Skills Focus</h5>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            ${data.skills.map((skill, index) => `
+                                <span class="skill-badge px-4 py-2 bg-white/10 rounded-full text-sm font-medium">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-pink-300 text-lg">Weekly Creative Topics</h5>
+                        <div class="space-y-4">
+                            ${data.weeks.map((week, index) => `
+                                <div class="border border-white/10 rounded-xl overflow-hidden">
+                                    <div class="flex items-start p-4 cursor-pointer hover:bg-white/5 transition" onclick="toggleWeekDetails('${month}-${index}')">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r ${data.color} flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                            ${index + 1}
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-300 leading-relaxed">${week}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Click for activities</p>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-${month}-${index}"></i>
+                                    </div>
+                                    <div class="hidden bg-white/5 border-t border-white/10 p-4" id="details-${month}-${index}">
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-palette text-blue-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-blue-300">Art Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekArt(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-running text-green-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-green-300">Movement Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekMovement(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-home text-purple-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-purple-300">Home Connection:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekHomeConnection(month, index)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-pink-300 text-lg">Monthly Creative Project</h5>
+                        <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+                            <p class="text-sm text-gray-300 leading-relaxed">${data.project}</p>
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-pink-300 text-lg">Materials Needed</h5>
+                        <div class="space-y-3">
+                            ${data.materials.map(material => `
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span class="text-sm text-gray-300">${material}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <div class="flex items-center justify-between">
+                        <button onclick="selectMonth('${getPreviousMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="selectMonth('${getNextMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            Next<i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get previous month
+        function getPreviousMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index > 0 ? months[index - 1] : month;
+        }
+
+        // Get next month
+        function getNextMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index < months.length - 1 ? months[index + 1] : month;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Toggle week details
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const icon = document.getElementById(`icon-${weekId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Get week art activities
+        function getWeekArt(month, weekIndex) {
+            const artActivities = {
+                'September': [
+                    'Primary color painting with finger painting and brush techniques',
+                    'Shape drawing and cutting practice with various materials',
+                    'Color mixing experiments creating secondary colors and color wheels',
+                    'Shape and color combination art creating balanced compositions'
+                ],
+                'October': [
+                    'Nature collage making with collected leaves, twigs, and natural materials',
+                    'Seasonal art creating fall scenes with warm colors and changing themes',
+                    'Outdoor sketching and nature observation with drawing activities',
+                    'Nature-inspired art combining outdoor exploration with creative expression'
+                ],
+                'November': [
+                    'Character drawing and costume design for role-playing activities',
+                    'Emotion art creating facial expressions and feeling representations',
+                    'Puppet creation with various materials and character development',
+                    'Story illustration and backdrop creation for dramatic performances'
+                ],
+                'December': [
+                    'Holiday craft making with seasonal themes and decorative elements',
+                    'Winter scene painting with snow, ice, and cold weather themes',
+                    'Holiday card creation and gift making with personal touches',
+                    'Winter art projects focusing on seasonal changes and celebrations'
+                ],
+                'January': [
+                    'Instrument creation using household and recycled materials',
+                    'Rhythm art creating visual representations of musical patterns',
+                    'Music-inspired painting and drawing activities with various tempos',
+                    'Sound wave art and musical notation exploration through visual media'
+                ],
+                'February': [
+                    'Partner drawing activities with collaborative art creation',
+                    'Group mural painting with teamwork and shared vision',
+                    'Friendship art creating gifts and cards for classmates',
+                    'Cooperative sculpture building with group planning and execution'
+                ],
+                'March': [
+                    'Dance costume design and creation for performance activities',
+                    'Stage backdrop painting and set design for class performances',
+                    'Movement drawing capturing dance poses and action sequences',
+                    'Performance program design and ticket creation for class shows'
+                ],
+                'April': [
+                    'Advanced painting techniques with sponges, rollers, and alternative tools',
+                    '3D sculpture creation with clay, paper mache, and mixed media',
+                    'Texture art exploring different surfaces and material combinations',
+                    'Artist study projects recreating famous works with personal interpretation'
+                ],
+                'May': [
+                    'Spring flower painting and botanical illustration activities',
+                    'Growth art creating visual representations of plant development',
+                    'Outdoor landscape painting with natural settings and scenery',
+                    'Environmental art creating temporary installations with natural materials'
+                ],
+                'June': [
+                    'Portfolio organization and art reflection activities',
+                    'Exhibition display preparation and art presentation skills',
+                    'Achievement art creating personal milestone representations',
+                    'Celebration art projects commemorating yearly growth and accomplishments'
+                ]
+            };
+            return artActivities[month][weekIndex] || 'Creative art activities and skill development';
+        }
+
+        // Get week movement activities
+        function getWeekMovement(month, weekIndex) {
+            const movementActivities = {
+                'September': [
+                    'Color movement games associating movements with different colors',
+                    'Shape dancing creating movements that represent different shapes',
+                    'Color and shape movement combining art concepts with physical expression',
+                    'Creative movement games integrating learned art elements'
+                ],
+                'October': [
+                    'Nature movement mimicking animals, plants, and natural phenomena',
+                    'Seasonal movement activities representing fall changes and weather',
+                    'Outdoor exploration games with movement challenges and nature themes',
+                    'Environmental movement using natural settings as movement inspiration'
+                ],
+                'November': [
+                    'Character movement developing physical representations of different roles',
+                    'Emotion movement expressing feelings through body language and gesture',
+                    'Puppet movement coordination practicing puppet manipulation and control',
+                    'Storytelling movement acting out narratives and dramatic scenes'
+                ],
+                'December': [
+                    'Holiday dance routines with seasonal music and festive movements',
+                    'Winter movement activities representing snow, ice, and cold weather',
+                    'Coordination games with holiday themes and seasonal challenges',
+                    'Celebratory movement activities for holiday performances and events'
+                ],
+                'January': [
+                    'Rhythm movement activities clapping, stomping, and body percussion',
+                    'Instrument movement incorporating homemade instruments into dance',
+                    'Music and movement exploring different tempos, styles, and cultural music',
+                    'Sound movement creating physical representations of different sounds'
+                ],
+                'February': [
+                    'Cooperative movement games requiring teamwork and synchronization',
+                    'Partner dance activities developing coordination and communication',
+                    'Group movement challenges creating formations and synchronized routines',
+                    'Team building movement activities fostering cooperation and trust'
+                ],
+                'March': [
+                    'Dance routine practice learning choreographed sequences and steps',
+                    'Performance skills developing stage presence and audience awareness',
+                    'Choreography activities creating original movement sequences',
+                    'Stage movement practicing spatial awareness and performance techniques'
+                ],
+                'April': [
+                    'Advanced movement techniques incorporating complex sequences and patterns',
+                    '3D movement exploring space levels and dimensional movement',
+                    'Texture movement creating physical representations of different textures',
+                    'Artistic movement studying and recreating famous dance pieces'
+                ],
+                'May': [
+                    'Spring movement activities representing growth, renewal, and nature awakening',
+                    'Growth movement sequences showing development and progression themes',
+                    'Outdoor movement games using natural environments as movement spaces',
+                    'Environmental movement creating dances inspired by natural settings'
+                ],
+                'June': [
+                    'Portfolio movement reviewing and refining favorite movement pieces',
+                    'Performance showcase preparing and presenting best movement work',
+                    'Exhibition movement creating gallery-style movement presentations',
+                    'Celebration dances commemorating achievements and yearly progress'
+                ]
+            };
+            return movementActivities[month][weekIndex] || 'Engaging movement activities and physical development';
+        }
+
+        // Get week home connection
+        function getWeekHomeConnection(month, weekIndex) {
+            const homeConnection = {
+                'September': [
+                    'Create color and shape art at home using household materials',
+                    'Go on a color hunt around the house and neighborhood',
+                    'Practice shape drawing and cutting with family supervision',
+                    'Mix colors using paint, food coloring, or digital tools'
+                ],
+                'October': [
+                    'Collect natural materials and create nature art at home',
+                    'Observe seasonal changes and document through art',
+                    'Create outdoor movement activities in backyard or park',
+                    'Make seasonal crafts using natural and recycled materials'
+                ],
+                'November': [
+                    'Create puppets at home using socks, paper bags, or other materials',
+                    'Practice emotional expression through movement and facial expressions',
+                    'Role-play family stories and situations with props',
+                    'Create simple costumes for dramatic play at home'
+                ],
+                'December': [
+                    'Make holiday crafts and decorations for family celebrations',
+                    'Create winter-themed art projects and seasonal decorations',
+                    'Practice holiday dances and movement routines with family',
+                    'Design and create handmade gifts for family members'
+                ],
+                'January': [
+                    'Create homemade instruments using household items',
+                    'Practice rhythm patterns with clapping, stomping, and homemade instruments',
+                    'Explore music and movement with favorite songs and family participation',
+                    'Create sound experiments using voice, body percussion, and household items'
+                ],
+                'February': [
+                    'Create cooperative art projects with family members',
+                    'Practice teamwork through movement games and partner activities',
+                    'Make friendship cards and gifts for classmates and family',
+                    'Create group art projects with siblings or family members'
+                ],
+                'March': [
+                    'Create dance routines at home with favorite music',
+                    'Design and make simple costumes for home performances',
+                    'Practice performance skills for family audiences',
+                    'Create simple stage setups for home performances'
+                ],
+                'April': [
+                    'Try advanced art techniques using household materials',
+                    'Create 3D art projects with clay, paper, or recycled materials',
+                    'Explore texture art using different household surfaces',
+                    'Study and recreate famous artworks using personal interpretation'
+                ],
+                'May': [
+                    'Create spring art projects using flowers and plant themes',
+                    'Start a small garden and document growth through art',
+                    'Create outdoor art in backyard or local park',
+                    'Make environmental art using natural materials'
+                ],
+                'June': [
+                    'Organize and review yearly art creations and achievements',
+                    'Create a home art exhibition showcasing favorite pieces',
+                    'Prepare and perform movement routines for family audiences',
+                    'Create celebration art commemorating personal growth and achievements'
+                ]
+            };
+            return homeConnection[month][weekIndex] || 'Family creative activities and home exploration';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

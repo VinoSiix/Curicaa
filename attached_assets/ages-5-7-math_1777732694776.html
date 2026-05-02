@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Early Elementary - Mathematics Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .dark .tab-active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 0 25px rgba(240, 147, 251, 0.6);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .skill-badge {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .skill-badge:nth-child(2) { animation-delay: 0.1s; }
+        .skill-badge:nth-child(3) { animation-delay: 0.2s; }
+        .skill-badge:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="hub.html" class="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-child text-white"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <a href="hub.html" class="text-xl md:text-2xl font-bold hover:text-purple-300 transition-colors">Early Elementary</a>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-lg font-semibold text-blue-300">Mathematics</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-sm font-bold">Ages 5-7</span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
+                Foundation Mathematics
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                Building essential number sense, counting skills, and mathematical thinking through hands-on activities, games, and visual learning for early elementary students.
+            </p>
+        </section>
+
+        <!-- Weekly Schedule -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-clock mr-4 text-purple-400"></i>
+                Weekly Schedule (Ages 5-7)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-sun text-yellow-400 mr-2"></i>
+                        <span class="font-bold text-lg">9:00 - 10:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Morning Math Circle</p>
+                    <p class="text-xs text-gray-400">Counting songs, calendar math</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-star text-orange-400 mr-2"></i>
+                        <span class="font-bold text-lg">10:00 - 11:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Hands-On Number Activities</p>
+                    <p class="text-xs text-gray-400">Manipulatives, counting games</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-apple-alt text-green-400 mr-2"></i>
+                        <span class="font-bold text-lg">11:00 - 12:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Math Stories & Snack</p>
+                    <p class="text-xs text-gray-400">Counting snacks, math read-alouds</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-cloud text-blue-400 mr-2"></i>
+                        <span class="font-bold text-lg">12:00 - 13:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Lunch & Free Play</p>
+                    <p class="text-xs text-gray-400">Social time, informal math</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-moon text-purple-400 mr-2"></i>
+                        <span class="font-bold text-lg">13:00 - 14:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Quiet Math Time</p>
+                    <p class="text-xs text-gray-400">Number puzzles, pattern games</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-paint-brush text-pink-400 mr-2"></i>
+                        <span class="font-bold text-lg">14:00 - 15:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Art & Math Integration</p>
+                    <p class="text-xs text-gray-400">Shape art, number crafts</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-running text-red-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:00 - 15:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Movement Math</p>
+                    <p class="text-xs text-gray-400">Counting jumps, shape hunts</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-home text-indigo-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:30 - 16:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Review & Share</p>
+                    <p class="text-xs text-gray-400">Daily review, home activities</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Math Skills Overview -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-shapes mr-4 text-blue-400"></i>
+                Core Math Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-sort-numeric-up text-green-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Number Sense</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Counting to 20+</p>
+                    <p class="text-xs text-gray-400">Number recognition</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-shapes text-purple-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Basic Shapes</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">2D shapes</p>
+                    <p class="text-xs text-gray-400">Shape recognition</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-ruler text-orange-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Measurement</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Size comparison</p>
+                        <p class="text-xs text-gray-400">Basic concepts</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-calculator text-blue-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Problem Solving</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Simple addition</p>
+                    <p class="text-xs text-gray-400">Logical thinking</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Themes Navigation -->
+        <section class="mb-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calendar-alt mr-4 text-blue-400"></i>
+                Monthly Math Themes
+            </h3>
+            <div class="flex flex-wrap gap-3 mb-8" id="monthTabs">
+                <!-- Month tabs will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Month Content -->
+        <section id="monthContent" class="glass-morphism rounded-2xl p-8 card-hover">
+            <!-- Dynamic content will be loaded here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">© 2024 Early Elementary Mathematics Curriculum. Building strong math foundations through play.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Monthly math curriculum data for ages 5-7
+        const curriculumData = {
+            'September': {
+                icon: 'fa-sort-numeric-up',
+                color: 'from-green-400 to-blue-500',
+                focus: 'Number Introduction 1-10',
+                skills: ['Counting 1-10', 'Number recognition', 'One-to-one correspondence'],
+                weeks: [
+                    'Introduction to numbers 1-3 with counting songs and finger counting',
+                    'Number recognition activities with flashcards and number hunts',
+                    'One-to-one correspondence with counting objects and manipulatives',
+                    'Counting games and number scavenger hunts around classroom'
+                ],
+                project: 'Create personal number books with drawings representing each number 1-10',
+                materials: ['Number flashcards', 'Counting objects', 'Number songs', 'Drawing materials']
+            },
+            'October': {
+                icon: 'fa-shapes',
+                color: 'from-orange-400 to-red-500',
+                focus: 'Basic Shapes & Patterns',
+                skills: ['Circle recognition', 'Square identification', 'Triangle discovery', 'AB patterns'],
+                weeks: [
+                    'Circle exploration and hunting activities in classroom and nature',
+                    'Square identification with building blocks and shape sorting',
+                    'Triangle discovery and creation with craft sticks and drawing',
+                    'Introduction to AB patterns with colors and shapes'
+                ],
+                project: 'Shape collage using cutouts, drawings, and found objects',
+                materials: ['Shape blocks', 'Construction paper', 'Scissors', 'Glue sticks']
+            },
+            'November': {
+                icon: 'fa-sort-numeric-up',
+                color: 'from-yellow-400 to-orange-500',
+                focus: 'Counting to 20 & Basic Addition',
+                skills: ['Counting 1-20', 'Number formation', 'Simple addition to 5'],
+                weeks: [
+                    'Counting practice with manipulatives and counting songs to 20',
+                    'Number writing and formation practice with tracing activities',
+                    'Introduction to simple addition using concrete objects',
+                    'Addition stories and word problems with visual aids'
+                ],
+                project: 'Counting collections with labeled groups and simple addition displays',
+                materials: ['Counting beads', 'Number cards 1-20', 'Counting books', 'Manipulatives']
+            },
+            'December': {
+                icon: 'fa-palette',
+                color: 'from-purple-400 to-pink-500',
+                focus: 'Patterns & Holiday Math',
+                skills: ['AB patterns', 'Color patterns', 'Shape patterns', 'Holiday counting'],
+                weeks: [
+                    'Creating and extending AB patterns with colored blocks and beads',
+                    'Pattern recognition and creation with holiday shapes and colors',
+                    'Holiday counting activities with themed objects and stories',
+                    'Pattern art projects with holiday themes and materials'
+                ],
+                project: 'Pattern necklaces using beads, pasta, and holiday materials',
+                materials: ['Colored beads', 'Pattern blocks', 'Pasta shapes', 'Holiday craft materials']
+            },
+            'January': {
+                icon: 'fa-ruler',
+                color: 'from-green-500 to-emerald-600',
+                focus: 'Measurement Basics',
+                skills: ['Big vs small', 'Long vs short', 'Heavy vs light', 'Non-standard measurement'],
+                weeks: [
+                    'Size comparison activities with everyday objects and classroom materials',
+                    'Length measurement using hands, feet, and classroom objects',
+                    'Weight exploration with balance scales and classroom objects',
+                    'Measurement activities in cooking and daily classroom routines'
+                ],
+                project: 'Measurement scavenger hunt finding objects of different sizes and weights',
+                materials: ['Balance scale', 'Rulers', 'Measuring cups', 'Various classroom objects']
+            },
+            'February': {
+                icon: 'fa-sort-numeric-up',
+                color: 'from-red-400 to-pink-500',
+                focus: 'Numbers to 30 & Skip Counting',
+                skills: ['Numbers 20-30', 'Counting by 2s', 'Counting by 5s', 'Number order'],
+                weeks: [
+                    'Introduction to numbers 20-30 with counting activities and games',
+                    'Counting by 2s with paired objects and number patterns',
+                    'Counting by 5s with hand counting and number lines',
+                    'Number order activities and sequencing games'
+                ],
+                project: 'Number line creation showing numbers 1-30 with skip counting patterns',
+                materials: ['Number cards 20-30', 'Counting objects', 'Number line materials', 'Counting charts']
+            },
+            'March': {
+                icon: 'fa-shapes',
+                color: 'from-cyan-400 to-blue-500',
+                focus: 'Advanced Shapes & Geometry',
+                skills: ['Rectangle', 'Oval', 'Diamond', '3D shapes'],
+                weeks: [
+                    'Rectangle identification and creation with building materials',
+                    'Oval and circle comparison with sorting and drawing activities',
+                    'Diamond shape exploration with art and pattern activities',
+                    'Introduction to 3D shapes with building blocks and real objects'
+                ],
+                project: 'Shape city construction using various 2D and 3D shapes',
+                materials: ['Shape blocks', 'Cardboard shapes', 'Craft materials', '3D building materials']
+            },
+            'April': {
+                icon: 'fa-chart-line',
+                color: 'from-green-400 to-teal-500',
+                focus: 'Graphing & Data Collection',
+                skills: ['Picture graphs', 'Sorting', 'Data collection', 'Simple charts'],
+                weeks: [
+                    'Introduction to sorting by color, size, and shape attributes',
+                    'Creating simple picture graphs with classroom favorites',
+                    'Data collection through class surveys and voting activities',
+                    'Interpreting simple graphs and counting results'
+                ],
+                project: 'Class favorite color graph with data collection and display',
+                materials: ['Sorting trays', 'Graph paper', 'Counting objects', 'Chart materials']
+            },
+            'May': {
+                icon: 'fa-plus',
+                color: 'from-purple-400 to-indigo-500',
+                focus: 'Addition & Subtraction to 10',
+                skills: ['Adding to 10', 'Subtraction basics', 'Math facts', 'Story problems'],
+                weeks: [
+                    'Addition practice to 10 using concrete objects and manipulatives',
+                    'Introduction to subtraction with take-away activities',
+                    'Math fact practice with games and flash cards',
+                    'Addition and subtraction story problems with visual aids'
+                ],
+                project: 'Math story book with addition and subtraction problems and illustrations',
+                materials: ['Counting objects', 'Math fact cards', 'Story materials', 'Drawing supplies']
+            },
+            'June': {
+                icon: 'fa-trophy',
+                color: 'from-amber-400 to-orange-500',
+                focus: 'Math Review & Celebration',
+                skills: ['All concepts review', 'Math games', 'Assessment', 'Summer preparation'],
+                weeks: [
+                    'Comprehensive math skills review with hands-on stations',
+                    'Math game stations covering all learned concepts',
+                    'Math assessment through play-based activities and games',
+                    'Summer math preparation and celebration of achievements'
+                ],
+                project: 'Math portfolio and achievement celebration with favorite activities',
+                materials: ['Game materials', 'Assessment tools', 'Portfolio folders', 'Award certificates']
+            }
+        };
+
+        let currentMonth = 'September';
+        let isDarkMode = true;
+
+        // Initialize the app
+        function init() {
+            createMonthTabs();
+            loadMonthContent('September');
+        }
+
+        // Create month navigation tabs
+        function createMonthTabs() {
+            const tabsContainer = document.getElementById('monthTabs');
+            const months = Object.keys(curriculumData);
+            
+            months.forEach(month => {
+                const button = document.createElement('button');
+                button.className = `px-5 py-3 rounded-full glass-morphism transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                    month === currentMonth ? 'tab-active' : ''
+                }`;
+                button.innerHTML = `<i class="fas ${curriculumData[month].icon} mr-2"></i>${month}`;
+                button.onclick = () => selectMonth(month);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Select and load month content
+        function selectMonth(month) {
+            currentMonth = month;
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('#monthTabs button');
+            tabs.forEach((tab, index) => {
+                if (Object.keys(curriculumData)[index] === month) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+            
+            loadMonthContent(month);
+        }
+
+        // Load month content
+        function loadMonthContent(month) {
+            const data = curriculumData[month];
+            const content = document.getElementById('monthContent');
+            
+            content.innerHTML = `
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-3xl font-bold flex items-center">
+                            <i class="fas ${data.icon} mr-4 text-gradient bg-gradient-to-r ${data.color} bg-clip-text text-transparent"></i>
+                            ${month}
+                        </h4>
+                        <span class="px-4 py-2 rounded-full bg-gradient-to-r ${data.color} text-sm font-semibold">
+                            ${data.focus}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-blue-300 text-lg">Math Skills Focus</h5>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            ${data.skills.map((skill, index) => `
+                                <span class="skill-badge px-4 py-2 bg-white/10 rounded-full text-sm font-medium">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-blue-300 text-lg">Weekly Math Topics</h5>
+                        <div class="space-y-4">
+                            ${data.weeks.map((week, index) => `
+                                <div class="border border-white/10 rounded-xl overflow-hidden">
+                                    <div class="flex items-start p-4 cursor-pointer hover:bg-white/5 transition" onclick="toggleWeekDetails('${month}-${index}')">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r ${data.color} flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                            ${index + 1}
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-300 leading-relaxed">${week}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Click for activities</p>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-${month}-${index}"></i>
+                                    </div>
+                                    <div class="hidden bg-white/5 border-t border-white/10 p-4" id="details-${month}-${index}">
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-gamepad text-blue-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-blue-300">Hands-on Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekActivities(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-book text-green-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-green-300">Learning Games:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekGames(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-home text-purple-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-purple-300">Home Connection:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekHomeConnection(month, index)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-blue-300 text-lg">Monthly Math Project</h5>
+                        <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+                            <p class="text-sm text-gray-300 leading-relaxed">${data.project}</p>
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-blue-300 text-lg">Materials Needed</h5>
+                        <div class="space-y-3">
+                            ${data.materials.map(material => `
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span class="text-sm text-gray-300">${material}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <div class="flex items-center justify-between">
+                        <button onclick="selectMonth('${getPreviousMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="selectMonth('${getNextMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            Next<i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get previous month
+        function getPreviousMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index > 0 ? months[index - 1] : month;
+        }
+
+        // Get next month
+        function getNextMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index < months.length - 1 ? months[index + 1] : month;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Toggle week details
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const icon = document.getElementById(`icon-${weekId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Get week activities
+        function getWeekActivities(month, weekIndex) {
+            const activities = {
+                'September': [
+                    'Number songs with finger counting and movement activities',
+                    'Number flashcard games and matching activities with objects',
+                    'Counting objects with one-to-one correspondence practice',
+                    'Number scavenger hunt around classroom and playground'
+                ],
+                'October': [
+                    'Circle hunting activities and shape tracing with various materials',
+                    'Square building with blocks and shape identification games',
+                    'Triangle creation with craft sticks and shape art projects',
+                    'Shape sorting games and pattern recognition activities'
+                ],
+                'November': [
+                    'Counting practice with manipulatives and counting songs to 20',
+                    'Number formation practice with sand, playdough, and tracing activities',
+                    'Simple addition with concrete objects and visual aids',
+                    'Addition stories and word problems with classroom materials'
+                ],
+                'December': [
+                    'AB pattern creation with colored blocks and holiday materials',
+                    'Shape pattern activities and pattern extension games',
+                    'Pattern recognition with music and movement activities',
+                    'Holiday-themed pattern activities and festive crafts'
+                ],
+                'January': [
+                    'Size comparison activities with everyday classroom objects',
+                    'Non-standard measurement with hands, feet, and blocks',
+                    'Weight exploration with balance scales and classroom objects',
+                    'Measurement activities in cooking and daily routines'
+                ],
+                'February': [
+                    'Number practice 20-30 with counting activities and games',
+                    'Skip counting by 2s with paired objects and number patterns',
+                    'Counting by 5s with hand counting and number line activities',
+                    'Number order games and sequencing activities'
+                ],
+                'March': [
+                    'Rectangle hunting and building activities with various materials',
+                    'Oval and circle comparison with sorting and drawing activities',
+                    'Diamond shape creation with art materials and pattern activities',
+                    '3D shape exploration with building blocks and real objects'
+                ],
+                'April': [
+                    'Sorting activities by color, size, and shape attributes',
+                    'Picture graph creation with classroom favorites and surveys',
+                    'Simple surveys and data collection with voting activities',
+                    'Graph interpretation and counting results with visual aids'
+                ],
+                'May': [
+                    'Addition practice to 10 with concrete objects and manipulatives',
+                    'Subtraction introduction with take-away activities and games',
+                    'Math fact practice with games, flash cards, and activities',
+                    'Story problems with visual aids and classroom materials'
+                ],
+                'June': [
+                    'Comprehensive math review with hands-on stations and games',
+                    'Math games covering all learned concepts and skills',
+                    'Math assessment through play-based activities and observation',
+                    'Summer math preparation and celebration of achievements'
+                ]
+            };
+            return activities[month][weekIndex] || 'Engaging hands-on math activities';
+        }
+
+        // Get week games
+        function getWeekGames(month, weekIndex) {
+            const games = {
+                'September': [
+                    'Number bingo and counting games with movement',
+                    'Number matching card games and memory activities',
+                    'Counting race games and number recognition activities',
+                    'Number hopscotch and counting movement games'
+                ],
+                'October': [
+                    'Shape bingo and shape hunting games around classroom',
+                    'Shape building contests and block challenges',
+                    'Shape sorting races and pattern recognition games',
+                    'Shape memory games and matching activities'
+                ],
+                'November': [
+                    'Counting games with dice and number cards to 20',
+                    'Number writing games and formation practice activities',
+                    'Number-quantity matching games and counting races',
+                    'Counting board games and number recognition activities'
+                ],
+                'December': [
+                    'Pattern creation games and extension challenges',
+                    'Pattern memory games and sequencing activities',
+                    'Pattern building contests and holiday craft activities',
+                    'Holiday pattern games and festive learning activities'
+                ],
+                'January': [
+                    'Size comparison games and measurement challenges',
+                    'Non-standard measurement games and estimation activities',
+                    'Weight comparison games and balance scale activities',
+                    'Measurement scavenger hunts and exploration games'
+                ],
+                'February': [
+                    'Number counting games and recognition activities 20-30',
+                    'Skip counting games and pattern activities',
+                    'Counting by 5s games and group activities',
+                    'Number line games and counting challenge activities'
+                ],
+                'March': [
+                    'Shape identification games and building challenges',
+                    'Shape sorting games and advanced pattern activities',
+                    'Shape creation contests and 3D building activities',
+                    'Shape memory games and matching challenges'
+                ],
+                'April': [
+                    'Sorting games and classification activities',
+                    'Graph creation games and data collection activities',
+                    'Survey games and data interpretation activities',
+                    'Counting and graphing games with classroom materials'
+                ],
+                'May': [
+                    'Addition games with manipulatives and counting activities',
+                    'Subtraction games and take-away activities',
+                    'Math fact games and addition/subtraction practice',
+                    'Story problem games and problem-solving activities'
+                ],
+                'June': [
+                    'Math review games and skill practice stations',
+                    'Comprehensive math games and assessment activities',
+                    'Math celebration games and achievement activities',
+                    'Summer preparation games and skill reinforcement'
+                ]
+            };
+            return games[month][weekIndex] || 'Fun and educational math games';
+        }
+
+        // Get week home connection
+        function getWeekHomeConnection(month, weekIndex) {
+            const homeConnection = {
+                'September': [
+                    'Count objects at home and practice number recognition 1-10',
+                    'Sing counting songs and practice finger counting activities',
+                    'Find numbers around the house and in the community',
+                    'Practice one-to-one correspondence with toys and snacks'
+                ],
+                'October': [
+                    'Go on shape hunts around the house and neighborhood',
+                    'Create shape art with household materials and objects',
+                    'Sort objects by shape and discuss their properties',
+                    'Build with blocks and identify shapes in constructions'
+                ],
+                'November': [
+                    'Count everyday objects and practice number recognition to 20',
+                    'Practice writing numbers with crayons and markers',
+                    'Match numbers to quantities with toys and snacks',
+                    'Read counting books and practice simple addition'
+                ],
+                'December': [
+                    'Create patterns with holiday decorations and household items',
+                    'Find and extend patterns in clothing and home items',
+                    'Make pattern jewelry with beads and pasta shapes',
+                    'Create holiday patterns with art and craft materials'
+                ],
+                'January': [
+                    'Compare sizes of objects and family members at home',
+                    'Measure with hands, feet, and household items',
+                    'Compare weights of toys and household objects',
+                    'Practice measurement concepts in cooking activities'
+                ],
+                'February': [
+                    'Practice counting to 30 with everyday objects and toys',
+                    'Write numbers 20-30 and practice number formation',
+                    'Count by 2s and 5s with groups of objects at home',
+                    'Create number lines at home and practice counting'
+                ],
+                'March': [
+                    'Find advanced shapes around the house and community',
+                    'Create shape art with various household materials',
+                    'Build with different shapes and discuss their properties',
+                    'Sort objects by shape and create shape patterns'
+                ],
+                'April': [
+                    'Sort household items by different attributes and properties',
+                    'Create simple graphs of family preferences and choices',
+                    'Conduct family surveys and count results together',
+                    'Make picture graphs of favorite foods and activities'
+                ],
+                'May': [
+                    'Practice addition and subtraction with snacks and toys',
+                    'Create math stories with family members and situations',
+                    'Use household objects for addition and subtraction practice',
+                    'Play math games with cards, dice, and homemade materials'
+                ],
+                'June': [
+                    'Review all math concepts with summer activities and games',
+                    'Play math games and practice skills during playtime',
+                    'Create math portfolios of favorite activities and projects',
+                    'Celebrate math achievements and prepare for summer learning'
+                ]
+            };
+            return homeConnection[month][weekIndex] || 'Family math activities and real-world connections';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

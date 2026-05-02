@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Foundation Literacy — Ages 5–7 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#10b981;--a2:#34d399;--al:#6ee7b7;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,0.1),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(52,211,153,0.08),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(16,185,129,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
+body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .month-tab:hover{background:rgba(255,255,255,0.9);color:rgba(13,13,26,0.85);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Early Elementary</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 5–7</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-book-open" style="margin-right:5px;"></i>English</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 5–7</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Early Elementary · Ages 5–7</p>
+    <h2 class="page-title">Foundation Literacy</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Building essential reading, writing, and communication skills through phonics, storytelling, and interactive language activities.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-font" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Letter Recognition</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Alphabet mastery, upper/lowercase</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-volume-up" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Phonemic Awareness</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Sound recognition, rhyming patterns</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-book-reader" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Reading Readiness</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Sight words, comprehension skills</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pencil-ruler" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Pre-Writing</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Fine motor skills, name writing</div></div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div class="glass" style="padding:28px;">
+      <div style="margin-bottom:20px;"><p class="section-label">Daily Structure</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-clock" style="color:var(--al);margin-right:10px;"></i>Weekly Schedule</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-sun" style="color:#fbbf24;"></i><span style="font-weight:600;font-size:13px;">9:00–10:00</span></div><p style="font-size:13px;margin-bottom:2px;">Morning Circle Time</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Songs, calendar, weather talk</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-book" style="color:#fb923c;"></i><span style="font-weight:600;font-size:13px;">10:00–11:00</span></div><p style="font-size:13px;margin-bottom:2px;">Phonics & Letter Sounds</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Letter recognition, sound practice</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-apple-alt" style="color:#34d399;"></i><span style="font-weight:600;font-size:13px;">11:00–12:00</span></div><p style="font-size:13px;margin-bottom:2px;">Story Time & Snack</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Read-alouds, comprehension</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-cloud" style="color:#60a5fa;"></i><span style="font-weight:600;font-size:13px;">12:00–13:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lunch & Conversation</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Social language development</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-pencil-alt" style="color:#a78bfa;"></i><span style="font-weight:600;font-size:13px;">13:00–14:00</span></div><p style="font-size:13px;margin-bottom:2px;">Writing & Drawing</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Pre-writing skills, name practice</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-theater-masks" style="color:#f472b6;"></i><span style="font-weight:600;font-size:13px;">14:00–15:00</span></div><p style="font-size:13px;margin-bottom:2px;">Drama & Storytelling</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Role-play, puppet shows</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-gamepad" style="color:#f87171;"></i><span style="font-weight:600;font-size:13px;">15:00–15:30</span></div><p style="font-size:13px;margin-bottom:2px;">Language Games</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Word games, rhyming activities</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-home" style="color:#818cf8;"></i><span style="font-weight:600;font-size:13px;">15:30–16:00</span></div><p style="font-size:13px;margin-bottom:2px;">Review & Share</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Daily review, show and tell</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Literacy Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Early Elementary English · Ages 5–7</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{icon:'fa-font',color:'from-blue-400 to-purple-500',focus:'Alphabet Introduction',skills:['Letter recognition A-F','Letter sounds','Name writing','Circle time participation'],weeks:['Introduction to letters A-B with songs, flashcards, and tracing activities','Letter C-D exploration with sensory activities and sound practice','Letter E-F mastery with games, crafts, and beginning writing practice','Alphabet review A-F with letter hunts and matching games'],project:'Create personal alphabet book with drawings for letters A-F',materials:['Letter flashcards','Tracing worksheets','Sensory materials','Drawing supplies']},
+'October':{icon:'fa-volume-up',color:'from-orange-400 to-red-500',focus:'Phonemic Awareness',skills:['Letter sounds G-L','Rhyming words','Beginning sounds','Syllable awareness'],weeks:['Letters G-H with sound matching and beginning sound identification','Letters I-J with rhyming games and sound discrimination activities','Letters K-L with syllable clapping and sound blending practice','Phonemic awareness games with sound isolation and manipulation'],project:'Rhyming book with illustrations and sound matching activities',materials:['Rhyming cards','Sound games','Musical instruments','Picture cards']},
+'November':{icon:'fa-book-reader',color:'from-yellow-400 to-orange-500',focus:'Sight Words & Reading',skills:['Letters M-R','Basic sight words','Picture reading','Comprehension'],weeks:['Letters M-N with sight word introduction and picture reading activities','Letters O-P with simple sentence reading and comprehension questions','Letters Q-R with story sequencing and retelling activities','Reading practice with simple books and sight word recognition games'],project:'Personal sight word collection with illustrated sentences',materials:['Sight word cards','Simple books','Picture cards','Reading games']},
+'December':{icon:'fa-pencil-alt',color:'from-purple-400 to-pink-500',focus:'Pre-Writing Skills',skills:['Letters S-X','Fine motor skills','Drawing shapes','Name practice'],weeks:['Letters S-T with tracing activities and fine motor skill development','Letters U-V with shape drawing and pre-writing line practice','Letters W-X with name writing practice and letter formation','Holiday writing activities with cards and simple messages'],project:'Holiday card creation with personal messages and drawings',materials:['Tracing paper','Pencils','Crayons','Holiday craft materials']},
+'January':{icon:'fa-comments',color:'from-green-500 to-emerald-600',focus:'Oral Language Development',skills:['Letters Y-Z','Storytelling','Vocabulary building','Conversation skills'],weeks:['Letters Y-Z review with alphabet mastery activities and games','Storytelling practice with picture prompts and sequencing activities','Vocabulary building with themed word banks and descriptive language','Conversation skills through show and tell and group discussions'],project:'Class story book with individual contributions and illustrations',materials:['Story prompts','Picture cards','Word walls','Recording device']},
+'February':{icon:'fa-book',color:'from-red-400 to-pink-500',focus:'Reading Comprehension',skills:['Alphabet review','Story elements','Character recognition','Plot sequencing'],weeks:['Complete alphabet review with mastery activities and assessments','Story elements identification with character, setting, and plot focus','Character recognition and analysis through read-alouds and discussions','Plot sequencing and story retelling with visual aids and activities'],project:'Story element collage with favorite book characters and settings',materials:['Story books','Character cards','Sequencing cards','Art materials']},
+'March':{icon:'fa-pen-fancy',color:'from-cyan-400 to-blue-500',focus:'Beginning Writing',skills:['Sentence structure','Simple words','Journal writing','Creative expression'],weeks:['Sentence structure introduction with simple sentence building activities','Simple word writing with phonetic spelling and word banks','Journal writing with picture prompts and simple sentence practice','Creative expression through story writing and illustration activities'],project:'Personal journal with daily entries and illustrations',materials:['Journals','Writing prompts','Word banks','Drawing materials']},
+'April':{icon:'fa-theater-masks',color:'from-green-400 to-teal-500',focus:'Drama & Expression',skills:['Oral reading','Character voices','Puppet shows','Performance skills'],weeks:['Oral reading practice with expression and fluency activities','Character voice development through role-play and imitation','Puppet show creation with script writing and performance','Performance skills through classroom plays and presentations'],project:'Class puppet show with original script and character development',materials:['Puppets','Script paper','Stage materials','Costume props']},
+'May':{icon:'fa-newspaper',color:'from-purple-400 to-indigo-500',focus:'Creative Writing',skills:['Story writing','Poetry introduction','Book making','Author skills'],weeks:['Story writing with beginning, middle, and end structure','Poetry introduction with simple rhymes and rhythmic patterns','Book making with illustrations and simple text creation','Author skills through peer sharing and feedback activities'],project:'Original story book with illustrations and author presentation',materials:['Book making materials','Writing paper','Illustration supplies','Binding materials']},
+'June':{icon:'fa-trophy',color:'from-amber-400 to-orange-500',focus:'Literacy Celebration',skills:['Reading fluency','Writing portfolio','Presentation skills','Summer preparation'],weeks:['Reading fluency practice with timed reading and expression activities','Writing portfolio compilation and review of yearly progress','Presentation skills through author readings and class performances','Summer reading preparation and literacy celebration activities'],project:'Literacy portfolio and summer reading plan with achievement celebration',materials:['Portfolio folders','Reading logs','Award certificates','Summer reading lists']}
+};
+
+let currentMonth='September';
+let isDark=true;
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{
+    btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);
+  });
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-book-open" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Reading & listening activities to reinforce letter recognition, phonics, and comprehension.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-pencil-alt" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Writing practice through tracing, drawing, and guided writing prompts.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+
+init();
+</script>
+</body>
+</html>

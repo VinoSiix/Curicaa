@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Early Elementary - Science Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .dark .tab-active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 0 25px rgba(240, 147, 251, 0.6);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .skill-badge {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .skill-badge:nth-child(2) { animation-delay: 0.1s; }
+        .skill-badge:nth-child(3) { animation-delay: 0.2s; }
+        .skill-badge:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="hub.html" class="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-child text-white"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <a href="hub.html" class="text-xl md:text-2xl font-bold hover:text-purple-300 transition-colors">Early Elementary</a>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-lg font-semibold text-purple-300">Science</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-sm font-bold">Ages 5-7</span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                Science Discovery
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                Exploring the natural world through hands-on experiments, observation, and inquiry-based learning to build foundational scientific thinking and curiosity.
+            </p>
+        </section>
+
+        <!-- Weekly Schedule -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-clock mr-4 text-purple-400"></i>
+                Weekly Schedule (Ages 5-7)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-sun text-yellow-400 mr-2"></i>
+                        <span class="font-bold text-lg">9:00 - 10:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Science Circle</p>
+                    <p class="text-xs text-gray-400">Weather observation, nature talk</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-flask text-orange-400 mr-2"></i>
+                        <span class="font-bold text-lg">10:00 - 11:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Hands-On Experiments</p>
+                    <p class="text-xs text-gray-400">Simple investigations, discovery</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-apple-alt text-green-400 mr-2"></i>
+                        <span class="font-bold text-lg">11:00 - 12:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Nature Exploration</p>
+                    <p class="text-xs text-gray-400">Outdoor discovery, observation</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-cloud text-blue-400 mr-2"></i>
+                        <span class="font-bold text-lg">12:00 - 13:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Lunch & Science Talk</p>
+                    <p class="text-xs text-gray-400">Science discussions, questions</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-microscope text-purple-400 mr-2"></i>
+                        <span class="font-bold text-lg">13:00 - 14:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Science Stories</p>
+                    <p class="text-xs text-gray-400">Science read-alouds, concepts</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-paint-brush text-pink-400 mr-2"></i>
+                        <span class="font-bold text-lg">14:00 - 15:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Science Art & Drawing</p>
+                    <p class="text-xs text-gray-400">Science journals, observations</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-gamepad text-red-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:00 - 15:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Science Games</p>
+                    <p class="text-xs text-gray-400">Classification, sorting games</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-home text-indigo-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:30 - 16:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Discovery Share</p>
+                    <p class="text-xs text-gray-400">Show findings, science talk</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Science Skills Overview -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-atom mr-4 text-purple-400"></i>
+                Core Science Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-eye text-blue-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Observation</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Five senses</p>
+                    <p class="text-xs text-gray-400">Nature watching</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-question-circle text-green-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Questioning</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Curiosity</p>
+                    <p class="text-xs text-gray-400">Why questions</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-flask text-orange-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Experimentation</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Simple tests</p>
+                    <p class="text-xs text-gray-400">Hands-on discovery</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-leaf text-purple-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Nature Study</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Living things</p>
+                    <p class="text-xs text-gray-400">Environment</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Themes Navigation -->
+        <section class="mb-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calendar-alt mr-4 text-purple-400"></i>
+                Monthly Science Themes
+            </h3>
+            <div class="flex flex-wrap gap-3 mb-8" id="monthTabs">
+                <!-- Month tabs will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Month Content -->
+        <section id="monthContent" class="glass-morphism rounded-2xl p-8 card-hover">
+            <!-- Dynamic content will be loaded here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">© 2024 Early Elementary Science Curriculum. Discovering the wonders of our world.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Monthly science curriculum data for ages 5-7
+        const curriculumData = {
+            'September': {
+                icon: 'fa-leaf',
+                color: 'from-green-400 to-emerald-500',
+                focus: 'Plants & Seeds',
+                skills: ['Plant parts', 'Seed germination', 'Plant needs', 'Nature observation'],
+                weeks: [
+                    'Introduction to plants and their basic parts with real plant exploration',
+                    'Seed investigation and germination experiments with various seeds',
+                    'Plant needs study: water, sunlight, soil with growing experiments',
+                    'Nature walk focusing on plant diversity and seasonal changes'
+                ],
+                project: 'Class garden with individual plant observation journals',
+                materials: ['Seeds', 'Soil', 'Pots', 'Magnifying glasses', 'Plant journals']
+            },
+            'October': {
+                icon: 'fa-spider',
+                color: 'from-orange-400 to-red-500',
+                focus: 'Animals & Habitats',
+                skills: ['Animal classification', 'Habitats', 'Life cycles', 'Animal adaptations'],
+                weeks: [
+                    'Animal classification: mammals, birds, fish, reptiles with pictures and models',
+                    'Habitat exploration: forest, ocean, desert with diorama building',
+                    'Life cycles study: butterfly, frog with sequencing activities',
+                    'Animal adaptations: camouflage, protection with interactive games'
+                ],
+                project: 'Habitat diorama with animal models and adaptation explanations',
+                materials: ['Animal pictures', 'Habitat materials', 'Life cycle cards', 'Art supplies']
+            },
+            'November': {
+                icon: 'fa-cloud',
+                color: 'from-blue-400 to-indigo-500',
+                focus: 'Weather & Seasons',
+                skills: ['Weather observation', 'Seasons', 'Temperature', 'Weather tools'],
+                weeks: [
+                    'Weather observation and recording with daily weather charts',
+                    'Seasonal changes study with nature walks and seasonal collections',
+                    'Temperature exploration with thermometers and heat/cold experiments',
+                    'Weather tools: rain gauge, wind vane with simple instrument making'
+                ],
+                project: 'Weather station with homemade instruments and observation logs',
+                materials: ['Thermometers', 'Rain gauges', 'Wind materials', 'Weather charts']
+            },
+            'December': {
+                icon: 'fa-snowflake',
+                color: 'from-cyan-400 to-blue-500',
+                focus: 'Water & Ice',
+                skills: ['Water states', 'Freezing', 'Melting', 'Water cycle'],
+                weeks: [
+                    'Water states exploration: solid, liquid, gas with hands-on activities',
+                    'Freezing experiments with various liquids and temperature observations',
+                    'Melting investigations with ice and heat sources',
+                    'Simple water cycle demonstration with evaporation and condensation'
+                ],
+                project: 'Water cycle model with ice experiments and state changes',
+                materials: ['Ice trays', 'Water', 'Heat sources', 'Cycle materials', 'Thermometers']
+            },
+            'January': {
+                icon: 'fa-magnet',
+                color: 'from-purple-400 to-pink-500',
+                focus: 'Magnets & Forces',
+                skills: ['Magnetic properties', 'Push/pull', 'Simple machines', 'Force exploration'],
+                weeks: [
+                    'Magnetic exploration with various materials and magnet strength testing',
+                    'Push and pull forces with movement experiments and obstacle courses',
+                    'Simple machines introduction: levers, pulleys with building activities',
+                    'Force investigations with ramps, rolling, and friction experiments'
+                ],
+                project: 'Simple machine creations with magnetic demonstrations',
+                materials: ['Magnets', 'Metal objects', 'Ramps', 'Pulleys', 'Building materials']
+            },
+            'February': {
+                icon: 'fa-heartbeat',
+                color: 'from-red-400 to-pink-500',
+                focus: 'Human Body',
+                skills: ['Five senses', 'Body parts', 'Healthy habits', 'Growth & nutrition'],
+                weeks: [
+                    'Five senses exploration with sensory stations and discovery activities',
+                    'Body parts identification and functions with interactive models',
+                    'Healthy habits: hygiene, exercise, sleep with daily routine activities',
+                    'Growth and nutrition with food groups and healthy eating exploration'
+                ],
+                project: 'Body model with sensory exploration and healthy habits chart',
+                materials: ['Body models', 'Sensory materials', 'Food models', 'Health charts']
+            },
+            'March': {
+                icon: 'fa-rocket',
+                color: 'from-indigo-400 to-purple-500',
+                focus: 'Space & Sky',
+                skills: ['Sun, moon, stars', 'Day/night', 'Planets', 'Space exploration'],
+                weeks: [
+                    'Sun, moon, and stars observation with sky watching and tracking',
+                    'Day and cycle study with Earth rotation demonstrations',
+                    'Planet introduction with solar system models and planet characteristics',
+                    'Space exploration with rockets, astronauts, and space travel activities'
+                ],
+                project: 'Solar system model with day/night demonstrations',
+                materials: ['Planet models', 'Solar system materials', 'Space pictures', 'Rocket materials']
+            },
+            'April': {
+                icon: 'fa-egg',
+                color: 'from-yellow-400 to-green-500',
+                focus: 'Life Cycles',
+                skills: ['Plant life cycles', 'Animal life cycles', 'Growth patterns', 'Environmental needs'],
+                weeks: [
+                    'Plant life cycles from seed to flower with growing observations',
+                    'Animal life cycles: chicken, butterfly with hatching and metamorphosis',
+                    'Growth patterns and measurement with plant and animal growth tracking',
+                    'Environmental needs for living things with habitat requirements study'
+                ],
+                project: 'Life cycle documentation with growth measurement charts',
+                materials: ['Life cycle models', 'Growing materials', 'Measurement tools', 'Habitat materials']
+            },
+            'May': {
+                icon: 'fa-recycle',
+                color: 'from-green-400 to-teal-500',
+                focus: 'Earth & Environment',
+                skills: ['Recycling', 'Conservation', 'Pollution', 'Earth care'],
+                weeks: [
+                    'Recycling introduction with material sorting and reuse activities',
+                    'Conservation of resources: water, energy with saving activities',
+                    'Pollution awareness with clean water and air experiments',
+                    'Earth care activities with gardening and environmental protection'
+                ],
+                project: 'Recycling project with conservation action plan',
+                materials: ['Recycling bins', 'Sorting materials', 'Conservation tools', 'Garden supplies']
+            },
+            'June': {
+                icon: 'fa-trophy',
+                color: 'from-amber-400 to-orange-500',
+                focus: 'Science Celebration',
+                skills: ['Science review', 'Experiments', 'Presentations', 'Summer science'],
+                weeks: [
+                    'Science skills review with favorite experiments and activities',
+                    'Student-led experiments with hypothesis and testing',
+                    'Science presentations with findings sharing and demonstrations',
+                    'Summer science preparation with outdoor activities and nature exploration'
+                ],
+                project: 'Science fair with experiments and achievement celebration',
+                materials: ['Experiment materials', 'Presentation boards', 'Award materials', 'Summer science kits']
+            }
+        };
+
+        let currentMonth = 'September';
+        let isDarkMode = true;
+
+        // Initialize the app
+        function init() {
+            createMonthTabs();
+            loadMonthContent('September');
+        }
+
+        // Create month navigation tabs
+        function createMonthTabs() {
+            const tabsContainer = document.getElementById('monthTabs');
+            const months = Object.keys(curriculumData);
+            
+            months.forEach(month => {
+                const button = document.createElement('button');
+                button.className = `px-5 py-3 rounded-full glass-morphism transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                    month === currentMonth ? 'tab-active' : ''
+                }`;
+                button.innerHTML = `<i class="fas ${curriculumData[month].icon} mr-2"></i>${month}`;
+                button.onclick = () => selectMonth(month);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Select and load month content
+        function selectMonth(month) {
+            currentMonth = month;
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('#monthTabs button');
+            tabs.forEach((tab, index) => {
+                if (Object.keys(curriculumData)[index] === month) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+            
+            loadMonthContent(month);
+        }
+
+        // Load month content
+        function loadMonthContent(month) {
+            const data = curriculumData[month];
+            const content = document.getElementById('monthContent');
+            
+            content.innerHTML = `
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-3xl font-bold flex items-center">
+                            <i class="fas ${data.icon} mr-4 text-gradient bg-gradient-to-r ${data.color} bg-clip-text text-transparent"></i>
+                            ${month}
+                        </h4>
+                        <span class="px-4 py-2 rounded-full bg-gradient-to-r ${data.color} text-sm font-semibold">
+                            ${data.focus}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-purple-300 text-lg">Science Skills Focus</h5>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            ${data.skills.map((skill, index) => `
+                                <span class="skill-badge px-4 py-2 bg-white/10 rounded-full text-sm font-medium">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-purple-300 text-lg">Weekly Science Topics</h5>
+                        <div class="space-y-4">
+                            ${data.weeks.map((week, index) => `
+                                <div class="border border-white/10 rounded-xl overflow-hidden">
+                                    <div class="flex items-start p-4 cursor-pointer hover:bg-white/5 transition" onclick="toggleWeekDetails('${month}-${index}')">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r ${data.color} flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                            ${index + 1}
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-300 leading-relaxed">${week}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Click for activities</p>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-${month}-${index}"></i>
+                                    </div>
+                                    <div class="hidden bg-white/5 border-t border-white/10 p-4" id="details-${month}-${index}">
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-flask text-blue-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-blue-300">Hands-On Experiments:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekExperiments(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-eye text-green-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-green-300">Observation Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekObservations(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-home text-purple-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-purple-300">Home Connection:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekHomeConnection(month, index)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-purple-300 text-lg">Monthly Science Project</h5>
+                        <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+                            <p class="text-sm text-gray-300 leading-relaxed">${data.project}</p>
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-purple-300 text-lg">Materials Needed</h5>
+                        <div class="space-y-3">
+                            ${data.materials.map(material => `
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span class="text-sm text-gray-300">${material}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <div class="flex items-center justify-between">
+                        <button onclick="selectMonth('${getPreviousMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="selectMonth('${getNextMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            Next<i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get previous month
+        function getPreviousMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index > 0 ? months[index - 1] : month;
+        }
+
+        // Get next month
+        function getNextMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index < months.length - 1 ? months[index + 1] : month;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Toggle week details
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const icon = document.getElementById(`icon-${weekId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Get week experiments
+        function getWeekExperiments(month, weekIndex) {
+            const experiments = {
+                'September': [
+                    'Plant part exploration with real plants and magnifying glasses',
+                    'Seed sprouting experiments with different conditions and observations',
+                    'Plant growing experiments with varying light and water conditions',
+                    'Plant diversity collection and classification activities'
+                ],
+                'October': [
+                    'Animal sorting games with classification cards and models',
+                    'Habitat building with natural materials and animal placement',
+                    'Life cycle sequencing with picture cards and real specimens',
+                    'Camouflage experiments with hidden animal games and activities'
+                ],
+                'November': [
+                    'Weather chart creation with daily observations and recordings',
+                    'Seasonal tree observations with leaf collections and changes',
+                    'Temperature experiments with hot and cold water investigations',
+                    'Weather instrument making with rain gauges and wind vanes'
+                ],
+                'December': [
+                    'Water state experiments with freezing and melting observations',
+                    'Ice melting races with different conditions and materials',
+                    'Water heating experiments with evaporation observations',
+                    'Water cycle demonstrations with simple models and activities'
+                ],
+                'January': [
+                    'Magnetic testing with various materials and strength comparisons',
+                    'Force experiments with pushing and pulling different objects',
+                    'Simple machine building with levers and pulleys',
+                    'Ramp experiments with different angles and rolling objects'
+                ],
+                'February': [
+                    'Sensory station experiments with touch, smell, taste activities',
+                    'Body model building with organs and body parts identification',
+                    'Healthy habit tracking with charts and daily routines',
+                    'Food group sorting with healthy meal planning activities'
+                ],
+                'March': [
+                    'Sun shadow tracking with outdoor observations and measurements',
+                    'Day/night demonstrations with flashlights and globes',
+                    'Planet model building with solar system creation',
+                    'Rocket building with simple propulsion experiments'
+                ],
+                'April': [
+                    'Seed growing experiments with daily measurements and observations',
+                    'Butterfly life cycle observations with real caterpillars if possible',
+                    'Growth measurement experiments with plants and height tracking',
+                    'Habitat building with environmental requirements consideration'
+                ],
+                'May': [
+                    'Material sorting experiments with recycling classification',
+                    'Water conservation experiments with usage measurement',
+                    'Water filtering experiments with pollution cleanup activities',
+                    'Garden planting with environmental care and observation'
+                ],
+                'June': [
+                    'Favorite experiment repetition with improved methods and observations',
+                    'Student-designed experiments with hypothesis testing and results',
+                    'Science demonstration preparation with presentation practice',
+                    'Outdoor science exploration with nature investigations'
+                ]
+            };
+            return experiments[month][weekIndex] || 'Engaging hands-on science experiments';
+        }
+
+        // Get week observations
+        function getWeekObservations(month, weekIndex) {
+            const observations = {
+                'September': [
+                    'Plant observation with magnifying glasses and detailed drawings',
+                    'Seed observation with size, shape, and texture recording',
+                    'Growing plant observation with daily growth measurements',
+                    'Nature walk observation with plant diversity documentation'
+                ],
+                'October': [
+                    'Animal observation with videos and live animal visits if possible',
+                    'Habitat observation with outdoor exploration and documentation',
+                    'Life cycle observation with real specimens and detailed recording',
+                    'Animal adaptation observation with camouflage and protection features'
+                ],
+                'November': [
+                    'Weather observation with daily chart completion and pattern recognition',
+                    'Seasonal observation with tree changes and natural documentation',
+                    'Temperature observation with thermometer reading and recording',
+                    'Weather pattern observation with cloud formation and wind studies'
+                ],
+                'December': [
+                    'Water state observation with freezing and melting process documentation',
+                    'Ice observation with crystal formation and melting patterns',
+                    'Water heating observation with evaporation and condensation',
+                    'Water cycle observation with model demonstrations and real-world connections'
+                ],
+                'January': [
+                    'Magnetic observation with material testing and attraction recording',
+                    'Force observation with movement documentation and cause/effect',
+                    'Simple machine observation with mechanical advantage documentation',
+                    'Motion observation with speed, direction, and friction studies'
+                ],
+                'February': [
+                    'Sensory observation with detailed recording of five senses experiences',
+                    'Body observation with anatomy exploration and function documentation',
+                    'Health observation with daily habit tracking and improvement documentation',
+                    'Nutrition observation with food group identification and healthy choices'
+                ],
+                'March': [
+                    'Sky observation with sun, moon, and star tracking and documentation',
+                    'Day/night observation with light and shadow documentation',
+                    'Planet observation with model exploration and characteristic documentation',
+                    'Space observation with rocket launches and astronaut activities'
+                ],
+                'April': [
+                    'Growth observation with plant and animal development documentation',
+                    'Life cycle observation with stage progression and change documentation',
+                    'Measurement observation with growth tracking and pattern recognition',
+                    'Environmental observation with habitat needs and living condition documentation'
+                ],
+                'May': [
+                    'Recycling observation with material identification and sorting documentation',
+                    'Conservation observation with resource usage and saving documentation',
+                    'Pollution observation with environmental impact and cleanup documentation',
+                    'Earth care observation with environmental protection and improvement documentation'
+                ],
+                'June': [
+                    'Science review observation with favorite experiment documentation',
+                    'Experiment observation with hypothesis testing and result documentation',
+                    'Presentation observation with peer demonstrations and learning documentation',
+                    'Summer science observation with outdoor exploration and discovery documentation'
+                ]
+            };
+            return observations[month][weekIndex] || 'Detailed scientific observation and documentation';
+        }
+
+        // Get week home connection
+        function getWeekHomeConnection(month, weekIndex) {
+            const homeConnection = {
+                'September': [
+                    'Plant a seed at home and observe its growth with daily drawings',
+                    'Go on a plant hunt around the neighborhood and document findings',
+                    'Start a kitchen garden with herbs or vegetables and track growth',
+                    'Create a plant parts collection with drawings and labels'
+                ],
+                'October': [
+                    'Observe local animals and document their habitats and behaviors',
+                    'Build a mini habitat diorama with natural materials and toys',
+                    'Research an animal\'s life cycle and create a presentation',
+                    'Find examples of animal adaptations in nature and document'
+                ],
+                'November': [
+                    'Keep a daily weather journal with drawings and measurements',
+                    'Observe seasonal changes in the neighborhood and document',
+                    'Track temperature changes throughout the day and record patterns',
+                    'Make simple weather instruments and use them at home'
+                ],
+                'December': [
+                    'Freeze different liquids and observe melting rates and patterns',
+                    'Create ice sculptures and observe melting in different conditions',
+                    'Track water usage at home and identify conservation opportunities',
+                    'Observe water in different forms around the home and community'
+                ],
+                'January': [
+                    'Test household items for magnetic properties and create a chart',
+                    'Find examples of simple machines in the home and document',
+                    'Build a simple machine using household materials',
+                    'Experiment with forces using toys and household objects'
+                ],
+                'February': [
+                    'Explore five senses with household objects and document experiences',
+                    'Create a body model with household materials and label parts',
+                    'Track healthy habits for a week and create an improvement plan',
+                    'Plan healthy meals using food groups and nutritional guidelines'
+                ],
+                'March': [
+                    'Observe the sky daily and document sun, moon, and star patterns',
+                    'Create a day/night demonstration with household materials',
+                    'Build a solar system model with household items and research',
+                    'Design and build a simple rocket with propulsion experiments'
+                ],
+                'April': [
+                    'Grow a plant from seed and document growth with measurements',
+                    'Research an animal life cycle and create a detailed presentation',
+                    'Measure family members\' growth and create comparison charts',
+                    'Create a habitat for a pet or plant and document care needs'
+                ],
+                'May': [
+                    'Start a home recycling system and track materials sorted',
+                    'Conduct a home energy audit and implement conservation measures',
+                    'Test water quality at home and document findings',
+                    'Plant a garden or care for plants and document environmental impact'
+                ],
+                'June': [
+                    'Choose a favorite science topic and create a home experiment',
+                    'Design and conduct a simple experiment with hypothesis and results',
+                    'Create a science presentation for family members',
+                    'Plan summer science activities and outdoor exploration adventures'
+                ]
+            };
+            return homeConnection[month][weekIndex] || 'Family science activities and home exploration';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

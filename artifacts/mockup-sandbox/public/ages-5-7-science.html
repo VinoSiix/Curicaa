@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Science Discovery — Ages 5–7 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#a855f7;--a2:#ec4899;--al:#d8b4fe;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(168,85,247,0.11),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(236,72,153,0.08),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(168,85,247,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
+body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .month-tab:hover{background:rgba(255,255,255,0.9);color:rgba(13,13,26,0.85);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Early Elementary</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 5–7</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-flask" style="margin-right:5px;"></i>Science</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 5–7</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Early Elementary · Ages 5–7</p>
+    <h2 class="page-title">Science Discovery</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Exploring the natural world through hands-on experiments, observation, and inquiry-based learning to build foundational scientific curiosity.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-eye" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Observation</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Five senses, nature watching</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-question-circle" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Questioning</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Curiosity, why questions</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-flask" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Experimentation</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Simple tests, discovery</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-leaf" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Nature Study</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Living things, environment</div></div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div class="glass" style="padding:28px;">
+      <div style="margin-bottom:20px;"><p class="section-label">Daily Structure</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-clock" style="color:var(--al);margin-right:10px;"></i>Weekly Schedule</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-sun" style="color:#fbbf24;"></i><span style="font-weight:600;font-size:13px;">9:00–10:00</span></div><p style="font-size:13px;margin-bottom:2px;">Science Circle</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Weather observation, nature talk</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-flask" style="color:#fb923c;"></i><span style="font-weight:600;font-size:13px;">10:00–11:00</span></div><p style="font-size:13px;margin-bottom:2px;">Hands-On Experiments</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Simple investigations, discovery</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-apple-alt" style="color:#34d399;"></i><span style="font-weight:600;font-size:13px;">11:00–12:00</span></div><p style="font-size:13px;margin-bottom:2px;">Nature Exploration</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Outdoor discovery, observation</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-cloud" style="color:#60a5fa;"></i><span style="font-weight:600;font-size:13px;">12:00–13:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lunch & Science Talk</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Science discussions, questions</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-microscope" style="color:#a78bfa;"></i><span style="font-weight:600;font-size:13px;">13:00–14:00</span></div><p style="font-size:13px;margin-bottom:2px;">Science Stories</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Science read-alouds, concepts</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-paint-brush" style="color:#f472b6;"></i><span style="font-weight:600;font-size:13px;">14:00–15:00</span></div><p style="font-size:13px;margin-bottom:2px;">Science Art & Drawing</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Science journals, observations</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-gamepad" style="color:#f87171;"></i><span style="font-weight:600;font-size:13px;">15:00–15:30</span></div><p style="font-size:13px;margin-bottom:2px;">Science Games</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Classification, sorting games</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-home" style="color:#818cf8;"></i><span style="font-weight:600;font-size:13px;">15:30–16:00</span></div><p style="font-size:13px;margin-bottom:2px;">Discovery Share</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Show findings, science talk</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Science Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Early Elementary Science · Ages 5–7</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{icon:'fa-leaf',color:'from-green-400 to-emerald-500',focus:'Plants & Seeds',skills:['Plant parts','Seed germination','Plant needs','Nature observation'],weeks:['Introduction to plants and their basic parts with real plant exploration','Seed investigation and germination experiments with various seeds','Plant needs study: water, sunlight, soil with growing experiments','Nature walk focusing on plant diversity and seasonal changes'],project:'Class garden with individual plant observation journals',materials:['Seeds','Soil','Pots','Magnifying glasses','Plant journals']},
+'October':{icon:'fa-spider',color:'from-orange-400 to-red-500',focus:'Animals & Habitats',skills:['Animal classification','Habitats','Life cycles','Animal adaptations'],weeks:['Animal classification: mammals, birds, fish, reptiles with pictures and models','Habitat exploration: forest, ocean, desert with diorama building','Life cycles study: butterfly, frog with sequencing activities','Animal adaptations: camouflage, protection with interactive games'],project:'Habitat diorama with animal models and adaptation explanations',materials:['Animal pictures','Habitat materials','Life cycle cards','Art supplies']},
+'November':{icon:'fa-cloud',color:'from-blue-400 to-indigo-500',focus:'Weather & Seasons',skills:['Weather observation','Seasons','Temperature','Weather tools'],weeks:['Weather observation and recording with daily weather charts','Seasonal changes study with nature walks and seasonal collections','Temperature exploration with thermometers and heat/cold experiments','Weather tools: rain gauge, wind vane with simple instrument making'],project:'Weather station with homemade instruments and observation logs',materials:['Thermometers','Rain gauges','Wind materials','Weather charts']},
+'December':{icon:'fa-snowflake',color:'from-cyan-400 to-blue-500',focus:'Water & Ice',skills:['Water states','Freezing','Melting','Water cycle'],weeks:['Water states exploration: solid, liquid, gas with hands-on activities','Freezing experiments with various liquids and temperature observations','Melting investigations with ice and heat sources','Simple water cycle demonstration with evaporation and condensation'],project:'Water cycle model with ice experiments and state changes',materials:['Ice trays','Water','Heat sources','Cycle materials','Thermometers']},
+'January':{icon:'fa-magnet',color:'from-purple-400 to-pink-500',focus:'Magnets & Forces',skills:['Magnetic properties','Push/pull','Simple machines','Force exploration'],weeks:['Magnetic exploration with various materials and magnet strength testing','Push and pull forces with movement experiments and obstacle courses','Simple machines introduction: levers, pulleys with building activities','Force investigations with ramps, rolling, and friction experiments'],project:'Simple machine creations with magnetic demonstrations',materials:['Magnets','Metal objects','Ramps','Pulleys','Building materials']},
+'February':{icon:'fa-heartbeat',color:'from-red-400 to-pink-500',focus:'Human Body',skills:['Five senses','Body parts','Healthy habits','Growth & nutrition'],weeks:['Five senses exploration with sensory stations and discovery activities','Body parts identification and functions with interactive models','Healthy habits: hygiene, exercise, sleep with daily routine activities','Growth and nutrition with food groups and healthy eating exploration'],project:'Body model with sensory exploration and healthy habits chart',materials:['Body models','Sensory materials','Food models','Health charts']},
+'March':{icon:'fa-rocket',color:'from-indigo-400 to-purple-500',focus:'Space & Sky',skills:['Sun, moon, stars','Day/night','Planets','Space exploration'],weeks:['Sun, moon, and stars observation with sky watching and tracking','Day and night cycle study with Earth rotation demonstrations','Planet introduction with solar system models and planet characteristics','Space exploration with rockets, astronauts, and space travel activities'],project:'Solar system model with day/night demonstrations',materials:['Planet models','Solar system materials','Space pictures','Rocket materials']},
+'April':{icon:'fa-egg',color:'from-yellow-400 to-green-500',focus:'Life Cycles',skills:['Plant life cycles','Animal life cycles','Growth patterns','Environmental needs'],weeks:['Plant life cycles from seed to flower with growing observations','Animal life cycles: chicken, butterfly with hatching and metamorphosis','Growth patterns and measurement with plant and animal growth tracking','Environmental needs for living things with habitat requirements study'],project:'Life cycle documentation with growth measurement charts',materials:['Life cycle models','Growing materials','Measurement tools','Habitat materials']},
+'May':{icon:'fa-recycle',color:'from-green-400 to-teal-500',focus:'Earth & Environment',skills:['Recycling','Conservation','Pollution','Earth care'],weeks:['Recycling introduction with material sorting and reuse activities','Conservation of resources: water, energy with saving activities','Pollution awareness with clean water and air experiments','Earth care activities with gardening and environmental protection'],project:'Recycling project with conservation action plan',materials:['Recycling bins','Sorting materials','Conservation tools','Garden supplies']},
+'June':{icon:'fa-trophy',color:'from-amber-400 to-orange-500',focus:'Science Celebration',skills:['Science review','Experiments','Presentations','Summer science'],weeks:['Science skills review with favorite experiments and activities','Student-led experiments with hypothesis and testing','Science presentations with findings sharing and demonstrations','Summer science preparation with outdoor activities and nature exploration'],project:'Science fair with experiments and achievement celebration',materials:['Experiment materials','Presentation boards','Award materials','Summer science kits']}
+};
+
+let currentMonth='September';
+let isDark=true;
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-flask" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Hands-on experiments and investigations to explore the concept through direct experience.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-eye" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Observation activities: record findings in science journals with drawings and notes.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+
+init();
+</script>
+</body>
+</html>

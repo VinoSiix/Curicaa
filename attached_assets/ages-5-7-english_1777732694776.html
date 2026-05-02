@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Early Elementary - English Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .dark .tab-active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 0 25px rgba(240, 147, 251, 0.6);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .skill-badge {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .skill-badge:nth-child(2) { animation-delay: 0.1s; }
+        .skill-badge:nth-child(3) { animation-delay: 0.2s; }
+        .skill-badge:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="hub.html" class="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-child text-white"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <a href="hub.html" class="text-xl md:text-2xl font-bold hover:text-purple-300 transition-colors">Early Elementary</a>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-lg font-semibold text-green-300">English</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-sm font-bold">Ages 5-7</span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+                Foundation Literacy
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                Building essential reading, writing, and communication skills through phonics, storytelling, and interactive language activities for early elementary students.
+            </p>
+        </section>
+
+        <!-- Weekly Schedule -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-clock mr-4 text-purple-400"></i>
+                Weekly Schedule (Ages 5-7)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-sun text-yellow-400 mr-2"></i>
+                        <span class="font-bold text-lg">9:00 - 10:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Morning Circle Time</p>
+                    <p class="text-xs text-gray-400">Songs, calendar, weather talk</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-book text-orange-400 mr-2"></i>
+                        <span class="font-bold text-lg">10:00 - 11:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Phonics & Letter Sounds</p>
+                    <p class="text-xs text-gray-400">Letter recognition, sound practice</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-apple-alt text-green-400 mr-2"></i>
+                        <span class="font-bold text-lg">11:00 - 12:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Story Time & Snack</p>
+                    <p class="text-xs text-gray-400">Read-alouds, comprehension</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-cloud text-blue-400 mr-2"></i>
+                        <span class="font-bold text-lg">12:00 - 13:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Lunch & Conversation</p>
+                    <p class="text-xs text-gray-400">Social language development</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-pencil-alt text-purple-400 mr-2"></i>
+                        <span class="font-bold text-lg">13:00 - 14:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Writing & Drawing</p>
+                    <p class="text-xs text-gray-400">Pre-writing skills, name practice</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-theater-masks text-pink-400 mr-2"></i>
+                        <span class="font-bold text-lg">14:00 - 15:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Drama & Storytelling</p>
+                    <p class="text-xs text-gray-400">Role-play, puppet shows</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-gamepad text-red-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:00 - 15:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Language Games</p>
+                    <p class="text-xs text-gray-400">Word games, rhyming activities</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-home text-indigo-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:30 - 16:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Review & Share</p>
+                    <p class="text-xs text-gray-400">Daily review, show and tell</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- English Skills Overview -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-book-open mr-4 text-green-400"></i>
+                Core Literacy Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-font text-blue-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Letter Recognition</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Alphabet mastery</p>
+                    <p class="text-xs text-gray-400">Upper/lowercase letters</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-volume-up text-purple-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Phonemic Awareness</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Sound recognition</p>
+                    <p class="text-xs text-gray-400">Rhyming patterns</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-book-reader text-orange-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Reading Readiness</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Sight words</p>
+                    <p class="text-xs text-gray-400">Comprehension skills</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-pencil-ruler text-green-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Pre-Writing</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Fine motor skills</p>
+                    <p class="text-xs text-gray-400">Name writing</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Themes Navigation -->
+        <section class="mb-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calendar-alt mr-4 text-green-400"></i>
+                Monthly Literacy Themes
+            </h3>
+            <div class="flex flex-wrap gap-3 mb-8" id="monthTabs">
+                <!-- Month tabs will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Month Content -->
+        <section id="monthContent" class="glass-morphism rounded-2xl p-8 card-hover">
+            <!-- Dynamic content will be loaded here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">© 2024 Early Elementary English Curriculum. Building strong literacy foundations through joy.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Monthly English curriculum data for ages 5-7
+        const curriculumData = {
+            'September': {
+                icon: 'fa-font',
+                color: 'from-blue-400 to-purple-500',
+                focus: 'Alphabet Introduction',
+                skills: ['Letter recognition A-F', 'Letter sounds', 'Name writing', 'Circle time participation'],
+                weeks: [
+                    'Introduction to letters A-B with songs, flashcards, and tracing activities',
+                    'Letter C-D exploration with sensory activities and sound practice',
+                    'Letter E-F mastery with games, crafts, and beginning writing practice',
+                    'Alphabet review A-F with letter hunts and matching games'
+                ],
+                project: 'Create personal alphabet book with drawings for letters A-F',
+                materials: ['Letter flashcards', 'Tracing worksheets', 'Sensory materials', 'Drawing supplies']
+            },
+            'October': {
+                icon: 'fa-volume-up',
+                color: 'from-orange-400 to-red-500',
+                focus: 'Phonemic Awareness',
+                skills: ['Letter sounds G-L', 'Rhyming words', 'Beginning sounds', 'Syllable awareness'],
+                weeks: [
+                    'Letters G-H with sound matching and beginning sound identification',
+                    'Letters I-J with rhyming games and sound discrimination activities',
+                    'Letters K-L with syllable clapping and sound blending practice',
+                    'Phonemic awareness games with sound isolation and manipulation'
+                ],
+                project: 'Rhyming book with illustrations and sound matching activities',
+                materials: ['Rhyming cards', 'Sound games', 'Musical instruments', 'Picture cards']
+            },
+            'November': {
+                icon: 'fa-book-reader',
+                color: 'from-yellow-400 to-orange-500',
+                focus: 'Sight Words & Reading',
+                skills: ['Letters M-R', 'Basic sight words', 'Picture reading', 'Comprehension'],
+                weeks: [
+                    'Letters M-N with sight word introduction and picture reading activities',
+                    'Letters O-P with simple sentence reading and comprehension questions',
+                    'Letters Q-R with story sequencing and retelling activities',
+                    'Reading practice with simple books and sight word recognition games'
+                ],
+                project: 'Personal sight word collection with illustrated sentences',
+                materials: ['Sight word cards', 'Simple books', 'Picture cards', 'Reading games']
+            },
+            'December': {
+                icon: 'fa-pencil-alt',
+                color: 'from-purple-400 to-pink-500',
+                focus: 'Pre-Writing Skills',
+                skills: ['Letters S-X', 'Fine motor skills', 'Drawing shapes', 'Name practice'],
+                weeks: [
+                    'Letters S-T with tracing activities and fine motor skill development',
+                    'Letters U-V with shape drawing and pre-writing line practice',
+                    'Letters W-X with name writing practice and letter formation',
+                    'Holiday writing activities with cards and simple messages'
+                ],
+                project: 'Holiday card creation with personal messages and drawings',
+                materials: ['Tracing paper', 'Pencils', 'Crayons', 'Holiday craft materials']
+            },
+            'January': {
+                icon: 'fa-comments',
+                color: 'from-green-500 to-emerald-600',
+                focus: 'Oral Language Development',
+                skills: ['Letters Y-Z', 'Storytelling', 'Vocabulary building', 'Conversation skills'],
+                weeks: [
+                    'Letters Y-Z review with alphabet mastery activities and games',
+                    'Storytelling practice with picture prompts and sequencing activities',
+                    'Vocabulary building with themed word banks and descriptive language',
+                    'Conversation skills through show and tell and group discussions'
+                ],
+                project: 'Class story book with individual contributions and illustrations',
+                materials: ['Story prompts', 'Picture cards', 'Word walls', 'Recording device']
+            },
+            'February': {
+                icon: 'fa-book',
+                color: 'from-red-400 to-pink-500',
+                focus: 'Reading Comprehension',
+                skills: ['Alphabet review', 'Story elements', 'Character recognition', 'Plot sequencing'],
+                weeks: [
+                    'Complete alphabet review with mastery activities and assessments',
+                    'Story elements identification with character, setting, and plot focus',
+                    'Character recognition and analysis through read-alouds and discussions',
+                    'Plot sequencing and story retelling with visual aids and activities'
+                ],
+                project: 'Story element collage with favorite book characters and settings',
+                materials: ['Story books', 'Character cards', 'Sequencing cards', 'Art materials']
+            },
+            'March': {
+                icon: 'fa-pen-fancy',
+                color: 'from-cyan-400 to-blue-500',
+                focus: 'Beginning Writing',
+                skills: ['Sentence structure', 'Simple words', 'Journal writing', 'Creative expression'],
+                weeks: [
+                    'Sentence structure introduction with simple sentence building activities',
+                    'Simple word writing with phonetic spelling and word banks',
+                    'Journal writing with picture prompts and simple sentence practice',
+                    'Creative expression through story writing and illustration activities'
+                ],
+                project: 'Personal journal with daily entries and illustrations',
+                materials: ['Journals', 'Writing prompts', 'Word banks', 'Drawing materials']
+            },
+            'April': {
+                icon: 'fa-theater-masks',
+                color: 'from-green-400 to-teal-500',
+                focus: 'Drama & Expression',
+                skills: ['Oral reading', 'Character voices', 'Puppet shows', 'Performance skills'],
+                weeks: [
+                    'Oral reading practice with expression and fluency activities',
+                    'Character voice development through role-play and imitation',
+                    'Puppet show creation with script writing and performance',
+                    'Performance skills through classroom plays and presentations'
+                ],
+                project: 'Class puppet show with original script and character development',
+                materials: ['Puppets', 'Script paper', 'Stage materials', 'Costume props']
+            },
+            'May': {
+                icon: 'fa-newspaper',
+                color: 'from-purple-400 to-indigo-500',
+                focus: 'Creative Writing',
+                skills: ['Story writing', 'Poetry introduction', 'Book making', 'Author skills'],
+                weeks: [
+                    'Story writing with beginning, middle, and end structure',
+                    'Poetry introduction with simple rhymes and rhythmic patterns',
+                    'Book making with illustrations and simple text creation',
+                    'Author skills through peer sharing and feedback activities'
+                ],
+                project: 'Original story book with illustrations and author presentation',
+                materials: ['Book making materials', 'Writing paper', 'Illustration supplies', 'Binding materials']
+            },
+            'June': {
+                icon: 'fa-trophy',
+                color: 'from-amber-400 to-orange-500',
+                focus: 'Literacy Celebration',
+                skills: ['Reading fluency', 'Writing portfolio', 'Presentation skills', 'Summer preparation'],
+                weeks: [
+                    'Reading fluency practice with timed reading and expression activities',
+                    'Writing portfolio compilation and review of yearly progress',
+                    'Presentation skills through author readings and class performances',
+                    'Summer reading preparation and literacy celebration activities'
+                ],
+                project: 'Literacy portfolio and summer reading plan with achievement celebration',
+                materials: ['Portfolio folders', 'Reading logs', 'Award certificates', 'Summer reading lists']
+            }
+        };
+
+        let currentMonth = 'September';
+        let isDarkMode = true;
+
+        // Initialize the app
+        function init() {
+            createMonthTabs();
+            loadMonthContent('September');
+        }
+
+        // Create month navigation tabs
+        function createMonthTabs() {
+            const tabsContainer = document.getElementById('monthTabs');
+            const months = Object.keys(curriculumData);
+            
+            months.forEach(month => {
+                const button = document.createElement('button');
+                button.className = `px-5 py-3 rounded-full glass-morphism transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                    month === currentMonth ? 'tab-active' : ''
+                }`;
+                button.innerHTML = `<i class="fas ${curriculumData[month].icon} mr-2"></i>${month}`;
+                button.onclick = () => selectMonth(month);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Select and load month content
+        function selectMonth(month) {
+            currentMonth = month;
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('#monthTabs button');
+            tabs.forEach((tab, index) => {
+                if (Object.keys(curriculumData)[index] === month) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+            
+            loadMonthContent(month);
+        }
+
+        // Load month content
+        function loadMonthContent(month) {
+            const data = curriculumData[month];
+            const content = document.getElementById('monthContent');
+            
+            content.innerHTML = `
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-3xl font-bold flex items-center">
+                            <i class="fas ${data.icon} mr-4 text-gradient bg-gradient-to-r ${data.color} bg-clip-text text-transparent"></i>
+                            ${month}
+                        </h4>
+                        <span class="px-4 py-2 rounded-full bg-gradient-to-r ${data.color} text-sm font-semibold">
+                            ${data.focus}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-green-300 text-lg">Literacy Skills Focus</h5>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            ${data.skills.map((skill, index) => `
+                                <span class="skill-badge px-4 py-2 bg-white/10 rounded-full text-sm font-medium">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-green-300 text-lg">Weekly Literacy Topics</h5>
+                        <div class="space-y-4">
+                            ${data.weeks.map((week, index) => `
+                                <div class="border border-white/10 rounded-xl overflow-hidden">
+                                    <div class="flex items-start p-4 cursor-pointer hover:bg-white/5 transition" onclick="toggleWeekDetails('${month}-${index}')">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r ${data.color} flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                            ${index + 1}
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-300 leading-relaxed">${week}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Click for activities</p>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-${month}-${index}"></i>
+                                    </div>
+                                    <div class="hidden bg-white/5 border-t border-white/10 p-4" id="details-${month}-${index}">
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-book text-blue-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-blue-300">Reading Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekReading(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-pencil-alt text-green-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-green-300">Writing Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekWriting(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-comments text-purple-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-purple-300">Speaking Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekSpeaking(month, index)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-green-300 text-lg">Monthly Literacy Project</h5>
+                        <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+                            <p class="text-sm text-gray-300 leading-relaxed">${data.project}</p>
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-green-300 text-lg">Materials Needed</h5>
+                        <div class="space-y-3">
+                            ${data.materials.map(material => `
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span class="text-sm text-gray-300">${material}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <div class="flex items-center justify-between">
+                        <button onclick="selectMonth('${getPreviousMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="selectMonth('${getNextMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            Next<i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get previous month
+        function getPreviousMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index > 0 ? months[index - 1] : month;
+        }
+
+        // Get next month
+        function getNextMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index < months.length - 1 ? months[index + 1] : month;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Toggle week details
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const icon = document.getElementById(`icon-${weekId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Get week reading activities
+        function getWeekReading(month, weekIndex) {
+            const readingActivities = {
+                'September': [
+                    'Letter recognition games with flashcards and alphabet books',
+                    'Letter sound practice with songs and interactive activities',
+                    'Sensory letter exploration with sand, water, and texture activities',
+                    'Letter hunting activities around classroom and story time'
+                ],
+                'October': [
+                    'Sound matching games with picture cards and letter sounds',
+                    'Rhyming activities with songs, poems, and interactive games',
+                    'Sound discrimination activities with musical instruments and games',
+                    'Phonemic awareness games with sound isolation and blending'
+                ],
+                'November': [
+                    'Sight word introduction with flashcards and repetition games',
+                    'Picture reading activities with comprehension questions',
+                    'Simple sentence reading with picture support and context clues',
+                    'Reading practice with leveled books and guided reading sessions'
+                ],
+                'December': [
+                    'Letter tracing activities with various writing materials',
+                    'Shape drawing and pre-writing line practice activities',
+                    'Name writing practice with different mediums and techniques',
+                    'Holiday card reading and message comprehension activities'
+                ],
+                'January': [
+                    'Alphabet mastery activities with games and assessments',
+                    'Story listening with comprehension and recall activities',
+                    'Vocabulary building with themed word walls and picture dictionaries',
+                    'Conversation practice with show and tell and group discussions'
+                ],
+                'February': [
+                    'Alphabet review games and mastery assessments',
+                    'Story element identification with character and setting focus',
+                    'Character analysis through read-alouds and discussion activities',
+                    'Plot sequencing with picture cards and story retelling'
+                ],
+                'March': [
+                    'Sentence reading with fluency and expression practice',
+                    'Simple word reading with phonetic decoding strategies',
+                    'Journal reading and sharing with peer feedback sessions',
+                    'Creative story reading with author presentations and discussions'
+                ],
+                'April': [
+                    'Oral reading practice with expression and character voices',
+                    'Script reading for puppet shows and classroom performances',
+                    'Drama reading with role-play and character development',
+                    'Performance reading with audience interaction and feedback'
+                ],
+                'May': [
+                    'Story reading with peer sharing and author discussions',
+                    'Poetry reading with rhythm and expression activities',
+                    'Book reading with author presentations and question sessions',
+                    'Creative writing sharing with class feedback and celebrations'
+                ],
+                'June': [
+                    'Fluency reading with timed activities and expression practice',
+                    'Portfolio reading with progress sharing and reflections',
+                    'Presentation reading with confidence building activities',
+                    'Summer reading preparation with book talks and recommendations'
+                ]
+            };
+            return readingActivities[month][weekIndex] || 'Engaging reading activities and literacy practice';
+        }
+
+        // Get week writing activities
+        function getWeekWriting(month, weekIndex) {
+            const writingActivities = {
+                'September': [
+                    'Letter tracing with fingers, pencils, and various materials',
+                    'Letter formation practice with guided instruction and modeling',
+                    'Sensory writing with sand, shaving cream, and texture exploration',
+                    'Letter writing practice with name writing and simple words'
+                ],
+                'October': [
+                    'Sound writing with letter-sound correspondence activities',
+                    'Rhyming word writing with picture prompts and word families',
+                    'Beginning sound writing with phonetic spelling and sound practice',
+                    'Phonemic writing activities with sound manipulation and blending'
+                ],
+                'November': [
+                    'Sight word writing with repetition and practice activities',
+                    'Simple sentence writing with picture prompts and word banks',
+                    'Picture writing with descriptive sentences and story elements',
+                    'Reading response writing with comprehension and reflection'
+                ],
+                'December': [
+                    'Pre-writing practice with shapes, lines, and fine motor activities',
+                    'Name writing practice with proper formation and technique',
+                    'Holiday message writing with cards and simple greetings',
+                    'Creative writing with holiday themes and personal expression'
+                ],
+                'January': [
+                    'Alphabet writing with mastery activities and assessments',
+                    'Story writing with picture prompts and sequencing activities',
+                    'Vocabulary writing with word walls and descriptive language',
+                    'Journal writing with daily entries and personal reflections'
+                ],
+                'February': [
+                    'Alphabet review writing with mastery and fluency activities',
+                    'Story element writing with character and setting descriptions',
+                    'Character writing with detailed descriptions and personality traits',
+                    'Plot writing with sequencing and story structure activities'
+                ],
+                'March': [
+                    'Sentence writing with proper structure and grammar practice',
+                    'Simple word writing with phonetic spelling and vocabulary building',
+                    'Journal writing with prompts and personal expression activities',
+                    'Creative writing with story development and illustration'
+                ],
+                'April': [
+                    'Script writing for puppet shows and classroom performances',
+                    'Character dialogue writing with voice and personality development',
+                    'Drama writing with scene development and stage directions',
+                    'Performance writing with audience engagement and interaction'
+                ],
+                'May': [
+                    'Story writing with beginning, middle, and end structure',
+                    'Poetry writing with simple rhymes and rhythmic patterns',
+                    'Book writing with illustrations and text creation',
+                    'Author writing with peer feedback and revision activities'
+                ],
+                'June': [
+                    'Fluency writing with timed activities and expression practice',
+                    'Portfolio writing with progress reflection and goal setting',
+                    'Presentation writing with confidence building and sharing',
+                    'Summer writing with reading logs and activity planning'
+                ]
+            };
+            return writingActivities[month][weekIndex] || 'Creative writing activities and skill development';
+        }
+
+        // Get week speaking activities
+        function getWeekSpeaking(month, weekIndex) {
+            const speakingActivities = {
+                'September': [
+                    'Letter sound practice with songs and choral activities',
+                    'Letter naming games with rapid fire recognition activities',
+                    'Alphabet songs with movement and participation activities',
+                    'Show and tell with letter-related objects and sharing'
+                ],
+                'October': [
+                    'Sound practice with songs and rhyming activities',
+                    'Rhyming games with group participation and performance',
+                    'Sound discrimination with musical activities and games',
+                    'Phonemic awareness with group sound activities and games'
+                ],
+                'November': [
+                    'Sight word practice with choral reading and repetition',
+                    'Picture description with vocabulary building activities',
+                    'Simple sentence sharing with peer feedback and discussion',
+                    'Reading aloud with fluency and expression practice'
+                ],
+                'December': [
+                    'Letter sharing with show and tell and alphabet mastery',
+                    'Name sharing with proper introduction and pronunciation',
+                    'Holiday message sharing with card presentations and greetings',
+                    'Creative sharing with holiday themes and personal stories'
+                ],
+                'January': [
+                    'Alphabet mastery sharing with games and assessments',
+                    'Storytelling with picture prompts and creative expression',
+                    'Vocabulary sharing with word walls and descriptive language',
+                    'Conversation practice with group discussions and sharing'
+                ],
+                'February': [
+                    'Alphabet review sharing with mastery activities and games',
+                    'Story element sharing with character and setting discussions',
+                    'Character sharing with detailed descriptions and personality',
+                    'Plot sharing with sequencing and story retelling activities'
+                ],
+                'March': [
+                    'Sentence sharing with proper structure and fluency practice',
+                    'Word sharing with vocabulary building and pronunciation',
+                    'Journal sharing with personal reflections and peer feedback',
+                    'Creative sharing with story development and presentations'
+                ],
+                'April': [
+                    'Oral reading with expression and character voice development',
+                    'Script reading with role-play and character development',
+                    'Drama activities with performance and audience interaction',
+                    'Presentation skills with confidence building and sharing'
+                ],
+                'May': [
+                    'Story sharing with author presentations and discussions',
+                    'Poetry sharing with rhythm and expression activities',
+                    'Book sharing with author presentations and question sessions',
+                    'Creative sharing with class feedback and celebrations'
+                ],
+                'June': [
+                    'Fluency sharing with timed activities and expression practice',
+                    'Portfolio sharing with progress reflections and achievements',
+                    'Presentation sharing with confidence building and celebrations',
+                    'Summer sharing with reading recommendations and plans'
+                ]
+            };
+            return speakingActivities[month][weekIndex] || 'Interactive speaking activities and language development';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
