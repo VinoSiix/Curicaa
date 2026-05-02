@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>High School Sciences & Research — Grade 9 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#a855f7;--a2:#ec4899;--al:#d8b4fe;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(168,85,247,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(236,72,153,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(168,85,247,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card:hover{background:rgba(255,255,255,0.92);}
+body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
+body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .month-tab:hover{background:rgba(255,255,255,0.9);color:rgba(13,13,26,0.85);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Grade 9</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Age 14</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-flask" style="margin-right:5px;"></i>Science</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Age 14</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grade 9 · Age 14</p>
+    <h2 class="page-title">High School Sciences & Research</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Conducting rigorous investigations in advanced physics, chemistry, biology, environmental science, astronomy, and engineering for university-ready scientific literacy.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-atom" style="color:#d8b4fe;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Advanced Physics</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Mechanics, quantum, relativity</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-flask" style="color:#f9a8d4;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Advanced Chemistry</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Organic, analysis, molecular</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-dna" style="color:#d8b4fe;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Biotechnology</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Genomics, bioinformatics</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-robot" style="color:#f9a8d4;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Engineering Science</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Materials, robotics, innovation</div></div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div class="glass" style="padding:28px;">
+      <div style="margin-bottom:20px;"><p class="section-label">Daily Structure</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-clock" style="color:var(--al);margin-right:10px;"></i>Weekly Schedule</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-sun" style="color:#fbbf24;"></i><span style="font-weight:600;font-size:13px;">9:00–10:30</span></div><p style="font-size:13px;margin-bottom:2px;">Physics Lab</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Mechanics, electromagnetism</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-flask" style="color:#fb923c;"></i><span style="font-weight:600;font-size:13px;">10:30–12:00</span></div><p style="font-size:13px;margin-bottom:2px;">Chemistry Lab</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Organic synthesis, analysis</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-apple-alt" style="color:#34d399;"></i><span style="font-weight:600;font-size:13px;">12:00–13:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lunch & Research Club</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Science symposium prep</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-dna" style="color:#a78bfa;"></i><span style="font-weight:600;font-size:13px;">13:00–14:30</span></div><p style="font-size:13px;margin-bottom:2px;">Biology & Biotech</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Genomics, bioinformatics</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-globe-americas" style="color:#f472b6;"></i><span style="font-weight:600;font-size:13px;">14:30–15:30</span></div><p style="font-size:13px;margin-bottom:2px;">Environmental & Astro</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Climate, space science</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-robot" style="color:#f87171;"></i><span style="font-weight:600;font-size:13px;">15:30–16:30</span></div><p style="font-size:13px;margin-bottom:2px;">Engineering Science</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Robotics, materials</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-heartbeat" style="color:#818cf8;"></i><span style="font-weight:600;font-size:13px;">16:30–17:00</span></div><p style="font-size:13px;margin-bottom:2px;">Human Physiology</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Medicine, pharmacology</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-home" style="color:#d8b4fe;"></i><span style="font-weight:600;font-size:13px;">17:00–17:30</span></div><p style="font-size:13px;margin-bottom:2px;">Research Review</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Scientific journals, AP prep</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Science Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grade 9 Science · Age 14</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{icon:'fa-atom',focus:'Advanced Physics & Mechanics',skills:['Classical mechanics','Thermodynamics','Wave physics','Quantum introduction'],weeks:["Advanced classical mechanics: Newton's laws, energy, momentum, and rotational dynamics",'Thermodynamics and statistical mechanics: heat, work, entropy, and kinetic theory','Wave physics and optics: wave properties, interference, diffraction, and optical instruments','Introduction to quantum mechanics: wave-particle duality, uncertainty principle, and atomic structure'],project:'Design and conduct advanced physics experiments investigating mechanics, thermodynamics, and wave phenomena',materials:['Physics laboratory equipment','Thermodynamics apparatus','Wave optics equipment','Quantum demonstration materials']},
+'October':{icon:'fa-flask',focus:'Advanced Chemistry & Molecular Science',skills:['Organic chemistry','Inorganic chemistry','Chemical analysis','Molecular modeling'],weeks:['Advanced organic chemistry: functional groups, reaction mechanisms, and synthesis','Inorganic chemistry: coordination compounds, periodic trends, and chemical bonding','Advanced chemical analysis: spectroscopy, chromatography, and quantitative analysis','Molecular modeling and computational chemistry: molecular structure and reaction prediction'],project:'Conduct advanced chemical synthesis and analysis with molecular modeling and computational predictions',materials:['Chemistry laboratory equipment','Spectroscopy instruments','Chromatography equipment','Molecular modeling software']},
+'November':{icon:'fa-dna',focus:'Advanced Biology & Biotechnology',skills:['Molecular biology','Genetics','Biotechnology','Bioinformatics'],weeks:['Advanced molecular biology: DNA replication, transcription, translation, and gene regulation','Genetics and genomics: Mendelian inheritance, population genetics, and genomic analysis','Biotechnology applications: genetic engineering, protein engineering, and synthetic biology','Bioinformatics: sequence analysis, protein structure prediction, and computational biology'],project:'Conduct advanced biotechnology research with genetic engineering and bioinformatics analysis',materials:['Molecular biology equipment','Genetics laboratory tools','Biotechnology kits','Bioinformatics software']},
+'December':{icon:'fa-globe-americas',focus:'Environmental Science & Ecology',skills:['Ecosystem dynamics','Climate science','Environmental chemistry','Conservation biology'],weeks:['Advanced ecosystem dynamics: energy flow, nutrient cycling, and ecological succession','Climate science: atmospheric chemistry, climate modeling, and climate change impacts','Environmental chemistry: pollution, water quality, and environmental monitoring','Conservation biology: biodiversity, endangered species, and habitat restoration'],project:'Conduct comprehensive environmental research with climate analysis and conservation recommendations',materials:['Environmental monitoring equipment','Climate data tools','Water testing kits','Ecology research materials']},
+'January':{icon:'fa-satellite',focus:'Astronomy & Astrophysics',skills:['Stellar astronomy','Galactic astronomy','Cosmology','Space physics'],weeks:['Stellar astronomy: stellar evolution, nucleosynthesis, and stellar remnants','Galactic astronomy: galaxy formation, dark matter, and galactic evolution','Cosmology: Big Bang theory, cosmic microwave background, and universal expansion','Space physics: solar wind, magnetospheres, and space weather'],project:'Conduct astronomical research with telescope observations and astrophysical modeling',materials:['Astronomical telescopes','Spectroscopy equipment','Astrophysics software','Space physics data']},
+'February':{icon:'fa-bolt',focus:'Advanced Physics & Electromagnetism',skills:['Electromagnetism','Electric circuits','Optics','Modern physics'],weeks:["Advanced electromagnetism: Maxwell's equations, electromagnetic waves, and radiation",'Electric circuits: AC/DC analysis, electronics, and circuit design','Advanced optics: lasers, fiber optics, and optical instrumentation','Modern physics: special relativity, nuclear physics, and particle physics introduction'],project:'Design and build advanced electronic and optical systems with electromagnetic applications',materials:['Electronics laboratory equipment','Optical instruments','Circuit design software','Modern physics demonstration materials']},
+'March':{icon:'fa-leaf',focus:'Plant Science & Botany',skills:['Plant physiology','Plant genetics','Plant ecology','Agricultural science'],weeks:['Advanced plant physiology: photosynthesis, respiration, and plant metabolism','Plant genetics and breeding: Mendelian genetics, molecular markers, and genetic engineering','Plant ecology: plant communities, competition, and ecosystem interactions','Agricultural science: crop improvement, sustainable agriculture, and food security'],project:'Conduct advanced plant science research with genetic analysis and agricultural applications',materials:['Plant physiology equipment','Genetics laboratory tools','Ecology research materials','Agricultural science equipment']},
+'April':{icon:'fa-heartbeat',focus:'Human Physiology & Medicine',skills:['Advanced physiology','Medical biotechnology','Pharmacology','Disease mechanisms'],weeks:['Advanced human physiology: organ systems, homeostasis, and physiological regulation','Medical biotechnology: diagnostic technologies, therapeutic applications, and regenerative medicine','Pharmacology: drug action, pharmacokinetics, and pharmaceutical development','Disease mechanisms: pathogenesis, epidemiology, and medical research methods'],project:'Conduct biomedical research with physiological analysis and medical biotechnology applications',materials:['Physiology laboratory equipment','Medical biotechnology tools','Pharmacology research materials','Disease analysis equipment']},
+'May':{icon:'fa-robot',focus:'Engineering Science & Technology',skills:['Materials science','Engineering physics','Robotics','Innovation'],weeks:['Materials science: nanotechnology, smart materials, and material properties','Engineering physics: applied mechanics, thermodynamics, and fluid dynamics','Robotics and automation: sensors, actuators, and control systems','Innovation and entrepreneurship: product development, patents, and technology transfer'],project:'Design and build innovative engineering solutions with advanced materials and robotics',materials:['Materials testing equipment','Engineering laboratory tools','Robotics kits','Innovation development resources']},
+'June':{icon:'fa-trophy',focus:'Science Symposium & Research Showcase',skills:['Research presentation','Scientific communication','Peer review','Career exploration'],weeks:['Advanced research presentation skills with scientific communication and data visualization','Scientific writing and publication with peer review and revision processes','Science career exploration with professional pathways and educational requirements','Innovation showcase with original research and community impact assessment'],project:'Present original research at science symposium with peer review and community engagement',materials:['Presentation software','Research posters','Peer review materials','Career exploration resources']}
+};
+
+let currentMonth='September';
+let isDark=true;
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for activities</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-flask" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Advanced laboratory work, data analysis, and scientific modelling to investigate the week's phenomena.</p></div>
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-trophy" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Research competitions, science olympiad challenges, and AP-style practice for high-level science mastery.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:#a78bfa;margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Home extension: scientific reading, experiment design, and independent research investigation.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+
+init();
+</script>
+</body>
+</html>

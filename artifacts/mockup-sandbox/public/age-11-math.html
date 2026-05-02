@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Algebra I & Middle School Mathematics — Grades 6–7 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#3b82f6;--a2:#06b6d4;--al:#93c5fd;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(59,130,246,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card:hover{background:rgba(255,255,255,0.92);}
+body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
+body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .month-tab:hover{background:rgba(255,255,255,0.9);color:rgba(13,13,26,0.85);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Grades 6–7</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 11–12</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-superscript" style="margin-right:5px;"></i>Mathematics</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 11–12</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grades 6–7 · Ages 11–12</p>
+    <h2 class="page-title">Algebra I & Middle School Mathematics</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Mastering Algebra I foundations, systems of equations, advanced geometry, data science, and STEM applications to bridge towards high school mathematics.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-superscript" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Algebra I</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Linear equations, functions</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(6,182,212,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-project-diagram" style="color:#22d3ee;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Systems & Polynomials</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Systems, factoring, quadratics</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(99,102,241,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-chart-line" style="color:#a5b4fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Data Science</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Statistics, probability</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-robot" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">STEM Applications</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Engineering, physics math</div></div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div class="glass" style="padding:28px;">
+      <div style="margin-bottom:20px;"><p class="section-label">Daily Structure</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-clock" style="color:var(--al);margin-right:10px;"></i>Weekly Schedule</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-sun" style="color:#fbbf24;"></i><span style="font-weight:600;font-size:13px;">9:00–10:30</span></div><p style="font-size:13px;margin-bottom:2px;">Algebra Concepts</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Equations, functions</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-superscript" style="color:#fb923c;"></i><span style="font-weight:600;font-size:13px;">10:30–12:00</span></div><p style="font-size:13px;margin-bottom:2px;">Polynomial Algebra</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Factoring, quadratics</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-apple-alt" style="color:#34d399;"></i><span style="font-weight:600;font-size:13px;">12:00–13:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lunch & Math Lab</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Applied challenges</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-shapes" style="color:#a78bfa;"></i><span style="font-weight:600;font-size:13px;">13:00–14:30</span></div><p style="font-size:13px;margin-bottom:2px;">Geometry & Proofs</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Congruence, similarity</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:#f472b6;"></i><span style="font-weight:600;font-size:13px;">14:30–15:30</span></div><p style="font-size:13px;margin-bottom:2px;">Data Science</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Statistics, probability</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-robot" style="color:#f87171;"></i><span style="font-weight:600;font-size:13px;">15:30–16:30</span></div><p style="font-size:13px;margin-bottom:2px;">STEM Applications</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Engineering math</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-percentage" style="color:#818cf8;"></i><span style="font-weight:600;font-size:13px;">16:30–17:00</span></div><p style="font-size:13px;margin-bottom:2px;">Financial Mathematics</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Interest, investments</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-home" style="color:#60a5fa;"></i><span style="font-weight:600;font-size:13px;">17:00–17:30</span></div><p style="font-size:13px;margin-bottom:2px;">Independent Study</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Skill reinforcement</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Math Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grades 6–7 Mathematics · Ages 11–12</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{icon:'fa-superscript',focus:'Algebra I Foundations',skills:['Linear equations','Functions','Inequalities','Graphing'],weeks:['Linear equations: solving, graphing, and real-world applications','Functions: domain, range, function notation, and transformations','Linear inequalities: solving, graphing, and systems of inequalities','Advanced graphing: slope-intercept form, point-slope form, and parallel/perpendicular lines'],project:'Design and analyze a real-world business model using linear equations and functions',materials:['Graphing calculators','Function modeling software','Business simulation kits','Real-world data sets']},
+'October':{icon:'fa-project-diagram',focus:'Systems of Equations & Inequalities',skills:['Systems solving','Substitution','Elimination','Matrix methods'],weeks:['Systems of linear equations: graphing, substitution, and elimination methods','Advanced systems: three-variable systems and applications','Systems of inequalities: graphing solutions and optimization problems','Introduction to matrices: basic operations and solving systems'],project:'Create optimization models for real-world scenarios using systems of equations',materials:['Matrix calculators','Optimization software','Linear programming tools','Business case studies']},
+'November':{icon:'fa-square-root-alt',focus:'Exponents & Polynomials',skills:['Exponent laws','Polynomials','Factoring','Quadratic equations'],weeks:['Advanced exponent laws: negative exponents, scientific notation, and applications','Polynomials: operations, classification, and polynomial functions','Factoring techniques: GCF, trinomials, difference of squares, and sum/difference of cubes','Introduction to quadratic equations: solving by factoring and square roots'],project:'Model population growth and decay using exponential and polynomial functions',materials:['Exponent modeling tools','Polynomial manipulatives','Factoring guides','Population data sets']},
+'December':{icon:'fa-shapes',focus:'Advanced Geometry & Proofs',skills:['Geometric proofs','Congruence','Similarity','Transformations'],weeks:['Geometric proofs: direct proofs, indirect proofs, and proof by contradiction','Triangle congruence: SSS, SAS, ASA, AAS, and HL congruence theorems','Triangle similarity: AA, SAS, and SSS similarity theorems and applications','Geometric transformations: compositions, isometries, and coordinate geometry proofs'],project:'Construct geometric proofs for architectural design and engineering applications',materials:['Geometry software','Proof templates','Construction tools','Architectural models']},
+'January':{icon:'fa-chart-line',focus:'Data Science & Statistical Analysis',skills:['Data collection','Statistical measures','Probability','Data visualization'],weeks:['Advanced data collection methods: sampling techniques, bias identification, and experimental design','Statistical analysis: measures of central tendency, variability, and distribution analysis','Probability theory: conditional probability, independent events, and expected value','Data visualization: advanced graphing, statistical software, and data interpretation'],project:'Conduct comprehensive statistical research project with data analysis and presentation',materials:['Statistical software','Data collection tools','Probability kits','Visualization platforms']},
+'February':{icon:'fa-function',focus:'Advanced Functions & Relations',skills:['Quadratic functions','Radical functions','Rational expressions','Function composition'],weeks:['Quadratic functions: graphing, vertex form, and applications','Radical functions: domain, range, graphing, and equations','Rational expressions: operations, simplification, and equations','Function composition and inverse functions with real-world applications'],project:'Model complex real-world phenomena using advanced functions and function composition',materials:['Function graphing software','Radical expression tools','Rational function models','Real-world scenario data']},
+'March':{icon:'fa-cube',focus:'3D Geometry & Spatial Reasoning',skills:['3D shapes','Volume','Surface area','Spatial visualization'],weeks:["Advanced 3D geometry: polyhedra, Euler's formula, and spatial relationships",'Volume calculations: complex solids, composite figures, and optimization','Surface area: advanced calculations, nets, and real-world applications','Spatial visualization: orthographic projections, cross-sections, and geometric reasoning'],project:'Design and analyze 3D structures with volume and surface area optimization',materials:['3D modeling software','Geometric solids','Spatial reasoning tools','Engineering design kits']},
+'April':{icon:'fa-percentage',focus:'Advanced Proportions & Financial Mathematics',skills:['Advanced proportions','Financial math','Interest calculations','Investment analysis'],weeks:['Advanced proportional reasoning: direct and inverse variation, complex proportions','Financial mathematics: budgeting, taxes, and financial planning','Interest calculations: simple interest, compound interest, and continuous compounding','Investment analysis: stocks, bonds, risk assessment, and portfolio management'],project:'Create comprehensive financial plan with investment strategies and risk analysis',materials:['Financial calculators','Investment simulation software','Budget planning tools','Market data resources']},
+'May':{icon:'fa-robot',focus:'STEM Mathematics & Engineering Applications',skills:['Engineering math','Physics applications','Computer science math','Problem solving'],weeks:['Engineering mathematics: optimization, modeling, and design calculations','Physics applications: kinematics, forces, and mathematical modeling of physical systems','Computer science mathematics: algorithms, logic, and computational thinking','Advanced problem-solving: mathematical modeling and real-world STEM challenges'],project:'Design and build engineering solution with mathematical modeling and optimization',materials:['Engineering calculation software','Physics simulation tools','Algorithm design kits','STEM challenge materials']},
+'June':{icon:'fa-trophy',focus:'Algebra Mastery & High School Preparation',skills:['Comprehensive review','Assessment preparation','Advanced topics','Future planning'],weeks:['Comprehensive Algebra I review with integrated problem solving and applications','High school mathematics preparation with advanced topics and study strategies','Mathematical research projects and independent study with presentation skills','Future planning: STEM career exploration and advanced mathematics pathways'],project:'Complete comprehensive mathematics portfolio demonstrating mastery and readiness for advanced mathematics',materials:['Review materials','Assessment preparation tools','Research resources','Career planning guides']}
+};
+
+let currentMonth='September';
+let isDark=true;
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for activities</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-calculator" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Hands-on activities, graphing software, and collaborative problem-solving to reinforce the week's algebra concepts.</p></div>
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-gamepad" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Mathematical challenges and competitions to deepen algebraic reasoning and build fluency.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:#a78bfa;margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Home practice: real-world application problems and independent extension challenges.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+
+init();
+</script>
+</body>
+</html>
