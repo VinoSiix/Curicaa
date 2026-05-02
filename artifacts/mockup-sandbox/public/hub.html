@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Hub - Educational Pathways</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #05050f 0%, #0a0a1a 50%, #080d1e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(5, 5, 18, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-graduation-cap text-white"></i>
+                </div>
+                <h1 class="text-xl md:text-2xl font-bold">Curriculum Hub</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+                Educational Pathways
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-xl">
+                Comprehensive curriculum for all grade levels - from early childhood through advanced high school
+            </p>
+        </section>
+
+        <!-- Curriculum Cards -->
+        <section class="space-y-8">
+            <!-- First Row: 4 Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Ages 5-7 Card -->
+                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                        <i class="fas fa-child text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-300">Early Elementary</h3>
+                    <p class="text-gray-300 mb-4 text-sm">Ages 5-7</p>
+                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
+                        <p class="text-xs text-gray-400 mb-2">Foundation building:</p>
+                        <ul class="text-xs text-gray-300 space-y-1">
+                            <li>• Basic reading</li>
+                            <li>• Number sense</li>
+                            <li>• Science discovery</li>
+                            <li>• Creative arts</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSubjectModal('ages-5-7')" class="inline-block px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg hover:opacity-90 transition font-medium text-sm">
+                        View Curriculum
+                    </button>
+                </div>
+
+                <!-- Age 8 Card -->
+                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                        <i class="fas fa-star text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-300">Grade 3</h3>
+                    <p class="text-gray-300 mb-4 text-sm">Age 8</p>
+                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
+                        <p class="text-xs text-gray-400 mb-2">Skill development:</p>
+                        <ul class="text-xs text-gray-300 space-y-1">
+                            <li>• Fluent reading</li>
+                            <li>• Multiplication</li>
+                            <li>• Scientific method</li>
+                            <li>• Art techniques</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSubjectModal('age-8')" class="inline-block px-4 py-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-lg hover:opacity-90 transition font-medium text-sm">
+                        View Curriculum
+                    </button>
+                </div>
+
+                <!-- Age 9 Card -->
+                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                        <i class="fas fa-book text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-green-300">Grade 4</h3>
+                    <p class="text-gray-300 mb-4 text-sm">Age 9</p>
+                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
+                        <p class="text-xs text-gray-400 mb-2">Knowledge expansion:</p>
+                        <ul class="text-xs text-gray-300 space-y-1">
+                            <li>• Comprehension</li>
+                            <li>• Division</li>
+                            <li>• Lab reports</li>
+                            <li>• Creative projects</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSubjectModal('age-9')" class="inline-block px-4 py-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-lg hover:opacity-90 transition font-medium text-sm">
+                        View Curriculum
+                    </button>
+                </div>
+
+                <!-- Age 10 Card -->
+                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-orange-400 to-red-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                        <i class="fas fa-rocket text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-orange-300">Grade 5</h3>
+                    <p class="text-gray-300 mb-4 text-sm">Age 10</p>
+                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
+                        <p class="text-xs text-gray-400 mb-2">Advanced basics:</p>
+                        <ul class="text-xs text-gray-300 space-y-1">
+                            <li>• Essay writing</li>
+                            <li>• Fractions/decimals</li>
+                            <li>• Research skills</li>
+                            <li>• Art analysis</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSubjectModal('age-10')" class="inline-block px-4 py-2 bg-gradient-to-r from-orange-400 to-red-400 rounded-lg hover:opacity-90 transition font-medium text-sm">
+                        View Curriculum
+                    </button>
+                </div>
+            </div>
+
+            <!-- Second Row: 3 Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-8">
+                <!-- Ages 11-12 Card -->
+                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                        <i class="fas fa-brain text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-indigo-300">Middle School</h3>
+                    <p class="text-gray-300 mb-4 text-sm">Ages 11-12</p>
+                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
+                        <p class="text-xs text-gray-400 mb-2">Preparation focus:</p>
+                        <ul class="text-xs text-gray-300 space-y-1">
+                            <li>• Research essays</li>
+                            <li>• Pre-algebra</li>
+                            <li>• Advanced labs</li>
+                            <li>• Digital arts</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSubjectModal('ages-11-12')" class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-lg hover:opacity-90 transition font-medium text-sm">
+                        View Curriculum
+                    </button>
+                </div>
+
+                <!-- Age 14 Card -->
+                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-red-300">High School</h3>
+                    <p class="text-gray-300 mb-4 text-sm">Age 14</p>
+                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
+                        <p class="text-xs text-gray-400 mb-2">Critical thinking:</p>
+                        <ul class="text-xs text-gray-300 space-y-1">
+                            <li>• Academic writing</li>
+                            <li>• Algebra I</li>
+                            <li>• Scientific analysis</li>
+                            <li>• Advanced art</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSubjectModal('age-14')" class="inline-block px-4 py-2 bg-gradient-to-r from-red-400 to-pink-500 rounded-lg hover:opacity-90 transition font-medium text-sm">
+                        View Curriculum
+                    </button>
+                </div>
+
+                <!-- Ages 15-18 Card -->
+                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+                        <i class="fas fa-trophy text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-yellow-300">GED/SAT Prep</h3>
+                    <p class="text-gray-300 mb-4 text-sm">Ages 15-18</p>
+                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
+                        <p class="text-xs text-gray-400 mb-2">Test preparation:</p>
+                        <ul class="text-xs text-gray-300 space-y-1">
+                            <li>• SAT/ACT strategies</li>
+                            <li>• GED preparation</li>
+                            <li>• College readiness</li>
+                            <li>• Career planning</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSubjectModal('ages-15-18')" class="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg hover:opacity-90 transition font-medium text-sm">
+                        View Curriculum
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="mt-20">
+            <h3 class="text-3xl font-bold text-center mb-12">Platform Features</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-morphism rounded-xl p-6 text-center">
+                    <i class="fas fa-calendar-alt text-2xl text-indigo-400 mb-4"></i>
+                    <h4 class="font-semibold mb-2">Monthly Themes</h4>
+                    <p class="text-sm text-gray-400">Structured September-June curriculum</p>
+                </div>
+                <div class="glass-morphism rounded-xl p-6 text-center">
+                    <i class="fas fa-tools text-2xl text-green-400 mb-4"></i>
+                    <h4 class="font-semibold mb-2">Low-Budget Projects</h4>
+                    <p class="text-sm text-gray-400">Accessible materials & resources</p>
+                </div>
+                <div class="glass-morphism rounded-xl p-6 text-center">
+                    <i class="fas fa-palette text-2xl text-purple-400 mb-4"></i>
+                    <h4 class="font-semibold mb-2">Interactive Design</h4>
+                    <p class="text-sm text-gray-400">Modern, engaging interface</p>
+                </div>
+                <div class="glass-morphism rounded-xl p-6 text-center">
+                    <i class="fas fa-mobile-alt text-2xl text-yellow-400 mb-4"></i>
+                    <h4 class="font-semibold mb-2">Responsive</h4>
+                    <p class="text-sm text-gray-400">Works on all devices</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Subject Selection Modal -->
+    <div id="subjectModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="glass-morphism rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold">Choose a Subject</h3>
+                    <button onclick="closeSubjectModal()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <button onclick="goToSubject('math')" class="glass-morphism rounded-xl p-6 text-center hover:scale-105 transition-transform">
+                        <i class="fas fa-calculator text-3xl text-blue-400 mb-3"></i>
+                        <h4 class="text-lg font-semibold mb-2">Mathematics</h4>
+                        <p class="text-sm text-gray-400">Numbers, algebra, geometry, and problem-solving</p>
+                    </button>
+                    
+                    <button onclick="goToSubject('english')" class="glass-morphism rounded-xl p-6 text-center hover:scale-105 transition-transform">
+                        <i class="fas fa-book text-3xl text-green-400 mb-3"></i>
+                        <h4 class="text-lg font-semibold mb-2">English</h4>
+                        <p class="text-sm text-gray-400">Reading, writing, grammar, and literature</p>
+                    </button>
+                    
+                    <button onclick="goToSubject('science')" class="glass-morphism rounded-xl p-6 text-center hover:scale-105 transition-transform">
+                        <i class="fas fa-flask text-3xl text-purple-400 mb-3"></i>
+                        <h4 class="text-lg font-semibold mb-2">Science</h4>
+                        <p class="text-sm text-gray-400">Biology, chemistry, physics, and experiments</p>
+                    </button>
+                    
+                    <button onclick="goToSubject('art')" class="glass-morphism rounded-xl p-6 text-center hover:scale-105 transition-transform">
+                        <i class="fas fa-palette text-3xl text-pink-400 mb-3"></i>
+                        <h4 class="text-lg font-semibold mb-2">Art & PE</h4>
+                        <p class="text-sm text-gray-400">Creative arts, music, and physical education</p>
+                    </button>
+                </div>
+                
+                <div class="text-center">
+                    <button onclick="closeSubjectModal()" class="px-6 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">Hi Luke!!! or anyone else! Glad you found this!!!</p>
+        </div>
+    </footer>
+
+    <script>
+        let isDarkMode = true;
+        let currentProgram = '';
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Open subject selection modal
+        function openSubjectModal(program) {
+            currentProgram = program;
+            const modal = document.getElementById('subjectModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close subject selection modal
+        function closeSubjectModal() {
+            const modal = document.getElementById('subjectModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            currentProgram = '';
+        }
+
+        // Navigate to subject-specific curriculum
+        function goToSubject(subject) {
+            let url = '';
+            
+            // Map programs to their subject-specific curriculum files
+            switch(currentProgram) {
+                case 'ages-5-7':
+                    url = 'ages-5-7-' + subject + '.html';
+                    break;
+                case 'age-8':
+                    url = 'age-8-' + subject + '.html';
+                    break;
+                case 'age-9':
+                    url = 'age-9-' + subject + '.html';
+                    break;
+                case 'age-10':
+                    url = 'age-10-' + subject + '.html';
+                    break;
+                case 'ages-11-12':
+                    url = 'ages-11-12-' + subject + '.html';
+                    break;
+                case 'age-14':
+                    url = 'age-14-' + subject + '.html';
+                    break;
+                case 'ages-15-18':
+                    url = 'ages-15-18-' + subject + '.html';
+                    break;
+                default:
+                    return;
+            }
+            
+            // Navigate to the subject-specific curriculum
+            window.location.href = url;
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('subjectModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSubjectModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSubjectModal();
+            }
+        });
+    </script>
+</body>
+</html>
