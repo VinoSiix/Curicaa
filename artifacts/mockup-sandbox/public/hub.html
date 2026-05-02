@@ -6,409 +6,561 @@
     <title>Curriculum Hub - Educational Pathways</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            font-family: 'Poppins', sans-serif;
+        * { font-family: 'Inter', sans-serif; }
+
+        body {
+            background: #04040e;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
         }
-        
-        .dark {
-            background: linear-gradient(135deg, #05050f 0%, #0a0a1a 50%, #080d1e 100%);
+
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
         }
-        
-        .light {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .bg-orb-1 { width: 700px; height: 700px; background: #6366f1; top: -300px; left: -200px; }
+        .bg-orb-2 { width: 600px; height: 600px; background: #7c3aed; bottom: -150px; right: -150px; }
+        .bg-orb-3 { width: 400px; height: 400px; background: #0891b2; top: 35%; left: 38%; }
+
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .star {
+            position: absolute; width: 2px; height: 2px;
+            background: white; border-radius: 50%; opacity: 0;
+            animation: twinkle var(--dur) ease-in-out infinite var(--delay);
         }
-        
-        .glass-morphism {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(1); }
+            50% { opacity: 0.55; transform: scale(1.6); }
         }
-        
-        .dark .glass-morphism {
-            background: rgba(5, 5, 18, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+
+        header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(4, 4, 14, 0.85);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
-        
-        .card-hover {
-            transition: all 0.4s ease;
+
+        .card {
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.075);
+            border-radius: 20px;
+            padding: 26px 22px 22px;
+            transition: transform 0.32s cubic-bezier(.22,.68,0,1.2), box-shadow 0.32s ease, border-color 0.32s ease, background 0.32s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
         }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        .card::before {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: 20px;
+            background: var(--card-glow, transparent);
+            opacity: 0;
+            transition: opacity 0.32s ease;
         }
-        
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+        .card:hover {
+            transform: translateY(-7px) scale(1.015);
+            border-color: rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.055);
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+        .card:hover::before { opacity: 1; }
+        .card:hover .card-progress { width: 100%; }
+
+        .card-purple { --card-glow: radial-gradient(ellipse at top, rgba(167,139,250,0.1) 0%, transparent 65%); }
+        .card-blue   { --card-glow: radial-gradient(ellipse at top, rgba(96,165,250,0.1) 0%, transparent 65%); }
+        .card-green  { --card-glow: radial-gradient(ellipse at top, rgba(52,211,153,0.1) 0%, transparent 65%); }
+        .card-orange { --card-glow: radial-gradient(ellipse at top, rgba(251,146,60,0.1) 0%, transparent 65%); }
+        .card-indigo { --card-glow: radial-gradient(ellipse at top, rgba(129,140,248,0.1) 0%, transparent 65%); }
+        .card-red    { --card-glow: radial-gradient(ellipse at top, rgba(248,113,113,0.1) 0%, transparent 65%); }
+        .card-yellow { --card-glow: radial-gradient(ellipse at top, rgba(250,204,21,0.1) 0%, transparent 65%); }
+
+        .card-progress {
+            position: absolute; bottom: 0; left: 0;
+            height: 2px;
+            background: var(--progress-color, rgba(129,140,248,0.6));
+            width: 0;
+            transition: width 0.45s cubic-bezier(.22,.68,0,1.2);
         }
-        
-        .scroll-smooth {
-            scroll-behavior: smooth;
+
+        .icon-ring {
+            width: 52px; height: 52px; border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            position: relative;
+        }
+        .icon-ring::after {
+            content: '';
+            position: absolute; inset: -2px;
+            border-radius: 17px;
+            border: 1px solid rgba(255,255,255,0.13);
+        }
+
+        .age-badge {
+            display: inline-block;
+            padding: 3px 11px;
+            border-radius: 100px;
+            font-size: 10.5px; font-weight: 600;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.11);
+            margin-bottom: 14px;
+        }
+
+        .subject-list {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.065);
+            border-radius: 11px; padding: 12px 14px; margin-bottom: 18px; text-align: left;
+        }
+        .subject-list ul { list-style: none; padding: 0; margin: 0; }
+        .subject-list li {
+            display: flex; align-items: center; gap: 8px;
+            padding: 3px 0; font-size: 12px; color: rgba(255,255,255,0.6);
+        }
+        .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+        .btn-cta {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 9px 18px; border-radius: 10px;
+            font-size: 12.5px; font-weight: 600; border: none; cursor: pointer;
+            transition: opacity 0.2s, transform 0.18s;
+        }
+        .btn-cta:hover { opacity: 0.85; transform: scale(1.04); }
+
+        .feature-pill {
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.075);
+            border-radius: 14px; padding: 18px;
+            display: flex; align-items: center; gap: 14px;
+            transition: background 0.22s, border-color 0.22s;
+        }
+        .feature-pill:hover { background: rgba(255,255,255,0.065); border-color: rgba(255,255,255,0.13); }
+        .feature-icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.72);
+            backdrop-filter: blur(14px);
+            z-index: 60; display: none;
+            align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: #0b0b1d;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px; padding: 30px;
+            max-width: 520px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
+            animation: modalIn 0.22s cubic-bezier(.22,.68,0,1.2);
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.94) translateY(14px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .subject-btn {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px; padding: 20px;
+            text-align: center; cursor: pointer;
+            transition: all 0.22s ease; color: white; width: 100%;
+        }
+        .subject-btn:hover {
+            background: rgba(255,255,255,0.085);
+            border-color: rgba(255,255,255,0.17);
+            transform: translateY(-2px);
+        }
+
+        .hero-title {
+            background: linear-gradient(135deg, #c4b5fd 0%, #818cf8 45%, #67e8f9 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .section-label {
+            font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 8px;
         }
     </style>
 </head>
-<body class="dark min-h-screen text-white scroll-smooth">
+<body>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="stars" id="stars"></div>
+
     <!-- Header -->
-    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full flex items-center justify-center">
-                    <i class="fas fa-graduation-cap text-white"></i>
+    <header>
+        <div style="max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:34px;height:34px;background:linear-gradient(135deg,#818cf8,#c084fc);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <i class="fas fa-graduation-cap" style="font-size:14px;"></i>
                 </div>
-                <h1 class="text-xl md:text-2xl font-bold">Curriculum Hub</h1>
+                <span style="font-weight:700;font-size:16px;letter-spacing:-0.025em;">Curriculum Hub</span>
             </div>
-            <div class="flex items-center space-x-4">
-                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-            </div>
+            <button onclick="toggleDarkMode()" style="padding:7px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.6);font-size:13px;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 py-12">
-        <!-- Hero Section -->
-        <section class="text-center mb-16">
-            <h2 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
-                Educational Pathways
-            </h2>
-            <p class="text-gray-300 max-w-3xl mx-auto text-xl">
-                Comprehensive curriculum for all grade levels - from early childhood through advanced high school
+    <main style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:64px 20px 88px;">
+
+        <!-- Hero -->
+        <section style="text-align:center;margin-bottom:80px;" class="reveal">
+            <div style="display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:100px;background:rgba(129,140,248,0.1);border:1px solid rgba(129,140,248,0.22);font-size:11px;font-weight:600;color:#a5b4fc;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:28px;">
+                <i class="fas fa-star" style="font-size:9px;"></i>
+                K–12 Educational Pathways
+            </div>
+            <h1 class="hero-title" style="font-size:clamp(40px,6.5vw,72px);font-weight:800;line-height:1.08;letter-spacing:-0.035em;margin-bottom:22px;">
+                Every Child.<br>Every Stage.
+            </h1>
+            <p style="color:rgba(255,255,255,0.42);max-width:500px;margin:0 auto;font-size:16.5px;line-height:1.7;font-weight:400;">
+                Structured curriculum from early childhood through advanced high school — built to grow with your learner.
             </p>
         </section>
 
-        <!-- Curriculum Cards -->
-        <section class="space-y-8">
-            <!-- First Row: 4 Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Ages 5-7 Card -->
-                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
-                    <div class="w-14 h-14 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
-                        <i class="fas fa-child text-white text-xl"></i>
+        <!-- Cards -->
+        <section style="margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;" class="reveal">
+                <p class="section-label">Choose a Grade Level</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Curriculum Pathways</h2>
+            </div>
+
+            <!-- Row 1: 4 cards -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;" class="reveal">
+                <div class="card card-purple" onclick="openSubjectModal('ages-5-7')">
+                    <div class="card-progress" style="--progress-color:rgba(168,85,247,0.65);"></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#a855f7,#ec4899);">
+                        <i class="fas fa-child" style="font-size:19px;"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-purple-300">Early Elementary</h3>
-                    <p class="text-gray-300 mb-4 text-sm">Ages 5-7</p>
-                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
-                        <p class="text-xs text-gray-400 mb-2">Foundation building:</p>
-                        <ul class="text-xs text-gray-300 space-y-1">
-                            <li>• Basic reading</li>
-                            <li>• Number sense</li>
-                            <li>• Science discovery</li>
-                            <li>• Creative arts</li>
-                        </ul>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#d8b4fe;">Early Elementary</h3>
+                        <div class="age-badge" style="color:#c4b5fd;">Ages 5–7</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Foundation building</p>
+                            <ul>
+                                <li><span class="dot" style="background:#a855f7;"></span>Basic reading</li>
+                                <li><span class="dot" style="background:#a855f7;"></span>Number sense</li>
+                                <li><span class="dot" style="background:#a855f7;"></span>Science discovery</li>
+                                <li><span class="dot" style="background:#a855f7;"></span>Creative arts</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#a855f7,#ec4899);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
                     </div>
-                    <button onclick="openSubjectModal('ages-5-7')" class="inline-block px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg hover:opacity-90 transition font-medium text-sm">
-                        View Curriculum
-                    </button>
                 </div>
 
-                <!-- Age 8 Card -->
-                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
-                    <div class="w-14 h-14 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
-                        <i class="fas fa-star text-white text-xl"></i>
+                <div class="card card-blue" onclick="openSubjectModal('age-8')">
+                    <div class="card-progress" style="--progress-color:rgba(59,130,246,0.65);"></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);">
+                        <i class="fas fa-star" style="font-size:19px;"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-blue-300">Grade 3</h3>
-                    <p class="text-gray-300 mb-4 text-sm">Age 8</p>
-                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
-                        <p class="text-xs text-gray-400 mb-2">Skill development:</p>
-                        <ul class="text-xs text-gray-300 space-y-1">
-                            <li>• Fluent reading</li>
-                            <li>• Multiplication</li>
-                            <li>• Scientific method</li>
-                            <li>• Art techniques</li>
-                        </ul>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#93c5fd;">Grade 3</h3>
+                        <div class="age-badge" style="color:#93c5fd;">Age 8</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Skill development</p>
+                            <ul>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Fluent reading</li>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Multiplication</li>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Scientific method</li>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Art techniques</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
                     </div>
-                    <button onclick="openSubjectModal('age-8')" class="inline-block px-4 py-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-lg hover:opacity-90 transition font-medium text-sm">
-                        View Curriculum
-                    </button>
                 </div>
 
-                <!-- Age 9 Card -->
-                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
-                    <div class="w-14 h-14 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
-                        <i class="fas fa-book text-white text-xl"></i>
+                <div class="card card-green" onclick="openSubjectModal('age-9')">
+                    <div class="card-progress" style="--progress-color:rgba(16,185,129,0.65);"></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#10b981,#34d399);">
+                        <i class="fas fa-book" style="font-size:19px;"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-green-300">Grade 4</h3>
-                    <p class="text-gray-300 mb-4 text-sm">Age 9</p>
-                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
-                        <p class="text-xs text-gray-400 mb-2">Knowledge expansion:</p>
-                        <ul class="text-xs text-gray-300 space-y-1">
-                            <li>• Comprehension</li>
-                            <li>• Division</li>
-                            <li>• Lab reports</li>
-                            <li>• Creative projects</li>
-                        </ul>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#6ee7b7;">Grade 4</h3>
+                        <div class="age-badge" style="color:#6ee7b7;">Age 9</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Knowledge expansion</p>
+                            <ul>
+                                <li><span class="dot" style="background:#10b981;"></span>Comprehension</li>
+                                <li><span class="dot" style="background:#10b981;"></span>Division</li>
+                                <li><span class="dot" style="background:#10b981;"></span>Lab reports</li>
+                                <li><span class="dot" style="background:#10b981;"></span>Creative projects</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#10b981,#34d399);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
                     </div>
-                    <button onclick="openSubjectModal('age-9')" class="inline-block px-4 py-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-lg hover:opacity-90 transition font-medium text-sm">
-                        View Curriculum
-                    </button>
                 </div>
 
-                <!-- Age 10 Card -->
-                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
-                    <div class="w-14 h-14 bg-gradient-to-r from-orange-400 to-red-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
-                        <i class="fas fa-rocket text-white text-xl"></i>
+                <div class="card card-orange" onclick="openSubjectModal('age-10')">
+                    <div class="card-progress" style="--progress-color:rgba(249,115,22,0.65);"></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#f97316,#ef4444);">
+                        <i class="fas fa-rocket" style="font-size:19px;"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-orange-300">Grade 5</h3>
-                    <p class="text-gray-300 mb-4 text-sm">Age 10</p>
-                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
-                        <p class="text-xs text-gray-400 mb-2">Advanced basics:</p>
-                        <ul class="text-xs text-gray-300 space-y-1">
-                            <li>• Essay writing</li>
-                            <li>• Fractions/decimals</li>
-                            <li>• Research skills</li>
-                            <li>• Art analysis</li>
-                        </ul>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fdba74;">Grade 5</h3>
+                        <div class="age-badge" style="color:#fdba74;">Age 10</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Advanced basics</p>
+                            <ul>
+                                <li><span class="dot" style="background:#f97316;"></span>Essay writing</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Fractions/decimals</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Research skills</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Art analysis</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#f97316,#ef4444);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
                     </div>
-                    <button onclick="openSubjectModal('age-10')" class="inline-block px-4 py-2 bg-gradient-to-r from-orange-400 to-red-400 rounded-lg hover:opacity-90 transition font-medium text-sm">
-                        View Curriculum
-                    </button>
                 </div>
             </div>
 
-            <!-- Second Row: 3 Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-8">
-                <!-- Ages 11-12 Card -->
-                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
-                    <div class="w-14 h-14 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
-                        <i class="fas fa-brain text-white text-xl"></i>
+            <!-- Row 2: 3 cards centered -->
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:810px;margin:0 auto;" class="reveal">
+                <div class="card card-indigo" onclick="openSubjectModal('ages-11-12')">
+                    <div class="card-progress" style="--progress-color:rgba(99,102,241,0.65);"></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">
+                        <i class="fas fa-brain" style="font-size:19px;"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-indigo-300">Middle School</h3>
-                    <p class="text-gray-300 mb-4 text-sm">Ages 11-12</p>
-                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
-                        <p class="text-xs text-gray-400 mb-2">Preparation focus:</p>
-                        <ul class="text-xs text-gray-300 space-y-1">
-                            <li>• Research essays</li>
-                            <li>• Pre-algebra</li>
-                            <li>• Advanced labs</li>
-                            <li>• Digital arts</li>
-                        </ul>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#a5b4fc;">Middle School</h3>
+                        <div class="age-badge" style="color:#a5b4fc;">Ages 11–12</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Preparation focus</p>
+                            <ul>
+                                <li><span class="dot" style="background:#6366f1;"></span>Research essays</li>
+                                <li><span class="dot" style="background:#6366f1;"></span>Pre-algebra</li>
+                                <li><span class="dot" style="background:#6366f1;"></span>Advanced labs</li>
+                                <li><span class="dot" style="background:#6366f1;"></span>Digital arts</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
                     </div>
-                    <button onclick="openSubjectModal('ages-11-12')" class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-lg hover:opacity-90 transition font-medium text-sm">
-                        View Curriculum
-                    </button>
                 </div>
 
-                <!-- Age 14 Card -->
-                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
-                    <div class="w-14 h-14 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
-                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                <div class="card card-red" onclick="openSubjectModal('age-14')">
+                    <div class="card-progress" style="--progress-color:rgba(239,68,68,0.65);"></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#ef4444,#ec4899);">
+                        <i class="fas fa-graduation-cap" style="font-size:19px;"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-red-300">High School</h3>
-                    <p class="text-gray-300 mb-4 text-sm">Age 14</p>
-                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
-                        <p class="text-xs text-gray-400 mb-2">Critical thinking:</p>
-                        <ul class="text-xs text-gray-300 space-y-1">
-                            <li>• Academic writing</li>
-                            <li>• Algebra I</li>
-                            <li>• Scientific analysis</li>
-                            <li>• Advanced art</li>
-                        </ul>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fca5a5;">High School</h3>
+                        <div class="age-badge" style="color:#fca5a5;">Age 14</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Critical thinking</p>
+                            <ul>
+                                <li><span class="dot" style="background:#ef4444;"></span>Academic writing</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>Algebra I</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>Scientific analysis</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>Advanced art</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#ef4444,#ec4899);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
                     </div>
-                    <button onclick="openSubjectModal('age-14')" class="inline-block px-4 py-2 bg-gradient-to-r from-red-400 to-pink-500 rounded-lg hover:opacity-90 transition font-medium text-sm">
-                        View Curriculum
-                    </button>
                 </div>
 
-                <!-- Ages 15-18 Card -->
-                <div class="glass-morphism rounded-2xl p-6 card-hover text-center">
-                    <div class="w-14 h-14 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
-                        <i class="fas fa-trophy text-white text-xl"></i>
+                <div class="card card-yellow" onclick="openSubjectModal('ages-15-18')">
+                    <div class="card-progress" style="--progress-color:rgba(234,179,8,0.65);"></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#eab308,#f97316);">
+                        <i class="fas fa-trophy" style="font-size:19px;"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-yellow-300">GED/SAT Prep</h3>
-                    <p class="text-gray-300 mb-4 text-sm">Ages 15-18</p>
-                    <div class="bg-white/5 rounded-xl p-3 border border-white/10 mb-4">
-                        <p class="text-xs text-gray-400 mb-2">Test preparation:</p>
-                        <ul class="text-xs text-gray-300 space-y-1">
-                            <li>• SAT/ACT strategies</li>
-                            <li>• GED preparation</li>
-                            <li>• College readiness</li>
-                            <li>• Career planning</li>
-                        </ul>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fde047;">GED/SAT Prep</h3>
+                        <div class="age-badge" style="color:#fde047;">Ages 15–18</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Test preparation</p>
+                            <ul>
+                                <li><span class="dot" style="background:#eab308;"></span>SAT/ACT strategies</li>
+                                <li><span class="dot" style="background:#eab308;"></span>GED preparation</li>
+                                <li><span class="dot" style="background:#eab308;"></span>College readiness</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Career planning</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#eab308,#f97316);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
                     </div>
-                    <button onclick="openSubjectModal('ages-15-18')" class="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg hover:opacity-90 transition font-medium text-sm">
-                        View Curriculum
-                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="mt-20">
-            <h3 class="text-3xl font-bold text-center mb-12">Platform Features</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-morphism rounded-xl p-6 text-center">
-                    <i class="fas fa-calendar-alt text-2xl text-indigo-400 mb-4"></i>
-                    <h4 class="font-semibold mb-2">Monthly Themes</h4>
-                    <p class="text-sm text-gray-400">Structured September-June curriculum</p>
+        <!-- Features -->
+        <section class="reveal">
+            <div style="text-align:center;margin-bottom:34px;">
+                <p class="section-label">What's included</p>
+                <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.025em;">Platform Features</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;">
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:rgba(99,102,241,0.14);">
+                        <i class="fas fa-calendar-alt" style="color:#818cf8;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Monthly Themes</div>
+                        <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">Sep–Jun structure</div>
+                    </div>
                 </div>
-                <div class="glass-morphism rounded-xl p-6 text-center">
-                    <i class="fas fa-tools text-2xl text-green-400 mb-4"></i>
-                    <h4 class="font-semibold mb-2">Low-Budget Projects</h4>
-                    <p class="text-sm text-gray-400">Accessible materials & resources</p>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:rgba(16,185,129,0.14);">
+                        <i class="fas fa-tools" style="color:#34d399;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Low-Budget Projects</div>
+                        <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">Accessible materials</div>
+                    </div>
                 </div>
-                <div class="glass-morphism rounded-xl p-6 text-center">
-                    <i class="fas fa-palette text-2xl text-purple-400 mb-4"></i>
-                    <h4 class="font-semibold mb-2">Interactive Design</h4>
-                    <p class="text-sm text-gray-400">Modern, engaging interface</p>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:rgba(168,85,247,0.14);">
+                        <i class="fas fa-palette" style="color:#c084fc;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Interactive Design</div>
+                        <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">Modern interface</div>
+                    </div>
                 </div>
-                <div class="glass-morphism rounded-xl p-6 text-center">
-                    <i class="fas fa-mobile-alt text-2xl text-yellow-400 mb-4"></i>
-                    <h4 class="font-semibold mb-2">Responsive</h4>
-                    <p class="text-sm text-gray-400">Works on all devices</p>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:rgba(234,179,8,0.14);">
+                        <i class="fas fa-mobile-alt" style="color:#fde047;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Responsive</div>
+                        <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">All devices</div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Subject Selection Modal -->
-    <div id="subjectModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="glass-morphism rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold">Choose a Subject</h3>
-                    <button onclick="closeSubjectModal()" class="p-2 rounded-lg hover:bg-white/10 transition">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
+    <footer style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,0.055);padding:22px 20px;text-align:center;">
+        <p style="font-size:12.5px;color:rgba(255,255,255,0.22);">Hi Luke!!! or anyone else! Glad you found this!!!</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="subjectModal" class="modal-overlay" onclick="handleOverlayClick(event)">
+        <div class="modal-box">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
+                <div>
+                    <p style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:5px;">Select a subject</p>
+                    <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.025em;" id="modalTitle">Choose a Subject</h3>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <button onclick="goToSubject('math')" class="glass-morphism rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                        <i class="fas fa-calculator text-3xl text-blue-400 mb-3"></i>
-                        <h4 class="text-lg font-semibold mb-2">Mathematics</h4>
-                        <p class="text-sm text-gray-400">Numbers, algebra, geometry, and problem-solving</p>
-                    </button>
-                    
-                    <button onclick="goToSubject('english')" class="glass-morphism rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                        <i class="fas fa-book text-3xl text-green-400 mb-3"></i>
-                        <h4 class="text-lg font-semibold mb-2">English</h4>
-                        <p class="text-sm text-gray-400">Reading, writing, grammar, and literature</p>
-                    </button>
-                    
-                    <button onclick="goToSubject('science')" class="glass-morphism rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                        <i class="fas fa-flask text-3xl text-purple-400 mb-3"></i>
-                        <h4 class="text-lg font-semibold mb-2">Science</h4>
-                        <p class="text-sm text-gray-400">Biology, chemistry, physics, and experiments</p>
-                    </button>
-                    
-                    <button onclick="goToSubject('art')" class="glass-morphism rounded-xl p-6 text-center hover:scale-105 transition-transform">
-                        <i class="fas fa-palette text-3xl text-pink-400 mb-3"></i>
-                        <h4 class="text-lg font-semibold mb-2">Art & PE</h4>
-                        <p class="text-sm text-gray-400">Creative arts, music, and physical education</p>
-                    </button>
-                </div>
-                
-                <div class="text-center">
-                    <button onclick="closeSubjectModal()" class="px-6 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition">
-                        Cancel
-                    </button>
-                </div>
+                <button onclick="closeSubjectModal()" style="width:34px;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.55);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.09)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;">
+                <button class="subject-btn" onclick="goToSubject('math')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-calculator" style="color:#60a5fa;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">Mathematics</div>
+                    <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">Numbers, algebra, geometry</div>
+                </button>
+                <button class="subject-btn" onclick="goToSubject('english')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-book" style="color:#34d399;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">English</div>
+                    <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">Reading, writing, grammar</div>
+                </button>
+                <button class="subject-btn" onclick="goToSubject('science')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-flask" style="color:#c084fc;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">Science</div>
+                    <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">Biology, chemistry, physics</div>
+                </button>
+                <button class="subject-btn" onclick="goToSubject('art')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-palette" style="color:#f472b6;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">Art & PE</div>
+                    <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">Creative arts, music, PE</div>
+                </button>
+            </div>
+            <button onclick="closeSubjectModal()" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.075);background:rgba(255,255,255,0.035);color:rgba(255,255,255,0.4);cursor:pointer;font-size:13px;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.075)'" onmouseout="this.style.background='rgba(255,255,255,0.035)'">
+                Cancel
+            </button>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="glass-morphism mt-20 px-4 py-8">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="text-sm text-gray-400">Hi Luke!!! or anyone else! Glad you found this!!!</p>
-        </div>
-    </footer>
-
     <script>
-        let isDarkMode = true;
-        let currentProgram = '';
-
-        // Toggle dark mode
-        function toggleDarkMode() {
-            isDarkMode = !isDarkMode;
-            const body = document.body;
-            const icon = document.getElementById('themeIcon');
-            
-            if (isDarkMode) {
-                body.classList.remove('light');
-                body.classList.add('dark');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            } else {
-                body.classList.remove('dark');
-                body.classList.add('light');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
+        const starsEl = document.getElementById('stars');
+        for (let i = 0; i < 90; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            s.style.left = Math.random() * 100 + '%';
+            s.style.top = Math.random() * 100 + '%';
+            s.style.setProperty('--dur', (2.5 + Math.random() * 4) + 's');
+            s.style.setProperty('--delay', (Math.random() * 6) + 's');
+            if (Math.random() > 0.7) { s.style.width = '3px'; s.style.height = '3px'; }
+            starsEl.appendChild(s);
         }
 
-        // Open subject selection modal
-        function openSubjectModal(program) {
-            currentProgram = program;
-            const modal = document.getElementById('subjectModal');
-            modal.classList.remove('hidden');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 90);
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        let isDark = true;
+        function toggleDarkMode() {
+            isDark = !isDark;
+            document.getElementById('themeIcon').className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+            document.body.style.background = isDark ? '#04040e' : 'linear-gradient(135deg,#667eea,#764ba2)';
+        }
+
+        let currentProgram = '';
+        const labels = {
+            'ages-5-7': 'Early Elementary — Ages 5–7',
+            'age-8': 'Grade 3 — Age 8',
+            'age-9': 'Grade 4 — Age 9',
+            'age-10': 'Grade 5 — Age 10',
+            'ages-11-12': 'Middle School — Ages 11–12',
+            'age-14': 'High School — Age 14',
+            'ages-15-18': 'GED/SAT Prep — Ages 15–18'
+        };
+
+        function openSubjectModal(p) {
+            currentProgram = p;
+            document.getElementById('modalTitle').textContent = labels[p] || 'Choose a Subject';
+            document.getElementById('subjectModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
-
-        // Close subject selection modal
         function closeSubjectModal() {
-            const modal = document.getElementById('subjectModal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
+            document.getElementById('subjectModal').classList.remove('open');
+            document.body.style.overflow = '';
             currentProgram = '';
         }
-
-        // Navigate to subject-specific curriculum
-        function goToSubject(subject) {
-            let url = '';
-            
-            // Map programs to their subject-specific curriculum files
-            switch(currentProgram) {
-                case 'ages-5-7':
-                    url = 'ages-5-7-' + subject + '.html';
-                    break;
-                case 'age-8':
-                    url = 'age-8-' + subject + '.html';
-                    break;
-                case 'age-9':
-                    url = 'age-9-' + subject + '.html';
-                    break;
-                case 'age-10':
-                    url = 'age-10-' + subject + '.html';
-                    break;
-                case 'ages-11-12':
-                    url = 'ages-11-12-' + subject + '.html';
-                    break;
-                case 'age-14':
-                    url = 'age-14-' + subject + '.html';
-                    break;
-                case 'ages-15-18':
-                    url = 'ages-15-18-' + subject + '.html';
-                    break;
-                default:
-                    return;
-            }
-            
-            // Navigate to the subject-specific curriculum
-            window.location.href = url;
+        function handleOverlayClick(e) {
+            if (e.target === document.getElementById('subjectModal')) closeSubjectModal();
         }
-
-        // Close modal when clicking outside
-        document.getElementById('subjectModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeSubjectModal();
-            }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeSubjectModal();
-            }
-        });
+        function goToSubject(subject) {
+            if (!currentProgram) return;
+            window.location.href = currentProgram + '-' + subject + '.html';
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSubjectModal(); });
     </script>
 </body>
 </html>
