@@ -42,10 +42,39 @@
 
         header {
             position: sticky; top: 0; z-index: 50;
-            background: rgba(4, 4, 14, 0.85);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            background: rgba(4, 4, 14, 0.82);
+            backdrop-filter: blur(28px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
         }
+        .nav-link {
+            font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.45);
+            text-decoration: none; padding: 6px 12px; border-radius: 8px;
+            transition: color 0.2s, background 0.2s; cursor: pointer;
+        }
+        .nav-link:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.06); }
+        .nav-cta {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 8px 18px; border-radius: 10px;
+            background: linear-gradient(135deg, rgba(129,140,248,0.2), rgba(192,132,252,0.2));
+            border: 1px solid rgba(129,140,248,0.3);
+            font-size: 13px; font-weight: 600; color: #c4b5fd;
+            cursor: pointer; transition: all 0.2s;
+            text-decoration: none;
+        }
+        .nav-cta:hover {
+            background: linear-gradient(135deg, rgba(129,140,248,0.32), rgba(192,132,252,0.32));
+            border-color: rgba(129,140,248,0.5);
+            color: #e0d7ff;
+        }
+        .logo-glow {
+            position: absolute; inset: -4px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .logo-wrap:hover .logo-glow { opacity: 0.5; }
 
         .card {
             background: rgba(255,255,255,0.035);
@@ -242,16 +271,38 @@
 
     <!-- Header -->
     <header>
-        <div style="max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;">
-            <div style="display:flex;align-items:center;gap:10px;">
-                <div style="width:34px;height:34px;background:linear-gradient(135deg,#818cf8,#c084fc);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                    <i class="fas fa-graduation-cap" style="font-size:14px;"></i>
+        <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:60px;position:relative;z-index:1;">
+
+            <!-- Logo -->
+            <div style="display:flex;align-items:center;gap:10px;cursor:pointer;" class="logo-wrap">
+                <div style="position:relative;flex-shrink:0;">
+                    <div class="logo-glow"></div>
+                    <div style="position:relative;width:34px;height:34px;background:linear-gradient(135deg,#818cf8,#c084fc);border-radius:10px;display:flex;align-items:center;justify-content:center;z-index:1;">
+                        <i class="fas fa-graduation-cap" style="font-size:14px;"></i>
+                    </div>
                 </div>
-                <span style="font-weight:700;font-size:16px;letter-spacing:-0.025em;">Curriculum Hub</span>
+                <div>
+                    <div style="font-weight:700;font-size:15px;letter-spacing:-0.025em;line-height:1.2;">Curriculum Hub</div>
+                    <div style="font-size:10px;color:rgba(255,255,255,0.3);font-weight:500;letter-spacing:0.04em;line-height:1.2;">Educational Pathways</div>
+                </div>
             </div>
-            <button onclick="toggleDarkMode()" style="padding:7px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.6);font-size:13px;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
-                <i class="fas fa-moon" id="themeIcon"></i>
-            </button>
+
+            <!-- Nav links (center) -->
+            <nav style="display:flex;align-items:center;gap:2px;">
+                <a class="nav-link" onclick="document.querySelector('section').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                <a class="nav-link" onclick="document.querySelectorAll('section')[2].scrollIntoView({behavior:'smooth'})">Features</a>
+                <a class="nav-link">About</a>
+            </nav>
+
+            <!-- Right side -->
+            <div style="display:flex;align-items:center;gap:10px;">
+                <button onclick="toggleDarkMode()" style="width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.09)';this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.color='rgba(255,255,255,0.5)'">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <a class="nav-cta" onclick="document.querySelectorAll('.card')[0].scrollIntoView({behavior:'smooth'})">
+                    Start Learning <i class="fas fa-arrow-right" style="font-size:11px;"></i>
+                </a>
+            </div>
         </div>
     </header>
 
