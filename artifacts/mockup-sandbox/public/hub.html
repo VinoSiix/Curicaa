@@ -67,27 +67,19 @@
         }
         .card:hover {
             transform: translateY(-7px) scale(1.015);
-            border-color: rgba(255,255,255,0.14);
+            border-color: var(--ring-color, rgba(255,255,255,0.2));
             background: rgba(255,255,255,0.055);
+            box-shadow: 0 0 0 1px var(--ring-color, rgba(255,255,255,0.15)), 0 0 28px 0 var(--ring-glow, rgba(129,140,248,0.2)), 0 16px 40px rgba(0,0,0,0.4);
         }
         .card:hover::before { opacity: 1; }
-        .card:hover .card-progress { width: 100%; }
 
-        .card-purple { --card-glow: radial-gradient(ellipse at top, rgba(167,139,250,0.1) 0%, transparent 65%); }
-        .card-blue   { --card-glow: radial-gradient(ellipse at top, rgba(96,165,250,0.1) 0%, transparent 65%); }
-        .card-green  { --card-glow: radial-gradient(ellipse at top, rgba(52,211,153,0.1) 0%, transparent 65%); }
-        .card-orange { --card-glow: radial-gradient(ellipse at top, rgba(251,146,60,0.1) 0%, transparent 65%); }
-        .card-indigo { --card-glow: radial-gradient(ellipse at top, rgba(129,140,248,0.1) 0%, transparent 65%); }
-        .card-red    { --card-glow: radial-gradient(ellipse at top, rgba(248,113,113,0.1) 0%, transparent 65%); }
-        .card-yellow { --card-glow: radial-gradient(ellipse at top, rgba(250,204,21,0.1) 0%, transparent 65%); }
-
-        .card-progress {
-            position: absolute; bottom: 0; left: 0;
-            height: 2px;
-            background: var(--progress-color, rgba(129,140,248,0.6));
-            width: 0;
-            transition: width 0.45s cubic-bezier(.22,.68,0,1.2);
-        }
+        .card-purple { --card-glow: radial-gradient(ellipse at top, rgba(167,139,250,0.12) 0%, transparent 65%); --ring-color: rgba(168,85,247,0.55); --ring-glow: rgba(168,85,247,0.22); }
+        .card-blue   { --card-glow: radial-gradient(ellipse at top, rgba(96,165,250,0.12) 0%, transparent 65%);  --ring-color: rgba(59,130,246,0.55);  --ring-glow: rgba(59,130,246,0.22); }
+        .card-green  { --card-glow: radial-gradient(ellipse at top, rgba(52,211,153,0.12) 0%, transparent 65%);  --ring-color: rgba(16,185,129,0.55);  --ring-glow: rgba(16,185,129,0.22); }
+        .card-orange { --card-glow: radial-gradient(ellipse at top, rgba(251,146,60,0.12) 0%, transparent 65%);  --ring-color: rgba(249,115,22,0.55);  --ring-glow: rgba(249,115,22,0.22); }
+        .card-indigo { --card-glow: radial-gradient(ellipse at top, rgba(129,140,248,0.12) 0%, transparent 65%); --ring-color: rgba(99,102,241,0.55);  --ring-glow: rgba(99,102,241,0.22); }
+        .card-red    { --card-glow: radial-gradient(ellipse at top, rgba(248,113,113,0.12) 0%, transparent 65%); --ring-color: rgba(239,68,68,0.55);   --ring-glow: rgba(239,68,68,0.22); }
+        .card-yellow { --card-glow: radial-gradient(ellipse at top, rgba(250,204,21,0.12) 0%, transparent 65%);  --ring-color: rgba(234,179,8,0.55);   --ring-glow: rgba(234,179,8,0.22); }
 
         .icon-ring {
             width: 52px; height: 52px; border-radius: 15px;
@@ -240,7 +232,6 @@
             <!-- Row 1: 4 cards -->
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;" class="reveal">
                 <div class="card card-purple" onclick="openSubjectModal('ages-5-7')">
-                    <div class="card-progress" style="--progress-color:rgba(168,85,247,0.65);"></div>
                     <div class="icon-ring" style="background:linear-gradient(135deg,#a855f7,#ec4899);">
                         <i class="fas fa-child" style="font-size:19px;"></i>
                     </div>
@@ -263,7 +254,6 @@
                 </div>
 
                 <div class="card card-blue" onclick="openSubjectModal('age-8')">
-                    <div class="card-progress" style="--progress-color:rgba(59,130,246,0.65);"></div>
                     <div class="icon-ring" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);">
                         <i class="fas fa-star" style="font-size:19px;"></i>
                     </div>
@@ -286,7 +276,6 @@
                 </div>
 
                 <div class="card card-green" onclick="openSubjectModal('age-9')">
-                    <div class="card-progress" style="--progress-color:rgba(16,185,129,0.65);"></div>
                     <div class="icon-ring" style="background:linear-gradient(135deg,#10b981,#34d399);">
                         <i class="fas fa-book" style="font-size:19px;"></i>
                     </div>
@@ -309,7 +298,6 @@
                 </div>
 
                 <div class="card card-orange" onclick="openSubjectModal('age-10')">
-                    <div class="card-progress" style="--progress-color:rgba(249,115,22,0.65);"></div>
                     <div class="icon-ring" style="background:linear-gradient(135deg,#f97316,#ef4444);">
                         <i class="fas fa-rocket" style="font-size:19px;"></i>
                     </div>
@@ -335,7 +323,6 @@
             <!-- Row 2: 3 cards centered -->
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:810px;margin:0 auto;" class="reveal">
                 <div class="card card-indigo" onclick="openSubjectModal('ages-11-12')">
-                    <div class="card-progress" style="--progress-color:rgba(99,102,241,0.65);"></div>
                     <div class="icon-ring" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">
                         <i class="fas fa-brain" style="font-size:19px;"></i>
                     </div>
@@ -358,7 +345,6 @@
                 </div>
 
                 <div class="card card-red" onclick="openSubjectModal('age-14')">
-                    <div class="card-progress" style="--progress-color:rgba(239,68,68,0.65);"></div>
                     <div class="icon-ring" style="background:linear-gradient(135deg,#ef4444,#ec4899);">
                         <i class="fas fa-graduation-cap" style="font-size:19px;"></i>
                     </div>
@@ -381,7 +367,6 @@
                 </div>
 
                 <div class="card card-yellow" onclick="openSubjectModal('ages-15-18')">
-                    <div class="card-progress" style="--progress-color:rgba(234,179,8,0.65);"></div>
                     <div class="icon-ring" style="background:linear-gradient(135deg,#eab308,#f97316);">
                         <i class="fas fa-trophy" style="font-size:19px;"></i>
                     </div>
