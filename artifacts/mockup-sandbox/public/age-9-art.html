@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Advanced Creative Expression & Athletics — Grade 4 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#ec4899;--a2:#f97316;--al:#f9a8d4;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(236,72,153,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(236,72,153,0.12);border:1px solid rgba(236,72,153,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(236,72,153,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card:hover{background:rgba(255,255,255,0.92);}
+body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
+body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .month-tab:hover{background:rgba(255,255,255,0.9);color:rgba(13,13,26,0.85);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Grade 4</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Age 9</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-palette" style="margin-right:5px;"></i>Art & PE</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Age 9</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grade 4 · Age 9</p>
+    <h2 class="page-title">Advanced Creative Expression & Athletics</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Developing sophisticated artistic techniques, advanced physical skills, strategic thinking, and creative leadership through complex projects and competitive activities.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-paint-brush" style="color:#f9a8d4;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Advanced Visual Arts</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Technique, composition, critique</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-running" style="color:#fdba74;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Athletic Excellence</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Strategy, leadership, fitness</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-music" style="color:#f9a8d4;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Performance Arts</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Composition, directing, production</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-users" style="color:#fdba74;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Creative Leadership</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Team direction, mentoring</div></div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div class="glass" style="padding:28px;">
+      <div style="margin-bottom:20px;"><p class="section-label">Daily Structure</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-clock" style="color:var(--al);margin-right:10px;"></i>Weekly Schedule</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-sun" style="color:#fbbf24;"></i><span style="font-weight:600;font-size:13px;">9:00–10:30</span></div><p style="font-size:13px;margin-bottom:2px;">Advanced Visual Arts</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Techniques, composition</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-running" style="color:#fb923c;"></i><span style="font-weight:600;font-size:13px;">10:30–12:00</span></div><p style="font-size:13px;margin-bottom:2px;">Advanced PE</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Team sports, strategy</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-apple-alt" style="color:#34d399;"></i><span style="font-weight:600;font-size:13px;">12:00–13:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lunch & Creative</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Art critique, planning</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-music" style="color:#a78bfa;"></i><span style="font-weight:600;font-size:13px;">13:00–14:30</span></div><p style="font-size:13px;margin-bottom:2px;">Music & Performance</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Composition, directing</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-theater-masks" style="color:#f472b6;"></i><span style="font-weight:600;font-size:13px;">14:30–15:30</span></div><p style="font-size:13px;margin-bottom:2px;">Advanced Drama</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Script, directing, production</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-camera" style="color:#60a5fa;"></i><span style="font-weight:600;font-size:13px;">15:30–16:30</span></div><p style="font-size:13px;margin-bottom:2px;">Digital Arts & Media</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Design, photography, video</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-trophy" style="color:#f87171;"></i><span style="font-weight:600;font-size:13px;">16:30–17:00</span></div><p style="font-size:13px;margin-bottom:2px;">Competitive Sports</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Tournaments, leadership</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-home" style="color:#f9a8d4;"></i><span style="font-weight:600;font-size:13px;">17:00–17:30</span></div><p style="font-size:13px;margin-bottom:2px;">Portfolio & Reflection</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Documentation, self-assessment</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Creative Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grade 4 Art & PE · Age 9</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{icon:'fa-palette',color:'from-yellow-400 to-orange-500',focus:'Advanced Art Techniques',skills:['Advanced drawing','Painting styles','Art critique','Portfolio development'],weeks:['Advanced drawing techniques: perspective, shading, and realistic rendering','Painting styles exploration: impressionism, realism, and abstract expression','Art critique and analysis with constructive feedback and interpretation','Portfolio development with piece selection and presentation techniques'],project:'Create a professional art portfolio with artist statement and technique demonstrations',materials:['Professional art supplies','Portfolio cases','Critique worksheets','Artist statement guides']},
+'October':{icon:'fa-futbol',color:'from-orange-400 to-red-500',focus:'Team Sports Strategy',skills:['Advanced basketball','Soccer tactics','Team leadership','Sports psychology'],weeks:['Advanced basketball skills: shooting techniques, defensive strategies, and court positioning','Soccer tactics: formations, set plays, and game strategy development','Team leadership and captaincy with communication and motivation skills','Sports psychology: focus, visualization, and performance under pressure'],project:'Organize and lead a team sports tournament with strategy development and leadership',materials:['Sports equipment','Strategy boards','Leadership materials','Psychology resources']},
+'November':{icon:'fa-film',color:'from-purple-400 to-pink-500',focus:'Digital Media Production',skills:['Video production','Digital photography','Editing','Media literacy'],weeks:['Video production techniques: camera work, lighting, and sound recording','Digital photography composition and editing with professional software','Video editing and post-production with transitions, effects, and sound design','Media literacy and critical analysis of digital content and messaging'],project:'Produce a short documentary film with photography and editing integration',materials:['Cameras','Editing software','Lighting equipment','Sound recording gear']},
+'December':{icon:'fa-snowflake',color:'from-cyan-400 to-blue-500',focus:'Winter Sports & Crafts',skills:['Advanced gymnastics','Dance choreography','Winter crafts','Performance design'],weeks:['Advanced gymnastics: tumbling sequences, balance beam routines, and floor exercises','Dance choreography with original routines and music selection','Winter craft creation with advanced techniques and 3D design','Performance design with staging, lighting, and costume coordination'],project:'Create and perform a winter-themed show with gymnastics, dance, and craft elements',materials:['Gymnastics equipment','Dance studio','Craft supplies','Performance staging']},
+'January':{icon:'fa-music',color:'from-indigo-400 to-purple-500',focus:'Music Composition & Performance',skills:['Music theory','Composition','Instrument performance','Conducting'],weeks:['Advanced music theory: harmony, chord progressions, and musical analysis','Music composition with original pieces in various styles and genres','Instrument performance mastery with advanced techniques and repertoire','Conducting and ensemble leadership with baton technique and musical direction'],project:'Compose and conduct original musical performance with ensemble coordination',materials:['Musical instruments','Composition software','Conducting batons','Performance space']},
+'February':{icon:'fa-theater-masks',color:'from-red-400 to-pink-500',focus:'Theatrical Production',skills:['Script writing','Directing','Acting techniques','Stage management'],weeks:['Script writing with character development, dialogue, and plot construction','Directing techniques with blocking, pacing, and actor guidance','Advanced acting methods: method acting, character study, and emotional expression','Stage management and production coordination with technical elements'],project:'Write, direct, and produce a full theatrical performance with ensemble cast',materials:['Script materials','Directing guides','Stage equipment','Production supplies']},
+'March':{icon:'fa-running',color:'from-green-400 to-emerald-500',focus:'Track & Field Excellence',skills:['Advanced running','Field events','Training science','Competition strategy'],weeks:['Advanced running techniques: sprinting form, endurance pacing, and relay coordination','Field events mastery: long jump, high jump, and throwing events','Training science with nutrition, injury prevention, and performance optimization','Competition strategy with mental preparation and peak performance timing'],project:'Train for and compete in a track and field meet with personal best achievements',materials:['Track equipment','Training gear','Performance monitors','Competition materials']},
+'April':{icon:'fa-camera',color:'from-blue-400 to-indigo-500',focus:'Photography & Visual Storytelling',skills:['Advanced photography','Visual storytelling','Photo editing','Exhibition curation'],weeks:['Advanced photography techniques: composition, lighting, and subject matter','Visual storytelling through photo essays and narrative sequences','Professional photo editing with software and darkroom techniques','Exhibition curation and presentation with gallery design and artist statements'],project:'Create and curate a photography exhibition with visual storytelling narrative',materials:['Cameras','Editing software','Exhibition materials','Gallery supplies']},
+'May':{icon:'fa-trophy',color:'from-amber-400 to-orange-500',focus:'Competitive Arts & Sports',skills:['Art competitions','Sports tournaments','Performance evaluation','Sportsmanship'],weeks:['Art competition preparation with portfolio development and presentation skills','Sports tournament participation with advanced strategy and teamwork','Performance evaluation and judging criteria with self-assessment techniques','Advanced sportsmanship and leadership in competitive environments'],project:'Participate in regional art and sports competitions with excellence and sportsmanship',materials:['Competition materials','Portfolio supplies','Sports equipment','Leadership resources']},
+'June':{icon:'fa-graduation-cap',color:'from-teal-400 to-green-500',focus:'Creative Showcase & Achievement',skills:['Portfolio presentation','Performance showcase','Achievement documentation','Future planning'],weeks:['Professional portfolio presentation with artist talks and gallery exhibition','Performance showcase with original works and collaborative projects','Achievement documentation with resumes, artist statements, and career planning','Future creative pathway planning with mentorship and goal setting'],project:'Present comprehensive creative and athletic portfolio with future pathway planning',materials:['Portfolio materials','Performance supplies','Documentation tools','Planning resources']}
+};
+
+let currentMonth='September';
+let isDark=true;
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for activities</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-palette" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Studio projects, workshops, and creative challenges to develop skills and personal expression.</p></div>
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-running" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Physical training sessions, drills, and team activities to build athletic ability and teamwork.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:#a78bfa;margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Home practice: creative journaling, portfolio review, or independent physical training.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+
+init();
+</script>
+</body>
+</html>

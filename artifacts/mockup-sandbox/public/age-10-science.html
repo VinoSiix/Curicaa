@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Advanced Scientific Investigation — Grade 5 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#a855f7;--a2:#ec4899;--al:#d8b4fe;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(168,85,247,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(236,72,153,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(168,85,247,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card:hover{background:rgba(255,255,255,0.92);}
+body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
+body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .month-tab:hover{background:rgba(255,255,255,0.9);color:rgba(13,13,26,0.85);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Grade 5</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Age 10</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-flask" style="margin-right:5px;"></i>Science</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Age 10</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grade 5 · Age 10</p>
+    <h2 class="page-title">Advanced Scientific Investigation</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Tackling advanced genetics, chemistry, physics, ecology, astrophysics, microbiology, and engineering through rigorous inquiry and real-world research.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-dna" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Advanced Biology</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Genetics, evolution, ecology</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-atom" style="color:#f472b6;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Advanced Chemistry & Physics</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Bonding, thermodynamics</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-satellite" style="color:#d8b4fe;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Astronomy & Earth</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Astrophysics, geology, ocean</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-robot" style="color:#fbbf24;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Engineering & Innovation</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Robotics, materials, design</div></div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div class="glass" style="padding:28px;">
+      <div style="margin-bottom:20px;"><p class="section-label">Daily Structure</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-clock" style="color:var(--al);margin-right:10px;"></i>Weekly Schedule</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-sun" style="color:#fbbf24;"></i><span style="font-weight:600;font-size:13px;">9:00–10:30</span></div><p style="font-size:13px;margin-bottom:2px;">Scientific Investigation</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Research design, inquiry</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-flask" style="color:#a78bfa;"></i><span style="font-weight:600;font-size:13px;">10:30–12:00</span></div><p style="font-size:13px;margin-bottom:2px;">Advanced Lab Work</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Complex experiments</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-apple-alt" style="color:#34d399;"></i><span style="font-weight:600;font-size:13px;">12:00–13:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lunch & Science</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Research sharing</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-chart-line" style="color:#60a5fa;"></i><span style="font-weight:600;font-size:13px;">13:00–14:30</span></div><p style="font-size:13px;margin-bottom:2px;">Data & Analysis</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Statistics, modelling</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-dna" style="color:#f472b6;"></i><span style="font-weight:600;font-size:13px;">14:30–15:30</span></div><p style="font-size:13px;margin-bottom:2px;">Life Science</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Genetics, biotech, ecology</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-globe" style="color:#22d3ee;"></i><span style="font-weight:600;font-size:13px;">15:30–16:30</span></div><p style="font-size:13px;margin-bottom:2px;">Earth & Space Science</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Geology, astrophysics</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-robot" style="color:#fbbf24;"></i><span style="font-weight:600;font-size:13px;">16:30–17:00</span></div><p style="font-size:13px;margin-bottom:2px;">Engineering & Design</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Robotics, prototyping</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-home" style="color:#d8b4fe;"></i><span style="font-weight:600;font-size:13px;">17:00–17:30</span></div><p style="font-size:13px;margin-bottom:2px;">Science Journal</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Research documentation</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Science Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grade 5 Science · Age 10</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{icon:'fa-dna',color:'from-green-400 to-emerald-500',focus:'Advanced Genetics & Evolution',skills:['DNA replication','Genetic engineering','Evolutionary theory','Population genetics'],weeks:['DNA replication and protein synthesis with transcription and translation','Genetic engineering basics: GMOs, gene editing, and biotechnology applications','Evolutionary theory: natural selection, adaptation, and speciation','Population genetics: gene flow, genetic drift, and allele frequencies'],project:'Design a genetic engineering proposal with ethical considerations and applications',materials:['DNA models','Genetic engineering kits','Evolution charts','Population genetics software']},
+'October':{icon:'fa-atom',color:'from-orange-400 to-red-500',focus:'Advanced Chemistry',skills:['Chemical bonding','Reaction kinetics','Acid-base chemistry','Organic chemistry basics'],weeks:['Advanced chemical bonding: covalent, ionic, and metallic bonds with molecular geometry','Reaction kinetics: reaction rates, catalysts, and equilibrium concepts','Acid-base chemistry: pH calculations, titrations, and buffer systems','Organic chemistry basics: hydrocarbons, functional groups, and polymer chemistry'],project:'Conduct advanced chemical experiments with kinetic studies and equilibrium analysis',materials:['Chemistry kits','pH meters','Titration equipment','Molecular model sets']},
+'November':{icon:'fa-bolt',color:'from-purple-400 to-pink-500',focus:'Advanced Physics',skills:['Electromagnetism','Thermodynamics','Wave mechanics','Quantum basics'],weeks:['Electromagnetism: electromagnetic induction, motors, and generators','Thermodynamics: heat transfer, entropy, and the laws of thermodynamics','Wave mechanics: sound waves, light waves, and the electromagnetic spectrum','Quantum physics basics: atomic orbitals, quantum numbers, and wave-particle duality'],project:'Build advanced physics demonstrations and analyse wave and electromagnetic phenomena',materials:['Physics equipment','Wave apparatus','Electromagnetic kits','Quantum demonstration materials']},
+'December':{icon:'fa-heartbeat',color:'from-cyan-400 to-blue-500',focus:'Human Physiology & Anatomy',skills:['Organ systems','Physiological processes','Medical technology','Health science'],weeks:['Advanced organ systems: endocrine, immune, and reproductive systems','Physiological processes: homeostasis, metabolism, and cellular respiration','Medical technology: diagnostic tools, imaging, and treatment methods','Health science: nutrition, exercise physiology, and disease prevention'],project:'Create a comprehensive human physiology model with interactive system demonstrations',materials:['Anatomy models','Physiology monitoring equipment','Medical technology demos','Health assessment tools']},
+'January':{icon:'fa-globe',color:'from-blue-400 to-indigo-500',focus:'Advanced Earth Science',skills:['Plate tectonics','Geological time','Mineralogy','Oceanography'],weeks:['Advanced plate tectonics: continental drift, sea-floor spreading, and hotspots','Geological time scale: radiometric dating, fossil record, and mass extinctions','Mineralogy and petrology: crystal structures, rock classification, and formation','Oceanography: ocean currents, marine ecosystems, and climate interactions'],project:'Conduct geological field research with rock analysis and oceanographic studies',materials:['Geological equipment','Rock samples','Oceanographic tools','Climate monitoring devices']},
+'February':{icon:'fa-leaf',color:'from-green-400 to-teal-500',focus:'Advanced Ecology & Environmental Science',skills:['Ecosystem dynamics','Conservation biology','Climate science','Sustainability'],weeks:['Ecosystem dynamics: energy flow, nutrient cycling, and ecological succession','Conservation biology: biodiversity, endangered species, and habitat restoration','Climate science: greenhouse effect, climate modelling, and mitigation strategies','Sustainability: renewable resources, waste management, and environmental policy'],project:'Design and implement a comprehensive environmental conservation project',materials:['Ecology monitoring equipment','Climate data tools','Conservation materials','Sustainability resources']},
+'March':{icon:'fa-satellite',color:'from-yellow-400 to-orange-500',focus:'Advanced Astronomy & Astrophysics',skills:['Stellar evolution','Galactic astronomy','Cosmology','Space exploration'],weeks:['Stellar evolution: star formation, main sequence, and stellar death','Galactic astronomy: galaxy classification, dark matter, and galactic dynamics','Cosmology: Big Bang theory, cosmic microwave background, and universal expansion','Space exploration: rocketry, satellites, and interplanetary missions'],project:'Design a space mission with astronomical research objectives and engineering requirements',materials:['Astronomical telescopes','Space mission design software','Stellar evolution charts','Rocketry materials']},
+'April':{icon:'fa-microscope',color:'from-indigo-400 to-purple-500',focus:'Microbiology & Biotechnology',skills:['Microbial life','Biotechnology applications','Disease mechanisms','Biomedical research'],weeks:['Microbial life: bacteria, viruses, fungi, and protists with laboratory techniques','Biotechnology applications: genetic engineering, fermentation, and bioprocessing','Disease mechanisms: pathogens, immune response, and epidemiology','Biomedical research: drug development, medical diagnostics, and biotechnology ethics'],project:'Conduct microbiological research with biotechnology applications and ethical analysis',materials:['Microscope equipment','Microbial cultures','Biotechnology kits','Biomedical research tools']},
+'May':{icon:'fa-robot',color:'from-red-400 to-pink-500',focus:'Engineering & Applied Science',skills:['Robotics','Materials science','Engineering design','Innovation'],weeks:['Robotics and automation: programming, sensors, and mechanical design','Materials science: properties, testing, and applications of advanced materials','Engineering design process: problem identification, prototyping, and testing','Innovation and entrepreneurship: product development and market analysis'],project:'Design and build an innovative engineering solution to a real-world problem',materials:['Robotics kits','Materials testing equipment','Engineering design software','Innovation tools']},
+'June':{icon:'fa-trophy',color:'from-amber-400 to-orange-500',focus:'Science Symposium & Research Showcase',skills:['Research presentation','Scientific communication','Peer review','Career exploration'],weeks:['Research presentation skills with scientific communication and data visualisation','Scientific writing and publication with peer review and revision processes','Science career exploration with professional pathways and educational requirements','Innovation showcase with original research and community impact assessment'],project:'Present original research at a science symposium with peer review and community engagement',materials:['Presentation software','Research posters','Peer review materials','Career exploration resources']}
+};
+
+let currentMonth='September';
+let isDark=true;
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for activities</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-flask" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Advanced lab experiments and investigations to deepen understanding of the week's scientific topic.</p></div>
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Data collection, statistical analysis, and scientific writing to build research skills.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:#a78bfa;margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Home extension: science journal, online simulations, or independent research tasks.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+
+init();
+</script>
+</body>
+</html>

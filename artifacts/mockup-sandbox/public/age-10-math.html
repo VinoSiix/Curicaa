@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pre-Algebra & Advanced Mathematics — Grade 5 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#3b82f6;--a2:#06b6d4;--al:#93c5fd;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(59,130,246,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card:hover{background:rgba(255,255,255,0.92);}
+body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
+body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .month-tab:hover{background:rgba(255,255,255,0.9);color:rgba(13,13,26,0.85);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Grade 5</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Age 10</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-calculator" style="margin-right:5px;"></i>Mathematics</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Age 10</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grade 5 · Age 10</p>
+    <h2 class="page-title">Pre-Algebra & Advanced Mathematics</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Mastering pre-algebra concepts, advanced operations, geometry, data analysis, and mathematical reasoning to prepare for middle school mathematics.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-superscript" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Pre-Algebra</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Variables, expressions, equations</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(6,182,212,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-percentage" style="color:#22d3ee;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Advanced Operations</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Complex fractions, decimals</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(99,102,241,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-shapes" style="color:#a5b4fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Advanced Geometry</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Coordinate plane, 3D shapes</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-chart-bar" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Data Analysis</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Statistics, probability</div></div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div class="glass" style="padding:28px;">
+      <div style="margin-bottom:20px;"><p class="section-label">Daily Structure</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-clock" style="color:var(--al);margin-right:10px;"></i>Weekly Schedule</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-sun" style="color:#fbbf24;"></i><span style="font-weight:600;font-size:13px;">9:00–10:30</span></div><p style="font-size:13px;margin-bottom:2px;">Pre-Algebra Concepts</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Variables, equations</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-divide" style="color:#fb923c;"></i><span style="font-weight:600;font-size:13px;">10:30–12:00</span></div><p style="font-size:13px;margin-bottom:2px;">Advanced Number Ops</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Fractions, decimals, %</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-apple-alt" style="color:#34d399;"></i><span style="font-weight:600;font-size:13px;">12:00–13:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lunch & Math Games</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Strategic thinking</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-shapes" style="color:#a78bfa;"></i><span style="font-weight:600;font-size:13px;">13:00–14:30</span></div><p style="font-size:13px;margin-bottom:2px;">Advanced Geometry</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Coordinate, transformations</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-chart-line" style="color:#f472b6;"></i><span style="font-weight:600;font-size:13px;">14:30–15:30</span></div><p style="font-size:13px;margin-bottom:2px;">Data & Statistics</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Graphing, probability</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-brain" style="color:#f87171;"></i><span style="font-weight:600;font-size:13px;">15:30–16:30</span></div><p style="font-size:13px;margin-bottom:2px;">Mathematical Reasoning</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Logic, proofs, problem solving</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-calculator" style="color:#818cf8;"></i><span style="font-weight:600;font-size:13px;">16:30–17:00</span></div><p style="font-size:13px;margin-bottom:2px;">Math Applications</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Real-world, STEM projects</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-home" style="color:#60a5fa;"></i><span style="font-weight:600;font-size:13px;">17:00–17:30</span></div><p style="font-size:13px;margin-bottom:2px;">Independent Practice</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Skill reinforcement</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Math Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grade 5 Mathematics · Age 10</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{icon:'fa-superscript',color:'from-blue-400 to-indigo-500',focus:'Introduction to Pre-Algebra',skills:['Variables & expressions','Order of operations','Properties','Simple equations'],weeks:['Variables and expressions with substitution and evaluation','Order of operations with complex expressions and grouping symbols','Mathematical properties: commutative, associative, distributive','Solving simple one-step equations with addition and subtraction'],project:'Create an expression evaluation guide with real-world variable applications',materials:['Variable tiles','Expression cards','Equation balances','Real-world scenario cards']},
+'October':{icon:'fa-percentage',color:'from-orange-400 to-red-500',focus:'Advanced Fractions & Decimals',skills:['Complex fractions','Decimal operations','Fraction-decimal conversion','Applications'],weeks:['Complex fraction operations with mixed numbers and unlike denominators','Advanced decimal operations with multiplication and division of decimals','Fraction-decimal-percentage conversions with equivalent representations','Real-world applications: measurement, money, and problem solving'],project:'Design a business plan using advanced fraction and decimal calculations',materials:['Fraction models','Decimal grids','Conversion charts','Business simulation materials']},
+'November':{icon:'fa-chart-line',color:'from-purple-400 to-pink-500',focus:'Ratios, Proportions & Percents',skills:['Ratio concepts','Proportion solving','Percentage applications','Rate problems'],weeks:['Ratio concepts and equivalent ratios with visual models and scaling','Proportion solving with cross-multiplication and real-world applications','Percentage applications: discounts, interest, tax, and tip calculations','Rate problems: unit rates, speed, distance, and time relationships'],project:'Create a comprehensive financial literacy project with percentage and rate calculations',materials:['Ratio materials','Proportion tools','Percentage calculators','Financial simulation kits']},
+'December':{icon:'fa-shapes',color:'from-green-400 to-emerald-500',focus:'Advanced Geometry & Measurement',skills:['Coordinate plane','Transformations','3D geometry','Advanced measurement'],weeks:['Coordinate plane: plotting points, graphing equations, and spatial reasoning','Geometric transformations: translations, rotations, reflections, and dilations','3D geometry: volume, surface area, and spatial visualization of solids','Advanced measurement: unit conversion, precision, and error analysis'],project:'Design a geometric city with coordinate mapping and 3D modeling',materials:['Coordinate grids','Transformation tools','3D shape models','Measurement instruments']},
+'January':{icon:'fa-calculator',color:'from-cyan-400 to-blue-500',focus:'Exponents & Roots',skills:['Exponent properties','Square roots','Scientific notation','Powers of 10'],weeks:['Exponent properties and operations with positive and negative exponents','Square roots and perfect squares with estimation and simplification','Scientific notation with large and small numbers and calculations','Powers of 10 and place value relationships with metric system connections'],project:'Create a scientific notation guide for astronomical and microscopic measurements',materials:['Exponent charts','Square root tiles','Scientific notation tools','Astronomical data']},
+'February':{icon:'fa-chart-bar',color:'from-red-400 to-pink-500',focus:'Functions & Graphing',skills:['Function concepts','Linear functions','Graphing','Function tables'],weeks:['Function concepts: domain, range, and function notation','Linear functions: slope, y-intercept, and equation forms','Graphing linear equations and inequalities on coordinate plane','Function tables and input-output relationships with real-world data'],project:'Analyse real-world data using functions and create predictive models',materials:['Function machines','Graphing tools','Data sets','Modelling software']},
+'March':{icon:'fa-chart-pie',color:'from-yellow-400 to-orange-500',focus:'Advanced Statistics & Probability',skills:['Data analysis','Graph interpretation','Probability theory','Statistical measures'],weeks:['Advanced data analysis with multiple data sets and comparative statistics','Complex graph interpretation: scatter plots, box plots, and histograms','Probability theory: independent events, compound events, and simulations','Statistical measures: mean, median, mode, range, and standard deviation'],project:'Conduct a comprehensive statistical study with probability predictions',materials:['Data collection tools','Statistical software','Probability materials','Graphing calculators']},
+'April':{icon:'fa-cube',color:'from-indigo-400 to-purple-500',focus:'3D Geometry & Spatial Reasoning',skills:['3D shapes','Volume calculation','Surface area','Spatial visualization'],weeks:['3D shape properties and classification with nets and cross-sections','Volume calculation for prisms, pyramids, cylinders, and cones','Surface area calculation with formula derivation and application','Spatial visualization and reasoning with 2D to 3D transformations'],project:'Design and construct 3D models with calculated volumes and surface areas',materials:['3D shape kits','Volume measurement tools','Surface area materials','Construction supplies']},
+'May':{icon:'fa-brain',color:'from-teal-400 to-green-500',focus:'Mathematical Reasoning & Proof',skills:['Logical reasoning','Proof techniques','Problem solving','Math communication'],weeks:['Logical reasoning and deductive thinking in mathematical contexts','Introduction to proof techniques with geometric and algebraic examples','Advanced problem-solving strategies with multi-step problems','Mathematical communication with clear explanations and justification'],project:'Create original mathematical proofs and problem-solving strategies',materials:['Logic puzzles','Proof templates','Problem-solving kits','Communication tools']},
+'June':{icon:'fa-trophy',color:'from-amber-400 to-orange-500',focus:'Pre-Algebra Review & Assessment',skills:['Comprehensive review','Assessment preparation','Middle school readiness','Achievement celebration'],weeks:['Comprehensive pre-algebra review with concept integration and application','Assessment preparation and test-taking strategies for success','Middle school mathematics readiness and transition planning','Math achievement celebration and portfolio presentation'],project:'Complete pre-algebra portfolio demonstrating mastery and readiness for middle school',materials:['Review materials','Assessment tools','Portfolio supplies','Celebration materials']}
+};
+
+let currentMonth='September';
+let isDark=true;
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for activities</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-calculator" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Hands-on activities, manipulatives, and practice games to reinforce the week's concepts.</p></div>
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-gamepad" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Math challenges and puzzles to build pre-algebra fluency and deepen understanding.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:#a78bfa;margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Home practice: apply concepts through real-world scenarios and independent challenges.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+
+init();
+</script>
+</body>
+</html>

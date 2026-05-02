@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Middle School - Science Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .dark .tab-active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 0 25px rgba(240, 147, 251, 0.6);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .skill-badge {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .skill-badge:nth-child(2) { animation-delay: 0.1s; }
+        .skill-badge:nth-child(3) { animation-delay: 0.2s; }
+        .skill-badge:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="hub.html" class="w-12 h-12 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-user-graduate text-white"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <a href="hub.html" class="text-xl md:text-2xl font-bold hover:text-teal-300 transition-colors">Middle School</a>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-lg font-semibold text-teal-300">Science</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full text-sm font-bold">Ages 11-12</span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">
+                Advanced Scientific Investigation & Research
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                Mastering complex scientific concepts, advanced laboratory techniques, research methodology, and critical analysis through in-depth study of physical, life, and earth sciences.
+            </p>
+        </section>
+
+        <!-- Weekly Schedule -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-clock mr-4 text-teal-400"></i>
+                Weekly Schedule (Ages 11-12)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-sun text-yellow-400 mr-2"></i>
+                        <span class="font-bold text-lg">9:00 - 10:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Advanced Laboratory Science</p>
+                    <p class="text-xs text-gray-400">Complex experiments, analysis</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-flask text-purple-400 mr-2"></i>
+                        <span class="font-bold text-lg">10:30 - 12:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Chemistry & Physics</p>
+                    <p class="text-xs text-gray-400">Advanced concepts, applications</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-apple-alt text-green-400 mr-2"></i>
+                        <span class="font-bold text-lg">12:00 - 13:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Lunch & Science Seminar</p>
+                    <p class="text-xs text-gray-400">Research presentations, discussion</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-microscope text-blue-400 mr-2"></i>
+                        <span class="font-bold text-lg">13:00 - 14:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Biology & Life Sciences</p>
+                    <p class="text-xs text-gray-400">Advanced biology, genetics</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-globe text-cyan-400 mr-2"></i>
+                        <span class="font-bold text-lg">14:30 - 15:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Earth & Environmental Science</p>
+                    <p class="text-xs text-gray-400">Advanced geology, ecology</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-satellite text-pink-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:30 - 16:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Astronomy & Space Science</p>
+                    <p class="text-xs text-gray-400">Advanced astronomy, cosmology</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-chart-line text-red-400 mr-2"></i>
+                        <span class="font-bold text-lg">16:30 - 17:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Data Analysis & Research</p>
+                    <p class="text-xs text-gray-400">Statistical analysis, reporting</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-home text-indigo-400 mr-2"></i>
+                        <span class="font-bold text-lg">17:00 - 17:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Science Journal & Research</p>
+                    <p class="text-xs text-gray-400">Lab reports, documentation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Science Skills Overview -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-atom mr-4 text-teal-400"></i>
+                Core Science Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-flask text-blue-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Advanced Laboratory</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Complex procedures</p>
+                    <p class="text-xs text-gray-400">Safety protocols, analysis</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chart-bar text-green-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Data Analysis</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Statistical methods</p>
+                    <p class="text-xs text-gray-400">Graphing, interpretation, trends</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-search text-purple-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Scientific Research</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Advanced inquiry</p>
+                    <p class="text-xs text-gray-400">Hypothesis testing, methodology</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-lightbulb text-yellow-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Critical Analysis</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Problem solving</p>
+                    <p class="text-xs text-gray-400">Evaluation, synthesis, innovation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Themes Navigation -->
+        <section class="mb-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calendar-alt mr-4 text-teal-400"></i>
+                Monthly Science Themes
+            </h3>
+            <div class="flex flex-wrap gap-3 mb-8" id="monthTabs">
+                <!-- Month tabs will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Month Content -->
+        <section id="monthContent" class="glass-morphism rounded-2xl p-8 card-hover">
+            <!-- Dynamic content will be loaded here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">© 2024 Middle School Science Curriculum. Building advanced scientific understanding through laboratory investigation, research methodology, and critical analysis.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Monthly science curriculum data for ages 11-12 (Middle School)
+        const curriculumData = {
+            'September': {
+                icon: 'fa-dna',
+                color: 'from-green-400 to-emerald-500',
+                focus: 'Advanced Genetics & Molecular Biology',
+                skills: ['DNA replication', 'Protein synthesis', 'Genetic engineering', 'Molecular techniques'],
+                weeks: [
+                    'Advanced DNA replication and repair mechanisms with molecular analysis',
+                    'Protein synthesis and genetic expression with transcription and translation',
+                    'Genetic engineering techniques: CRISPR, gene editing, and biotechnology applications',
+                    'Molecular biology laboratory techniques: PCR, electrophoresis, and DNA sequencing'
+                ],
+                project: 'Design and conduct genetic engineering experiment with molecular analysis and ethical considerations',
+                materials: ['DNA models', 'Genetic engineering kits', 'PCR equipment', 'Molecular analysis software']
+            },
+            'October': {
+                icon: 'fa-atom',
+                color: 'from-orange-400 to-red-500',
+                focus: 'Advanced Chemistry & Chemical Reactions',
+                skills: ['Chemical bonding', 'Reaction kinetics', 'Thermodynamics', 'Organic chemistry'],
+                weeks: [
+                    'Advanced chemical bonding: molecular orbital theory and hybridization',
+                    'Reaction kinetics and mechanisms with rate laws and catalysis',
+                    'Chemical thermodynamics: enthalpy, entropy, and Gibbs free energy',
+                    'Introduction to organic chemistry: functional groups and reaction mechanisms'
+                ],
+                project: 'Conduct advanced chemical synthesis with kinetic analysis and thermodynamic calculations',
+                materials: ['Chemistry kits', 'Spectrophotometer', 'Thermodynamics equipment', 'Organic chemistry sets']
+            },
+            'November': {
+                icon: 'fa-bolt',
+                color: 'from-purple-400 to-pink-500',
+                focus: 'Advanced Physics & Energy Systems',
+                skills: ['Electromagnetism', 'Thermodynamics', 'Quantum physics', 'Energy systems'],
+                weeks: [
+                    'Advanced electromagnetism: Maxwell\'s equations and electromagnetic waves',
+                    'Thermodynamics and statistical mechanics with entropy and probability',
+                    'Introduction to quantum mechanics: wave functions and uncertainty principle',
+                    'Energy systems and sustainability with renewable energy analysis'
+                ],
+                project: 'Design and analyze energy system with electromagnetic and thermodynamic optimization',
+                materials: ['Physics equipment', 'Electromagnetic kits', 'Quantum demonstration materials', 'Energy analysis tools']
+            },
+            'December': {
+                icon: 'fa-heartbeat',
+                color: 'from-cyan-400 to-blue-500',
+                focus: 'Human Physiology & Biomedical Science',
+                skills: ['Organ systems', 'Physiological processes', 'Medical technology', 'Biomedical research'],
+                weeks: [
+                    'Advanced organ systems: endocrine, nervous, and immune system integration',
+                    'Physiological processes: homeostasis, metabolism, and cellular communication',
+                    'Medical technology: diagnostic imaging, prosthetics, and biomedical engineering',
+                    'Biomedical research: disease mechanisms, drug development, and clinical trials'
+                ],
+                project: 'Conduct biomedical research project with physiological analysis and medical technology applications',
+                materials: ['Physiology models', 'Medical imaging software', 'Biomedical equipment', 'Research tools']
+            },
+            'January': {
+                icon: 'fa-globe-americas',
+                color: 'from-blue-400 to-indigo-500',
+                focus: 'Advanced Earth Science & Geology',
+                skills: ['Plate tectonics', 'Geological time', 'Mineralogy', 'Environmental geology'],
+                weeks: [
+                    'Advanced plate tectonics: mantle convection, seismic waves, and mountain building',
+                    'Geological time scale: radiometric dating, fossil record, and mass extinctions',
+                    'Mineralogy and petrology: crystal chemistry, metamorphic processes, and rock formation',
+                    'Environmental geology: natural hazards, resource management, and geological engineering'
+                ],
+                project: 'Conduct geological field research with advanced analysis and environmental impact assessment',
+                materials: ['Geological equipment', 'Rock samples', 'Environmental monitoring tools', 'Field research kits']
+            },
+            'February': {
+                icon: 'fa-leaf',
+                color: 'from-green-400 to-teal-500',
+                focus: 'Advanced Ecology & Environmental Science',
+                skills: ['Ecosystem dynamics', 'Conservation biology', 'Climate science', 'Environmental policy'],
+                weeks: [
+                    'Advanced ecosystem dynamics: energy flow, nutrient cycling, and ecological succession',
+                    'Conservation biology: biodiversity hotspots, endangered species, and habitat restoration',
+                    'Climate science: atmospheric chemistry, climate modeling, and mitigation strategies',
+                    'Environmental policy and law: regulations, sustainability, and international agreements'
+                ],
+                project: 'Design comprehensive environmental conservation project with climate analysis and policy recommendations',
+                materials: ['Ecology monitoring equipment', 'Climate data tools', 'Conservation materials', 'Policy analysis resources']
+            },
+            'March': {
+                icon: 'fa-satellite',
+                color: 'from-yellow-400 to-orange-500',
+                focus: 'Advanced Astronomy & Astrophysics',
+                skills: ['Stellar evolution', 'Galactic astronomy', 'Cosmology', 'Space exploration'],
+                weeks: [
+                    'Stellar evolution: nucleosynthesis, stellar remnants, and supernovae',
+                    'Galactic astronomy: galaxy formation, dark matter, and galactic evolution',
+                    'Cosmology: Big Bang theory, cosmic microwave background, and universal expansion',
+                    'Space exploration technology: rocketry, satellites, and interplanetary missions'
+                ],
+                project: 'Design space mission with astronomical research objectives and engineering requirements',
+                materials: ['Astronomical telescopes', 'Space mission design software', 'Stellar evolution charts', 'Rocketry materials']
+            },
+            'April': {
+                icon: 'fa-microscope',
+                color: 'from-indigo-400 to-purple-500',
+                focus: 'Microbiology & Biotechnology',
+                skills: ['Microbial life', 'Biotechnology applications', 'Disease mechanisms', 'Biomedical engineering'],
+                weeks: [
+                    'Advanced microbiology: bacterial genetics, viral replication, and microbial ecology',
+                    'Biotechnology applications: genetic engineering, fermentation, and bioprocessing',
+                    'Disease mechanisms: pathogenesis, epidemiology, and public health',
+                    'Biomedical engineering: tissue engineering, medical devices, and regenerative medicine'
+                ],
+                project: 'Conduct microbiological research with biotechnology applications and biomedical engineering',
+                materials: ['Microscope equipment', 'Microbial cultures', 'Biotechnology kits', 'Biomedical engineering tools']
+            },
+            'May': {
+                icon: 'fa-robot',
+                color: 'from-red-400 to-pink-500',
+                focus: 'Engineering & Applied Science',
+                skills: ['Robotics', 'Materials science', 'Engineering design', 'Innovation'],
+                weeks: [
+                    'Advanced robotics: artificial intelligence, machine learning, and autonomous systems',
+                    'Materials science: nanotechnology, smart materials, and material properties',
+                    'Engineering design process: optimization, simulation, and prototyping',
+                    'Innovation and entrepreneurship: product development, patents, and market analysis'
+                ],
+                project: 'Design and build innovative engineering solution with advanced technology and market analysis',
+                materials: ['Robotics kits', 'Materials testing equipment', 'Engineering design software', 'Innovation tools']
+            },
+            'June': {
+                icon: 'fa-trophy',
+                color: 'from-amber-400 to-orange-500',
+                focus: 'Science Symposium & Research Showcase',
+                skills: ['Research presentation', 'Scientific communication', 'Peer review', 'Career exploration'],
+                weeks: [
+                    'Advanced research presentation skills with scientific communication and data visualization',
+                    'Scientific writing and publication with peer review and revision processes',
+                    'Science career exploration with professional pathways and educational requirements',
+                    'Innovation showcase with original research and community impact assessment'
+                ],
+                project: 'Present original research at science symposium with peer review and community engagement',
+                materials: ['Presentation software', 'Research posters', 'Peer review materials', 'Career exploration resources']
+            }
+        };
+
+        let currentMonth = 'September';
+        let isDarkMode = true;
+
+        // Initialize the app
+        function init() {
+            createMonthTabs();
+            loadMonthContent('September');
+        }
+
+        // Create month navigation tabs
+        function createMonthTabs() {
+            const tabsContainer = document.getElementById('monthTabs');
+            const months = Object.keys(curriculumData);
+            
+            months.forEach(month => {
+                const button = document.createElement('button');
+                button.className = `px-5 py-3 rounded-full glass-morphism transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                    month === currentMonth ? 'tab-active' : ''
+                }`;
+                button.innerHTML = `<i class="fas ${curriculumData[month].icon} mr-2"></i>${month}`;
+                button.onclick = () => selectMonth(month);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Select and load month content
+        function selectMonth(month) {
+            currentMonth = month;
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('#monthTabs button');
+            tabs.forEach((tab, index) => {
+                if (Object.keys(curriculumData)[index] === month) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+            
+            loadMonthContent(month);
+        }
+
+        // Load month content
+        function loadMonthContent(month) {
+            const data = curriculumData[month];
+            const content = document.getElementById('monthContent');
+            
+            content.innerHTML = `
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-3xl font-bold flex items-center">
+                            <i class="fas ${data.icon} mr-4 text-gradient bg-gradient-to-r ${data.color} bg-clip-text text-transparent"></i>
+                            ${month}
+                        </h4>
+                        <span class="px-4 py-2 rounded-full bg-gradient-to-r ${data.color} text-sm font-semibold">
+                            ${data.focus}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-teal-300 text-lg">Science Skills Focus</h5>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            ${data.skills.map((skill, index) => `
+                                <span class="skill-badge px-4 py-2 bg-white/10 rounded-full text-sm font-medium">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-teal-300 text-lg">Weekly Science Topics</h5>
+                        <div class="space-y-4">
+                            ${data.weeks.map((week, index) => `
+                                <div class="border border-white/10 rounded-xl overflow-hidden">
+                                    <div class="flex items-start p-4 cursor-pointer hover:bg-white/5 transition" onclick="toggleWeekDetails('${month}-${index}')">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r ${data.color} flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                            ${index + 1}
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-300 leading-relaxed">${week}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Click for activities</p>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-${month}-${index}"></i>
+                                    </div>
+                                    <div class="hidden bg-white/5 border-t border-white/10 p-4" id="details-${month}-${index}">
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-flask text-blue-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-blue-300">Advanced Experiments:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekExperiments(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-microscope text-green-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-green-300">Research Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekResearch(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-home text-purple-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-purple-300">Home Connection:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekHomeConnection(month, index)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-teal-300 text-lg">Monthly Science Project</h5>
+                        <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+                            <p class="text-sm text-gray-300 leading-relaxed">${data.project}</p>
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-teal-300 text-lg">Materials Needed</h5>
+                        <div class="space-y-3">
+                            ${data.materials.map(material => `
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span class="text-sm text-gray-300">${material}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <div class="flex items-center justify-between">
+                        <button onclick="selectMonth('${getPreviousMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="selectMonth('${getNextMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            Next<i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get previous month
+        function getPreviousMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index > 0 ? months[index - 1] : month;
+        }
+
+        // Get next month
+        function getNextMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index < months.length - 1 ? months[index + 1] : month;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Toggle week details
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const icon = document.getElementById(`icon-${weekId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Get week experiments
+        function getWeekExperiments(month, weekIndex) {
+            const experiments = {
+                'September': [
+                    'DNA extraction and analysis with electrophoresis and molecular techniques',
+                    'Protein synthesis simulation with transcription and translation modeling',
+                    'Genetic engineering simulation with CRISPR-Cas9 and gene editing',
+                    'Molecular biology techniques with PCR, electrophoresis, and DNA sequencing'
+                ],
+                'October': [
+                    'Advanced chemical bonding experiments with molecular orbital theory',
+                    'Reaction kinetics studies with rate laws and catalysis analysis',
+                    'Thermodynamics experiments with enthalpy, entropy, and Gibbs free energy',
+                    'Organic chemistry synthesis with functional groups and reaction mechanisms'
+                ],
+                'November': [
+                    'Electromagnetic experiments with Maxwell\'s equations and wave analysis',
+                    'Thermodynamics experiments with statistical mechanics and probability',
+                    'Quantum physics demonstrations with wave functions and uncertainty principle',
+                    'Energy system analysis with renewable energy and sustainability'
+                ],
+                'December': [
+                    'Organ system modeling with endocrine, nervous, and immune integration',
+                    'Physiological process experiments with homeostasis and metabolism',
+                    'Medical technology demonstrations with diagnostic imaging and prosthetics',
+                    'Biomedical research with disease mechanisms and drug development'
+                ],
+                'January': [
+                    'Plate tectonic modeling with mantle convection and seismic waves',
+                    'Geological dating experiments with radiometric dating and fossil analysis',
+                    'Mineralogy experiments with crystal chemistry and metamorphic processes',
+                    'Environmental geology with natural hazards and resource management'
+                ],
+                'February': [
+                    'Ecosystem dynamics experiments with energy flow and nutrient cycling',
+                    'Conservation biology projects with biodiversity and habitat restoration',
+                    'Climate science experiments with atmospheric chemistry and climate modeling',
+                    'Environmental policy analysis with regulations and sustainability'
+                ],
+                'March': [
+                    'Stellar evolution modeling with nucleosynthesis and supernovae',
+                    'Galactic astronomy experiments with galaxy formation and dark matter',
+                    'Cosmology demonstrations with Big Bang theory and universal expansion',
+                    'Space exploration projects with rocketry and satellite design'
+                ],
+                'April': [
+                    'Microbial culture experiments with bacterial genetics and viral replication',
+                    'Biotechnology projects with genetic engineering and fermentation',
+                    'Disease mechanism modeling with pathogenesis and epidemiology',
+                    'Biomedical engineering with tissue engineering and medical devices'
+                ],
+                'May': [
+                    'Advanced robotics projects with artificial intelligence and machine learning',
+                    'Materials science experiments with nanotechnology and smart materials',
+                    'Engineering design challenges with optimization and simulation',
+                    'Innovation projects with product development and market analysis'
+                ],
+                'June': [
+                    'Original research experiments with hypothesis testing and data analysis',
+                    'Scientific communication projects with presentation design and data visualization',
+                    'Peer review experiments with critical analysis and constructive feedback',
+                    'Career exploration projects with professional interviews and pathway research'
+                ]
+            };
+            return experiments[month][weekIndex] || 'Advanced hands-on science experiments';
+        }
+
+        // Get week research activities
+        function getWeekResearch(month, weekIndex) {
+            const research = {
+                'September': [
+                    'Genetic research with DNA analysis and protein synthesis investigation',
+                    'Molecular biology research with genetic engineering and biotechnology',
+                    'Genetic engineering research with CRISPR applications and ethical analysis',
+                    'Molecular techniques research with PCR, electrophoresis, and DNA sequencing'
+                ],
+                'October': [
+                    'Chemical bonding research with molecular orbital theory and hybridization',
+                    'Reaction kinetics research with rate laws and catalysis mechanisms',
+                    'Thermodynamics research with enthalpy, entropy, and Gibbs free energy',
+                    'Organic chemistry research with functional groups and reaction mechanisms'
+                ],
+                'November': [
+                    'Electromagnetic research with Maxwell\'s equations and wave analysis',
+                    'Thermodynamics research with statistical mechanics and probability theory',
+                    'Quantum physics research with wave functions and uncertainty principle',
+                    'Energy systems research with renewable energy and sustainability analysis'
+                ],
+                'December': [
+                    'Physiology research with organ system integration and homeostasis',
+                    'Medical technology research with diagnostic imaging and prosthetics',
+                    'Biomedical research with disease mechanisms and drug development',
+                    'Clinical research with medical trials and therapeutic development'
+                ],
+                'January': [
+                    'Geological research with plate tectonics and seismic analysis',
+                    'Geochronology research with radiometric dating and fossil record',
+                    'Mineralogy research with crystal chemistry and metamorphic processes',
+                    'Environmental geology research with natural hazards and resource management'
+                ],
+                'February': [
+                    'Ecological research with ecosystem dynamics and nutrient cycling',
+                    'Conservation research with biodiversity and endangered species',
+                    'Climate research with atmospheric chemistry and climate modeling',
+                    'Environmental policy research with regulations and sustainability'
+                ],
+                'March': [
+                    'Astronomical research with stellar evolution and nucleosynthesis',
+                    'Galactic research with galaxy formation and dark matter',
+                    'Cosmological research with Big Bang theory and universal expansion',
+                    'Space research with rocketry and interplanetary mission design'
+                ],
+                'April': [
+                    'Microbiological research with bacterial genetics and viral replication',
+                    'Biotechnology research with genetic engineering and fermentation',
+                    'Disease research with pathogenesis and epidemiology',
+                    'Biomedical engineering research with tissue engineering and medical devices'
+                ],
+                'May': [
+                    'Robotics research with artificial intelligence and machine learning',
+                    'Materials research with nanotechnology and smart materials',
+                    'Engineering research with optimization and simulation',
+                    'Innovation research with product development and market analysis'
+                ],
+                'June': [
+                    'Scientific research with literature review and experimental design',
+                    'Communication research with scientific writing and presentation',
+                    'Career research with professional pathways and educational requirements',
+                    'Innovation research with problem identification and solution development'
+                ]
+            };
+            return research[month][weekIndex] || 'Advanced scientific research and analysis';
+        }
+
+        // Get week home connection
+        function getWeekHomeConnection(month, weekIndex) {
+            const homeConnection = {
+                'September': [
+                    'Family genetics study with trait inheritance and pedigree analysis',
+                    'DNA modeling with household materials and molecular structure',
+                    'Genetic engineering discussion with biotechnology applications and ethics',
+                    'Molecular biology observation with household chemistry and biology'
+                ],
+                'October': [
+                    'Household chemistry experiments with molecular bonding and reactions',
+                    'Reaction rate experiments with cooking chemistry and catalyst observation',
+                    'Thermodynamics experiments with heat transfer and energy efficiency',
+                    'Organic chemistry with household materials and safe reactions'
+                ],
+                'November': [
+                    'Electromagnetic experiments with motors, generators, and wave observation',
+                    'Thermodynamics experiments with heat transfer and energy conservation',
+                    'Quantum physics discussion with atomic modeling and uncertainty',
+                    'Energy analysis with household consumption and renewable energy'
+                ],
+                'December': [
+                    'Human physiology monitoring with heart rate, breathing, and temperature',
+                    'Homeostasis experiments with exercise physiology and metabolic rate',
+                    'Medical technology exploration with diagnostic tools and health monitoring',
+                    'Biomedical research with first aid and emergency response'
+                ],
+                'January': [
+                    'Geological observation with rock collection and mineral identification',
+                    'Plate tectonic modeling with earthquake simulation and volcano construction',
+                    'Geological time experiments with fossil observation and dating',
+                    'Environmental geology with local hazards and resource conservation'
+                ],
+                'February': [
+                    'Ecosystem observation with local biodiversity and species identification',
+                    'Conservation projects with habitat improvement and species protection',
+                    'Climate experiments with greenhouse effect modeling and weather tracking',
+                    'Environmental policy discussion with local conservation and sustainability'
+                ],
+                'March': [
+                    'Astronomical observation with star mapping and planet tracking',
+                    'Stellar evolution modeling with star lifecycle simulation',
+                    'Galactic observation with galaxy identification and dark matter discussion',
+                    'Space exploration with rocket modeling and mission planning'
+                ],
+                'April': [
+                    'Microbial observation with mold growth and bacteria culture',
+                    'Biotechnology projects with fermentation and food preservation',
+                    'Disease prevention with hygiene practices and immune system health',
+                    'Biomedical engineering with simple prosthetic design and medical devices'
+                ],
+                'May': [
+                    'Robotics projects with simple machines and programming',
+                    'Materials science with household material testing and property analysis',
+                    'Engineering design with problem-solving and prototype construction',
+                    'Innovation projects with invention development and testing'
+                ],
+                'June': [
+                    'Original research projects with home experimentation and data collection',
+                    'Scientific communication with family presentations and explanation',
+                    'Career exploration with scientist interviews and pathway research',
+                    'Innovation projects with home problem-solving and solution development'
+                ]
+            };
+            return homeConnection[month][weekIndex] || 'Advanced home science exploration and research';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School - Mathematics Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .dark .tab-active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 0 25px rgba(240, 147, 251, 0.6);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .skill-badge {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .skill-badge:nth-child(2) { animation-delay: 0.1s; }
+        .skill-badge:nth-child(3) { animation-delay: 0.2s; }
+        .skill-badge:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="hub.html" class="w-12 h-12 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-user-graduate text-white"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <a href="hub.html" class="text-xl md:text-2xl font-bold hover:text-blue-300 transition-colors">High School</a>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-lg font-semibold text-blue-300">Mathematics</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full text-sm font-bold">Age 14</span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+                Advanced Algebra II & Precalculus
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                Mastering advanced algebraic concepts, trigonometry, functions, and mathematical analysis to build a strong foundation for calculus and advanced STEM studies.
+            </p>
+        </section>
+
+        <!-- Weekly Schedule -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-clock mr-4 text-blue-400"></i>
+                Weekly Schedule (Age 14)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-sun text-yellow-400 mr-2"></i>
+                        <span class="font-bold text-lg">9:00 - 10:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Advanced Algebra II</p>
+                    <p class="text-xs text-gray-400">Complex functions, analysis</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-superscript text-orange-400 mr-2"></i>
+                        <span class="font-bold text-lg">10:30 - 12:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Trigonometry & Analysis</p>
+                    <p class="text-xs text-gray-400">Advanced trig, identities</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-apple-alt text-green-400 mr-2"></i>
+                        <span class="font-bold text-lg">12:00 - 13:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Lunch & Math Olympiad</p>
+                    <p class="text-xs text-gray-400">Problem solving, competitions</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-chart-line text-purple-400 mr-2"></i>
+                        <span class="font-bold text-lg">13:00 - 14:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Precalculus Concepts</p>
+                    <p class="text-xs text-gray-400">Limits, continuity, calculus prep</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-calculator text-pink-400 mr-2"></i>
+                        <span class="font-bold text-lg">14:30 - 15:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Advanced Statistics</p>
+                    <p class="text-xs text-gray-400">Probability, data analysis</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-robot text-cyan-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:30 - 16:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">STEM Mathematics</p>
+                    <p class="text-xs text-gray-400">Engineering, physics applications</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-brain text-red-400 mr-2"></i>
+                        <span class="font-bold text-lg">16:30 - 17:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Mathematical Research</p>
+                    <p class="text-xs text-gray-400">Independent study, projects</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-home text-indigo-400 mr-2"></i>
+                        <span class="font-bold text-lg">17:00 - 17:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Advanced Problem Solving</p>
+                    <p class="text-xs text-gray-400">Challenge problems, contests</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Math Skills Overview -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calculator mr-4 text-blue-400"></i>
+                Core Math Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-superscript text-blue-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Advanced Algebra II</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Complex functions</p>
+                    <p class="text-xs text-gray-400">Polynomials, logarithms, exponentials</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-wave-square text-green-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Trigonometry</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Advanced trig</p>
+                    <p class="text-xs text-gray-400">Identities, equations, applications</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chart-line text-orange-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Precalculus</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Calculus preparation</p>
+                    <p class="text-xs text-gray-400">Limits, continuity, functions</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-cogs text-purple-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">STEM Applications</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Real-world problems</p>
+                    <p class="text-xs text-gray-400">Engineering, physics, technology</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Themes Navigation -->
+        <section class="mb-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calendar-alt mr-4 text-blue-400"></i>
+                Monthly Math Themes
+            </h3>
+            <div class="flex flex-wrap gap-3 mb-8" id="monthTabs">
+                <!-- Month tabs will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Month Content -->
+        <section id="monthContent" class="glass-morphism rounded-2xl p-8 card-hover">
+            <!-- Dynamic content will be loaded here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">© 2024 High School Mathematics Curriculum. Building advanced algebraic mastery and precalculus excellence for calculus and STEM success.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Monthly math curriculum data for age 14 (High School)
+        const curriculumData = {
+            'September': {
+                icon: 'fa-superscript',
+                color: 'from-blue-400 to-indigo-500',
+                focus: 'Advanced Functions & Complex Analysis',
+                skills: ['Complex functions', 'Function transformations', 'Inverse functions', 'Function composition'],
+                weeks: [
+                    'Advanced function analysis: domain, range, and behavior of complex functions',
+                    'Function transformations: translations, reflections, dilations, and combinations',
+                    'Inverse functions: existence, properties, and applications in problem solving',
+                    'Function composition and decomposition with real-world applications'
+                ],
+                project: 'Design and analyze complex function models for real-world engineering and scientific applications',
+                materials: ['Graphing calculators', 'Function modeling software', 'Engineering simulation tools', 'Scientific calculators']
+            },
+            'October': {
+                icon: 'fa-square-root-alt',
+                color: 'from-orange-400 to-red-500',
+                focus: 'Advanced Polynomials & Rational Functions',
+                skills: ['Polynomial division', 'Rational functions', 'Complex numbers', 'Fundamental theorem'],
+                weeks: [
+                    'Advanced polynomial operations: long division, synthetic division, and remainder theorem',
+                    'Rational functions: asymptotes, holes, and behavior analysis',
+                    'Complex numbers: operations, polar form, and applications in solving equations',
+                    'Fundamental theorem of algebra and its applications in polynomial analysis'
+                ],
+                project: 'Create comprehensive polynomial and rational function models for engineering and physics applications',
+                materials: ['Polynomial modeling software', 'Complex number calculators', 'Engineering design tools', 'Physics simulation software']
+            },
+            'November': {
+                icon: 'fa-wave-square',
+                color: 'from-purple-400 to-pink-500',
+                focus: 'Advanced Trigonometry & Identities',
+                skills: ['Trigonometric identities', 'Trigonometric equations', 'Applications', 'Complex analysis'],
+                weeks: [
+                    'Advanced trigonometric identities: sum, difference, double-angle, and half-angle formulas',
+                    'Trigonometric equation solving: multiple solutions and applications',
+                    'Applications of trigonometry: navigation, physics, and engineering problems',
+                    'Complex trigonometric analysis and connections to exponential functions'
+                ],
+                project: 'Solve complex real-world problems using advanced trigonometric analysis and modeling',
+                materials: ['Trigonometric calculators', 'Navigation tools', 'Physics equipment', 'Engineering design software']
+            },
+            'December': {
+                icon: 'fa-chart-line',
+                color: 'from-green-400 to-emerald-500',
+                focus: 'Exponential & Logarithmic Functions',
+                skills: ['Exponential modeling', 'Logarithmic analysis', 'Growth/decay', 'Applications'],
+                weeks: [
+                    'Advanced exponential functions: modeling, analysis, and applications',
+                    'Logarithmic functions: properties, equations, and real-world applications',
+                    'Exponential growth and decay: population dynamics, compound interest, and radioactive decay',
+                    'Applications in science and engineering: pH, sound intensity, and earthquake magnitude'
+                ],
+                project: 'Model complex exponential and logarithmic systems for scientific and financial applications',
+                materials: ['Exponential modeling software', 'Scientific calculators', 'Financial modeling tools', 'Laboratory equipment']
+            },
+            'January': {
+                icon: 'fa-infinity',
+                color: 'from-cyan-400 to-blue-500',
+                focus: 'Sequences, Series & Limits',
+                skills: ['Arithmetic sequences', 'Geometric series', 'Limits', 'Convergence'],
+                weeks: [
+                    'Advanced sequences: arithmetic, geometric, and recursive patterns',
+                    'Series analysis: convergence tests and sum calculations',
+                    'Introduction to limits: concept, evaluation, and applications',
+                    'Infinite series and their applications in mathematics and science'
+                ],
+                project: 'Analyze and model complex sequences and series for mathematical and scientific applications',
+                materials: ['Sequence analysis software', 'Graphing calculators', 'Mathematical modeling tools', 'Scientific research equipment']
+            },
+            'February': {
+                icon: 'fa-shapes',
+                color: 'from-red-400 to-pink-500',
+                focus: 'Conic Sections & Analytic Geometry',
+                skills: ['Conic sections', 'Analytic geometry', 'Transformations', 'Applications'],
+                weeks: [
+                    'Conic sections: parabolas, ellipses, hyperbolas, and their properties',
+                    'Analytic geometry: coordinate systems and geometric problem solving',
+                    'Transformations of conic sections and advanced geometric analysis',
+                    'Applications in physics, astronomy, and engineering design'
+                ],
+                project: 'Design and analyze conic section models for engineering and astronomical applications',
+                materials: ['Geometric modeling software', 'Graphing calculators', 'Engineering design tools', 'Astronomical data']
+            },
+            'March': {
+                icon: 'fa-cube',
+                color: 'from-yellow-400 to-orange-500',
+                focus: '3D Geometry & Vectors',
+                skills: ['3D coordinates', 'Vector analysis', 'Dot/cross products', 'Applications'],
+                weeks: [
+                    'Three-dimensional coordinate systems and spatial reasoning',
+                    'Vector operations: addition, scalar multiplication, and applications',
+                    'Dot and cross products: geometric interpretation and applications',
+                    'Applications in physics, engineering, and computer graphics'
+                ],
+                project: 'Create 3D vector models for physics and engineering applications',
+                materials: ['3D modeling software', 'Vector calculators', 'Physics simulation tools', 'Engineering design software']
+            },
+            'April': {
+                icon: 'fa-percentage',
+                color: 'from-indigo-400 to-purple-500',
+                focus: 'Advanced Probability & Statistics',
+                skills: ['Probability theory', 'Statistical analysis', 'Data modeling', 'Applications'],
+                weeks: [
+                    'Advanced probability theory: conditional probability, Bayes\' theorem, and distributions',
+                    'Statistical analysis: hypothesis testing, confidence intervals, and regression',
+                    'Data modeling and interpretation with advanced statistical methods',
+                    'Applications in science, finance, and social sciences'
+                ],
+                project: 'Conduct comprehensive statistical research project with advanced data analysis',
+                materials: ['Statistical software', 'Data analysis tools', 'Probability calculators', 'Research databases']
+            },
+            'May': {
+                icon: 'fa-robot',
+                color: 'from-teal-400 to-green-500',
+                focus: 'Calculus Preparation & Mathematical Analysis',
+                skills: ['Limits', 'Continuity', 'Derivatives intro', 'Applications'],
+                weeks: [
+                    'Advanced limit analysis: evaluation techniques and applications',
+                    'Continuity and its applications in mathematical analysis',
+                    'Introduction to derivatives: concept, calculation, and applications',
+                    'Applications in optimization, physics, and engineering'
+                ],
+                project: 'Solve complex optimization problems using calculus concepts and mathematical analysis',
+                materials: ['Calculus software', 'Graphing calculators', 'Optimization tools', 'Physics simulation software']
+            },
+            'June': {
+                icon: 'fa-trophy',
+                color: 'from-amber-400 to-orange-500',
+                focus: 'Mathematical Mastery & College Preparation',
+                skills: ['Comprehensive review', 'AP preparation', 'Advanced topics', 'Career planning'],
+                weeks: [
+                    'Comprehensive review of Algebra II and Precalculus concepts',
+                    'AP Calculus preparation with advanced problem solving',
+                    'Mathematical research projects and independent study',
+                    'Career planning in STEM fields and college mathematics preparation'
+                ],
+                project: 'Complete comprehensive mathematics portfolio demonstrating mastery and college readiness',
+                materials: ['AP preparation materials', 'Research resources', 'Career planning guides', 'College preparation tools']
+            }
+        };
+
+        let currentMonth = 'September';
+        let isDarkMode = true;
+
+        // Initialize the app
+        function init() {
+            createMonthTabs();
+            loadMonthContent('September');
+        }
+
+        // Create month navigation tabs
+        function createMonthTabs() {
+            const tabsContainer = document.getElementById('monthTabs');
+            const months = Object.keys(curriculumData);
+            
+            months.forEach(month => {
+                const button = document.createElement('button');
+                button.className = `px-5 py-3 rounded-full glass-morphism transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                    month === currentMonth ? 'tab-active' : ''
+                }`;
+                button.innerHTML = `<i class="fas ${curriculumData[month].icon} mr-2"></i>${month}`;
+                button.onclick = () => selectMonth(month);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Select and load month content
+        function selectMonth(month) {
+            currentMonth = month;
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('#monthTabs button');
+            tabs.forEach((tab, index) => {
+                if (Object.keys(curriculumData)[index] === month) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+            
+            loadMonthContent(month);
+        }
+
+        // Load month content
+        function loadMonthContent(month) {
+            const data = curriculumData[month];
+            const content = document.getElementById('monthContent');
+            
+            content.innerHTML = `
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-3xl font-bold flex items-center">
+                            <i class="fas ${data.icon} mr-4 text-gradient bg-gradient-to-r ${data.color} bg-clip-text text-transparent"></i>
+                            ${month}
+                        </h4>
+                        <span class="px-4 py-2 rounded-full bg-gradient-to-r ${data.color} text-sm font-semibold">
+                            ${data.focus}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-blue-300 text-lg">Math Skills Focus</h5>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            ${data.skills.map((skill, index) => `
+                                <span class="skill-badge px-4 py-2 bg-white/10 rounded-full text-sm font-medium">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-blue-300 text-lg">Weekly Math Topics</h5>
+                        <div class="space-y-4">
+                            ${data.weeks.map((week, index) => `
+                                <div class="border border-white/10 rounded-xl overflow-hidden">
+                                    <div class="flex items-start p-4 cursor-pointer hover:bg-white/5 transition" onclick="toggleWeekDetails('${month}-${index}')">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r ${data.color} flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                            ${index + 1}
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-300 leading-relaxed">${week}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Click for activities</p>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-${month}-${index}"></i>
+                                    </div>
+                                    <div class="hidden bg-white/5 border-t border-white/10 p-4" id="details-${month}-${index}">
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-calculator text-blue-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-blue-300">Problem Solving:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekProblemSolving(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-gamepad text-green-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-green-300">Math Competitions:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekCompetitions(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-home text-purple-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-purple-300">Real-World Applications:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekApplications(month, index)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-blue-300 text-lg">Monthly Math Project</h5>
+                        <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+                            <p class="text-sm text-gray-300 leading-relaxed">${data.project}</p>
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-blue-300 text-lg">Materials Needed</h5>
+                        <div class="space-y-3">
+                            ${data.materials.map(material => `
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span class="text-sm text-gray-300">${material}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <div class="flex items-center justify-between">
+                        <button onclick="selectMonth('${getPreviousMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="selectMonth('${getNextMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            Next<i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get previous month
+        function getPreviousMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index > 0 ? months[index - 1] : month;
+        }
+
+        // Get next month
+        function getNextMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index < months.length - 1 ? months[index + 1] : month;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Toggle week details
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const icon = document.getElementById(`icon-${weekId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Get week problem solving activities
+        function getWeekProblemSolving(month, weekIndex) {
+            const problemSolving = {
+                'September': [
+                    'Complex function modeling with real-world scenarios and optimization problems',
+                    'Function transformation analysis with engineering and scientific applications',
+                    'Inverse function problem solving with advanced mathematical reasoning',
+                    'Function composition challenges with multi-step problem solving'
+                ],
+                'October': [
+                    'Advanced polynomial problem solving with engineering applications',
+                    'Rational function analysis with complex mathematical modeling',
+                    'Complex number problem solving with physics and engineering contexts',
+                    'Fundamental theorem applications with advanced mathematical proofs'
+                ],
+                'November': [
+                    'Trigonometric identity proofs with advanced mathematical reasoning',
+                    'Trigonometric equation solving with multiple solution methods',
+                    'Applied trigonometry problems with navigation and engineering contexts',
+                    'Complex trigonometric analysis with exponential function connections'
+                ],
+                'December': [
+                    'Exponential modeling problems with scientific and financial applications',
+                    'Logarithmic equation solving with advanced mathematical techniques',
+                    'Growth and decay analysis with population and financial modeling',
+                    'Scientific applications with pH, sound, and earthquake calculations'
+                ],
+                'January': [
+                    'Sequence and series problem solving with mathematical induction',
+                    'Convergence analysis with advanced mathematical reasoning',
+                    'Limit evaluation problems with calculus preparation',
+                    'Infinite series applications with mathematical and scientific contexts'
+                ],
+                'February': [
+                    'Conic section problem solving with geometric and algebraic methods',
+                    'Analytic geometry challenges with coordinate system applications',
+                    'Transformation problems with advanced geometric analysis',
+                    'Physics and astronomy applications with conic section modeling'
+                ],
+                'March': [
+                    '3D coordinate geometry problems with spatial reasoning',
+                    'Vector operation challenges with physics and engineering contexts',
+                    'Dot and cross product applications with advanced mathematical analysis',
+                    'Computer graphics and physics applications with vector modeling'
+                ],
+                'April': [
+                    'Advanced probability problems with conditional reasoning',
+                    'Statistical analysis challenges with hypothesis testing',
+                    'Data modeling problems with regression and correlation analysis',
+                    'Science and finance applications with statistical methods'
+                ],
+                'May': [
+                    'Advanced limit problems with calculus preparation',
+                    'Continuity analysis with mathematical reasoning',
+                    'Derivative introduction problems with rate of change applications',
+                    'Optimization challenges with physics and engineering contexts'
+                ],
+                'June': [
+                    'Comprehensive review problems with integrated mathematical concepts',
+                    'AP calculus preparation with advanced problem solving',
+                    'Mathematical research problems with independent investigation',
+                    'STEM career applications with advanced mathematical modeling'
+                ]
+            };
+            return problemSolving[month][weekIndex] || 'Advanced mathematical problem solving and analysis';
+        }
+
+        // Get week competitions
+        function getWeekCompetitions(month, weekIndex) {
+            const competitions = {
+                'September': [
+                    'Function modeling competitions with real-world scenario challenges',
+                    'Transformation tournaments with advanced mathematical reasoning',
+                    'Inverse function challenges with complex problem solving',
+                    'Function composition competitions with multi-step analysis'
+                ],
+                'October': [
+                    'Polynomial problem solving competitions with engineering applications',
+                    'Rational function tournaments with advanced mathematical modeling',
+                    'Complex number competitions with physics and engineering contexts',
+                    'Fundamental theorem challenges with mathematical proof competitions'
+                ],
+                'November': [
+                    'Trigonometric identity proof competitions with advanced reasoning',
+                    'Trigonometric equation solving tournaments with multiple methods',
+                    'Applied trigonometry competitions with navigation challenges',
+                    'Complex trigonometric analysis tournaments with exponential connections'
+                ],
+                'December': [
+                    'Exponential modeling competitions with scientific applications',
+                    'Logarithmic equation solving tournaments with advanced techniques',
+                    'Growth and decay competitions with population and financial modeling',
+                    'Scientific application tournaments with pH, sound, and earthquake calculations'
+                ],
+                'January': [
+                    'Sequence and series competitions with mathematical induction',
+                    'Convergence analysis tournaments with advanced reasoning',
+                    'Limit evaluation competitions with calculus preparation',
+                    'Infinite series tournaments with mathematical and scientific contexts'
+                ],
+                'February': [
+                    'Conic section competitions with geometric and algebraic methods',
+                    'Analytic geometry tournaments with coordinate system challenges',
+                    'Transformation competitions with advanced geometric analysis',
+                    'Physics and astronomy tournaments with conic section modeling'
+                ],
+                'March': [
+                    '3D coordinate geometry competitions with spatial reasoning',
+                    'Vector operation tournaments with physics and engineering contexts',
+                    'Dot and cross product competitions with advanced mathematical analysis',
+                    'Computer graphics tournaments with vector modeling applications'
+                ],
+                'April': [
+                    'Advanced probability competitions with conditional reasoning',
+                    'Statistical analysis tournaments with hypothesis testing',
+                    'Data modeling competitions with regression and correlation analysis',
+                    'Science and finance tournaments with statistical method applications'
+                ],
+                'May': [
+                    'Advanced limit competitions with calculus preparation',
+                    'Continuity analysis tournaments with mathematical reasoning',
+                    'Derivative introduction competitions with rate of change applications',
+                    'Optimization tournaments with physics and engineering contexts'
+                ],
+                'June': [
+                    'Comprehensive review competitions with integrated mathematical concepts',
+                    'AP calculus tournaments with advanced problem solving',
+                    'Mathematical research competitions with independent investigation',
+                    'STEM career tournaments with advanced mathematical modeling'
+                ]
+            };
+            return competitions[month][weekIndex] || 'Advanced mathematical competitions and challenges';
+        }
+
+        // Get week real-world applications
+        function getWeekApplications(month, weekIndex) {
+            const applications = {
+                'September': [
+                    'Engineering function modeling with real-world design and optimization',
+                    'Scientific function applications with research and data analysis',
+                    'Economic modeling with function analysis and prediction',
+                    'Technology applications with software development and algorithms'
+                ],
+                'October': [
+                    'Engineering polynomial applications with design and optimization',
+                    'Physics rational function modeling with motion and force analysis',
+                    'Complex number applications in electrical engineering and quantum mechanics',
+                    'Mathematical theorem applications in computer science and cryptography'
+                ],
+                'November': [
+                    'Navigation trigonometry with GPS and maritime applications',
+                    'Engineering trigonometric applications with structural design',
+                    'Physics trigonometry with wave motion and harmonic analysis',
+                    'Astronomy applications with celestial mechanics and orbital calculations'
+                ],
+                'December': [
+                    'Financial exponential modeling with investment and compound interest',
+                    'Scientific exponential applications with population dynamics and radioactive decay',
+                    'Biological logarithmic applications with pH and enzyme kinetics',
+                    'Engineering applications with signal processing and acoustics'
+                ],
+                'January': [
+                    'Computer science sequence applications with algorithms and data structures',
+                    'Physics series applications with wave analysis and quantum mechanics',
+                    'Engineering limit applications with design optimization and safety factors',
+                    'Mathematical research applications with theoretical analysis and proof'
+                ],
+                'February': [
+                    'Astronomy conic applications with planetary orbits and satellite trajectories',
+                    'Engineering conic applications with optics and antenna design',
+                    'Physics conic applications with projectile motion and field analysis',
+                    'Architecture applications with structural design and space planning'
+                ],
+                'March': [
+                    'Physics vector applications with force analysis and motion',
+                    'Engineering vector applications with structural analysis and design',
+                    'Computer graphics vector applications with 3D modeling and animation',
+                    'Robotics applications with kinematics and control systems'
+                ],
+                'April': [
+                    'Finance probability applications with risk assessment and investment',
+                    'Science statistical applications with experimental design and analysis',
+                    'Social science applications with survey analysis and trend prediction',
+                    'Medical applications with clinical trials and epidemiological studies'
+                ],
+                'May': [
+                    'Physics calculus applications with motion, force, and energy',
+                    'Engineering calculus applications with optimization and design',
+                    'Economics calculus applications with marginal analysis and optimization',
+                    'Biology calculus applications with population dynamics and growth models'
+                ],
+                'June': [
+                    'STEM career applications with advanced mathematical modeling',
+                    'College preparation with AP calculus and advanced mathematics',
+                    'Research applications with mathematical investigation and discovery',
+                    'Technology applications with software development and computational thinking'
+                ]
+            };
+            return applications[month][weekIndex] || 'Advanced real-world mathematical applications and connections';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

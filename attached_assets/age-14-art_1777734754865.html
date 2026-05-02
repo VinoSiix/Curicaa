@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School - Art & PE Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .dark .tab-active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 0 25px rgba(240, 147, 251, 0.6);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .skill-badge {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .skill-badge:nth-child(2) { animation-delay: 0.1s; }
+        .skill-badge:nth-child(3) { animation-delay: 0.2s; }
+        .skill-badge:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="hub.html" class="w-12 h-12 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-user-graduate text-white"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <a href="hub.html" class="text-xl md:text-2xl font-bold hover:text-pink-300 transition-colors">High School</a>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-lg font-semibold text-pink-300">Art & PE</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full text-sm font-bold">Age 14</span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent">
+                Professional Artistic Development & Elite Athletic Performance
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                Mastering advanced artistic techniques, elite athletic training, creative entrepreneurship, and professional development through specialized instruction, competitive performance, and real-world applications.
+            </p>
+        </section>
+
+        <!-- Weekly Schedule -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-clock mr-4 text-pink-400"></i>
+                Weekly Schedule (Age 14)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-sun text-yellow-400 mr-2"></i>
+                        <span class="font-bold text-lg">9:00 - 10:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Professional Art Studio</p>
+                    <p class="text-xs text-gray-400">Advanced techniques, portfolio</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-running text-orange-400 mr-2"></i>
+                        <span class="font-bold text-lg">10:30 - 12:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Elite Athletic Training</p>
+                    <p class="text-xs text-gray-400">Specialized sports, performance</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-apple-alt text-green-400 mr-2"></i>
+                        <span class="font-bold text-lg">12:00 - 13:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Lunch & Creative Strategy</p>
+                    <p class="text-xs text-gray-400">Portfolio review, athletic planning</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-palette text-purple-400 mr-2"></i>
+                        <span class="font-bold text-lg">13:00 - 14:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Digital Arts & Design</p>
+                    <p class="text-xs text-gray-400">Professional design, multimedia</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-trophy text-cyan-400 mr-2"></i>
+                        <span class="font-bold text-lg">14:30 - 15:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Competitive Sports</p>
+                    <p class="text-xs text-gray-400">Tournaments, championships</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-theater-masks text-pink-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:30 - 16:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Performing Arts Production</p>
+                    <p class="text-xs text-gray-400">Theater, dance, music production</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-users text-red-400 mr-2"></i>
+                        <span class="font-bold text-lg">16:30 - 17:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Leadership & Mentoring</p>
+                    <p class="text-xs text-gray-400">Coaching, teaching, community</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-home text-indigo-400 mr-2"></i>
+                        <span class="font-bold text-lg">17:00 - 17:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Professional Development</p>
+                    <p class="text-xs text-gray-400">Portfolio building, career planning</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Art & PE Skills Overview -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-palette mr-4 text-pink-400"></i>
+                Core Creative & Athletic Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-paint-brush text-blue-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Professional Art</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Advanced techniques</p>
+                    <p class="text-xs text-gray-400">Portfolio development, exhibitions</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-medal text-yellow-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Elite Athletics</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Specialized training</p>
+                    <p class="text-xs text-gray-400">Competition, performance, strategy</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-laptop-code text-green-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Digital Media</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Professional design</p>
+                    <p class="text-xs text-gray-400">Multimedia, animation, web design</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-crown text-purple-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Creative Leadership</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Entrepreneurship</p>
+                    <p class="text-xs text-gray-400">Mentoring, teaching, innovation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Themes Navigation -->
+        <section class="mb-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calendar-alt mr-4 text-pink-400"></i>
+                Monthly Creative Themes
+            </h3>
+            <div class="flex flex-wrap gap-3 mb-8" id="monthTabs">
+                <!-- Month tabs will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Month Content -->
+        <section id="monthContent" class="glass-morphism rounded-2xl p-8 card-hover">
+            <!-- Dynamic content will be loaded here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">© 2024 High School Art & PE Curriculum. Developing professional artistic skills, elite athletic performance, and creative leadership for future success.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Monthly Art & PE curriculum data for age 14 (High School)
+        const curriculumData = {
+            'September': {
+                icon: 'fa-palette',
+                color: 'from-pink-400 to-rose-500',
+                focus: 'Professional Art Portfolio Development',
+                skills: ['Advanced drawing', 'Portfolio curation', 'Gallery preparation', 'Artist statement'],
+                weeks: [
+                    'Advanced drawing techniques with professional media and specialized tools',
+                    'Portfolio curation and organization with professional presentation standards',
+                    'Gallery preparation and exhibition design with lighting and display techniques',
+                    'Artist statement writing and professional communication development'
+                ],
+                project: 'Create a professional art portfolio ready for gallery submission and exhibition',
+                materials: ['Professional art supplies', 'Portfolio cases', 'Gallery lighting', 'Artist statement guides']
+            },
+            'October': {
+                icon: 'fa-trophy',
+                color: 'from-orange-400 to-red-500',
+                focus: 'Elite Athletic Performance',
+                skills: ['Specialized training', 'Performance optimization', 'Competition strategy', 'Sports psychology'],
+                weeks: [
+                    'Specialized athletic training with sport-specific techniques and conditioning',
+                    'Performance optimization with advanced training methods and technology',
+                    'Competition strategy development with tactical planning and execution',
+                    'Sports psychology with mental preparation and performance enhancement'
+                ],
+                project: 'Prepare for and compete in elite athletic competitions with professional coaching',
+                materials: ['Specialized equipment', 'Performance tracking devices', 'Training facilities', 'Sports psychology resources']
+            },
+            'November': {
+                icon: 'fa-laptop-code',
+                color: 'from-purple-400 to-pink-500',
+                focus: 'Digital Media & Web Design',
+                skills: ['Web development', 'UI/UX design', 'Digital marketing', 'E-commerce'],
+                weeks: [
+                    'Advanced web development with HTML, CSS, and JavaScript integration',
+                    'UI/UX design principles with user research and interface optimization',
+                    'Digital marketing strategies with social media and content creation',
+                    'E-commerce development with online store creation and management'
+                ],
+                project: 'Design and launch a professional website with e-commerce capabilities',
+                materials: ['Web development software', 'Design tools', 'Marketing platforms', 'E-commerce systems']
+            },
+            'December': {
+                icon: 'fa-snowflake',
+                color: 'from-cyan-400 to-blue-500',
+                focus: 'Winter Sports & Performance Arts',
+                skills: ['Advanced gymnastics', 'Figure skating', 'Theater production', 'Musical performance'],
+                weeks: [
+                    'Advanced gymnastics with elite routines and competition preparation',
+                    'Figure skating techniques with choreography and artistic expression',
+                    'Theater production with directing, stage management, and technical design',
+                    'Musical performance with advanced instrumental and vocal techniques'
+                ],
+                project: 'Produce and perform a winter showcase combining athletics and performing arts',
+                materials: ['Gymnastics equipment', 'Skating facilities', 'Theater production gear', 'Musical instruments']
+            },
+            'January': {
+                icon: 'fa-camera',
+                color: 'from-blue-400 to-indigo-500',
+                focus: 'Professional Photography & Videography',
+                skills: ['Advanced photography', 'Video production', 'Editing mastery', 'Commercial applications'],
+                weeks: [
+                    'Professional photography techniques with advanced lighting and composition',
+                    'Video production mastery with cinematography and storytelling',
+                    'Advanced editing with professional software and post-production techniques',
+                    'Commercial applications with client work and business development'
+                ],
+                project: 'Create a professional photography and videography portfolio with commercial projects',
+                materials: ['Professional cameras', 'Lighting equipment', 'Editing software', 'Business development tools']
+            },
+            'February': {
+                icon: 'fa-music',
+                color: 'from-red-400 to-pink-500',
+                focus: 'Music Production & Composition',
+                skills: ['Advanced composition', 'Music production', 'Sound engineering', 'Music business'],
+                weeks: [
+                    'Advanced music composition with orchestration and arrangement techniques',
+                    'Music production with digital audio workstations and professional recording',
+                    'Sound engineering with mixing, mastering, and audio post-production',
+                    'Music business with copyright, publishing, and career development'
+                ],
+                project: 'Produce and release a professional music album with original compositions',
+                materials: ['Recording equipment', 'DAW software', 'Sound engineering tools', 'Music business resources']
+            },
+            'March': {
+                icon: 'fa-running',
+                color: 'from-green-400 to-emerald-500',
+                focus: 'Track & Field Championship Training',
+                skills: ['Event specialization', 'Performance peaking', 'Championship strategy', 'Athletic branding'],
+                weeks: [
+                    'Event specialization with advanced techniques for specific track and field events',
+                    'Performance peaking with periodization and championship preparation',
+                    'Championship strategy with race planning and tactical execution',
+                    'Athletic branding with social media presence and sponsorship development'
+                ],
+                project: 'Compete in track and field championships with personal best performances',
+                materials: ['Track equipment', 'Performance monitoring', 'Championship gear', 'Branding materials']
+            },
+            'April': {
+                icon: 'fa-paint-brush',
+                color: 'from-indigo-400 to-purple-500',
+                focus: 'Fine Arts Exhibition & Curation',
+                skills: ['Curatorial practice', 'Exhibition design', 'Art criticism', 'Gallery management'],
+                weeks: [
+                    'Curatorial practice with exhibition planning and artwork selection',
+                    'Exhibition design with space planning and visitor experience optimization',
+                    'Art criticism with analytical writing and critical evaluation',
+                    'Gallery management with business operations and artist relations'
+                ],
+                project: 'Curate and manage a professional art exhibition with multiple artists',
+                materials: ['Exhibition space', 'Curatorial tools', 'Art criticism resources', 'Gallery management software']
+            },
+            'May': {
+                icon: 'fa-futbol',
+                color: 'from-yellow-400 to-orange-500',
+                focus: 'Team Sports Leadership & Coaching',
+                skills: ['Coaching certification', 'Team management', 'Strategy development', 'Youth mentoring'],
+                weeks: [
+                    'Coaching certification with sport-specific coaching methodologies',
+                    'Team management with leadership development and conflict resolution',
+                    'Advanced strategy development with tactical planning and execution',
+                    'Youth mentoring with coaching younger athletes and skill development'
+                ],
+                project: 'Lead and coach a youth sports team with championship-level performance',
+                materials: ['Coaching certification', 'Team management tools', 'Strategy resources', 'Mentoring materials']
+            },
+            'June': {
+                icon: 'fa-graduation-cap',
+                color: 'from-amber-400 to-orange-500',
+                focus: 'Creative Entrepreneurship & Career Development',
+                skills: ['Business planning', 'Marketing strategy', 'Financial management', 'Career portfolio'],
+                weeks: [
+                    'Creative business planning with entrepreneurship and startup development',
+                    'Marketing strategy with brand development and customer acquisition',
+                    'Financial management with budgeting, pricing, and revenue optimization',
+                    'Career portfolio development with resume building and interview preparation'
+                ],
+                project: 'Launch a creative business venture with comprehensive business plan and marketing strategy',
+                materials: ['Business planning software', 'Marketing tools', 'Financial resources', 'Career development materials']
+            }
+        };
+
+        let currentMonth = 'September';
+        let isDarkMode = true;
+
+        // Initialize the app
+        function init() {
+            createMonthTabs();
+            loadMonthContent('September');
+        }
+
+        // Create month navigation tabs
+        function createMonthTabs() {
+            const tabsContainer = document.getElementById('monthTabs');
+            const months = Object.keys(curriculumData);
+            
+            months.forEach(month => {
+                const button = document.createElement('button');
+                button.className = `px-5 py-3 rounded-full glass-morphism transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                    month === currentMonth ? 'tab-active' : ''
+                }`;
+                button.innerHTML = `<i class="fas ${curriculumData[month].icon} mr-2"></i>${month}`;
+                button.onclick = () => selectMonth(month);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Select and load month content
+        function selectMonth(month) {
+            currentMonth = month;
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('#monthTabs button');
+            tabs.forEach((tab, index) => {
+                if (Object.keys(curriculumData)[index] === month) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+            
+            loadMonthContent(month);
+        }
+
+        // Load month content
+        function loadMonthContent(month) {
+            const data = curriculumData[month];
+            const content = document.getElementById('monthContent');
+            
+            content.innerHTML = `
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-3xl font-bold flex items-center">
+                            <i class="fas ${data.icon} mr-4 text-gradient bg-gradient-to-r ${data.color} bg-clip-text text-transparent"></i>
+                            ${month}
+                        </h4>
+                        <span class="px-4 py-2 rounded-full bg-gradient-to-r ${data.color} text-sm font-semibold">
+                            ${data.focus}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-pink-300 text-lg">Creative & Athletic Skills Focus</h5>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            ${data.skills.map((skill, index) => `
+                                <span class="skill-badge px-4 py-2 bg-white/10 rounded-full text-sm font-medium">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-pink-300 text-lg">Weekly Creative Topics</h5>
+                        <div class="space-y-4">
+                            ${data.weeks.map((week, index) => `
+                                <div class="border border-white/10 rounded-xl overflow-hidden">
+                                    <div class="flex items-start p-4 cursor-pointer hover:bg-white/5 transition" onclick="toggleWeekDetails('${month}-${index}')">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r ${data.color} flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                            ${index + 1}
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-300 leading-relaxed">${week}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Click for activities</p>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-${month}-${index}"></i>
+                                    </div>
+                                    <div class="hidden bg-white/5 border-t border-white/10 p-4" id="details-${month}-${index}">
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-palette text-blue-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-blue-300">Art Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekArt(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-running text-green-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-green-300">Athletic Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekAthletic(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-home text-purple-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-purple-300">Home Connection:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekHomeConnection(month, index)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-pink-300 text-lg">Monthly Creative Project</h5>
+                        <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+                            <p class="text-sm text-gray-300 leading-relaxed">${data.project}</p>
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-pink-300 text-lg">Materials Needed</h5>
+                        <div class="space-y-3">
+                            ${data.materials.map(material => `
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span class="text-sm text-gray-300">${material}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <div class="flex items-center justify-between">
+                        <button onclick="selectMonth('${getPreviousMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="selectMonth('${getNextMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            Next<i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get previous month
+        function getPreviousMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index > 0 ? months[index - 1] : month;
+        }
+
+        // Get next month
+        function getNextMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index < months.length - 1 ? months[index + 1] : month;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Toggle week details
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const icon = document.getElementById(`icon-${weekId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Get week art activities
+        function getWeekArt(month, weekIndex) {
+            const artActivities = {
+                'September': [
+                    'Professional drawing with advanced techniques and specialized media',
+                    'Portfolio organization with professional curation and presentation',
+                    'Gallery design with lighting, spacing, and exhibition planning',
+                    'Artist statement development with professional writing and communication'
+                ],
+                'October': [
+                    'Sports art creation with action photography and dynamic composition',
+                    'Athletic performance art with movement studies and kinetic sculpture',
+                    'Competition design with event branding and promotional materials',
+                    'Sports psychology visualization with performance enhancement art'
+                ],
+                'November': [
+                    'Web design with user interface creation and responsive layouts',
+                    'Digital art with graphic design and multimedia integration',
+                    'Marketing materials with brand development and visual identity',
+                    'E-commerce design with online store creation and product presentation'
+                ],
+                'December': [
+                    'Winter landscape art with advanced techniques and atmospheric effects',
+                    'Performance art with gymnastics and skating movement studies',
+                    'Theater set design with staging, lighting, and technical elements',
+                    'Musical performance art with composition and visual interpretation'
+                ],
+                'January': [
+                    'Professional photography with advanced lighting and composition',
+                    'Video production with cinematography and storytelling techniques',
+                    'Digital editing with professional software and post-production',
+                    'Commercial photography with client work and business applications'
+                ],
+                'February': [
+                    'Music composition with advanced theory and orchestration',
+                    'Digital music production with recording and mixing techniques',
+                    'Sound design with audio engineering and post-production',
+                    'Music business with branding and marketing materials'
+                ],
+                'March': [
+                    'Track and field art with action photography and movement studies',
+                    'Athletic performance art with speed and form visualization',
+                    'Championship design with event branding and promotional materials',
+                    'Personal branding art with social media presence and marketing'
+                ],
+                'April': [
+                    'Curatorial art with exhibition planning and artwork selection',
+                    'Gallery design with space planning and visitor experience',
+                    'Art criticism with analytical writing and critical evaluation',
+                    'Gallery management art with business operations and artist relations'
+                ],
+                'May': [
+                    'Coaching art with instructional design and visual communication',
+                    'Team management art with leadership development and strategy visualization',
+                    'Youth mentoring art with educational materials and skill development',
+                    'Sports strategy art with tactical planning and game analysis'
+                ],
+                'June': [
+                    'Business art with entrepreneurship and startup development',
+                    'Marketing art with brand development and customer acquisition',
+                    'Financial art with budgeting visualization and revenue optimization',
+                    'Career art with resume design and interview preparation materials'
+                ]
+            };
+            return artActivities[month][weekIndex] || 'Professional art activities and skill development';
+        }
+
+        // Get week athletic activities
+        function getWeekAthletic(month, weekIndex) {
+            const athleticActivities = {
+                'September': [
+                    'Art-inspired fitness with creative movement and expression',
+                    'Portfolio physical preparation with posture and presentation skills',
+                    'Gallery fitness with endurance for exhibition setup and management',
+                    'Artist wellness with stress management and creative energy maintenance'
+                ],
+                'October': [
+                    'Specialized athletic training with sport-specific techniques and conditioning',
+                    'Performance optimization with advanced training methods and technology',
+                    'Competition preparation with tactical planning and mental preparation',
+                    'Sports psychology with mental training and performance enhancement'
+                ],
+                'November': [
+                    'Digital fitness with ergonomic exercises and screen time wellness',
+                    'Web development fitness with posture and physical breaks',
+                    'Marketing fitness with presentation skills and physical confidence',
+                    'E-commerce fitness with product photography and physical presentation'
+                ],
+                'December': [
+                    'Advanced gymnastics with elite routines and competition preparation',
+                    'Figure skating with choreography and artistic expression',
+                    'Theater physical performance with stage presence and movement',
+                    'Musical performance with physical endurance and stage presence'
+                ],
+                'January': [
+                    'Photography fitness with camera handling and physical endurance',
+                    'Video production fitness with equipment operation and physical stamina',
+                    'Editing fitness with posture and ergonomic practices',
+                    'Commercial fitness with client interaction and physical presentation'
+                ],
+                'February': [
+                    'Music performance fitness with instrumental technique and physical endurance',
+                    'Production fitness with studio work and physical stamina',
+                    'Sound engineering fitness with technical operation and physical focus',
+                    'Music business fitness with networking and physical presence'
+                ],
+                'March': [
+                    'Track and field specialization with event-specific training and techniques',
+                    'Performance peaking with periodization and championship preparation',
+                    'Championship strategy with race planning and tactical execution',
+                    'Athletic branding with physical presence and media training'
+                ],
+                'April': [
+                    'Curatorial fitness with exhibition setup and physical endurance',
+                    'Gallery management fitness with space planning and physical organization',
+                    'Art criticism fitness with presentation skills and physical confidence',
+                    'Artist relations fitness with networking and physical presence'
+                ],
+                'May': [
+                    'Coaching certification with sport-specific methodologies and physical demonstration',
+                    'Team management fitness with leadership development and physical presence',
+                    'Strategy development fitness with tactical planning and physical execution',
+                    'Youth mentoring fitness with coaching and physical skill development'
+                ],
+                'June': [
+                    'Entrepreneurship fitness with business development and physical wellness',
+                    'Marketing fitness with brand development and physical presentation',
+                    'Financial fitness with stress management and physical well-being',
+                    'Career development fitness with interview preparation and physical confidence'
+                ]
+            };
+            return athleticActivities[month][weekIndex] || 'Professional athletic activities and skill development';
+        }
+
+        // Get week home connection
+        function getWeekHomeConnection(month, weekIndex) {
+            const homeConnection = {
+                'September': [
+                    'Create a home art studio with professional setup and organization',
+                    'Develop portfolio pieces with professional techniques and presentation',
+                    'Practice gallery design with home exhibition planning and setup',
+                    'Write artist statements with professional communication and reflection'
+                ],
+                'October': [
+                    'Practice specialized athletic training with home conditioning and technique work',
+                    'Develop performance optimization with home training and technology integration',
+                    'Study competition strategy with game analysis and tactical planning',
+                    'Practice sports psychology with mental training and visualization techniques'
+                ],
+                'November': [
+                    'Create a home web development studio with professional setup and tools',
+                    'Practice digital design with home projects and portfolio development',
+                    'Develop marketing materials with personal branding and content creation',
+                    'Build e-commerce projects with online store creation and management'
+                ],
+                'December': [
+                    'Practice advanced gymnastics with home conditioning and flexibility training',
+                    'Develop figure skating skills with off-ice training and choreography',
+                    'Create home theater productions with staging and performance practice',
+                    'Practice musical performance with home recording and composition'
+                ],
+                'January': [
+                    'Create a home photography studio with professional lighting and equipment',
+                    'Practice video production with home filming and editing projects',
+                    'Develop editing skills with professional software and techniques',
+                    'Build commercial photography portfolio with client projects and business development'
+                ],
+                'February': [
+                    'Create a home music studio with recording equipment and production tools',
+                    'Practice music composition with advanced theory and orchestration',
+                    'Develop sound engineering skills with mixing and mastering techniques',
+                    'Build music business with branding, marketing, and career development'
+                ],
+                'March': [
+                    'Practice track and field events with home conditioning and technique training',
+                    'Develop performance peaking with periodization and championship preparation',
+                    'Study championship strategy with race planning and tactical execution',
+                    'Build athletic branding with social media presence and marketing'
+                ],
+                'April': [
+                    'Create home exhibitions with professional curation and presentation',
+                    'Practice gallery management with space planning and organization',
+                    'Develop art criticism skills with analytical writing and evaluation',
+                    'Build artist relations with networking and professional communication'
+                ],
+                'May': [
+                    'Practice coaching techniques with family and community sports activities',
+                    'Develop team management skills with leadership and strategy development',
+                    'Study youth mentoring with coaching and skill development techniques',
+                    'Build sports strategy with tactical planning and game analysis'
+                ],
+                'June': [
+                    'Create a home business with entrepreneurship and startup development',
+                    'Practice marketing strategies with brand development and customer acquisition',
+                    'Develop financial management skills with budgeting and revenue optimization',
+                    'Build career portfolio with resume development and interview preparation'
+                ]
+            };
+            return homeConnection[month][weekIndex] || 'Professional home creative and athletic activities';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
