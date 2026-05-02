@@ -261,6 +261,93 @@
             font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em;
             text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 8px;
         }
+
+        /* ===== LIGHT MODE ===== */
+        body.light { background: #eeedf8 !important; color: #0d0d1a; }
+        body.light .bg-orb { opacity: 0.06 !important; }
+        body.light .star { opacity: 0 !important; animation: none !important; }
+
+        /* Header */
+        body.light header {
+            background: rgba(238,237,248,0.92) !important;
+            border-bottom-color: rgba(0,0,0,0.09) !important;
+        }
+        body.light .nav-link { color: rgba(13,13,26,0.5) !important; }
+        body.light .nav-link:hover { color: rgba(13,13,26,0.85) !important; background: rgba(0,0,0,0.05) !important; }
+        body.light .nav-cta {
+            background: linear-gradient(135deg,rgba(99,102,241,0.13),rgba(168,85,247,0.13)) !important;
+            border-color: rgba(99,102,241,0.3) !important; color: #4338ca !important;
+        }
+        body.light .nav-cta:hover {
+            background: linear-gradient(135deg,rgba(99,102,241,0.22),rgba(168,85,247,0.22)) !important;
+        }
+        body.light .logo-wrap span, body.light .logo-wrap div { color: #0d0d1a; }
+
+        /* Hero */
+        body.light .hero-badge {
+            background: rgba(99,102,241,0.1) !important;
+            border-color: rgba(99,102,241,0.28) !important; color: #4338ca !important;
+        }
+        body.light .badge-dot { background: #4338ca !important; box-shadow: 0 0 6px rgba(67,56,202,0.45) !important; }
+        body.light .hero-divider-line { background: linear-gradient(90deg,transparent,rgba(99,102,241,0.22),transparent) !important; }
+        body.light .hero-divider-dot { background: rgba(99,102,241,0.35) !important; }
+        body.light .hero-stats {
+            background: rgba(255,255,255,0.65) !important;
+            border-color: rgba(0,0,0,0.09) !important;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        body.light .hero-stat-num { color: inherit; }
+        body.light .hero-stat-sep { background: rgba(0,0,0,0.1) !important; }
+
+        /* Section labels */
+        body.light .section-label { color: rgba(13,13,26,0.42) !important; }
+
+        /* Cards */
+        body.light .card {
+            background: rgba(255,255,255,0.78) !important;
+            border-color: rgba(0,0,0,0.08) !important;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+        }
+        body.light .card:hover {
+            background: rgba(255,255,255,0.97) !important;
+            box-shadow: 0 0 0 2px var(--ring-color), 0 0 28px var(--ring-glow), 0 8px 28px rgba(0,0,0,0.1) !important;
+        }
+        body.light .icon-ring::after { border-color: rgba(0,0,0,0.1) !important; }
+        body.light .age-badge { background: rgba(0,0,0,0.05) !important; border-color: rgba(0,0,0,0.1) !important; }
+        body.light .subject-list { background: rgba(0,0,0,0.03) !important; border-color: rgba(0,0,0,0.07) !important; }
+        body.light .subject-list li { color: rgba(13,13,26,0.62) !important; }
+        body.light .btn-cta { box-shadow: 0 2px 8px rgba(0,0,0,0.14); }
+
+        /* Features */
+        body.light .feature-pill {
+            background: rgba(255,255,255,0.72) !important;
+            border-color: rgba(0,0,0,0.08) !important;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+        }
+        body.light .feature-pill:hover { background: rgba(255,255,255,0.97) !important; border-color: rgba(0,0,0,0.12) !important; }
+        body.light .feature-pill > div:last-child > div:last-child { color: rgba(13,13,26,0.45) !important; }
+        body.light .feature-pill > div:last-child > div:first-child { color: #0d0d1a !important; }
+
+        /* About mini-cards */
+        body.light #about > div > div:last-child > div { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        body.light #about > div > div:last-child > div > div:last-child { color: rgba(13,13,26,0.45) !important; }
+        body.light #about > div > div:last-child > div > div:nth-child(2) { color: #0d0d1a !important; }
+
+        /* Modal */
+        body.light .modal-overlay { background: rgba(200,198,240,0.6) !important; }
+        body.light .modal-box {
+            background: #ffffff !important;
+            border-color: rgba(0,0,0,0.1) !important;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.14);
+            color: #0d0d1a;
+        }
+        body.light .subject-btn { background: rgba(0,0,0,0.03) !important; border-color: rgba(0,0,0,0.08) !important; color: #0d0d1a !important; }
+        body.light .subject-btn:hover { background: rgba(0,0,0,0.07) !important; border-color: rgba(0,0,0,0.14) !important; }
+        body.light .subject-btn div:last-child { color: rgba(13,13,26,0.45) !important; }
+
+        /* Footer */
+        body.light footer { border-top-color: rgba(0,0,0,0.08) !important; }
+        body.light footer span { color: rgba(13,13,26,0.4) !important; }
     </style>
 </head>
 <body>
@@ -700,10 +787,38 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         let isDark = true;
+
+        function fixInlineTextForLight() {
+            document.querySelectorAll('main *[style], footer *[style], header *[style]').forEach(el => {
+                const s = el.getAttribute('style') || '';
+                if (!s.includes('rgba(255,255,255')) return;
+                if (!el.dataset.darkStyle) el.dataset.darkStyle = s;
+                el.setAttribute('style', s.replace(/rgba\(255,255,255,([\d.]+)\)/g, (_, a) => {
+                    const alpha = parseFloat(a);
+                    const darkAlpha = Math.min(0.85, alpha < 0.15 ? alpha * 3 : alpha < 0.35 ? alpha * 1.8 : alpha * 1.5);
+                    return `rgba(13,13,26,${darkAlpha.toFixed(2)})`;
+                }));
+            });
+        }
+
+        function restoreInlineTextForDark() {
+            document.querySelectorAll('[data-dark-style]').forEach(el => {
+                el.setAttribute('style', el.dataset.darkStyle);
+                delete el.dataset.darkStyle;
+            });
+        }
+
         function toggleDarkMode() {
             isDark = !isDark;
             document.getElementById('themeIcon').className = isDark ? 'fas fa-moon' : 'fas fa-sun';
-            document.body.style.background = isDark ? '#04040e' : 'linear-gradient(135deg,#667eea,#764ba2)';
+            document.body.style.background = '';
+            if (isDark) {
+                document.body.classList.remove('light');
+                restoreInlineTextForDark();
+            } else {
+                document.body.classList.add('light');
+                fixInlineTextForLight();
+            }
         }
 
         let currentProgram = '';
