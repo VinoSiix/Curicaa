@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 3 - English Curriculum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-morphism {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .dark .tab-active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 0 25px rgba(240, 147, 251, 0.6);
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .skill-badge {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .skill-badge:nth-child(2) { animation-delay: 0.1s; }
+        .skill-badge:nth-child(3) { animation-delay: 0.2s; }
+        .skill-badge:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="dark min-h-screen text-white scroll-smooth">
+    <!-- Header -->
+    <header class="glass-morphism sticky top-0 z-50 px-4 py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="hub.html" class="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-user-graduate text-white"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <a href="hub.html" class="text-xl md:text-2xl font-bold hover:text-green-300 transition-colors">Grade 3</a>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-lg font-semibold text-green-300">English</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="px-4 py-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full text-sm font-bold">Age 8</span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-white/10 transition">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+                Literacy & Language Arts
+            </h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                Developing reading fluency, writing skills, grammar mastery, and comprehension strategies through engaging literature and creative expression.
+            </p>
+        </section>
+
+        <!-- Weekly Schedule -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-clock mr-4 text-green-400"></i>
+                Weekly Schedule (Age 8)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-sun text-yellow-400 mr-2"></i>
+                        <span class="font-bold text-lg">9:00 - 10:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Reading Workshop</p>
+                    <p class="text-xs text-gray-400">Fluency, comprehension</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-book text-orange-400 mr-2"></i>
+                        <span class="font-bold text-lg">10:30 - 12:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Writing & Grammar</p>
+                    <p class="text-xs text-gray-400">Composition, mechanics</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-apple-alt text-green-400 mr-2"></i>
+                        <span class="font-bold text-lg">12:00 - 13:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Lunch & Story Time</p>
+                    <p class="text-xs text-gray-400">Read-alouds, discussion</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-spell-check text-purple-400 mr-2"></i>
+                        <span class="font-bold text-lg">13:00 - 14:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Spelling & Vocabulary</p>
+                    <p class="text-xs text-gray-400">Word study, meanings</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-comments text-pink-400 mr-2"></i>
+                        <span class="font-bold text-lg">14:30 - 15:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Speaking & Listening</p>
+                    <p class="text-xs text-gray-400">Oral skills, presentations</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-theater-masks text-red-400 mr-2"></i>
+                        <span class="font-bold text-lg">15:30 - 16:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Creative Expression</p>
+                    <p class="text-xs text-gray-400">Poetry, drama, projects</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-pen-fancy text-indigo-400 mr-2"></i>
+                        <span class="font-bold text-lg">16:30 - 17:00</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Writing Workshop</p>
+                    <p class="text-xs text-gray-400">Editing, publishing</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-home text-cyan-400 mr-2"></i>
+                        <span class="font-bold text-lg">17:00 - 17:30</span>
+                    </div>
+                    <p class="text-sm text-gray-300">Reading Practice</p>
+                    <p class="text-xs text-gray-400">Independent reading</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- English Skills Overview -->
+        <section class="mb-12 glass-morphism rounded-2xl p-8 card-hover">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-book-open mr-4 text-green-400"></i>
+                Core Literacy Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-book-reader text-blue-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Reading Fluency</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Speed, accuracy</p>
+                    <p class="text-xs text-gray-400">Expression, comprehension</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-pen text-orange-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Writing Skills</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Paragraph writing</p>
+                    <p class="text-xs text-gray-400">Grammar, punctuation</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-language text-purple-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Vocabulary</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Word meanings</p>
+                    <p class="text-xs text-gray-400">Context clues, prefixes</p>
+                </div>
+                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-microphone text-green-400 mr-3 text-2xl"></i>
+                        <span class="font-bold text-lg">Communication</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2">Speaking skills</p>
+                    <p class="text-xs text-gray-400">Listening, presentations</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Themes Navigation -->
+        <section class="mb-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-calendar-alt mr-4 text-green-400"></i>
+                Monthly Literacy Themes
+            </h3>
+            <div class="flex flex-wrap gap-3 mb-8" id="monthTabs">
+                <!-- Month tabs will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Month Content -->
+        <section id="monthContent" class="glass-morphism rounded-2xl p-8 card-hover">
+            <!-- Dynamic content will be loaded here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism mt-20 px-4 py-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-400">© 2024 Grade 3 English Curriculum. Building strong literacy foundations for academic success.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Monthly English curriculum data for age 8 (Grade 3)
+        const curriculumData = {
+            'September': {
+                icon: 'fa-book-reader',
+                color: 'from-blue-400 to-indigo-500',
+                focus: 'Reading Foundations',
+                skills: ['Reading fluency', 'Comprehension strategies', 'Story elements', 'Character analysis'],
+                weeks: [
+                    'Building reading fluency with timed reading and expression practice',
+                    'Comprehension strategies: predicting, questioning, and clarifying',
+                    'Story elements identification: setting, plot, conflict, resolution',
+                    'Character analysis with traits, motivations, and development'
+                ],
+                project: 'Create a reading portfolio with favorite books and comprehension responses',
+                materials: ['Grade-level books', 'Reading logs', 'Comprehension worksheets', 'Character maps']
+            },
+            'October': {
+                icon: 'fa-pen',
+                color: 'from-orange-400 to-red-500',
+                focus: 'Writing Paragraphs',
+                skills: ['Paragraph structure', 'Topic sentences', 'Supporting details', 'Concluding sentences'],
+                weeks: [
+                    'Paragraph structure: topic sentence, supporting details, conclusion',
+                    'Writing strong topic sentences with clear main ideas',
+                    'Developing supporting details with examples and explanations',
+                    'Crafting effective concluding sentences and paragraph unity'
+                ],
+                project: 'Paragraph writing portfolio with different types of paragraphs',
+                materials: ['Writing notebooks', 'Paragraph organizers', 'Editing checklists', 'Writing prompts']
+            },
+            'November': {
+                icon: 'fa-spell-check',
+                color: 'from-purple-400 to-pink-500',
+                focus: 'Spelling & Word Study',
+                skills: ['Spelling patterns', 'Prefixes/suffixes', 'Multiple meanings', 'Word families'],
+                weeks: [
+                    'Spelling patterns and rules for regular and irregular words',
+                    'Prefixes and suffixes: meanings and usage in context',
+                    'Multiple meaning words and context clues for understanding',
+                    'Word families and rhyming patterns for vocabulary building'
+                ],
+                project: 'Create a personal spelling dictionary with word meanings and sentences',
+                materials: ['Spelling lists', 'Word study notebooks', 'Dictionary materials', 'Word games']
+            },
+            'December': {
+                icon: 'fa-book',
+                color: 'from-green-400 to-emerald-500',
+                focus: 'Literature & Genres',
+                skills: ['Genre identification', 'Author study', 'Literary devices', 'Text features'],
+                weeks: [
+                    'Genre exploration: fiction, non-fiction, poetry, drama',
+                    'Author study examining style, themes, and literary techniques',
+                    'Literary devices: similes, metaphors, personification, alliteration',
+                    'Text features and their role in comprehension and navigation'
+                ],
+                project: 'Genre study project with book recommendations and literary analysis',
+                materials: ['Various genre books', 'Literary device charts', 'Author biographies', 'Text feature guides']
+            },
+            'January': {
+                icon: 'fa-language',
+                color: 'from-cyan-400 to-blue-500',
+                focus: 'Grammar & Mechanics',
+                skills: ['Parts of speech', 'Sentence types', 'Punctuation', 'Capitalization'],
+                weeks: [
+                    'Parts of speech review: nouns, verbs, adjectives, adverbs',
+                    'Sentence types: declarative, interrogative, imperative, exclamatory',
+                    'Punctuation mastery: end marks, commas, quotation marks',
+                    'Capitalization rules for proper nouns, titles, and beginnings'
+                ],
+                project: 'Grammar handbook with rules, examples, and practice exercises',
+                materials: ['Grammar textbooks', 'Mechanics worksheets', 'Editing tools', 'Sentence building materials']
+            },
+            'February': {
+                icon: 'fa-comments',
+                color: 'from-red-400 to-pink-500',
+                focus: 'Communication Skills',
+                skills: ['Oral presentations', 'Active listening', 'Group discussions', 'Questioning techniques'],
+                weeks: [
+                    'Oral presentation skills: organization, delivery, and audience awareness',
+                    'Active listening strategies and response techniques',
+                    'Group discussion participation and leadership skills',
+                    'Questioning techniques for deeper understanding and engagement'
+                ],
+                project: 'Prepare and deliver a multimedia presentation on a favorite topic',
+                materials: ['Presentation software', 'Speaking rubrics', 'Listening activities', 'Discussion prompts']
+            },
+            'March': {
+                icon: 'fa-newspaper',
+                color: 'from-yellow-400 to-orange-500',
+                focus: 'Informational Text',
+                skills: ['Non-fiction reading', 'Text structure', 'Main idea', 'Supporting evidence'],
+                weeks: [
+                    'Non-fiction reading strategies and text features utilization',
+                    'Text structure identification: cause/effect, problem/solution, compare/contrast',
+                    'Main idea and supporting details in informational text',
+                    'Using evidence from text to support comprehension and responses'
+                ],
+                project: 'Research report on a science or social studies topic with citations',
+                materials: ['Non-fiction books', 'Research materials', 'Note-taking tools', 'Citation guides']
+            },
+            'April': {
+                icon: 'fa-feather',
+                color: 'from-indigo-400 to-purple-500',
+                focus: 'Creative Writing',
+                skills: ['Narrative writing', 'Dialogue', 'Descriptive language', 'Story elements'],
+                weeks: [
+                    'Narrative writing with engaging beginnings, middles, and endings',
+                    'Dialogue writing with proper punctuation and character voice',
+                    'Descriptive language using sensory details and vivid vocabulary',
+                    'Story elements integration: plot, character, setting, theme'
+                ],
+                project: 'Write and illustrate a short story with complete narrative elements',
+                materials: ['Story maps', 'Dialogue examples', 'Descriptive word lists', 'Illustration supplies']
+            },
+            'May': {
+                icon: 'fa-globe',
+                color: 'from-teal-400 to-green-500',
+                focus: 'Research & Presentation',
+                skills: ['Research skills', 'Note-taking', 'Synthesizing information', 'Multimedia presentations'],
+                weeks: [
+                    'Research skills using multiple sources and evaluating information',
+                    'Effective note-taking strategies and information organization',
+                    'Synthesizing information from multiple sources and perspectives',
+                    'Creating multimedia presentations with visual aids and engagement'
+                ],
+                project: 'Comprehensive research project with presentation and visual aids',
+                materials: ['Research databases', 'Note-taking templates', 'Presentation software', 'Citation tools']
+            },
+            'June': {
+                icon: 'fa-trophy',
+                color: 'from-amber-400 to-orange-500',
+                focus: 'Literacy Celebration',
+                skills: ['Portfolio review', 'Publishing', 'Author sharing', 'Reading celebration'],
+                weeks: [
+                    'Literacy portfolio compilation and reflection on growth',
+                    'Publishing favorite writing pieces and author celebrations',
+                    'Author sharing sessions with peer feedback and appreciation',
+                    'Reading celebration with book talks and recommendations'
+                ],
+                project: 'Yearly literacy portfolio showcasing growth and achievements',
+                materials: ['Portfolio binders', 'Publishing materials', 'Author celebration supplies', 'Reading recommendation lists']
+            }
+        };
+
+        let currentMonth = 'September';
+        let isDarkMode = true;
+
+        // Initialize the app
+        function init() {
+            createMonthTabs();
+            loadMonthContent('September');
+        }
+
+        // Create month navigation tabs
+        function createMonthTabs() {
+            const tabsContainer = document.getElementById('monthTabs');
+            const months = Object.keys(curriculumData);
+            
+            months.forEach(month => {
+                const button = document.createElement('button');
+                button.className = `px-5 py-3 rounded-full glass-morphism transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                    month === currentMonth ? 'tab-active' : ''
+                }`;
+                button.innerHTML = `<i class="fas ${curriculumData[month].icon} mr-2"></i>${month}`;
+                button.onclick = () => selectMonth(month);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // Select and load month content
+        function selectMonth(month) {
+            currentMonth = month;
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('#monthTabs button');
+            tabs.forEach((tab, index) => {
+                if (Object.keys(curriculumData)[index] === month) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+            
+            loadMonthContent(month);
+        }
+
+        // Load month content
+        function loadMonthContent(month) {
+            const data = curriculumData[month];
+            const content = document.getElementById('monthContent');
+            
+            content.innerHTML = `
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-3xl font-bold flex items-center">
+                            <i class="fas ${data.icon} mr-4 text-gradient bg-gradient-to-r ${data.color} bg-clip-text text-transparent"></i>
+                            ${month}
+                        </h4>
+                        <span class="px-4 py-2 rounded-full bg-gradient-to-r ${data.color} text-sm font-semibold">
+                            ${data.focus}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-green-300 text-lg">Literacy Skills Focus</h5>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            ${data.skills.map((skill, index) => `
+                                <span class="skill-badge px-4 py-2 bg-white/10 rounded-full text-sm font-medium">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-green-300 text-lg">Weekly Literacy Topics</h5>
+                        <div class="space-y-4">
+                            ${data.weeks.map((week, index) => `
+                                <div class="border border-white/10 rounded-xl overflow-hidden">
+                                    <div class="flex items-start p-4 cursor-pointer hover:bg-white/5 transition" onclick="toggleWeekDetails('${month}-${index}')">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r ${data.color} flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                            ${index + 1}
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-300 leading-relaxed">${week}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Click for activities</p>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-gray-400 transition-transform" id="icon-${month}-${index}"></i>
+                                    </div>
+                                    <div class="hidden bg-white/5 border-t border-white/10 p-4" id="details-${month}-${index}">
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-book text-blue-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-blue-300">Reading Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekReading(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-pen text-green-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-green-300">Writing Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekWriting(month, index)}</p>
+                                            
+                                            <div class="flex items-center">
+                                                <i class="fas fa-comments text-purple-400 mr-2"></i>
+                                                <span class="text-sm font-medium text-purple-300">Speaking Activities:</span>
+                                            </div>
+                                            <p class="text-sm text-gray-400 ml-6">${getWeekSpeaking(month, index)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <h5 class="font-bold mb-4 text-green-300 text-lg">Monthly Literacy Project</h5>
+                        <div class="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+                            <p class="text-sm text-gray-300 leading-relaxed">${data.project}</p>
+                        </div>
+
+                        <h5 class="font-bold mb-4 text-green-300 text-lg">Materials Needed</h5>
+                        <div class="space-y-3">
+                            ${data.materials.map(material => `
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <span class="text-sm text-gray-300">${material}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <div class="flex items-center justify-between">
+                        <button onclick="selectMonth('${getPreviousMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            <i class="fas fa-chevron-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="selectMonth('${getNextMonth(month)}')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium">
+                            Next<i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get previous month
+        function getPreviousMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index > 0 ? months[index - 1] : month;
+        }
+
+        // Get next month
+        function getNextMonth(month) {
+            const months = Object.keys(curriculumData);
+            const index = months.indexOf(month);
+            return index < months.length - 1 ? months[index + 1] : month;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Toggle week details
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const icon = document.getElementById(`icon-${weekId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Get week reading activities
+        function getWeekReading(month, weekIndex) {
+            const readingActivities = {
+                'September': [
+                    'Timed reading practice with fluency building and expression development',
+                    'Comprehension strategy practice with predicting and questioning texts',
+                    'Story element identification through graphic organizers and discussions',
+                    'Character analysis with trait identification and evidence from text'
+                ],
+                'October': [
+                    'Reading paragraphs for main idea and supporting details',
+                    'Analyzing paragraph structure in various texts and genres',
+                    'Reading for topic sentence identification and paragraph unity',
+                    'Evaluating paragraph effectiveness and organization'
+                ],
+                'November': [
+                    'Reading for spelling patterns and word recognition',
+                    'Context clue practice for multiple meaning words',
+                    'Word family reading and rhyming pattern recognition',
+                    'Prefix and suffix identification in reading passages'
+                ],
+                'December': [
+                    'Genre exploration through reading various types of literature',
+                    'Author study reading multiple works by same author',
+                    'Literary device identification and analysis in texts',
+                    'Text feature navigation and utilization strategies'
+                ],
+                'January': [
+                    'Reading for parts of speech identification and usage',
+                    'Sentence type analysis in various texts and contexts',
+                    'Punctuation and capitalization practice through reading',
+                    'Grammar application in authentic reading materials'
+                ],
+                'February': [
+                    'Reading aloud for presentation practice and fluency',
+                    'Active listening during read-alouds and peer presentations',
+                    'Discussion skills through literature circles and book talks',
+                    'Questioning techniques through interactive reading sessions'
+                ],
+                'March': [
+                    'Non-fiction reading with text feature utilization',
+                    'Text structure identification through informational reading',
+                    'Main idea and supporting details in non-fiction texts',
+                    'Evidence-based responses to informational reading'
+                ],
+                'April': [
+                    'Reading narrative stories for structure and elements',
+                    'Dialogue analysis in literature and character development',
+                    'Descriptive language identification and appreciation',
+                    'Story element recognition in various narrative texts'
+                ],
+                'May': [
+                    'Research reading across multiple sources and perspectives',
+                    'Note-taking during research reading and information gathering',
+                    'Synthesizing information from various research sources',
+                    'Reading for presentation content and supporting evidence'
+                ],
+                'June': [
+                    'Portfolio reading and reflection on literacy growth',
+                    'Peer reading and feedback on published writing pieces',
+                    'Author sharing through reading original works aloud',
+                    'Book talks and reading recommendations for summer'
+                ]
+            };
+            return readingActivities[month][weekIndex] || 'Engaging reading activities and comprehension practice';
+        }
+
+        // Get week writing activities
+        function getWeekWriting(month, weekIndex) {
+            const writingActivities = {
+                'September': [
+                    'Reading response writing with comprehension and reflection',
+                    'Fluency writing with timed journal entries and free writing',
+                    'Story element summaries and character descriptions',
+                    'Reading journal writing with predictions and connections'
+                ],
+                'October': [
+                    'Paragraph writing with topic sentence development',
+                    'Supporting details writing with examples and explanations',
+                    'Concluding sentence crafting and paragraph unity',
+                    'Various paragraph types: narrative, descriptive, expository'
+                ],
+                'November': [
+                    'Spelling practice through writing sentences and paragraphs',
+                    'Word meaning writing with context and usage examples',
+                    'Word family writing with rhyming and pattern practice',
+                    'Prefix and suffix writing with word building activities'
+                ],
+                'December': [
+                    'Genre writing exploring different literary forms',
+                    'Author style imitation and creative writing exercises',
+                    'Literary device writing with similes and metaphors',
+                    'Text feature writing creating informational materials'
+                ],
+                'January': [
+                    'Grammar writing with parts of speech identification',
+                    'Sentence type writing with variety and structure',
+                    'Punctuation and capitalization practice in writing',
+                    'Mechanics application in authentic writing contexts'
+                ],
+                'February': [
+                    'Presentation writing with organization and structure',
+                    'Active listening responses and reflection writing',
+                    'Discussion summary writing and key point identification',
+                    'Question development and inquiry writing'
+                ],
+                'March': [
+                    'Non-fiction writing with text structure application',
+                    'Main idea and supporting details in informational writing',
+                    'Evidence-based writing with citations and references',
+                    'Research report writing with organization and clarity'
+                ],
+                'April': [
+                    'Narrative writing with story elements and structure',
+                    'Dialogue writing with proper punctuation and voice',
+                    'Descriptive writing with sensory details and imagery',
+                    'Creative writing with plot, character, and setting development'
+                ],
+                'May': [
+                    'Research writing with note-taking and organization',
+                    'Synthesis writing combining multiple sources and perspectives',
+                    'Presentation content writing with clarity and engagement',
+                    'Citation writing and bibliography development'
+                ],
+                'June': [
+                    'Portfolio reflection writing and goal setting',
+                    'Publishing final writing pieces and author statements',
+                    'Author sharing writing with presentation and delivery',
+                    'Reading recommendation writing and book reviews'
+                ]
+            };
+            return writingActivities[month][weekIndex] || 'Creative writing activities and skill development';
+        }
+
+        // Get week speaking activities
+        function getWeekSpeaking(month, weekIndex) {
+            const speakingActivities = {
+                'September': [
+                    'Reading aloud with fluency and expression practice',
+                    'Comprehension discussions with question and answer sessions',
+                    'Story element sharing and group analysis activities',
+                    'Character presentations and role-playing exercises'
+                ],
+                'October': [
+                    'Paragraph sharing and peer feedback sessions',
+                    'Topic sentence presentations and main idea discussions',
+                    'Supporting details explanations and evidence sharing',
+                    'Paragraph organization and structure presentations'
+                ],
+                'October': [
+                    'Spelling bee practice and word pronunciation',
+                    'Multiple meaning word explanations and examples',
+                    'Word family sharing and rhyming presentations',
+                    'Prefix and suffix explanations and word building'
+                ],
+                'December': [
+                    'Genre presentations and book recommendations',
+                    'Author study presentations and literary analysis',
+                    'Literary device demonstrations and creative examples',
+                    'Text feature presentations and navigation guides'
+                ],
+                'January': [
+                    'Grammar explanations and rule presentations',
+                    'Sentence type demonstrations and variety practice',
+                    'Punctuation and capitalization presentations',
+                    'Mechanics application and error correction activities'
+                ],
+                'February': [
+                    'Oral presentations with multimedia and visual aids',
+                    'Active listening demonstrations and response activities',
+                    'Group discussion leadership and participation skills',
+                    'Questioning techniques and inquiry development'
+                ],
+                'March': [
+                    'Non-fiction presentations and research sharing',
+                    'Text structure explanations and organizational patterns',
+                    'Main idea presentations and supporting evidence',
+                    'Research presentations with citations and references'
+                ],
+                'April': [
+                    'Storytelling presentations and narrative sharing',
+                    'Dialogue performances and character voice development',
+                    'Descriptive language presentations and sensory details',
+                    'Creative writing sharing and author presentations'
+                ],
+                'May': [
+                    'Research presentations with multimedia components',
+                    'Note-taking presentations and organization strategies',
+                    'Synthesis presentations combining multiple perspectives',
+                    'Multimedia presentations with visual aids and engagement'
+                ],
+                'June': [
+                    'Portfolio presentations and growth reflections',
+                    'Author celebrations and writing showcases',
+                    'Peer presentations and feedback sharing',
+                    'Book talks and summer reading recommendations'
+                ]
+            };
+            return speakingActivities[month][weekIndex] || 'Interactive speaking activities and communication development';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
