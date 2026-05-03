@@ -109,6 +109,7 @@
         .card-indigo { --card-glow: radial-gradient(ellipse at top, rgba(129,140,248,0.12) 0%, transparent 65%); --ring-color: rgba(99,102,241,0.55);  --ring-glow: rgba(99,102,241,0.22); }
         .card-red    { --card-glow: radial-gradient(ellipse at top, rgba(248,113,113,0.12) 0%, transparent 65%); --ring-color: rgba(239,68,68,0.55);   --ring-glow: rgba(239,68,68,0.22); }
         .card-yellow { --card-glow: radial-gradient(ellipse at top, rgba(250,204,21,0.12) 0%, transparent 65%);  --ring-color: rgba(234,179,8,0.55);   --ring-glow: rgba(234,179,8,0.22); }
+        .card-teal   { --card-glow: radial-gradient(ellipse at top, rgba(20,184,166,0.12) 0%, transparent 65%);  --ring-color: rgba(20,184,166,0.55);  --ring-glow: rgba(20,184,166,0.22); }
 
         .icon-ring {
             width: 52px; height: 52px; border-radius: 15px;
@@ -367,6 +368,8 @@
         body.light .card-red .age-badge { color: #b91c1c !important; }
         body.light .card-yellow h3 { color: #92400e !important; }
         body.light .card-yellow .age-badge { color: #92400e !important; }
+        body.light .card-teal h3 { color: #0f766e !important; }
+        body.light .card-teal .age-badge { color: #0f766e !important; }
 
         /* Feature icons — boost container opacity and fix too-light icon colors */
         body.light .feature-icon { filter: saturate(1.2) brightness(0.88); opacity: 1 !important; }
@@ -466,7 +469,7 @@
 
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-num" style="color:#a78bfa;">7</div>
+                    <div class="hero-stat-num" style="color:#a78bfa;">8</div>
                     <div class="hero-stat-lbl">Grade Levels</div>
                 </div>
                 <div class="hero-stat-sep"></div>
@@ -580,8 +583,8 @@
                 </div>
             </div>
 
-            <!-- Row 2: 3 cards centered -->
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:810px;margin:0 auto;" class="reveal">
+            <!-- Row 2: 4 cards -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="reveal">
                 <div class="card card-indigo" onclick="openSubjectModal('ages-11-12')">
                     <div class="icon-ring" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">
                         <i class="fas fa-brain" style="font-size:19px;"></i>
@@ -610,7 +613,7 @@
                     </div>
                     <div style="text-align:center;">
                         <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fca5a5;">High School</h3>
-                        <div class="age-badge" style="color:#fca5a5;">Age 14</div>
+                        <div class="age-badge" style="color:#fca5a5;">Ages 13–14</div>
                         <div class="subject-list">
                             <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Critical thinking</p>
                             <ul>
@@ -626,23 +629,45 @@
                     </div>
                 </div>
 
-                <div class="card card-yellow" onclick="openSubjectModal('ages-15-18')">
+                <div class="card card-yellow" onclick="openSubjectModal('ages-15-16')">
                     <div class="icon-ring" style="background:linear-gradient(135deg,#eab308,#f97316);">
-                        <i class="fas fa-trophy" style="font-size:19px;"></i>
+                        <i class="fas fa-book-open" style="font-size:19px;"></i>
                     </div>
                     <div style="text-align:center;">
-                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fde047;">GED/SAT Prep</h3>
-                        <div class="age-badge" style="color:#fde047;">Ages 15–18</div>
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fde047;">GED Prep</h3>
+                        <div class="age-badge" style="color:#fde047;">Ages 15–16</div>
                         <div class="subject-list">
-                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Test preparation</p>
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">GED readiness</p>
                             <ul>
-                                <li><span class="dot" style="background:#eab308;"></span>SAT/ACT strategies</li>
-                                <li><span class="dot" style="background:#eab308;"></span>GED preparation</li>
-                                <li><span class="dot" style="background:#eab308;"></span>College readiness</li>
-                                <li><span class="dot" style="background:#eab308;"></span>Career planning</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Math reasoning</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Reading & writing</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Science & social</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Extended response</li>
                             </ul>
                         </div>
                         <button class="btn-cta" style="background:linear-gradient(135deg,#eab308,#f97316);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-teal" onclick="openSubjectModal('ages-17-18')">
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#14b8a6,#06b6d4);">
+                        <i class="fas fa-trophy" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#5eead4;">SAT Prep</h3>
+                        <div class="age-badge" style="color:#5eead4;">Ages 17–18</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">College readiness</p>
+                            <ul>
+                                <li><span class="dot" style="background:#14b8a6;"></span>SAT math</li>
+                                <li><span class="dot" style="background:#14b8a6;"></span>Evidence-based reading</li>
+                                <li><span class="dot" style="background:#14b8a6;"></span>Essay writing</li>
+                                <li><span class="dot" style="background:#14b8a6;"></span>Test strategies</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#14b8a6,#06b6d4);color:white;">
                             View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
                         </button>
                     </div>
@@ -945,8 +970,9 @@
             'age-9': 'Grade 4 — Age 9',
             'age-10': 'Grade 5 — Age 10',
             'ages-11-12': 'Middle School — Ages 11–12',
-            'age-14': 'High School — Age 14',
-            'ages-15-18': 'GED/SAT Prep — Ages 15–18'
+            'age-14': 'High School — Ages 13–14',
+            'ages-15-16': 'GED Prep — Ages 15–16',
+            'ages-17-18': 'SAT Prep — Ages 17–18'
         };
 
         function openSubjectModal(p) {
