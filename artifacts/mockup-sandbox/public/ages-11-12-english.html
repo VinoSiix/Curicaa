@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Middle School English — Ages 11–12 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#10b981;--a2:#06b6d4;--al:#6ee7b7;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(16,185,129,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
+body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:white;">Middle School</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 11–12</div>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-book" style="margin-right:5px;"></i>English Language Arts</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 11–12</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Middle School · Ages 11–12</p>
+    <h2 class="page-title">Reading, Writing & Literature</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:620px;margin:0 auto;line-height:1.75;">Developing critical reading skills through literature analysis, building strong essay writing with evidence-based arguments, and expanding vocabulary and grammar for clear, confident communication.</p>
+  </section>
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-book-open" style="color:#6ee7b7;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Literature Analysis</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Theme, character, plot, point of view</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(6,182,212,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pen-fancy" style="color:#22d3ee;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Essay Writing</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Argument, informative, narrative</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(99,102,241,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-spell-check" style="color:#a5b4fc;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Grammar & Mechanics</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Sentence structure, punctuation</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-search" style="color:#fb923c;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Research Skills</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Nonfiction, citations, note-taking</div>
+      </div>
+    </div>
+  </section>
+  <section style="margin-bottom:48px;">
+    <div class="glass" style="padding:28px;">
+      <div style="margin-bottom:20px;"><p class="section-label">Daily Structure</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-clock" style="color:var(--al);margin-right:10px;"></i>Weekly Schedule</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-book-reader" style="color:#6ee7b7;"></i><span style="font-weight:600;font-size:13px;">9:00–10:00</span></div><p style="font-size:13px;margin-bottom:2px;">Independent Reading</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">SSR with reading log entry</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-comments" style="color:#22d3ee;"></i><span style="font-weight:600;font-size:13px;">10:00–11:00</span></div><p style="font-size:13px;margin-bottom:2px;">Literature Discussion</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Socratic seminar & analysis</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-pen" style="color:#fb923c;"></i><span style="font-weight:600;font-size:13px;">11:00–12:00</span></div><p style="font-size:13px;margin-bottom:2px;">Writing Workshop</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Draft, revise, edit cycle</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-apple-alt" style="color:#34d399;"></i><span style="font-weight:600;font-size:13px;">12:00–13:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lunch Break</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Free reading encouraged</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-spell-check" style="color:#a5b4fc;"></i><span style="font-weight:600;font-size:13px;">13:00–14:00</span></div><p style="font-size:13px;margin-bottom:2px;">Grammar & Vocabulary</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Direct instruction & exercises</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-search" style="color:#f472b6;"></i><span style="font-weight:600;font-size:13px;">14:00–15:00</span></div><p style="font-size:13px;margin-bottom:2px;">Research & Nonfiction</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Informational texts & note-taking</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-microphone" style="color:#f87171;"></i><span style="font-weight:600;font-size:13px;">15:00–15:30</span></div><p style="font-size:13px;margin-bottom:2px;">Oral Presentation Practice</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Speeches, book talks, debates</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-home" style="color:#818cf8;"></i><span style="font-weight:600;font-size:13px;">Evening</span></div><p style="font-size:13px;margin-bottom:2px;">Reading Assignment (30 min)</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Current book + vocabulary review</p></div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly ELA Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Middle School English · Ages 11–12</p>
+</footer>
+<script>
+const curriculumData={
+'September':{icon:'fa-book-open',color:'',focus:'Fiction & Story Elements',skills:['Plot structure','Character analysis','Setting & mood','Point of view'],weeks:['Story elements review: plot, character, setting, conflict, resolution','Character motivation and development in short fiction (O. Henry, Ray Bradbury)','Setting and mood analysis in selected short stories','Point of view — first, third limited, third omniscient — with practice passages'],project:'Write a 3-page short story using all five story elements with a clear beginning, middle, and end',materials:['Short story anthology','Sticky notes','Story map graphic organizer','Writing journal']},
+'October':{icon:'fa-mask',color:'',focus:'Theme & Author\'s Craft',skills:['Identifying theme','Figurative language','Symbolism','Author\'s purpose'],weeks:['Identifying explicit and implied themes in short stories and poems','Figurative language: simile, metaphor, personification, hyperbole in context','Symbolism and motifs in "The Outsiders" or "Hatchet"','Author\'s purpose (inform, persuade, entertain) and how craft choices support it'],project:'Thematic analysis essay (4 paragraphs) comparing theme in two short stories with textual evidence',materials:['Selected novel','Highlighters','Essay graphic organizer','Thesaurus']},
+'November':{icon:'fa-pen-fancy',color:'',focus:'Argumentative Writing',skills:['Claim & thesis','Evidence from text','Counterargument','Concluding statements'],weeks:['Introduction to argumentative writing: claim, evidence, warrant (CEW model)','Finding and citing textual evidence to support a claim','Addressing counterarguments and refutation techniques','Writing strong conclusions that synthesize rather than repeat'],project:'Write a 5-paragraph argumentative essay responding to a school-relevant debate topic with 3 cited sources',materials:['Argument graphic organizer','3 nonfiction articles on chosen topic','MLA citation guide','Peer review checklist']},
+'December':{icon:'fa-feather-alt',color:'',focus:'Poetry & Creative Expression',skills:['Poetic devices','Meter & rhyme','Free verse writing','Imagery'],weeks:['Poetic devices: alliteration, assonance, onomatopoeia, repetition','Meter and rhyme schemes in sonnets and ballads (Shakespeare, Poe)','Free verse poetry: writing with imagery and sensory details','Spoken word poetry: voice, performance, and emotional impact'],project:'Create a poetry chapbook with 8 original poems in at least 4 different forms (haiku, sonnet, free verse, ode)',materials:['Poetry anthology','Chapbook paper','Pen and markers','Recording device for spoken word']},
+'January':{icon:'fa-newspaper',color:'',focus:'Informational Texts & Research',skills:['Text structure','Main idea & details','Note-taking','Summarizing'],weeks:['Informational text structures: cause/effect, compare/contrast, problem/solution','Identifying main idea and supporting details in nonfiction articles','Cornell note-taking system applied to a nonfiction chapter','Summarizing and paraphrasing vs. quoting — avoiding plagiarism'],project:'Research a historical figure or scientific discovery; write a 2-page informational report with bibliography',materials:['Library access or internet','Cornell note-taking template','MLA format guide','Index cards for research notes']},
+'February':{icon:'fa-gavel',color:'',focus:'Debate & Speaking Skills',skills:['Debate structure','Persuasive speaking','Active listening','Rebuttal skills'],weeks:['Introduction to formal debate: proposition, opposition, evidence, rebuttal','Preparing debate positions with research and organized evidence cards','Practice rounds with structured feedback from partner and parent','Full class (or family) formal debate with scoring rubric'],project:'Prepare and deliver a 3-minute persuasive speech on a chosen topic, followed by a Q&A round',materials:['Debate topic list','Evidence cards','Scoring rubric','Timer']},
+'March':{icon:'fa-book',color:'',focus:'Novel Study — Realistic Fiction',skills:['Extended reading','Journal responses','Character arc','Conflict & resolution'],weeks:['Introduce novel; read chapters 1–8; journal: first impressions and predictions','Chapters 9–16: character arc — how does the protagonist change? Evidence?','Chapters 17–24: analyze conflict types (internal, external) and their resolution','Final chapters: evaluate theme and author\'s message with evidence'],project:'Novel study portfolio: reading log, 3 journal responses, 1 character map, 1 thematic essay (5 paragraphs)',materials:['Class novel (e.g. "The Giver," "Hatchet," or "Esperanza Rising")','Reading journal','Character map template','Essay rubric']},
+'April':{icon:'fa-spell-check',color:'',focus:'Grammar & Sentence Craft',skills:['Clause types','Sentence variety','Comma rules','Pronoun agreement'],weeks:['Independent and dependent clauses; simple, compound, complex sentences','Sentence variety: varying length and structure for style and clarity','Comma rules: lists, introductory phrases, coordinating conjunctions, appositives','Pronoun-antecedent agreement and avoiding ambiguous pronouns'],project:'Revise a previous essay draft applying all grammar rules learned; create a "before and after" comparison page',materials:['Grammar workbook or worksheet pack','Previous essay draft','Red pen for editing','Grammar reference card']},
+'May':{icon:'fa-globe',color:'',focus:'Multicultural Literature & Voices',skills:['Cultural context','Perspective & bias','Comparing texts','Empathy in reading'],weeks:['Reading diverse short stories and poems from world literature with cultural context','Analyzing perspective and how culture shapes a narrator\'s worldview','Comparing texts from different cultures on the same universal theme','Reflecting on how reading diverse voices builds empathy and understanding'],project:'Write a personal narrative inspired by your own cultural background or family story (3 pages)',materials:['World literature anthology or selected articles','Personal narrative graphic organizer','Family photos or mementos (optional)','Writing journal']},
+'June':{icon:'fa-trophy',color:'',focus:'Portfolio & Presentation',skills:['Self-assessment','Revision','Public speaking','Year review'],weeks:['Select best writing pieces from the year and revise for the final portfolio','Write a reflective introduction explaining growth as a reader and writer','Prepare a 5-minute reading/presentation from one portfolio piece','Portfolio presentations to family or peers with Q&A'],project:'Final Reading-Writing Portfolio with introduction letter, 3 revised pieces, and a reading list of books completed',materials:['Portfolio binder or folder','All year\'s writing samples','Presentation checklist','Reading log']}
+};
+let currentMonth='September';
+let isDark=true;
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{
+    btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);
+  });
+  loadContent(m);
+}
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-pen" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">${w} — guided reading, discussion questions, and a short written response.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Home practice: 30 minutes of assigned reading plus a journal reflection prompt.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+init();
+</script>
+</body>
+</html>

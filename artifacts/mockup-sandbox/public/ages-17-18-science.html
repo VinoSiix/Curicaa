@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>College Prep Science — Ages 17–18 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#f97316;--a2:#ef4444;--al:#fb923c;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(249,115,22,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(239,68,68,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(249,115,22,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .sched-card{background:rgba(255,255,255,0.55);}
+body.light .month-tab{background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:white;">SAT / College Prep</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 17–18</div>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-flask" style="margin-right:5px;"></i>Advanced Science</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 17–18</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">College Preparation · Ages 17–18</p>
+    <h2 class="page-title">Advanced Science & AP Prep</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:640px;margin:0 auto;line-height:1.75;">Go beyond high school science — explore college-level biology, chemistry, and physics concepts, develop scientific writing and lab report skills, and prepare for AP exams or college introductory science courses.</p>
+  </section>
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-dna" style="color:#fb923c;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">AP Biology Concepts</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Evolution, ecology, molecular biology</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(239,68,68,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-vials" style="color:#f87171;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">AP Chemistry Concepts</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Stoichiometry, thermodynamics, bonding</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(234,179,8,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-atom" style="color:#fde047;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">AP Physics Concepts</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Kinematics, energy, waves, electricity</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-clipboard-list" style="color:#34d399;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Scientific Writing</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Lab reports, research papers, citations</div>
+      </div>
+    </div>
+  </section>
+  <section style="margin-bottom:48px;">
+    <div class="glass" style="padding:28px;">
+      <div style="margin-bottom:20px;"><p class="section-label">Daily Structure</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-clock" style="color:var(--al);margin-right:10px;"></i>Weekly Schedule</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-video" style="color:#fb923c;"></i><span style="font-weight:600;font-size:13px;">9:00–10:30</span></div><p style="font-size:13px;margin-bottom:2px;">AP-Level Lecture</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Khan Academy AP or YouTube (Bozeman)</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-flask" style="color:#f87171;"></i><span style="font-weight:600;font-size:13px;">10:30–12:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lab / Investigation</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">AP-style inquiry lab 3× per week</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-apple-alt" style="color:#34d399;"></i><span style="font-weight:600;font-size:13px;">12:00–13:00</span></div><p style="font-size:13px;margin-bottom:2px;">Lunch + Science News</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Science Journal or Nature News articles</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-pencil-alt" style="color:#60a5fa;"></i><span style="font-weight:600;font-size:13px;">13:00–14:30</span></div><p style="font-size:13px;margin-bottom:2px;">AP Practice Questions</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Multiple choice + free response</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-pen" style="color:#a5b4fc;"></i><span style="font-weight:600;font-size:13px;">14:30–15:30</span></div><p style="font-size:13px;margin-bottom:2px;">Lab Report Writing</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Full IMRAD format with data analysis</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-laptop" style="color:#f472b6;"></i><span style="font-weight:600;font-size:13px;">15:30–16:00</span></div><p style="font-size:13px;margin-bottom:2px;">PhET / Online Simulations</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Interactive science models & data</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-lightbulb" style="color:#fbbf24;"></i><span style="font-weight:600;font-size:13px;">16:00–16:30</span></div><p style="font-size:13px;margin-bottom:2px;">Science Connections</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Real-world applications & career links</p></div>
+        <div class="sched-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="fas fa-home" style="color:#818cf8;"></i><span style="font-weight:600;font-size:13px;">Evening</span></div><p style="font-size:13px;margin-bottom:2px;">Vocabulary + Concept Review</p><p style="font-size:11px;color:rgba(255,255,255,0.38);">Flashcards + 3 practice problems</p></div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Science Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Advanced Science & AP Prep · Ages 17–18</p>
+</footer>
+<script>
+const curriculumData={
+'September':{icon:'fa-dna',color:'',focus:'AP Biology — Molecules & Cells',skills:['Macromolecules','Cell structure & function','Membrane transport','Enzyme kinetics'],weeks:['Biological macromolecules: carbohydrates, lipids, proteins, nucleic acids — structure and function','Prokaryotic vs eukaryotic cells; organelle functions at AP depth; endosymbiosis theory','Cell membrane: fluid mosaic model, passive transport (diffusion, osmosis), active transport, endocytosis','Enzyme kinetics: activation energy, induced fit model, factors affecting enzyme activity (pH, temp, substrate)'],project:'Design and conduct an enzyme catalysis lab (using catalase from potato/liver); write a full IMRAD lab report with graph analysis',materials:['Potato or liver tissue','H₂O₂','Ruler & timer','Graph paper','Lab report template']},
+'October':{icon:'fa-seedling',color:'',focus:'AP Biology — Genetics & Evolution',skills:['Mendelian genetics','DNA replication','Protein synthesis','Natural selection & speciation'],weeks:['Mendelian and non-Mendelian genetics: dominance, codominance, sex-linkage, polygenic traits, epistasis','DNA replication: leading/lagging strand, enzymes (helicase, DNA polymerase, ligase), error correction','Transcription and translation: gene expression, genetic code, mRNA processing, ribosomes','Natural selection: modes (directional, stabilizing, disruptive), genetic drift, gene flow, Hardy-Weinberg equilibrium'],project:'Chi-square analysis of a genetics problem set: calculate expected vs observed ratios and determine statistical significance',materials:['Genetics problem sets','Chi-square table','Calculator','AP Biology free-response rubric']},
+'November':{icon:'fa-vials',color:'',focus:'AP Chemistry — Atomic Structure & Bonding',skills:['Quantum model of the atom','Periodic trends','Ionic & covalent bonding','VSEPR & molecular geometry'],weeks:['Quantum mechanical model: electron configuration, quantum numbers, orbital shapes and energy levels','Periodic trends: atomic radius, ionization energy, electronegativity — explaining trends with nuclear charge','Chemical bonding: ionic bonds (lattice energy), covalent bonds (bond energy, polarity), metallic bonding','VSEPR theory: predicting molecular geometry, bond angles, and polarity of molecules'],project:'Create a comprehensive bonding reference guide: draw Lewis structures, VSEPR shapes, and polarity diagrams for 20 key molecules',materials:['Molecular model kit (or online)','AP Chemistry reference table','Lewis structure worksheets','Colored pens']},
+'December':{icon:'fa-flask',color:'',focus:'AP Chemistry — Stoichiometry & Reactions',skills:['Mole concept','Limiting reagent','Types of reactions','Titration & solution chemistry'],weeks:['Mole concept: Avogadro\'s number, molar mass, empirical and molecular formulas, percent composition','Stoichiometry: mole ratios, limiting reagent calculations, theoretical and percent yield','Types of reactions: synthesis, decomposition, combustion, single/double displacement, redox','Titration lab: acid-base neutralization, calculating molarity, writing net ionic equations'],project:'Complete a virtual acid-base titration lab using PhET; calculate the molarity of an unknown acid and write a full lab report',materials:['PhET acid-base solutions simulator (free online)','Titration calculation worksheet','Lab report template','Calculator']},
+'January':{icon:'fa-atom',color:'',focus:'AP Physics — Kinematics & Dynamics',skills:['1D & 2D motion','Newton\'s laws','Friction & circular motion','Work & energy'],weeks:['1D kinematics: displacement, velocity, acceleration; kinematic equations applied to free fall','2D kinematics: projectile motion — horizontal and vertical components analyzed independently','Newton\'s three laws at AP depth: free body diagrams, net force calculations, Atwood machines','Work, energy, and power: kinetic energy theorem, conservation of mechanical energy, energy diagrams'],project:'Conduct a projectile motion investigation: launch a ball horizontally, predict landing point using kinematics, and calculate percent error',materials:['Ball (tennis or rubber)','Meter stick','Stopwatch','Graph paper','Calculator']},
+'February':{icon:'fa-bolt',color:'',focus:'AP Physics — Electricity & Magnetism',skills:['Electric forces & fields','Electric potential','DC circuits','Magnetic fields'],weeks:['Coulomb\'s law and electric fields: field lines, superposition, and motion of charges in uniform fields','Electric potential and potential difference: voltage, capacitors, energy stored in electric fields','DC circuits: Ohm\'s law, series and parallel resistors, Kirchhoff\'s laws, internal resistance','Magnetic fields: right-hand rules, force on moving charges, Lenz\'s law, electromagnetic induction basics'],project:'Build a simple DC circuit with a battery, resistors, and LED; measure voltage and current; calculate power and verify Kirchhoff\'s laws',materials:['9V battery','Resistors (various)','LED','Multimeter (or online simulation)','Wire & breadboard']},
+'March':{icon:'fa-pencil-alt',color:'',focus:'Scientific Writing & Research Skills',skills:['IMRAD format','Data analysis & statistics','Citation (APA/MLA)','Scientific argumentation'],weeks:['IMRAD format: Introduction, Methods, Results, Analysis, Discussion — each section\'s purpose and conventions','Statistical analysis: mean, standard deviation, standard error, t-test, correlation coefficient','Scientific citations: APA and MLA format for journals, websites, and textbooks','Scientific argumentation: claim-evidence-reasoning (CER) model applied to AP free-response questions'],project:'Write a 3-page research paper on a current science topic of choice with 5 peer-reviewed citations in APA format',materials:['Google Scholar or PubMed (free)','APA citation guide','Research paper outline template','Google Docs']},
+'April':{icon:'fa-chart-bar',color:'',focus:'AP Exam Preparation',skills:['Multiple choice strategies','Free response writing','Timed exam practice','Content review'],weeks:['AP exam format overview: multiple choice strategies, process of elimination, and time management','Free response writing: scoring rubric analysis; how to earn partial credit even with wrong answers','2 full-length AP practice exams (choose Biology, Chemistry, or Physics) under timed conditions','Content review: identify weak units from practice exam results; intensive targeted review'],project:'Complete 1 full-length AP exam in your chosen science under real test conditions; score and create a targeted 2-week review plan',materials:['AP Classroom (free with College Board account)','AP exam prep book','Timer','Error log']},
+'May':{icon:'fa-graduation-cap',color:'',focus:'AP Exam Month & College Science Preview',skills:['AP exam confidence','Lab practical skills','College biology/chemistry intro','Scientific mindset'],weeks:['Final AP exam preparation: review the 10 most-tested concepts; practice 5 free-response questions','Take the AP exam (if registered) — apply all strategies and stay calm','Introduction to college-level lab techniques: micropipetting, spectrophotometry, gel electrophoresis (videos)','Scientific mindset: reading a real journal article from Nature or Science; summarize methods and findings'],project:'Summarize a current peer-reviewed science article in 1 page: state the research question, methods, findings, and why it matters',materials:['Nature or Science magazine (free articles online)','Article summary template','AP exam prep book','Calculator']},
+'June':{icon:'fa-trophy',color:'',focus:'Science Portfolio & College Readiness',skills:['Lab portfolio','Research interests','College major exploration','Science career paths'],weeks:['Compile a science portfolio: 5 best lab reports, best research paper, and a self-reflection letter','Explore college science majors: biology, chemistry, physics, engineering, environmental science — research requirements','Career exploration: interview a scientist (virtually), research STEM career paths and salaries','Year-end celebration: what I learned, what I want to study in college, and my science goals'],project:'Complete a Science Portfolio including 5 labs, 1 research paper, an AP score (if taken), and a 1-page reflection on your scientific growth',materials:['Portfolio binder','All lab reports & papers','AP score report (if available)','Reflection template']}
+};
+let currentMonth='September';
+let isDark=true;
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{
+    btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);
+  });
+  loadContent(m);
+}
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-flask" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">${w} — AP-level video lecture, concept notes, lab investigation, and practice questions.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Evening: flashcard review of this week's key terms and 3 AP-style multiple choice questions.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+init();
+</script>
+</body>
+</html>
