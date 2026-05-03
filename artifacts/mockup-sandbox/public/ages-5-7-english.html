@@ -21,8 +21,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-fi
 .back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
 .subject-badge{padding:5px 14px;border-radius:20px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
 .age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
-.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
-.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
 main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
 .glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
 .section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
@@ -41,19 +39,6 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
 .mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
-body.light{background:#eeedf8;color:#0d0d1a;}
-body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
-body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
-body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
-body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
-body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
-body.light .month-tab:hover{background:rgba(255,255,255,0.9);color:rgba(13,13,26,0.85);}
-body.light .week-row{border-color:rgba(0,0,0,0.07);}
-body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
-body.light .section-label{color:rgba(13,13,26,0.4);}
-body.light .back-btn{color:rgba(13,13,26,0.55);}
-body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
-body.light footer{border-top-color:rgba(0,0,0,0.08);}
 </style>
 </head>
 <body>
@@ -71,7 +56,7 @@ body.light footer{border-top-color:rgba(0,0,0,0.08);}
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
       <span class="age-pill">Ages 5–7</span>
-      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+      
     </div>
   </div>
 </header>
@@ -107,21 +92,501 @@ body.light footer{border-top-color:rgba(0,0,0,0.08);}
 </footer>
 
 <script>
-const curriculumData={
-'September':{icon:'fa-font',color:'from-blue-400 to-purple-500',focus:'Alphabet Introduction',skills:['Letter recognition A-F','Letter sounds','Name writing','Circle time participation'],weeks:['Introduction to letters A-B with songs, flashcards, and tracing activities','Letter C-D exploration with sensory activities and sound practice','Letter E-F mastery with games, crafts, and beginning writing practice','Alphabet review A-F with letter hunts and matching games'],project:'Create personal alphabet book with drawings for letters A-F',materials:['Letter flashcards','Tracing worksheets','Sensory materials','Drawing supplies']},
-'October':{icon:'fa-volume-up',color:'from-orange-400 to-red-500',focus:'Phonemic Awareness',skills:['Letter sounds G-L','Rhyming words','Beginning sounds','Syllable awareness'],weeks:['Letters G-H with sound matching and beginning sound identification','Letters I-J with rhyming games and sound discrimination activities','Letters K-L with syllable clapping and sound blending practice','Phonemic awareness games with sound isolation and manipulation'],project:'Rhyming book with illustrations and sound matching activities',materials:['Rhyming cards','Sound games','Musical instruments','Picture cards']},
-'November':{icon:'fa-book-reader',color:'from-yellow-400 to-orange-500',focus:'Sight Words & Reading',skills:['Letters M-R','Basic sight words','Picture reading','Comprehension'],weeks:['Letters M-N with sight word introduction and picture reading activities','Letters O-P with simple sentence reading and comprehension questions','Letters Q-R with story sequencing and retelling activities','Reading practice with simple books and sight word recognition games'],project:'Personal sight word collection with illustrated sentences',materials:['Sight word cards','Simple books','Picture cards','Reading games']},
-'December':{icon:'fa-pencil-alt',color:'from-purple-400 to-pink-500',focus:'Pre-Writing Skills',skills:['Letters S-X','Fine motor skills','Drawing shapes','Name practice'],weeks:['Letters S-T with tracing activities and fine motor skill development','Letters U-V with shape drawing and pre-writing line practice','Letters W-X with name writing practice and letter formation','Holiday writing activities with cards and simple messages'],project:'Holiday card creation with personal messages and drawings',materials:['Tracing paper','Pencils','Crayons','Holiday craft materials']},
-'January':{icon:'fa-comments',color:'from-green-500 to-emerald-600',focus:'Oral Language Development',skills:['Letters Y-Z','Storytelling','Vocabulary building','Conversation skills'],weeks:['Letters Y-Z review with alphabet mastery activities and games','Storytelling practice with picture prompts and sequencing activities','Vocabulary building with themed word banks and descriptive language','Conversation skills through show and tell and group discussions'],project:'Class story book with individual contributions and illustrations',materials:['Story prompts','Picture cards','Word walls','Recording device']},
-'February':{icon:'fa-book',color:'from-red-400 to-pink-500',focus:'Reading Comprehension',skills:['Alphabet review','Story elements','Character recognition','Plot sequencing'],weeks:['Complete alphabet review with mastery activities and assessments','Story elements identification with character, setting, and plot focus','Character recognition and analysis through read-alouds and discussions','Plot sequencing and story retelling with visual aids and activities'],project:'Story element collage with favorite book characters and settings',materials:['Story books','Character cards','Sequencing cards','Art materials']},
-'March':{icon:'fa-pen-fancy',color:'from-cyan-400 to-blue-500',focus:'Beginning Writing',skills:['Sentence structure','Simple words','Journal writing','Creative expression'],weeks:['Sentence structure introduction with simple sentence building activities','Simple word writing with phonetic spelling and word banks','Journal writing with picture prompts and simple sentence practice','Creative expression through story writing and illustration activities'],project:'Personal journal with daily entries and illustrations',materials:['Journals','Writing prompts','Word banks','Drawing materials']},
-'April':{icon:'fa-theater-masks',color:'from-green-400 to-teal-500',focus:'Drama & Expression',skills:['Oral reading','Character voices','Puppet shows','Performance skills'],weeks:['Oral reading practice with expression and fluency activities','Character voice development through role-play and imitation','Puppet show creation with script writing and performance','Performance skills through classroom plays and presentations'],project:'Class puppet show with original script and character development',materials:['Puppets','Script paper','Stage materials','Costume props']},
-'May':{icon:'fa-newspaper',color:'from-purple-400 to-indigo-500',focus:'Creative Writing',skills:['Story writing','Poetry introduction','Book making','Author skills'],weeks:['Story writing with beginning, middle, and end structure','Poetry introduction with simple rhymes and rhythmic patterns','Book making with illustrations and simple text creation','Author skills through peer sharing and feedback activities'],project:'Original story book with illustrations and author presentation',materials:['Book making materials','Writing paper','Illustration supplies','Binding materials']},
-'June':{icon:'fa-trophy',color:'from-amber-400 to-orange-500',focus:'Literacy Celebration',skills:['Reading fluency','Writing portfolio','Presentation skills','Summer preparation'],weeks:['Reading fluency practice with timed reading and expression activities','Writing portfolio compilation and review of yearly progress','Presentation skills through author readings and class performances','Summer reading preparation and literacy celebration activities'],project:'Literacy portfolio and summer reading plan with achievement celebration',materials:['Portfolio folders','Reading logs','Award certificates','Summer reading lists']}
+const curriculumData = {
+    'September': {
+        icon: 'fa-font',
+        focus: 'Alphabet Mastery & Letter Sounds A-M',
+        skills: ['Letter formation A-M', 'Beginning sounds', 'Name writing', 'Letter recognition'],
+        weeks: [
+            {
+                title: 'Amazing A and Bouncing B',
+                objective: 'Identify A/B, produce sounds, sort pictures by beginning sound',
+                warmup: 'Alphabet song & "I Spy" for A/B words',
+                mainActivity: 'Create "A is for Apple" and "B is for Bear" crafts. Practice writing A and B in shaving cream.',
+                game: 'Sound Sort with two plates labeled A and B',
+                homeConnection: 'Find A/B on signs, cereal boxes; write in salt tray',
+                assessment: 'Correctly identifies A/B, produces sounds, sorts 8/10 pictures',
+                differentiation: 'Easier: One letter per week | Harder: Find A/B in middle/end of words'
+            },
+            {
+                title: 'Curious C, Dashing D, Energetic E',
+                objective: 'Identify C/D/E, produce sounds, trace uppercase and lowercase',
+                warmup: 'Sing sounds of A-E while doing jumping jacks',
+                mainActivity: 'Dough letters: form C, D, E with playdough. Read "The Very Hungry Caterpillar" looking for C/D/E words.',
+                game: 'Letter hopscotch: Jump on the letter when sound is called',
+                homeConnection: 'Write C/D/E in chalk outside. Label things at home starting with these letters.',
+                assessment: 'Produces short E sound. Forms C/D/E with guidance.',
+                differentiation: 'Easier: Match uppercase to lowercase | Harder: Write simple words (cat, dog, egg)'
+            },
+            {
+                title: 'Fabulous F, Great G, Happy H, Incredible I',
+                objective: 'Identify F/G/H/I, produce sounds (focus on short I)',
+                warmup: 'Body letters: make F, G, H, I shapes with your body',
+                mainActivity: 'Letter tracing with highlighters. Mini-book creation for each letter.',
+                game: 'Flyswatter game: swat the letter card matching the spoken sound',
+                homeConnection: 'Scavenger hunt for items starting with F/G/H/I',
+                assessment: 'Produces sounds for F/G/H/I. Traces letters correctly.',
+                differentiation: 'Easier: Focus on uppercase only | Harder: Identify target sound at beginning vs middle of word'
+            },
+            {
+                title: 'Jumping J, Kicking K, Laughing L, Magical M',
+                objective: 'Identify J/K/L/M, produce sounds, review A-M',
+                warmup: 'Quick flashcard review of A-I sounds',
+                mainActivity: 'Practice writing J/K/L/M on lined paper. Read "Chicka Chicka Boom Boom" identifying A-M.',
+                game: 'Musical chairs with letter cards A-M. Say sound of letter you sit on.',
+                homeConnection: 'Bake or use playdough to make cookies in shapes of A-M.',
+                assessment: 'Sings alphabet to M. Identifies 80% of A-M sounds.',
+                differentiation: 'Easier: Group letters by straight lines vs curves | Harder: Sort picture cards by beginning sounds A-M'
+            }
+        ],
+        project: 'Create a personal Alphabet Book (A-M) with hand-drawn pictures and correctly formed letters.',
+        materials: ['Playdough', 'Shaving cream or salt', 'Lined handwriting paper', 'Alphabet flashcards']
+    },
+    'October': {
+        icon: 'fa-volume-up',
+        focus: 'Letter Sounds N-Z & Phonemic Awareness',
+        skills: ['Letter sounds N-Z', 'Rhyming', 'Syllables', 'Oral blending/segmenting'],
+        weeks: [
+            {
+                title: 'Nice N, Outstanding O, Playful P, Quiet Q',
+                objective: 'Identify N/O/P/Q, produce sounds (focus on short O and qu)',
+                warmup: 'Sing alphabet up to Q',
+                mainActivity: 'Form N/O/P/Q using pipe cleaners. Read "If You Give a Pig a Pancake". Emphasize "qu" togetherness.',
+                game: 'Bean bag toss onto letter mats while saying sound',
+                homeConnection: 'Draw a picture of an octopus, a pig, and a queen. Label them.',
+                assessment: 'Differentiates M and N sounds. Correctly produces short O sound.',
+                differentiation: 'Easier: Tactile sandpaper letters | Harder: Introduce "qu" as a team that sticks together'
+            },
+            {
+                title: 'Radiant R, Silly S, Terrific T, Umbrella U',
+                objective: 'Master R/S/T/U and introduce rhyming concepts',
+                warmup: 'Rhyme time: Thumbs up if "cat/hat" rhyme, thumbs down for "cat/dog"',
+                mainActivity: 'Write R/S/T/U in a salt tray. Read Dr. Seuss and point out rhymes.',
+                game: 'Rhyming bingo: Match rhyming pictures',
+                homeConnection: 'Find things in the kitchen that rhyme (pan/can, mug/jug)',
+                assessment: 'Writes R/S/T/U. Identifies rhyming pairs 4/5 times.',
+                differentiation: 'Easier: Produce the rhyming word for them to repeat | Harder: Generate rhyming words independently'
+            },
+            {
+                title: 'Vibrant V, Wonderful W, eXciting X, Yawning Y, Zippy Z',
+                objective: 'Complete the alphabet, focus on tricky sounds (X, Y)',
+                warmup: 'Alphabet relay race: put alphabet cards in order',
+                mainActivity: 'Crafts for V-Z. Practice writing. Discuss that X is usually at the end of words (box, fox).',
+                game: 'Alphabet bingo to review all letters A-Z',
+                homeConnection: 'Sing the whole alphabet song for a family member',
+                assessment: 'Produces sounds for V-Z. Knows X makes the /ks/ sound.',
+                differentiation: 'Easier: Focus on sounds of V/W/Z first | Harder: Find words where Y acts like a vowel (my, fly)'
+            },
+            {
+                title: 'Syllables & Oral Blending',
+                objective: 'Clap syllables and practice segmenting/blending sounds orally',
+                warmup: 'Clap the syllables in family members\' names',
+                mainActivity: 'Sort picture cards by 1, 2, or 3 syllables. Practice oral blending (say /c/ /a/ /t/, student says "cat").',
+                game: 'Robot talk: walk and talk like a robot sounding out words (/s/ /u/ /n/)',
+                homeConnection: 'Clap the syllables of items at the grocery store',
+                assessment: 'Claps 1/2 syllable words. Blends 3 isolated sounds into a word.',
+                differentiation: 'Easier: Use physical blocks to represent each sound | Harder: Segment a given word into individual sounds'
+            }
+        ],
+        project: 'Complete the Alphabet Book (N-Z) and create a family "Rhyme Time" poster.',
+        materials: ['Pipe cleaners', 'Dr. Seuss books', 'Picture cards for rhyming', 'Blank paper']
+    },
+    'November': {
+        icon: 'fa-book-reader',
+        focus: 'CVC Words & Word Families',
+        skills: ['Blending CVC words', 'Short vowel recognition', 'Word families', 'Decoding'],
+        weeks: [
+            {
+                title: 'Short A Word Families (-at, -an, -ap)',
+                objective: 'Blend and read CVC words ending in -at, -an, -ap',
+                warmup: 'Review short A sound and consonants C, B, M, R, P, F, V',
+                mainActivity: 'Word family houses: write family in roof, add consonants to make words (cat, bat, mat; pan, fan, van).',
+                game: 'Word family slider: pull strip of consonants through slot next to "-at"',
+                homeConnection: 'Read a short decodable book focusing on short A words',
+                assessment: 'Reads 5 -at words and 5 -an words accurately',
+                differentiation: 'Easier: Picture clues alongside words | Harder: Write simple sentence using two -at words'
+            },
+            {
+                title: 'Short I Word Families (-it, -ig, -in)',
+                objective: 'Blend and read CVC words ending in -it, -ig, -in',
+                warmup: 'Compare short A and short I sounds. Sort picture cards.',
+                mainActivity: 'Read "The Pig in the Wig" (or similar decodable). Build words using magnetic letters.',
+                game: 'Fishing for words: paperclips on word cards, magnet fishing pole',
+                homeConnection: 'Write 3 -ig words and draw pictures for them',
+                assessment: 'Spells "sit", "pig", "win" when dictated',
+                differentiation: 'Easier: Focus on one word family for the week | Harder: Mix -at and -ig words and sort them'
+            },
+            {
+                title: 'Short O & Short U Families (-op, -ot, -ug, -un)',
+                objective: 'Blend and read CVC words with short O and short U',
+                warmup: 'Vowel sound stretch: stretch a rubber band while saying the vowel sound',
+                mainActivity: 'CVC word building with blocks/legos. Each block is a sound. Read decodable text.',
+                game: 'Word swat: swat correct word when read aloud',
+                homeConnection: 'Find short O and short U words in a bedtime story',
+                assessment: 'Reads words like "hop", "pot", "bug", "sun" fluently',
+                differentiation: 'Easier: Tap out each sound on arm before blending | Harder: Read nonsense words to test decoding'
+            },
+            {
+                title: 'Short E Families (-et, -en) & CVC Review',
+                objective: 'Master short E CVC words and differentiate all 5 short vowels',
+                warmup: 'Vowel hop: place 5 vowel cards on floor, hop to vowel heard in spoken CVC word',
+                mainActivity: 'Create a CVC word booklet. Practice writing CVC words on handwriting paper.',
+                game: 'CVC bingo covering all short vowels',
+                homeConnection: 'Play "I Spy" with CVC words ("I spy something red...")',
+                assessment: 'Identifies middle vowel in dictated CVC word 4/5 times',
+                differentiation: 'Easier: Focus heavily on short E vs short I | Harder: Spell CVC words independently'
+            }
+        ],
+        project: 'Construct a "CVC Word City" using cardboard boxes labeled with word families.',
+        materials: ['Magnetic letters', 'Lego/Duplo blocks', 'Decodable books', 'CVC picture cards']
+    },
+    'December': {
+        icon: 'fa-pencil-alt',
+        focus: 'Sight Words & Simple Sentences',
+        skills: ['First 40 Dolch words', 'Sentence structure', 'Capitalization', 'Punctuation'],
+        weeks: [
+            {
+                title: 'First 10 Dolch Words & Sentence Building',
+                objective: 'Read/write: the, to, and, he, a, I, you, it, of, in. Understand sentence structure.',
+                warmup: 'Sight word flashcard review',
+                mainActivity: 'Build sentences using sight word cards and CVC picture cards (e.g., "I see a [cat]"). Emphasize capitals/periods.',
+                game: 'Sight word memory match',
+                homeConnection: 'Point out the word "the" in environmental print or books',
+                assessment: 'Reads 10 sight words instantly. Points to capital letter and period in a sentence.',
+                differentiation: 'Easier: Introduce 2 words a day | Harder: Write sentences instead of building with cards'
+            },
+            {
+                title: 'Next 10 Dolch Words & Punctuation',
+                objective: 'Read/write: was, said, his, that, she, for, on, they, but, had. Introduce question marks.',
+                warmup: 'Read a poem together, circle target sight words',
+                mainActivity: 'Practice writing words in sand. Discuss periods vs. question marks. Read simple statements/questions.',
+                game: 'Sight word swat or "read the room" scavenger hunt',
+                homeConnection: 'Write one statement and one question using new sight words',
+                assessment: 'Reads new 10 words. Chooses correct punctuation for spoken sentence.',
+                differentiation: 'Easier: Focus on tracing and matching | Harder: Introduce exclamation points'
+            },
+            {
+                title: 'Next 10 Dolch Words & Reading Fluency',
+                objective: 'Read/write: at, him, with, up, all, look, is, her, there, some. Practice reading smoothly.',
+                warmup: 'Speed read the previous 20 sight words',
+                mainActivity: 'Read leveled mini-books. Practice "scooping" phrases instead of reading word-by-word.',
+                game: 'Sight word bingo',
+                homeConnection: 'Read a familiar book to a pet or stuffed animal to practice fluency',
+                assessment: 'Reads sentences with known sight/CVC words with basic fluency',
+                differentiation: 'Easier: Echo read | Harder: Choral read together'
+            },
+            {
+                title: 'Sight Word Review & "I Can Read" Celebration',
+                objective: 'Review first 30-40 sight words and write simple sentences independently',
+                warmup: 'Sight word snowball fight (crumpled paper with words)',
+                mainActivity: 'Create an "I Can Read" poster. Write 3 sentences independently using sight words and phonetic spelling.',
+                game: 'Sight word board game (create path with words on spaces)',
+                homeConnection: 'Have a reading celebration night with family',
+                assessment: 'Reads at least 25 of 30 taught sight words accurately',
+                differentiation: 'Easier: Provide word bank for writing | Harder: Write a short, 3-sentence story'
+            }
+        ],
+        project: 'Create a Sight Word Ring and author a 3-page "I See" patterned book.',
+        materials: ['Index cards', 'Sand trays', 'Highlighters', 'Leveled mini-books']
+    },
+    'January': {
+        icon: 'fa-comments',
+        focus: 'Digraphs & Blends',
+        skills: ['Consonant digraphs (ch, sh, th, wh)', 'S-blends', 'L/R-blends', 'Decoding longer words'],
+        weeks: [
+            {
+                title: 'Consonant Digraphs: ch, sh',
+                objective: 'Identify and read words with ch and sh digraphs (two letters, one sound)',
+                warmup: 'Listen to difference between /s/ and /sh/, /c/ and /ch/',
+                mainActivity: 'Sort picture cards into "ch" (chip, chop) and "sh" (ship, shop). Practice writing digraphs.',
+                game: 'Digraph sorting train: place words in "ch" car or "sh" car',
+                homeConnection: 'Look for ch and sh items in the house (chair, shoe)',
+                assessment: 'Reads 5 ch words and 5 sh words correctly',
+                differentiation: 'Easier: Digraphs at beginning only | Harder: Words ending in ch/sh (fish, rich)'
+            },
+            {
+                title: 'Consonant Digraphs: th, wh',
+                objective: 'Identify and read words with th (voiced/unvoiced) and wh',
+                warmup: 'Practice tongue placement for th (stick tongue out!)',
+                mainActivity: 'Read decodable book with th/wh. Discuss question words starting with wh (who, what, where).',
+                game: 'Four corners game: label corners ch, sh, th, wh. Run to correct corner.',
+                homeConnection: 'Write a question using a "wh" word',
+                assessment: 'Differentiates between th and wh in reading/spelling',
+                differentiation: 'Easier: Mirror for mouth shape for th | Harder: Distinguish voiced th (the) vs unvoiced (thumb)'
+            },
+            {
+                title: 'Beginning S-Blends (st, sp, sn, sm, sl, sw)',
+                objective: 'Blend two consonants together while hearing both sounds (unlike digraphs)',
+                warmup: 'Stretch out sounds in "stop" vs "sop"',
+                mainActivity: 'Blend building with letter tiles. Build words like stop, spin, snap. Practice writing.',
+                game: 'Blend bingo',
+                homeConnection: 'Find s-blend words in a favorite storybook',
+                assessment: 'Successfully segments and blends words with s-blends',
+                differentiation: 'Easier: Counters to show blends are TWO sounds | Harder: Spell s-blend words from dictation'
+            },
+            {
+                title: 'Beginning L-Blends & R-Blends',
+                objective: 'Read words with l-blends (bl, cl, fl) and r-blends (br, cr, dr, fr, gr, pr, tr)',
+                warmup: 'Review s-blends rapidly',
+                mainActivity: 'Sort words into "L blend" and "R blend" columns. Read short story featuring blends.',
+                game: 'Blend memory match (match blend to picture)',
+                homeConnection: 'Draw a picture of a frog on a log and label the blend',
+                assessment: 'Reads words like "clap", "frog", "drop" fluently',
+                differentiation: 'Easier: Focus on L-blends first | Harder: Introduce 3-letter blends (str, spl)'
+            }
+        ],
+        project: 'Make a "Blend & Digraph" spinner wheel to create real and nonsense words.',
+        materials: ['Letter tiles', 'Small mirrors', 'Bingo cards', 'Decodable texts']
+    },
+    'February': {
+        icon: 'fa-book',
+        focus: 'Long Vowels & Magic E',
+        skills: ['Silent E rule', 'CVCe decoding', 'Long vs short vowels', 'Soft C and G'],
+        weeks: [
+            {
+                title: 'Introduction to Magic E (a_e)',
+                objective: 'Understand how silent E changes short vowel to long vowel (cap -> cape)',
+                warmup: 'Sing a "Magic E" song',
+                mainActivity: 'Use magic wand (stick with star) to tap E at end of CVC words. Read words with a_e (cake, gate).',
+                game: 'Magic E folding cards (fold E back for short vowel, unfold for long vowel)',
+                homeConnection: 'Write 3 a_e words and draw pictures',
+                assessment: 'Reads pairs like tap/tape, plan/plane correctly',
+                differentiation: 'Easier: Focus heavily on long A sound in isolation | Harder: Spell a_e words from dictation'
+            },
+            {
+                title: 'Magic E with i_e and o_e',
+                objective: 'Read and spell words with i_e (kite, bike) and o_e (bone, rope)',
+                warmup: 'Review a_e words. Sort pictures by long A vs short A.',
+                mainActivity: 'Read decodable text focusing on i_e and o_e. Practice writing words on whiteboard.',
+                game: 'Board game reading i_e and o_e words on spaces',
+                homeConnection: 'Long I and long O scavenger hunt (find a bike, a hose, etc)',
+                assessment: 'Accurately reads mixed CVCe words (a_e, i_e, o_e)',
+                differentiation: 'Easier: Keep vowel groups separate | Harder: Mix short and long vowel words'
+            },
+            {
+                title: 'Magic E with u_e and e_e',
+                objective: 'Read and spell words with u_e (tube, cube) and e_e (Pete, these)',
+                warmup: 'Review long A, I, O sounds',
+                mainActivity: 'Discuss two sounds of u_e (/oo/ as in tube, /yoo/ as in cube). Build words with magnetic letters.',
+                game: 'Word sort: sort by long vowel sound',
+                homeConnection: 'Read familiar book and tally Magic E words found',
+                assessment: 'Reads words like "mule", "huge", "these"',
+                differentiation: 'Easier: Focus on u_e, as e_e is rare | Harder: Sort u_e words by their two different sounds'
+            },
+            {
+                title: 'Magic E Review & Soft C/G',
+                objective: 'Review all CVCe words and introduce how E makes c sound like /s/ and g like /j/',
+                warmup: 'Rapid read of CVCe words',
+                mainActivity: 'Discuss soft C (mice, face) and soft G (page, cage). Sort hard/soft c and g words.',
+                game: 'Magic E Bingo covering all vowels and soft c/g',
+                homeConnection: 'Write sentences using Magic E words',
+                assessment: 'Reads mixed list of 10 CVCe words with 90% accuracy',
+                differentiation: 'Easier: Omit soft c/g and review basic Magic E | Harder: Write short story using 5 Magic E words'
+            }
+        ],
+        project: 'Create a "Magic Wand" to practice transforming CVC words into CVCe words.',
+        materials: ['Popsicle sticks and star cutouts', 'Whiteboards', 'Folding word cards', 'Magnetic letters']
+    },
+    'March': {
+        icon: 'fa-pen-fancy',
+        focus: 'Writing Workshop',
+        skills: ['Sentence structure', 'Personal narratives', 'Informational writing', 'Opinion writing'],
+        weeks: [
+            {
+                title: 'Building Better Sentences',
+                objective: 'Write complete sentences with subject, verb, capitals, spaces, and punctuation',
+                warmup: 'Fix the sentence: "the cat sat" (needs capital, period)',
+                mainActivity: 'Use "spaceman" sticks (popsicle sticks) to ensure spaces between words. Write 3 sentences about a picture prompt.',
+                game: 'Sentence scramble: put cut-up sentences in correct order',
+                homeConnection: 'Write a sentence about what you had for dinner',
+                assessment: 'Consistently uses capitals, spaces, and punctuation in independent writing',
+                differentiation: 'Easier: Trace sentence frames (I see a __) | Harder: Add adjectives to sentences'
+            },
+            {
+                title: 'Personal Narratives (Small Moments)',
+                objective: 'Write a short story about a real event with a beginning, middle, and end',
+                warmup: 'Brainstorm "small moment" ideas (losing a tooth, going to the park)',
+                mainActivity: 'Draw 3-part storyboard (First, Next, Last). Write 1-2 sentences for each picture.',
+                game: 'Oral storytelling game using transition words',
+                homeConnection: 'Tell a family member a "small moment" story using First, Next, Last',
+                assessment: 'Writes a narrative with a clear sequence of events',
+                differentiation: 'Easier: Draw and dictate story to adult | Harder: Write 2-3 sentences per page'
+            },
+            {
+                title: 'How-To Writing (Informational)',
+                objective: 'Write step-by-step instructions for a simple task',
+                warmup: 'Discuss how to make a PB&J sandwich',
+                mainActivity: 'Write "How to brush your teeth" using numbered steps and transition words',
+                game: 'Follow the steps: teacher reads "how to draw a monster", students draw exactly as instructed',
+                homeConnection: 'Write a "how to" for a simple chore (feeding a pet)',
+                assessment: 'Writes clear, sequential steps that make sense',
+                differentiation: 'Easier: 3 steps maximum with heavy picture support | Harder: Write "how to" for a game they know'
+            },
+            {
+                title: 'Opinion Writing & Journaling',
+                objective: 'State an opinion and supply a reason ("I like ___ because ___")',
+                warmup: 'Would you rather: Summer or Winter? Why?',
+                mainActivity: 'Read book about topic (dogs vs cats). Write opinion piece: "I think dogs are best because..."',
+                game: 'Fact vs. Opinion sorting game',
+                homeConnection: 'Start a daily journal. Write 2 sentences each day.',
+                assessment: 'States an opinion clearly and provides at least one relevant reason',
+                differentiation: 'Easier: Provide sentence starters | Harder: Provide two different reasons to support opinion'
+            }
+        ],
+        project: 'Publish a "How-To" book with a cover, table of contents, and numbered steps.',
+        materials: ['Popsicle sticks for spacing', 'Storyboards', 'Journals', 'Sentence strips']
+    },
+    'April': {
+        icon: 'fa-theater-masks',
+        focus: 'Advanced Phonics — Vowel Teams',
+        skills: ['Vowel teams (ee, ea, ai, ay)', 'Long O/I teams', 'Y as a vowel', 'R-controlled vowels'],
+        weeks: [
+            {
+                title: 'Long E Vowel Teams (ee, ea)',
+                objective: 'Read and spell words with ee (tree, see) and ea (leaf, read)',
+                warmup: 'Discuss rule: "When two vowels go walking, the first one does the talking"',
+                mainActivity: 'Sort ee and ea words. Read decodable text with long E teams.',
+                game: 'Vowel team memory match',
+                homeConnection: 'Find ee and ea words in a grocery circular (peas, meat, cheese)',
+                assessment: 'Reads words with ee and ea accurately',
+                differentiation: 'Easier: Focus on ee first | Harder: Introduce exceptions where ea makes short e sound (bread)'
+            },
+            {
+                title: 'Long A Vowel Teams (ai, ay)',
+                objective: 'Read and spell words with ai (rain, train) and ay (play, day)',
+                warmup: 'Review a_e words. Introduce new ways to make long A sound.',
+                mainActivity: 'Discuss position: ai usually in middle, ay at end. Word sorting activity.',
+                game: 'Vowel team tic-tac-toe (read a word to place marker)',
+                homeConnection: 'Write 3 sentences using "ay" words',
+                assessment: 'Chooses ai or ay correctly when spelling dictated words',
+                differentiation: 'Easier: Choose correct pair for a picture | Harder: Sort a_e, ai, and ay words'
+            },
+            {
+                title: 'Long O Teams (oa, ow) & Long I (igh, ie)',
+                objective: 'Read words with oa (boat), ow (snow), igh (night), and ie (pie)',
+                warmup: 'Review long O and I sounds',
+                mainActivity: 'Create "Vowel Team anchor chart". Build words with letter tiles. (igh is 3 letters, 1 sound)',
+                game: 'Word swat with long O and I vowel teams',
+                homeConnection: 'Look for long O and I words in environmental print',
+                assessment: 'Reads mixed list of vowel team words',
+                differentiation: 'Easier: One vowel sound per week | Harder: Discuss that ow can also sound like "cow"'
+            },
+            {
+                title: 'Vowel Sounds of Y & R-Controlled Vowels',
+                objective: 'Understand Y as vowel (fly, happy) and introduce Bossy R (ar, er, ir, or, ur)',
+                warmup: 'Sort Y words by sound (long I in 1-syllable, long E in 2-syllable)',
+                mainActivity: 'Introduce Bossy R (R controls vowel). Sort ar (car) and or (horn). Note er/ir/ur sound the same.',
+                game: 'Bossy R bingo',
+                homeConnection: 'Find Bossy R words in a bedtime story',
+                assessment: 'Reads words like "star", "corn", "bird", "candy"',
+                differentiation: 'Easier: Focus just on ar and or | Harder: Sort er, ir, ur words and practice spelling'
+            }
+        ],
+        project: 'Create a "Vowel Team Anchor Chart" for the bedroom wall to reference during reading.',
+        materials: ['Grocery circulars', 'Vowel team word cards', 'Letter tiles', 'Anchor chart paper']
+    },
+    'May': {
+        icon: 'fa-newspaper',
+        focus: 'Reading Fluency & Comprehension',
+        skills: ['Expressive reading', 'Story retelling', 'Answering WH questions', 'Reading stamina'],
+        weeks: [
+            {
+                title: 'Reading with Expression',
+                objective: 'Read texts with appropriate emotion, attending to punctuation (!, ?, .)',
+                warmup: 'Practice saying "I am going to the store" in happy, sad, angry, scared voices',
+                mainActivity: 'Read Elephant and Piggie books. Practice character voices and expressive reading.',
+                game: 'Punctuation relay: read sentence, run to touch correct punctuation mark',
+                homeConnection: 'Perform a read-aloud for family using different voices',
+                assessment: 'Changes tone and volume based on punctuation and context',
+                differentiation: 'Easier: Echo read short phrases | Harder: Perform short "Readers Theater" script'
+            },
+            {
+                title: 'Story Retelling & Sequencing',
+                objective: 'Retell a story including characters, setting, beginning, middle, and end',
+                warmup: 'Read familiar fairy tale (e.g., Goldilocks)',
+                mainActivity: 'Use story map graphic organizer. Practice oral retelling using a "retell rope" with knots for parts.',
+                game: 'Sequencing cards: put pictures of story in order',
+                homeConnection: 'Watch short cartoon and practice retelling to a parent',
+                assessment: 'Identifies characters, setting, and sequences 3 major events',
+                differentiation: 'Easier: Use picture cards to prompt retelling | Harder: Identify main problem and solution'
+            },
+            {
+                title: 'Answering Comprehension Questions',
+                objective: 'Answer who, what, where, when, why, and how questions about a text',
+                warmup: 'Review question words',
+                mainActivity: 'Read short fiction text. Answer written/oral questions. Find answer in text (text evidence).',
+                game: 'Comprehension beach ball: catch ball, answer question type your thumb lands on',
+                homeConnection: 'Parents ask "wh" questions after bedtime story',
+                assessment: 'Answers literal comprehension questions with 80% accuracy',
+                differentiation: 'Easier: Ask literal, direct questions | Harder: Ask inferential questions ("Why do you think...")'
+            },
+            {
+                title: 'Introduction to Chapter Books',
+                objective: 'Build stamina to read longer texts and maintain comprehension across chapters',
+                warmup: 'Discuss what a chapter is and look at table of contents',
+                mainActivity: 'Begin early chapter book series (Frog and Toad, Magic Tree House). Read chapter 1. Summarize.',
+                game: 'Design a new cover for the book',
+                homeConnection: 'Read one chapter a night',
+                assessment: 'Maintains focus for longer reading sessions and recalls previous chapter events',
+                differentiation: 'Easier: Read "Frog and Toad" | Harder: Read early Magic Tree House independently'
+            }
+        ],
+        project: 'Host a "Readers Theater" performance of a favorite Elephant & Piggie book for the family.',
+        materials: ['Elephant & Piggie books', 'Early chapter books', 'Retell ropes', 'Story maps']
+    },
+    'June': {
+        icon: 'fa-trophy',
+        focus: 'Review & Summer Reading Plan',
+        skills: ['Phonics review', 'Publishing a book', 'Non-fiction features', 'Summer prep'],
+        weeks: [
+            {
+                title: 'Phonics & Sight Word Mega-Review',
+                objective: 'Review all taught phonics patterns and high-frequency words',
+                warmup: 'Flashcard race: how many sight words can you read in 1 minute?',
+                mainActivity: 'Phonics escape room or scavenger hunt around house. Solve reading puzzles for clues.',
+                game: 'Jeopardy-style review game with phonics and sight word categories',
+                homeConnection: 'Play a phonics app or online game for review',
+                assessment: 'Reads a comprehensive end-of-year word list to benchmark progress',
+                differentiation: 'Easier: Target review on weak areas | Harder: Include multisyllabic words with known patterns'
+            },
+            {
+                title: 'Publishing a Masterpiece',
+                objective: 'Go through writing process (draft, revise, edit, publish) to create final book',
+                warmup: 'Review a piece of writing from March. Discuss how to make it better.',
+                mainActivity: 'Write new story. Add details. Check capitals/punctuation. Create "published" book with cover.',
+                game: 'Illustrator\'s challenge: draw a detailed setting',
+                homeConnection: 'Have an "Author\'s Chair" night to read book to family',
+                assessment: 'Produces multi-page, illustrated story with generally correct phonetic spelling',
+                differentiation: 'Easier: 3-page "All About Me" book | Harder: Fictional story with clear problem/solution'
+            },
+            {
+                title: 'Non-Fiction & Informational Texts',
+                objective: 'Identify non-fiction features (table of contents, photos, labels, glossary)',
+                warmup: 'Compare fiction book about a bear with non-fiction book about a bear',
+                mainActivity: 'Read non-fiction book on favorite animal. "Text feature scavenger hunt". Write 3 facts learned.',
+                game: 'Fact vs Fiction sorting',
+                homeConnection: 'Visit library and check out a non-fiction book',
+                assessment: 'Identifies non-fiction text features and states a fact learned',
+                differentiation: 'Easier: Use photographs to gain info | Harder: Use glossary to define new word'
+            },
+            {
+                title: 'Summer Reading Challenge Prep',
+                objective: 'Create a plan to prevent "summer slide" and foster a love of reading',
+                warmup: 'Brainstorm places to read (in a tent, under a tree, to a dog)',
+                mainActivity: 'Create "Summer Reading Bingo" board. Make list of books to check out. Decorate bookmark.',
+                game: 'Reading relay race',
+                homeConnection: 'Sign up for local public library\'s summer reading program',
+                assessment: 'Demonstrates enthusiasm for reading and has clear plan for summer practice',
+                differentiation: 'Easier: Goal for 10 mins reading a day | Harder: Goal for specific number of chapter books'
+            }
+        ],
+        project: 'Create a published book and a personalized Summer Reading Bingo board.',
+        materials: ['Book binding materials', 'Non-fiction books', 'Blank bingo boards', 'Bookmarks']
+    }
 };
 
 let currentMonth='September';
-let isDark=true;
+
 
 function init(){
   const tabs=document.getElementById('monthTabs');
@@ -167,12 +632,20 @@ function loadContent(m){
             <div class="week-row">
               <div class="week-header" onclick="toggleWeek('${m}-${i}')">
                 <div class="week-num">${i+1}</div>
-                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
+                <div style="flex:1;">
+                  <p style="font-size:13.5px;font-weight:600;color:white;margin-bottom:2px;">${w.title}</p>
+                  <p style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.4;">${w.objective}</p>
+                  <p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px;">Tap for lesson details</p>
+                </div>
                 <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
               </div>
               <div class="week-detail" id="wd-${m}-${i}">
-                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-book-open" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Reading & listening activities to reinforce letter recognition, phonics, and comprehension.</p></div>
-                <div style="display:flex;gap:8px;"><i class="fas fa-pencil-alt" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Writing practice through tracing, drawing, and guided writing prompts.</p></div>
+                <div style="display:flex;gap:8px;margin-bottom:10px;"><i class="fas fa-fire" style="color:#fb923c;margin-top:2px;font-size:12px;width:14px;text-align:center;"></i><div><span style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;">Warmup</span><p style="font-size:12.5px;color:rgba(255,255,255,0.7);line-height:1.45;margin-top:1px;">${w.warmup}</p></div></div>
+                <div style="display:flex;gap:8px;margin-bottom:10px;"><i class="fas fa-bullseye" style="color:var(--a2);margin-top:2px;font-size:12px;width:14px;text-align:center;"></i><div><span style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;">Main Activity</span><p style="font-size:12.5px;color:rgba(255,255,255,0.7);line-height:1.45;margin-top:1px;">${w.mainActivity}</p></div></div>
+                <div style="display:flex;gap:8px;margin-bottom:10px;"><i class="fas fa-gamepad" style="color:#a78bfa;margin-top:2px;font-size:12px;width:14px;text-align:center;"></i><div><span style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;">Game</span><p style="font-size:12.5px;color:rgba(255,255,255,0.7);line-height:1.45;margin-top:1px;">${w.game}</p></div></div>
+                <div style="display:flex;gap:8px;margin-bottom:10px;"><i class="fas fa-home" style="color:#60a5fa;margin-top:2px;font-size:12px;width:14px;text-align:center;"></i><div><span style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;">Home Connection</span><p style="font-size:12.5px;color:rgba(255,255,255,0.7);line-height:1.45;margin-top:1px;">${w.homeConnection}</p></div></div>
+                <div style="display:flex;gap:8px;margin-bottom:10px;"><i class="fas fa-check-circle" style="color:#34d399;margin-top:2px;font-size:12px;width:14px;text-align:center;"></i><div><span style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;">Assessment</span><p style="font-size:12.5px;color:rgba(255,255,255,0.7);line-height:1.45;margin-top:1px;">${w.assessment}</p></div></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-layer-group" style="color:#f472b6;margin-top:2px;font-size:12px;width:14px;text-align:center;"></i><div><span style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;">Differentiation</span><p style="font-size:12.5px;color:rgba(255,255,255,0.7);line-height:1.45;margin-top:1px;">${w.differentiation}</p></div></div>
               </div>
             </div>`).join('')}
         </div>
@@ -200,11 +673,6 @@ function toggleWeek(id){
   c.style.transform=open?'':'rotate(180deg)';
 }
 
-function toggleDark(){
-  isDark=!isDark;
-  document.body.classList.toggle('light',!isDark);
-  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
-}
 
 init();
 </script>

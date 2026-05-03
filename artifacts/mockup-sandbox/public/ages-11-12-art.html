@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Middle School Art & PE — Ages 11–12 | Curriculum Hub</title>
+<title>Art & Physical Education — Ages 11–12 | Curriculum Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,16 +12,15 @@
 :root{--a1:#ec4899;--a2:#8b5cf6;--al:#f9a8d4;}
 body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
-.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(236,72,153,0.12),transparent 70%);top:-100px;right:-100px;}
-.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(139,92,246,0.09),transparent 70%);bottom:100px;left:-100px;}
-header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(236,72,153,0.1),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(139,92,246,0.08),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
 .back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
 .back-btn:hover{color:white;}
 .back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
 .subject-badge{padding:5px 14px;border-radius:20px;background:rgba(236,72,153,0.12);border:1px solid rgba(236,72,153,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
 .age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
-.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
 main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
 .glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
 .section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
@@ -32,103 +31,573 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
 .month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
 .month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(236,72,153,0.35);}
-.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
 .week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
 .week-header:hover{background:rgba(255,255,255,0.03);}
 .week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
 .week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
 .mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
-body.light{background:#eeedf8;color:#0d0d1a;}
-body.light header{background:rgba(238,237,248,0.9);}
-body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
-body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
-body.light .sched-card{background:rgba(255,255,255,0.55);}
-body.light .month-tab{background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
-body.light .week-row{border-color:rgba(0,0,0,0.07);}
-body.light .week-detail{background:rgba(0,0,0,0.02);}
-body.light .section-label{color:rgba(13,13,26,0.4);}
-body.light .back-btn{color:rgba(13,13,26,0.55);}
-body.light footer{border-top-color:rgba(0,0,0,0.08);}
+
 </style>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
+
 <header>
   <div class="header-inner">
     <a href="hub.html" class="back-btn">
       <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
-      <div>
-        <div style="font-size:13px;font-weight:700;color:white;">Middle School</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 11–12</div>
-      </div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Middle School</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 11–12</div></div>
     </a>
     <div style="display:flex;align-items:center;gap:8px;">
-      <span class="subject-badge"><i class="fas fa-palette" style="margin-right:5px;"></i>Art & Physical Education</span>
+      <span class="subject-badge"><i class="fas fa-palette" style="margin-right:5px;"></i>Art & PE</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
       <span class="age-pill">Ages 11–12</span>
-      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+
     </div>
   </div>
 </header>
+
 <main>
   <section style="text-align:center;margin-bottom:56px;">
     <p class="section-label">Middle School · Ages 11–12</p>
-    <h2 class="page-title">Art, Music & Physical Education</h2>
-    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:620px;margin:0 auto;line-height:1.75;">Developing artistic voice through drawing, painting, and art history while building physical fitness, teamwork, and lifelong healthy habits through varied movement and sport activities.</p>
+    <h2 class="page-title">Art & Physical Education</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Cultivating advanced technical art skills, art history appreciation, and lifelong physical fitness habits for middle school students.</p>
   </section>
+
   <section style="margin-bottom:48px;">
     <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
-      <div class="skill-card">
-        <div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pencil-ruler" style="color:#f9a8d4;font-size:15px;"></i></div>
-        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Drawing & Design</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Perspective, proportion, shading</div>
-      </div>
-      <div class="skill-card">
-        <div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-paint-brush" style="color:#c084fc;font-size:15px;"></i></div>
-        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Painting & Color Theory</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Watercolor, acrylics, mixing</div>
-      </div>
-      <div class="skill-card">
-        <div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-landmark" style="color:#fb923c;font-size:15px;"></i></div>
-        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Art History</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Movements, masters, context</div>
-      </div>
-      <div class="skill-card">
-        <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-running" style="color:#34d399;font-size:15px;"></i></div>
-        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Physical Fitness</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Cardio, strength, flexibility</div>
-      </div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pencil-ruler" style="color:#f472b6;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Drawing & Design</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Perspective, proportion, shading</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-paint-brush" style="color:#a78bfa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Painting & Color Theory</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Watercolor, acrylics, mixing</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-landmark" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Art History & Critique</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Movements, masters, analysis</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-heartbeat" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Physical Fitness & Sport</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Cardio, strength, teamwork</div></div>
     </div>
   </section>
+
   <section>
-    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Themes</h3></div>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Creative Themes</h3></div>
     <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
     <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
   </section>
 </main>
+
 <footer>
   <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
   <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Middle School Art & PE · Ages 11–12</p>
 </footer>
+
 <script>
 const curriculumData={
-'September':{icon:'fa-pencil-ruler',color:'',focus:'Drawing Fundamentals',skills:['Line quality','Value shading','Proportion','Contour drawing'],weeks:['Line types and quality: gesture drawing of everyday objects','Value scale: pencil shading from white to black with hatching techniques','Proportion exercises: drawing the human face using the rule of fifths','Contour drawing: blind contour and modified contour of hands and objects'],project:'Self-portrait in pencil using a mirror, focusing on proportion and value shading',materials:['Sketch paper','HB, 2B, 4B pencils','Mirror','Eraser']},
-'October':{icon:'fa-paint-brush',color:'',focus:'Color Theory & Watercolor',skills:['Color wheel','Warm & cool colors','Watercolor wet-on-wet','Color mixing'],weeks:['Color wheel: primary, secondary, tertiary colors; complementary pairs','Warm vs cool colors: emotional impact and use in art history masterworks','Watercolor basics: wet-on-wet and wet-on-dry techniques with washes','Color mixing experiments: achieving tints, shades, and natural hues'],project:'Watercolor landscape using a limited palette of analogous colors with wet-on-wet sky',materials:['Watercolor paper','Watercolor set','Round brushes (sizes 4, 8)','Water jars','Masking tape']},
-'November':{icon:'fa-landmark',color:'',focus:'Renaissance Art History',skills:['Renaissance context','Da Vinci & Michelangelo','Perspective','Sfumato & chiaroscuro'],weeks:['Introduction to the Renaissance: historical context, Florence, and patronage','Leonardo da Vinci: science, anatomy, and the Vitruvian Man connection','Michelangelo: Sistine Chapel, David, and the ideal human form','Linear perspective: one-point perspective room and cityscape drawings'],project:'Draw a one-point perspective hallway or street scene inspired by Renaissance architectural drawing',materials:['Ruler','Graph paper','Fine-tip pen','Pencil','Renaissance art print reference']},
-'December':{icon:'fa-music',color:'',focus:'Music Appreciation & Rhythm',skills:['Music notation basics','Rhythm & beat','World music','Listening response'],weeks:['Basic music notation: note values, time signatures, treble clef reading','Rhythm exercises: clapping patterns, body percussion, basic beat subdivision','World music survey: African drumming, Indian classical, Latin rhythms, jazz','Active listening journal: analyze mood, instrumentation, and structure of 4 pieces'],project:'Compose a 4-bar rhythm piece using body percussion, and perform it while others clap the beat',materials:['Printed rhythm worksheets','Pencil','Audio player for listening','Body percussion (clapping, stomping)']},
-'January':{icon:'fa-dumbbell',color:'',focus:'Fitness & Health',skills:['Cardiovascular fitness','Muscular strength','Flexibility','Nutrition basics'],weeks:['Fitness testing: mile run, push-ups, sit-ups — record baseline for comparison','Circuit training: 8 stations targeting different muscle groups (no equipment)','Flexibility and yoga: sun salutation sequence and static stretching routine','Nutrition basics: macronutrients, food labels, hydration, and energy balance'],project:'Design a 4-week personal fitness plan with daily exercise targets, nutrition goals, and progress tracking',materials:['Stopwatch or timer','Jump rope','Yoga mat (or towel)','Fitness journal']},
-'February':{icon:'fa-paint-brush',color:'',focus:'Impressionism & Acrylic Painting',skills:['Impressionist style','Brushstroke techniques','Color blending','Texture in acrylics'],weeks:['Impressionism: Monet, Renoir, Degas — how light and movement changed painting','Acrylic painting basics: brush types, palette setup, and canvas preparation','Brushstroke techniques: dabs, impasto, and blending for texture','Painting natural light: practice painting a fruit still life with natural lighting'],project:'Paint an Impressionist-inspired outdoor scene (park, garden, or street) with visible brushstrokes and light',materials:['Canvas board (small)','Acrylic paint set','Assorted brushes','Palette','Cup of water']},
-'March':{icon:'fa-cube',color:'',focus:'Sculpture & 3D Art',skills:['Form & space','Clay hand-building','Additive & subtractive','Relief vs freestanding'],weeks:['Introduction to 3D art: form, space, mass, texture, and balance as elements','Clay hand-building techniques: pinch pot, coil building, slab construction','Additive vs subtractive sculpture: carving soap vs building with wire and paper','Relief sculpture: create a textured tile panel inspired by ancient bas-relief'],project:'Build a coil-constructed ceramic bowl or vessel with decorative surface texture (fired if kiln available)',materials:['Air-dry clay or modeling clay','Clay tools','Textured objects for imprinting','Acrylic paint for finishing']},
-'April':{icon:'fa-futbol',color:'',focus:'Sport Skills & Teamwork',skills:['Cooperative games','Throwing & catching','Strategy & rules','Sportsmanship'],weeks:['Cooperative games: trust-building activities and no-elimination tag variants','Throwing and catching: frisbee, football, and target accuracy challenges','Team sports introduction: soccer, volleyball, or basketball rules and drills','Strategy and sportsmanship: analyzing plays, respecting officials, self-control'],project:'Organize and run a Mini Olympics event with 5 activities, scorekeeping, and award ceremony',materials:['Various balls','Frisbees','Cones','Scoreboard','Ribbons or certificates']},
-'May':{icon:'fa-digital-tachograph',color:'',focus:'Digital Art & Design',skills:['Digital tools','Graphic design basics','Typography','Digital poster'],weeks:['Introduction to digital art: using Canva, Google Slides, or free online tools','Graphic design principles: contrast, alignment, repetition, proximity (CARP)','Typography: choosing fonts, hierarchy, and text layout for readability','Creating a digital poster: applying all design principles to a real topic'],project:'Design a digital concert poster, event flyer, or book cover using free design software',materials:['Computer or tablet','Canva or Google Slides account (free)','Printer (optional)']},
-'June':{icon:'fa-star',color:'',focus:'Portfolio & Art Show',skills:['Portfolio curation','Artist statement','Critique skills','Presentation'],weeks:['Select best artwork from the year and photograph or scan for digital portfolio','Write an artist statement: describe your creative process and growth','Gallery preparation: matting, labeling, and displaying artwork professionally','Year-end art show: present work to family with guided tour and Q&A'],project:'Curated portfolio of 6 best pieces with written artist statement and participation in the Art Show',materials:['Portfolio folder or binder','Matting paper','Labels','Camera or phone for photos']}
+'September': {
+  icon: 'fa-pencil-alt',
+  color: 'from-pink-500 to-purple-600',
+  focus: 'Drawing Fundamentals',
+  skills: ['Perspective', 'Shading', 'Proportion', 'Contour drawing'],
+  project: 'Create a fully shaded still-life drawing using cross-hatching and a 1-point perspective room interior.',
+  materials: ['Sketchbook', 'Graphite pencils (HB, 2B, 4B)', 'Kneaded eraser', 'Ruler', 'Objects for still life'],
+  weeks: [
+    {
+      title: "Blind Contour Drawing",
+      objective: "Train the eye to observe carefully and coordinate hand movement without looking at the paper.",
+      warmup: "Quick 2-minute sketch of a shoe using non-dominant hand.",
+      mainActivity: "Set up a complex object (like a crumpled paper bag or a houseplant). Without looking at the paper, slowly draw the continuous outline and internal lines of the object. Keep eyes only on the subject. Repeat 3 times, allowing 5 minutes per drawing. The goal is observation, not a perfect picture.",
+      game: "Mirror Drill: Face a partner. One leads slow movements, the other mirrors exactly. Switch roles.",
+      homeConnection: "Practice a 5-minute blind contour of a family member's face while they watch TV.",
+      assessment: "Student demonstrates focus by keeping their eyes on the subject and producing a continuous, detailed, albeit distorted line drawing.",
+      differentiation: "Easier: Use a simple object like an apple. Harder: Draw a complex mechanism like a bicycle gear."
+    },
+    {
+      title: "Value and Shading",
+      objective: "Understand light source and create a 5-point value scale using hatching and cross-hatching.",
+      warmup: "Draw 5 square boxes. Fill the first box solid black and leave the last white.",
+      mainActivity: "Practice shading techniques: hatching (parallel lines), cross-hatching (intersecting lines), and stippling (dots) to fill the remaining boxes in your value scale. Then, draw a sphere. Decide where the light source is. Apply shading to create a highlight, midtone, core shadow, cast shadow, and reflected light using the cross-hatching technique.",
+      game: "Shadow Tag (PE integration): Play tag outdoors where stepping on someone's shadow counts as a tag.",
+      homeConnection: "Observe the cast shadow of a coffee mug on the table at different times of day.",
+      assessment: "Successfully creates a smooth gradient on the sphere incorporating all 5 elements of light and shadow.",
+      differentiation: "Easier: Shade using simple smudging with a finger. Harder: Shade a complex geometric solid like a dodecahedron."
+    },
+    {
+      title: "Facial Proportions",
+      objective: "Learn the classical rules of human facial proportion.",
+      warmup: "Draw a face from memory in 3 minutes without any guidelines.",
+      mainActivity: "Draw a large oval. Divide it in half vertically (symmetry line) and horizontally (eye line). The nose ends halfway between the eyes and chin. The mouth is halfway between the nose and chin. The space between the eyes is exactly one eye-width. Draw a face following these strict mathematical proportions, using a mirror as a reference for specific feature shapes.",
+      game: "Target Throw: Set up 5 targets at varying distances. Practice overhand throwing to hit specific targets.",
+      homeConnection: "Measure faces in magazine photos to see if they follow the 'eye-width' rule.",
+      assessment: "Drawing demonstrates correct placement of eyes (center of head), nose, and mouth according to proportion rules.",
+      differentiation: "Easier: Provide a printed template with faint guidelines. Harder: Draw a face in profile using proportion rules."
+    },
+    {
+      title: "One-Point Perspective",
+      objective: "Create the illusion of depth on a 2D surface using a vanishing point.",
+      warmup: "Draw a horizon line and a single dot. Draw three squares and connect their corners to the dot.",
+      mainActivity: "Draw an interior room. Start with the back wall (a large rectangle). Place a vanishing point in the center. Draw diagonal lines from the corners of the paper through the corners of the back wall to create the floor, ceiling, and side walls. Add a door, a window, and a rug by ensuring all horizontal and vertical lines are parallel to the paper edges, and all depth lines recede to the vanishing point.",
+      game: "Obstacle Course Navigation: Time a run through an obstacle course focusing on spatial awareness and speed.",
+      homeConnection: "Stand in the middle of a long hallway and notice how the floor and ceiling lines seem to converge.",
+      assessment: "Successfully uses a ruler to ensure orthogonal lines converge at a single vanishing point.",
+      differentiation: "Easier: Draw a simple road with trees getting smaller in the distance. Harder: Add complex furniture (like a chair or bed) using the vanishing point."
+    }
+  ]
+},
+'October': {
+  icon: 'fa-tint',
+  color: 'from-orange-500 to-red-600',
+  focus: 'Color Theory & Watercolor',
+  skills: ['Color wheel', 'Warm/cool', 'Watercolor techniques', 'Wash'],
+  project: 'Paint a complex landscape incorporating wet-on-wet washes, dry brush texture, and a specific color scheme.',
+  materials: ["Watercolor pan set", "Watercolor paper (140lb preferred)", "Brushes (round & flat)", "Painter's tape", "Salt", "Rubbing alcohol"],
+  weeks: [
+    {
+      title: "Advanced Color Wheel",
+      objective: "Mix primary, secondary, and tertiary colors with precision.",
+      warmup: "Quick mix: See who can mix the perfect 'burnt orange' using only primary colors.",
+      mainActivity: "Draw a 12-section circle. Using ONLY primary colors (red, yellow, blue), carefully mix to create secondary (orange, green, purple) and tertiary colors (red-orange, yellow-green, etc.). Paint each section cleanly. In the center, demonstrate mixing a neutral gray/brown by combining all three primaries.",
+      game: "Agility Ladder: Practice quick footwork through a tape ladder on the floor (high knees, lateral shuffles).",
+      homeConnection: "Analyze a movie poster or book cover and identify its dominant color scheme.",
+      assessment: "Accurately mixes tertiary colors without muddiness and correctly orders the 12-part wheel.",
+      differentiation: "Easier: Provide pre-mixed secondary colors. Harder: Create an inner circle showing the tints (adding water/white) of each hue."
+    },
+    {
+      title: "Watercolor Techniques Matrix",
+      objective: "Experiment with watercolor behaviors and textural effects.",
+      warmup: "Tape down the edges of a piece of watercolor paper to prevent warping.",
+      mainActivity: "Divide paper into a grid of 6 squares. Practice distinct techniques in each: 1) Flat wash (even color), 2) Graded wash (dark to light), 3) Wet-on-wet (dropping color into wet water), 4) Dry brush (using a nearly dry brush for texture), 5) Salt resist (sprinkling salt on wet paint), 6) Alcohol drop (dropping rubbing alcohol into wet paint).",
+      game: "Jump Rope Stamina: See how long you can jump rope without stopping. Try different jumps (criss-cross, single leg).",
+      homeConnection: "Look for textures in nature that could be replicated with salt or dry brush.",
+      assessment: "Produces a reference sheet clearly demonstrating 6 distinct watercolor techniques.",
+      differentiation: "Easier: Focus on just flat wash and wet-on-wet. Harder: Add a square demonstrating lifting/erasing color with a dry sponge."
+    },
+    {
+      title: "Monochromatic Landscapes",
+      objective: "Use values of a single color to show atmospheric perspective.",
+      warmup: "Mix one color with varying amounts of water to create 5 distinct shades.",
+      mainActivity: "Choose one color (e.g., blue). Paint a landscape with mountains. Paint the farthest mountains very light and watery. Let dry. Paint the middle mountains slightly darker. Let dry. Paint the foreground silhouette very dark and concentrated. This teaches that objects get lighter and less detailed as they recede into the distance.",
+      game: "Core Strength Circuit: 3 rounds of plank (30s), sit-ups (15), and Russian twists (20).",
+      homeConnection: "Look outside at sunset and notice how distant trees look grayish/lighter than close trees.",
+      assessment: "Successfully creates depth using at least 3 distinct values of a single color.",
+      differentiation: "Easier: Paint simple rolling hills. Harder: Include complex tree silhouettes in the dark foreground."
+    },
+    {
+      title: "Analogous Nature Scene",
+      objective: "Utilize an analogous color scheme (colors next to each other on the wheel) to create harmony.",
+      warmup: "Select 3 analogous colors from your color wheel (e.g., Blue, Blue-Green, Green).",
+      mainActivity: "Tape the edges of the paper. Use the wet-on-wet technique to create a smooth, blended background wash using your analogous colors. Let it dry completely. Then, use the dry brush technique to paint a detailed foreground subject (like a tree branch, leaf, or bird) using the darkest of your chosen colors.",
+      game: "Yoga Flow for Flexibility: Complete a 15-minute yoga sequence focusing on hamstring and shoulder mobility.",
+      homeConnection: "Find an outfit in your closet that uses an analogous color scheme.",
+      assessment: "Artwork effectively uses analogous colors without introducing discordant hues, demonstrating both wet and dry techniques.",
+      differentiation: "Easier: Paint an abstract background with a simple silhouette. Harder: Paint a detailed botanical illustration."
+    }
+  ]
+},
+'November': {
+  icon: 'fa-monument',
+  color: 'from-amber-500 to-yellow-600',
+  focus: 'Renaissance & Art History',
+  skills: ['Renaissance masters', 'Perspective', 'Sfumato', 'Chiaroscuro'],
+  project: 'Recreate a masterwork using a grid system and present an oral report on a Renaissance artist.',
+  materials: ['Printed copy of a Renaissance painting', 'Drawing paper', 'Pencils/Charcoal', 'Ruler', 'Internet for research'],
+  weeks: [
+    {
+      title: "The Grid Method (Da Vinci)",
+      objective: "Use a grid to accurately enlarge and copy a complex image.",
+      warmup: "Draw a 1-inch grid over a 5x7 printed picture.",
+      mainActivity: "Study Leonardo da Vinci's sketches. Lightly draw a 2-inch grid on blank drawing paper. Focus on one square at a time, copying exactly the lines and shapes you see in the corresponding 1-inch square of the printed picture. This breaks down a daunting drawing into manageable abstract shapes.",
+      game: "Da Vinci's Vitruvian Man: Practice holding different balance poses (like star pose) while standing on a balance board or pillow.",
+      homeConnection: "Research one invention Leonardo sketched (like the flying machine) and explain it at dinner.",
+      assessment: "Enlarged drawing maintains the proportions of the original image using the grid.",
+      differentiation: "Easier: Use a 4x4 grid on a simple sketch. Harder: Use a detailed portrait like the Mona Lisa."
+    },
+    {
+      title: "Chiaroscuro (Caravaggio)",
+      objective: "Master dramatic light and shadow using high contrast.",
+      warmup: "Shine a flashlight on a crumpled piece of paper in a dark room. Note the stark shadows.",
+      mainActivity: "Study Caravaggio's use of 'chiaroscuro' (light-dark). Set up a still life with a single, harsh light source (like a desk lamp in a dark room). Use charcoal or soft pencil to draw the scene, focusing entirely on pushing the darks as black as possible and leaving the highlights stark white. Do not draw outlines; draw the shadows.",
+      game: "Sprint Intervals: 5 sets of 30-meter sprints with 1 minute rest between. Focus on explosive starts.",
+      homeConnection: "Find a dramatic lighting situation in a movie or TV show and pause it to study the shadows.",
+      assessment: "Drawing demonstrates high contrast with very dark shadows and bright highlights, lacking harsh outlines.",
+      differentiation: "Easier: Use a single egg as the subject. Harder: Use a draped cloth with many complex folds."
+    },
+    {
+      title: "Fresco Technique (Michelangelo)",
+      objective: "Understand the process of painting on plaster, simulating the Sistine Chapel.",
+      warmup: "Lie on your back under a table and try to draw a circle on a paper taped above you.",
+      mainActivity: "Mix a small amount of Plaster of Paris in a plastic lid or shallow cardboard box. Let it set until firm but still slightly damp. Use watercolors or thinned tempera to paint a design onto the damp plaster. The paint will soak in and become part of the surface, mimicking actual fresco technique.",
+      game: "Ceiling Reach: Core workout. Lie on back, legs straight up, crunch up trying to touch toes. 3 sets of 15.",
+      homeConnection: "Look up the ceiling of the Sistine Chapel online and find the 'Creation of Adam'.",
+      assessment: "Successfully completes a painting on a plaster surface before it dries completely.",
+      differentiation: "Easier: Paint simple geometric patterns. Harder: Paint a figure or face on the plaster."
+    },
+    {
+      title: "Art Critique & Presentation",
+      objective: "Analyze a piece of art using formal language and present findings.",
+      warmup: "Look at a random painting for 30 seconds. Turn it over and list 5 things you remember.",
+      mainActivity: "Choose a famous Renaissance artwork. Write a short critique using the 4 steps: Describe (what do you see?), Analyze (how are elements like color/line used?), Interpret (what is the mood or story?), Evaluate (is it successful?). Present this critique aloud to the family.",
+      game: "Public Speaking Posture: Practice standing tall with shoulders back and projecting voice to the back of the yard.",
+      homeConnection: "Act as a 'museum guide' and give a tour of the artwork hanging in your house.",
+      assessment: "Oral presentation clearly covers the 4 steps of art critique using appropriate vocabulary.",
+      differentiation: "Easier: Focus heavily on 'Describe' and 'Analyze'. Harder: Compare and contrast two different Renaissance artists."
+    }
+  ]
+},
+'December': {
+  icon: 'fa-drum',
+  color: 'from-green-500 to-teal-600',
+  focus: 'Music Appreciation & Rhythm',
+  skills: ['Notation', 'Rhythm', 'World music', 'Body percussion'],
+  project: 'Compose an original 16-bar rhythm piece and perform it using body percussion.',
+  materials: ['Paper & pen', 'Access to music streaming (Spotify/YouTube)', 'Metronome (app)'],
+  weeks: [
+    {
+      title: "Rhythmic Notation Basics",
+      objective: "Read and write basic musical rhythms (quarter, eighth, sixteenth notes).",
+      warmup: "Clap to the beat of a metronome set at 80 BPM.",
+      mainActivity: "Learn standard rhythm notation. Quarter note = 'ta' (1 beat). Eighth notes = 'ti-ti' (2 per beat). Sixteenth notes = 'tika-tika' (4 per beat). Write out 4-beat measures using these notes. Practice clapping the written rhythms while counting aloud (1-e-&-a).",
+      game: "Cardio Drumming: Hit an exercise ball (or couch cushion) with wooden spoons to a fast-paced pop song.",
+      homeConnection: "Find the pulse (downbeat) in the music playing at the grocery store.",
+      assessment: "Accurately claps a written 4-bar rhythm containing quarter, eighth, and sixteenth notes.",
+      differentiation: "Easier: Stick to quarter and eighth notes. Harder: Introduce syncopation and rests."
+    },
+    {
+      title: "Complex Body Percussion",
+      objective: "Coordinate multiple body movements to create layered rhythms.",
+      warmup: "Pat head and rub stomach, then switch quickly.",
+      mainActivity: "Learn a multi-part body percussion sequence (e.g., Stomp R, Stomp L, Pat thighs, Clap, Snap R, Snap L). Break it down slowly. Then, layer it. Record yourself doing part 1, play it back, and do part 2 over it to hear how rhythms interlock.",
+      game: "Coordination Ladder: Complex footwork patterns through an agility ladder.",
+      homeConnection: "Teach the body percussion sequence to a sibling or parent.",
+      assessment: "Performs a 4-part body percussion loop smoothly without losing the tempo.",
+      differentiation: "Easier: Perform a simpler stomp-clap-stomp-clap pattern. Harder: Perform different rhythms with hands vs feet simultaneously."
+    },
+    {
+      title: "World Music Exploration",
+      objective: "Identify distinct rhythmic patterns from different global cultures.",
+      warmup: "Listen to a 1-minute clip of a Samba. Try to move to the main beat.",
+      mainActivity: "Listen to and analyze three styles: West African Polyrhythm (multiple overlapping beats), Brazilian Samba (syncopated, danceable), and Indian Classical (complex cyclical talas). Draw visual representations of how each rhythm 'feels' (e.g., circles for cycles, jagged lines for syncopation).",
+      game: "Dance Cardio: Follow a 15-minute Zumba or world-dance workout video.",
+      homeConnection: "Research traditional instruments used in one of the studied cultures (e.g., Djembe, Tabla).",
+      assessment: "Can audibly identify the difference between straight time and syncopated rhythms.",
+      differentiation: "Easier: Focus on finding the main downbeat. Harder: Attempt to clap the underlying polyrhythm in an African track."
+    },
+    {
+      title: "Composition & Performance",
+      objective: "Synthesize rhythm knowledge to compose an original piece.",
+      warmup: "Freestyle rhythm solo on a tabletop for 30 seconds.",
+      mainActivity: "Compose a 16-measure piece of music using rhythm notation. Decide which sounds (stomp, clap, snap, vocalization) correspond to which notes. Practice the composition with a metronome until it can be performed flawlessly. Perform it for the family.",
+      game: "Endurance Run: Jog continuously for 15 minutes, focusing on a steady breathing rhythm.",
+      homeConnection: "Discuss how rhythm is important in both music and running/sports.",
+      assessment: "Written composition is mathematically correct (4 beats per measure) and performance matches notation.",
+      differentiation: "Easier: Compose an 8-measure piece. Harder: Compose a duet and perform it with a parent."
+    }
+  ]
+},
+'January': {
+  icon: 'fa-dumbbell',
+  color: 'from-blue-500 to-indigo-600',
+  focus: 'Fitness & Health Science',
+  skills: ['Cardio', 'Strength', 'Flexibility', 'Nutrition'],
+  project: 'Design a personalized 4-week workout plan and track resting heart rate.',
+  materials: ['Stopwatch/Phone', 'Yoga mat', 'Notebook', 'Basic household weights (water bottles/books)'],
+  weeks: [
+    {
+      title: "Cardiovascular Endurance",
+      objective: "Understand target heart rate and experience different cardio zones.",
+      warmup: "Find pulse on neck or wrist. Count beats for 10 seconds, multiply by 6 for Resting Heart Rate (RHR).",
+      mainActivity: "Learn to calculate max heart rate (220 - age). Complete a 20-minute workout alternating between moderate jogging and high-intensity sprinting. Stop every 5 minutes to check heart rate. Record how different activities push you into different aerobic zones.",
+      game: "Art Integration: Draw a line graph charting heart rate over the course of the workout.",
+      homeConnection: "Check pulse before getting out of bed in the morning for a true resting heart rate.",
+      assessment: "Accurately calculates target heart rate zones and demonstrates sustained aerobic effort.",
+      differentiation: "Easier: Focus on fast walking vs slow walking. Harder: Complete a Tabata protocol (20s max effort, 10s rest) for 8 rounds."
+    },
+    {
+      title: "Muscular Strength & Form",
+      objective: "Learn proper biomechanics for foundational bodyweight exercises.",
+      warmup: "Dynamic stretching: Arm circles, leg swings, torso twists.",
+      mainActivity: "Focus entirely on perfect form for the 'Big 4': Squats (knees track over toes, chest up), Push-ups (straight line from head to heels, elbows 45 degrees), Lunges (90-degree angles at knees), and Plank (core braced). Perform 3 sets of 10 for each, moving slowly and correcting form.",
+      game: "Sculpture Integration: Build a tiny wire armature figure positioned in perfect squat form.",
+      homeConnection: "Watch a professional form-check video for squats on YouTube.",
+      assessment: "Demonstrates safe, proper form for squats, push-ups, and lunges without coaching.",
+      differentiation: "Easier: Do push-ups from knees, hold on to a chair for squats. Harder: Add weight (heavy backpack) or try pistol (single-leg) squats."
+    },
+    {
+      title: "Flexibility & Mobility",
+      objective: "Understand the difference between dynamic and static stretching to prevent injury.",
+      warmup: "Light 5-minute jog to warm up muscles before stretching.",
+      mainActivity: "Learn the mechanics of muscles and tendons. Complete a full-body static stretching routine holding each stretch for 30 seconds. Focus on hamstrings, hip flexors, chest, and lats. Discuss how mobility differs from flexibility (active control vs passive stretch).",
+      game: "Art Integration: Look at Edgar Degas' dancer paintings and sketch the poses focusing on the stretched muscles.",
+      homeConnection: "Stretch for 10 minutes while watching TV in the evening.",
+      assessment: "Holds stretches for adequate time without bouncing, breathing deeply.",
+      differentiation: "Easier: Use a towel or band to assist in reaching stretches. Harder: Incorporate PNF stretching (contract-relax technique)."
+    },
+    {
+      title: "Nutrition for Performance",
+      objective: "Analyze macronutrients and design a meal plan for an athlete.",
+      warmup: "Look in the pantry and read the nutrition label on a box of cereal.",
+      mainActivity: "Learn the roles of carbohydrates (energy), protein (recovery/building), and fats (sustained energy). Design a theoretical 'Game Day' meal plan for an athlete, including pre-game fuel and post-game recovery meals. Calculate the rough protein content.",
+      game: "Grocery Store Dash: Run to the kitchen and find a source of complex carbs, lean protein, and healthy fat as fast as possible.",
+      homeConnection: "Help prepare a balanced dinner containing all three macronutrients.",
+      assessment: "Meal plan logically utilizes carbs for pre-workout energy and protein for post-workout recovery.",
+      differentiation: "Easier: Categorize foods into 'go, slow, whoa'. Harder: Calculate exact macronutrient ratios (e.g., 50% carb, 25% pro, 25% fat)."
+    }
+  ]
+},
+'February': {
+  icon: 'fa-paint-roller',
+  color: 'from-purple-500 to-pink-600',
+  focus: 'Impressionism & Acrylics',
+  skills: ['Monet/Renoir/Degas', 'Brushstrokes', 'Acrylic techniques', 'Impasto'],
+  project: 'Paint a thick, textured landscape using palette knives and heavy acrylic paint.',
+  materials: ['Acrylic paints', 'Canvas board or heavy paper', 'Assorted brushes', 'Palette knife (or plastic knife)', 'Paper plate palette'],
+  weeks: [
+    {
+      title: "Impressionist Brushstrokes",
+      objective: "Abandon exact detailing for quick, broken brushstrokes capturing light.",
+      warmup: "Paint a simple apple using only 10 quick strokes.",
+      mainActivity: "Study the work of Claude Monet. Note how he uses short, thick dabs of paint side-by-side rather than blending them smoothly. Paint a simple scene (like a tree in a field) using ONLY short, unblended dashes of acrylic paint. Let the eye do the mixing from a distance.",
+      game: "Target Accuracy: Throw tennis balls to hit specific small targets on a wall.",
+      homeConnection: "Look at the painting from 1 foot away, then 10 feet away. Note how the dashes blend.",
+      assessment: "Resists the urge to blend paint smoothly; effectively uses broken brushstrokes.",
+      differentiation: "Easier: Paint a very simple shape like a flower. Harder: Attempt a busy city street scene using this technique."
+    },
+    {
+      title: "Impasto with Palette Knives",
+      objective: "Build physical texture (impasto) on the canvas.",
+      warmup: "Use a plastic knife to 'frost' a piece of cardboard with thick paint.",
+      mainActivity: "Look at Vincent Van Gogh's work (Post-Impressionist, but heavy texture). Use a palette knife or old credit card to apply acrylic paint thickly to a canvas board. Try to create actual 3D ridges and peaks in the paint. Paint a landscape focusing on the texture of bark, grass, or clouds.",
+      game: "Broad Jump: Practice explosive leg power by jumping forward as far as possible from a standstill.",
+      homeConnection: "Feel the texture of dried paint versus a smooth magazine cover.",
+      assessment: "Creates deliberate, thick physical texture on the canvas surface.",
+      differentiation: "Easier: Use thick paint to make abstract patterns. Harder: Use the knife edge to create sharp, fine lines (like tree branches)."
+    },
+    {
+      title: "Capturing Movement (Degas)",
+      objective: "Depict human figures in motion, focusing on gesture and energy.",
+      warmup: "Do 30 seconds of jumping jacks, then try to freeze in mid-motion.",
+      mainActivity: "Study Edgar Degas' pastel dancers. Instead of drawing a stiff outline, use a dry brush with very little paint to quickly sketch the 'gesture' or energy line of a person moving. Have a family member strike a sports pose (pitching, kicking) and paint the motion in under 5 minutes.",
+      game: "Agility Shuttle Run: Sprint back and forth touching lines 10 meters apart.",
+      homeConnection: "Watch a sports game and pause it to look at the extreme poses of the athletes.",
+      assessment: "Painting captures the dynamic line of action and feels energetic rather than static.",
+      differentiation: "Easier: Trace a photo of an athlete to find the 'line of action'. Harder: Paint a scene with multiple figures in motion."
+    },
+    {
+      title: "En Plein Air Painting",
+      objective: "Paint quickly outdoors to capture changing natural light.",
+      warmup: "Sit outside for 2 minutes and list all the colors you see in the shadows.",
+      mainActivity: "Take paints and canvas outside ('en plein air'). Choose a view. The goal is speed—paint the scene in under 45 minutes before the light changes significantly. Focus on the colors of the shadows (they are rarely black, usually blue/purple) and the temperature of the sunlight.",
+      game: "Outdoor Trail Run: Go for a 20-minute jog in a park or nature trail.",
+      homeConnection: "Notice how the color of the light shining through the window changes at 9 AM vs 5 PM.",
+      assessment: "Completes an outdoor painting within the time limit, demonstrating observation of natural light.",
+      differentiation: "Easier: Focus on a very small, close-up subject (one leaf). Harder: Paint the exact same scene at dawn and at noon to compare."
+    }
+  ]
+},
+'March': {
+  icon: 'fa-cube',
+  color: 'from-cyan-500 to-blue-600',
+  focus: 'Sculpture & 3D Art',
+  skills: ['Clay', 'Wire', 'Relief', 'Freestanding sculpture'],
+  project: 'Build a wire armature and cover it with clay to create an action-pose figurine.',
+  materials: ['Air-dry clay', 'Aluminum foil', 'Craft wire', 'Pliers/wire cutters', 'Cardboard for base'],
+  weeks: [
+    {
+      title: "Wire Armatures",
+      objective: "Build a supportive internal skeleton for a sculpture.",
+      warmup: "Bend a single piece of wire to look like a face profile.",
+      mainActivity: "Learn proportion in 3D. Twist craft wire to create a human 'skeleton'. The spine, shoulders, hips, and limbs must be proportioned correctly. Pose the wire figure into a dynamic action pose (running, leaping). Wrap the wire tightly in aluminum foil to bulk out the muscles.",
+      game: "Balance Board: Try to balance on a wobble board or a 2x4 piece of wood.",
+      homeConnection: "Discuss how the human skeleton acts as an armature for muscles and skin.",
+      assessment: "Wire armature stands independently and is proportioned correctly before adding foil.",
+      differentiation: "Easier: Build a simple quadruped (dog/cat). Harder: Build a figure balancing on one leg."
+    },
+    {
+      title: "Clay Modeling",
+      objective: "Use additive and subtractive techniques to flesh out a 3D form.",
+      warmup: "Condition the clay by kneading it until warm and pliable.",
+      mainActivity: "Cover the foil/wire armature from last week with a thin layer of air-dry clay. Use additive techniques (adding small balls of clay for muscles) and subtractive techniques (carving away clay) to refine the figure. Smooth joints with water.",
+      game: "Medicine Ball Throws: Practice explosive power throwing a heavy ball against an outside wall.",
+      homeConnection: "Notice the musculature of athletes on TV—where are the largest muscle groups?",
+      assessment: "Successfully covers armature; figure shows defined shapes, not just a tube of clay.",
+      differentiation: "Easier: Focus on smoothing the surface. Harder: Sculpt fine details like fingers or facial features."
+    },
+    {
+      title: "Bas-Relief Sculpture",
+      objective: "Create a sculpture that is raised from a flat background.",
+      warmup: "Look at a coin. Discuss how the image is raised but mostly flat.",
+      mainActivity: "Roll out a slab of clay about 1/2 inch thick. Use tools (toothpicks, spoons) to carve a scene into the slab. Then, add small pieces of clay on top to build up the foreground elements. This is 'relief' sculpture, common in ancient architecture.",
+      game: "Wall Sits: Isometric leg strength. Sit against a wall with knees at 90 degrees. Hold for 60 seconds.",
+      homeConnection: "Look for relief sculptures on buildings, monuments, or gravestones in your town.",
+      assessment: "Demonstrates clear foreground (raised) and background (carved) depths.",
+      differentiation: "Easier: Press objects (shells, leaves) into the clay to create the relief. Harder: Sculpt a complex landscape in relief."
+    },
+    {
+      title: "Freestanding Abstract",
+      objective: "Consider negative space and balance in a non-representational sculpture.",
+      warmup: "Balance a ruler on your finger. Note where the center of gravity is.",
+      mainActivity: "Create an abstract sculpture using cardboard, wire, and hot glue. It must not look like a specific object. Focus on 'negative space' (the holes or empty space within the sculpture). Ensure it looks interesting from all 360 degrees and balances securely on its base.",
+      game: "Gymnastics Tumbles: Practice forward rolls, cartwheels, and holding a handstand against a wall.",
+      homeConnection: "Look at pictures of Henry Moore or Barbara Hepworth sculptures.",
+      assessment: "Sculpture is structurally sound, balanced, and deliberately utilizes negative space.",
+      differentiation: "Easier: Use interlocking slotted cardboard pieces. Harder: Ensure the sculpture rests on only three tiny touchpoints."
+    }
+  ]
+},
+'April': {
+  icon: 'fa-volleyball-ball',
+  color: 'from-emerald-500 to-green-600',
+  focus: 'Sport Skills & Teamwork',
+  skills: ['Cooperative games', 'Throwing/catching', 'Team sports', 'Sportsmanship'],
+  project: 'Invent a new sport, write the rulebook, and design the team logos.',
+  materials: ['Various balls (soccer, basketball, tennis)', 'Cones/Markers', 'Paper & colored pencils'],
+  weeks: [
+    {
+      title: "Striking & Accuracy (Tennis/Volleyball)",
+      objective: "Develop hand-eye coordination for striking an object with an implement or hand.",
+      warmup: "Juggling practice: Try cascading two, then three tennis balls.",
+      mainActivity: "Practice the mechanics of serving. If using a tennis racket: focus on the toss, backscratch position, and follow-through. If volleyball: practice the underhand and overhand serve against a wall. Work on consistent toss placement before striking.",
+      game: "Wall Ball Target: Draw targets on a brick wall with chalk. Serve or hit to hit specific spots.",
+      homeConnection: "Watch a professional tennis match and observe the players' footwork.",
+      assessment: "Demonstrates correct mechanical form (weight transfer, follow-through) when striking.",
+      differentiation: "Easier: Strike a larger, slower ball (beach ball). Harder: Practice backhand strokes or topspin."
+    },
+    {
+      title: "Invasion Games Strategy (Soccer/Basketball)",
+      objective: "Understand spacing, passing lanes, and defensive positioning.",
+      warmup: "Dribbling drills: Weave through a line of cones with feet or hands.",
+      mainActivity: "Focus on game IQ. Learn 'give and go' passing, setting screens, and defensive shifting (man-to-man vs zone). Even with just 2 people, practice the concept of moving to open space after making a pass, rather than standing still.",
+      game: "Keep Away: 2 vs 1 (if family is available) or bounce-pass practice against a wall aiming for speed.",
+      homeConnection: "Draw a diagram of a basketball court and map out a play.",
+      assessment: "Understands the concept of moving to open space after passing.",
+      differentiation: "Easier: Focus solely on accurate chest passing. Harder: Practice left-handed/non-dominant foot dribbling and passing."
+    },
+    {
+      title: "Team Identity Design (Art Integration)",
+      objective: "Use graphic design principles to create a sports team logo.",
+      warmup: "Sketch 5 quick ideas for a mascot.",
+      mainActivity: "Invent a new team. Design a logo emphasizing bold lines, limited colors (2-3), and scalability (looks good big or small). Create a home and away jersey design. Discuss how colors invoke psychology (red=aggressive, blue=steady).",
+      game: "Sprint Relay: Run relays using a baton (or stick) practicing smooth handoffs.",
+      homeConnection: "Analyze NFL or NBA logos. Which ones are most effective and why?",
+      assessment: "Logo utilizes bold, scalable graphic design principles and deliberate color psychology.",
+      differentiation: "Easier: Design a logo using only letters (monogram). Harder: Create a full branding package including typography and secondary logos."
+    },
+    {
+      title: "Invent a Sport",
+      objective: "Synthesize physical skills and strategic rules into a new game.",
+      warmup: "Play a traditional game (like Tag) but change one major rule.",
+      mainActivity: "Invent a brand new sport. Write a 1-page rulebook covering: Objective, Field Layout, Equipment, Scoring, and Fouls. Combine elements of existing sports (e.g., kicking a ball into a basketball hoop). Teach the game to the family and play a match.",
+      game: "Play the invented sport! Evaluate the rules as you go and adjust if necessary.",
+      homeConnection: "Discuss why certain sports have specific rules (e.g., the shot clock in basketball).",
+      assessment: "Creates a logical, playable game with clear constraints and objectives.",
+      differentiation: "Easier: Modify an existing game. Harder: Ensure the game relies heavily on teamwork rather than individual skill."
+    }
+  ]
+},
+'May': {
+  icon: 'fa-laptop-code',
+  color: 'from-blue-500 to-purple-600',
+  focus: 'Digital Art & Design',
+  skills: ['Canva/Software', 'Graphic design', 'Typography', 'Layout'],
+  project: 'Design a professional event poster and a multi-page digital zine.',
+  materials: ['Computer/Tablet', 'Free Canva account (or similar)', 'Internet access', 'Sketchbook'],
+  weeks: [
+    {
+      title: "Typography & Hierarchy",
+      objective: "Understand how font choice and size direct the viewer's eye.",
+      warmup: "Find 3 different fonts on food packaging in the pantry.",
+      mainActivity: "Log into Canva. Learn the difference between Serif, Sans-Serif, and Display fonts. Create a poster with a quote. Establish visual hierarchy: The most important word is largest, secondary info is smaller. Never use more than 2-3 fonts. Practice adjusting kerning (letter spacing) and leading (line spacing).",
+      game: "Typing Test: Take a 1-minute online typing test to improve keyboard speed and dexterity.",
+      homeConnection: "Look at a magazine cover and identify the primary, secondary, and tertiary text.",
+      assessment: "Poster demonstrates clear visual hierarchy and readable font combinations.",
+      differentiation: "Easier: Use a pre-made Canva template and analyze why it works. Harder: Design a typographic poster using NO images, only text."
+    },
+    {
+      title: "Vector Shapes & Layout",
+      objective: "Utilize alignment, proximity, and negative space in digital design.",
+      warmup: "Draw a rough sketch of the layout on paper before opening the software.",
+      mainActivity: "Design a flyer for a fictional event. Use alignment tools to ensure everything snaps to a grid. Group related information together (proximity). Ensure there is plenty of 'white space' (negative space) so the design isn't cluttered. Use basic vector shapes to frame text.",
+      game: "Reaction Time Drills: Drop a ruler and try to catch it as quickly as possible.",
+      homeConnection: "Find a badly designed menu or flyer and discuss how to fix its layout.",
+      assessment: "Design uses grid alignment and avoids edge-crowding and clutter.",
+      differentiation: "Easier: Design a simple business card. Harder: Design a trifold brochure requiring complex spatial planning."
+    },
+    {
+      title: "Photo Manipulation Basics",
+      objective: "Adjust contrast, saturation, and cropping to improve digital imagery.",
+      warmup: "Take a purposefully bad photo (crooked, dark).",
+      mainActivity: "Import a photo into editing software. Practice the Rule of Thirds by cropping the image so the subject falls on intersection lines. Adjust brightness/contrast to make the image pop. Experiment with saturation and color temperature filters.",
+      game: "Scavenger Hunt Run: Run around the neighborhood taking photos of specific items on a list.",
+      homeConnection: "Take a portrait photo using 'Portrait Mode' on a phone to blur the background.",
+      assessment: "Improves a raw photo using cropping and color adjustment tools.",
+      differentiation: "Easier: Apply basic preset filters. Harder: Use masking tools to change the color of only one object in the photo."
+    },
+    {
+      title: "Digital Zine Creation",
+      objective: "Combine text and image into a cohesive multi-page layout.",
+      warmup: "Brainstorm a topic for your zine (hobbies, a short story, a review).",
+      mainActivity: "Create a 4-page digital zine (mini-magazine) in Canva. Maintain a consistent color palette and font scheme across all pages. Import your own photos or artwork. Export the final project as a PDF.",
+      game: "Jump Rope Double Unders: Practice swinging the rope twice for every one jump.",
+      homeConnection: "Read a digital article and note how images break up the text.",
+      assessment: "Produces a multi-page PDF demonstrating consistent branding and layout principles.",
+      differentiation: "Easier: Create a 2-page spread. Harder: Create an interactive PDF with clickable hyperlinks."
+    }
+  ]
+},
+'June': {
+  icon: 'fa-star',
+  color: 'from-amber-400 to-orange-500',
+  focus: 'Portfolio & Art Show',
+  skills: ['Curation', 'Artist statement', 'Critique', 'Presentation'],
+  project: 'Host a formal art exhibition and complete a physical fitness test.',
+  materials: ['All artwork from the year', 'Mat board/black paper', 'Notecards', 'Tape', 'Stopwatch/Measuring tape'],
+  weeks: [
+    {
+      title: "Matting and Framing",
+      objective: "Prepare artwork for professional display.",
+      warmup: "Trim ragged edges off drawings with a ruler and craft knife (with supervision).",
+      mainActivity: "Select the top 5 pieces from the year. Learn how to mount them. Use black or white poster board to create a border (mat) around the artwork. Measure carefully to ensure the borders are perfectly even. This elevates the art from a 'school project' to a gallery piece.",
+      game: "Precision Throw: Throw a ball to knock a water bottle off a table.",
+      homeConnection: "Look at framed art in the house. Notice the matting around the picture.",
+      assessment: "Artwork is cleanly mounted with even, measured borders.",
+      differentiation: "Easier: Glue art onto slightly larger colored paper. Harder: Cut a beveled window mat using a mat cutter."
+    },
+    {
+      title: "Writing the Artist Statement",
+      objective: "Articulate the meaning, process, and growth behind the artwork.",
+      warmup: "Free-write for 5 minutes about your favorite piece of art.",
+      mainActivity: "Write a 2-paragraph Artist Statement. Paragraph 1: What is the work, what materials were used, and what is the overarching theme? Paragraph 2: What did you learn this year, what was challenging, and how have you grown as an artist? Type and print this out.",
+      game: "End of Year Fitness Test: 1-mile run for time.",
+      homeConnection: "Read an artist statement from a local gallery website.",
+      assessment: "Statement clearly communicates process and reflects on personal growth.",
+      differentiation: "Easier: Write 3 sentences per piece. Harder: Write a cohesive essay analyzing stylistic development over the year."
+    },
+    {
+      title: "Gallery Curation",
+      objective: "Organize an exhibition space considering flow, lighting, and narrative.",
+      warmup: "Draft a floor plan of the living room/gallery space.",
+      mainActivity: "Clear a space in the house. Decide how to group the art (chronologically? by medium?). Hang the matted work at eye-level. Create small title cards (Title, Medium, Year) for each piece. Place the Artist Statement at the entrance.",
+      game: "End of Year Fitness Test: Max push-ups and sit-ups in 1 minute.",
+      homeConnection: "Design a digital invitation to send to family members for the art show.",
+      assessment: "Creates a cohesive, professional-looking display environment.",
+      differentiation: "Easier: Hang art randomly. Harder: Curate lighting using desk lamps to spotlight specific pieces."
+    },
+    {
+      title: "The Exhibition & Reception",
+      objective: "Present work confidently and field questions from an audience.",
+      warmup: "Practice your welcome speech in the mirror.",
+      mainActivity: "Host the Art Show! Dress professionally. Give a brief opening speech to family/guests. Stand by your work and answer questions about your process. Accept compliments gracefully and explain the techniques learned throughout the year.",
+      game: "Celebratory Field Day: Plan 3 fun, favorite PE games to play with the whole family.",
+      homeConnection: "Celebrate the year's hard work with a special dinner.",
+      assessment: "Speaks confidently about their art and demonstrates pride in their portfolio.",
+      differentiation: "Easier: Answer pre-written questions. Harder: Give a formal guided tour of the gallery."
+    }
+  ]
+}
 };
+
 let currentMonth='September';
-let isDark=true;
+
+
 function init(){
   const tabs=document.getElementById('monthTabs');
   Object.keys(curriculumData).forEach(m=>{
@@ -140,13 +609,13 @@ function init(){
   });
   loadContent('September');
 }
+
 function selectMonth(m){
   currentMonth=m;
-  document.querySelectorAll('.month-tab').forEach((btn,i)=>{
-    btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);
-  });
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
   loadContent(m);
 }
+
 function loadContent(m){
   const d=curriculumData[m];
   const months=Object.keys(curriculumData);
@@ -171,43 +640,76 @@ function loadContent(m){
             <div class="week-row">
               <div class="week-header" onclick="toggleWeek('${m}-${i}')">
                 <div class="week-num">${i+1}</div>
-                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
+                <div style="flex:1;"><p style="font-size:13.5px;font-weight:600;color:white;line-height:1.4;">${w.title}</p><p style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px;">${w.objective}</p></div>
                 <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
               </div>
               <div class="week-detail" id="wd-${m}-${i}">
-                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-palette" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">${w} — creative practice with guided instruction and free exploration time.</p></div>
-                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Home practice: 15 minutes of sketchbook drawing or physical activity of choice.</p></div>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-fire" style="color:var(--a2);margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Warm-up:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.warmup}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-palette" style="color:var(--a1);margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Main Activity:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.mainActivity}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-gamepad" style="color:#34d399;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Game/Movement:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.game}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-home" style="color:#60a5fa;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Home Connection:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.homeConnection}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-check-circle" style="color:#fbbf24;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Assessment:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.assessment}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;margin-top:4px;">
+                    <i class="fas fa-layer-group" style="color:#a78bfa;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11px;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:2px;">Differentiation</span><p style="font-size:12.5px;color:rgba(255,255,255,0.6);">${w.differentiation}</p></div>
+                  </div>
+                </div>
               </div>
-            </div>`).join('')}
+            </div>
+          `).join('')}
         </div>
       </div>
       <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
-        <div style="display:flex;flex-direction:column;gap:9px;">
-          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        <div class="sched-card" style="margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--a2);margin-bottom:8px;"><i class="fas fa-star" style="margin-right:6px;"></i>Monthly Project</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.5;">${d.project}</p>
+        </div>
+        <div class="sched-card" style="margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#34d399;margin-bottom:12px;"><i class="fas fa-box-open" style="margin-right:6px;"></i>Materials Needed</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            ${d.materials.map(mat=>`<div class="mat-item"><div style="width:5px;height:5px;border-radius:50%;background:#34d399;"></div><span style="font-size:13px;color:rgba(255,255,255,0.7);">${mat}</span></div>`).join('')}
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:30px;">
+          ${prev?`<button onclick="selectMonth('${prev}')" style="flex:1;padding:12px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:background 0.2s;"><i class="fas fa-arrow-left" style="margin-right:6px;color:rgba(255,255,255,0.4);"></i>${prev}</button>`:'<div style="flex:1;"></div>'}
+          ${next?`<button onclick="selectMonth('${next}')" style="flex:1;padding:12px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:background 0.2s;">${next}<i class="fas fa-arrow-right" style="margin-left:6px;color:rgba(255,255,255,0.4);"></i></button>`:'<div style="flex:1;"></div>'}
         </div>
       </div>
     </div>
-    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
-      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
-      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
-    </div>`;
+  `;
 }
+
 function toggleWeek(id){
-  const d=document.getElementById('wd-'+id);
-  const c=document.getElementById('chev-'+id);
-  const open=d.style.display==='block';
-  d.style.display=open?'none':'block';
-  c.style.transform=open?'':'rotate(180deg)';
+  const el=document.getElementById('wd-'+id);
+  const chev=document.getElementById('chev-'+id);
+  const isOpen=el.style.display==='block';
+  document.querySelectorAll('.week-detail').forEach(d=>d.style.display='none');
+  document.querySelectorAll('[id^="chev-"]').forEach(c=>c.style.transform='rotate(0deg)');
+  if(!isOpen){
+    el.style.display='block';
+    chev.style.transform='rotate(180deg)';
+  }
 }
-function toggleDark(){
-  isDark=!isDark;
-  document.body.classList.toggle('light',!isDark);
-  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
-}
-init();
+
+
+
+document.addEventListener('DOMContentLoaded',init);
 </script>
 </body>
 </html>
