@@ -891,12 +891,12 @@
                     <div style="font-size:14px;font-weight:600;margin-bottom:3px;">Science</div>
                     <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">Biology, chemistry, physics</div>
                 </button>
-                <button class="subject-btn" onclick="goToSubject('art')">
-                    <div style="width:42px;height:42px;border-radius:12px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
-                        <i class="fas fa-palette" style="color:#f472b6;font-size:17px;"></i>
+                <button class="subject-btn" id="fourthSubjectBtn" onclick="goToFourthSubject()">
+                    <div style="width:42px;height:42px;border-radius:12px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;" id="fourthSubjectIcon">
+                        <i class="fas fa-palette" style="color:#f472b6;font-size:17px;" id="fourthSubjectIconEl"></i>
                     </div>
-                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">Art & PE</div>
-                    <div style="font-size:11.5px;color:rgba(255,255,255,0.38);">Creative arts, music, PE</div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;" id="fourthSubjectTitle">Art & PE</div>
+                    <div style="font-size:11.5px;color:rgba(255,255,255,0.38);" id="fourthSubjectDesc">Creative arts, music, PE</div>
                 </button>
             </div>
             <button onclick="closeSubjectModal()" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.075);background:rgba(255,255,255,0.035);color:rgba(255,255,255,0.4);cursor:pointer;font-size:13px;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.075)'" onmouseout="this.style.background='rgba(255,255,255,0.035)'">
@@ -975,6 +975,12 @@
         function openSubjectModal(p) {
             currentProgram = p;
             document.getElementById('modalTitle').textContent = labels[p] || 'Choose a Subject';
+            const isGED = p === 'ages-15-16';
+            document.getElementById('fourthSubjectTitle').textContent = isGED ? 'Social Studies' : 'Art & PE';
+            document.getElementById('fourthSubjectDesc').textContent = isGED ? 'History, civics, geography' : 'Creative arts, music, PE';
+            document.getElementById('fourthSubjectIconEl').className = isGED ? 'fas fa-globe' : 'fas fa-palette';
+            document.getElementById('fourthSubjectIconEl').style.color = isGED ? '#facc15' : '#f472b6';
+            document.getElementById('fourthSubjectIcon').style.background = isGED ? 'rgba(234,179,8,0.14)' : 'rgba(236,72,153,0.14)';
             document.getElementById('subjectModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -988,6 +994,11 @@
         }
         function goToSubject(subject) {
             if (!currentProgram) return;
+            window.location.href = currentProgram + '-' + subject + '.html';
+        }
+        function goToFourthSubject() {
+            if (!currentProgram) return;
+            const subject = currentProgram === 'ages-15-16' ? 'social-studies' : 'art';
             window.location.href = currentProgram + '-' + subject + '.html';
         }
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSubjectModal(); });
