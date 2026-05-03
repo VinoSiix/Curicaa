@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Algebra I — Grade 9 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#3b82f6;--a2:#06b6d4;--al:#93c5fd;--ct:white;--ct2:rgba(255,255,255,0.85);--ct3:rgba(255,255,255,0.7);--ct4:rgba(255,255,255,0.6);--ct5:rgba(255,255,255,0.48);--ct6:rgba(255,255,255,0.45);--ct7:rgba(255,255,255,0.4);--ct8:rgba(255,255,255,0.3);--ct9:rgba(255,255,255,0.28);--ct10:rgba(255,255,255,0.15);--cs1:rgba(255,255,255,0.03);--cs2:rgba(255,255,255,0.025);--cs3:rgba(255,255,255,0.04);--cs4:rgba(255,255,255,0.08);--br1:rgba(255,255,255,0.07);--br2:rgba(255,255,255,0.09);}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(59,130,246,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{max-height:0;overflow:hidden;background:rgba(255,255,255,0.025);border-top:1px solid transparent;padding:0 16px;transform-origin:top;transform:translateY(-6px);opacity:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),padding 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s ease,transform 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease;}
+.week-detail.open{max-height:800px;padding:14px 16px;border-top-color:rgba(255,255,255,0.07);transform:translateY(0);opacity:1;}
+.week-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--br2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all 0.2s;font-size:10px;color:transparent;}
+.week-check:hover{border-color:var(--a1);background:rgba(59,130,246,0.1);}
+.week-check.done{border-color:var(--a1);background:linear-gradient(135deg,var(--a1),var(--a2));color:white;}
+.week-row.completed .week-title-text{text-decoration:line-through;opacity:0.55;}
+.progress-bar-wrap{height:4px;border-radius:4px;background:var(--cs4);margin-top:10px;overflow:hidden;}
+.progress-bar-fill{height:100%;border-radius:4px;background:linear-gradient(135deg,var(--a1),var(--a2));transition:width 0.4s ease;}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.month-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+@media(max-width:768px){
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+  .month-grid{grid-template-columns:1fr;}
+  .header-inner{flex-wrap:wrap;gap:10px;}
+  h2.page-title{font-size:1.8rem;}
+  main{padding:32px 16px;}
+  #monthContent{padding:20px 16px !important;}
+}
+@media(max-width:480px){
+  .skills-grid{grid-template-columns:1fr;}
+  h2.page-title{font-size:1.5rem;}
+  header{padding:10px 16px;}
+  .header-inner{gap:8px;}
+  .subject-badge{display:none;}
+}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:white;">High School</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Age 14</div>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-superscript" style="margin-right:5px;"></i>Mathematics</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Age 14</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grade 9 · Age 14</p>
+    <h2 class="page-title">Algebra I</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Mastering linear equations, functions, systems, polynomials, and quadratic foundations through structured problem-solving and real-world applications.</p>
+  </section>
+
+  <!-- Core Skills -->
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-chart-line" style="color:#60a5fa;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Linear Equations</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Equations, inequalities, graphing</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(6,182,212,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-wave-square" style="color:#22d3ee;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Functions</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Domain, range, relations</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(99,102,241,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-project-diagram" style="color:#a5b4fc;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Systems of Equations</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Substitution, elimination</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-superscript" style="color:#c084fc;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Polynomials & Quadratics</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Factoring, quadratic intro</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Monthly Themes -->
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Math Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grade 9 Mathematics · Age 14</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{icon:'fa-calculator',focus:'Foundations of Algebra',skills:['Variables & expressions','Order of operations','Real number properties','Evaluating expressions'],weeks:[
+  {title:'Variables and Expressions',objective:'Understand what a variable is and translate between words and algebraic expressions.',warmup:'Write a number sentence for: "three more than twice a number." Discuss what the "number" could be.',mainActivity:'Introduce variables as placeholders for unknown values. Start with concrete examples: "If I have n apples and buy 3 more, I have n + 3." Have the student translate 10 word phrases into algebraic expressions using a chart. Practice with a partner (parent) quizzing each other.',game:'Expression Bingo — create bingo cards with algebraic expressions, call out word phrases. First to match 5 in a row wins.',homeConnection:'Look at a recipe and replace one ingredient quantity with a variable. Write the new recipe as an expression.',assessment:'Student can correctly translate "five less than twice a number" into 2n - 5 (not 5 - 2n).',differentiation:'Easier: Use only single-operation expressions like "a number plus 3." Harder: Include multi-variable expressions like "the sum of two numbers multiplied by a third."'},
+  {title:'Order of Operations (PEMDAS)',objective:'Evaluate numerical and algebraic expressions using the correct order of operations.',warmup:'Solve: 3 + 4 × 2. Compare answers (11 vs 14). Discuss why there must be an agreed-upon order.',mainActivity:'Teach PEMDAS step-by-step with color-coded examples. Use parentheses, exponents, multiplication/division (left to right), addition/subtraction (left to right). Work through 8 problems together, increasing in complexity. Emphasize that multiplication and division are equals — go left to right.',game:'Order of Operations Relay — write a complex expression on paper. Student solves one step, passes it back, parent checks and student continues. Race against a timer.',homeConnection:'Calculate the total cost of a shopping trip using order of operations: (3 items at $4 each) + tax - coupon.',assessment:'Student correctly evaluates 8 + 6 ÷ 2 × 3 - 1 and can explain each step.',differentiation:'Easier: Problems with only 2-3 operations. Harder: Problems with nested parentheses and exponents like 2(3 + 4²) - 5.'},
+  {title:'Properties of Real Numbers',objective:'Identify and apply the commutative, associative, distributive, identity, and inverse properties.',warmup:'Show that 3 + 5 = 5 + 3. Ask: "Does this work for subtraction too?" (No!) Why not?',mainActivity:'Create a properties reference chart with name, algebraic form, and numerical example for each property. Focus especially on the distributive property: a(b + c) = ab + ac. Practice expanding expressions like 3(x + 4) and factoring back: 6x + 12 = 6(x + 2).',game:'Property Sort — write 15 equations on index cards. Student sorts them into piles by which property they demonstrate.',homeConnection:'Use the distributive property to calculate a 15% tip mentally: 0.15(20 + 3) = 3 + 0.45 = $3.45.',assessment:'Student can identify which property is shown in 7 + (3 + 2) = (7 + 3) + 2 (associative) and expand 5(2x - 3).',differentiation:'Easier: Focus on commutative and associative only. Harder: Prove why the properties don\'t work for subtraction/division using counterexamples.'},
+  {title:'Simplifying & Evaluating Expressions',objective:'Combine like terms and evaluate algebraic expressions for given values of variables.',warmup:'Sort a pile of household items by category (spoons, forks, knives). Connect to sorting terms by variable.',mainActivity:'Teach "like terms" — same variable raised to the same power. Practice combining: 3x + 5x = 8x, but 3x + 5x² cannot combine. Then evaluate expressions by substituting values: find 2x + 3 when x = 4. Use Desmos to verify answers.',game:'Like Terms Card Game — deal cards with terms (3x, 5y, -2x, 7y). Player collects matching like terms. Most matches wins.',homeConnection:'Calculate the cost of a phone plan: $30 base + $5 per gigabyte used. Evaluate for 2GB, 5GB, 10GB.',assessment:'Student can simplify 4x + 3y - 2x + 7y + 1 and evaluate 2a² - 3a + 5 when a = 3.',differentiation:'Easier: Only combine terms with the same variable (no exponents). Harder: Include distributive property first: 2(3x + 1) + 4x, then combine.'}
+],project:'Create an "Algebra Dictionary" poster defining key terms (variable, coefficient, constant, term, expression, equation) with examples and illustrations.',materials:['Index cards','Colored markers','Poster board','Calculator','Desmos (free online)']},
+'October':{icon:'fa-equals',focus:'Linear Equations & Inequalities',skills:['One-step equations','Multi-step equations','Inequalities','Compound inequalities'],weeks:[
+  {title:'Solving One-Step Equations',objective:'Solve equations using addition, subtraction, multiplication, and division properties of equality.',warmup:'Balance scale analogy: if both sides weigh the same and you add 3 to one side, what must you do to keep balance?',mainActivity:'Use the "undo" principle — whatever operation is being done to the variable, do the inverse to both sides. Start with x + 5 = 12 (subtract 5). Then 3x = 18 (divide by 3). Work through 10 problems, mixing all four operations. Check solutions by substituting back.',game:'Equation War — each player draws a card with an equation, solves it. Higher solution wins the round.',homeConnection:'Real-world equation: "I have $25 and need $47 for a game. How much more do I need?" → 25 + x = 47.',assessment:'Student solves x/4 = 9 and verifies: 36/4 = 9 ✓',differentiation:'Easier: Only addition and subtraction equations. Harder: Include fractions like x/3 = 7 and negative coefficients.'},
+  {title:'Two-Step Equations',objective:'Solve equations that require exactly two inverse operations to isolate the variable.',warmup:'Review one-step quickly, then present: 2x + 3 = 11. "This needs TWO moves."',mainActivity:'Teach the two-step process: first undo addition/subtraction, then undo multiplication/division. Use the analogy of "peeling layers" — undo what happened last first. For 2x + 3 = 11: subtract 3 → 2x = 8 → divide by 2 → x = 4. Practice with 12 problems.',game:'Two-Step Race — set a timer. Student solves 5 two-step equations correctly as fast as possible. Track personal best.',homeConnection:'Calculate a real situation: "A taxi charges $3 base fare plus $2 per mile. If the total was $13, how many miles was the ride?"',assessment:'Student solves 3x - 7 = 14 and checks the answer.',differentiation:'Easier: Only positive coefficients and constants. Harder: Include equations where the variable appears on the right side like 9 = 4x - 3.'},
+  {title:'Multi-Step Equations',objective:'Solve equations requiring distributive property, combining like terms, and variables on both sides.',warmup:'Write 2(x + 3) + x = 15 on paper. Ask: "How many steps might this need?"',mainActivity:'Teach the full solution process: 1) Distribute if needed, 2) Combine like terms on each side, 3) Move all variables to one side, 4) Move constants to the other, 5) Divide. Work through 3(x + 2) - x = 14 step-by-step. Then introduce variables on both sides: 5x - 3 = 2x + 9.',game:'Equation Escape Room — solve 4 increasingly difficult multi-step equations to "unlock" a prize. Each correct answer gives a digit to a combination lock.',homeConnection:'Compare two phone plans: Plan A costs $20 + $2/GB, Plan B costs $30 + $1/GB. Set them equal to find the break-even point.',assessment:'Student solves 4(x - 2) + 3 = 2x + 9 independently and verifies.',differentiation:'Easier: Only distribute and combine, no variables on both sides. Harder: Include fractions and equations with no solution or infinite solutions.'},
+  {title:'Inequalities & Compound Inequalities',objective:'Solve and graph one-variable inequalities, including compound inequalities with "and" / "or".',warmup:'Number line warmup: "What numbers are greater than 3? Less than or equal to -2?"',mainActivity:'Show that solving inequalities is the same as equations EXCEPT: flip the sign when multiplying/dividing by a negative. Practice graphing solutions on number lines. Then introduce compound inequalities: -3 < x ≤ 5 (AND) and x < -2 OR x > 3. Graph each type differently.',game:'Inequality Number Line Toss — parent calls out an inequality, student draws the solution on a mini whiteboard. First correct wins a point. Best of 10.',homeConnection:'Speed limits: "The speed limit is 65 mph. Write this as an inequality: s ≤ 65." Discuss why going under is legal but over is not.',assessment:'Student solves -2x + 5 > 13, graphs the solution, and explains why the inequality sign flipped.',differentiation:'Easier: Only one-step inequalities with positive coefficients. Harder: Compound inequalities like solving 2 < 3x - 4 ≤ 14.'}
+],project:'Design a "Math in the Real World" poster showing 5 real-world scenarios modeled by equations or inequalities (phone plans, budgeting, temperature, etc.) with their solutions.',materials:['Mini whiteboard or paper','Number line printouts','Index cards','Combination lock (optional)','Colored pencils']},
+'November':{icon:'fa-wave-square',focus:'Introduction to Functions',skills:['Relations','Domain & range','Function notation','Evaluating functions'],weeks:[
+  {title:'Relations and Mapping',objective:'Understand a relation as a set of input-output pairs and represent it using tables, mapping diagrams, and ordered pairs.',warmup:'Give the student a vending machine analogy: press A1 → get chips. Each button maps to a snack. That\'s a relation.',mainActivity:'Define relation as any set of ordered pairs (x, y). Show representations: tables, mapping diagrams, sets of ordered pairs, and coordinate graphs. Practice converting between all four representations. Introduce the concept of domain (all inputs/x-values) and range (all outputs/y-values).',game:'Relation Match — give 5 relations in different representations. Student matches the table to its graph, mapping diagram, and ordered pairs.',homeConnection:'Map family members to their birthdays — each person (input) has a birthday (output). Is this a relation? Yes!',assessment:'Student can take a set of ordered pairs {(1,3), (2,5), (3,7), (4,9)} and state the domain {1,2,3,4} and range {3,5,7,9}.',differentiation:'Easier: Use only 3-4 ordered pairs with small positive numbers. Harder: Introduce relations with negative numbers and decimals.'},
+  {title:'What Makes a Function?',objective:'Determine whether a relation is a function using the vertical line test and input analysis.',warmup:'Return to the vending machine: "What if pressing A1 sometimes gives chips AND sometimes gives candy? Is that useful?" No — that\'s NOT a function.',mainActivity:'A function has exactly ONE output for each input. Show examples and non-examples. Teach the vertical line test for graphs. Practice identifying functions from tables, graphs, mapping diagrams, and sets of ordered pairs. For each, ask: "Does any input repeat with different outputs?" If yes → not a function.',game:'Function or Not? — flash 15 relations (mix of tables, graphs, diagrams). Student holds up "F" or "N" card. Track accuracy.',homeConnection:'Is "student → locker number" a function? Yes (each student has one locker). Is "locker number → student" also a function? Discuss.',assessment:'Student correctly identifies that {(1,2), (1,3), (2,4)} is NOT a function but {(1,2), (2,3), (3,4)} IS.',differentiation:'Easier: Only use tables and mapping diagrams. Harder: Use graphs requiring the vertical line test, including curved graphs.'},
+  {title:'Function Notation f(x)',objective:'Use and interpret function notation f(x) to evaluate functions for specific inputs.',warmup:'Replace y with f(x) on a simple equation: y = 2x + 1 becomes f(x) = 2x + 1. "f(x) is just a fancy name for y."',mainActivity:'Teach that f(x) means "function f evaluated at x." Practice: if f(x) = 3x - 2, find f(4) = 3(4) - 2 = 10. Work through multiple examples with different functions. Show that f(x) values can be organized in a table and graphed. Introduce reading f(0) as "the y-value when x is 0."',game:'Function Machine — parent acts as the machine. Student inputs a number, parent applies a hidden rule (like ×2 + 1) and gives output. Student must figure out f(x).',homeConnection:'A taxi function: f(m) = 3 + 2m, where m is miles. Calculate f(5), f(10), f(20). How much does each additional mile cost?',assessment:'Student evaluates f(x) = x² - 3x + 2 for f(0), f(1), f(-2), and f(3) correctly.',differentiation:'Easier: Only linear functions like f(x) = 2x + 1. Harder: Piecewise functions like f(x) = 2x if x ≥ 0, -x if x < 0.'},
+  {title:'Analyzing Function Graphs',objective:'Interpret key features of function graphs including intercepts, increasing/decreasing behavior, and domain/range.',warmup:'Sketch a quick "story graph": draw a graph of distance from home over the course of a day without numbers — just the shape.',mainActivity:'Given several function graphs, identify: x-intercepts (where y = 0), y-intercepts (where x = 0), where the function is increasing (going up) vs decreasing (going down), and the domain and range from the graph. Use interval notation for domain/range. Practice with 6 different graphs.',game:'Graph Story Match — give 4 story scenarios and 4 graphs. Student matches each story to its correct graph (e.g., "water level in a bathtub while filling, bathing, and draining").',homeConnection:'Look at a weather temperature graph for the day. Identify when temperature was highest, lowest, rising, falling.',assessment:'Student can look at a graph and state: x-intercepts, y-intercept, intervals of increase/decrease, domain, and range.',differentiation:'Easier: Only linear function graphs. Harder: Include quadratic and absolute value graphs, and ask about maximum/minimum values.'}
+],project:'Create a "Function Journal" with 5 real-world functions (cost, distance, temperature, etc.), each expressed in function notation with a table, graph, and analysis of domain/range.',materials:['Graph paper','Colored pencils','Ruler','Desmos (free online graphing)','Index cards']},
+'December':{icon:'fa-chart-line',focus:'Graphing Linear Functions',skills:['Slope','Intercepts','Slope-intercept form','Parallel & perpendicular lines'],weeks:[
+  {title:'Understanding Slope',objective:'Calculate slope as rise over run and interpret it as a rate of change in real-world contexts.',warmup:'Look at two staircases (pictures): one steep, one gradual. Which is harder to climb? "Slope measures steepness."',mainActivity:'Define slope m = rise/run = (y₂ - y₁)/(x₂ - x₁). Calculate slope from two points, from a graph, and from a table. Classify slopes: positive (uphill), negative (downhill), zero (flat), undefined (vertical). Practice with 8 problems mixing all methods.',game:'Slope Scavenger Hunt — find and measure the slope of 5 real things: staircase, ramp, roof pitch, driveway, hill. Calculate rise/run for each.',homeConnection:'The slope of a road is called its "grade." A 5% grade means rise/run = 0.05. Look up the grade of a nearby hill.',assessment:'Student finds the slope between (-2, 3) and (4, -1), and classifies it as negative.',differentiation:'Easier: Only positive slopes from graphs. Harder: Find the slope from equations in standard form Ax + By = C.'},
+  {title:'Slope-Intercept Form y = mx + b',objective:'Write and graph linear equations in slope-intercept form, identifying slope and y-intercept.',warmup:'Graph y = 2x + 1 by making a table of values. Notice the pattern: start at 1, go up 2, right 1.',mainActivity:'Introduce y = mx + b where m = slope and b = y-intercept. Practice: given an equation, identify m and b, then graph by plotting the y-intercept and using slope to find more points. Reverse: given a graph, write the equation. Given two points, find the equation.',game:'Equation-Graph Match — create 10 cards with equations and 10 with graphs. Match each equation to its graph.',homeConnection:'A streaming service costs $10/month plus $2 per movie rental: y = 2x + 10. Graph for 0-10 rentals.',assessment:'Given the line passing through (0, 4) with slope -2/3, student writes y = -2/3x + 4 and graphs it.',differentiation:'Easier: Only graph from equations with integer slopes. Harder: Write equations from two points using point-slope form first.'},
+  {title:'Standard Form & Intercepts',objective:'Convert between slope-intercept and standard form, and graph using x- and y-intercepts.',warmup:'Rewrite y = 2x + 6 in standard form: -2x + y = 6, or 2x - y = -6. "Standard form is Ax + By = C."',mainActivity:'Teach standard form Ax + By = C where A, B, C are integers and A ≥ 0. To graph using intercepts: set y = 0 to find x-intercept, set x = 0 to find y-intercept. Connect the two points. Practice converting between forms and graphing both ways.',game:'Intercept Race — each player gets 3 equations in standard form. First to correctly find both intercepts and graph all three wins.',homeConnection:'A budget constraint: you have $60 to spend on books ($10 each) and movies ($5 each). 10b + 5m = 60. Find the intercepts — what do they mean?',assessment:'Student converts 3x - 2y = 12 to slope-intercept form, finds both intercepts, and graphs the line.',differentiation:'Easier: Only convert from standard to slope-intercept, don\'t graph. Harder: Convert from point-slope form and graph.'},
+  {title:'Parallel & Perpendicular Lines',objective:'Identify and write equations for lines that are parallel (same slope) or perpendicular (negative reciprocal slopes).',warmup:'Draw two parallel lines and two perpendicular lines. What do you notice about their angles? Their slopes?',mainActivity:'Rule: parallel lines have equal slopes (m₁ = m₂). Perpendicular lines have negative reciprocal slopes (m₁ × m₂ = -1). Given y = 3x - 2, write a parallel line through (1, 4): y = 3x + 1. Write a perpendicular line: slope = -1/3, through same point → y = -1/3x + 13/3.',game:'Slope Check — give 10 pairs of slopes. Student races to identify each as parallel, perpendicular, or neither.',homeConnection:'City grid: streets running east-west are "parallel." Streets that cross at right angles are "perpendicular." Identify examples near your home.',assessment:'Given y = 2/3x - 5, student writes a parallel line through (3, 1) and a perpendicular line through the same point.',differentiation:'Easier: Only determine if two given lines are parallel or perpendicular. Harder: Write equations from scratch with fractional slopes.'}
+],project:'Design a "Linear Landscape" — draw a coordinate plane scene (city skyline, mountains) using at least 8 labeled linear equations in slope-intercept form, including 2 parallel and 2 perpendicular pairs.',materials:['Graph paper','Ruler','Colored pencils','Desmos','Protractor (optional)']},
+'January':{icon:'fa-project-diagram',focus:'Systems of Equations',skills:['Graphing method','Substitution method','Elimination method','Real-world systems'],weeks:[
+  {title:'Solving Systems by Graphing',objective:'Solve a system of two linear equations by graphing both lines and finding their intersection point.',warmup:'Graph y = x + 2 and y = -x + 6 on the same axes. Where do they meet? That point (2, 4) solves BOTH equations.',mainActivity:'Define a system of equations. Explain that the solution is the (x, y) point where both lines intersect. Graph 4 systems on graph paper, finding the intersection point. Verify by substituting back into both original equations. Discuss what parallel lines mean (no solution) and identical lines mean (infinite solutions).',game:'Intersection Hunt — graph 5 systems on Desmos. Student finds intersection points and writes them as ordered pairs. Race against time.',homeConnection:'Two savings plans: Plan A starts at $50, adds $10/week. Plan B starts at $20, adds $15/week. When do they have the same amount?',assessment:'Student solves y = 2x + 1 and y = -x + 7 by graphing, finds (2, 5), and verifies in both equations.',differentiation:'Easier: Systems where the intersection is at integer coordinates. Harder: Systems with fractional slopes requiring careful graphing.'},
+  {title:'Solving Systems by Substitution',objective:'Solve systems algebraically using the substitution method when one variable is isolated.',warmup:'If y = 3x and 2x + y = 15, substitute: 2x + 3x = 15 → 5x = 15 → x = 3. Then y = 9.',mainActivity:'Step-by-step substitution: 1) Isolate one variable in one equation, 2) Substitute that expression into the other equation, 3) Solve for the remaining variable, 4) Back-substitute to find the other value. Start with y = 2x + 1 and 3x + y = 11. Practice 6 problems increasing in difficulty.',game:'Substitution Speed Round — solve 4 systems by substitution. Time yourself. Goal: under 2 minutes per problem with correct answers.',homeConnection:'Movie tickets: adult tickets cost $12, child tickets cost $8. You bought 5 tickets for $48. How many of each? System: a + c = 5, 12a + 8c = 48.',assessment:'Student solves y = x - 2 and 2x + 3y = 16 by substitution, getting (4.4, 2.4) or an equivalent fraction solution.',differentiation:'Easier: Systems where one equation already has y = ... or x = ... Harder: Systems requiring rearrangement before substituting.'},
+  {title:'Solving Systems by Elimination',objective:'Solve systems by adding or subtracting equations to eliminate one variable.',warmup:'Add these equations: x + y = 10 and x - y = 4. The y cancels! 2x = 14, x = 7.',mainActivity:'Teach elimination: 1) Line up variables vertically, 2) Multiply one or both equations to create opposite coefficients, 3) Add equations to eliminate a variable, 4) Solve and back-substitute. Start simple (no multiplication needed), then progress to needing multiplication like 3x + 2y = 16, 2x + 3y = 14.',game:'Elimination Strategy Pick — given 5 systems, student decides the fastest method (graphing, substitution, or elimination) and explains why.',homeConnection:'A store sells pens and notebooks. 2 pens + 1 notebook = $7. 1 pen + 2 notebooks = $8. Use elimination to find the price of each.',assessment:'Student solves 4x + 3y = 24 and 5x - 3y = 33 by elimination, getting the correct solution.',differentiation:'Easier: Systems where coefficients already match or are opposites. Harder: Systems requiring multiplying BOTH equations by different numbers.'},
+  {title:'Real-World Systems & Choosing Methods',objective:'Choose the best method to solve real-world system problems and interpret the solution in context.',warmup:'Quick review: which method is fastest for each? (1) y = 3x, x + y = 8 (substitution). (2) 2x + 3y = 12, 2x - 3y = 0 (elimination).',mainActivity:'Solve 4 word problems as systems. For each: 1) Define variables, 2) Write the system, 3) Choose method and solve, 4) Interpret the answer in context. Problems: ticket sales, mixture problems, distance-rate-time, comparing costs. Practice choosing the most efficient method.',game:'System Story Challenge — student writes their own real-world system word problem, then trades with parent to solve. Best problem wins.',homeConnection:'Compare two gym memberships: Gym A = $30 signup + $20/month. Gym B = $0 signup + $25/month. When is Gym A cheaper? When is Gym B cheaper?',assessment:'Student solves a word problem independently: defining variables, setting up the system, solving, and interpreting the result.',differentiation:'Easier: Provide the system equations and have student solve only. Harder: Student creates the system from a complex scenario with 3 constraints.'}
+],project:'Create a "Business Plan" presentation: choose a product to sell, set up a cost equation and revenue equation as a system, find the break-even point, graph both lines, and present findings.',materials:['Graph paper','Calculator','Desmos','Poster board','Colored markers']},
+'February':{icon:'fa-superscript',focus:'Exponents & Scientific Notation',skills:['Exponent rules','Zero & negative exponents','Scientific notation','Operations with scientific notation'],weeks:[
+  {title:'Exponent Rules: Product & Quotient',objective:'Apply the product rule (aᵐ × aⁿ = aᵐ⁺ⁿ) and quotient rule (aᵐ ÷ aⁿ = aᵐ⁻ⁿ) to simplify expressions.',warmup:'What does 2³ mean? (2 × 2 × 2 = 8). What about 2³ × 2⁴? Count the total 2s: 7. So 2³⁺⁴ = 2⁷.',mainActivity:'Teach product rule: keep the base, add exponents. Quotient rule: keep the base, subtract exponents. Work through 10 simplification problems for each rule. Use expanded form to prove why the rules work (write out all factors). Emphasize: bases must be the same to apply rules.',game:'Exponent Dominoes — connect expression tiles to their simplified form. Chain them together correctly to win.',homeConnection:'Computer storage: 1 KB = 2¹⁰ bytes, 1 MB = 2²⁰ bytes. How many bytes in a GB (2³⁰)? Use exponent rules: 2¹⁰ × 2²⁰ = 2³⁰.',assessment:'Student simplifies x⁵ × x³ and y⁷ ÷ y² correctly, explaining which rule was used.',differentiation:'Easier: Only numerical bases like 2³ × 2⁵. Harder: Include multiple variables like (3x²y)(4xy³) = 12x³y⁴.'},
+  {title:'Power Rule & Zero/Negative Exponents',objective:'Apply the power rule (aᵐ)ⁿ = aᵐⁿ and evaluate expressions with zero and negative exponents.',warmup:'What is 5⁰? Use the quotient rule: 5³/5³ = 5⁰ = 1. Any nonzero number to the zero power is 1.',mainActivity:'Power rule: raise a power to another power by multiplying exponents. Zero exponent rule: a⁰ = 1 (for a ≠ 0). Negative exponent rule: a⁻ⁿ = 1/aⁿ. Practice simplifying 12 problems mixing all rules. Show how negative exponents mean "reciprocal," not "negative number."',game:'Exponent True/False — read 10 statements about exponent rules. Student holds up T or F. Examples: "2⁻³ = -8" (F), "x⁰ = 1" (T).',homeConnection:'Small numbers in science: the mass of an electron is about 9.1 × 10⁻³¹ kg. The negative exponent means it\'s VERY small.',assessment:'Student simplifies (3x²)³ and evaluates 2⁻³ and 5⁰ correctly.',differentiation:'Easier: Focus on zero exponent and negative exponents with numerical bases only. Harder: Simplify complex expressions like (2x⁻²y³)⁻³.'},
+  {title:'Scientific Notation',objective:'Convert between standard form and scientific notation, and explain why scientists use it.',warmup:'The distance to the sun is 93,000,000 miles. That\'s a lot of zeros. Scientists write: 9.3 × 10⁷.',mainActivity:'Define scientific notation: a × 10ⁿ where 1 ≤ |a| < 10 and n is an integer. To convert large numbers: move decimal left → positive exponent. Small numbers: move decimal right → negative exponent. Practice 15 conversions in both directions. Use real-world examples from astronomy, biology, chemistry.',game:'Scientific Notation War — each player draws a card with a number in scientific notation, converts to standard, and the larger number wins.',homeConnection:'Look up the national debt, world population, or a DNA length. Write each in scientific notation.',assessment:'Student converts 0.00045 to 4.5 × 10⁻⁴ and 7,200,000 to 7.2 × 10⁶ correctly.',differentiation:'Easier: Only convert large numbers (positive exponents). Harder: Include very small numbers and ordering from least to greatest.'},
+  {title:'Operations with Scientific Notation',objective:'Add, subtract, multiply, and divide numbers in scientific notation.',warmup:'Review: (2 × 10³)(3 × 10⁴) = 6 × 10⁷. Multiply coefficients, add exponents.',mainActivity:'Multiplication/division: use exponent rules directly. Addition/subtraction: must first match exponents by moving the decimal. Practice: (3.2 × 10⁴) + (5.1 × 10³) → (3.2 × 10⁴) + (0.51 × 10⁴) = 3.71 × 10⁴. Use a calculator to verify. Work through 8 multi-step problems.',game:'Calculator Challenge — solve 5 real-world science problems requiring operations in scientific notation. Check with calculator.',homeConnection:'If a red blood cell is 7 × 10⁻⁶ m wide and there are 5 × 10⁹ in your body, how long would they be in a line? Answer: 3.5 × 10⁴ m = 35 km!',assessment:'Student computes (4.5 × 10⁵)(2.0 × 10³) and (6.2 × 10⁷) ÷ (2 × 10³) correctly.',differentiation:'Easier: Only multiply and divide. Harder: Mix all four operations including regrouping the final answer into proper scientific notation.'}
+],project:'Create a "Powers of 10" poster showing 10 real-world measurements (from atomic to astronomical) written in both standard and scientific notation, with illustrations.',materials:['Scientific calculator','Index cards','Poster board','Ruler','Pens']},
+'March':{icon:'fa-shapes',focus:'Polynomials',skills:['Polynomial vocabulary','Addition & subtraction','Multiplication','Special products'],weeks:[
+  {title:'Polynomial Vocabulary & Classification',objective:'Identify and classify polynomials by degree and number of terms (monomial, binomial, trinomial).',warmup:'Sort these by number of words: "Hi" (1), "Good morning" (2), "How are you today" (3). Same idea with polynomial terms.',mainActivity:'Define: term, coefficient, constant, degree of a term, degree of a polynomial. Classify: monomial (1 term), binomial (2), trinomial (3), polynomial (many). Write in standard form (descending order of degree). Practice identifying and classifying 12 polynomials. Use Desmos to graph a few and see what different degrees look like.',game:'Polynomial Sorting — write 15 expressions on cards. Student sorts into monomial, binomial, trinomial piles, then orders by degree.',homeConnection:'A polynomial can model the trajectory of a thrown ball: h = -16t² + 40t + 5. Identify the degree (quadratic), terms, and coefficients.',assessment:'Student classifies 4x³ - 2x + 7 as a cubic trinomial with leading coefficient 4 and constant 7.',differentiation:'Easier: Only classify by number of terms. Harder: Also arrange in standard form and identify end behavior.'},
+  {title:'Adding & Subtracting Polynomials',objective:'Add and subtract polynomials by combining like terms, including using horizontal and vertical formats.',warmup:'Combine: 3 apples + 2 apples = 5 apples. Similarly: 3x² + 2x² = 5x². But 3x² + 2x ≠ 5x² — different terms!',mainActivity:'Adding: simply combine like terms (same variable and exponent). (3x² + 2x - 1) + (x² - 5x + 4) = 4x² - 3x + 3. Subtracting: distribute the negative sign first, then combine. (3x² + 2x) - (x² - 5x) = 3x² + 2x - x² + 5x = 2x² + 7x. Practice 10 problems mixing both operations.',game:'Polynomial Battle — each player rolls 2 dice to create terms, builds a polynomial. Add or subtract the two polynomials. First correct answer scores.',homeConnection:'Calculate total monthly expenses: (rent + utilities + food) as one polynomial plus (entertainment + savings + transport) as another. Add them.',assessment:'Student computes (4x³ - 2x + 5) - (x³ + 3x - 7) correctly by distributing the negative.',differentiation:'Easier: Only addition with same-degree polynomials. Harder: Multi-variable polynomials like (3xy + 2x²) + (5xy - x²).'},
+  {title:'Multiplying Polynomials',objective:'Multiply monomials by polynomials and binomials by binomials using the distributive property and FOIL.',warmup:'3(x + 4) = 3x + 12 — this is distributing a monomial. Now what about (x + 2)(x + 3)?',mainActivity:'Step 1: Monomial × polynomial: distribute. 2x(3x² - x + 4) = 6x³ - 2x² + 8x. Step 2: Binomial × binomial using FOIL (First, Outer, Inner, Last). (x + 2)(x + 3) = x² + 3x + 2x + 6 = x² + 5x + 6. Emphasize FOIL is just distributing twice. Practice 10 problems.',game:'FOIL Race — solve 6 binomial multiplication problems. Time yourself. Check with Desmos by graphing the original factors and the product.',homeConnection:'A garden is (x + 3) feet by (x + 5) feet. Area = x² + 8x + 15 square feet. If x = 4, area = 16 + 32 + 15 = 63 sq ft.',assessment:'Student expands (2x - 3)(x + 4) correctly: 2x² + 8x - 3x - 12 = 2x² + 5x - 12.',differentiation:'Easier: Only multiply monomial × binomial. Harder: Multiply a binomial by a trinomial using the box/area method.'},
+  {title:'Special Products & Patterns',objective:'Recognize and apply special product patterns: perfect square trinomials and difference of squares.',warmup:'Quick FOIL: (x + 3)(x + 3) = x² + 6x + 9. Notice: the middle term is 2(3)(x). This always happens!',mainActivity:'Pattern 1 — Perfect square: (a + b)² = a² + 2ab + b². (x + 5)² = x² + 10x + 25. Pattern 2 — Difference of squares: (a + b)(a - b) = a² - b². (x + 4)(x - 4) = x² - 16 (middle cancels!). Practice recognizing and applying both patterns for 10 problems.',game:'Pattern Recognition — flash 12 products. Student races to identify "perfect square," "difference of squares," or "neither" and give the answer.',homeConnection:'Calculate 23² mentally: (20 + 3)² = 400 + 120 + 9 = 529. Calculate 51 × 49: (50 + 1)(50 - 1) = 2500 - 1 = 2499.',assessment:'Student instantly recognizes and computes (x - 7)² = x² - 14x + 49 and (2x + 5)(2x - 5) = 4x² - 25.',differentiation:'Easier: Only recognize the patterns, don\'t compute. Harder: Apply patterns with multiple variables like (3x + 2y)².'}
+],project:'Create a "Polynomial City" poster — design buildings of different heights representing polynomial degrees. Label each building with a polynomial, its classification, and its factored form.',materials:['Graph paper','Colored markers','Index cards','Desmos','Poster board']},
+'April':{icon:'fa-divide',focus:'Factoring & Quadratic Equations',skills:['GCF factoring','Factoring trinomials','Difference of squares','Intro to quadratics'],weeks:[
+  {title:'Greatest Common Factor (GCF) Factoring',objective:'Factor out the greatest common factor from polynomial expressions.',warmup:'What\'s the GCF of 12 and 18? (6). Now what\'s the GCF of 12x² and 18x? (6x).',mainActivity:'Step 1: Find the GCF of all coefficients. Step 2: Find the GCF of all variable parts (lowest exponent). Step 3: Factor it out: 12x² + 18x = 6x(2x + 3). Check by distributing back. Practice with 10 problems, starting simple and increasing to include negative signs and 3+ terms.',game:'Factor Race — solve 8 GCF factoring problems. For each, verify by distributing back. Perfect score wins.',homeConnection:'A rectangle has area 6x² + 12x. Factor: 6x(x + 2). The dimensions are 6x and (x + 2). If x = 3, dimensions are 18 and 5, area = 90.',assessment:'Student factors 15x³ - 10x² + 25x correctly as 5x(3x² - 2x + 5).',differentiation:'Easier: Only numerical GCF, no variables. Harder: Factor by grouping: x³ + 2x² + 3x + 6 = x²(x + 2) + 3(x + 2) = (x² + 3)(x + 2).'},
+  {title:'Factoring Trinomials (a = 1)',objective:'Factor trinomials of the form x² + bx + c into two binomials (x + m)(x + n) where m + n = b and mn = c.',warmup:'Find two numbers that multiply to 12 and add to 7. (3 and 4). So x² + 7x + 12 = (x + 3)(x + 4).',mainActivity:'The "find two numbers" method: for x² + bx + c, find two numbers that multiply to c and add to b. Practice with positive c, then negative c, then negative b. Work 12 problems. Always verify by FOILing back. Connect to the area model: draw a rectangle, fill in the grid.',game:'Number Pair Hunt — give the product and sum, student finds the two numbers as fast as possible. 20 rounds, track time.',homeConnection:'A square garden expanded: original side x, new dimensions (x + 3)(x + 5). Expand and factor back.',assessment:'Student factors x² - 5x + 6 as (x - 2)(x - 3) and x² + x - 12 as (x + 4)(x - 3).',differentiation:'Easier: Only positive c and b. Harder: Include leading coefficient > 1 like 2x² + 7x + 3 using the AC method.'},
+  {title:'Difference of Squares & Mixed Factoring',objective:'Factor difference of squares a² - b² = (a + b)(a - b) and determine the correct factoring strategy for any expression.',warmup:'FOIL (x + 5)(x - 5) = x² - 25. The middle term always cancels! This is the difference of squares pattern in reverse.',mainActivity:'Teach: recognize a² - b² form. Factor: x² - 16 = (x + 4)(x - 4), 4x² - 9 = (2x + 3)(2x - 3). Then practice MIXED factoring: look at each expression, decide: (1) GCF first? (2) Trinomial? (3) Difference of squares? Always check for GCF first. 15 mixed problems.',game:'Factor Strategy Sort — give 20 expressions. Student sorts into "GCF," "Trinomial," "Difference of squares," or "Not factorable" piles, then solves 5.',homeConnection:'Calculate 99² - 1² mentally: (99 + 1)(99 - 1) = 100 × 98 = 9800. Factoring shortcuts work for mental math!',assessment:'Student factors 3x² - 27 completely: first GCF 3(x² - 9), then difference of squares 3(x + 3)(x - 3).',differentiation:'Easier: Only pure difference of squares. Harder: Include perfect square trinomials like x² - 6x + 9 = (x - 3)².'},
+  {title:'Introduction to Solving Quadratic Equations',objective:'Solve quadratic equations by factoring using the zero product property.',warmup:'If a × b = 0, what do we know? At least one of them MUST be zero. This is the zero product property.',mainActivity:'Process: 1) Set equation equal to zero, 2) Factor completely, 3) Set each factor equal to zero, 4) Solve each. Example: x² - 5x + 6 = 0 → (x - 2)(x - 3) = 0 → x = 2 or x = 3. Check both solutions. Practice 10 problems. Introduce the concept that quadratics can have 0, 1, or 2 solutions.',game:'Zero Product Race — solve 6 quadratic equations by factoring. First to get all correct (with checks) wins. Use Desmos to verify by graphing.',homeConnection:'A ball\'s height: h = -16t² + 32t. When does it hit the ground (h = 0)? Factor: -16t(t - 2) = 0, so t = 0 or t = 2 seconds.',assessment:'Student solves x² + 2x - 15 = 0 by factoring, getting x = 3 and x = -5, and checks both.',differentiation:'Easier: Only equations already factored like (x - 4)(x + 2) = 0. Harder: Equations requiring rearrangement and complete factoring like 2x² = 3x + 5.'}
+],project:'Create a "Factoring Flowchart" poster that guides someone through the factoring decision process: GCF? → Trinomial? → Difference of squares? → Solve. Include examples at each step.',materials:['Index cards','Poster board','Colored markers','Desmos','Calculator']},
+'May':{icon:'fa-chart-bar',focus:'Data Analysis & Statistics',skills:['Measures of center','Scatter plots','Line of best fit','Probability basics'],weeks:[
+  {title:'Measures of Center: Mean, Median, Mode',objective:'Calculate and interpret mean, median, and mode, and determine which measure is most appropriate for a given data set.',warmup:'Five test scores: 85, 90, 92, 88, 200 (typo!). Find the mean. The outlier (200) skews it! Median is better here.',mainActivity:'Define each: mean (average), median (middle value when sorted), mode (most frequent). Calculate all three for 5 data sets. Discuss when each is best: mean for symmetric data, median when outliers exist, mode for categorical data. Introduce range as a simple measure of spread.',game:'Data Set Challenge — create a data set of 7 numbers with mean = 10, median = 8, mode = 6. First correct wins.',homeConnection:'Look at housing prices in your area. Find the mean and median. Which better represents a "typical" home price and why?',assessment:'For the data set {12, 15, 18, 15, 22, 30, 15}, student calculates mean (18.1), median (15), mode (15) and explains why median is most representative.',differentiation:'Easier: Data sets with 5 values, all whole numbers. Harder: Include weighted means and explain effects of outliers mathematically.'},
+  {title:'Scatter Plots & Correlation',objective:'Create scatter plots, identify correlation types (positive, negative, none), and describe the relationship between variables.',warmup:'"Do taller people tend to weigh more?" Plot 8 people\'s heights vs weights. What pattern do you see?',mainActivity:'Create scatter plots from 4 data sets on graph paper. For each, describe the correlation: positive (both increase), negative (one up, one down), or none (no pattern). Introduce the concept of "linearity" vs "non-linear" patterns. Estimate the strength of correlation informally.',game:'Correlation or Causation? — present 10 pairs of variables. Student identifies if there\'s likely a correlation AND whether one causes the other.',homeConnection:'Plot daily temperature vs ice cream sales for a week (use real or estimated data). What correlation do you expect?',assessment:'Given a scatter plot, student correctly describes the correlation as "moderate positive" or "strong negative" and explains in context.',differentiation:'Easier: Only identify positive vs negative. Harder: Calculate the correlation coefficient using a calculator or spreadsheet.'},
+  {title:'Line of Best Fit & Predictions',objective:'Draw a line of best fit on a scatter plot and use it to make predictions (interpolation and extrapolation).',warmup:'Eyeball a line through the middle of a scatter plot. That\'s an informal line of best fit.',mainActivity:'Draw an informal line of best fit through scatter plot data. Pick two points ON the line (not necessarily data points) and calculate the slope. Write the equation in y = mx + b form. Use the equation to predict values: interpolation (within the data range) and extrapolation (beyond). Discuss dangers of extrapolation.',game:'Prediction Challenge — given real data (e.g., Olympic 100m times by year), draw line of best fit and predict the year someone will break a certain time. Compare with actual data.',homeConnection:'Track your screen time vs sleep hours for a week. Create a scatter plot, draw a line of best fit, and predict sleep for 8 hours of screen time.',assessment:'Student draws a line of best fit, writes its equation, and makes a prediction that makes sense in context.',differentiation:'Easier: Use Desmos linear regression to find the exact line. Harder: Calculate residuals and discuss goodness of fit.'},
+  {title:'Basic Probability',objective:'Calculate theoretical and experimental probability for simple events, including compound events.',warmup:'Flip a coin 20 times. How many heads? Compare to the theoretical probability (0.5). Why might they differ?',mainActivity:'Define: P(event) = favorable outcomes / total outcomes. Calculate probabilities for coins, dice, cards, marbles in a bag. Introduce the complement rule: P(not A) = 1 - P(A). For compound events, distinguish independent (multiply) vs mutually exclusive (add). Practice 12 problems.',game:'Probability Experiment — flip a coin 100 times, record results. Roll a die 60 times. Compare experimental to theoretical probabilities. Discuss the Law of Large Numbers.',homeConnection:'Weather forecast says 30% chance of rain. What does that mean? If there are 100 days with similar conditions, about 30 will have rain.',assessment:'Student calculates the probability of drawing a face card from a standard deck (12/52) and the probability of rolling an even number on a die (3/6 = 1/2).',differentiation:'Easier: Only single events with coins and dice. Harder: Compound events: "probability of flipping heads AND rolling a 6" (1/2 × 1/6 = 1/12).'}
+],project:'Conduct a statistical survey (poll 15+ people on a question), organize data, calculate all measures of center, create a scatter plot if applicable, and present findings in a mini-report with a line of best fit.',materials:['Graph paper','Dice','Coins','Playing cards (one deck)','Calculator or spreadsheet']},
+'June':{icon:'fa-trophy',focus:'Review & Real-World Applications',skills:['Comprehensive review','Test strategies','Real-world projects','Portfolio'],weeks:[
+  {title:'Equations & Inequalities Review',objective:'Review solving all types of equations and inequalities from the year with fluency.',warmup:'Solve a mix of 5 equations on a timer: one-step, two-step, multi-step, and one inequality.',mainActivity:'Create a "problem menu" with 20 problems across 4 difficulty levels. Student works through at least 12, checking answers with a partner. Focus on common mistakes: forgetting to distribute, flipping inequality signs incorrectly, and sign errors. Use a mistake journal to track personal patterns.',game:'Equation Relay — 10 problems, 5 minutes. Each correct answer reveals a letter of a hidden message.',homeConnection:'Create a budget equation for summer: income ≥ expenses. Set up and solve the inequality.',assessment:'Student solves 8 mixed problems with at least 90% accuracy, showing all work.',differentiation:'Easier: Focus on one-step and two-step only. Harder: Include word problems requiring system setup and solving.'},
+  {title:'Functions & Graphing Review',objective:'Review function concepts, slope, and graphing linear equations with all forms.',warmup:'Identify the slope and y-intercept of each: y = 3x - 7, 2x + y = 10, and a graph.',mainActivity:'Create a review grid covering: identifying functions, domain/range, slope calculations, slope-intercept form, standard form, parallel/perpendicular lines. Student completes a practice test of 15 problems. Use Desmos to self-check graphing problems.',game:'Graphing Tournament — 5 rounds. Each round: parent gives an equation, student graphs it. Fastest correct graph wins the round.',homeConnection:'Graph a real scenario: monthly cost of a streaming service with add-ons. Use slope-intercept form.',assessment:'Student can convert between forms, graph accurately, and write equations from graphs, tables, or point-slope information.',differentiation:'Easier: Focus on slope-intercept form only. Harder: Include piecewise functions and absolute value graphs.'},
+  {title:'Polynomials & Factoring Review',objective:'Review all polynomial operations, factoring techniques, and solving quadratics by factoring.',warmup:'Factor these quickly: x² - 9, x² + 7x + 12, 4x² - 4x, x² - 5x + 6.',mainActivity:'Structured review: 1) Classify polynomials, 2) Add/subtract, 3) Multiply (including FOIL), 4) Factor (GCF, trinomials, difference of squares), 5) Solve quadratics by factoring. Complete a 20-question mixed review. Time yourself on each section.',game:'Factoring Speed Round — 15 factoring problems. Set a timer. Track accuracy and speed. Beat your own time.',homeConnection:'A ball is thrown upward: h = -16t² + 48t + 5. Factor to find when it hits the ground. Solve: t = 0 or t = 3.125 seconds.',assessment:'Student completes a mixed review quiz with 15 polynomial/factoring problems at 85%+ accuracy.',differentiation:'Easier: Only GCF and simple trinomial factoring. Harder: Include factor by grouping and a > 1 trinomials.'},
+  {title:'Final Portfolio & Reflection',objective:'Compile a portfolio of the year\'s best work and reflect on mathematical growth.',warmup:'Look back at September\'s work. How much easier does it feel now?',mainActivity:'Compile a portfolio folder with: 5 best assignments, 2 projects, a self-assessment letter describing strengths and growth areas, and a "math autobiography" paragraph. Choose one topic to teach back to the parent (the best test of understanding). Set goals for next year\'s math course.',game:'Math Escape Room — set up 8 puzzle stations around the house, each reviewing a different unit. Solving all puzzles unlocks a celebratory treat.',homeConnection:'Discuss with family: "What did you learn in math this year that you can use in real life?" Present 3 examples.',assessment:'Portfolio is complete with all components. Student can teach one topic clearly and answer questions about it.',differentiation:'Easier: Verbally describe growth instead of writing. Harder: Include a "next year preview" section on Geometry or Algebra II topics.'}
+],project:'Complete the Algebra I Portfolio: organize best work, write a reflection letter, create a "Math in My Life" page showing 5 real algebra applications, and present to family.',materials:['Portfolio folder','All previous projects','Reflective writing supplies','Prize for escape room','Construction paper']}
+};
+
+let currentMonth=localStorage.getItem('math-14-month')||'September';
+let completed=JSON.parse(localStorage.getItem('math-14-done')||'{}');
+function saveProgress(){localStorage.setItem('math-14-month',currentMonth);localStorage.setItem('math-14-done',JSON.stringify(completed));}
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent(currentMonth);
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  saveProgress();
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function toggleWeekDone(e,id){
+  e.stopPropagation();
+  completed[id]=!completed[id];
+  saveProgress();
+  const btn=e.currentTarget;
+  btn.classList.toggle('done',completed[id]);
+  btn.innerHTML=completed[id]?'<i class="fas fa-check"></i>':'';
+  const row=btn.closest('.week-row');
+  row.classList.toggle('completed',completed[id]);
+  updateProgressBar();
+}
+
+function updateProgressBar(){
+  const months=Object.keys(curriculumData);
+  const total=months.reduce((s,m)=>s+curriculumData[m].weeks.length,0);
+  const done=Object.values(completed).filter(Boolean).length;
+  const bar=document.getElementById('progressFill');
+  if(bar)bar.style.width=(done/total*100)+'%';
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const isOpen=d.classList.contains('open');
+  d.classList.toggle('open',!isOpen);
+  c.style.transform=isOpen?'':'rotate(180deg)';
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  const total=months.reduce((s,mo)=>s+curriculumData[mo].weeks.length,0);
+  const doneCount=Object.values(completed).filter(Boolean).length;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--ct9);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--ct8);margin-bottom:6px;">${doneCount} of ${total} weeks completed</div>
+    <div class="progress-bar-wrap" style="margin-bottom:24px;"><div class="progress-bar-fill" id="progressFill" style="width:${doneCount/total*100}%;"></div></div>
+    <div class="month-grid">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>{
+            const wid=m+'-'+i;
+            const isDone=!!completed[wid];
+            return `
+            <div class="week-row${isDone?' completed':''}">
+              <div class="week-header" onclick="toggleWeek('${wid}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;">
+                  <p class="week-title-text" style="font-size:14px;font-weight:700;color:var(--ct);margin-bottom:4px;">${w.title}</p>
+                  <p style="font-size:13px;color:var(--ct3);line-height:1.55;">${w.objective}</p>
+                  <p style="font-size:11px;color:var(--ct8);margin-top:6px;"><i class="fas fa-hand-pointer" style="margin-right:4px;"></i>Tap to view full lesson plan</p>
+                </div>
+                <button class="week-check${isDone?' done':''}" onclick="toggleWeekDone(event,'${wid}')">${isDone?'<i class="fas fa-check"></i>':''}</button>
+                <i class="fas fa-chevron-down" id="chev-${wid}" style="color:var(--ct8);font-size:11px;margin-top:4px;transition:transform 0.25s cubic-bezier(0.4,0,0.2,1);"></i>
+              </div>
+              <div class="week-detail" id="wd-${wid}">
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-bullseye" style="color:var(--al);font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:var(--al);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Objective</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.objective}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(249,115,22,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-fire" style="color:#fb923c;font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:#fb923c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Warm-Up</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.warmup}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-book-open" style="color:var(--al);font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:var(--al);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Main Activity</p>
+                    <p style="font-size:13px;color:var(--ct2);line-height:1.5;">${w.mainActivity}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-gamepad" style="color:#60a5fa;font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Game / Active Play</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.game}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-home" style="color:#34d399;font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Home Connection</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.homeConnection}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(236,72,153,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-check-circle" style="color:#f472b6;font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:#f472b6;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Check for Understanding</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.assessment}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:4px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:var(--cs4);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-layer-group" style="color:var(--ct7);font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:var(--ct7);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Differentiation</p>
+                    <p style="font-size:13px;color:var(--ct4);line-height:1.5;font-style:italic;">${w.differentiation}</p>
+                  </div>
+                </div>
+              </div>
+            </div>`;}).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:var(--cs1);border:1px solid var(--br1);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:var(--ct4);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:var(--ct4);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--br1);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid var(--br2);background:var(--cs3);color:var(--ct4);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid var(--br2);background:var(--cs3);color:var(--ct4);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+init();
+</script>
+</body>
+</html>
