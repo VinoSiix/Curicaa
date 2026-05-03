@@ -626,23 +626,45 @@
                     </div>
                 </div>
 
-                <div class="card card-yellow" onclick="openSubjectModal('ages-15-18')">
+                <div class="card card-yellow" onclick="openSubjectModal('ages-15-16')">
                     <div class="icon-ring" style="background:linear-gradient(135deg,#eab308,#f97316);">
-                        <i class="fas fa-trophy" style="font-size:19px;"></i>
+                        <i class="fas fa-certificate" style="font-size:19px;"></i>
                     </div>
                     <div style="text-align:center;">
-                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fde047;">GED/SAT Prep</h3>
-                        <div class="age-badge" style="color:#fde047;">Ages 15–18</div>
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fde047;">GED</h3>
+                        <div class="age-badge" style="color:#fde047;">Ages 15–16</div>
                         <div class="subject-list">
-                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">Test preparation</p>
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">GED preparation</p>
                             <ul>
-                                <li><span class="dot" style="background:#eab308;"></span>SAT/ACT strategies</li>
                                 <li><span class="dot" style="background:#eab308;"></span>GED preparation</li>
-                                <li><span class="dot" style="background:#eab308;"></span>College readiness</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Core subject review</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Practice exams</li>
                                 <li><span class="dot" style="background:#eab308;"></span>Career planning</li>
                             </ul>
                         </div>
                         <button class="btn-cta" style="background:linear-gradient(135deg,#eab308,#f97316);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-orange" onclick="openSubjectModal('ages-17-18')">
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#f97316,#ef4444);">
+                        <i class="fas fa-trophy" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fb923c;">SAT</h3>
+                        <div class="age-badge" style="color:#fb923c;">Ages 17–18</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.28);margin-bottom:7px;">SAT preparation</p>
+                            <ul>
+                                <li><span class="dot" style="background:#f97316;"></span>SAT/ACT strategies</li>
+                                <li><span class="dot" style="background:#f97316;"></span>College readiness</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Practice exams</li>
+                                <li><span class="dot" style="background:#f97316;"></span>College applications</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#f97316,#ef4444);color:white;">
                             View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
                         </button>
                     </div>
@@ -946,7 +968,8 @@
             'age-10': 'Grade 5 — Age 10',
             'ages-11-12': 'Middle School — Ages 11–12',
             'age-14': 'High School — Age 14',
-            'ages-15-18': 'GED/SAT Prep — Ages 15–18'
+            'ages-15-16': 'GED — Ages 15–16',
+            'ages-17-18': 'SAT — Ages 17–18'
         };
 
         function openSubjectModal(p) {
