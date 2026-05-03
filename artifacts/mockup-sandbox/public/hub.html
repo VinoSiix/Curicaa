@@ -382,6 +382,24 @@
             filter: saturate(1.1) brightness(0.85);
         }
 
+        @keyframes chatSlideUp {
+            from { opacity: 0; transform: translateY(16px) scale(0.96); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: translateY(0); opacity: 0.35; }
+            40%            { transform: translateY(-5px); opacity: 1; }
+        }
+        .typing-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(129,140,248,0.7);
+            display: inline-block;
+            animation: typingBounce 1.2s ease-in-out infinite;
+        }
+        #chat-messages::-webkit-scrollbar { width: 4px; }
+        #chat-messages::-webkit-scrollbar-track { background: transparent; }
+        #chat-messages::-webkit-scrollbar-thumb { background: rgba(129,140,248,0.25); border-radius: 4px; }
+
         /* Theme toggle button */
         body.light header button {
             border-color: rgba(0,0,0,0.12) !important;
@@ -909,6 +927,48 @@
         </div>
     </footer>
 
+    <!-- Chat Widget -->
+    <div id="chat-widget" style="position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:12px;">
+
+        <!-- Chat Panel -->
+        <div id="chat-panel" style="display:none;width:340px;background:#0d0d22;border:1px solid rgba(129,140,248,0.28);border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(129,140,248,0.1);overflow:hidden;animation:chatSlideUp 0.28s cubic-bezier(.22,.68,0,1.2);">
+            <!-- Header -->
+            <div style="padding:16px 18px;background:linear-gradient(135deg,rgba(99,102,241,0.18),rgba(168,85,247,0.18));border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <div style="width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="fas fa-robot" style="font-size:14px;color:white;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:700;line-height:1.2;">Level Finder</div>
+                        <div style="font-size:10.5px;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:#4ade80;display:inline-block;"></span>Ready to help</div>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" style="width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.45);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.18s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Messages -->
+            <div id="chat-messages" style="height:320px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth;">
+            </div>
+
+            <!-- Reply buttons area -->
+            <div id="chat-replies" style="padding:12px 16px;border-top:1px solid rgba(255,255,255,0.06);display:flex;gap:8px;flex-wrap:wrap;">
+            </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <button id="chat-toggle-btn" onclick="toggleChat()" style="width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,#818cf8,#c084fc);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(129,140,248,0.45);transition:transform 0.22s cubic-bezier(.22,.68,0,1.2),box-shadow 0.22s ease;" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 12px 36px rgba(129,140,248,0.6)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 28px rgba(129,140,248,0.45)'">
+            <i class="fas fa-comments" id="chat-toggle-icon" style="font-size:20px;color:white;transition:opacity 0.15s;"></i>
+        </button>
+
+        <!-- Tooltip bubble -->
+        <div id="chat-tooltip" style="position:absolute;bottom:68px;right:0;background:rgba(13,13,34,0.95);border:1px solid rgba(129,140,248,0.25);border-radius:14px;padding:10px 14px;white-space:nowrap;font-size:12.5px;font-weight:500;color:rgba(255,255,255,0.7);pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);">
+            Not sure what level you're at? 💬
+            <div style="position:absolute;bottom:-6px;right:18px;width:10px;height:10px;background:rgba(13,13,34,0.95);border-right:1px solid rgba(129,140,248,0.25);border-bottom:1px solid rgba(129,140,248,0.25);transform:rotate(45deg);"></div>
+        </div>
+    </div>
+
     <!-- Modal -->
     <div id="subjectModal" class="modal-overlay" onclick="handleOverlayClick(event)">
         <div class="modal-box">
@@ -1054,6 +1114,226 @@
             window.location.href = currentProgram + '-' + subject + '.html';
         }
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSubjectModal(); });
+
+        // ===== CHAT LEVEL FINDER =====
+        const chatFlow = [
+            {
+                id: 0,
+                msg: "Hi! 👋 I'm here to help figure out your math level. Just answer a few quick questions — no stress!\n\nLet's start easy: do you feel comfortable with basic addition and subtraction? (like 9 + 7 or 15 − 6)",
+                yes: 1,
+                no: 'result-ages-5-7'
+            },
+            {
+                id: 1,
+                msg: "Nice! Do you know your multiplication tables — like 7 × 8 = 56 or 9 × 6 = 54?",
+                yes: 2,
+                no: 'result-age-8'
+            },
+            {
+                id: 2,
+                msg: "Great! Can you work with fractions and decimals — like adding ½ + ¼, or multiplying 0.5 × 4?",
+                yes: 3,
+                no: 'result-age-9'
+            },
+            {
+                id: 3,
+                msg: "Good one! Can you solve for a missing number, like:  2x + 5 = 13 — what's x?",
+                yes: 4,
+                no: 'result-age-10'
+            },
+            {
+                id: 4,
+                msg: "Solid! Do you understand things like order of operations, ratios, percentages, and negative numbers?",
+                yes: 5,
+                no: 'result-ages-11-12'
+            },
+            {
+                id: 5,
+                msg: "Impressive! Are you comfortable with algebra — things like graphing lines, slope, and systems of equations?",
+                yes: 6,
+                no: 'result-age-14'
+            },
+            {
+                id: 6,
+                msg: "Wow, you're getting up there! Do you understand topics like trigonometry, logarithms, or statistics?",
+                yes: 7,
+                no: 'result-ages-15-16'
+            },
+            {
+                id: 7,
+                msg: "Almost done! Are you working toward SAT-level math — things like quadratic functions, data analysis, and advanced algebra?",
+                yes: 'result-ages-17-18',
+                no: 'result-ages-15-16'
+            }
+        ];
+
+        const chatResults = {
+            'result-ages-5-7':   { label: 'Early Elementary', age: 'Ages 5–7',  program: 'ages-5-7',   grad: 'linear-gradient(135deg,#a855f7,#ec4899)', color: '#d8b4fe', icon: 'fa-child',         msg: "No worries at all — that's exactly what the Early Elementary level is for! It covers all the building blocks." },
+            'result-age-8':      { label: 'Grade 3',          age: 'Age 8',     program: 'age-8',      grad: 'linear-gradient(135deg,#3b82f6,#06b6d4)', color: '#93c5fd', icon: 'fa-star',         msg: "The Grade 3 curriculum will get your multiplication rock solid and build from there!" },
+            'result-age-9':      { label: 'Grade 4',          age: 'Age 9',     program: 'age-9',      grad: 'linear-gradient(135deg,#10b981,#34d399)', color: '#6ee7b7', icon: 'fa-book',         msg: "Grade 4 is a great fit — you'll dive into fractions, decimals, and more." },
+            'result-age-10':     { label: 'Grade 5',          age: 'Age 10',    program: 'age-10',     grad: 'linear-gradient(135deg,#f97316,#ef4444)', color: '#fdba74', icon: 'fa-rocket',       msg: "Grade 5 is the perfect next step — equations and algebra concepts are right around the corner." },
+            'result-ages-11-12': { label: 'Middle School',    age: 'Ages 11–12',program: 'ages-11-12', grad: 'linear-gradient(135deg,#6366f1,#8b5cf6)', color: '#a5b4fc', icon: 'fa-brain',        msg: "Middle School is your zone — pre-algebra, ratios, and real problem-solving." },
+            'result-age-14':     { label: 'High School',      age: 'Age 14',    program: 'age-14',     grad: 'linear-gradient(135deg,#ef4444,#ec4899)', color: '#fca5a5', icon: 'fa-graduation-cap',msg: "High School level — you'll sharpen your algebra and push into geometry." },
+            'result-ages-15-16': { label: 'GED',              age: 'Ages 15–16',program: 'ages-15-16', grad: 'linear-gradient(135deg,#eab308,#f97316)', color: '#fde047', icon: 'fa-certificate',  msg: "The GED pathway covers the advanced topics you need — log functions, trig, and stats." },
+            'result-ages-17-18': { label: 'SAT Prep',         age: 'Ages 17–18',program: 'ages-17-18', grad: 'linear-gradient(135deg,#f97316,#ef4444)', color: '#fb923c', icon: 'fa-trophy',       msg: "You're at an advanced level — the SAT prep pathway is built for you!" }
+        };
+
+        let chatOpen = false;
+        let chatStarted = false;
+        let tooltipHidden = false;
+
+        setTimeout(() => {
+            const t = document.getElementById('chat-tooltip');
+            if (t && !chatOpen) { t.style.opacity = '1'; t.style.transition = 'opacity 0.4s'; }
+        }, 2000);
+        setTimeout(() => {
+            const t = document.getElementById('chat-tooltip');
+            if (t && !chatOpen) { t.style.opacity = '0'; }
+        }, 6000);
+
+        function toggleChat() {
+            chatOpen = !chatOpen;
+            const panel = document.getElementById('chat-panel');
+            const tooltip = document.getElementById('chat-tooltip');
+            if (chatOpen) {
+                panel.style.display = 'block';
+                tooltip.style.display = 'none';
+                if (!chatStarted) { chatStarted = true; setTimeout(() => startChatFlow(), 300); }
+                else scrollChatToBottom();
+            } else {
+                panel.style.display = 'none';
+            }
+        }
+
+        function scrollChatToBottom() {
+            const m = document.getElementById('chat-messages');
+            m.scrollTop = m.scrollHeight;
+        }
+
+        function addBotMessage(text, delay) {
+            return new Promise(resolve => {
+                const msgs = document.getElementById('chat-messages');
+                const typing = document.createElement('div');
+                typing.style.cssText = 'display:flex;align-items:flex-end;gap:8px;';
+                typing.innerHTML = `
+                    <div style="width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="fas fa-robot" style="font-size:10px;color:white;"></i>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.09);border-radius:14px 14px 14px 4px;padding:10px 13px;display:flex;gap:5px;align-items:center;">
+                        <span class="typing-dot" style="animation-delay:0s"></span>
+                        <span class="typing-dot" style="animation-delay:0.18s"></span>
+                        <span class="typing-dot" style="animation-delay:0.36s"></span>
+                    </div>`;
+                msgs.appendChild(typing);
+                scrollChatToBottom();
+                setTimeout(() => {
+                    msgs.removeChild(typing);
+                    const bubble = document.createElement('div');
+                    bubble.style.cssText = 'display:flex;align-items:flex-end;gap:8px;animation:chatSlideUp 0.22s ease;';
+                    const lines = text.split('\n').map(l => l ? `<span>${l}</span>` : '<br>').join('');
+                    bubble.innerHTML = `
+                        <div style="width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                            <i class="fas fa-robot" style="font-size:10px;color:white;"></i>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.09);border-radius:14px 14px 14px 4px;padding:10px 13px;font-size:13px;line-height:1.55;color:rgba(255,255,255,0.85);max-width:240px;">${lines}</div>`;
+                    msgs.appendChild(bubble);
+                    scrollChatToBottom();
+                    resolve();
+                }, delay || 900);
+            });
+        }
+
+        function addUserMessage(text) {
+            const msgs = document.getElementById('chat-messages');
+            const bubble = document.createElement('div');
+            bubble.style.cssText = 'display:flex;justify-content:flex-end;animation:chatSlideUp 0.18s ease;';
+            bubble.innerHTML = `<div style="background:linear-gradient(135deg,rgba(99,102,241,0.28),rgba(168,85,247,0.28));border:1px solid rgba(129,140,248,0.3);border-radius:14px 14px 4px 14px;padding:9px 13px;font-size:13px;font-weight:500;color:#e0d7ff;max-width:200px;">${text}</div>`;
+            msgs.appendChild(bubble);
+            scrollChatToBottom();
+        }
+
+        function setReplies(options) {
+            const r = document.getElementById('chat-replies');
+            r.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.textContent = opt.label;
+                btn.style.cssText = `flex:1;padding:9px 14px;border-radius:10px;border:1px solid ${opt.isYes ? 'rgba(129,140,248,0.35)' : 'rgba(255,255,255,0.1)'};background:${opt.isYes ? 'rgba(99,102,241,0.15)' : 'rgba(255,255,255,0.04)'};color:${opt.isYes ? '#c4b5fd' : 'rgba(255,255,255,0.5)'};font-size:13px;font-weight:600;cursor:pointer;transition:all 0.18s;`;
+                btn.onmouseover = () => { btn.style.background = opt.isYes ? 'rgba(99,102,241,0.28)' : 'rgba(255,255,255,0.09)'; btn.style.color = opt.isYes ? '#e0d7ff' : 'rgba(255,255,255,0.8)'; };
+                btn.onmouseout  = () => { btn.style.background = opt.isYes ? 'rgba(99,102,241,0.15)' : 'rgba(255,255,255,0.04)'; btn.style.color = opt.isYes ? '#c4b5fd' : 'rgba(255,255,255,0.5)'; };
+                btn.onclick = () => opt.action();
+                r.appendChild(btn);
+            });
+        }
+
+        function clearReplies() {
+            document.getElementById('chat-replies').innerHTML = '';
+        }
+
+        async function startChatFlow() {
+            await addBotMessage("Hi! 👋 I'm here to help you find your math level — just a few quick questions!", 800);
+            askQuestion(0);
+        }
+
+        async function askQuestion(id) {
+            const step = chatFlow.find(s => s.id === id);
+            if (!step) return;
+            clearReplies();
+            await addBotMessage(step.msg, 1000);
+            setReplies([
+                { label: '✓  Yes, I get it', isYes: true,  action: () => handleChatReply(step, true) },
+                { label: '✗  Not quite',      isYes: false, action: () => handleChatReply(step, false) }
+            ]);
+        }
+
+        async function handleChatReply(step, isYes) {
+            addUserMessage(isYes ? '✓  Yes, I get it' : '✗  Not quite');
+            clearReplies();
+            const next = isYes ? step.yes : step.no;
+            if (typeof next === 'number') {
+                await addBotMessage(isYes ? "Awesome! Let's keep going 🚀" : "No worries! Let me find your level.", 700);
+                askQuestion(next);
+            } else {
+                showChatResult(next, isYes);
+            }
+        }
+
+        async function showChatResult(resultKey, finalYes) {
+            const r = chatResults[resultKey];
+            if (finalYes) {
+                await addBotMessage("Fantastic — you really know your stuff! 🎉", 700);
+            }
+            await addBotMessage(r.msg, 900);
+
+            const msgs = document.getElementById('chat-messages');
+            const card = document.createElement('div');
+            card.style.cssText = 'margin-top:4px;animation:chatSlideUp 0.24s ease;';
+            card.innerHTML = `
+                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px;text-align:center;">
+                    <div style="width:44px;height:44px;border-radius:13px;background:${r.grad};display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+                        <i class="fas ${r.icon}" style="font-size:17px;color:white;"></i>
+                    </div>
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px;">Your level</div>
+                    <div style="font-size:16px;font-weight:800;color:${r.color};margin-bottom:2px;">${r.label}</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:14px;">${r.age}</div>
+                    <button onclick="openSubjectModal('${r.program}');toggleChat();" style="width:100%;padding:9px;border-radius:10px;background:${r.grad};border:none;color:white;font-size:13px;font-weight:700;cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                        <i class="fas fa-arrow-right" style="margin-right:6px;font-size:11px;"></i>Start Here
+                    </button>
+                    <button onclick="restartChat()" style="width:100%;margin-top:7px;padding:8px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.4);font-size:12px;cursor:pointer;transition:all 0.18s;" onmouseover="this.style.background='rgba(255,255,255,0.09)';this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.color='rgba(255,255,255,0.4)'">
+                        Start over
+                    </button>
+                </div>`;
+            msgs.appendChild(card);
+            scrollChatToBottom();
+            clearReplies();
+        }
+
+        function restartChat() {
+            document.getElementById('chat-messages').innerHTML = '';
+            chatStarted = false;
+            chatStarted = true;
+            setTimeout(() => startChatFlow(), 200);
+        }
 
         // ===== PLACEMENT QUIZ =====
         const quizQuestions = [
