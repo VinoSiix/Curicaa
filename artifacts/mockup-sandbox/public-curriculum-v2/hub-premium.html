@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculum Hub - Educational Pathways</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="assets/tailwind.js"></script>
+    <link rel="stylesheet" href="assets/font-awesome.css">
+    <link rel="stylesheet" href="assets/fonts/inter.css">
     <style>
         * { font-family: 'Inter', sans-serif; }
 
@@ -545,26 +545,6 @@
         }
         .carousel-arrow-left { left: -20px; }
         .carousel-arrow-right { right: -20px; }
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-        }
-        .carousel-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: var(--border-card);
-            border: none;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            padding: 0;
-        }
-        .carousel-dot.active {
-            background: #818cf8;
-            box-shadow: 0 0 8px rgba(129,140,248,0.4);
-            transform: scale(1.2);
-        }
 
         .faq-item {
             background: var(--bg-card);
@@ -1268,7 +1248,6 @@
                     </div>
                 </div>
                 <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel(1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </section>
 
@@ -2271,95 +2250,134 @@
         // Init billing UI
         updateBillingUI();
 
-        // Testimonial Carousel
+        // Testimonial Carousel (infinite loop)
         (function() {
             var track = document.getElementById('carouselTrack');
-            var dotsWrap = document.getElementById('carouselDots');
-            if (!track || !dotsWrap) return;
-            var cards = track.querySelectorAll('.carousel-card');
-            var currentIndex = 0;
+            if (!track) return;
+            var originals = Array.from(track.querySelectorAll('.carousel-card'));
+            var total = originals.length;
+            if (total === 0) return;
 
             function getVisibleCount() {
                 var w = window.innerWidth;
-                if (w < 520) return 1;
                 if (w < 768) return 1;
                 if (w < 1024) return 2;
                 return 3;
             }
 
-            function getMaxIndex() {
-                return Math.max(0, cards.length - getVisibleCount());
-            }
+            var visible = getVisibleCount();
 
-            function buildDots() {
-                dotsWrap.innerHTML = '';
-                var max = getMaxIndex();
-                for (var i = 0; i <= max; i++) {
-                    var dot = document.createElement('button');
-                    dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
-                    dot.setAttribute('data-index', i);
-                    dot.onclick = function() {
-                        currentIndex = parseInt(this.getAttribute('data-index'));
-                        scrollTo(currentIndex);
-                    };
-                    dotsWrap.appendChild(dot);
+            // Clone first N cards to end, last N cards to start
+            function buildClones() {
+                track.querySelectorAll('.carousel-clone').forEach(function(c) { c.remove(); });
+                visible = getVisibleCount();
+                var cloneCount = Math.min(visible, total);
+                // Append clones of first cards to end
+                for (var i = 0; i < cloneCount; i++) {
+                    var cl = originals[i].cloneNode(true);
+                    cl.classList.add('carousel-clone');
+                    cl.removeAttribute('style');
+                    track.appendChild(cl);
+                }
+                // Prepend clones of last cards to start
+                for (var j = total - 1; j >= total - cloneCount; j--) {
+                    var cl2 = originals[j].cloneNode(true);
+                    cl2.classList.add('carousel-clone');
+                    cl2.removeAttribute('style');
+                    track.insertBefore(cl2, track.firstChild);
                 }
             }
 
-            function scrollTo(idx) {
-                currentIndex = Math.max(0, Math.min(idx, getMaxIndex()));
-                var card = cards[currentIndex];
-                if (card) {
-                    track.scrollTo({ left: card.offsetLeft - track.offsetLeft - 4, behavior: 'smooth' });
-                }
-                updateDots();
+            buildClones();
+
+            var allCards = function() { return track.querySelectorAll('.carousel-card'); };
+            var realIndex = 0; // index into originals (0..total-1)
+            var isAnimating = false;
+
+            function getCardWidth() {
+                var ac = allCards();
+                if (ac.length < 2) return 300;
+                return ac[1].offsetLeft - ac[0].offsetLeft || ac[0].offsetWidth + 16;
             }
 
-            function updateDots() {
-                var dots = dotsWrap.querySelectorAll('.carousel-dot');
-                dots.forEach(function(d, i) {
-                    d.classList.toggle('active', i === currentIndex);
-                });
+            function getOffset() {
+                var cloneCount = Math.min(visible, total);
+                var cw = getCardWidth();
+                return cloneCount * cw;
+            }
+
+            // Position track at the real start (no animation)
+            function jumpTo(idx) {
+                var cw = getCardWidth();
+                track.scrollLeft = getOffset() + idx * cw;
+                realIndex = idx;
+            }
+
+            // Smooth scroll to a position
+            function smoothTo(idx, callback) {
+                var cw = getCardWidth();
+                var target = getOffset() + idx * cw;
+                isAnimating = true;
+                track.scrollTo({ left: target, behavior: 'smooth' });
+                realIndex = idx;
+                // Wait for scroll to finish
+                clearTimeout(window._carouselScrollTimer);
+                window._carouselScrollTimer = setTimeout(function() {
+                    isAnimating = false;
+                    if (callback) callback();
+                }, 400);
             }
 
             // Arrow controls
             window.slideCarousel = function(dir) {
-                scrollTo(currentIndex + dir);
+                if (isAnimating) return;
+                var next = realIndex + dir;
+                smoothTo(next, function() {
+                    // If we landed on a clone zone, jump instantly
+                    if (next < 0) {
+                        jumpTo(total + next);
+                    } else if (next >= total) {
+                        jumpTo(next - total);
+                    }
+                });
             };
 
             // Touch/swipe support
             var startX = 0;
-            var isDragging = false;
             track.addEventListener('touchstart', function(e) {
                 startX = e.touches[0].clientX;
-                isDragging = true;
             }, { passive: true });
             track.addEventListener('touchend', function(e) {
-                if (!isDragging) return;
-                isDragging = false;
                 var diff = startX - e.changedTouches[0].clientX;
                 if (Math.abs(diff) > 50) {
-                    scrollTo(currentIndex + (diff > 0 ? 1 : -1));
+                    window.slideCarousel(diff > 0 ? 1 : -1);
                 }
             }, { passive: true });
 
-            // Snap dot update on manual scroll
-            track.addEventListener('scroll', function() {
-                var scrollLeft = track.scrollLeft;
-                var closest = 0;
-                var minDist = Infinity;
-                cards.forEach(function(card, i) {
-                    var dist = Math.abs(card.offsetLeft - track.offsetLeft - scrollLeft);
-                    if (dist < minDist) { minDist = dist; closest = i; }
-                });
-                currentIndex = closest;
-                updateDots();
+            // Prevent manual scroll from breaking things — snap back
+            var userScrolling = false;
+            track.addEventListener('mousedown', function() { userScrolling = true; });
+            track.addEventListener('mouseup', function() {
+                userScrolling = false;
+                // Snap to nearest real card
+                var cw = getCardWidth();
+                var nearest = Math.round((track.scrollLeft - getOffset()) / cw);
+                nearest = Math.max(0, Math.min(nearest, total - 1));
+                smoothTo(nearest);
             });
 
-            buildDots();
+            // Initialize position
+            jumpTo(0);
+
+            // Rebuild on resize
+            var resizeTimer;
             window.addEventListener('resize', function() {
-                buildDots();
-                scrollTo(Math.min(currentIndex, getMaxIndex()));
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    var oldIdx = realIndex;
+                    buildClones();
+                    jumpTo(oldIdx);
+                }, 200);
             });
         })();
 
