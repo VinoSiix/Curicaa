@@ -1,4 +1,7 @@
 {
+  "buildCommand": "echo 'Static HTML — no build needed'",
+  "installCommand": "echo 'skip'",
+  "framework": null,
   "outputDirectory": "artifacts/mockup-sandbox/public-curriculum-v2",
   "cleanUrls": true,
   "redirects": [
