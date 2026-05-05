@@ -21,8 +21,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-fi
 .back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
 .subject-badge{padding:5px 14px;border-radius:20px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
 .age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
-.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
-.toggle-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.8);}
 main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
 .glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
 .section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
@@ -41,18 +39,6 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
 .mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
-body.light{background:#eeedf8;color:#0d0d1a;}
-body.light header{background:rgba(238,237,248,0.9);border-bottom-color:rgba(0,0,0,0.09);}
-body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
-body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
-body.light .sched-card{background:rgba(255,255,255,0.55);border-color:rgba(0,0,0,0.07);}
-body.light .month-tab{border-color:rgba(0,0,0,0.1);background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
-body.light .week-row{border-color:rgba(0,0,0,0.07);}
-body.light .week-detail{background:rgba(0,0,0,0.02);border-top-color:rgba(0,0,0,0.07);}
-body.light .section-label{color:rgba(13,13,26,0.4);}
-body.light .back-btn{color:rgba(13,13,26,0.55);}
-body.light .toggle-btn{border-color:rgba(0,0,0,0.12);background:rgba(0,0,0,0.04);color:rgba(13,13,26,0.55);}
-body.light footer{border-top-color:rgba(0,0,0,0.08);}
 </style>
 </head>
 <body>
@@ -72,7 +58,7 @@ body.light footer{border-top-color:rgba(0,0,0,0.08);}
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
       <span class="age-pill">Ages 11–12</span>
-      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+      
     </div>
   </div>
 </header>
@@ -131,7 +117,6 @@ const curriculumData={
 'June':{icon:'fa-trophy',color:'',focus:'Portfolio & Presentation',skills:['Self-assessment','Revision','Public speaking','Year review'],weeks:['Select best writing pieces from the year and revise for the final portfolio','Write a reflective introduction explaining growth as a reader and writer','Prepare a 5-minute reading/presentation from one portfolio piece','Portfolio presentations to family or peers with Q&A'],project:'Final Reading-Writing Portfolio with introduction letter, 3 revised pieces, and a reading list of books completed',materials:['Portfolio binder or folder','All year\'s writing samples','Presentation checklist','Reading log']}
 };
 let currentMonth='September';
-let isDark=true;
 function init(){
   const tabs=document.getElementById('monthTabs');
   Object.keys(curriculumData).forEach(m=>{
@@ -204,11 +189,6 @@ function toggleWeek(id){
   const open=d.style.display==='block';
   d.style.display=open?'none':'block';
   c.style.transform=open?'':'rotate(180deg)';
-}
-function toggleDark(){
-  isDark=!isDark;
-  document.body.classList.toggle('light',!isDark);
-  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
 }
 init();
 </script>

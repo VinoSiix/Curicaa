@@ -566,7 +566,7 @@
                             <a onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});toggleUserMenu();" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-primary);cursor:pointer;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='transparent'">
                                 <i class="fas fa-crown" style="font-size:12px;color:#fbbf24;width:16px;text-align:center;"></i> Upgrade Plan
                             </a>
-                            <a onclick="toggleUserMenu();" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-primary);cursor:pointer;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='transparent'">
+                            <a onclick="openSettings()" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-primary);cursor:pointer;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='transparent'">
                                 <i class="fas fa-cog" style="font-size:12px;color:var(--text-muted);width:16px;text-align:center;"></i> Settings
                             </a>
                             <div style="height:1px;background:var(--border-faint);margin:4px 0;"></div>
@@ -1300,6 +1300,66 @@
         </div>
     </div>
 
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal-overlay" onclick="if(event.target===this)closeSettings()">
+        <div class="modal-box" style="max-width:440px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
+                <div>
+                    <p style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-label);margin-bottom:5px;">Preferences</p>
+                    <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.025em;">Settings</h3>
+                </div>
+                <button onclick="closeSettings()" style="width:34px;height:34px;border-radius:9px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-close-btn);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Font Size -->
+            <div style="margin-bottom:20px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Font Size</label>
+                <div style="display:flex;gap:8px;">
+                    <button class="font-opt" data-size="small" onclick="setFont(this)" style="flex:1;padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;">
+                        <div style="font-size:11px;">Aa</div>
+                        <div style="font-size:9px;color:var(--text-muted);margin-top:2px;">Small</div>
+                    </button>
+                    <button class="font-opt" data-size="medium" onclick="setFont(this)" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(129,140,248,0.6);background:rgba(129,140,248,0.12);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;">
+                        <div style="font-size:14px;">Aa</div>
+                        <div style="font-size:9px;color:var(--text-muted);margin-top:2px;">Medium</div>
+                    </button>
+                    <button class="font-opt" data-size="large" onclick="setFont(this)" style="flex:1;padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;">
+                        <div style="font-size:17px;">Aa</div>
+                        <div style="font-size:9px;color:var(--text-muted);margin-top:2px;">Large</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Animations -->
+            <div style="margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;padding:14px;border-radius:12px;background:var(--bg-subtle);border:1px solid var(--border-faint);">
+                <div>
+                    <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Animations</div>
+                    <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">Scroll reveals & transitions</div>
+                </div>
+                <button id="animToggle" onclick="toggleAnim()" style="width:44px;height:24px;border-radius:12px;background:linear-gradient(135deg,#818cf8,#a78bfa);border:none;cursor:pointer;position:relative;transition:background 0.2s;">
+                    <div id="animDot" style="width:18px;height:18px;border-radius:50%;background:white;position:absolute;top:3px;right:3px;transition:left 0.2s,right 0.2s;"></div>
+                </button>
+            </div>
+
+            <!-- Reset Progress -->
+            <div style="margin-bottom:20px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Data</label>
+                <button onclick="resetProgress()" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(248,113,113,0.25);background:rgba(248,113,113,0.08);color:#f87171;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;" onmouseover="this.style.background='rgba(248,113,113,0.15)'" onmouseout="this.style.background='rgba(248,113,113,0.08)'">
+                    <i class="fas fa-redo" style="margin-right:6px;font-size:11px;"></i>Reset All Progress
+                </button>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:6px;text-align:center;">Clears saved settings and week check marks</div>
+            </div>
+
+            <!-- Account Info -->
+            <div id="settingsAccount" style="padding:14px;border-radius:12px;background:var(--bg-subtle);border:1px solid var(--border-faint);">
+                <div style="font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:8px;">Account</div>
+                <div id="settingsAccountInfo" style="font-size:13px;color:var(--text-secondary);">Sign in to view account details</div>
+            </div>
+        </div>
+    </div>
+
     <script src="auth.js"></script>
     <script>
         // Auth UI
@@ -1435,6 +1495,179 @@
         // Init auth UI on load
         updateAuthUI();
 
+        // --- Settings ---
+        function openSettings() {
+            closeUserMenu();
+            document.getElementById('settingsModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            // Populate account info
+            var user = CuricaaAuth.getUser();
+            var infoEl = document.getElementById('settingsAccountInfo');
+            if (user) {
+                var planLabel = user.plan === 'bundle' ? 'Full K-12 Bundle' : user.plan === 'single' ? 'Single Grade' : 'Free Plan';
+                infoEl.innerHTML = '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;">' + user.name.charAt(0).toUpperCase() + '</div><div><div style="font-weight:600;color:var(--text-primary);">' + user.name + '</div><div style="font-size:11px;color:var(--text-muted);">' + user.email + '</div></div></div><div style="display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(129,140,248,0.12);color:#a5b4fc;">' + planLabel + '</div>';
+            } else {
+                infoEl.innerHTML = '<span style="color:var(--text-muted);">Sign in to view account details</span>';
+            }
+            // Restore saved font size
+            var savedFont = localStorage.getItem('curicaa-font') || 'medium';
+            highlightFontBtn(savedFont);
+            // Restore anim toggle
+            var animOn = localStorage.getItem('curicaa-anim') !== 'off';
+            updateAnimToggle(animOn);
+        }
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function setFont(btn) {
+            var size = btn.dataset.size;
+            localStorage.setItem('curicaa-font', size);
+            applyFont(size);
+            highlightFontBtn(size);
+        }
+        function highlightFontBtn(size) {
+            document.querySelectorAll('.font-opt').forEach(function(b) {
+                if (b.dataset.size === size) {
+                    b.style.borderColor = 'rgba(129,140,248,0.6)';
+                    b.style.background = 'rgba(129,140,248,0.12)';
+                } else {
+                    b.style.borderColor = 'var(--border-card)';
+                    b.style.background = 'var(--bg-subtle)';
+                }
+            });
+        }
+        function applyFont(size) {
+            var scale = size === 'small' ? '14px' : size === 'large' ? '18px' : '16px';
+            document.documentElement.style.fontSize = scale;
+        }
+
+        function toggleAnim() {
+            var animOn = localStorage.getItem('curicaa-anim') !== 'off';
+            animOn = !animOn;
+            localStorage.setItem('curicaa-anim', animOn ? 'on' : 'off');
+            updateAnimToggle(animOn);
+            // Toggle reveal animations
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                el.style.transition = animOn ? '' : 'none';
+                if (!animOn) el.classList.add('visible');
+            });
+        }
+        function updateAnimToggle(on) {
+            var toggle = document.getElementById('animToggle');
+            var dot = document.getElementById('animDot');
+            if (on) {
+                toggle.style.background = 'linear-gradient(135deg,#818cf8,#a78bfa)';
+                dot.style.right = '3px';
+                dot.style.left = 'auto';
+            } else {
+                toggle.style.background = 'var(--bg-card)';
+                dot.style.left = '3px';
+                dot.style.right = 'auto';
+            }
+        }
+
+        function resetProgress() {
+            if (confirm('This will clear all saved settings and progress. Continue?')) {
+                localStorage.removeItem('curicaa-font');
+                localStorage.removeItem('curicaa-anim');
+                document.documentElement.style.fontSize = '';
+                highlightFontBtn('medium');
+                updateAnimToggle(true);
+                closeSettings();
+            }
+        }
+
+        // Restore saved settings on load
+        (function() {
+            var savedFont = localStorage.getItem('curicaa-font');
+            if (savedFont) applyFont(savedFont);
+            if (localStorage.getItem('curicaa-anim') === 'off') {
+                document.querySelectorAll('.reveal').forEach(function(el) {
+                    el.style.transition = 'none';
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        // --- Confetti on purchase ---
+        function launchConfetti() {
+            var canvas = document.createElement('canvas');
+            canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;pointer-events:none;';
+            document.body.appendChild(canvas);
+            var ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            var particles = [];
+            var colors = ['#818cf8','#a78bfa','#c084fc','#4ade80','#22d3ee','#fbbf24','#f472b6','#60a5fa'];
+            for (var i = 0; i < 150; i++) {
+                particles.push({
+                    x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 18,
+                    vy: Math.random() * -18 - 4,
+                    w: Math.random() * 8 + 4,
+                    h: Math.random() * 6 + 3,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                    rotSpeed: (Math.random() - 0.5) * 12,
+                    gravity: 0.35 + Math.random() * 0.2,
+                    opacity: 1
+                });
+            }
+            var frame = 0;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                var alive = false;
+                for (var i = 0; i < particles.length; i++) {
+                    var p = particles[i];
+                    p.x += p.vx;
+                    p.vy += p.gravity;
+                    p.y += p.vy;
+                    p.rotation += p.rotSpeed;
+                    p.vx *= 0.99;
+                    if (frame > 40) p.opacity -= 0.015;
+                    if (p.opacity <= 0) continue;
+                    alive = true;
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rotation * Math.PI / 180);
+                    ctx.globalAlpha = Math.max(0, p.opacity);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    ctx.restore();
+                }
+                frame++;
+                if (alive && frame < 180) {
+                    requestAnimationFrame(animate);
+                } else {
+                    canvas.remove();
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // --- Hide pricing for bundle users ---
+        function updatePricingVisibility() {
+            var user = CuricaaAuth.getUser();
+            var pricingSection = document.getElementById('pricing');
+            if (!pricingSection) return;
+            if (user && user.plan === 'bundle') {
+                pricingSection.style.display = 'none';
+            } else {
+                pricingSection.style.display = '';
+            }
+        }
+        // Hook into existing updateAuthUI
+        var origUpdateAuthUI = updateAuthUI;
+        updateAuthUI = function() {
+            origUpdateAuthUI();
+            updatePricingVisibility();
+        };
+        // Also run on load
+        updatePricingVisibility();
+
         // Enter key support for login/signup forms
         document.getElementById('loginPassword').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleLogin(); });
         document.getElementById('signupPassword').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleSignup(); });
@@ -1563,6 +1796,7 @@
                 updateAuthUI();
             }
             closeCheckout();
+            launchConfetti();
             document.getElementById('successModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -1578,6 +1812,7 @@
                 closeSuccess();
                 closeLoginModal();
                 closeSignupModal();
+                closeSettings();
             }
         });
     </script>

@@ -103,29 +103,7 @@
 
   // --- Auth UI on subject pages ---
   function initAuthUI() {
-    if (typeof CuricaaAuth === 'undefined') return;
-    var user = CuricaaAuth.getUser();
-    var header = document.querySelector('.header-inner');
-    if (!header) return;
-    var rightDiv = header.querySelector('div:last-child');
-    if (!rightDiv) return;
-
-    if (user) {
-      var initial = user.name.charAt(0).toUpperCase();
-      var firstName = user.name.split(' ')[0];
-      var indicator = document.createElement('div');
-      indicator.style.cssText = 'display:flex;align-items:center;gap:7px;padding:5px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);font-size:12px;';
-      indicator.innerHTML = '<div style="width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white;">' + initial + '</div><span style="font-weight:600;color:rgba(255,255,255,0.75);">' + firstName + '</span>';
-      rightDiv.insertBefore(indicator, rightDiv.firstChild);
-    } else {
-      var loginLink = document.createElement('a');
-      loginLink.href = 'hub-premium.html';
-      loginLink.style.cssText = 'font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;padding:6px 12px;border-radius:8px;transition:all 0.2s;';
-      loginLink.textContent = 'Log In';
-      loginLink.onmouseover = function() { this.style.color='rgba(255,255,255,0.85)'; this.style.background='rgba(255,255,255,0.06)'; };
-      loginLink.onmouseout = function() { this.style.color='rgba(255,255,255,0.5)'; this.style.background='transparent'; };
-      rightDiv.insertBefore(loginLink, rightDiv.firstChild);
-    }
+    // No floating badge — paywall.js is just for gating now
   }
 
   // --- Paywall patching functions ---
@@ -189,6 +167,25 @@
     tabsContainer.parentNode.insertBefore(badge, tabsContainer);
   }
 
+  // --- Force September for free users ---
+  function forceSeptember() {
+    // Override any stored month
+    if (typeof selectMonth === 'function') {
+      setTimeout(function() { selectMonth(FREE_MONTH); }, 150);
+    }
+    // Also override via loadContent if selectMonth wrapper didn't catch it
+    if (typeof loadContent === 'function') {
+      setTimeout(function() {
+        var tabs = document.querySelectorAll('.month-tab');
+        var months = typeof curriculumData !== 'undefined' ? Object.keys(curriculumData) : [];
+        tabs.forEach(function(tab, i) {
+          tab.classList.toggle('active', months[i] === FREE_MONTH);
+        });
+        loadContent(FREE_MONTH);
+      }, 200);
+    }
+  }
+
   // --- Main init: runs AFTER auth.js is loaded ---
   function initPaywall() {
     initAuthUI();
@@ -211,6 +208,9 @@
         return origLoadContent(m);
       };
     }
+
+    // Force September as the active month (overrides localStorage)
+    forceSeptember();
   }
 
   // --- Boot sequence ---
