@@ -1,9 +1,4 @@
 {
-  "installCommand": "echo 'skip'",
-  "buildCommand": "echo 'skip'",
-  "outputDirectory": "artifacts/mockup-sandbox/public",
-  "cleanUrls": true,
-  "redirects": [
-    { "source": "/", "destination": "/hub.html", "permanent": false }
-  ]
+  "buildCommand": "pnpm --filter @workspace/mockup-sandbox build",
+  "outputDirectory": "artifacts/mockup-sandbox/dist"
 }

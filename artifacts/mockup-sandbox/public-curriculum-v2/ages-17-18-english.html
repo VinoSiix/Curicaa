@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SAT Reading & Writing — Ages 17–18 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#f97316;--a2:#ef4444;--al:#fb923c;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(249,115,22,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(239,68,68,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(249,115,22,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.sat-banner{background:linear-gradient(135deg,rgba(249,115,22,0.1),rgba(239,68,68,0.08));border:1px solid rgba(249,115,22,0.2);border-radius:14px;padding:18px 22px;margin-bottom:32px;display:flex;align-items:center;gap:16px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .sched-card{background:rgba(255,255,255,0.55);}
+body.light .month-tab{background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:white;">SAT / College Prep</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 17–18</div>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-book" style="margin-right:5px;"></i>SAT Reading & Writing</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 17–18</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="sat-banner">
+    <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(249,115,22,0.2),rgba(239,68,68,0.15));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-trophy" style="color:#fb923c;font-size:18px;"></i></div>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#fb923c;margin-bottom:3px;">Digital SAT — Reading & Writing Section</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);">The Digital SAT Reading & Writing section (64 min, 54 questions) tests craft & structure (~28%), information & ideas (~26%), standard English conventions (~26%), and expression of ideas (~20%). Each question has its own short passage.</div>
+    </div>
+  </div>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">SAT Preparation · Ages 17–18</p>
+    <h2 class="page-title">SAT Reading & Writing</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:640px;margin:0 auto;line-height:1.75;">Master all four content domains of the Digital SAT Reading & Writing section: comprehension and inference across diverse texts, grammar and usage, rhetorical analysis, and effective expression of ideas.</p>
+  </section>
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-book-open" style="color:#fb923c;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Craft & Structure</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Words in context, text structure, purpose</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(239,68,68,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-lightbulb" style="color:#f87171;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Information & Ideas</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Main idea, inference, data interpretation</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(234,179,8,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-spell-check" style="color:#fde047;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">English Conventions</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Grammar, punctuation, sentence structure</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pen-fancy" style="color:#34d399;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Expression of Ideas</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Transitions, clarity, rhetorical goals</div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly SAT R&W Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">SAT Reading & Writing Preparation · Ages 17–18</p>
+</footer>
+<script>
+const curriculumData={
+'September':{icon:'fa-book-open',color:'',focus:'Information & Ideas — Reading Comprehension',skills:['Central idea','Supporting details','Inferences','Cross-text connections'],weeks:['Central idea and supporting details in literary fiction, social science, and science passages','Making inferences: using textual evidence to answer "what is most likely true" questions','Quantitative data integration: reading graphs/charts embedded in passages and using data to answer questions','Cross-text connections (paired passage questions): comparing two authors\' perspectives on the same topic'],project:'Complete 2 full Reading & Writing modules (54 questions each) from official SAT practice tests; log every missed question by domain',materials:['College Board Bluebook app','Official SAT Practice Test PDFs','Error log notebook','Highlighters']},
+'October':{icon:'fa-font',color:'',focus:'Craft & Structure — Words in Context',skills:['Vocabulary in context','Tone & purpose','Text structure','Author\'s technique'],weeks:['Words in context: choose the word that best completes the passage (precision, connotation, register)','Tone and author\'s purpose: identifying formal vs informal, persuasive vs objective, optimistic vs critical','Text structure and organization: how the passage builds its argument or develops ideas','Author\'s technique: rhetorical devices, point of view, and structural choices and their effects'],project:'Read 10 SAT-difficulty passages (3 literary, 4 nonfiction, 3 science) and write a 2-sentence analysis of each author\'s purpose and technique',materials:['SAT practice passage packet','Tone/purpose vocabulary list','Craft & structure question guide','Notebook']},
+'November':{icon:'fa-spell-check',color:'',focus:'Standard English Conventions — Grammar',skills:['Subject-verb agreement','Pronoun case','Verb tense','Restrictive vs non-restrictive clauses'],weeks:['Subject-verb agreement: tricky cases (intervening phrases, collective nouns, inverted sentences)','Pronoun case (who/whom, I/me, they/them) and pronoun-antecedent agreement in SAT context','Verb tense consistency and aspect (simple, progressive, perfect) within and across sentences','Restrictive vs non-restrictive clauses: comma usage with "which/that" and appositive phrases'],project:'Complete 3 sets of 18 SAT grammar-focused questions; for each error type found, write 3 original sentences demonstrating correct usage',materials:['SAT grammar drill worksheets','Grammar rule reference card','SAT practice questions (conventions domain)','Notebook']},
+'December':{icon:'fa-edit',color:'',focus:'Standard English Conventions — Punctuation',skills:['Comma rules','Semicolons & colons','Dashes & parentheses','Sentence boundaries'],weeks:['Comma rules on the SAT: 4 key patterns tested (introductory, series, conjunctions, non-restrictive)','Semicolons: connecting independent clauses; colons: introducing lists or explanations','Dashes and parentheses: setting off non-essential information with the right punctuation mark','Sentence boundaries: identifying run-ons, comma splices, and fragments in SAT passages'],project:'Edit a 500-word passage with 20 intentional punctuation errors; rewrite with corrections and annotations citing the rule for each change',materials:['Intentionally flawed passage','Punctuation rule reference card','SAT practice questions','Colored pens']},
+'January':{icon:'fa-pen-fancy',color:'',focus:'Expression of Ideas — Transitions & Rhetoric',skills:['Transition words','Logical sequence','Rhetorical goal questions','Adding/removing sentences'],weeks:['Transition words and phrases: choosing the right logical relationship (contrast, addition, causation, example)','Logical sequencing: which sentence best introduces, concludes, or fits between two given sentences','Rhetorical goal questions: revising to achieve a specific purpose (more specific, more concise, more relevant)','Adding and deleting sentences: evaluating whether a sentence supports the passage\'s goal'],project:'Revise 10 weak paragraphs applying the SAT\'s expression-of-ideas principles; compare original and improved versions side by side',materials:['SAT expression of ideas passage set','Rhetorical goal question guide','Transitions reference list','Notebook']},
+'February':{icon:'fa-university',color:'',focus:'College Essay Writing',skills:['Common App essay','Supplemental essays','Personal voice','Editing & revision'],weeks:['Understanding what college essays want: authenticity, growth, specificity — Common App prompt analysis','Brainstorming personal stories: identifying moments that reveal character, resilience, and perspective','First draft: write a full 650-word Common App essay using your strongest personal story','Peer revision and self-editing: cut fluff, sharpen voice, strengthen the opening and closing lines'],project:'Complete a polished 650-word Common App essay and 2 supplemental essays (150–300 words) ready for submission',materials:['Common App essay prompts','Essay planning worksheet','Google Docs or Word','Revision checklist']},
+'March':{icon:'fa-search',color:'',focus:'Vocabulary & Advanced Reading',skills:['High-frequency SAT words','Greek & Latin roots','Dense scientific text','Complex literary fiction'],weeks:['High-frequency SAT vocabulary: 100 most-tested words (impede, pragmatic, equivocal, etc.) with context sentences','Greek and Latin roots: 30 key roots that unlock hundreds of SAT-level words (auto-, bio-, chron-, etc.)','Reading complex science passages efficiently: hypothesis → methods → results → conclusion scanning','Dense literary fiction: 19th-century prose (Austen, Dickens excerpts) — parsing long, complex sentences'],project:'Build a personal SAT vocabulary book: 100 words with definition, example sentence, and synonym — quiz yourself with a partner',materials:['SAT vocabulary word list (printable)','Roots flashcard deck','Literary fiction passages','Vocabulary book/notebook']},
+'April':{icon:'fa-stopwatch',color:'',focus:'Timed Practice & Digital SAT Strategy',skills:['1 min 11 sec per question','Annotation techniques','Adaptive module strategy','Process of elimination'],weeks:['Time strategy: 1 min 11 seconds per Reading & Writing question — practice pacing with a timer','Annotation techniques: underlining claims, circling transition words, boxing key evidence in 30 sec','Adaptive module strategy: how the difficulty of Module 2 is determined by Module 1 performance','Process of elimination applied to SAT RW: ruling out implausible, too extreme, or out-of-scope answers'],project:'Complete 4 timed SAT R&W modules (2 practice tests) under real conditions using Bluebook; analyze time-per-question data',materials:['College Board Bluebook app','Timer','Error log','Scoring guide']},
+'May':{icon:'fa-fire',color:'',focus:'Score Maximization & Weak Area Sprint',skills:['Error pattern analysis','Hardest question types','College research','Application strategy'],weeks:['Complete error pattern analysis from all previous practice tests: identify the 3 weakest question types','Deep practice on identified weak areas: 20 targeted questions per type with full explanations','College research: finalize college list, research essay requirements, and draft supplemental essay outlines','Application strategy: early decision vs regular decision, financial aid deadlines, letter of recommendation requests'],project:'Finalize all college application essays; complete a targeted 50-question sprint on your 2 weakest SAT RW question types',materials:['College application tracker spreadsheet','All draft essays','Error logs','SAT practice problem sets']},
+'June':{icon:'fa-trophy',color:'',focus:'Final SAT Practice & Application Finish',skills:['Full practice tests','Final score goals','Application submissions','Senior year plan'],weeks:['Full Digital SAT (both sections) under real conditions — final pre-test simulation with Bluebook','Score review: identify any last-minute improvements possible; decide whether to retest in fall','College application final review: proofread all essays, confirm requirements, submit applications','Senior year academic plan: AP exam prep, dual enrollment, and scholarship application calendar'],project:'Submit all college applications; complete one final full SAT practice test and document your personal best score with a reflection essay',materials:['College Board Bluebook app','Application submission tracker','Scholarship calendar','Full SAT practice test']}
+};
+let currentMonth='September';
+let isDark=true;
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{
+    btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);
+  });
+  loadContent(m);
+}
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-book" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">${w} — concept review, 15 targeted SAT practice questions, and a timed mini-drill.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Evening: 30 minutes of independent reading (literary or nonfiction) + 10 vocabulary words reviewed.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+init();
+</script>
+<script src="paywall.js"></script>
+</body>
+</html>

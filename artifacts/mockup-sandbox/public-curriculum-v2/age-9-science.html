@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Science Exploration — Grade 4 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#8b5cf6;--a2:#c084fc;--al:#c4b5fd;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(192,132,252,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(139,92,246,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:white;">Grade 4</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Age 9</div>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-flask" style="margin-right:5px;"></i>Science</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Age 9</span>
+      
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grade 4 · Age 9</p>
+    <h2 class="page-title">Science Exploration</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Investigating energy, Earth's systems, living organisms, and engineering through hands-on experiments, real-world observations, and the scientific method.</p>
+  </section>
+
+  <!-- Core Skills -->
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-bolt" style="color:#a78bfa;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Physical Science</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Energy, waves, electricity</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-globe-americas" style="color:#60a5fa;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Earth Science</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Earth systems, resources</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-leaf" style="color:#34d399;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Life Science</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Structures, adaptations</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-cogs" style="color:#fb923c;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Engineering</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Design process, problem-solving</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Monthly Themes -->
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Science Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grade 4 Science · Age 9</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{
+  icon:'fa-bolt',
+  color:'from-yellow-400 to-orange-500',
+  focus:'Energy & Its Forms (4-PS3)',
+  skills:['Kinetic energy','Potential energy','Energy transfer','Sound energy'],
+  weeks:[
+    {
+      title:"What Is Energy?",
+      objective:"Define energy and identify the five main forms: kinetic, potential, thermal, electrical, and light energy. Understand that energy makes things happen.",
+      warmup:"Ask your child to sit completely still for 30 seconds. Then ask them to jump up and down. Discuss: 'Where did the energy come from to make you move?'",
+      mainActivity:"Create an 'Energy Hunt' chart with five columns labeled Kinetic (motion), Potential (stored), Thermal (heat), Electrical, and Light. Walk through your home and list objects in each category. A rolling ball is kinetic, a book on a shelf is potential, a toaster is thermal and electrical, a lamp is light and electrical. Discuss how some objects fit multiple categories.",
+      game:"Energy Charades: Write different energy forms on index cards. The child acts out an energy type without words while others guess. Examples: 'pretend to be a stretched rubber band' (potential) or 'be a running cheetah' (kinetic).",
+      homeConnection:"At dinner, discuss which types of energy were used to cook the food (thermal from the stove, electrical powering the oven). Ask your child to identify energy forms at the grocery store.",
+      assessment:"Child can correctly define energy and give at least one real-world example for three different energy forms.",
+      differentiation:"Easier: Focus on three forms only (kinetic, potential, light). | Harder: Introduce the Law of Conservation of Energy — energy cannot be created or destroyed, only changed from one form to another."
+    },
+    {
+      title:"Energy Transfer in Collisions",
+      objective:"Observe how energy transfers between objects during collisions and understand that speed and mass affect collision outcomes.",
+      warmup:"Roll a marble gently into a line of five marbles on a smooth floor. Watch what happens to the marbles at the end of the line. Discuss where the energy went.",
+      mainActivity:"Set up a ramp using a piece of cardboard propped on books. Roll a small ball (marble) down the ramp into a plastic cup at the bottom. Measure how far the cup slides using a ruler. Then use a heavier ball (like a golf ball) and compare the distance. Record results in a data table. Discuss how the heavier ball transferred more energy to the cup. Safety note: keep face away from the ramp end.",
+      game:"Newton's Cradle Challenge: Use a ruler and five identical marbles lined up touching each other on a flat surface. Roll one marble into the line — one pops off the other end! Try rolling two in — two pop off. Predict before each try.",
+      homeConnection:"Watch a game of pool or bowling on TV and discuss how energy transfers from the cue ball or bowling ball to the other objects.",
+      assessment:"Child can explain that a heavier or faster object transfers more energy in a collision and can predict which ball will push the cup farther.",
+      differentiation:"Easier: Compare only a light ball vs. a heavy ball without measuring. | Harder: Use three different ball weights, measure each three times, and calculate the average distance."
+    },
+    {
+      title:"Conservation of Energy in Everyday Systems",
+      objective:"Trace energy as it changes forms in a system, understanding that the total amount of energy stays the same.",
+      warmup:"Hold a pencil above the table. Ask: 'What kind of energy does it have right now?' Drop it. 'Now what kind of energy?' Discuss how potential energy became kinetic energy.",
+      mainActivity:"Build an energy transfer chain diagram for three household systems. Example: A flashlight — chemical energy in the battery becomes electrical energy, which becomes light energy (and some thermal energy — the flashlight gets warm). Another: eating breakfast — chemical energy in food becomes kinetic energy when you run, thermal energy when you sweat. Draw arrows showing the energy transformations on poster paper.",
+      game:"Energy Chain Relay: One person mimes an energy source (e.g., eating food). The next person mimes what that energy allows (e.g., running). The next mimes a result (e.g., sweating). See how long a chain the family can create.",
+      homeConnection:"Look at your electric meter outside. Explain that the spinning disk (or digital number) shows electrical energy entering the house, which gets converted into light, heat, and motion by your appliances.",
+      assessment:"Child can trace at least one complete energy transformation chain (e.g., battery → electrical → light) and explain that energy didn't disappear, it changed form.",
+      differentiation:"Easier: Focus on one simple chain with two steps. | Harder: Include 'wasted' energy in the chain (e.g., a light bulb converts some energy to heat instead of light) and discuss efficiency."
+    },
+    {
+      title:"Sound Energy and Vibrations",
+      objective:"Demonstrate that sound is produced by vibrations and that sound energy travels through materials (solids, liquids, gases).",
+      warmup:"Place your hand on your throat and hum. Feel the vibrations. Discuss: 'What is making that buzzing feeling?'",
+      mainActivity:"Set up three sound stations. Station 1: Stretch plastic wrap tightly over a bowl, sprinkle salt on top, then hold a speaker or bang a pot nearby — the salt bounces from sound vibrations. Station 2: Tie a string to a metal spoon, wrap the string ends around your index fingers, press your fingers against your ears, and swing the spoon into a table edge — the sound travels through the string (a solid) to your ears. Station 3: Fill a glass with water, tap it with a spoon, then drink half and tap again — compare the pitch.",
+      game:"Sound Telephone: Make a classic tin-can phone with two tin cans and a taut string between them. Whisper into one can while the other person listens. Discuss how the string carries the vibrations.",
+      homeConnection:"At bedtime, press your ear against a wall or headboard and have someone walk in another room. The sound travels through the solid wall better than through the air!",
+      assessment:"Child can explain that sound is caused by vibrations, and can demonstrate that sound travels through solids (string, wall) and air.",
+      differentiation:"Easier: Focus on feeling vibrations and making loud/soft sounds. | Harder: Discuss how sound travels faster through solids than through air because molecules are closer together."
+    }
+  ],
+  project:'Build a "Rube Goldberg Machine" with at least 3 energy transfers (e.g., a marble rolls down a ramp, knocks over dominoes, which push a toy car). Diagram the energy transformations on paper.',
+  materials:['Marbles and golf balls','Cardboard for ramps','Plastic cups','Ruler/measuring tape','Plastic wrap and bowl','Salt','Tin cans and string','Metal spoon and string']
+},
+'October':{
+  icon:'fa-plug',
+  color:'from-blue-400 to-cyan-500',
+  focus:'Electricity & Magnetism (4-PS3.B/C)',
+  skills:['Static electricity','Simple circuits','Conductors/insulators','Electromagnets'],
+  weeks:[
+    {
+      title:"Static Electricity Lab",
+      objective:"Demonstrate static electricity by transferring electrons between objects and explain that like charges repel and opposite charges attract.",
+      warmup:"Rub a balloon on your hair or a wool sweater for 30 seconds. Hold it near small pieces of torn paper. Watch the paper jump! Discuss what invisible force is pulling them.",
+      mainActivity:"Set up four static electricity experiments. 1) Balloon and paper: Rub balloon on wool, hold over paper bits. 2) Balloon and water: Rub balloon, hold near a thin stream of running water from the faucet — the water bends! 3) Comb and pepper: Comb your hair vigorously, then hold the comb over a mix of salt and pepper on a plate — the pepper jumps up first. 4) Bubble chase: Rub the balloon, then try to make a soap bubble follow the balloon through the air without touching it. Record observations for each.",
+      game:"Static Race: Rub two balloons on wool. Place them on a smooth table and try to make them roll toward each other using only the invisible static force. Time how long the charge lasts before they stop attracting.",
+      homeConnection:"When doing laundry, pull a synthetic shirt from the dryer and notice the static cling. Discuss how the dryer rubs fabrics together, transferring electrons.",
+      assessment:"Child can explain that rubbing objects transfers tiny particles called electrons, creating a static charge that can attract lightweight objects.",
+      differentiation:"Easier: Focus on the balloon and paper experiment only. | Harder: Explain that electrons have a negative charge, and when an object gains extra electrons it becomes negative and attracts positive objects."
+    },
+    {
+      title:"Building Simple Circuits",
+      objective:"Build a complete series circuit using a battery, wire, and a small light bulb, and understand that electricity needs a closed loop to flow.",
+      warmup:"Show a flashlight. Turn it on and off. Ask: 'What do you think is happening inside to make the light turn on?' Open the flashlight and examine the batteries and the metal contact strip.",
+      mainActivity:"Provide one AA battery, two pieces of insulated copper wire (strip the ends with scissors to expose bare copper), and one small light bulb in a socket (or a 3V LED). Help your child connect the battery's positive terminal to one wire, attach it to the bulb, connect the second wire from the other bulb terminal back to the battery's negative terminal. The bulb lights up! Then remove one wire — the bulb goes out. Discuss: electricity needs a complete loop (circuit). Draw the circuit on paper with symbols for battery and bulb. Safety note: use only AA batteries (1.5V); never use wall outlets.",
+      game:"Human Circuit: Hold hands in a circle of 3+ people. One person holds one wire end from a battery. The last person holds the other wire end. When everyone is connected, a small buzz toy in the middle activates. Break the chain and it stops!",
+      homeConnection:"Look around the house for things that plug into the wall. Explain that wires inside the walls carry electricity in a circuit from the power plant all the way to the lamp.",
+      assessment:"Child can independently build a working circuit and explain that breaking the loop stops the flow of electricity.",
+      differentiation:"Easier: Use a battery holder with pre-attached wires and snap connectors. | Harder: Build a parallel circuit with two bulbs — ask what happens when you unscrew one bulb."
+    },
+    {
+      title:"Conductors and Insulators Testing",
+      objective:"Test various materials to classify them as electrical conductors or insulators and identify patterns in which materials conduct.",
+      warmup:"Look at a power cord. Ask: 'Why is the outside made of rubber but the inside is metal?' Discuss that some materials let electricity through and others block it.",
+      mainActivity:"Set up a simple circuit (battery + bulb + two wires). Disconnect one wire and insert different materials between the gap: a metal paperclip, a plastic spoon, a pencil (wood and graphite), a rubber band, a coin, a piece of aluminum foil, a drinking glass, salt water in a cup with the wire ends dipped in. Create a two-column chart: Conductors (bulb lit) and Insulators (bulb stayed dark). Look for patterns — what do the conductors have in common?",
+      game:"Conductor Relay Race: Place 10 objects in a line. Child tests each one in the circuit, sorts it into the conductor or insulator pile, and tags the next person to continue. First team to correctly sort all items wins.",
+      homeConnection:"Look at the plugs on appliances in the kitchen. Identify the metal prongs (conductors) and the rubber or plastic grip (insulator). Discuss why this is important for safety.",
+      assessment:"Child can correctly classify 8 out of 10 tested materials as conductor or insulator and state that metals are generally good conductors.",
+      differentiation:"Easier: Test only obvious materials (metal paperclip vs. plastic spoon). | Harder: Test a graphite pencil — it conducts weakly. Discuss why some conductors work better than others."
+    },
+    {
+      title:"Building an Electromagnet",
+      objective:"Construct an electromagnet by wrapping wire around a nail and connecting it to a battery, and investigate factors that affect its strength.",
+      warmup:"Show a regular magnet sticking to the fridge. Ask: 'What if we could turn a magnet on and off whenever we wanted?'",
+      mainActivity:"Wrap 50 turns of insulated copper wire tightly around a large iron nail, leaving both ends free. Strip the wire ends. Connect one end to the positive terminal of a D-battery and the other to the negative terminal. Test how many paperclips the nail can pick up. Then increase the wire wraps to 100 and test again. Record results. Disconnect the battery — the paperclips fall off! The electromagnet only works when electricity flows. Safety note: the wire may get warm after 30 seconds — disconnect to cool. Never connect wire directly across battery terminals without a load.",
+      game:"Electromagnet Fishing: Use the electromagnet to fish for paperclip 'fish' in a bowl. Compete to see how many you can catch in 30 seconds with 50 wraps vs. 100 wraps.",
+      homeConnection:"Look at a doorbell or a speaker. Explain that both use electromagnets inside. The buzzing in a doorbell is the electromagnet turning on and off rapidly, pulling a metal striker.",
+      assessment:"Child can build a working electromagnet, explain that it only works when connected to a battery, and state that more wire wraps make it stronger.",
+      differentiation:"Easier: Wrap only 30 turns and focus on the on/off aspect. | Harder: Test whether the electromagnet is stronger with two batteries connected in series, and discuss why."
+    }
+  ],
+  project:'Design and build a "Conductivity Tester" gadget: mount a battery, bulb, and two probe wires in a small cardboard box. Decorate it and use it to test 20 household materials. Create a poster of results.',
+  materials:['AA and D batteries','Insulated copper wire','Small light bulbs and sockets','Balloons','Large iron nail','Paperclips','Various test materials (coins, foil, plastic, rubber, wood)','Cardboard box for project']
+},
+'November':{
+  icon:'fa-wave-square',
+  color:'from-purple-400 to-pink-500',
+  focus:'Waves & Information Transfer (4-PS4)',
+  skills:['Wave properties','Sound waves','Light behavior','Patterns in waves'],
+  weeks:[
+    {
+      title:"Wave Properties: Amplitude, Wavelength, Frequency",
+      objective:"Describe waves using the terms amplitude (height), wavelength (distance between peaks), and frequency (how often waves pass a point) and demonstrate each with a slinky.",
+      warmup:"Drop a pebble into a large bowl of water and watch the ripples. Count how many ripples reach the edge in 5 seconds — that's related to frequency.",
+      mainActivity:"Stretch a slinky between two people on a smooth floor. Practice two types of waves: Transverse — one person wiggles their end side to side; the wave moves perpendicular. Longitudinal — one person pushes and pulls their end; the wave moves in the same direction as the push. Use a ruler to measure wavelength (distance between two peaks) and compare amplitude when you wiggle the slinky gently vs. wildly. Introduce vocabulary: high amplitude = more energy, high frequency = waves closer together.",
+      game:"Wave Race: Two teams each have a slinky. The parent calls out 'high frequency!' or 'big amplitude!' and the team must create the correct wave. First team to demonstrate correctly earns a point.",
+      homeConnection:"Look at a guitar or piano being played. Pluck a string gently (small amplitude = quiet) then hard (big amplitude = loud). Then watch a string vibrate fast (high frequency = high pitch) vs. slow (low frequency = low pitch).",
+      assessment:"Child can correctly point out amplitude and wavelength on a wave drawing and explain that higher amplitude carries more energy.",
+      differentiation:"Easier: Focus on amplitude only (big waves vs. small waves). | Harder: Introduce the relationship formula: frequency × wavelength = wave speed, and discuss how all sound waves travel at the same speed in air."
+    },
+    {
+      title:"Sound Waves: Pitch and Volume",
+      objective:"Investigate how the speed of vibrations (frequency) affects pitch and how the size of vibrations (amplitude) affects volume.",
+      warmup:"Hum a low note, then a high note. Place your hand on your throat — can you feel the vibrations change speed?",
+      mainActivity:"Set up three pitch experiments. 1) Ruler vibration: Clamp a ruler to the edge of a table so most of it hangs off. Pluck it and listen to the pitch. Slide more ruler onto the table (shorter vibrating part) and pluck again — the pitch is higher. 2) Water xylophone: Fill 5 identical glasses with different water levels (full, 3/4, 1/2, 1/4, empty). Tap each with a metal spoon. The more water, the lower the pitch because there's more mass to vibrate. 3) Rubber band guitar: Stretch rubber bands of different thicknesses around a shoebox and pluck each. Thicker bands vibrate slower (lower pitch).",
+      game:"Name That Pitch: Play two notes on the water xylophone. The child identifies which is higher and which is lower. Make it harder by playing notes farther apart in the sequence.",
+      homeConnection:"Listen to a fire truck siren as it drives past. Notice how the pitch drops as it goes by — this is called the Doppler Effect. The sound waves are compressed in front and stretched behind.",
+      assessment:"Child can explain that faster vibrations create higher pitch and larger vibrations create louder sound, and demonstrate this with the ruler experiment.",
+      differentiation:"Easier: Focus on loud vs. quiet (amplitude) only. | Harder: Discuss how human ears can hear roughly 20 to 20,000 vibrations per second (Hertz)."
+    },
+    {
+      title:"Light: Reflection, Refraction, and Shadows",
+      objective:"Demonstrate that light travels in straight lines, bounces off surfaces (reflection), bends when passing through different materials (refraction), and is blocked by opaque objects (shadows).",
+      warmup:"Shine a flashlight at a mirror on the table. Where does the light beam go? Trace the beam's path with your finger.",
+      mainActivity:"Three-station investigation. Station 1 (Reflection): Shine a flashlight at a mirror at different angles. Use chalk dust or a spray bottle to make the beam visible. Trace the incoming and outgoing beam — the angle of the reflected beam equals the angle of the incoming beam. Station 2 (Refraction): Put a pencil in a glass of water and observe how it appears to bend at the water line. Place a coin at the bottom of an empty bowl, step back until the coin is just hidden behind the rim, then pour water in — the coin reappears because light bends! Station 3 (Shadows): Use a flashlight and a small toy. Move the flashlight closer and farther. The shadow gets larger when the light is closer because the light rays spread out more.",
+      game:"Laser Maze: Use a flashlight and 3 small mirrors. Try to bounce the light beam around an obstacle to hit a target on the wall. Plan the path first, then test it.",
+      homeConnection:"Look at a straw in a glass of water at dinner. It looks broken at the water line because light bends when it moves from water to air — that's refraction!",
+      assessment:"Child can demonstrate reflection (mirror bounces light), refraction (pencil appears bent in water), and explain that shadows form when light is blocked.",
+      differentiation:"Easier: Focus on reflection and shadows only. | Harder: Introduce the term 'medium' and explain that light bends because it changes speed when entering a new medium like water or glass."
+    },
+    {
+      title:"Patterns in Waves and Information Transfer",
+      objective:"Understand that patterns in waves can carry information and that humans use patterns to code and transmit messages.",
+      warmup:"Flash the room lights on and off in a simple pattern: short-short-long. Ask: 'Could you send a message just by turning lights on and off?'",
+      mainActivity:"Teach your child Morse Code for S-O-S (··· ——— ···). Use a flashlight to send the signal across a darkened room. Then create your own secret code: assign a short flash = A, long flash = B, two short = C, etc. Write a short message in the code and have your child decode it. Then, stretch a long piece of string between two rooms — tie one end to a tin can and the other end to another can (or just tap on the string). Discuss how vibration patterns carry information through the string, just like fiber-optic cables carry light patterns for internet data.",
+      game:"Code Breaker Relay: Write a secret 5-word message in Morse code on paper. The child decodes it and then sends a reply using the flashlight. Time the exchange.",
+      homeConnection:"Explain that when you make a phone call, your voice creates sound wave patterns that get converted into electrical patterns in the wire, then back into sound at the other end. The information travels through patterns!",
+      assessment:"Child can send and decode a simple 3-letter message using Morse code and explain that patterns in waves carry information.",
+      differentiation:"Easier: Use only 3 letters (S, O, S) and practice sending them. | Harder: Research how binary code (0s and 1s) is used by computers to represent all information, and try writing your name in binary."
+    }
+  ],
+  project:'Build a "String Telephone Network" connecting 3 rooms using string and tin cans. Create a Morse code flashlight signaling system. Present both to the family as "Ways Humans Send Information Using Waves."',
+  materials:['Slinky','Ruler','Glasses and water','Rubber bands','Shoebox','Flashlight','Small mirrors','Tin cans and string','Bowl and coin']
+},
+'December':{
+  icon:'fa-mountain',
+  color:'from-amber-400 to-red-500',
+  focus:"Earth's Surface Features (4-ESS1/2)",
+  skills:['Weathering & erosion','Rock cycle','Fossils','Landforms & maps'],
+  weeks:[
+    {
+      title:"Weathering and Erosion",
+      objective:"Demonstrate how water, wind, and ice break down rocks (weathering) and move the pieces elsewhere (erosion) through hands-on models.",
+      warmup:"Look at a photo of the Grand Canyon. Ask: 'What force on Earth could carve such a massive hole?' Hint: it took millions of years and a river.",
+      mainActivity:"Three weathering/erosion stations. Station 1 (Water erosion): Build a dirt/sand hill in a large tray. Use a watering can to simulate rain. Observe how water carves channels and carries dirt to the bottom. Station 2 (Wind erosion): Place sand in a baking tray. Use a straw to blow across the sand (gently!). Watch the sand shift and form dunes. Station 3 (Ice weathering): Soak a chalk in water for 5 minutes, then place it in the freezer overnight. The next day, examine any cracks — water expands when it freezes, splitting rocks in nature. Discuss the difference: weathering breaks rocks in place, erosion moves the pieces.",
+      game:"Erosion Race: Build two identical dirt hills in side-by-side trays. One person uses the watering can (water erosion), the other uses a straw (wind erosion). Which erodes the hill faster?",
+      homeConnection:"After the next rainstorm, look at the sides of a driveway or a dirt path. Notice the small channels carved by running water — that's erosion happening right now!",
+      assessment:"Child can distinguish between weathering (breaking down) and erosion (moving) and give a real-world example of each.",
+      differentiation:"Easier: Focus on water erosion only using the tray model. | Harder: Introduce deposition — when the eroded material settles somewhere new, like a river delta."
+    },
+    {
+      title:"The Rock Cycle and Three Rock Types",
+      objective:"Identify the three types of rocks (igneous, sedimentary, metamorphic) and understand how they transform into each other through the rock cycle.",
+      warmup:"Collect 5-6 rocks from your yard. Look at them closely — are they layered, bubbly, shiny, or streaked with crystals? Every rock tells a story of how it formed.",
+      mainActivity:"Model the rock cycle using crayons. 1) Shave crayons into colorful piles (sediment). 2) Press the shavings between wax paper under heavy books for 2 minutes — this is sedimentary rock (layers visible). 3) Rub the sedimentary 'rock' between your hands with firm pressure and warmth — this simulates metamorphic rock (heat + pressure changes it). 4) Place the metamorphic rock in a foil cup and have a parent melt it with a hair dryer on high — let it cool. This is igneous rock (melted and re-solidified). Draw the rock cycle with arrows: magma → igneous → weathering → sediment → sedimentary → heat/pressure → metamorphic → melting → magma.",
+      game:"Rock Cycle Relay: Place labeled cards (Igneous, Sedimentary, Metamorphic) at one end of the room. Call out a process ('This rock was heated and squeezed!') and the child runs to the correct card. First to 5 correct answers wins.",
+      homeConnection:"Look at the materials in your house: granite countertops (igneous), sandstone garden wall (sedimentary), marble bathroom tile (metamorphic). Identify them together.",
+      assessment:"Child can name all three rock types, describe how each forms, and identify at least one example of each.",
+      differentiation:"Easier: Focus on naming the three types and one way each forms. | Harder: Research specific examples: obsidian (igneous), limestone (sedimentary), slate (metamorphic) and explain how each formed in nature."
+    },
+    {
+      title:"Fossils and Earth's History",
+      objective:"Understand how fossils form and explain what fossils tell us about organisms and environments that existed long ago.",
+      warmup:"Show a picture of a dinosaur skeleton. Ask: 'How do we know these animals existed millions of years ago if no human was there to see them?'",
+      mainActivity:"Make four types of fossils. 1) Mold fossil: Press a small plastic toy (dinosaur, shell) into a ball of playdough, then remove it — the impression left is a mold. 2) Cast fossil: Pour plaster of Paris (or a mix of flour and water) into the mold and let it harden — pop it out to see the cast. 3) Trace fossil: Make footprints in playdough with different toy animals. 4) Preserved fossil: Press leaves or small flowers into a slab of air-dry clay. Discuss how real fossils take millions of years to form when sediment covers dead organisms and minerals replace the bone material.",
+      game:"Fossil Excavation: Bury small plastic dinosaurs or shells in a container of hardened plaster or packed sand. Give the child a paintbrush, toothpick, and small spoon to 'excavate' the fossils carefully. Document what they find.",
+      homeConnection:"If you live near any fossil beds, plan a visit. Alternatively, research what your state's official fossil is and draw it.",
+      assessment:"Child can explain how at least two types of fossils form and describe what information fossils give us about past life on Earth.",
+      differentiation:"Easier: Make only mold and cast fossils with playdough. | Harder: Research the concept of index fossils — fossils of organisms that lived during a specific, short time period, used to date rock layers."
+    },
+    {
+      title:"Landforms and Topographic Maps",
+      objective:"Identify common landforms (mountains, valleys, plains, plateaus, canyons) and understand how topographic maps represent 3D elevation on a 2D surface.",
+      warmup:"Show photos of a mountain, a valley, a canyon, and a flat plain. Name each landform and discuss what force might have shaped it.",
+      mainActivity:"Build a 3D clay mountain on a paper plate. Slice it horizontally with dental floss into 4-5 layers at even heights. Trace each layer's outline onto paper, stacking the tracings from bottom to top. This creates a topographic map! The circles close together on the map mean steep slopes; circles far apart mean gentle slopes. Then flip through a real topographic map (print one from the USGS website) and identify the contour lines. Match the patterns to actual landforms. Create a legend with symbols for mountain, valley, river, and plain.",
+      game:"Landform Model Match: Show a topographic map on one side and three 3D landform photos on the other. Child must match which map goes with which landform based on the contour line shapes.",
+      homeConnection:"Use Google Earth or a terrain view on a map app to explore the landforms near your home. Is your area flat, hilly, or mountainous? Find the nearest river valley.",
+      assessment:"Child can identify four landforms by name and explain that close contour lines on a topographic map mean steep terrain.",
+      differentiation:"Easier: Focus on naming and describing 4 landforms with photos. | Harder: Calculate the actual elevation change between two contour lines on a real topographic map using the map's scale and contour interval."
+    }
+  ],
+  project:'Create a 3D landscape diorama in a shoebox showing at least 4 landforms, with a hand-drawn topographic map of the same landscape on an index card beside it.',
+  materials:['Sand/dirt and large tray','Watering can','Chalk','Crayons and wax paper','Playdough','Plaster of Paris or flour','Air-dry clay','Dental floss and paper plates']
+},
+'January':{
+  icon:'fa-tint',
+  color:'from-cyan-400 to-blue-500',
+  focus:"Earth's Water & Atmosphere (4-ESS2)",
+  skills:['Water cycle','Groundwater','Oceans','Weather & climate'],
+  weeks:[
+    {
+      title:"The Water Cycle in Detail",
+      objective:"Model and explain the four stages of the water cycle: evaporation, condensation, precipitation, and collection, using a hands-on terrarium.",
+      warmup:"Hold a cold glass of ice water on a warm day. Where did the water drops on the outside come from? (The water didn't leak — it condensed from the air!)",
+      mainActivity:"Build a mini water cycle terrarium. Add 1 inch of gravel and 2 inches of potting soil to a clear 2-liter bottle (cut the top off). Plant a small plant. Water it lightly. Tape plastic wrap tightly over the top with a rubber band. Place it in a sunny window. Over the next week, observe: water evaporates from the soil (invisible), condenses on the plastic wrap (visible water drops), 'rains' back down when drops get heavy (precipitation), and collects in the gravel (collection). Draw and label a water cycle diagram each day.",
+      game:"Water Cycle Tag: One person is the Sun (tags people to make them 'evaporate' — they run to a designated cloud area). In the cloud, when 3 people gather, they 'precipitate' by running back down. The cycle repeats!",
+      homeConnection:"Observe clouds after a rainy day. When the sun comes out, watch the puddles slowly disappear — that's evaporation happening in real time.",
+      assessment:"Child can name all four stages of the water cycle in order and explain what happens at each stage, using their terrarium as evidence.",
+      differentiation:"Easier: Focus on evaporation and condensation only using a simple steaming kettle demonstration (parent holds kettle, child watches from safe distance). | Harder: Introduce transpiration — plants release water vapor through their leaves, which is part of evaporation in the cycle."
+    },
+    {
+      title:"Groundwater, Aquifers, and Wells",
+      objective:"Model how water moves underground through layers of earth and how wells access this groundwater.",
+      warmup:"Ask: 'When it rains, where does the water go that doesn't run into rivers?' Pour a cup of water onto a garden bed and watch it soak into the ground.",
+      mainActivity:"Build an aquifer model in a clear plastic cup. Layer: gravel at the bottom (represents rock with spaces), then a layer of sand, then a thin layer of modeling clay (represents an impermeable rock layer), then more sand on top. Slowly pour colored water (use blue food coloring) over the top and watch it seep through the sand. It pools above the clay layer — this is groundwater trapped in an aquifer! Push a drinking straw (well) through the clay layer into the gravel. Use a small pump or suck gently (with a second straw connected) to 'pump' water out of the aquifer. Discuss how real communities depend on aquifers for drinking water.",
+      game:"Well Pump Competition: Two identical aquifer models. Each player pumps water from their aquifer into a measuring cup. Who can extract more water in 30 seconds? Discuss what happens when you pump too fast (the well runs dry).",
+      homeConnection:"Research where your town's drinking water comes from — a reservoir, a river, or an underground aquifer. If you have a well, discuss how it works.",
+      assessment:"Child can explain that groundwater collects in underground layers called aquifers and that wells are drilled to pump this water to the surface.",
+      differentiation:"Easier: Use only gravel and water to show that water fills spaces between rocks underground. | Harder: Discuss the concept of the water table — the level below which the ground is saturated with water — and how droughts lower it."
+    },
+    {
+      title:"Oceans, Salinity, and Currents",
+      objective:"Understand that ocean water is salty (salinity), that ocean currents are driven by temperature and wind, and that currents affect climate.",
+      warmup:"Taste a tiny drop of ocean water (or make salt water: 1 tsp salt in a cup of water). Discuss why the ocean is salty but rivers and lakes are not.",
+      mainActivity:"Two experiments. 1) Salinity and density: Fill two cups with warm water. Add 3 tablespoons of salt to one cup and stir until dissolved (blue food coloring). Leave the other plain (red food coloring). Use a dropper to gently add the salty blue water to the top of the plain red water. The salty water sinks below the fresh water because it's denser! This is how differences in salinity drive deep ocean currents. 2) Temperature and currents: Fill a large baking dish with room-temperature water. Place a cup of hot water (red) at one end and a cup of ice water (blue) at the other under the dish. Add a few drops of food coloring above each cup. Watch the red (warm) water rise and spread across the top, while the blue (cold) water sinks and flows along the bottom.",
+      game:"Current Relay: Fill a long under-bed storage bin with water. Two teams each place a small boat (cork) at one end. One team blows (wind current) and the other uses a turkey baster to create underwater currents. First boat to the other end wins.",
+      homeConnection:"Look at a world map showing ocean currents. Notice how Western Europe (same latitude as Canada) is much warmer because the Gulf Stream carries warm water from the Gulf of Mexico across the Atlantic.",
+      assessment:"Child can explain that ocean water is salty, that warm water rises and cold water sinks (creating currents), and that saltwater is denser than freshwater.",
+      differentiation:"Easier: Focus on the salinity and density experiment only. | Harder: Research thermohaline circulation — the global 'conveyor belt' of deep ocean currents driven by temperature and salinity differences."
+    },
+    {
+      title:"Weather vs. Climate, Clouds, and Forecasting",
+      objective:"Distinguish between weather (short-term atmospheric conditions) and climate (long-term patterns), identify cloud types, and practice basic weather forecasting.",
+      warmup:"Ask: 'Is it usually hot in July where we live? That's climate. Was it hot yesterday specifically? That's weather.' Discuss the difference.",
+      mainActivity:"Cloud identification: Go outside and observe the clouds. Use a cloud chart to identify three main types: Cumulus (fluffy white cotton balls — fair weather), Stratus (flat gray sheets — overcast, may drizzle), Cirrus (thin wispy feathers high up — fair but change coming). Make a cloud journal: draw today's clouds and predict tomorrow's weather. Then, practice basic forecasting: check a thermometer, feel the wind direction, observe the clouds, and look at the barometric pressure on a weather app. Make a 3-day forecast and check accuracy.",
+      game:"Cloud Bingo: Create bingo cards with cloud types and weather conditions. Call out descriptions ('these clouds look like mashed potatoes — cumulus!') and mark your card.",
+      homeConnection:"Watch the local weather forecast together every evening for one week. Compare the meteorologist's predictions with what actually happens the next day. Track accuracy.",
+      assessment:"Child can correctly identify three cloud types, distinguish weather from climate, and make a reasonable next-day weather prediction based on observations.",
+      differentiation:"Easier: Focus on cumulus vs. stratus clouds only. | Harder: Research how barometers measure air pressure and how falling pressure often means a storm is approaching."
+    }
+  ],
+  project:'Build a functioning weather station with a rain gauge (cut plastic bottle), wind vane (pencil, pin, straw, paper), and thermometer. Record weather data for two weeks and graph the results.',
+  materials:['Clear 2-liter bottle','Gravel, sand, clay','Food coloring','Clear cups and droppers','Baking dish','Cloud chart (printed)','Thermometer','Plastic bottle for rain gauge']
+},
+'February':{
+  icon:'fa-seedling',
+  color:'from-green-400 to-emerald-500',
+  focus:'Plant Structures & Functions (4-LS1)',
+  skills:['Plant anatomy','Photosynthesis','Reproduction','Adaptations'],
+  weeks:[
+    {
+      title:"Plant Structures: Roots, Stems, Leaves, Flowers",
+      objective:"Dissect a flower and identify its major structures, explaining the function of roots, stems, leaves, and flowers.",
+      warmup:"Go outside and carefully pull up a small weed with roots intact. Lay it on paper and label the parts you can see: roots, stem, leaves, and any flower buds.",
+      mainActivity:"Flower dissection: Get a large flower like a lily, tulip, or alstroemeria from the grocery store. Tape a piece of paper to the table and label sections: Petal, Sepal, Stamen (anther + filament), Pistil (stigma + style + ovary). Starting from the outside, peel off the sepals (green leaf-like parts at the base) and tape them down. Then remove the petals and tape them. Next, pull off the stamens — tap the anther on black paper to see the yellow pollen dust. Finally, find the pistil in the center. Use a magnifying glass to examine each part. Draw and label a diagram of the complete flower.",
+      game:"Plant Parts Relay: Place flashcards of plant parts at one end of the room. Call out a function ('Holds the plant in the ground!') and the child runs to grab the correct card ('Roots!').",
+      homeConnection:"When preparing dinner vegetables, identify which part you're eating: carrots = roots, celery = stems, lettuce = leaves, broccoli = flower buds, peas = seeds.",
+      assessment:"Child can correctly label all major flower parts after dissection and state the function of roots, stems, leaves, and flowers.",
+      differentiation:"Easier: Focus on the four basic parts (root, stem, leaf, flower) without the detailed flower dissection. | Harder: Identify male parts (stamens) vs. female parts (pistil) and discuss why some flowers have both while others have only one."
+    },
+    {
+      title:"Photosynthesis: How Plants Make Food",
+      objective:"Explain the process of photosynthesis — plants use sunlight, water, and carbon dioxide to make sugar (food) and release oxygen.",
+      warmup:"Take a deep breath in. You just breathed in oxygen that plants made! Breathe out — you just gave plants carbon dioxide. It's a partnership.",
+      mainActivity:"Demonstrate photosynthesis in action. Place a healthy leafy plant (like a philodendron or pothos) in a clear glass of water. Position a desk lamp shining directly on one of the submerged leaves. After 30-60 minutes, look closely at the leaf underwater — you should see tiny bubbles forming on the leaf surface. These are oxygen bubbles! The plant is using light energy to split water molecules, combining the hydrogen with carbon dioxide to make sugar, and releasing the leftover oxygen. Write the photosynthesis equation in simple terms: Sunlight + Water + Carbon Dioxide → Sugar + Oxygen. Cover the plant with a dark box for comparison — no bubbles form without light.",
+      game:"Photosynthesis Relay: Three bags labeled 'Sunlight,' 'Water,' and 'CO2' are at one end. A 'Sugar + Oxygen' basket is at the other. The child must collect all three ingredient bags and run them to the basket, demonstrating that all three are needed together.",
+      homeConnection:"Walk through a park or forest on a sunny day. Notice how much cooler it is under the trees — the trees are absorbing light energy for photosynthesis instead of letting it heat the ground.",
+      assessment:"Child can state the three ingredients plants need for photosynthesis and the two products they make, and can explain why plants are essential for oxygen.",
+      differentiation:"Easier: Focus on the simple idea that plants use sunlight to make food and release oxygen. | Harder: Write the chemical equation: 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂ and explain what each number represents."
+    },
+    {
+      title:"Plant Reproduction: Seeds, Pollination, Dispersal",
+      objective:"Trace the process of plant reproduction from pollination to seed formation to seed dispersal, and demonstrate different dispersal methods.",
+      warmup:"Cut open an apple or orange. Find the seeds. Ask: 'How did this fruit get here? Why does it have seeds inside?'",
+      mainActivity:"Three-part investigation. 1) Pollination simulation: Use a cotton swab to 'be a bee.' Dip it in flour (representing pollen) on one paper flower. Fly to a second paper flower and touch the swab to it — pollen transferred! 2) Seed dissection: Soak a lima bean in water overnight. The next day, peel off the outer seed coat. Gently split the bean open to find the tiny baby plant (embryo) inside, along with the stored food (cotyledon). Draw what you see under a magnifying glass. 3) Seed dispersal challenge: Test four methods. Drop a maple seed (helicopter) from height — wind dispersal. Place a seed in fur/felt — animal dispersal (sticks to fur). Float a coconut or seed in water — water dispersal. Flick a seed from a touch-me-not plant or a dried pod — explosive dispersal.",
+      game:"Seed Design Challenge: Using paper, cotton balls, tape, and pipe cleaners, design a seed that can travel as far as possible when dropped from a height. Test designs by dropping them in front of a fan and measuring distance.",
+      homeConnection:"Go on a seed hunt walk. Collect seeds from trees, weeds, and flowers. Try to figure out how each one disperses based on its shape (wings = wind, hooks = animal, floaty = water).",
+      assessment:"Child can explain the sequence pollination → seed formation → dispersal and demonstrate at least two methods of seed dispersal with examples.",
+      differentiation:"Easier: Focus on the basic concept of seeds growing into new plants and identify one dispersal method. | Harder: Discuss the role of coevolution between flowers and their specific pollinators (e.g., hummingbirds and red tubular flowers)."
+    },
+    {
+      title:"Plant Adaptations to Different Environments",
+      objective:"Identify how plants are adapted to survive in specific environments (desert, rainforest, aquatic) by examining their structural features.",
+      warmup:"Show pictures of a cactus and a water lily. Ask: 'Why does the cactus have needles instead of wide leaves? Why does the water lily have flat, floating leaves?'",
+      mainActivity:"Examine three plant types and their adaptations. 1) Desert plant (cactus/succulent): Thick, waxy stem stores water. Spines instead of leaves reduce water loss and protect from animals. Shallow, wide roots collect rain quickly. 2) Rainforest plant (if available, a bromeliad or pothos): Drip-tip leaves channel water off quickly to prevent rot. Broad leaves capture maximum sunlight in the dark understory. Aerial roots absorb moisture from the humid air. 3) Aquatic plant (if available, water lettuce or anacharis from a pet store): Air-filled sacs in leaves keep them floating. No strong roots needed since water supports the plant. Create an 'Adaptations Chart' comparing the three plants: How do they store water? How do they get sunlight? How do they protect themselves?",
+      game:"Adaptation Auction: Each player gets 100 'evolution points.' The auctioneer holds up environmental challenges ('You live in a desert with no rain for 6 months!'). Players bid on adaptations (thick stem, deep roots, waxy coating) to survive. The best-adapted plant wins.",
+      homeConnection:"Visit a garden center or nursery. Find the cactus/succulent section and the tropical plant section. Observe the differences in leaf thickness, size, and shape and discuss why.",
+      assessment:"Child can describe at least two specific adaptations for each of the three environments (desert, rainforest, aquatic) and explain how each adaptation helps the plant survive.",
+      differentiation:"Easier: Compare only a cactus and a regular houseplant. | Harder: Research carnivorous plants (Venus flytrap, pitcher plant) and explain how they adapted to nutrient-poor soil by catching insects."
+    }
+  ],
+  project:'Design an imaginary plant for an extreme environment (desert, underwater, or mountaintop). Draw it with labeled adaptations and write a paragraph explaining how each feature helps it survive. Present to the family.',
+  materials:['Store-bought flowers (lily or tulip)','Tape and paper for dissection','Cotton swabs and flour','Lima beans for soaking','Magnifying glass','Succulent/cactus and tropical plant','Paper and markers for design']
+},
+'March':{
+  icon:'fa-paw',
+  color:'from-orange-400 to-red-500',
+  focus:'Animal Structures & Senses (4-LS1)',
+  skills:['Sensory organs','Internal structures','Adaptations','Comparing animal groups'],
+  weeks:[
+    {
+      title:"Animal Sensory Organs",
+      objective:"Compare how different animals sense their environment using specialized sensory organs (eyes, ears, nose, tongue, skin/scales) and understand that different animals process information differently.",
+      warmup:"Close your eyes. Have someone hold different foods near your nose. Can you identify them by smell alone? Now plug your nose and taste a piece of apple vs. potato — they taste the same without smell!",
+      mainActivity:"Create a 'Sensory Superpowers' comparison chart for five animals. Research (using books or internet) each animal's strongest sense. 1) Eagle: can see a rabbit from 2 miles away (incredible eyesight). 2) Bloodhound: can follow a scent trail that's days old (powerful smell). 3) Bat: uses echolocation to 'see' with sound in total darkness. 4) Catfish: taste buds cover their entire body (taste by touch). 5) Snake: 'hears' vibrations through the ground via jaw bones and 'smells' with its tongue. For each, discuss how this sense helps the animal survive (find food, avoid predators). Draw the animal and its sensory organ.",
+      game:"Sensory Scavenger Hunt: Put on a blindfold. Your parent places 10 objects in front of you. Use only touch, smell, and hearing (shake it, feel its texture, sniff it) to identify all 10 items. Score 1 point per correct identification.",
+      homeConnection:"Watch a dog or cat closely for 10 minutes. Notice how often it moves its ears (hearing direction), sniffs the air or ground (smell), and uses whiskers (touch). Compare to how often you use each sense.",
+      assessment:"Child can describe at least three animal sensory adaptations and explain how each helps the animal survive in its environment.",
+      differentiation:"Easier: Focus on two animals with one special sense each. | Harder: Research how sharks use a special organ called the ampullae of Lorenzini to detect electrical fields from other animals' muscles — a sense humans don't have at all."
+    },
+    {
+      title:"Internal Structures: Skeleton, Muscles, and Organs",
+      objective:"Identify key internal structures in animals and understand how bones, muscles, and organs work together as systems.",
+      warmup:"Feel your forearm. The hard lumps are bones. The soft tissue on top is muscle. Your heart is an organ made of special muscle. Your body is a system of systems!",
+      mainActivity:"Build a model of the human arm's skeletal and muscular system. 1) Cut two cardboard strips (bones: upper arm and forearm). 2) Connect them with a brad fastener at the 'elbow' joint. 3) Cut a long balloon in half and staple each half above and below the joint (representing the bicep and tricep muscles). 4) Thread string through the balloon halves so that pulling one string bends the arm and pulling the other straightens it. Explain that muscles work in pairs: when the bicep contracts, the tricep relaxes. Then, draw and label a simple diagram of major organs inside the body: brain (controls everything), heart (pumps blood), lungs (breathe oxygen), stomach (digests food), and kidneys (filter blood).",
+      game:"Organ Relay: Place labeled organ cards at one end of the room and a body outline poster at the other. Run to grab an organ card, then run back and tape it in the correct location on the body outline. Fastest correct placement wins.",
+      homeConnection:"Next time you eat chicken, examine the bones carefully. Find the joint (where bones meet), the muscle (meat) attached to the bone, and the tendon (shiny white strip connecting muscle to bone).",
+      assessment:"Child can name five major internal organs and their functions, and explain that muscles work in pairs to move bones at joints.",
+      differentiation:"Easier: Focus on three major organs and their basic jobs (brain, heart, lungs). | Harder: Research how the skeletal system also produces blood cells in bone marrow and protects organs (rib cage protects heart and lungs)."
+    },
+    {
+      title:"Animal Adaptations for Survival",
+      objective:"Identify physical and behavioral adaptations that help animals survive in their environments, including camouflage, mimicry, hibernation, and migration.",
+      warmup:"Show a photo of a chameleon changing color, an arctic fox in white winter fur, and a monarch butterfly. Ask: 'Why do these animals look the way they do?'",
+      mainActivity:"Four adaptation stations. 1) Camouflage: Color 10 paper moths to match a specific surface in your home (e.g., brown for a cardboard box). Have a family member try to find them in 30 seconds. Record how many were found vs. missed. 2) Mimicry: Show pictures of a harmless king snake (red/black bands) next to a venomous coral snake (red/yellow bands). 'Copying' a dangerous animal is a survival trick! 3) Hibernation model: Fill a cup with Crisco (fat). Put a thermometer inside, wrap it in cotton balls (fur/insulation), and place it in the fridge. Do the same with an uninsulated cup. After 30 minutes, compare temperatures — fat and insulation trap body heat! 4) Migration: Use a world map to trace the Arctic Tern's migration from the Arctic to the Antarctic (44,000 miles!). Discuss why birds migrate (food, temperature).",
+      game:"Adaptation Pictionary: Draw an animal adaptation (without writing words) and have others guess which type it is: camouflage, mimicry, hibernation, or migration. Score 2 points for correct adaptation type and 1 bonus point for naming the animal.",
+      homeConnection:"Watch a nature documentary clip about animal adaptations together. Pause and discuss: 'What adaptation did that animal just use? How does it help?'",
+      assessment:"Child can define and give an example of four types of adaptations: camouflage, mimicry, hibernation, and migration.",
+      differentiation:"Easier: Focus on camouflage and hibernation only, which are the most intuitive. | Harder: Introduce structural vs. behavioral adaptations — structural are physical features (thick fur), behavioral are actions (migration, playing dead)."
+    },
+    {
+      title:"Comparing Structures Across Animal Groups",
+      objective:"Compare how vertebrate groups (mammals, birds, reptiles, amphibians, fish) solve similar survival problems with different body structures.",
+      warmup:"Name an animal from each group: mammal, bird, reptile, amphibian, fish. What do they all have in common? (They're all vertebrates — they have backbones.)",
+      mainActivity:"Create a comparison matrix on poster board. List five animal groups across the top and four survival needs down the side: How they breathe, How they stay warm, How they reproduce, Body covering. Research one animal per group and fill in the chart. Examples: Mammal (dog) — lungs, fur + warm-blooded, live birth + nurse young, hair/fur. Bird (eagle) — lungs, feathers + warm-blooded, lay eggs in nests, feathers. Reptile (snake) — lungs, cold-blooded (bask in sun), lay leathery eggs, scales. Amphibian (frog) — gills as tadpole then lungs, cold-blooded, lay jelly eggs in water, smooth moist skin. Fish (salmon) — gills, cold-blooded, lay eggs in water, scales. Discuss patterns: all but fish and amphibian larvae use lungs; only mammals and birds are warm-blooded.",
+      game:"Animal Sorting Challenge: Write 20 animal names on cards. Sort them into five vertebrate groups as fast as possible on a timer. Then check for accuracy. Discuss any that were tricky (whale = mammal, not fish! bat = mammal, not bird!).",
+      homeConnection:"Visit a pet store or zoo website and classify at least 10 animals you see into the five vertebrate groups based on their observable characteristics.",
+      assessment:"Child can classify an unfamiliar animal into the correct vertebrate group by examining its body covering, breathing method, and reproduction strategy.",
+      differentiation:"Easier: Compare only three groups (mammals, birds, fish) using obvious differences. | Harder: Add invertebrate groups (insects, arachnids, mollusks) and discuss that 97% of all animal species are invertebrates."
+    }
+  ],
+  project:'Create an "Animal Adaptations Encyclopedia" with 5 pages, each featuring one vertebrate group. Include a drawn diagram of a representative animal with labeled structures and a paragraph explaining how each structure helps it survive.',
+  materials:['Cardboard and brad fasteners','Balloons and string','Crayola/markers','Poster board','World map (printed)','Paper for moths','Crisco and cotton balls','Thermometer']
+},
+'April':{
+  icon:'fa-tools',
+  color:'from-yellow-400 to-green-500',
+  focus:'Engineering Design Process (3-5-ETS1)',
+  skills:['Problem definition','Brainstorming','Prototyping','Testing & improving'],
+  weeks:[
+    {
+      title:"Defining Engineering Problems",
+      objective:"Learn the first step of the Engineering Design Process: identifying a problem, defining criteria for success, and recognizing constraints (limits on materials, time, or budget).",
+      warmup:"Look around the room and find one thing that's annoying or could work better (e.g., 'My pencils keep rolling off the desk'). Congratulations — you just found an engineering problem!",
+      mainActivity:"Introduce the Engineering Design Process: Ask → Imagine → Plan → Create → Test → Improve. Practice with a real problem: 'Design a pencil holder that keeps 10 pencils from rolling off a desk. Criteria: must hold 10 pencils upright, must not tip over. Constraints: can only use recycled materials from the recycling bin, and you have 20 minutes.' Before building, the child must write down: 1) The Problem (in their own words), 2) Two criteria for success, 3) Two constraints. Then share their problem statement with you for feedback before moving on.",
+      game:"Problem Detective: Walk through the house and list 5 'engineering problems' — things that are broken, inconvenient, or could be improved. Write each on a sticky note with the location. Then pick the most important one to solve.",
+      homeConnection:"Ask an adult: 'What's something that frustrates you about our kitchen/bathroom/garage?' Their answer is a real engineering problem waiting to be solved!",
+      assessment:"Child can clearly write a problem statement with at least two criteria and one constraint for a design challenge.",
+      differentiation:"Easier: Provide a pre-written problem and have the child identify criteria and constraints. | Harder: Have the child define their own problem, set their own criteria and constraints, and justify why those limits are reasonable."
+    },
+    {
+      title:"Brainstorming and Designing Solutions",
+      objective:"Generate multiple possible solutions through brainstorming, then select the best idea and create a detailed plan (sketch with labels and materials list).",
+      warmup:"Set a timer for 2 minutes. Write down as many uses for a paperclip as you can think of. No idea is too wild! This is brainstorming — quantity over quality at first.",
+      mainActivity:"Continue with the pencil holder problem from Week 1 (or choose a new one). Rule 1 of brainstorming: No criticism — every idea is welcome. Rule 2: Aim for at least 5 ideas. The child writes or sketches 5 different designs for the pencil holder. Then, evaluate each design against the criteria using a simple scoring chart (1-3 stars for each criterion). Pick the highest-scoring design. Create a detailed blueprint: draw the design from two angles (front and side), label each part, list every material needed, and write the step-by-step construction plan.",
+      game:"Brainstorm Marathon: Give a silly design challenge ('Design a contraption that delivers a snack from the kitchen to the couch'). Each family member sketches a solution in 3 minutes. Present and vote on the most creative and most practical design.",
+      homeConnection:"Look at everyday objects (a chair, a stapler, a zipper) and discuss: 'What problem did the inventor brainstorm solutions for? What other solutions might they have considered before choosing this one?'",
+      assessment:"Child generates at least 4 distinct solutions, evaluates each against criteria, selects the best one, and creates a labeled blueprint.",
+      differentiation:"Easier: Provide three partially-drawn ideas and have the child complete and choose one. | Harder: Introduce the concept of trade-offs — when a design meets one criterion perfectly but sacrifices another (e.g., strongest material is heaviest)."
+    },
+    {
+      title:"Building Prototypes with Household Materials",
+      objective:"Transform a design plan into a physical prototype using common household and recycled materials, practicing basic construction skills.",
+      warmup:"Review the blueprint from last week. Gather all materials. A prototype is a first version — it doesn't need to be perfect, it needs to be testable!",
+      mainActivity:"Build the pencil holder (or chosen project) prototype using only recycled materials. Available materials: toilet paper tubes, cereal box cardboard, tape, glue, rubber bands, string, scissors, plastic bottles, egg cartons, and aluminum foil. Follow the step-by-step plan from the blueprint. If the plan doesn't work during construction, that's okay — real engineers revise on the fly. Document any changes made and why. Add a 'Builder's Log' entry: What went well? What was harder than expected? What did you change from the original plan?",
+      game:"Junk Drawer Build-Off: Dump out a junk drawer. Each player selects 5 items and has 10 minutes to build the tallest free-standing tower. Measure each tower. Discuss what design choices made the tallest towers stable.",
+      homeConnection:"Watch a 'How It's Made' video on YouTube (e.g., how pencils, crayons, or shoes are manufactured). Notice how the factory process resembles building from a plan.",
+      assessment:"Child successfully constructs a prototype that matches (mostly) their blueprint and can explain any deviations they made during building.",
+      differentiation:"Easier: Provide pre-cut materials and a partially assembled starter kit. | Harder: Introduce a budget constraint — each material has a pretend 'cost' and the child must stay under $10 (e.g., cardboard $1, tape $2 per foot, rubber band $0.50)."
+    },
+    {
+      title:"Testing, Evaluating, and Improving Designs",
+      objective:"Test the prototype against the original criteria, record results, identify weaknesses, and make specific improvements to the design.",
+      warmup:"Look at your prototype from last week. Ask: 'Did it work?' Real engineers test, fail, and improve. Failure is data!",
+      mainActivity:"Conduct formal testing of the pencil holder prototype. Test 1: Does it hold 10 pencils upright? (Pass/Fail) Test 2: Does it tip over when full? (Place it on a slightly tilted surface.) Test 3: Does it survive a gentle bump? (Tap the desk next to it.) Record all results in a Test Results Table. For any test that failed, the child must identify WHY it failed and propose a specific improvement. Make the improvements using available materials. Retest. Document: Did the redesign fix the problem? Did it create any new problems? Write a short 'Engineering Report' summarizing the problem, the solution, the test results, and the final improvement.",
+      game:"Drop Test Challenge: Everyone builds a protective container for an egg using only newspaper and tape (10 minutes). Drop from increasing heights (1 ft, 2 ft, 3 ft). Whose egg survives the highest drop? Discuss what design features absorbed the impact best.",
+      homeConnection:"Look at car crash test videos or bridge stress tests online. Engineers test their designs over and over before releasing them to the public — it's called iterative design.",
+      assessment:"Child conducts at least three tests, records results in a data table, makes a specific improvement based on test results, and retests to verify the improvement worked.",
+      differentiation:"Easier: Provide a simple pass/fail checklist and help the child identify one improvement. | Harder: Have the child redesign the entire prototype from scratch based on lessons learned (iteration 2) and compare it to version 1."
+    }
+  ],
+  project:'Complete a full Engineering Design Cycle: identify a real household problem, brainstorm 5+ solutions, blueprint the best one, build a prototype from recycled materials, test it against 3 criteria, improve it, and present an Engineering Report with photos/drawings.',
+  materials:['Recycled materials (tubes, boxes, bottles)','Tape, glue, scissors','Cardboard','Rubber bands, string','Eggs for drop test','Newspaper','Ruler for measuring']
+},
+'May':{
+  icon:'fa-recycle',
+  color:'from-teal-400 to-cyan-500',
+  focus:'Natural Resources & Human Impact (4-ESS3)',
+  skills:['Renewable vs. nonrenewable','Energy & environment','Conservation','Designing solutions'],
+  weeks:[
+    {
+      title:"Renewable and Nonrenewable Resources",
+      objective:"Classify natural resources as renewable (can be replaced in a human lifetime) or nonrenewable (finite supply), and understand why this distinction matters.",
+      warmup:"Show an apple. Ask: 'Will we ever run out of apples?' (No, we can grow more — it's renewable.) Now show a piece of coal. 'Can we make more coal?' (Not in our lifetime — it takes millions of years from compressed ancient plants.)",
+      mainActivity:"Create a two-column Resource Sorting Chart. Cut out or draw pictures of 15 resources and sort them. Renewable: sunlight, wind, water (hydropower), trees, soil, animals, geothermal heat. Nonrenewable: coal, oil (petroleum), natural gas, diamonds, iron ore, copper, aluminum ore. For each resource, discuss: How do humans use it? What happens if we use it all up? Then, research how long experts estimate our oil supply will last at current rates (roughly 50 years) and discuss why this matters for your child's lifetime.",
+      game:"Resource Relay Race: Place resource cards at one end of the room and two bins labeled 'Renewable' and 'Nonrenewable' at the other. Run to grab a card, run back, sort it. Team with the most correctly sorted cards in 2 minutes wins.",
+      homeConnection:"Walk through the house and list 5 things that use energy. For each, discuss: 'What resource provides this energy?' (Electricity from the outlet likely comes from burning coal or natural gas, or from renewable sources depending on your region.)",
+      assessment:"Child can correctly classify 12 out of 15 resources as renewable or nonrenewable and explain the difference in their own words.",
+      differentiation:"Easier: Sort 8 resources with clear categories (sunlight vs. coal). | Harder: Discuss resources that are technically renewable but are being used faster than they can replenish (e.g., overfishing, deforestation) — these are 'threatened' resources."
+    },
+    {
+      title:"Environmental Impact of Energy Use",
+      objective:"Understand how burning fossil fuels affects the air, water, and climate, and compare the environmental impact of different energy sources.",
+      warmup:"Look out the window on a busy road. Can you see exhaust from cars? That's pollution from burning gasoline, which is made from oil (a fossil fuel).",
+      mainActivity:"Create an 'Energy Source Impact Comparison' poster. Research (together) five energy sources: coal, natural gas, solar, wind, and hydropower. For each, rate (green/yellow/red) three impacts: Air pollution, Water pollution, Wildlife impact. Key findings: Coal — high air pollution (CO₂, smog), causes acid rain, mining damages land. Natural gas — cleaner burning but still releases CO₂, fracking can contaminate water. Solar — no pollution during use, but manufacturing panels uses chemicals. Wind — no pollution, but wind turbines can affect birds. Hydropower — no air pollution, but dams disrupt fish migration and river ecosystems. Discuss: no energy source is perfect, but some are cleaner than others.",
+      game:"Energy Debate: Split into two teams. Team A argues for solar energy. Team B argues for wind energy. Each team presents 3 pros and 1 con for their source. A neutral judge (parent) decides which team made the stronger case.",
+      homeConnection:"Check your electricity provider's website — many show what percentage of their energy comes from renewable vs. fossil fuel sources. Some even let you switch to a green energy plan.",
+      assessment:"Child can name at least two environmental impacts of fossil fuels and explain why renewable energy sources generally have less environmental impact.",
+      differentiation:"Easier: Compare only coal vs. solar power. | Harder: Research the concept of a carbon footprint and calculate your family's approximate footprint using an online calculator."
+    },
+    {
+      title:"Conservation and Sustainability Practices",
+      objective:"Identify specific conservation actions families can take at home to reduce resource use, and understand the concept of sustainability.",
+      warmup:"Run the water faucet for one minute into a bucket. Measure how much water you collected. Now imagine leaving the tap running while brushing teeth twice a day for a year — how much water is wasted?",
+      mainActivity:"Conduct a 'Home Energy and Water Audit.' Use a checklist to inspect each room: Are lights left on in empty rooms? Is the TV on when nobody's watching? Are faucets dripping? Is the thermostat set higher than needed? Are windows sealed properly? Measure the drip rate of any leaky faucet (count drops per minute, calculate gallons per day wasted). Create a 'Conservation Action Plan' with at least 5 specific commitments: turn off lights when leaving a room, take 5-minute showers instead of 10, use reusable water bottles, recycle paper/plastic/glass, compost food scraps. Estimate the resource savings for each action (e.g., a 5-minute shorter shower saves ~12 gallons of water).",
+      game:"Conservation Bingo: Create bingo cards with sustainable actions ('Turned off a light,' 'Used a reusable bottle,' 'Recycled something'). Throughout the week, mark off actions as you do them. First to bingo wins.",
+      homeConnection:"Visit a grocery store and compare the packaging of similar products. Choose the one with less packaging or recyclable packaging. Discuss how consumer choices drive sustainability.",
+      assessment:"Child completes a home audit, identifies at least 3 areas for improvement, and creates a specific conservation action plan with measurable goals.",
+      differentiation:"Easier: Focus on three simple actions (turn off lights, don't waste water, recycle). | Harder: Calculate the family's actual water and electricity usage from utility bills and set a percentage reduction goal for next month."
+    },
+    {
+      title:"Designing Solutions for Environmental Challenges",
+      objective:"Apply the Engineering Design Process to design a solution for a specific environmental problem, combining science knowledge with engineering skills.",
+      warmup:"Show a picture of a landfill or ocean plastic pollution. Ask: 'If you were an engineer, what would you design to help solve this problem?'",
+      mainActivity:"Present three environmental challenges and have the child choose one to solve. Challenge 1: Design a system to collect rainwater for watering a garden (reduces water use). Challenge 2: Design a device that filters plastic out of a stream (reduces water pollution). Challenge 3: Design a solar oven that cooks food without electricity or gas (reduces fossil fuel use). Follow the full Engineering Design Process: Define the problem with criteria and constraints → Brainstorm 3+ solutions → Select the best → Create a detailed blueprint with materials list → Build a small prototype or model → Test it (for the solar oven: place a thermometer inside in the sun and see if temperature rises; for the water filter: pour dirty water through and observe) → Improve the design. Present the final solution to the family.",
+      game:"Green Innovation Pitch: Each family member designs one environmental invention (draw it on paper). Take turns giving a 60-second 'pitch' explaining what problem it solves and how it works. Vote on the most creative and the most practical.",
+      homeConnection:"Research a real environmental technology (ocean cleanup robots, vertical farms, solar roads, biodegradable plastics). Discuss how engineers are already working on these problems.",
+      assessment:"Child completes the full design process for their chosen challenge, builds a working prototype or detailed model, and can explain how their solution reduces environmental impact.",
+      differentiation:"Easier: Provide a pre-designed template to build from. | Harder: Have the child research and incorporate a real-world technology into their design (e.g., using a specific type of water filtration media)."
+    }
+  ],
+  project:'Design and build a working solar oven from a pizza box, aluminum foil, plastic wrap, and black construction paper. Test it by melting s\'mores in the sun. Document the engineering process with photos and temperature readings.',
+  materials:['Pizza box','Aluminum foil','Plastic wrap','Black construction paper','Tape and scissors','Thermometer','Cotton balls and sand for water filter','Recycled containers']
+},
+'June':{
+  icon:'fa-trophy',
+  color:'from-amber-400 to-orange-500',
+  focus:'Science Fair & Year-End Review',
+  skills:['Scientific method','Experiment design','Data presentation','Reflection'],
+  weeks:[
+    {
+      title:"Choosing and Planning a Science Fair Project",
+      objective:"Select a testable scientific question, form a hypothesis, and design an experiment with controlled variables using the scientific method.",
+      warmup:"Look back through the year. Which experiment was the most fun? Which topic made you the most curious? That curiosity is the starting point for a science fair project!",
+      mainActivity:"Walk through the Scientific Method step by step. 1) Ask a Question: Must be testable. Good: 'Which type of soil grows the tallest bean plant?' Bad: 'Why are plants cool?' 2) Research: Read about the topic for 20 minutes. 3) Hypothesis: Write an 'If... then... because...' statement. Example: 'If I plant beans in potting soil, compost, and sand, then the potting soil will grow the tallest plants because it has the most nutrients.' 4) Design the experiment: Identify the independent variable (what you change — soil type), dependent variable (what you measure — plant height), and controlled variables (what stays the same — water amount, sunlight, pot size, number of seeds). Write a materials list and a step-by-step procedure that someone else could follow. Safety note: if using any chemicals or heat, list safety precautions.",
+      game:"Question Sort: Write 15 questions on cards. Sort into 'Testable' (can be answered with an experiment) and 'Not Testable' (opinions or too broad). Race to correctly sort them all.",
+      homeConnection:"Look at science fair project ideas online together. Narrow it down to 3 favorites and discuss which is the most testable with household materials.",
+      assessment:"Child has a written testable question, a hypothesis in 'If/then/because' format, and a complete experimental design with variables identified.",
+      differentiation:"Easier: Provide three testable questions to choose from and a template for the hypothesis. | Harder: Require a literature review section where the child summarizes two facts they learned from research that informed their hypothesis."
+    },
+    {
+      title:"Conducting Experiments with the Scientific Method",
+      objective:"Execute the planned experiment, collect data systematically in a data table, and analyze the results to determine whether the hypothesis was supported.",
+      warmup:"Review your experiment plan from last week. Before you start, predict: 'What do you think will happen?' That prediction is your hypothesis — let's test it!",
+      mainActivity:"Conduct the experiment according to the written procedure. Key rules: 1) Only change ONE variable (the independent variable). 2) Do at least 3 trials for reliability. 3) Record data in a pre-made data table immediately — don't trust memory! 4) Use the same measuring tools each time. 5) Take photos at each stage. Example: if testing soil types, plant 3 pots per soil type (9 pots total), water each with exactly 50mL daily, and measure height with a ruler every 2 days for 2 weeks. After data collection, calculate averages for each condition. Create a bar graph or line graph of the results. Write a Results paragraph: 'The beans in potting soil grew an average of 12cm, while sand-grew beans averaged only 4cm. My hypothesis was supported because...'",
+      game:"Data Detective: Present your child with a made-up data table from a fictional experiment. Ask them to identify the independent variable, the dependent variable, and write a conclusion based on the numbers.",
+      homeConnection:"Discuss how real scientists deal with unexpected results — they don't throw the data away! Sometimes the most interesting discoveries come from experiments that don't go as planned.",
+      assessment:"Child conducts a controlled experiment with at least 3 trials, records data in a table, creates a graph, and writes a conclusion stating whether their hypothesis was supported.",
+      differentiation:"Easier: Conduct the experiment together with the parent managing the data table. | Harder: Introduce the concept of experimental error and have the child identify at least one source of error that might have affected their results."
+    },
+    {
+      title:"Creating Display Boards and Presenting Findings",
+      objective:"Organize all elements of the scientific method into a clear, attractive display board and practice presenting findings to an audience.",
+      warmup:"Show examples of real science fair display boards (search online). Notice how the best ones have clear headings, neat graphs, and photos of the experiment.",
+      mainActivity:"Create a tri-fold display board (use a cut-open cardboard box folded into three panels if needed). Organize into sections: Left Panel: Title (catchy!), Question, Hypothesis, Background Research. Center Panel: Materials List, Procedure (with photos), Data Table, Graph. Right Panel: Results (written summary), Conclusion (was hypothesis supported?), Future Questions (what would you test next?). Design rules: Use large, readable fonts. Color-code each section. Include at least 2 photos of the experiment in action. Place the graph at eye level in the center. Glue actual materials or samples to the board if possible (a ziplock of the soil used, a dried leaf from the plant). Practice a 3-minute oral presentation covering each section.",
+      game:"Presentation Practice: Set up the board in the living room. Time the presentation. Family members play 'Judge' and ask follow-up questions ('What would happen if you changed X?'). Give constructive feedback on clarity and confidence.",
+      homeConnection:"Record the presentation on video. Watch it together and discuss what went well and what could be improved — just like real scientists review their conference talks!",
+      assessment:"Child creates a complete display board with all scientific method sections and delivers a coherent 3-minute presentation explaining their project from question to conclusion.",
+      differentiation:"Easier: Provide a pre-labeled template where the child fills in each section. | Harder: Include a 'Real-World Application' section explaining how the findings could be useful in everyday life."
+    },
+    {
+      title:"Year-End Reflection and Science Portfolio",
+      objective:"Reflect on the year's learning by reviewing all topics, selecting favorite work, and assembling a science portfolio that demonstrates growth.",
+      warmup:"Flip back through your science journal or notes from September. What did you learn about energy that you didn't know before? How have your observation skills improved?",
+      mainActivity:"Compile a Science Portfolio. Gather all projects, drawings, data tables, and photos from the year. Organize into sections by month. For each month, write a 2-sentence reflection: 'In December, I learned about weathering and erosion. My favorite part was building the dirt hill and flooding it.' Select the 'Top 3 Experiments of the Year' and write a paragraph for each explaining why it was a favorite and what was learned. Create a cover page titled 'My Grade 4 Science Year' with a drawing of the child as a scientist. Include a 'What I Want to Learn Next' page with at least 3 science questions they're still curious about.",
+      game:"Science Trivia Championship: Create 40 trivia questions (one from each week of the year). Divide into teams and compete. Sample questions: 'What are the three types of rocks?' 'Name two types of seed dispersal.' 'What does an electromagnet need to work?'",
+      homeConnection:"Present the portfolio to grandparents, family friends, or neighbors. Explaining what you've learned to someone else is one of the best ways to solidify knowledge.",
+      assessment:"Child can articulate their top 3 favorite science topics, explain key concepts from each, and demonstrate genuine curiosity by asking at least 3 new science questions.",
+      differentiation:"Easier: Verbally review the months together and select 2 favorite projects. | Harder: Write a 'Letter to Next Year's Scientist' giving advice about what to look forward to and study tips."
+    }
+  ],
+  project:'Host a Family Science Fair. Present the completed experiment on a display board. Display the Science Portfolio. Celebrate the year with a "Science Awards Ceremony" with categories like Most Creative Experiment, Best Data Collection, and Most Improved Scientist.',
+  materials:['Poster board or cardboard for display','Markers and construction paper','Glue and scissors','Science journal or folder','Printed photos of experiments','Timer for presentations']
+}
+};
+
+let currentMonth='September';
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{
+    btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);
+  });
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.9);line-height:1.4;">${w.title}</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px;">Tap for details</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:10px;margin-bottom:12px;"><i class="fas fa-bullseye" style="color:var(--al);margin-top:2px;font-size:13px;width:14px;text-align:center;"></i><div style="flex:1;"><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--al);margin-bottom:2px;">Objective</p><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">${w.objective}</p></div></div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;"><i class="fas fa-fire" style="color:#ef4444;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i><div style="flex:1;"><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#ef4444;margin-bottom:2px;">Warm-up</p><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">${w.warmup}</p></div></div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;"><i class="fas fa-flask" style="color:var(--a1);margin-top:2px;font-size:13px;width:14px;text-align:center;"></i><div style="flex:1;"><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--a1);margin-bottom:2px;">Main Experiment</p><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">${w.mainActivity}</p></div></div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;"><i class="fas fa-gamepad" style="color:#8b5cf6;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i><div style="flex:1;"><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#8b5cf6;margin-bottom:2px;">Game</p><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">${w.game}</p></div></div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;"><i class="fas fa-home" style="color:var(--a2);margin-top:2px;font-size:13px;width:14px;text-align:center;"></i><div style="flex:1;"><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--a2);margin-bottom:2px;">Home Connection</p><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">${w.homeConnection}</p></div></div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;"><i class="fas fa-check-circle" style="color:#10b981;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i><div style="flex:1;"><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#10b981;margin-bottom:2px;">Assessment</p><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">${w.assessment}</p></div></div>
+                <div style="display:flex;gap:10px;"><i class="fas fa-layer-group" style="color:#f59e0b;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i><div style="flex:1;"><p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#f59e0b;margin-bottom:2px;">Differentiation</p><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">${w.differentiation}</p></div></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+
+
+init();
+</script>
+<script src="paywall.js"></script>
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Visual Arts & Design — Grade 5 (Age 10) | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#ec4899;--a2:#f97316;--al:#f9a8d4;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(236,72,153,0.1),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.08),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(236,72,153,0.12);border:1px solid rgba(236,72,153,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(236,72,153,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Grade 5</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Age 10</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-palette" style="margin-right:5px;"></i>Art</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Age 10</span>
+
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grade 5 · Age 10</p>
+    <h2 class="page-title">Visual Arts & Design</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Exploring advanced techniques, art history, and personal expression through drawing, painting, mixed media, and digital arts for 5th grade learners.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pencil-ruler" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Drawing & Composition</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Perspective, proportion, shading</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-fill-drip" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Color Theory & Painting</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Color schemes, blending techniques</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-cube" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Sculpture & 3D Design</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Form, spatial awareness, modeling</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-landmark" style="color:#f472b6;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Art History & Critique</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Analyzing art, cultural contexts</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Creative Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grade 5 Art · Age 10</p>
+</footer>
+
+<script>
+const curriculumData={
+'September': {
+  icon: 'fa-shapes',
+  color: 'from-pink-400 to-purple-500',
+  focus: 'Elements of Art (Line, Shape, Form, Value)',
+  skills: ['Line quality', 'Geometric vs. organic shape', 'Creating form with value', 'Value scales'],
+  project: 'Create a comprehensive "Elements of Art" portfolio folder utilizing each element.',
+  materials: ['Sketchbook', 'Graphite pencils (HB, 2B, 4B, 6B)', 'Kneaded eraser', 'Ruler', 'Fine-tip black markers', 'Blending stumps', 'Heavy drawing paper'],
+  weeks: [
+    {
+      title: "The Power of Line",
+      objective: "Understand how line weight, quality, and direction communicate emotion, movement, and structure.",
+      warmup: "Continuous blind contour drawing of your non-dominant hand for 3 minutes without looking at the paper.",
+      mainActivity: "Create a 'zentangle' or abstract landscape using at least 10 distinct line types (e.g., cross-hatching, stippling, varied weight, implied lines). Discuss how line density creates darker values.",
+      game: "Line Emotion Charades: Draw a line that represents 'anger', 'peace', 'chaos', etc., and have others guess the emotion.",
+      homeConnection: "Find and photograph 3 examples of structural lines and 3 examples of decorative lines in your home or neighborhood.",
+      assessment: "Successfully demonstrates varied line weight and texture to create visual interest in their drawing.",
+      differentiation: "Easier: Provide a template with sections to fill with different line patterns. Harder: Create an optical illusion (Op Art) using only straight lines."
+    },
+    {
+      title: "Shape: Geometric & Organic",
+      objective: "Differentiate between geometric (mathematical) and organic (natural) shapes and use them in composition.",
+      warmup: "Quick sketch: Turn 5 random blobs (organic shapes) into recognizable objects.",
+      mainActivity: "Design a 'Shape City' where the architecture is composed entirely of geometric shapes, but the landscape/environment is composed entirely of organic shapes. Focus on overlap to create depth.",
+      game: "Shape Scavenger Hunt: Find objects that perfectly match specific complex geometric shapes (e.g., pentagon, trapezoid).",
+      homeConnection: "Observe the shapes of leaves or clouds (organic) versus the shapes of buildings or signs (geometric).",
+      assessment: "Clearly distinguishes between geometric and organic shapes and uses overlapping to indicate depth.",
+      differentiation: "Easier: Use cut paper shapes to build the composition before drawing. Harder: Create a tessellation using an organic shape."
+    },
+    {
+      title: "Value Scales & Shading",
+      objective: "Create a smooth transition of value from light to dark and understand light sources.",
+      warmup: "Shade a 7-step value scale block from white to black using cross-hatching.",
+      mainActivity: "Draw a simple geometric solid (sphere, cone, or cylinder). Establish a clear light source and practice shading to create a highlight, mid-tone, core shadow, cast shadow, and reflected light.",
+      game: "Light Source Detective: Look at various photographs or paintings and identify the direction of the primary light source.",
+      homeConnection: "Place a simple object (like an egg or mug) under a single lamp in a dark room. Sketch the shadows it creates.",
+      assessment: "Accurately places the core shadow, cast shadow, and highlight relative to the light source to create the illusion of 3D form.",
+      differentiation: "Easier: Practice shading on pre-drawn geometric shapes. Harder: Shade a complex, irregularly shaped object like a crumpled piece of paper."
+    },
+    {
+      title: "From Shape to Form",
+      objective: "Combine shape and value to transform 2D shapes into 3D forms.",
+      warmup: "Draw 5 overlapping circles and use shading to turn them into a cluster of spheres.",
+      mainActivity: "Still Life Drawing: Arrange 3 simple objects of different shapes. Draw the arrangement focusing on accurate proportion and use shading (value) to make the objects appear three-dimensional.",
+      game: "Form Building Challenge: Build a form (like a cube or pyramid) out of paper to understand its planes.",
+      homeConnection: "Identify 3D forms in everyday objects (a soup can is a cylinder, a box is a rectangular prism).",
+      assessment: "Demonstrates the ability to use shading to give 2D shapes the illusion of 3D mass and volume.",
+      differentiation: "Easier: Draw a single object rather than a composition of three. Harder: Draw a still life with objects of different textures (e.g., a glass and a fuzzy toy)."
+    }
+  ]
+},
+'October': {
+  icon: 'fa-pencil-ruler',
+  color: 'from-orange-400 to-red-500',
+  focus: 'Drawing Techniques (Perspective, Proportion)',
+  skills: ['1-point perspective', '2-point perspective', 'Facial proportions', 'Figure drawing proportions'],
+  project: 'Draw a detailed interior room in 1-point perspective and a fantasy building in 2-point perspective.',
+  materials: ['Large drawing paper (18x24")', 'T-square or long ruler', 'Graphite pencils', 'Erasers', 'Colored pencils or markers', 'Triangle (optional)', 'Drafting tape'],
+  weeks: [
+    {
+      title: "Introduction to 1-Point Perspective",
+      objective: "Understand the concepts of horizon line, vanishing point, and orthogonal lines.",
+      warmup: "Draw a simple box in 3D using parallel lines (oblique projection), then discuss why it looks slightly distorted.",
+      mainActivity: "Draw a 'City Street' or 'Long Hallway' using 1-point perspective. Establish a horizon line and a single vanishing point. Draw buildings/doors/windows where all receding lines converge at the vanishing point.",
+      game: "Perspective Hunt: Find photos in magazines that demonstrate 1-point perspective and trace the orthogonal lines to find the vanishing point.",
+      homeConnection: "Stand in the middle of a long hallway or straight street and notice how the lines seem to converge in the distance.",
+      assessment: "Correctly uses a horizon line and a single vanishing point to draw objects that appear to recede into space.",
+      differentiation: "Easier: Draw floating boxes in 1-point perspective. Harder: Add complex details like a tiled floor or a staircase in 1-point perspective."
+    },
+    {
+      title: "Mastering 2-Point Perspective",
+      objective: "Draw objects that are viewed from a corner rather than face-on using two vanishing points.",
+      warmup: "Draw a cube using 2-point perspective following step-by-step instructions.",
+      mainActivity: "Design a 'Fantasy Corner Building' (e.g., a wizard's shop, a futuristic bank). Establish a horizon line with two vanishing points placed far apart. Draw the building, adding windows, doors, and signs that adhere to the perspective rules.",
+      game: "The 'Wrong' Perspective: Look at intentionally flawed perspective drawings and identify the errors.",
+      homeConnection: "Look at the corner of your house or a room from the inside. Notice how the lines recede in two different directions.",
+      assessment: "Accurately draws forms using two distinct vanishing points on a horizon line.",
+      differentiation: "Easier: Draw simple blocks or letters in 2-point perspective. Harder: Draw an entire city block intersection in 2-point perspective."
+    },
+    {
+      title: "Facial Proportions",
+      objective: "Learn the standard classical proportions of the human face.",
+      warmup: "Quick sketch: Draw a face from imagination in 2 minutes. We will compare this to the final drawing later.",
+      mainActivity: "Draw a realistic face using a grid/guideline method. Learn the 'rules': eyes are halfway down the head, face is 5 eyes wide, bottom of nose is halfway between eyes and chin, mouth is halfway between nose and chin.",
+      game: "Feature Match: Look at photos of faces cut into strips (eyes, nose, mouth) and mix-and-match them to see how proportions change the face.",
+      homeConnection: "Examine a family member's face (or your own in a mirror) and check if the standard proportional 'rules' apply to them.",
+      assessment: "Applies standard proportional guidelines to draw a face that is structurally believable.",
+      differentiation: "Easier: Provide a faint template of the guidelines to trace over. Harder: Draw a portrait from a reference photo, adjusting the standard proportions to capture a specific likeness."
+    },
+    {
+      title: "Figure Drawing Proportions",
+      objective: "Understand human body proportions using the 'head-lengths' measuring method.",
+      warmup: "Gesture drawing: Do five 30-second rapid sketches of a person in different action poses.",
+      mainActivity: "Learn that an average adult figure is roughly 7.5 to 8 'heads' tall. Draw a standing figure, marking the proportions (e.g., crotch is halfway, knees are in the lower quarter). Then, draw a figure in motion using a 'skeleton' armature first.",
+      game: "Pose & Measure: One person strikes a pose, others use their pencil or thumb to sight-measure how many 'heads' tall the person appears from their angle.",
+      homeConnection: "Look at action figures or dolls and measure their proportions. Are they realistic or exaggerated (like fashion dolls)?",
+      assessment: "Draws a human figure with reasonably accurate proportions, avoiding common errors like oversized heads or overly short legs.",
+      differentiation: "Easier: Use a wooden drawing mannequin to help visualize joints and lengths. Harder: Draw a figure in foreshortening (e.g., pointing directly at the viewer)."
+    }
+  ]
+},
+'November': {
+  icon: 'fa-paint-brush',
+  color: 'from-yellow-400 to-orange-500',
+  focus: 'Painting & Color Theory',
+  skills: ['Acrylic techniques', 'Watercolor washes', 'Color schemes', 'Color mixing & matching'],
+  project: 'Create two final paintings: one watercolor landscape and one acrylic abstract piece based on a specific color scheme.',
+  materials: ['Acrylic paints (student grade)', 'Watercolor pan set or tubes', 'Variety of brushes (flat, round, detail)', 'Watercolor paper (140lb)', 'Canvas panel or canvas paper', 'Palettes', "Painter's tape"],
+  weeks: [
+    {
+      title: "Advanced Color Mixing",
+      objective: "Mix exact colors, tints, shades, and tones, and understand the difference between RGB (light) and CMY/RYB (pigment).",
+      warmup: "Speed mixing: Try to exactly match the color of a specific object (like a leaf or a piece of plastic) in 3 minutes.",
+      mainActivity: "Create a 'Color Recipe Book'. Paint swatches of colors and document the exact 'recipe' used to make them (e.g., 2 parts yellow + 1 part blue + touch of white = mint green). Practice mixing complementary colors to create neutral browns/grays.",
+      game: "Color Match Challenge: Teacher paints a swatch, students race to mix the exact same color on their palettes.",
+      homeConnection: "Look at the paint colors in a room and try to guess what base colors were mixed to create them.",
+      assessment: "Successfully mixes complex colors, including tints (adding white), shades (adding black), and neutral tones.",
+      differentiation: "Easier: Focus on mixing secondary and tertiary colors. Harder: Try to mix a realistic skin tone using primary colors plus white."
+    },
+    {
+      title: "Color Schemes & Mood",
+      objective: "Apply specific color schemes (analogous, complementary, monochromatic, triadic) to create different moods.",
+      warmup: "Look at famous paintings and identify their dominant color schemes and the mood they convey.",
+      mainActivity: "Divide a canvas or heavy paper into 4 sections. Paint the same simple landscape or design in all 4 sections, but use a different color scheme for each (e.g., monochromatic blue in one, analogous warm colors in another).",
+      game: "Mood Board: Sort a collection of magazine cutouts or digital images into groups based on their primary color scheme.",
+      homeConnection: "Notice the color schemes used in your favorite movies or video games. How do they affect the atmosphere?",
+      assessment: "Accurately executes 4 different color schemes and can articulate how color choice affects the feeling of an artwork.",
+      differentiation: "Easier: Provide a pre-drawn coloring-book style image to paint. Harder: Paint an expressive abstract piece that relies entirely on a complementary color scheme for impact."
+    },
+    {
+      title: "Watercolor Techniques",
+      objective: "Master basic watercolor techniques including wet-on-wet, wet-on-dry, washes, and resist.",
+      warmup: "Create a 'technique reference sheet' practicing flat wash, graded wash, wet-in-wet, and salt texture in small squares.",
+      mainActivity: "Paint a landscape using watercolor. Use a graded wash for the sky, wet-in-wet for distant blurry trees/clouds, and wet-on-dry for sharp foreground details. Experiment with using salt or plastic wrap for texture.",
+      game: "Water Control: See who can paint the longest continuous, even line with one loaded brush.",
+      homeConnection: "Observe how water interacts with different surfaces outside after a rain (puddles on asphalt vs. droplets on leaves).",
+      assessment: "Demonstrates control over the water-to-paint ratio to achieve intended effects (washes, sharp lines, blending).",
+      differentiation: "Easier: Tape down the paper to prevent warping and use wax crayons to draw a resist outline first. Harder: Use masking fluid to preserve crisp white areas in a complex painting."
+    },
+    {
+      title: "Acrylic Impasto & Layering",
+      objective: "Learn the opaque, layering properties of acrylic paint and explore textural techniques.",
+      warmup: "Practice blending two colors smoothly on the canvas before the acrylic paint dries.",
+      mainActivity: "Paint a still life or abstract piece using acrylics. Focus on working from back to front (background first, details last). Practice 'impasto'—applying paint thickly with a palette knife or stiff brush to create actual 3D texture.",
+      game: "Blind Texture Feel: Feel dried examples of different acrylic mediums (modeling paste, gel medium) blindfolded and describe them.",
+      homeConnection: "Look at textured surfaces at home (stucco walls, woven fabrics) and think about how you would recreate that texture with paint.",
+      assessment: "Successfully layers opaque acrylic paint (dark to light or back to front) and experiments with physical texture.",
+      differentiation: "Easier: Paint a simple, bold graphic design focusing on opaque, flat color. Harder: Paint a highly textured landscape inspired by Vincent van Gogh's brushstrokes."
+    }
+  ]
+},
+'December': {
+  icon: 'fa-scissors',
+  color: 'from-cyan-400 to-blue-500',
+  focus: 'Mixed Media & Collage',
+  skills: ['Combining materials', 'Composition & balance', 'Decoupage', 'Thematic expression'],
+  project: 'Create a thematic mixed media collage combining drawn, painted, and found elements.',
+  materials: ['Magazines/Newspapers', 'Mod Podge or PVA glue', 'Scissors & craft knives', 'Sturdy backing board (canvas board or heavy cardboard)', 'Scrap fabric/yarn', 'Old book pages', 'Markers/Paint markers'],
+  weeks: [
+    {
+      title: "The Art of Collage",
+      objective: "Understand the history of collage and practice composition and juxtaposition of found images.",
+      warmup: "Cut out 5 random images from a magazine and arrange them into a surprising or surreal scene.",
+      mainActivity: "Create a 'Surreal Landscape' collage. Cut out elements that don't normally belong together (e.g., giant flowers in a city, a fish in the sky) and arrange them using rules of composition (rule of thirds, foreground/background) before gluing them down.",
+      game: "Speed Collage: Given a specific theme ('Technology', 'Nature', 'Speed'), find and cut out 10 relevant images from magazines in 5 minutes.",
+      homeConnection: "Look at advertisements or digital art that uses composite imagery.",
+      assessment: "Arranges cut elements thoughtfully to create a cohesive, balanced composition rather than just randomly gluing.",
+      differentiation: "Easier: Create a simple collage based around a single color. Harder: Try 'photomontage'—creating a new, seamless image out of pieces of different photographs."
+    },
+    {
+      title: "Texture & Layering",
+      objective: "Build up a surface using diverse materials to create physical and visual depth.",
+      warmup: "Do texture rubbings of 5 different surfaces and cut them out to use as collage material.",
+      mainActivity: "Create an 'Abstract Texture Board'. Use cardboard as a base. Layer torn tissue paper, corrugated cardboard, string, netting, and fabric. Paint over the entire surface with a single color of acrylic paint, then lightly brush a metallic or contrasting color over the raised textures (dry brushing).",
+      game: "Texture Scavenger Hunt: Find 5 different types of paper or flat textured materials around the house.",
+      homeConnection: "Notice how artists use texture in home decor or clothing design to add interest without changing the color.",
+      assessment: "Successfully integrates a variety of materials and uses dry brushing to highlight the physical texture.",
+      differentiation: "Easier: Stick to layering different types of paper. Harder: Incorporate heavier 3D objects (buttons, small twigs) securely into the composition."
+    },
+    {
+      title: "Altered Books & Decoupage",
+      objective: "Transform an existing object (an old book) into a new piece of art.",
+      warmup: "Practice tearing paper to get a soft, feathered edge versus cutting for a hard edge.",
+      mainActivity: "Take an old, discarded book. Paint over a page with a thin wash of watercolor or acrylic (so text still shows through). Then, draw, paint, or decoupage (glue) new images over the text. Consider doing 'blackout poetry' on the opposite page.",
+      game: "Book Spine Poetry: Stack books so their titles create a poem or funny sentence.",
+      homeConnection: "Discuss the concept of 'upcycling'—turning something old or discarded into something of higher value.",
+      assessment: "Successfully alters the book page using mixed media techniques while retaining some element of the original text/structure.",
+      differentiation: "Easier: Decoupage a simple box or frame instead of a book page. Harder: Cut a niche or 'window' through several pages of the book to create a 3D diorama inside."
+    },
+    {
+      title: "Mixed Media Self-Portrait",
+      objective: "Express identity by combining drawing/painting with symbolic collage elements.",
+      warmup: "Brainstorming: Write down 10 words that describe your personality, hobbies, or dreams.",
+      mainActivity: "Draw a large outline of your silhouette or profile. Inside the silhouette (or in the background), collage images, words, and textures that represent who you are. Paint or draw over the collaged elements to unify the piece.",
+      game: "Symbolic Charades: Describe yourself using only 3 objects, others guess who you are.",
+      homeConnection: "Discuss family history and heritage. What symbols or images represent your family?",
+      assessment: "Creates a portrait that uses both traditional media (paint/pencil) and collage to convey personal meaning.",
+      differentiation: "Easier: Use a printed photograph of yourself as the base instead of drawing a silhouette. Harder: Create the entire portrait out of torn paper scraps ('painting with paper') without using pencils or paint."
+    }
+  ]
+},
+'January': {
+  icon: 'fa-cube',
+  color: 'from-purple-400 to-pink-500',
+  focus: 'Sculpture & Ceramics',
+  skills: ['Armature building', 'Clay hand-building (coil/slab)', 'Subtractive sculpture', '3D spatial reasoning'],
+  project: 'Create a wire and foil figure sculpture and a functional or decorative clay vessel.',
+  materials: ['Air-dry clay or polymer clay', 'Sculpting tools (or plastic knives/spoons)', 'Aluminum foil', 'Armature wire (or stiff pipe cleaners)', 'Masking tape', 'Cardboard', 'Plaster of Paris (optional)'],
+  weeks: [
+    {
+      title: "Wire & Foil Figures (Armatures)",
+      objective: "Understand the internal structure (armature) needed to support a 3D sculpture.",
+      warmup: "Bend a single piece of wire to create a continuous contour line drawing of a face or animal.",
+      mainActivity: "Build a skeleton (armature) for a human or animal figure using wire. Pose the wire figure to show action (running, jumping). Then, bulk out the figure by tightly wrapping it with aluminum foil and securing it with masking tape.",
+      game: "Statue Maker: One person is clay, the other is the sculptor who gently moves the 'clay' into a specific pose.",
+      homeConnection: "Look at your own body's 'armature' (your skeleton) and how your joints allow movement.",
+      assessment: "Constructs a stable armature and poses it dynamically to suggest movement or action.",
+      differentiation: "Easier: Create a simple insect or stick-figure armature. Harder: Cover the foil figure with plaster gauze or a thin layer of air-dry clay to create a finished surface."
+    },
+    {
+      title: "Subtractive Sculpture (Carving)",
+      objective: "Learn the subtractive method: creating form by removing material.",
+      warmup: "Practice carving a simple shape out of an eraser or a potato.",
+      mainActivity: "Use a block of soft carving material (floral foam, a bar of soap, or a block of firm clay). Sketch the design on all sides. Carefully carve away the negative space to reveal the 3D form inside. Focus on viewing the sculpture from all angles.",
+      game: "Blind Contour Feel: Describe an unseen 3D object to a partner just by feeling its shape.",
+      homeConnection: "Discuss how famous sculptures like Michelangelo's David were carved from single blocks of stone.",
+      assessment: "Successfully removes material to create a recognizable 3D form, demonstrating caution and planning.",
+      differentiation: "Easier: Carve a simple geometric form or a relief sculpture (carved only on one side). Harder: Carve an interlocking design or a complex organic form."
+    },
+    {
+      title: "Clay Hand-building: Coils",
+      objective: "Master the coil method of ceramic hand-building and learn to score and slip.",
+      warmup: "Practice rolling perfectly even clay coils (like snakes) that are the same thickness throughout.",
+      mainActivity: "Build a tall vessel or organic form using clay coils. Learn the vital 'score and slip' technique (scratching the surface and adding water/liquid clay) to securely join the coils. Smooth the inside for strength, but leave the coils visible on the outside for texture.",
+      game: "Longest Coil Challenge: See who can roll the longest unbroken clay coil in 2 minutes.",
+      homeConnection: "Look at indigenous pottery techniques that historically relied on coil building rather than a potter's wheel.",
+      assessment: "Rolls even coils and joins them securely using the score and slip method so the piece does not fall apart when dry.",
+      differentiation: "Easier: Build a small, wide bowl. Harder: Build an asymmetrical or curving vessel that requires careful balancing of the coils."
+    },
+    {
+      title: "Clay Hand-building: Slabs",
+      objective: "Use flat slabs of clay to construct geometric or hard-edged 3D forms.",
+      warmup: "Roll out a flat slab of clay to an even thickness using a rolling pin and guide sticks.",
+      mainActivity: "Design a 'Clay House' or 'Box'. Cut precise geometric shapes from clay slabs using templates. Allow the slabs to become 'leather hard' (stiff but not dry). Assemble the pieces into a 3D box, scoring and slipping all joints carefully.",
+      game: "Slab Construction Race: Build a freestanding bridge out of index cards and tape.",
+      homeConnection: "Identify objects in the home that are constructed from flat planes (boxes, furniture, houses).",
+      assessment: "Creates slabs of even thickness and joins them precisely at angles to construct a stable, hard-edged form.",
+      differentiation: "Easier: Drape a soft slab over a bowl or mold to create a simple dish. Harder: Construct a box with a functioning, fitted lid."
+    }
+  ]
+},
+'February': {
+  icon: 'fa-landmark',
+  color: 'from-red-400 to-pink-500',
+  focus: 'Art History - Renaissance to Modern',
+  skills: ['Art historical analysis', 'Understanding \"-isms\"', 'Visual literacy', 'Emulating historical styles'],
+  project: 'Recreate a famous historical artwork in your own style, or create an original piece heavily inspired by a specific art movement.',
+  materials: ['Mixed media (paint, pencils, markers)', 'Reference books or digital access to museum collections', 'Large paper or canvas', 'Printouts of famous artworks'],
+  weeks: [
+    {
+      title: "The Renaissance & Perspective",
+      objective: "Understand the impact of the Renaissance, focusing on realism, humanism, and linear perspective.",
+      warmup: "Compare a flat Medieval painting to a Renaissance painting (like Raphael's 'School of Athens'). What changed?",
+      mainActivity: "Study Leonardo da Vinci's sketches and inventions. Create an 'Inventor's Sketchbook' page. Draw an imaginary machine or study the anatomy of a hand/plant using sepia or brown pencil, adding notes written backwards (like Da Vinci did).",
+      game: "Mirror Writing: Practice writing your name or short messages backwards so they can only be read in a mirror.",
+      homeConnection: "Discuss what 'Renaissance Man' or 'Renaissance Woman' means today (someone with many talents/interests).",
+      assessment: "Demonstrates an understanding of anatomical or structural drawing inspired by Renaissance observation.",
+      differentiation: "Easier: Copy a simple invention sketch by Da Vinci. Harder: Invent a modern machine and sketch its inner workings realistically."
+    },
+    {
+      title: "Impressionism & Post-Impressionism",
+      objective: "Explore how artists shifted from painting realistic details to capturing the feeling of light and color.",
+      warmup: "Look at Van Gogh's 'Starry Night' and trace the movement of the brushstrokes with your finger in the air.",
+      mainActivity: "Create a 'Post-Impressionist Landscape' inspired by Vincent van Gogh or Paul Cézanne. Instead of blending colors smoothly, use short, distinct, thick brushstrokes (impasto) or heavy pastel marks. Focus on movement and vibrant, unnatural colors.",
+      game: "Optical Mixing: Color tiny alternating dots of blue and yellow close together. Step back until they look green.",
+      homeConnection: "Observe how colors in nature change depending on the time of day and the lighting.",
+      assessment: "Uses visible, expressive brushstrokes/marks rather than smooth blending to create the image.",
+      differentiation: "Easier: Focus on a small detail, like a single sunflower. Harder: Paint an entire landscape focusing on directional strokes that guide the viewer's eye."
+    },
+    {
+      title: "Cubism & Abstracting Reality",
+      objective: "Understand how Cubists (like Picasso) broke objects down into geometric shapes and showed multiple viewpoints at once.",
+      warmup: "Draw a simple object (like a mug). Then, draw it again as if it had been smashed into geometric shards and reassembled poorly.",
+      mainActivity: "Create a 'Cubist Portrait'. Draw a face, but combine a profile view (side) and a frontal view in the same drawing. Break the face and background down into geometric facets. Color using an unconventional, perhaps monochromatic or muted, palette.",
+      game: "Fractured Pictures: Cut a photograph into geometric shapes and reassemble them in a jumbled, abstracted way.",
+      homeConnection: "Look at objects around the house and try to imagine what they would look like if flattened out completely.",
+      assessment: "Successfully abstracts a subject by breaking it into geometric planes and showing multiple viewpoints.",
+      differentiation: "Easier: Use the cut-photo collage method (game) as the main project. Harder: Paint a Cubist still life, carefully shading each individual geometric facet to create confusing depth."
+    },
+    {
+      title: "Surrealism & The Unconscious",
+      objective: "Explore Surrealism (e.g., Dalí, Magritte) and the use of dream imagery, illogical juxtaposition, and precise realism applied to impossible scenes.",
+      warmup: "Play the 'Exquisite Corpse' drawing game (fold paper in thirds; one person draws the head, one the torso, one the legs without seeing the others).",
+      mainActivity: "Paint a 'Dreamscape'. Use realistic shading and perspective techniques, but make the subject matter impossible or illogical (e.g., a melting clock, an apple floating in front of a face, a room filled by a giant cloud).",
+      game: "Dream Journaling: Write down the most bizarre or nonsensical dream you can remember.",
+      homeConnection: "Discuss how dreams often combine things from real life in strange or scary ways.",
+      assessment: "Combines realistic drawing/painting techniques with illogical or dream-like subject matter.",
+      differentiation: "Easier: Create a surreal image using collage (cut and paste). Harder: Paint a highly detailed, realistic landscape where one key element defies the laws of physics."
+    }
+  ]
+},
+'March': {
+  icon: 'fa-stamp',
+  color: 'from-green-400 to-emerald-500',
+  focus: 'Printmaking & Graphic Design',
+  skills: ['Relief printing', 'Registration', 'Typography basics', 'Logo/Symbol design'],
+  project: 'Design a personal logo and create an edition of 5 identical prints using block printing.',
+  materials: ['Linoleum blocks or soft rubber carving blocks', 'Linocut carving tools (with safety guard)', 'Block printing ink', 'Brayers (rollers)', 'Barren (or wooden spoon for pressing)', 'Printmaking paper', 'Graphite pencils', 'Tracing paper'],
+  weeks: [
+    {
+      title: "Introduction to Graphic Design & Logos",
+      objective: "Understand the power of symbols, negative space, and simplicity in design.",
+      warmup: "Look at famous logos (Nike, Apple, FedEx). Discuss what makes them effective and look for hidden elements (like the FedEx arrow).",
+      mainActivity: "Design a Personal Logo or Monogram. Brainstorm symbols that represent your interests. Sketch 10 quick thumbnail ideas. Select the best one and refine it, focusing on stark black-and-white contrast (positive and negative space).",
+      game: "Logo Quiz: Identify brands based on only a tiny fraction of their logo.",
+      homeConnection: "Look at the packaging in your pantry. Which designs catch your eye and why?",
+      assessment: "Creates a simplified, recognizable symbol that uses high contrast and is suitable for carving.",
+      differentiation: "Easier: Design a logo using only the first letter of their name. Harder: Design a logo that incorporates both typography and an image using negative space."
+    },
+    {
+      title: "Typography Basics",
+      objective: "Explore typography as an art form, understanding serif vs. sans-serif, kerning, and expressive text.",
+      warmup: "Write your name in 5 completely different fonts (e.g., robotic, spooky, elegant, bubbly, chaotic).",
+      mainActivity: "Create an 'Expressive Word' drawing. Choose a descriptive word (e.g., MELT, SHATTER, GROW, SQUEEZE) and draw the letters so that their shape and style visually demonstrate the meaning of the word.",
+      game: "Font Scavenger Hunt: Find examples of serif, sans-serif, script, and decorative fonts in magazines.",
+      homeConnection: "Notice the fonts used on road signs versus the fonts used in books. Why are they different?",
+      assessment: "Successfully alters letterforms to visually communicate the meaning of the word.",
+      differentiation: "Easier: Use block letters and decorate the inside. Harder: Design an original, complete alphabet in a specific theme."
+    },
+    {
+      title: "Relief Carving (Block Printing)",
+      objective: "Learn the subtractive process of relief carving and important safety techniques.",
+      warmup: "Discuss the concept of negative image: whatever you carve away will remain the color of the paper (white).",
+      mainActivity: "Transfer your logo/design onto a soft carving block. Remember that text must be carved backwards! Practice safe carving techniques (always carving away from your body). Carve away all the negative space, leaving the positive image raised.",
+      game: "Safety First Drill: Practice holding the block and the tool correctly without actually carving.",
+      homeConnection: "Look at stamps, shoe soles, or tires to see examples of relief patterns in everyday life.",
+      assessment: "Demonstrates safe carving practices and successfully removes the negative space around their design.",
+      differentiation: "Easier: Carve a very simple, bold geometric design into a soft foam plate instead of linoleum. Harder: Carve an intricate design with fine lines and varied textures in the negative space."
+    },
+    {
+      title: "Pulling an Edition",
+      objective: "Learn the printmaking process (inking, pressing, pulling) and the concept of an 'edition'.",
+      warmup: "Set up a clean printmaking station: 'clean hands' area for paper, 'dirty hands' area for ink.",
+      mainActivity: "Roll out block printing ink with a brayer until it sounds like 'velcro'. Ink the carved block. Carefully place paper over the block and rub the back firmly with a wooden spoon. Pull the print. Create an 'edition' of 5 identical prints, signing and numbering them at the bottom (e.g., 1/5, 2/5).",
+      game: "Quality Control: Examine prints for 'salty' (too little ink) or 'flooded' (too much ink) results.",
+      homeConnection: "Discuss how books and posters were created before digital printers (Gutenberg press, lithography).",
+      assessment: "Successfully inks and pulls a consistent edition of prints, correctly numbering and signing them.",
+      differentiation: "Easier: Print a single color on white paper. Harder: Create a 'reduction print' by carving more away from the block and printing a second color over the first."
+    }
+  ]
+},
+'April': {
+  icon: 'fa-camera',
+  color: 'from-blue-400 to-indigo-500',
+  focus: 'Photography & Digital Art',
+  skills: ['Composition (Rule of Thirds)', 'Lighting', 'Digital painting basics', 'Photo manipulation concepts'],
+  project: 'Curate a digital portfolio featuring 5 composed photographs and 1 digital painting or manipulated image.',
+  materials: ['Digital camera or smartphone/tablet with camera', 'Tablet with drawing app (e.g., Procreate, Sketchbook, or free web-based app)', 'Stylus (optional)', 'Computers for photo editing (optional)'],
+  weeks: [
+    {
+      title: "Photographic Composition",
+      objective: "Move beyond 'snapshots' by applying the Rule of Thirds, leading lines, and framing.",
+      warmup: "Draw a tic-tac-toe grid over a piece of paper and discuss placing subjects on the intersections (Rule of Thirds).",
+      mainActivity: "Photo Walk: Go outside or around the house. Take 10 photos focusing specifically on composition. Try taking photos from unusual angles (worm's-eye view, bird's-eye view). Choose the best 3 to present and explain why the composition works.",
+      game: "Find the Frame: Create a 'frame' with your hands and look for interesting compositions before taking the picture.",
+      homeConnection: "Watch a movie or TV show and notice how the characters are positioned on the screen (they are rarely dead-center).",
+      assessment: "Applies the Rule of Thirds or leading lines intentionally in their photographs.",
+      differentiation: "Easier: Focus solely on getting the subject out of the center. Harder: Combine Rule of Thirds with a shallow depth of field (blurred background)."
+    },
+    {
+      title: "Lighting & Mood in Photography",
+      objective: "Understand how light direction (front, side, back) and quality (hard, soft) changes a photograph.",
+      warmup: "Use a flashlight to illuminate an object from different angles and observe the changing shadows.",
+      mainActivity: "Portrait Lighting Study: Using a single light source (a lamp or a window), take portraits of a subject (a person or a toy) demonstrating side lighting (dramatic half-shadow), front lighting (flat), and backlighting (silhouette).",
+      game: "Shadow Puppets: Use hard light to create crisp shadow stories on a wall.",
+      homeConnection: "Notice the 'Golden Hour' (shortly after sunrise or before sunset) when the outdoor light is soft and warm.",
+      assessment: "Successfully manipulates light direction to change the mood or visibility of the subject.",
+      differentiation: "Easier: Focus on capturing a clear silhouette. Harder: Use a reflector (white cardboard or foil) to bounce light into the shadows (fill light)."
+    },
+    {
+      title: "Digital Painting Basics",
+      objective: "Translate traditional drawing skills to a digital interface, understanding layers and digital brushes.",
+      warmup: "Open a digital drawing app and spend 10 minutes scribbling with every different brush tool available.",
+      mainActivity: "Digital Still Life: Arrange a simple still life physically or use a photo. In a drawing app, sketch the outline on one 'layer'. Create a new layer underneath for the base colors. Create another layer on top for shadows and highlights. Learn to use the 'undo' and 'opacity' features.",
+      game: "Layer Logic: Think of layers like clear sheets of plastic. Discuss what happens if you paint the background on the top layer.",
+      homeConnection: "Discuss how animated movies or video games use digital art.",
+      assessment: "Successfully utilizes the concept of digital layers to separate line art from coloring.",
+      differentiation: "Easier: Color in a pre-drawn digital line art file. Harder: Create a fully rendered digital painting using custom brushes and blending modes."
+    },
+    {
+      title: "Digital Collage & Manipulation",
+      objective: "Understand how digital tools can be used to combine and alter images (the concept of 'Photoshop').",
+      warmup: "Look at examples of digital photo manipulation (e.g., giant animals in cities) and discuss how they were made.",
+      mainActivity: "Create a 'Digital Frankentoy' or Surreal Scene. Use a free online photo editor (or drawing app that imports photos). Import 2 or 3 different photographs. Use the eraser/selection tools to cut out elements from one photo and paste them into another. Adjust the size and position to make it look 'real'.",
+      game: "Spot the Fake: Look at historical or viral photos and try to determine if they are real or manipulated.",
+      homeConnection: "Discuss media literacy and why it's important to know that photographs can be easily altered.",
+      assessment: "Combines elements from multiple digital images into a single file, using scaling and erasing tools effectively.",
+      differentiation: "Easier: Stick simple digital stickers or drawings over a photograph. Harder: Adjust the color balance and contrast of the imported elements so they perfectly match the background lighting."
+    }
+  ]
+},
+'May': {
+  icon: 'fa-globe-americas',
+  color: 'from-pink-400 to-purple-500',
+  focus: 'Cultural Art Traditions',
+  skills: ['Pattern & symmetry', 'Symbolism in art', 'Textile arts', 'Appreciation of global cultures'],
+  project: 'Create two pieces: a symmetrical geometric pattern inspired by Islamic art, and a textile/weaving piece.',
+  materials: ['Rulers and compasses', 'Colored pencils/markers', 'Yarn or string', 'Cardboard for looms', 'Beads', 'Construction paper', 'Watercolors'],
+  weeks: [
+    {
+      title: "Islamic Geometric Patterns",
+      objective: "Explore the intersection of math and art through the complex, non-representational geometric patterns found in Islamic architecture.",
+      warmup: "Use a compass to draw a perfect circle, then use the compass to mark 6 intersecting points around the edge.",
+      mainActivity: "Create a complex geometric tessellation or radial pattern using a compass and straightedge. Focus on the underlying grid (usually based on squares or hexagons). Color the pattern carefully, emphasizing symmetry and repetition.",
+      game: "Pattern Block Puzzles: Use physical geometric pattern blocks to create large, symmetrical floor designs.",
+      homeConnection: "Look for complex geometric patterns in floor tiles, rugs, or wallpaper.",
+      assessment: "Uses tools (compass/ruler) accurately to create a complex, mathematically symmetrical geometric design.",
+      differentiation: "Easier: Color a pre-drawn complex geometric grid. Harder: Construct a complex 8-fold star pattern from scratch using only a compass and straightedge."
+    },
+    {
+      title: "Mesoamerican Mosaics",
+      objective: "Learn about the mosaic mask and architectural traditions of the Aztec and Maya civilizations.",
+      warmup: "Tear colored paper into tiny, uniform squares.",
+      mainActivity: "Design a stylized animal or geometric face mask. Instead of painting, create the image using paper mosaic. Glue small, uniformly cut squares of colored paper (or painted eggshells) tightly together to fill the space, imitating the turquoise and jade mosaics of Mesoamerica.",
+      game: "Mosaic Relay: Work as a team to fill a large drawn shape with sticky notes or colored squares.",
+      homeConnection: "Notice mosaic art in modern architecture, subways, or public parks.",
+      assessment: "Exhibits patience and precision in placing mosaic tiles closely together to build an image or pattern.",
+      differentiation: "Easier: Use larger mosaic pieces (like cut foam) on a simple shape. Harder: Create a gradient of color using tiny mosaic pieces."
+    },
+    {
+      title: "African Textile Arts (Kente Cloth)",
+      objective: "Understand the cultural significance of weaving and the symbolism of color and pattern in West African textiles.",
+      warmup: "Practice a simple 'over, under, over, under' weave with strips of paper.",
+      mainActivity: "Create a paper weaving inspired by Kente cloth. Paint or draw distinct, meaningful geometric patterns on long strips of paper (the warp and weft). Weave the patterned strips together tightly to create a complex, vibrant 'textile'.",
+      game: "Human Weaving: Form two lines facing each other and practice ducking under and stepping over linked arms.",
+      homeConnection: "Examine the weave of different fabrics at home (denim, knits, canvas).",
+      assessment: "Successfully completes an over-under weaving pattern and incorporates symbolic color/pattern.",
+      differentiation: "Easier: Weave solid colors of paper together. Harder: Try cardboard loom weaving with actual yarn, switching colors to create patterns."
+    },
+    {
+      title: "Indigenous Art of North America",
+      objective: "Explore the narrative and stylized art of Indigenous peoples, focusing on Pacific Northwest formline art or Plains ledger art.",
+      warmup: "Look at examples of formline art (totem poles) and identify the U-shapes, ovoids, and continuous curving lines.",
+      mainActivity: "Choose a style to emulate respectfully. EITHER: Create an animal drawing using the strict rules of Pacific Northwest formline (bold black outlines, red/blue accents, stylized joints/eyes). OR: Create a narrative 'Ledger Art' drawing over an old piece of lined or printed paper, telling a story of a modern event in a flat, illustrative style.",
+      game: "Storytelling Circle: Pass an object around; each person adds one sentence to a continuous story.",
+      homeConnection: "Research the specific Indigenous peoples whose traditional land you currently live on.",
+      assessment: "Creates an artwork that demonstrates an understanding of the specific stylistic rules or narrative purpose of the chosen tradition.",
+      differentiation: "Easier: Use templates to trace standard ovoid and U-shapes for a formline design. Harder: Create an original, complex composition that adheres strictly to the traditional design rules."
+    }
+  ]
+},
+'June': {
+  icon: 'fa-images',
+  color: 'from-amber-400 to-orange-500',
+  focus: 'Portfolio & Exhibition',
+  skills: ['Curation', 'Writing artist statements', 'Mounting/Matting artwork', 'Self-reflection & critique'],
+  project: 'Prepare a final portfolio, write an artist statement, and host a formal art exhibition.',
+  materials: ['All artwork from the year', 'Large portfolio folder (store-bought or handmade from cardboard)', 'Mat board or heavy black construction paper for mounting', 'Double-sided tape or glue sticks', 'Index cards for labels'],
+  weeks: [
+    {
+      title: "Curation & Selection",
+      objective: "Critically review past work and select the strongest pieces to represent growth and skill.",
+      warmup: "Look at all the artwork from the year spread out on the floor. Which piece immediately catches your eye and why?",
+      mainActivity: "Portfolio Review. The student selects their top 5-7 pieces from the year. They must defend their choices: Why are these the best? Do they show a variety of skills (drawing, painting, 3D, digital)? Discuss pieces that maybe didn't turn out well, but taught a valuable lesson.",
+      game: "Art Critic Roleplay: Put on a 'fancy hat' and give a dramatic, positive critique of a peer's (or sibling's) artwork.",
+      homeConnection: "Discuss how museums choose which artworks to put on display and which to keep in storage.",
+      assessment: "Can articulate clear reasons for selecting specific artworks based on artistic merit or personal growth.",
+      differentiation: "Easier: Guide the selection process by asking them to pick 'one painting, one drawing, and one sculpture.' Harder: Have the student curate the pieces based on a specific theme rather than just 'best work'."
+    },
+    {
+      title: "Matting & Presentation",
+      objective: "Learn how professional presentation elevates an artwork.",
+      warmup: "Compare a ragged, torn piece of paper with a drawing on it to the same drawing placed inside a clean, black frame.",
+      mainActivity: "Mounting Artwork. Take the selected pieces and prepare them for exhibition. Trim frayed edges. Carefully mount 2D artworks onto slightly larger pieces of black or white heavy paper (matting) to create a clean border. Ensure the artwork is centered and glued securely.",
+      game: "Measuring Challenge: Use a ruler to find the exact center of various pieces of paper.",
+      homeConnection: "Look at framed photos or art in the house. Notice the matting (the cardboard border inside the frame).",
+      assessment: "Presents artwork neatly, with clean edges and straight, centered mounting.",
+      differentiation: "Easier: Use pre-cut mats and simply tape the artwork behind them. Harder: Teach how to measure and cut a custom window mat using a craft knife and straightedge (with supervision)."
+    },
+    {
+      title: "The Artist Statement",
+      objective: "Write a clear, reflective statement explaining the intention and process behind the art.",
+      warmup: "Read examples of professional artist statements. Discuss what makes them helpful or confusing.",
+      mainActivity: "Write an Artist Statement. Answer questions like: What is my favorite medium to use and why? What themes do I like to explore? What was my most challenging project this year and how did I overcome it? What do I hope people feel when they look at my art?",
+      game: "Title Generator: Come up with the most dramatic, funny, or mysterious titles for abstract squiggles drawn on the board.",
+      homeConnection: "Practice speaking clearly and confidently about your work in preparation for the exhibition.",
+      assessment: "Writes a thoughtful paragraph that clearly communicates their artistic process, preferences, and intentions.",
+      differentiation: "Easier: Fill in a guided worksheet with sentence starters ('My favorite project was... because...'). Harder: Write a specific artist statement for one particular masterpiece, detailing the conceptual meaning behind it."
+    },
+    {
+      title: "The Exhibition",
+      objective: "Celebrate the year's work by organizing and hosting a formal art show.",
+      warmup: "Practice setting up the room—where is the best lighting? How should traffic flow through the 'gallery'?",
+      mainActivity: "Hang or display the matted artwork. Create 'tombstone labels' (index cards) for each piece listing the Title, Artist Name, Date, and Medium. Display the written Artist Statement. Host a 'gallery opening' for family/friends where the student acts as the docent, explaining their work.",
+      game: "Gallery Scavenger Hunt: Give guests a list of things to find in the artwork (e.g., 'Find a piece that uses complementary colors').",
+      homeConnection: "Celebrate! Discuss what art skills they want to learn next year.",
+      assessment: "Successfully organizes the display, creates accurate labels, and speaks confidently about their art to an audience.",
+      differentiation: "Easier: Set up the art on a table and have informal conversations. Harder: Create a digital catalog or slideshow of the exhibition to share with distant family members."
+    }
+  ]
+}
+};
+
+let currentMonth='September';
+
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13.5px;font-weight:600;color:white;line-height:1.4;">${w.title}</p><p style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px;">${w.objective}</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-fire" style="color:var(--a2);margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Warm-up:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.warmup}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-palette" style="color:var(--a1);margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Main Activity:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.mainActivity}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-gamepad" style="color:#34d399;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Game/Movement:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.game}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-home" style="color:#60a5fa;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Home Connection:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.homeConnection}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-check-circle" style="color:#fbbf24;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Assessment:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.assessment}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;margin-top:4px;">
+                    <i class="fas fa-layer-group" style="color:#a78bfa;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em;">Differentiation:</span> <p style="font-size:12px;color:rgba(255,255,255,0.4);display:inline;">${w.differentiation}</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      <div>
+        <div class="sched-card" style="margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;"><i class="fas fa-star" style="color:white;font-size:18px;"></i></div>
+            <div><h4 style="font-size:15px;font-weight:700;">Monthly Project</h4><p style="font-size:12px;color:rgba(255,255,255,0.5);">Cumulative application</p></div>
+          </div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.6;">${d.project}</p>
+        </div>
+        <div class="sched-card">
+          <h4 style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--al);text-transform:uppercase;letter-spacing:0.05em;">Materials Needed</h4>
+          <div>
+            ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check" style="color:var(--a2);font-size:12px;"></i><span style="font-size:13.5px;color:rgba(255,255,255,0.7);">${mat}</span></div>`).join('')}
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:24px;">
+          ${prev?`<button onclick="selectMonth('${prev}')" style="background:transparent;border:1px solid rgba(255,255,255,0.1);color:white;padding:8px 16px;border-radius:8px;font-size:13px;cursor:pointer;transition:background 0.2s;">← ${prev}</button>`:'<div></div>'}
+          ${next?`<button onclick="selectMonth('${next}')" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:white;padding:8px 16px;border-radius:8px;font-size:13px;cursor:pointer;transition:background 0.2s;">${next} →</button>`:'<div></div>'}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function toggleWeek(id){
+  const el=document.getElementById('wd-'+id);
+  const icon=document.getElementById('chev-'+id);
+  const isO=el.style.display==='block';
+  document.querySelectorAll('.week-detail').forEach(d=>d.style.display='none');
+  document.querySelectorAll('[id^="chev-"]').forEach(i=>i.style.transform='rotate(0deg)');
+  if(!isO){
+    el.style.display='block';
+    icon.style.transform='rotate(180deg)';
+  }
+}
+
+
+
+window.onload=init;
+</script>
+<script src="paywall.js"></script>
+</body>
+</html>

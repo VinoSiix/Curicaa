@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Hub - Educational Pathways</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+
+        :root {
+            --bg-page: #04040e;
+            --bg-header: rgba(4, 4, 14, 0.82);
+            --bg-card: rgba(255,255,255,0.035);
+            --bg-card-hover: rgba(255,255,255,0.055);
+            --bg-subtle: rgba(255,255,255,0.04);
+            --bg-subtle-hover: rgba(255,255,255,0.09);
+            --bg-subject-list: rgba(255,255,255,0.03);
+            --bg-badge: rgba(255,255,255,0.07);
+            --bg-pill: rgba(255,255,255,0.035);
+            --bg-pill-hover: rgba(255,255,255,0.065);
+            --bg-stats: rgba(255,255,255,0.04);
+            --bg-btn: rgba(255,255,255,0.035);
+            --bg-btn-hover: rgba(255,255,255,0.075);
+            --bg-modal-overlay: rgba(0,0,0,0.72);
+            --bg-modal-box: #0b0b1d;
+            --bg-subject-btn: rgba(255,255,255,0.04);
+            --bg-subject-btn-hover: rgba(255,255,255,0.085);
+            --bg-mini-card: rgba(99,102,241,0.08);
+
+            --border-subtle: rgba(255,255,255,0.055);
+            --border-card: rgba(255,255,255,0.075);
+            --border-faint: rgba(255,255,255,0.07);
+            --border-thin: rgba(255,255,255,0.09);
+            --border-icon-ring: rgba(255,255,255,0.13);
+            --border-badge: rgba(255,255,255,0.11);
+            --border-header: rgba(255,255,255,0.07);
+
+            --text-hero: rgba(255,255,255,0.48);
+            --text-primary: rgba(255,255,255,0.85);
+            --text-secondary: rgba(255,255,255,0.55);
+            --text-muted: rgba(255,255,255,0.38);
+            --text-subtle: rgba(255,255,255,0.4);
+            --text-faint: rgba(255,255,255,0.3);
+            --text-very-faint: rgba(255,255,255,0.2);
+            --text-label: rgba(255,255,255,0.28);
+            --text-nav: rgba(255,255,255,0.45);
+            --text-list: rgba(255,255,255,0.6);
+            --text-icon-btn: rgba(255,255,255,0.5);
+            --text-close-btn: rgba(255,255,255,0.55);
+            --text-section-subject: rgba(255,255,255,0.28);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        ::selection { background: rgba(129,140,248,0.3); color: white; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+        body {
+            background: var(--bg-page);
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+            animation: pageIn 0.8s ease forwards;
+        }
+        @keyframes pageIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+        }
+        .bg-orb-1 { width: 700px; height: 700px; background: #6366f1; top: -300px; left: -200px; }
+        .bg-orb-2 { width: 600px; height: 600px; background: #7c3aed; bottom: -150px; right: -150px; }
+        .bg-orb-3 { width: 400px; height: 400px; background: #0891b2; top: 35%; left: 38%; }
+
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .star {
+            position: absolute; width: 2px; height: 2px;
+            background: white; border-radius: 50%; opacity: 0;
+            animation: twinkle var(--dur) ease-in-out infinite var(--delay);
+            will-change: opacity, transform;
+        }
+        .star.tint-blue { background: #a5b4fc; }
+        .star.tint-purple { background: #c4b5fd; }
+        .star.tint-cyan { background: #67e8f9; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(1) translateY(0); }
+            50% { opacity: 0.6; transform: scale(1.8) translateY(-2px); }
+        }
+
+        header {
+            position: sticky; top: 0; z-index: 50;
+            background: var(--bg-header);
+            backdrop-filter: blur(28px);
+            border-bottom: 1px solid var(--border-header);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        header.scrolled {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+
+        /* Scroll progress bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #818cf8, #c084fc, #67e8f9);
+            z-index: 100;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            color: var(--text-icon-btn);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 40;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(.22,.68,0,1.2);
+            backdrop-filter: blur(12px);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-icon-ring);
+            color: var(--text-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .nav-link {
+            font-size: 13px; font-weight: 500; color: var(--text-nav);
+            text-decoration: none; padding: 6px 12px; border-radius: 8px;
+            transition: color 0.2s, background 0.2s; cursor: pointer;
+        }
+        .nav-link:hover { color: var(--text-primary); background: var(--bg-subtle); }
+        .nav-cta {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 8px 18px; border-radius: 10px;
+            background: linear-gradient(135deg, rgba(129,140,248,0.2), rgba(192,132,252,0.2));
+            border: 1px solid rgba(129,140,248,0.3);
+            font-size: 13px; font-weight: 600; color: #c4b5fd;
+            cursor: pointer; transition: all 0.25s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-cta::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        .nav-cta:hover {
+            background: linear-gradient(135deg, rgba(129,140,248,0.32), rgba(192,132,252,0.32));
+            border-color: rgba(129,140,248,0.5);
+            color: #e0d7ff;
+            box-shadow: 0 4px 20px rgba(129,140,248,0.2);
+        }
+        .nav-cta:hover::after { transform: translateX(100%); }
+        .logo-glow {
+            position: absolute; inset: -4px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .logo-wrap:hover .logo-glow { opacity: 0.5; }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 26px 22px 22px;
+            transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            will-change: transform, box-shadow;
+        }
+        .card::before {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: 20px;
+            background: var(--card-glow, transparent);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .card:hover {
+            transform: translateY(-7px) scale(1.015);
+            border-color: var(--ring-color, rgba(255,255,255,0.2));
+            background: var(--bg-card-hover);
+            box-shadow: 0 0 0 1px var(--ring-color, rgba(255,255,255,0.15)), 0 0 32px 0 var(--ring-glow, rgba(129,140,248,0.2)), 0 20px 48px rgba(0,0,0,0.45);
+        }
+        .card:hover::before { opacity: 1; }
+        .card:hover .icon-ring {
+            transform: scale(1.08);
+            transition: transform 0.35s cubic-bezier(.22,.68,0,1.2);
+        }
+        .card:hover .btn-cta {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px var(--ring-glow, rgba(129,140,248,0.3));
+        }
+
+        .card-purple { --card-glow: radial-gradient(ellipse at top, rgba(167,139,250,0.12) 0%, transparent 65%); --ring-color: rgba(168,85,247,0.55); --ring-glow: rgba(168,85,247,0.22); }
+        .card-blue   { --card-glow: radial-gradient(ellipse at top, rgba(96,165,250,0.12) 0%, transparent 65%);  --ring-color: rgba(59,130,246,0.55);  --ring-glow: rgba(59,130,246,0.22); }
+        .card-green  { --card-glow: radial-gradient(ellipse at top, rgba(52,211,153,0.12) 0%, transparent 65%);  --ring-color: rgba(16,185,129,0.55);  --ring-glow: rgba(16,185,129,0.22); }
+        .card-orange { --card-glow: radial-gradient(ellipse at top, rgba(251,146,60,0.12) 0%, transparent 65%);  --ring-color: rgba(249,115,22,0.55);  --ring-glow: rgba(249,115,22,0.22); }
+        .card-indigo { --card-glow: radial-gradient(ellipse at top, rgba(129,140,248,0.12) 0%, transparent 65%); --ring-color: rgba(99,102,241,0.55);  --ring-glow: rgba(99,102,241,0.22); }
+        .card-red    { --card-glow: radial-gradient(ellipse at top, rgba(248,113,113,0.12) 0%, transparent 65%); --ring-color: rgba(239,68,68,0.55);   --ring-glow: rgba(239,68,68,0.22); }
+        .card-yellow { --card-glow: radial-gradient(ellipse at top, rgba(250,204,21,0.12) 0%, transparent 65%);  --ring-color: rgba(234,179,8,0.55);   --ring-glow: rgba(234,179,8,0.22); }
+
+        .icon-ring {
+            width: 52px; height: 52px; border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            position: relative;
+            transition: transform 0.35s cubic-bezier(.22,.68,0,1.2);
+        }
+        .icon-ring::after {
+            content: '';
+            position: absolute; inset: -2px;
+            border-radius: 17px;
+            border: 1px solid var(--border-icon-ring);
+        }
+
+        .age-badge {
+            display: inline-block;
+            padding: 3px 11px;
+            border-radius: 100px;
+            font-size: 10.5px; font-weight: 600;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            background: var(--bg-badge);
+            border: 1px solid var(--border-badge);
+            margin-bottom: 14px;
+        }
+
+        .subject-list {
+            background: var(--bg-subject-list);
+            border: 1px solid var(--border-faint);
+            border-radius: 11px; padding: 12px 14px; margin-bottom: 18px; text-align: left;
+        }
+        .subject-list ul { list-style: none; padding: 0; margin: 0; }
+        .subject-list li {
+            display: flex; align-items: center; gap: 8px;
+            padding: 3px 0; font-size: 12px; color: var(--text-list);
+        }
+        .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; transition: transform 0.2s ease; }
+        .subject-list li:hover .dot { transform: scale(1.4); }
+
+        .btn-cta {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 9px 18px; border-radius: 10px;
+            font-size: 12.5px; font-weight: 600; border: none; cursor: pointer;
+            transition: opacity 0.2s, transform 0.25s cubic-bezier(.22,.68,0,1.2), box-shadow 0.25s ease;
+        }
+        .btn-cta:hover { opacity: 0.9; transform: translateY(-2px) scale(1.04); }
+
+        .feature-pill {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-card);
+            border-radius: 14px; padding: 18px;
+            display: flex; align-items: center; gap: 14px;
+            transition: all 0.25s cubic-bezier(.22,.68,0,1.2);
+        }
+        .feature-pill:hover {
+            background: var(--bg-pill-hover);
+            border-color: var(--border-icon-ring);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .feature-pill:hover .feature-icon { transform: scale(1.1); }
+        .feature-icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            transition: transform 0.25s cubic-bezier(.22,.68,0,1.2);
+        }
+
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: var(--bg-modal-overlay);
+            backdrop-filter: blur(14px);
+            z-index: 60; display: none;
+            align-items: center; justify-content: center; padding: 20px;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        .modal-box {
+            background: var(--bg-modal-box);
+            border: 1px solid var(--border-icon-ring);
+            border-radius: 24px; padding: 30px;
+            max-width: 520px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
+            animation: modalIn 0.3s cubic-bezier(.22,.68,0,1.2);
+            color: var(--text-primary);
+            box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(129,140,248,0.1);
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.92) translateY(20px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .subject-btn {
+            background: var(--bg-subject-btn);
+            border: 1px solid var(--border-faint);
+            border-radius: 14px; padding: 20px;
+            text-align: center; cursor: pointer;
+            transition: all 0.25s cubic-bezier(.22,.68,0,1.2); color: var(--text-primary); width: 100%;
+        }
+        .subject-btn:hover {
+            background: var(--bg-subject-btn-hover);
+            border-color: var(--border-icon-ring);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .hero-title {
+            background: linear-gradient(135deg, #e0d7ff 0%, #a78bfa 30%, #818cf8 60%, #67e8f9 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+        .hero-accent {
+            background: linear-gradient(90deg, #f472b6 0%, #c084fc 50%, #818cf8 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; border-radius: 100px;
+            background: rgba(129,140,248,0.1);
+            border: 1px solid rgba(129,140,248,0.28);
+            font-size: 11px; font-weight: 600; color: #a5b4fc;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            margin-bottom: 32px;
+            animation: badgeFloat 3s ease-in-out infinite;
+        }
+        @keyframes badgeFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .hero-badge .badge-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #818cf8;
+            box-shadow: 0 0 6px rgba(129,140,248,0.8);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.75); }
+        }
+        .hero-divider {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            margin: 28px auto 0; max-width: 320px;
+        }
+        .hero-divider-line {
+            flex: 1; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(129,140,248,0.3), transparent);
+        }
+        .hero-divider-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(129,140,248,0.5); }
+        .hero-stats {
+            display: inline-flex; align-items: center; gap: 24px;
+            padding: 12px 28px; border-radius: 100px;
+            background: var(--bg-stats);
+            border: 1px solid var(--border-card);
+            margin-top: 32px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hero-stats:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .hero-glow {
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(129,140,248,0.12) 0%, transparent 70%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: -1;
+            animation: heroGlowPulse 6s ease-in-out infinite;
+        }
+        @keyframes heroGlowPulse {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat-num { font-size: 18px; font-weight: 800; letter-spacing: -0.03em; }
+        .hero-stat-lbl { font-size: 10px; font-weight: 500; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 1px; }
+        .hero-stat-sep { width: 1px; height: 32px; background: var(--border-icon-ring); }
+
+        .coming-soon-sticker {
+            position: absolute;
+            top: 14px;
+            right: -8px;
+            background: linear-gradient(135deg, #818cf8, #a78bfa);
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 4px 12px 4px 10px;
+            border-radius: 4px 0 0 4px;
+            z-index: 5;
+            box-shadow: 0 2px 8px rgba(129,140,248,0.4);
+            transform: rotate(-2deg);
+            animation: stickerPulse 3s ease-in-out infinite;
+        }
+        @keyframes stickerPulse {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(0deg) scale(1.03); }
+        }
+        .coming-soon-sticker::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: -6px;
+            border: 3px solid transparent;
+            border-top-color: #6366f1;
+            border-right-width: 0;
+            border-left-color: #6366f1;
+        }
+        .card.coming-soon-card {
+            opacity: 0.7;
+        }
+        .card.coming-soon-card:hover {
+            opacity: 0.85;
+        }
+
+        /* Staggered card entrance */
+        .card-grid .card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s cubic-bezier(.22,1,.36,1), transform 0.5s cubic-bezier(.22,1,.36,1);
+        }
+        .card-grid.revealed .card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-grid.revealed .card:nth-child(1) { transition-delay: 0ms; }
+        .card-grid.revealed .card:nth-child(2) { transition-delay: 80ms; }
+        .card-grid.revealed .card:nth-child(3) { transition-delay: 160ms; }
+        .card-grid.revealed .card:nth-child(4) { transition-delay: 240ms; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s cubic-bezier(.22,1,.36,1), transform 0.6s cubic-bezier(.22,1,.36,1);
+            will-change: opacity, transform;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .section-label {
+            font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--text-label); margin-bottom: 8px;
+        }
+
+        .about-card {
+            background: var(--bg-mini-card);
+            border: 1px solid var(--border-thin);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.25s cubic-bezier(.22,.68,0,1.2);
+        }
+        .about-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            background: rgba(99,102,241,0.12);
+        }
+
+        /* ===== RESPONSIVE MEDIA QUERIES ===== */
+        
+        /* Mobile Nav Styles */
+        .mobile-nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-header);
+            backdrop-filter: blur(16px);
+            z-index: 100;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-nav-overlay.open {
+            display: block;
+            opacity: 1;
+        }
+        .mobile-nav-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: var(--bg-page);
+            border-bottom: 1px solid var(--border-header);
+            transform: translateY(-100%);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .mobile-nav-overlay.open .mobile-nav-content {
+            transform: translateY(0);
+        }
+        .mobile-nav-link {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        .mobile-nav-link:hover {
+            background: var(--bg-subtle);
+        }
+
+        @media (max-width: 1023px) {
+            /* Table Layout (640px - 1023px) */
+            #pathways > div:nth-child(2),
+            #pathways > div:nth-child(3) {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            #features > div:nth-child(2) {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            /* Mobile Nav Toggle */
+            #desktopNav { display: none !important; }
+            #mobileMenuToggle { display: flex !important; }
+            
+            /* Header */
+            .nav-cta { display: none !important; }
+
+            /* Main Layout */
+            main { padding: 40px 16px 60px !important; }
+            section { margin-bottom: 50px !important; }
+            #about { margin-top: 50px !important; }
+            
+            /* Hero adjustments */
+            .hero-title { font-size: clamp(38px, 10vw, 50px) !important; }
+            .hero-stats { 
+                padding: 12px 20px !important;
+                gap: 16px !important;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-stat-sep { height: 24px !important; }
+            
+            /* Background Orbs */
+            .bg-orb-1 { width: 400px !important; height: 400px !important; top: -150px !important; left: -100px !important; }
+            .bg-orb-2 { width: 350px !important; height: 350px !important; bottom: -50px !important; right: -50px !important; }
+            .bg-orb-3 { width: 200px !important; height: 200px !important; }
+
+            /* Grids -> Single Column */
+            #pathways > div:nth-child(2),
+            #pathways > div:nth-child(3) {
+                grid-template-columns: 1fr !important;
+            }
+            #features > div:nth-child(2) {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* About Section */
+            #about > div { grid-template-columns: 1fr !important; gap: 24px !important; }
+            
+            /* Card padding */
+            .card { padding: 20px 16px 16px !important; }
+            
+            /* Footer */
+            footer > div {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 16px !important;
+            }
+        }
+
+        @media (max-width: 479px) {
+            /* Very small screens */
+            #about > div > div:last-child {
+                grid-template-columns: 1fr !important;
+            }
+            .modal-box { padding: 20px !important; }
+            .hero-stats { flex-direction: column !important; gap: 8px !important; border-radius: 20px !important; padding: 20px !important; }
+            .hero-stat-sep { display: none !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* Focus-visible for accessibility */
+        :focus-visible {
+            outline: 2px solid rgba(129,140,248,0.6);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        button:focus-visible, a:focus-visible {
+            outline: 2px solid rgba(129,140,248,0.6);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="stars" id="stars"></div>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <i class="fas fa-chevron-up" style="font-size:14px;"></i>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:60px;position:relative;z-index:1;">
+
+            <!-- Logo -->
+            <div style="display:flex;align-items:center;gap:10px;cursor:pointer;" class="logo-wrap">
+                <div style="position:relative;flex-shrink:0;">
+                    <div class="logo-glow"></div>
+                    <div style="position:relative;width:34px;height:34px;background:linear-gradient(135deg,#818cf8,#c084fc);border-radius:10px;display:flex;align-items:center;justify-content:center;z-index:1;">
+                        <i class="fas fa-graduation-cap" style="font-size:14px;color:white;"></i>
+                    </div>
+                </div>
+                <div>
+                    <div style="font-weight:700;font-size:15px;letter-spacing:-0.025em;line-height:1.2;color:var(--text-primary);" class="logo-text-title">Curriculum Hub</div>
+                    <div style="font-size:10px;color:var(--text-faint);font-weight:500;letter-spacing:0.04em;line-height:1.2;" class="logo-text-subtitle">Educational Pathways</div>
+                </div>
+            </div>
+
+            <!-- Nav links (center) -->
+            <nav id="desktopNav" style="display:flex;align-items:center;gap:2px;" role="navigation" aria-label="Main navigation">
+                <a class="nav-link" role="button" tabindex="0" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                <a class="nav-link" role="button" tabindex="0" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Features</a>
+                <a class="nav-link" role="button" tabindex="0" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+            </nav>
+
+            <!-- Right side -->
+            <div style="display:flex;align-items:center;gap:10px;">
+                <button id="mobileMenuToggle" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" style="width:34px;height:34px;border-radius:8px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-icon-btn);font-size:13px;display:none;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)';this.style.color='var(--text-primary)'" onmouseout="this.style.background='var(--bg-subtle)';this.style.color='var(--text-icon-btn)'">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <a class="nav-cta" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">
+                    Start Learning <i class="fas fa-arrow-right" style="font-size:11px;"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Mobile Nav Overlay -->
+        <div id="mobileNavOverlay" class="mobile-nav-overlay" onclick="toggleMobileMenu()">
+            <nav class="mobile-nav-content" onclick="event.stopPropagation()">
+                <div style="display:flex;justify-content:flex-end;margin-bottom:20px;">
+                    <button onclick="toggleMobileMenu()" style="width:34px;height:34px;border-radius:8px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-icon-btn);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)';this.style.color='var(--text-primary)'" onmouseout="this.style.background='var(--bg-subtle)';this.style.color='var(--text-icon-btn)'">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:15px;align-items:center;">
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('features').scrollIntoView({behavior:'smooth'})">Features</a>
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+
+    <main style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:64px 20px 88px;">
+
+        <!-- Hero -->
+        <section style="text-align:center;margin-bottom:80px;" class="reveal">
+            <div class="hero-glow"></div>
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                K–12 Educational Pathways
+            </div>
+
+            <h1 style="margin-bottom:20px;">
+                <span class="hero-title" style="display:block;font-size:clamp(44px,7vw,80px);font-weight:800;line-height:1.06;letter-spacing:-0.038em;">
+                    Learn Without<br>Limits.
+                </span>
+            </h1>
+
+            <p style="color:var(--text-hero);max-width:460px;margin:0 auto;font-size:16px;line-height:1.75;font-weight:400;">
+                A complete curriculum for every age — from first letters and counting to college prep and beyond.
+            </p>
+
+            <div class="hero-divider">
+                <div class="hero-divider-line"></div>
+                <div class="hero-divider-dot"></div>
+                <div class="hero-divider-dot" style="opacity:0.5;"></div>
+                <div class="hero-divider-dot" style="opacity:0.25;"></div>
+                <div class="hero-divider-line"></div>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-num" style="color:#a78bfa;" data-count="7">0</div>
+                    <div class="hero-stat-lbl">Grade Levels</div>
+                </div>
+                <div class="hero-stat-sep"></div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num" style="color:#67e8f9;" data-count="4">0</div>
+                    <div class="hero-stat-lbl">Subjects</div>
+                </div>
+                <div class="hero-stat-sep"></div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num" style="color:#f472b6;">K–12</div>
+                    <div class="hero-stat-lbl">Coverage</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section id="pathways" style="margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;" class="reveal">
+                <p class="section-label">Choose a Grade Level</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Curriculum Pathways</h2>
+            </div>
+
+            <!-- Row 1: 4 cards -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;" class="reveal card-grid">
+                <div class="card card-purple" onclick="openSubjectModal('ages-5-7')">
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#a855f7,#ec4899);">
+                        <i class="fas fa-child" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#d8b4fe;">Early Elementary</h3>
+                        <div class="age-badge" style="color:#c4b5fd;">Ages 5–7</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Foundation building</p>
+                            <ul>
+                                <li><span class="dot" style="background:#a855f7;"></span>Basic reading</li>
+                                <li><span class="dot" style="background:#a855f7;"></span>Number sense</li>
+                                <li><span class="dot" style="background:#a855f7;"></span>Science discovery</li>
+                                <li><span class="dot" style="background:#a855f7;"></span>Creative arts</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#a855f7,#ec4899);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-blue" onclick="openSubjectModal('age-8')">
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);">
+                        <i class="fas fa-star" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#93c5fd;">Grade 3</h3>
+                        <div class="age-badge" style="color:#93c5fd;">Age 8</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Skill development</p>
+                            <ul>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Fluent reading</li>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Multiplication</li>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Scientific method</li>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Art techniques</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-green" onclick="openSubjectModal('age-9')">
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#10b981,#34d399);">
+                        <i class="fas fa-book" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#6ee7b7;">Grade 4</h3>
+                        <div class="age-badge" style="color:#6ee7b7;">Age 9</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Knowledge expansion</p>
+                            <ul>
+                                <li><span class="dot" style="background:#10b981;"></span>Comprehension</li>
+                                <li><span class="dot" style="background:#10b981;"></span>Division</li>
+                                <li><span class="dot" style="background:#10b981;"></span>Lab reports</li>
+                                <li><span class="dot" style="background:#10b981;"></span>Creative projects</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#10b981,#34d399);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-orange" onclick="openSubjectModal('age-10')">
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#f97316,#ef4444);">
+                        <i class="fas fa-rocket" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fdba74;">Grade 5</h3>
+                        <div class="age-badge" style="color:#fdba74;">Age 10</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Advanced basics</p>
+                            <ul>
+                                <li><span class="dot" style="background:#f97316;"></span>Essay writing</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Fractions/decimals</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Research skills</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Art analysis</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#f97316,#ef4444);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: 3 cards centered -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="reveal card-grid">
+                <div class="card card-indigo" onclick="openSubjectModal('ages-11-12')">
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">
+                        <i class="fas fa-brain" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#a5b4fc;">Middle School</h3>
+                        <div class="age-badge" style="color:#a5b4fc;">Ages 11–12</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Preparation focus</p>
+                            <ul>
+                                <li><span class="dot" style="background:#6366f1;"></span>Research essays</li>
+                                <li><span class="dot" style="background:#6366f1;"></span>Pre-algebra</li>
+                                <li><span class="dot" style="background:#6366f1;"></span>Advanced labs</li>
+                                <li><span class="dot" style="background:#6366f1;"></span>Digital arts</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-red" onclick="openSubjectModal('age-14')">
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#ef4444,#ec4899);">
+                        <i class="fas fa-graduation-cap" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fca5a5;">High School</h3>
+                        <div class="age-badge" style="color:#fca5a5;">Age 14</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Critical thinking</p>
+                            <ul>
+                                <li><span class="dot" style="background:#ef4444;"></span>Algebra I</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>9th Grade English</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>Biology</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>Art & PE</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#ef4444,#ec4899);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-yellow coming-soon-card" onclick="return false;">
+                    <span class="coming-soon-sticker">Coming Soon</span>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#eab308,#f97316);">
+                        <i class="fas fa-certificate" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fde047;">GED</h3>
+                        <div class="age-badge" style="color:#fde047;">Ages 15–16</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">GED preparation</p>
+                            <ul>
+                                <li><span class="dot" style="background:#eab308;"></span>English</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Science</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Math</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Social Studies</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" disabled style="background:rgba(255,255,255,0.05);color:var(--text-muted);cursor:not-allowed;opacity:0.6;">
+                            Coming Soon <i class="fas fa-clock" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-orange coming-soon-card" onclick="return false;">
+                    <span class="coming-soon-sticker">Coming Soon</span>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#f97316,#ef4444);">
+                        <i class="fas fa-trophy" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fb923c;">SAT</h3>
+                        <div class="age-badge" style="color:#fb923c;">Ages 17–18</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">SAT preparation</p>
+                            <ul>
+                                <li><span class="dot" style="background:#f97316;"></span>SAT/ACT strategies</li>
+                                <li><span class="dot" style="background:#f97316;"></span>College readiness</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Practice exams</li>
+                                <li><span class="dot" style="background:#f97316;"></span>College applications</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cta" disabled style="background:rgba(255,255,255,0.05);color:var(--text-muted);cursor:not-allowed;opacity:0.6;">
+                            Coming Soon <i class="fas fa-clock" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="reveal">
+            <div style="text-align:center;margin-bottom:34px;">
+                <p class="section-label">What's included</p>
+                <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.025em;">Platform Features</h2>
+                <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Everything you need to teach confidently at home.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;">
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-calendar-alt" style="color:#818cf8;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Monthly Themes</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Sep–Jun structure</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-check-circle" style="color:#4ade80;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Low-Budget Projects</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Accessible materials</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-palette" style="color:#c084fc;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Interactive Design</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Modern interface</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-mobile-alt" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Works Everywhere</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Any device, any time</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-chart-line" style="color:#22d3ee;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Progress Tracking</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">See growth over time</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-print" style="color:#f472b6;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Printable Worksheets</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Print & go, no prep</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-chalkboard-teacher" style="color:#fb923c;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Parent Guides</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Step-by-step lessons</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-check-circle" style="color:#4ade80;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Review Quizzes</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Built-in assessments</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-book-open" style="color:#60a5fa;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Reading Lists</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Age-matched books</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-flask" style="color:#a78bfa;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Science Kits</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Hands-on experiments</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-music" style="color:#f87171;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Music & Arts</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Creative expression</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-award" style="color:#2dd4bf;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Achievement Badges</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Celebrate milestones</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About -->
+        <section id="about" style="margin-top:88px;" class="reveal">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+                <!-- Left: text -->
+                <div>
+                    <p class="section-label" style="margin-bottom:10px;">About this project</p>
+                    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;margin-bottom:16px;">
+                        Built with love<br>for every learner.
+                    </h2>
+                    <p style="color:var(--text-icon-btn);font-size:14.5px;line-height:1.75;margin-bottom:20px;">
+                        Curriculum Hub is a handcrafted educational resource designed to make learning accessible at every stage — from a child's very first lessons all the way through high school graduation and test prep.
+                    </p>
+                    <p style="color:var(--text-subtle);font-size:14px;line-height:1.75;">
+                        Each pathway is thoughtfully organized by age and grade level, covering Math, English, Science, and Art & PE with low-budget, easy-to-follow materials that any family can use.
+                    </p>
+                </div>
+                <!-- Right: cards -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                    <div class="about-card" style="border-color:var(--border-thin);">
+                        <div style="width:36px;height:36px;border-radius:10px;background:var(--bg-card-hover);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+                            <i class="fas fa-heart" style="color:#818cf8;font-size:14px;"></i>
+                        </div>
+                        <div style="font-size:13px;font-weight:700;margin-bottom:4px;">Made with Care</div>
+                        <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">Every lesson plan crafted thoughtfully</div>
+                    </div>
+                    <div class="about-card" style="border-color:rgba(16,185,129,0.18);">
+                        <div style="width:36px;height:36px;border-radius:10px;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+                            <i class="fas fa-users" style="color:#34d399;font-size:14px;"></i>
+                        </div>
+                        <div style="font-size:13px;font-weight:700;margin-bottom:4px;">For Everyone</div>
+                        <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">Parents, teachers, and self-learners</div>
+                    </div>
+                    <div class="about-card" style="border-color:rgba(251,146,60,0.18);">
+                        <div style="width:36px;height:36px;border-radius:10px;background:rgba(251,146,60,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+                            <i class="fas fa-dollar-sign" style="color:#fb923c;font-size:14px;"></i>
+                        </div>
+                        <div style="font-size:13px;font-weight:700;margin-bottom:4px;">Budget-Friendly</div>
+                        <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">Low-cost materials, high-value learning</div>
+                    </div>
+                    <div class="about-card" style="border-color:rgba(168,85,247,0.18);">
+                        <div style="width:36px;height:36px;border-radius:10px;background:rgba(168,85,247,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+                            <i class="fas fa-seedling" style="color:#c084fc;font-size:14px;"></i>
+                        </div>
+                        <div style="font-size:13px;font-weight:700;margin-bottom:4px;">Grows With You</div>
+                        <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">Ages 5 through 18, all in one place</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="position:relative;z-index:1;border-top:1px solid var(--border-subtle);margin-top:80px;padding:28px 20px;">
+        <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:26px;height:26px;background:linear-gradient(135deg,#818cf8,#c084fc);border-radius:7px;display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-graduation-cap" style="font-size:11px;"></i>
+                </div>
+                <span style="font-size:13px;font-weight:600;color:var(--text-subtle);">Curriculum Hub</span>
+            </div>
+            <p style="font-size:12px;color:var(--text-very-faint);">Hi Luke!!! or anyone else! Glad you found this!!! <span style="opacity:0.5;">✨</span></p>
+            <div style="display:flex;gap:16px;">
+                <a class="nav-link" style="font-size:12px;" role="button" tabindex="0" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                <a class="nav-link" style="font-size:12px;" role="button" tabindex="0" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="subjectModal" class="modal-overlay" onclick="handleOverlayClick(event)" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
+                <div>
+                    <p style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-label);margin-bottom:5px;">Select a subject</p>
+                    <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.025em;" id="modalTitle">Choose a Subject</h3>
+                </div>
+                <button onclick="closeSubjectModal()" style="width:34px;height:34px;border-radius:9px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-close-btn);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;">
+                <button class="subject-btn" onclick="goToSubject('math')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:var(--bg-mini-card);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-calculator" style="color:#60a5fa;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">Mathematics</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);">Numbers, algebra, geometry</div>
+                </button>
+                <button class="subject-btn" onclick="goToSubject('english')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:var(--bg-mini-card);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-book" style="color:#34d399;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">English</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);">Reading, writing, grammar</div>
+                </button>
+                <button class="subject-btn" onclick="goToSubject('science')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:var(--bg-mini-card);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-flask" style="color:#c084fc;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">Science</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);">Biology, chemistry, physics</div>
+                </button>
+                <button class="subject-btn" id="fourthSubjectBtn" onclick="goToFourthSubject()">
+                    <div style="width:42px;height:42px;border-radius:12px;background:var(--bg-mini-card);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;" id="fourthSubjectIcon">
+                        <i class="fas fa-palette" style="color:#f472b6;font-size:17px;" id="fourthSubjectIconEl"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;" id="fourthSubjectTitle">Art & PE</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);" id="fourthSubjectDesc">Creative arts, music, PE</div>
+                </button>
+            </div>
+            <button onclick="closeSubjectModal()" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-card);color:var(--text-subtle);cursor:pointer;font-size:13px;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='var(--bg-card-hover)'" onmouseout="this.style.background='var(--bg-card)'">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const starsEl = document.getElementById('stars');
+        const tints = ['', '', '', 'tint-blue', 'tint-purple', 'tint-cyan'];
+        for (let i = 0; i < 90; i++) {
+            const s = document.createElement('div');
+            s.className = 'star ' + (tints[Math.floor(Math.random() * tints.length)]);
+            s.style.left = Math.random() * 100 + '%';
+            s.style.top = Math.random() * 100 + '%';
+            s.style.setProperty('--dur', (2.5 + Math.random() * 4) + 's');
+            s.style.setProperty('--delay', (Math.random() * 6) + 's');
+            if (Math.random() > 0.7) { s.style.width = '3px'; s.style.height = '3px'; }
+            starsEl.appendChild(s);
+        }
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    const delay = e.target.dataset.revealDelay || (i * 80);
+                    setTimeout(() => {
+                        e.target.classList.add('visible');
+                        if (e.target.classList.contains('card-grid')) {
+                            e.target.classList.add('revealed');
+                        }
+                    }, delay);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach((el, i) => {
+            el.dataset.revealDelay = el.dataset.revealDelay || (i * 100);
+            observer.observe(el);
+        });
+
+        // Animated counters for hero stats
+        function animateCounters() {
+            document.querySelectorAll('[data-count]').forEach(el => {
+                const target = parseInt(el.dataset.count);
+                const duration = 1200;
+                const start = performance.now();
+                function tick(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.round(target * eased);
+                    if (progress < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            });
+        }
+        const statsEl = document.querySelector('.hero-stats');
+        if (statsEl) {
+            const statsObserver = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting) {
+                    animateCounters();
+                    statsObserver.disconnect();
+                }
+            }, { threshold: 0.5 });
+            statsObserver.observe(statsEl);
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            const toggle = document.getElementById('mobileMenuToggle');
+            if (overlay.classList.contains('open')) {
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Open menu');
+            } else {
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                toggle.setAttribute('aria-expanded', 'true');
+                toggle.setAttribute('aria-label', 'Close menu');
+            }
+        }
+
+        let currentProgram = '';
+        const labels = {
+            'ages-5-7': 'Early Elementary — Ages 5–7',
+            'age-8': 'Grade 3 — Age 8',
+            'age-9': 'Grade 4 — Age 9',
+            'age-10': 'Grade 5 — Age 10',
+            'ages-11-12': 'Middle School — Ages 11–12',
+            'age-14': 'High School — Age 14',
+            'ages-15-16': 'GED — Ages 15–16',
+            'ages-17-18': 'SAT — Ages 17–18'
+        };
+
+        function openSubjectModal(p) {
+            currentProgram = p;
+            document.getElementById('modalTitle').textContent = labels[p] || 'Choose a Subject';
+            const isSocialStudies = p === 'ages-15-16' || p === 'age-14';
+            document.getElementById('fourthSubjectTitle').textContent = isSocialStudies ? 'Social Studies' : 'Art & PE';
+            document.getElementById('fourthSubjectDesc').textContent = isSocialStudies ? 'History, civics, geography' : 'Creative arts, music, PE';
+            document.getElementById('fourthSubjectIconEl').className = isSocialStudies ? 'fas fa-globe' : 'fas fa-palette';
+            document.getElementById('fourthSubjectIconEl').style.color = isSocialStudies ? '#facc15' : '#f472b6';
+            document.getElementById('fourthSubjectIcon').style.background = isSocialStudies ? 'rgba(234,179,8,0.14)' : 'rgba(236,72,153,0.14)';
+            document.getElementById('subjectModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSubjectModal() {
+            document.getElementById('subjectModal').classList.remove('open');
+            document.body.style.overflow = '';
+            currentProgram = '';
+        }
+        function handleOverlayClick(e) {
+            if (e.target === document.getElementById('subjectModal')) closeSubjectModal();
+        }
+        function goToSubject(subject) {
+            if (!currentProgram) return;
+            window.location.href = currentProgram + '-' + subject + '.html';
+        }
+        function goToFourthSubject() {
+            if (!currentProgram) return;
+            const subject = (currentProgram === 'ages-15-16' || currentProgram === 'age-14') ? 'social-studies' : 'art';
+            window.location.href = currentProgram + '-' + subject + '.html';
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSubjectModal(); });
+
+        // Scroll: header shadow, progress bar, back-to-top
+        const header = document.querySelector('header');
+        const scrollProgress = document.getElementById('scrollProgress');
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgress.style.width = progress + '%';
+            if (scrollTop > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            if (scrollTop > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }, { passive: true });
+    </script>
+</body>
+</html>

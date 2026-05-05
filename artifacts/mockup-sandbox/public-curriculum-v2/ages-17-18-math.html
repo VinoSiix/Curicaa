@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SAT Mathematics — Ages 17–18 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#f97316;--a2:#ef4444;--al:#fb923c;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(249,115,22,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(239,68,68,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(249,115,22,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.sat-banner{background:linear-gradient(135deg,rgba(249,115,22,0.1),rgba(239,68,68,0.08));border:1px solid rgba(249,115,22,0.2);border-radius:14px;padding:18px 22px;margin-bottom:32px;display:flex;align-items:center;gap:16px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .sched-card{background:rgba(255,255,255,0.55);}
+body.light .month-tab{background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:white;">SAT / College Prep</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 17–18</div>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-calculator" style="margin-right:5px;"></i>SAT Mathematics</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 17–18</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="sat-banner">
+    <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(249,115,22,0.2),rgba(239,68,68,0.15));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-trophy" style="color:#fb923c;font-size:18px;"></i></div>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#fb923c;margin-bottom:3px;">Digital SAT — Math Section</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);">The Digital SAT Math section (70 min, 44 questions) covers algebra (~35%), advanced math (~35%), problem solving & data analysis (~15%), and geometry/trigonometry (~15%). A built-in Desmos calculator is available for all questions.</div>
+    </div>
+  </div>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">SAT Preparation · Ages 17–18</p>
+    <h2 class="page-title">SAT Math Mastery</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:640px;margin:0 auto;line-height:1.75;">Master all four domains of the Digital SAT Math section through concept instruction, targeted practice, full-length tests, and strategic test-taking techniques — all aligned to the current College Board format.</p>
+  </section>
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-equals" style="color:#fb923c;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Algebra</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Linear equations, systems, inequalities</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(239,68,68,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-superscript" style="color:#f87171;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Advanced Math</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Quadratics, polynomials, functions</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(234,179,8,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-chart-pie" style="color:#fde047;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Data Analysis</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Ratios, statistics, probability</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-drafting-compass" style="color:#34d399;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Geometry & Trig</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Area, volume, right triangles, circles</div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly SAT Math Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">SAT Mathematics Preparation · Ages 17–18</p>
+</footer>
+<script>
+const curriculumData={
+'September':{icon:'fa-equals',color:'',focus:'Algebra — Linear Equations & Systems',skills:['Linear equations','Slope-intercept form','Systems of equations','Linear inequalities'],weeks:['Linear equations in one variable: solving, special cases (no solution, infinite solutions)','Slope-intercept and standard form; writing equations from graphs, tables, and word problems','Systems of two linear equations: graphing, substitution, elimination — when to use each','Linear inequalities and systems of inequalities: graphing solution regions on coordinate plane'],project:'Complete a 44-question full SAT Math module (Module 1) under timed conditions; score and categorize every error by domain',materials:['SAT Bluebook app or Khan Academy SAT','Graph paper','Desmos calculator (free online)','Error log notebook']},
+'October':{icon:'fa-chart-pie',color:'',focus:'Problem Solving & Data Analysis',skills:['Ratios & proportions','Percentages & percent change','Statistics & probability','Interpreting graphs'],weeks:['Ratios, rates, proportions, and unit conversions in context — most SAT questions use real data','Percentages: percent change, percent of, markup/discount, compound interest applications','Statistics: mean, median, mode, range, standard deviation — reading and interpreting data displays','Probability: simple, compound, conditional; reading two-way tables and Venn diagrams'],project:'Analyze 5 authentic data sets (government or sports statistics) and create 10 original SAT-style data analysis questions with answer keys',materials:['Printed data sets','SAT practice questions (data analysis domain)','Calculator','Graph paper']},
+'November':{icon:'fa-superscript',color:'',focus:'Advanced Math — Quadratics & Polynomials',skills:['Factoring quadratics','Quadratic formula','Vertex form','Polynomial operations'],weeks:['Factoring quadratics: GCF, trinomial, difference of squares, perfect square trinomials','Quadratic formula and discriminant: determining number and type of roots','Vertex form: completing the square, transformations of parabolas, max/min word problems','Polynomial operations: adding, subtracting, multiplying; long and synthetic division'],project:'Create a "Quadratics Reference Guide" with 5 methods (factor, quadratic formula, graph, complete the square, vertex form) each with 3 worked examples',materials:['Graph paper','Desmos graphing calculator','SAT practice questions (advanced math)','Notebook']},
+'December':{icon:'fa-function',color:'',focus:'Functions — Notation, Types & Transformations',skills:['Function notation','Domain & range','Transformations','Exponential functions'],weeks:['Function notation f(x): evaluating, composing, and interpreting function tables and graphs','Domain, range, and identifying functions from graphs and mappings','Transformations: vertical/horizontal shifts, reflections, stretches and compressions','Exponential growth and decay: f(x) = abˣ, interpreting in context, percent rate of change'],project:'Graph 10 function families (linear, quadratic, cubic, absolute value, exponential, radical) on one Desmos screen with labels and transformations',materials:['Desmos graphing calculator (free)','Function transformation worksheet','SAT practice questions','Notebook']},
+'January':{icon:'fa-drafting-compass',color:'',focus:'Geometry — Lines, Angles & Triangles',skills:['Angle relationships','Triangle properties','Pythagorean theorem','Right triangle trig'],weeks:['Parallel lines and transversals: all angle pair relationships and proofs by contradiction','Triangle properties: angle sum, exterior angle theorem, triangle inequality, special triangles','Pythagorean theorem and its converse; 45-45-90 and 30-60-90 special right triangles','Basic trigonometry: sin, cos, tan definitions; SOHCAHTOA applied to SAT right triangle problems'],project:'Solve 30 SAT geometry problems featuring angle relationships, triangles, and trigonometry — show all setups with labeled diagrams',materials:['Protractor & ruler','SAT geometry practice set','Calculator','Compass (optional)']},
+'February':{icon:'fa-circle',color:'',focus:'Geometry — Circles, Area & Volume',skills:['Circle equations','Arc length & sector area','Volume of 3D figures','Coordinate geometry'],weeks:['Circle equation (x-h)²+(y-k)²=r²: graphing, converting from general form, completing the square','Arc length and sector area formulas; central angles and inscribed angles','Volume of prisms, cylinders, cones, pyramids, spheres — SAT formula reference sheet use','Coordinate geometry: midpoint, distance, and using algebra to solve geometry problems'],project:'Complete a 22-question SAT geometry module timed at 35 minutes; review all errors with labeled diagrams and formula derivations',materials:['SAT geometry practice module','SAT formula reference sheet','Calculator','Graph paper']},
+'March':{icon:'fa-random',color:'',focus:'Advanced Math — Rational & Radical Expressions',skills:['Rational expressions','Radical equations','Absolute value equations','Complex numbers intro'],weeks:['Rational expressions: simplifying, multiplying, dividing, adding, and subtracting','Rational equations: solving, identifying extraneous solutions, work and rate problems','Radical equations: solving, checking for extraneous solutions; nth root and rational exponents','Absolute value equations and inequalities; introduction to complex numbers (i²= −1)'],project:'Work through all advanced math question types from 2 official SAT practice tests; build a personal error pattern analysis chart',materials:['Official SAT Practice Tests (College Board)','Error pattern chart template','Calculator','SAT prep book']},
+'April':{icon:'fa-chart-line',color:'',focus:'SAT Strategy & Full Practice Tests',skills:['Adaptive test strategy','Guessing & elimination','Calculator efficiency','Time per question'],weeks:['Digital SAT format: how the adaptive module system works and what it means for your score','Process of elimination: ruling out obviously wrong answers in 30 seconds or less','Desmos graphing calculator efficiency: solving systems, graphing parabolas, checking answers','Time strategy: 1 min 35 sec per question average; skip-and-return methodology'],project:'Complete 2 full Digital SAT Math sections (both modules) using Bluebook app; aim for target score; review every error',materials:['College Board Bluebook app (free)','Official SAT Practice Test #1 and #2','Timer','Error log']},
+'May':{icon:'fa-fire',color:'',focus:'Score-Boosting Drills & Weak Areas',skills:['Personalized review','Hard question strategies','Grid-in accuracy','Prediction strategies'],weeks:['Analyze all practice test error logs: identify the 3 weakest subtopics for intensive review','Hard question deep-dive: model the thinking process for SAT difficulty level 4 and 5 problems','Grid-in (student produced response) practice: proper format, decimal rounding, fraction entry','Prediction accuracy: reviewing answer choices and self-monitoring before submitting'],project:'Design a personalized 2-week "Score Boost" sprint targeting your 3 weakest SAT Math subtopics with 20 targeted problems per subtopic',materials:['Error log analysis','Khan Academy SAT personalized practice','Calculator','Focused problem sets']},
+'June':{icon:'fa-trophy',color:'',focus:'Final SAT Practice & Test Readiness',skills:['Full practice tests','Official scoring','Test-day strategy','College score goals'],weeks:['Full Digital SAT Practice Test under real conditions (Bluebook app, no interruptions)','Review every answer: understand why right answers are right, not just why wrong answers are wrong','Test-day preparation: sleep, nutrition, materials checklist, timing plan, positive mindset','College target scores: research score requirements for 10 target schools; make a gap plan'],project:'Complete the official College Board full-length Digital SAT practice test; submit scores to review, then write a 1-page test-day strategy plan',materials:['College Board Bluebook app','Full-length practice test','Target college score list','Study plan template']}
+};
+let currentMonth='September';
+let isDark=true;
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{
+    btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);
+  });
+  loadContent(m);
+}
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-calculator" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">${w} — concept video, 20 targeted practice problems, and a timed mini-quiz of 5 questions.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Evening: 5 hard-level SAT problems in this topic + error log update.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+init();
+</script>
+<script src="paywall.js"></script>
+</body>
+</html>

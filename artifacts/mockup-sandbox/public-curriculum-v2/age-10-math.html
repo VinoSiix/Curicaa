@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Advanced Mathematics — Grade 5 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#3b82f6;--a2:#06b6d4;--al:#93c5fd;--ct:white;--ct2:rgba(255,255,255,0.85);--ct3:rgba(255,255,255,0.7);--ct4:rgba(255,255,255,0.6);--ct5:rgba(255,255,255,0.48);--ct6:rgba(255,255,255,0.45);--ct7:rgba(255,255,255,0.4);--ct8:rgba(255,255,255,0.3);--ct9:rgba(255,255,255,0.28);--ct10:rgba(255,255,255,0.15);--cs1:rgba(255,255,255,0.03);--cs2:rgba(255,255,255,0.025);--cs3:rgba(255,255,255,0.04);--cs4:rgba(255,255,255,0.08);--br1:rgba(255,255,255,0.07);--br2:rgba(255,255,255,0.09);}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.11),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.08),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(59,130,246,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{max-height:0;overflow:hidden;background:rgba(255,255,255,0.025);border-top:1px solid transparent;padding:0 16px;transform-origin:top;transform:translateY(-6px);opacity:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),padding 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s ease,transform 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease;}
+.week-detail.open{max-height:800px;padding:14px 16px;border-top-color:rgba(255,255,255,0.07);transform:translateY(0);opacity:1;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.month-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.week-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--br2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all 0.2s;font-size:10px;color:transparent;}
+.week-check:hover{border-color:var(--a1);background:rgba(59,130,246,0.1);}
+.week-check.done{border-color:var(--a1);background:linear-gradient(135deg,var(--a1),var(--a2));color:white;}
+.week-row.completed .week-title-text{text-decoration:line-through;opacity:0.55;}
+.progress-bar-wrap{height:4px;border-radius:4px;background:var(--cs4);margin-top:10px;overflow:hidden;}
+.progress-bar-fill{height:100%;border-radius:4px;background:linear-gradient(135deg,var(--a1),var(--a2));transition:width 0.4s ease;}
+@media(max-width:768px){
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+  .month-grid{grid-template-columns:1fr;}
+  .header-inner{flex-wrap:wrap;gap:10px;}
+  h2.page-title{font-size:1.8rem;}
+  main{padding:32px 16px;}
+  #monthContent{padding:20px 16px !important;}
+  }
+@media(max-width:480px){
+  .skills-grid{grid-template-columns:1fr;}
+  h2.page-title{font-size:1.5rem;}
+  header{padding:10px 16px;}
+  .header-inner{gap:8px;}
+  .subject-badge{display:none;}
+}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:var(--ct);">Grade 5</div><div style="font-size:11px;color:var(--ct7);">Age 10</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-calculator" style="margin-right:5px;"></i>Mathematics</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Age 10</span>
+      
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grade 5 · Age 10</p>
+    <h2 class="page-title">Advanced Mathematics</h2>
+    <p style="color:var(--ct5);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Mastering place value with decimals, multi-digit operations, fractions, volume, coordinate geometry, and real-world problem solving.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div class="skills-grid">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-sort-numeric-up" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Place Value & Decimals</div><div style="font-size:12px;color:var(--ct6);">Millions to thousandths</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(6,182,212,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-times" style="color:#22d3ee;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Multi-Digit Operations</div><div style="font-size:12px;color:var(--ct6);">Multiplication & long division</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-divide" style="color:#93c5fd;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Fractions</div><div style="font-size:12px;color:var(--ct6);">All four operations with fractions</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(6,182,212,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-cube" style="color:#67e8f9;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Geometry & Volume</div><div style="font-size:12px;color:var(--ct6);">Coordinate planes, 3D volume</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Math Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:var(--ct8);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:var(--ct10);margin-top:6px;">Grade 5 Mathematics · Age 10</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{
+  icon:'fa-sort-numeric-up',
+  color:'from-green-400 to-blue-500',
+  focus:'Place Value & Decimal Concepts',
+  skills:['Millions to thousandths','Powers of 10','Decimal notation','Comparing decimals'],
+  weeks:[
+    {
+      title:"Whole Number Place Value to Millions",
+      objective:"Read, write, and compare whole numbers to the millions period, understanding that each place is 10 times the place to its right.",
+      warmup:"Quick write: What is the largest number you can think of? Write it out in digits and in words.",
+      mainActivity:"Build a place value chart on poster board from ones to millions. Use index cards with digits 0-9 to build numbers. Create numbers like 4,287,315 and practice reading them aloud. Then decompose: 4,000,000 + 200,000 + 80,000 + 7,000 + 300 + 10 + 5. Introduce the concept that each place value is 10× the one to its right by building concrete examples with bundled straws or base-10 blocks.",
+      game:"Place Value War: Deal cards with 7-digit numbers. Each player flips a card, spins a spinner to land on a place (millions, hundred-thousands, etc.), and whoever has the higher digit in that place wins both cards.",
+      homeConnection:"Look up populations of different countries or cities. Read the numbers aloud and compare which is larger and by how much.",
+      assessment:"Can read, write in expanded form, and verbally explain any 7-digit number, identifying the value of each digit.",
+      differentiation:"Easier: Work up to the hundred-thousands place only. | Harder: Extend to billions and discuss the pattern of place value periods."
+    },
+    {
+      title:"Powers of 10 & Multiplying/Dividing by 10",
+      objective:"Explain patterns in the number of zeros when multiplying by powers of 10, and shift digits on a place value chart.",
+      warmup:"Start with 5. Multiply by 10. Then 10 again. Then 10 again. Write each result. What pattern do you see with the zeros?",
+      mainActivity:"Create a sliding place value chart using an envelope with a window cut out and a paper strip that slides through it. Write the number 346 on the strip. Slide it left one place (multiply by 10 = 3,460). Slide left two places (×100 = 34,600). Discuss that multiplying by 10 shifts each digit one place to the left, and dividing shifts right. Write equations: 346 × 10³ = 346,000.",
+      game:"Power of 10 Relay: Roll a die to get a starting number (1-6). Flip a coin — heads means multiply by 10, tails divide by 10. Do this 5 times. Track the number on a place value chart. Whoever ends up with the largest number wins.",
+      homeConnection:"Look at prices in a store catalog. Pick an item and calculate what it would cost for 10 of them, 100 of them.",
+      assessment:"Can correctly multiply and divide any whole number by 10, 100, or 1,000 and explain the digit-shifting pattern.",
+      differentiation:"Easier: Focus only on multiplying by 10 and 100. | Harder: Introduce exponents (10² = 100, 10³ = 1,000) and scientific notation basics."
+    },
+    {
+      title:"Decimal Place Value to Thousandths",
+      objective:"Read and write decimals to the thousandths place using base-10 numerals, number names, and expanded form.",
+      warmup:"Hold up a dollar bill. If this is 1 whole, what would a dime represent? A penny? Connect to tenths and hundredths.",
+      mainActivity:"Use a decimal place value chart extending from hundreds to thousandths. Use grid paper — shade a 10×10 grid to represent hundredths, then divide one square into 10 tiny strips to visualize thousandths. Build numbers like 3.142 with digit cards: 3 + 0.1 + 0.04 + 0.002. Use money as a concrete model: $3.14 = 3 dollars + 1 dime + 4 pennies.",
+      game:"Decimal Build & Compare: Each player draws 4 digit cards (0-9) and must arrange them to create the largest possible decimal number (format: _ . _ _ _). Compare with opponent.",
+      homeConnection:"Look at gas prices, store receipts, or sports statistics. Read the decimals aloud and identify each place value.",
+      assessment:"Can read 4.207 as 'four and two hundred seven thousandths' and write it in expanded form.",
+      differentiation:"Easier: Work only to hundredths (two decimal places). | Harder: Compare decimals with different numbers of digits (e.g., 0.5 vs 0.49) and explain why trailing zeros matter."
+    },
+    {
+      title:"Comparing & Rounding Decimals",
+      objective:"Compare two decimals to thousandths using <, >, and = symbols. Round decimals to any place.",
+      warmup:"Which is bigger: 0.4 or 0.39? Discuss common misconceptions about longer decimals being bigger.",
+      mainActivity:"Teach comparing decimals digit by digit from left to right, just like whole numbers. Use a number line drawn on paper from 0 to 1 with marks at tenths. Plot 0.3 and 0.29 — which is further right? Then teach rounding: underline the place you're rounding to, look at the digit to the right. If 5+, round up. Practice rounding 3.456 to the nearest hundredth (3.46), nearest tenth (3.5), nearest whole (3).",
+      game:"Decimal Rounding Bingo: Create bingo cards with rounded values. Call out unrounded decimals like 'Round 7.843 to the nearest hundredth.' Players mark 7.84.",
+      homeConnection:"Look at your water or electricity bill. Round each charge to the nearest dollar and estimate the total.",
+      assessment:"Can correctly compare 0.603 and 0.63 and explain why. Can round 12.457 to any specified place.",
+      differentiation:"Easier: Round to the nearest whole number and nearest tenth only. | Harder: Order a set of 5+ decimals from least to greatest."
+    }
+  ],
+  project:'Create a "Place Value Poster" showing a 7-digit whole number AND a decimal to the thousandths, with each digit\'s value labeled in standard form, expanded form, and word form. Decorate with drawings representing each place.',
+  materials:['Index cards with digits 0-9','Poster board','Grid paper','Colored pencils','Straws or base-10 blocks']
+},
+'October':{
+  icon:'fa-times',
+  color:'from-orange-400 to-red-500',
+  focus:'Multi-Digit Multiplication',
+  skills:['Standard algorithm','Area model','Powers of 10 patterns','Word problems'],
+  weeks:[
+    {
+      title:"Multiplication Review & Properties",
+      objective:"Fluently multiply 3-digit by 1-digit numbers and review the commutative, associative, and distributive properties.",
+      warmup:"Mental math warmup: 7 × 8, 6 × 9, 12 × 4, 25 × 4, 50 × 8. Discuss strategies used.",
+      mainActivity:"Review the standard algorithm for 3-digit × 1-digit. Then explore the distributive property visually: 234 × 6 = (200 × 6) + (30 × 6) + (4 × 6) = 1,200 + 180 + 24. Draw area models on graph paper to prove this. Practice identifying which property is being used in given equations.",
+      game:"Property Sort: Write 15 equations on index cards. Sort them into piles: Commutative, Associative, Distributive, or None. Race against a timer.",
+      homeConnection:"Calculate the total cost of groceries: if you buy 6 items that each cost $3.25, what's the total?",
+      assessment:"Can solve 467 × 8 using the standard algorithm and explain how the distributive property is happening within each step.",
+      differentiation:"Easier: Use 2-digit × 1-digit with visual area models. | Harder: Prove why the commutative property works using arrays."
+    },
+    {
+      title:"Multiplying 2-Digit by 2-Digit Numbers",
+      objective:"Multiply two 2-digit numbers using the standard algorithm and connect to the area model.",
+      warmup:"Solve 23 × 4 mentally using the break-apart strategy: (20 × 4) + (3 × 4).",
+      mainActivity:"Introduce 2-digit × 2-digit using the area model first: 34 × 26 breaks into (30 + 4) × (20 + 6). Draw a 2×2 box showing each partial product: 600 + 180 + 80 + 24 = 884. Then connect to the standard algorithm step by step, showing how each line of the algorithm matches a row of the area model.",
+      game:"Multiplication Baseball: Draw a baseball diamond. Batter rolls two 10-sided dice (or draws digit cards) to create a 2-digit × 2-digit problem. Correct answer = hit. 4 correct = home run.",
+      homeConnection:"If a theater has 24 rows of 36 seats, how many seats are there? Calculate the total capacity.",
+      assessment:"Can solve 67 × 43 using both the area model and standard algorithm, getting the same answer both ways.",
+      differentiation:"Easier: Use round numbers like 30 × 20 first. | Harder: Check answers using estimation (67 × 43 ≈ 70 × 40 = 2,800)."
+    },
+    {
+      title:"Multiplying Larger Numbers",
+      objective:"Fluently multiply multi-digit whole numbers using the standard algorithm (up to 4-digit × 2-digit).",
+      warmup:"Estimate: About how much is 3,000 × 40? Discuss that a good estimate helps us check our exact answer.",
+      mainActivity:"Extend the standard algorithm to 3-digit × 2-digit and 4-digit × 2-digit. Work through 2,456 × 37 step by step, showing how to manage the carry. Emphasize lining up partial products correctly and adding them. Practice estimating first, then solving exactly to see if the answer is reasonable.",
+      game:"Estimation Challenge: Write 10 problems on cards. For each, first estimate the answer, then calculate exactly. Score a point for each exact answer within 10% of the estimate. The closer the estimate, the bigger the bonus.",
+      homeConnection:"A factory makes 1,475 toys per day. How many toys does it make in 30 days? Research a real company's production numbers and calculate.",
+      assessment:"Can solve 3,847 × 56 accurately using the standard algorithm and verify reasonableness with estimation.",
+      differentiation:"Easier: Stick with 3-digit × 2-digit. | Harder: Introduce 3-digit × 3-digit multiplication."
+    },
+    {
+      title:"Multiplication Word Problems & Real-World Application",
+      objective:"Solve multi-step word problems involving multiplication, including problems requiring unit conversions.",
+      warmup:"Read a short word problem together. Identify: What are we finding? What operation? What numbers?",
+      mainActivity:"Work through multi-step problems: 'A school orders 15 boxes of pencils. Each box has 144 pencils. If they divide them equally among 9 classrooms, how many pencils does each class get?' Solve step by step, writing equations for each step. Practice drawing quick bar models or diagrams to visualize the problem before calculating.",
+      game:"Math Mystery: Create 5 stations around the room with locked boxes (or envelopes). Each station has a multi-step multiplication word problem. The answer to each is the code to open the next box. The final box contains a small prize.",
+      homeConnection:"Plan a party: Choose items from a real or mock store catalog, decide how many of each you need, and calculate the total cost.",
+      assessment:"Can independently solve a two-step word problem involving multiplication and explain each step with a written equation.",
+      differentiation:"Easier: Single-step problems with 2-digit × 2-digit. | Harder: Three-step problems with larger numbers and unit conversions (e.g., inches to feet)."
+    }
+  ],
+  project:'Design a "Multiplication Menu" for a pretend restaurant where each dish has a price and a quantity requirement. Calculate the total bill for a family of 4 ordering different combinations. Present the menu on a poster.',
+  materials:['Graph paper','Index cards','Dice (10-sided preferred)','Poster board','Markers']
+},
+'November':{
+  icon:'fa-divide',
+  color:'from-yellow-400 to-orange-500',
+  focus:'Division & Long Division',
+  skills:['Partial quotients','Standard long division','Interpreting remainders','Division word problems'],
+  weeks:[
+    {
+      title:"Division as Repeated Subtraction & Partial Quotients",
+      objective:"Understand division as repeated subtraction and use the partial quotients strategy to divide multi-digit numbers.",
+      warmup:"You have 48 cookies to share equally among 6 friends. How many does each get? Draw a picture.",
+      mainActivity:"Introduce partial quotients: To solve 96 ÷ 6, think 'How many 6s are in 96?' Take out groups: 10 groups of 6 = 60 (remaining: 36). Then 5 groups of 6 = 30 (remaining: 6). Then 1 group of 6 = 6. Total: 10 + 5 + 1 = 16. Write this in the partial quotients format. This builds understanding before introducing the standard algorithm.",
+      game:"Division Dice: Roll three dice to create a 3-digit dividend. Roll one die for the divisor. Use partial quotients to solve. Race a partner.",
+      homeConnection:"Divide a batch of 72 cookies (or draw them) equally among different numbers of friends (6, 8, 9, 12). How many does each person get?",
+      assessment:"Can solve 156 ÷ 12 using partial quotients and explain each step.",
+      differentiation:"Easier: Use 2-digit dividends with single-digit divisors. | Harder: Use 4-digit dividends with 2-digit divisors."
+    },
+    {
+      title:"Standard Long Division (1-Digit Divisor)",
+      objective:"Fluently divide multi-digit whole numbers using the standard long division algorithm with a 1-digit divisor.",
+      warmup:"Review the 'family' mnemonic: Divide, Multiply, Subtract, Bring down, Repeat (Dad, Mother, Sister, Brother, Rover).",
+      mainActivity:"Teach standard long division step by step with 3-digit and 4-digit dividends. Model with 847 ÷ 5: Divide 8 by 5 = 1, multiply 1×5 = 5, subtract 8-5 = 3, bring down 4 to make 34. Continue. Use place value blocks alongside to show what's happening at each step. Practice checking answers by multiplying the quotient × divisor + remainder.",
+      game:"Long Division Race: Each player solves the same division problem. First to finish correctly earns a point. Best of 5 rounds.",
+      homeConnection:"A bag contains 384 beads. If you split them equally into 6 jars, how many beads per jar? Are there any left over?",
+      assessment:"Can solve 6,391 ÷ 7 using the standard algorithm with correct placement of the quotient and remainder.",
+      differentiation:"Easier: Start with 2-digit dividends. | Harder: Introduce problems where the first digit of the dividend is less than the divisor (e.g., 3,246 ÷ 6)."
+    },
+    {
+      title:"Long Division with 2-Digit Divisors",
+      objective:"Divide multi-digit whole numbers by 2-digit divisors using strategies like estimation and partial quotients.",
+      warmup:"Quick estimate: Is 200 ÷ 40 closer to 4, 5, or 6? Discuss how estimation helps with 2-digit divisors.",
+      mainActivity:"Teach the estimation strategy for 2-digit divisors. To solve 1,386 ÷ 24, first estimate: 24 is close to 25, and 1,386 is close to 1,400. How many 25s in 1,400? About 56. Use this estimate to guide the standard algorithm. Practice rounding the divisor to the nearest 10 to find trial quotients. Verify each step by multiplying back.",
+      game:"Estimate & Divide: Draw a card with a 3-digit ÷ 2-digit problem. First, write your estimate. Then solve exactly. If exact answer is within 5 of estimate, score a bonus point.",
+      homeConnection:"A road trip is 924 miles. If you drive 42 miles per day, how many days will the trip take?",
+      assessment:"Can solve 4,851 ÷ 37 using the standard algorithm and verify the answer by multiplying back.",
+      differentiation:"Easier: Use divisors that are multiples of 10 (30, 40, 50). | Harder: Work with 4-digit dividends and 2-digit divisors that require multiple adjustments."
+    },
+    {
+      title:"Interpreting Remainders in Context",
+      objective:"Interpret remainders in real-world contexts: round up, drop, or share as a fraction.",
+      warmup:"You have 17 cookies and 4 friends. How many does each get? What happens to the leftovers?",
+      mainActivity:"Present three types of remainder problems: (1) DROP: 50 ÷ 6 = 8 R2 — 'You make 8 full bracelets with 6 beads each. 2 beads are left over.' (2) ROUND UP: 50 students need buses that hold 6. 50 ÷ 6 = 8 R2 → You need 9 buses. (3) SHARE: 17 ÷ 4 = 4 R1 → Each gets 4¼. Create a sorting activity where students classify word problems into these three types.",
+      game:"Remainder Scenarios: Write 15 word problems on cards. Sort into three piles: Drop it, Round up, Share it. Then solve each.",
+      homeConnection:"Look at real situations: How many dozen eggs (12 per carton) do you need for 50 cupcakes if each needs 1 egg? Do you have leftovers?",
+      assessment:"Given a word problem, can correctly determine whether to drop the remainder, round up, or express it as a fraction, and explain why.",
+      differentiation:"Easier: Focus on 'drop it' and 'round up' scenarios only. | Harder: Create original word problems for each remainder type."
+    }
+  ],
+  project:'Plan a "Classroom Party Budget": You have $150 to spend. Research real prices for snacks, drinks, decorations, and plates. Divide the budget among categories. Calculate cost per student if 24 students attend. Present your budget plan on a poster showing all division work.',
+  materials:['Place value blocks or drawn charts','Index cards for problems','Dice','Poster board','Play money']
+},
+'December':{
+  icon:'fa-chart-pie',
+  color:'from-purple-400 to-pink-500',
+  focus:'Adding & Subtracting Fractions',
+  skills:['Common denominators','Equivalent fractions','Mixed numbers','Fraction word problems'],
+  weeks:[
+    {
+      title:"Equivalent Fractions & Simplifying",
+      objective:"Generate equivalent fractions by multiplying or dividing numerator and denominator by the same number. Simplify to lowest terms.",
+      warmup:"Fold a paper strip into 4 equal parts. Shade 2/4. Now fold the same strip into 8 parts. How many are shaded? (4/8) Both equal 1/2!",
+      mainActivity:"Use fraction bars or paper strips to discover equivalent fractions visually. Then formalize the rule: multiply or divide both numerator and denominator by the same number. Practice finding equivalents: 3/4 = 6/8 = 9/12. Teach simplification by finding the greatest common factor (GCF). Simplify 12/18: GCF is 6, so 12÷6 / 18÷6 = 2/3.",
+      game:"Equivalent Fraction Memory: Create cards with equivalent fractions (3/4 and 9/12, 2/5 and 4/10, etc.). Play memory match.",
+      homeConnection:"Double a recipe: If it calls for 3/4 cup flour, what fraction would you write for a double batch? (6/4 or 1½ cups)",
+      assessment:"Can generate three equivalent fractions for any given fraction and simplify fractions to lowest terms.",
+      differentiation:"Easier: Use visual fraction models before teaching the multiplication rule. | Harder: Find the GCF using prime factorization."
+    },
+    {
+      title:"Adding & Subtracting Fractions with Like Denominators",
+      objective:"Add and subtract fractions with like denominators, including mixed numbers, by combining or separating the numerators.",
+      warmup:"You ate 2 slices of a pizza cut into 8 slices. Your sibling ate 3 slices. What fraction of the pizza did you eat together?",
+      mainActivity:"Using fraction circles or drawn rectangles, demonstrate that with like denominators, only the numerators change: 3/8 + 2/8 = 5/8. Extend to mixed numbers: 2¾ + 1¼ = 3 + 5/4 = 3 + 1¼ = 4¼. Show both the regrouping method and the improper fraction method. Practice subtraction, including borrowing: 3¼ - 1¾ = borrow 1 whole (4/4) → 2 + 5/4 - 1¾ = 1½.",
+      game:"Fraction Bingo: Create bingo cards with fraction sums/differences. Call out problems like '3/5 + 1/5.' Players mark '4/5.'",
+      homeConnection:"Measure ingredients for baking: if you need 1/3 cup oil and 2/3 cup water, what's the total liquid? If you had 1½ cups flour and used ¾ cup, how much is left?",
+      assessment:"Can add and subtract mixed numbers with like denominators, including problems requiring regrouping.",
+      differentiation:"Easier: Stick with proper fractions only (no mixed numbers). | Harder: Solve missing-addend problems like 3/5 + ? = 1¼."
+    },
+    {
+      title:"Finding Common Denominators",
+      objective:"Find common denominators for fractions with unlike denominators using LCM or the product method.",
+      warmup:"List the first 5 multiples of 4 and the first 5 multiples of 6. What's the smallest number on both lists? (12 — the LCM!)",
+      mainActivity:"Teach two methods: (1) Multiply denominators: for 1/3 + 1/4, use 3×4 = 12 as the common denominator. Convert: 4/12 + 3/12 = 7/12. (2) Find the LCM (least common multiple): List multiples of 3 (3,6,9,12) and 4 (4,8,12). LCM = 12. Method 2 gives smaller numbers. Practice with increasingly complex pairs: 2/5 + 1/3, 5/6 - 1/4, 3/8 + 7/12.",
+      game:"LCM Race: Roll two dice to get two numbers. First player to correctly state the LCM wins a point. Play to 10 points.",
+      homeConnection:"If one task takes 1/3 of an hour and another takes 1/4 of an hour, what fraction of an hour do they take together?",
+      assessment:"Can find a common denominator for any two fractions and convert both fractions correctly before adding or subtracting.",
+      differentiation:"Easier: Use denominator pairs where one is a multiple of the other (e.g., 3 and 6). | Harder: Work with three fractions that need a common denominator."
+    },
+    {
+      title:"Adding & Subtracting Fractions with Unlike Denominators",
+      objective:"Add and subtract fractions and mixed numbers with unlike denominators, including word problems.",
+      warmup:"Solve: 1/2 + 1/3. Draw a picture to check your answer.",
+      mainActivity:"Combine all skills: find common denominators, convert, add/subtract, regroup if needed, simplify. Work through complex problems: 3⅔ + 2¾ = 3 + 8/12 + 2 + 9/12 = 5 + 17/12 = 5 + 1 5/12 = 6 5/12. Then tackle word problems: 'Maria ran 2⅔ miles on Monday and 3¾ miles on Tuesday. How many total miles? How many more miles on Tuesday?'",
+      game:"Fraction War: Each player flips two fraction cards and adds them. The player with the larger sum keeps all cards.",
+      homeConnection:"Help with cooking: combine measurements from a recipe. If a recipe needs ¾ cup sugar and you already added ⅓ cup, how much more do you need?",
+      assessment:"Can independently solve 4⅚ - 2⅓ and a real-world word problem involving unlike denominators, showing all work.",
+      differentiation:"Easier: Subtract only (no borrowing) with denominators under 10. | Harder: Multi-step problems requiring 2+ fraction operations."
+    }
+  ],
+  project:'Create a "Fraction Recipe Book" with 5 recipes where all ingredient amounts have been doubled or halved. Show the original and new fractions, the math work for converting each, and the final simplified amounts.',
+  materials:['Fraction strips or circles','Paper strips for folding','Index cards','Recipe printouts','Poster board']
+},
+'January':{
+  icon:'fa-times',
+  color:'from-green-500 to-emerald-600',
+  focus:'Multiplying & Dividing Fractions',
+  skills:['Fraction × fraction','Fraction × whole number','Fraction division','Visual models'],
+  weeks:[
+    {
+      title:"Multiplying Fractions by Whole Numbers",
+      objective:"Interpret and compute products of whole numbers and fractions (e.g., 5 × ⅔ = 10/3).",
+      warmup:"If each person gets ⅔ of a pizza and there are 4 people, how many pizzas do we need?",
+      mainActivity:"Model with repeated addition: 4 × ⅔ = ⅔ + ⅔ + ⅔ + ⅔ = 8/3 = 2⅔. Then teach the shortcut: multiply the numerator by the whole number, keep the denominator. Draw area models: a rectangle showing ⅔ shaded, repeated 4 times. Connect to real situations: a recipe makes ⅔ cup per batch — how much for 5 batches?",
+      game:"Fraction Multiplication Dominoes: Each domino has a fraction × whole number problem on one side and an answer on the other. Match problems to answers.",
+      homeConnection:"Calculate fabric needed: if each flag uses ¾ yard of fabric, how much for 6 flags?",
+      assessment:"Can solve 7 × ⅗ correctly, express as both an improper fraction and a mixed number, and explain the reasoning with a visual model.",
+      differentiation:"Easier: Use unit fractions (1/3, 1/4) with small whole numbers. | Harder: Connect to multiplication as scaling — will the product be bigger or smaller than the original fraction?"
+    },
+    {
+      title:"Multiplying Fractions by Fractions",
+      objective:"Interpret and compute products of two fractions using visual models and the standard algorithm.",
+      warmup:"Shade half of a rectangle. Now shade ⅓ of the already-shaded part. What fraction of the whole rectangle is double-shaded?",
+      mainActivity:"Use an area model to discover the rule: draw a rectangle, divide vertically into 3 parts (for ⅔), shade 2. Then divide horizontally into 5 parts (for ⅘), shade 4 of the horizontal sections. The double-shaded overlap shows the answer: 8/15. Formalize: multiply numerators, multiply denominators. Practice: ⅔ × ⅘ = 8/15. Always simplify if possible.",
+      game:"Fraction Multiplication BINGO: Create bingo cards with simplified fraction products. Call out problems like '2/3 × 3/4.' Players mark '1/2.'",
+      homeConnection:"A garden is ⅔ of the yard. You plant vegetables in ¾ of the garden. What fraction of the yard is vegetables?",
+      assessment:"Can solve ⅚ × ⅔ using both an area model and the algorithm, simplifying to lowest terms.",
+      differentiation:"Easier: Use fractions with small denominators (2, 3, 4). | Harder: Multiply mixed numbers by converting to improper fractions first."
+    },
+    {
+      title:"Dividing Fractions by Whole Numbers",
+      objective:"Interpret and compute division of a fraction by a whole number (e.g., ⅔ ÷ 4).",
+      warmup:"You have half a chocolate bar. You split it equally among 3 friends. How much does each person get?",
+      mainActivity:"Model with a visual: draw ⅔ of a bar. Divide that ⅔ into 4 equal sections. Each section = ⅔ ÷ 4 = 2/12 = 1/6. Connect to multiplication: dividing by 4 is the same as multiplying by ¼. So ⅔ ÷ 4 = ⅔ × ¼ = 2/12 = 1/6. Practice with various problems, always drawing the model first, then confirming with the algorithm.",
+      game:"Fraction Division Puzzles: Each puzzle gives a visual model of a fraction split into equal parts. Student must write the matching division equation.",
+      homeConnection:"You have ¾ liter of juice and pour it equally into 3 cups. How much juice in each cup?",
+      assessment:"Can solve ⅘ ÷ 2 using both a visual model and the multiplication algorithm, and explain why dividing by 2 is the same as multiplying by ½.",
+      differentiation:"Easier: Divide unit fractions by small whole numbers (½ ÷ 2). | Harder: Explain why the quotient is smaller than the dividend when dividing by a whole number greater than 1."
+    },
+    {
+      title:"Dividing Whole Numbers by Unit Fractions",
+      objective:"Interpret and compute division of a whole number by a unit fraction (e.g., 3 ÷ ⅙ = 18).",
+      warmup:"How many ¼-cup servings can you pour from 2 cups of water? Draw it.",
+      mainActivity:"Model: Draw 3 whole bars. Each bar has 4 fourths. So 3 ÷ ¼ = how many ¼ pieces fit in 3 wholes? 12. Connect to multiplication: 3 ÷ ¼ = 3 × 4 = 12. Generalize: dividing by a unit fraction 1/n is the same as multiplying by n. Practice: 5 ÷ ⅓ = 15, 2 ÷ ⅛ = 16. Use tape diagrams to visualize.",
+      game:"How Many Fit? Draw a card: 'How many ⅓-cup servings in 4 cups?' First to answer correctly keeps the card. Most cards wins.",
+      homeConnection:"You have 3 feet of ribbon. Each decoration needs ¼ foot. How many decorations can you make?",
+      assessment:"Can solve 6 ÷ ⅔ = 9 and explain the reasoning with both a visual model and the algorithm (multiply by the reciprocal).",
+      differentiation:"Easier: Use only unit fractions as divisors (1/2, 1/3, 1/4). | Harder: Divide by non-unit fractions and introduce the full 'keep-change-flip' method."
+    }
+  ],
+  project:'Design a "Fraction Quilt" on grid paper: Create a 6×6 square divided into fractional parts using different colors. Calculate the total area of each color as a fraction of the whole quilt. Write multiplication and division equations that describe the relationships between the sections.',
+  materials:['Grid paper','Fraction strips','Colored pencils','Index cards','Ruler']
+},
+'February':{
+  icon:'fa-calculator',
+  color:'from-red-400 to-pink-500',
+  focus:'Decimal Operations',
+  skills:['Decimal addition','Decimal subtraction','Decimal multiplication','Decimal division'],
+  weeks:[
+    {
+      title:"Adding & Subtracting Decimals",
+      objective:"Add and subtract decimals to the hundredths place using the standard algorithm, aligning decimal points.",
+      warmup:"On a number line, place 2.4 and 2.38. Which is bigger? Discuss why aligning decimals matters.",
+      mainActivity:"Set up vertical addition and subtraction with decimal points aligned. Model with money: $14.67 + $8.35 = $23.02. Show that adding zeros to the right doesn't change the value: 2.4 = 2.40. Practice: 15.8 + 3.267, 100.04 - 67.893. Emphasize lining up decimal points, not just the last digits.",
+      game:"Decimal Target: Roll 4 dice to create two 2-digit decimal numbers. Add them. Closest to 10.00 without going over wins the round.",
+      homeConnection:"Track your change for a week: start with $20.00, subtract each purchase, add any money received. What's your balance?",
+      assessment:"Can solve 45.6 + 12.389 and 100.02 - 34.567 accurately, with decimal points properly aligned.",
+      differentiation:"Easier: Work to hundredths only (2 decimal places). | Harder: Solve multi-step problems with 3+ decimal addends."
+    },
+    {
+      title:"Multiplying Decimals by Whole Numbers",
+      objective:"Multiply decimals by whole numbers using the standard algorithm, correctly placing the decimal point.",
+      warmup:"3 × 4 = 12. So what is 3 × 0.4? What is 0.3 × 4? Discuss where the decimal point goes.",
+      mainActivity:"Teach two approaches: (1) Multiply as if whole numbers, then count decimal places: 2.45 × 6 → 245 × 6 = 1,470. Since 2.45 has 2 decimal places, the answer is 14.70. (2) Estimate first: 2.45 × 6 ≈ 2.5 × 6 = 15. So 14.70 makes sense. Practice with increasing complexity, always estimating first.",
+      game:"Decimal Multiplication Tic-Tac-Toe: Each square has a decimal × whole number problem. Correct answer lets you place your X or O.",
+      homeConnection:"Gas costs $3.49/gallon. If you buy 8 gallons, what's the total cost?",
+      assessment:"Can solve 4.567 × 9 and explain how they determined the placement of the decimal point in the product.",
+      differentiation:"Easier: Multiply decimals with one decimal place by single-digit whole numbers. | Harder: Multiply by two-digit whole numbers and explain why 0.1 × 0.1 = 0.01."
+    },
+    {
+      title:"Multiplying Decimals by Decimals",
+      objective:"Multiply two decimal numbers, understanding that the product has a number of decimal places equal to the sum of the factors' decimal places.",
+      warmup:"2 × 3 = 6. What about 0.2 × 0.3? Will the answer be bigger or smaller than either factor? Why?",
+      mainActivity:"Use area model for 0.3 × 0.4: draw a 1×1 square, shade 0.4 across (4 columns of 10), shade 0.3 down (3 rows). The overlap is 12 tiny squares out of 100 = 0.12. Then teach the algorithm: multiply as whole numbers (3 × 4 = 12), count total decimal places in both factors (1 + 1 = 2), place decimal: 0.12. Practice: 2.5 × 0.4, 0.36 × 0.2, 1.25 × 0.08.",
+      game:"Decimal Product War: Each player draws two decimal cards and multiplies. Higher product wins.",
+      homeConnection:"A rug is 2.5 meters wide and 3.4 meters long. What's the area in square meters?",
+      assessment:"Can solve 3.14 × 2.5 and explain why the product has 3 decimal places.",
+      differentiation:"Easier: Use one decimal place × one decimal place. | Harder: Explore why multiplying by a decimal less than 1 gives a smaller product."
+    },
+    {
+      title:"Dividing Decimals",
+      objective:"Divide decimals by whole numbers and by decimals, using the standard algorithm and understanding decimal point placement.",
+      warmup:"12 ÷ 4 = 3. What about 1.2 ÷ 4? What about 12 ÷ 0.4?",
+      mainActivity:"Part 1 — Decimal ÷ whole number: 8.46 ÷ 3. Divide normally, keeping the decimal point directly above: 2.82. Part 2 — Decimal ÷ decimal: 4.2 ÷ 0.6. Multiply both by 10 to make the divisor a whole number: 42 ÷ 6 = 7. Use the phrase 'move the decimal, move the decimal' to remember both shift together. Practice: 15.75 ÷ 5, 3.6 ÷ 0.12, 0.8 ÷ 0.04.",
+      game:"Decimal Division Relay: Solve problems in sequence. Each correct answer unlocks the next problem. Fastest team wins.",
+      homeConnection:"A 2.5-pound bag of apples costs $4.75. What's the price per pound?",
+      assessment:"Can solve 7.56 ÷ 0.4 by correctly shifting the decimal and performing the division.",
+      differentiation:"Easier: Divide decimals by single-digit whole numbers only. | Harder: Divide with quotients that are repeating decimals and round to a specified place."
+    }
+  ],
+  project:'Run a "Mock Store" for a week: Price 10 items with decimal amounts. Calculate totals, make change, apply a 15% discount (convert to multiplication), and determine unit prices. Record all calculations in a math journal.',
+  materials:['Play money','Calculator for checking','Store flyers','Graph paper','Math journal']
+},
+'March':{
+  icon:'fa-cube',
+  color:'from-cyan-400 to-blue-500',
+  focus:'Volume & Measurement',
+  skills:['Unit cubes','Volume formulas','Unit conversions','Measurement word problems'],
+  weeks:[
+    {
+      title:"Understanding Volume with Unit Cubes",
+      objective:"Recognize volume as an attribute of solid figures and understand it can be measured by counting unit cubes.",
+      warmup:"Build a small box from paper. Fill it with 1-inch cubes. How many fit? That's the volume in cubic inches!",
+      mainActivity:"Use sugar cubes, dice, or paper cubes to build rectangular prisms. Build a shape that is 4 cubes long, 3 cubes wide, and 2 cubes tall. Count: 4 × 3 = 12 cubes per layer, × 2 layers = 24 cubic units. Explore different arrangements with the same volume. Introduce vocabulary: cubic units, rectangular prism, layers.",
+      game:"Volume Challenge: Roll 3 dice to get length, width, and height. Build the prism with cubes (or draw it on isometric paper). Calculate volume. Largest volume wins the round.",
+      homeConnection:"Fill a shoebox with 1-inch cubes or rolled socks. Count them to find the box's approximate volume.",
+      assessment:"Can build a rectangular prism with unit cubes and count the total to determine volume.",
+      differentiation:"Easier: Use only 2-layer prisms. | Harder: Build irregular shapes and count cubes to find their volume."
+    },
+    {
+      title:"Volume of Rectangular Prisms",
+      objective:"Find the volume of a right rectangular prism using the formulas V = l × w × h and V = B × h (area of base × height).",
+      warmup:"A box is 5 cubes long, 4 cubes wide, and 3 cubes tall. Quick — how many cubes total?",
+      mainActivity:"Formalize the formula: V = length × width × height. Then introduce V = B × h, where B is the area of the base. Show they're equivalent: l × w × h = (l × w) × h = B × h. Practice with real objects: measure a cereal box (length, width, height in cm), calculate volume. Solve problems with missing dimensions: 'Volume is 60 cubic units, length is 5, width is 3. What is the height?'",
+      game:"Missing Dimension Puzzles: Given volume and two dimensions, find the third. Race to solve 5 puzzles.",
+      homeConnection:"Measure 3 rectangular containers at home (tissue box, drawer, bookshelf). Calculate their volumes and compare.",
+      assessment:"Can calculate V = l × w × h for any rectangular prism and solve for a missing dimension when given the volume and two sides.",
+      differentiation:"Easier: All dimensions are whole numbers under 10. | Harder: Introduce fractional edge lengths (e.g., 4½ × 3 × 2)."
+    },
+    {
+      title:"Additive Volume of Composite Figures",
+      objective:"Find the volume of solid figures composed of two non-overlapping rectangular prisms by adding their volumes.",
+      warmup:"Two boxes are stacked on top of each other. One is 3×4×2, the other is 3×4×3. What's the total volume?",
+      mainActivity:"Build composite shapes using two rectangular prisms made of cubes. Draw the combined shape on isometric dot paper. Decompose: find each prism's volume separately, then add. Present problems like an L-shaped building made of two boxes. Count cubes to verify the formula approach.",
+      game:"Build & Calculate: Each player builds a composite shape using exactly 30 connecting cubes. Partner calculates the volume by decomposing it into prisms. Check by counting.",
+      homeConnection:"Look at a two-story house or a building with an attached garage. Describe how you'd calculate its total volume.",
+      assessment:"Given a drawing of a composite figure made of two rectangular prisms, can decompose it, find each volume, and add them correctly.",
+      differentiation:"Easier: Use shapes that share a full face (easy to decompose). | Harder: Find the volume of a shape with a rectangular hole cut out of it."
+    },
+    {
+      title:"Measurement Conversions",
+      objective:"Convert among different-sized standard measurement units within a given system (customary and metric).",
+      warmup:"How many inches in a foot? Feet in a yard? Cups in a pint? Quick quiz on common conversions.",
+      mainActivity:"Create two conversion charts: Customary (inches/feet/yards/miles, ounces/pounds/tons, cups/pints/quarts/gallons) and Metric (mm/cm/m/km, mL/L, g/kg). Teach the multiply/divide rule: converting from larger to smaller units → multiply; smaller to larger → divide. Practice: 5 feet = ? inches (5 × 12 = 60), 3,000 meters = ? km (3,000 ÷ 1,000 = 3). Use a two-column table for organization.",
+      game:"Conversion Relay Race: Teams get 10 conversion problems. First team to correctly solve all 10 wins.",
+      homeConnection:"Measure your height in inches, then convert to feet and inches. Measure a room in feet, convert to yards. Track water intake in cups, convert to gallons.",
+      assessment:"Can convert 48 ounces to pounds, 2.5 kilometers to meters, and 3 gallons to cups correctly, showing the multiplication or division used.",
+      differentiation:"Easier: Focus on metric conversions only (multiply/divide by 10, 100, 1000). | Harder: Convert between customary and metric using approximate conversion factors."
+    }
+  ],
+  project:'Build a "Miniature Room" diorama using a shoebox. Measure every piece of furniture in centimeters. Calculate the volume of each piece and the total room. Create a scale diagram with labeled dimensions and volumes.',
+  materials:['Sugar cubes or dice','Isometric dot paper','Rulers (cm and inches)','Shoebox','Building materials (cardboard, tape)']
+},
+'April':{
+  icon:'fa-draw-polygon',
+  color:'from-green-400 to-teal-500',
+  focus:'Geometry & Coordinate Planes',
+  skills:['Coordinate grids','Polygons','Classifying shapes','Real-world graphing'],
+  weeks:[
+    {
+      title:"Introduction to the Coordinate Plane",
+      objective:"Use a pair of perpendicular number lines (axes) to define a coordinate system. Plot and interpret points in the first quadrant.",
+      warmup:"Play Battleship on paper to introduce the idea of locating points with two numbers.",
+      mainActivity:"Create a large coordinate grid on paper or poster board. Label the x-axis (horizontal) and y-axis (vertical). Teach ordered pairs (x, y): 'over first, then up.' Plot points: (2, 3), (5, 1), (0, 4). Read points from the grid. Explain the origin (0, 0). Practice with a real map: assign grid coordinates to locations on a map of your town or a fantasy map.",
+      game:"Coordinate Treasure Hunt: Hide a 'treasure' on a grid. Give coordinates as clues. Student plots the clue and moves to find the treasure. Take turns hiding and seeking.",
+      homeConnection:"Look at a map app or atlas. Find how grids and coordinates are used to locate places in the real world.",
+      assessment:"Can correctly plot (3, 5) and identify the coordinates of any given point on a first-quadrant grid.",
+      differentiation:"Easier: Use a small grid (0-5) with large squares. | Harder: Introduce all four quadrants with negative coordinates."
+    },
+    {
+      title:"Graphing Shapes on the Coordinate Plane",
+      objective:"Represent real-world problems by graphing points and connecting them to form polygons in the first quadrant.",
+      warmup:"Plot these points: (1,1), (1,4), (4,4), (4,1). Connect them. What shape did you make?",
+      mainActivity:"Plot vertices of shapes on the coordinate grid, then connect them. Calculate side lengths using the coordinates: if two points share an x-coordinate, the distance is the difference in y-coordinates. Draw a rectangle with vertices at (2, 3), (7, 3), (7, 8), (2, 8). Calculate the perimeter and area from the coordinates. Create a design or picture by plotting and connecting points.",
+      game:"Mystery Shape: One player describes coordinates, the other plots them. Can you guess the shape before the last point is plotted?",
+      homeConnection:"Use graph paper to draw a floor plan of your bedroom to scale, with each square representing 1 foot.",
+      assessment:"Given vertices (1,2), (5,2), (5,6), (1,6), can identify the shape as a rectangle, calculate side lengths from coordinates, and find the perimeter (16 units) and area (16 sq units).",
+      differentiation:"Easier: Provide shapes with sides parallel to the axes. | Harder: Use shapes with diagonal sides and introduce the distance formula conceptually."
+    },
+    {
+      title:"Classifying 2D Shapes & Hierarchies",
+      objective:"Classify two-dimensional figures in a hierarchy based on properties (quadrilaterals, triangles, etc.).",
+      warmup:"Draw a square, rectangle, and rhombus. What do they have in common? How are they different?",
+      mainActivity:"Create a shape hierarchy poster: Start with 'Polygons' at the top. Branch into Triangles (equilateral, isosceles, scalene; acute, right, obtuse) and Quadrilaterals (parallelogram → rectangle → square; parallelogram → rhombus → square; trapezoid). Use a Venn diagram to show that all squares are rectangles, but not all rectangles are squares. Discuss defining attributes (parallel sides, equal sides, right angles) vs. non-defining (orientation, color).",
+      game:"Shape Guess Who: One player thinks of a shape. The other asks yes/no questions about properties ('Does it have parallel sides?' 'Are all sides equal?') to guess the shape in 5 questions or fewer.",
+      homeConnection:"Go on a shape hunt around the house. Find 5 quadrilaterals and classify each (rectangle, square, rhombus, parallelogram, trapezoid).",
+      assessment:"Can correctly place any given quadrilateral into the hierarchy and explain why a square is also a rectangle, parallelogram, and rhombus.",
+      differentiation:"Easier: Focus on triangles and basic quadrilaterals only. | Harder: Explore regular vs. irregular polygons and their angle sums."
+    },
+    {
+      title:"Lines, Angles & Symmetry",
+      objective:"Identify and draw points, lines, line segments, rays, angles (right, acute, obtuse), and lines of symmetry.",
+      warmup:"Use your arms to make a right angle, acute angle, and obtuse angle.",
+      mainActivity:"Teach vocabulary with visual flashcards: point, line (extends forever both ways), line segment (two endpoints), ray (one endpoint, extends forever). Draw and measure angles using a protractor. Find angles in everyday objects. Explore symmetry: fold paper shapes to find lines of symmetry. A rectangle has 2, a square has 4, a circle has infinite. Draw the other half of a symmetrical shape.",
+      game:"Angle Scavenger Hunt: Find and photograph (or draw) examples of right angles, acute angles, and obtuse angles around the house. Categorize them.",
+      homeConnection:"Look at architecture and art for examples of symmetry. Identify the type of symmetry in letters of the alphabet.",
+      assessment:"Can correctly identify and draw each type of angle, measure angles with a protractor, and find all lines of symmetry in a given shape.",
+      differentiation:"Easier: Focus on identifying right, acute, and obtuse angles visually. | Harder: Calculate complementary and supplementary angles."
+    }
+  ],
+  project:'Create a "Coordinate Plane City" on graph paper: Draw streets as grid lines, plot buildings as rectangles with labeled coordinates, and design a park as an irregular polygon. Calculate each building\'s perimeter and area from the coordinates. Add a legend and scale.',
+  materials:['Graph paper','Protractor','Ruler','Colored pencils','Poster board']
+},
+'May':{
+  icon:'fa-chart-bar',
+  color:'from-purple-400 to-indigo-500',
+  focus:'Data Analysis & Graphing',
+  skills:['Line plots','Bar graphs','Line graphs','Data interpretation'],
+  weeks:[
+    {
+      title:"Collecting & Organizing Data",
+      objective:"Design surveys, collect data systematically, and organize it using frequency tables and tally charts.",
+      warmup:"Ask 5 family members: 'What's your favorite season?' Tally the results. What do you notice?",
+      mainActivity:"Design a survey question with 4-5 options (e.g., favorite genre of book, number of siblings, hours of sleep). Survey at least 15 people (family, friends, neighbors). Organize data in a tally chart, then convert to a frequency table. Calculate the mode (most common response) and discuss what the data tells you. Introduce the concepts of categorical vs. numerical data.",
+      game:"Data Dice: Roll a die 30 times. Tally each number. Create a frequency table. Which number appeared most? Is this what you expected?",
+      homeConnection:"Track the weather for a week (temperature, cloud cover, precipitation). Organize the data in a table at the end of the week.",
+      assessment:"Can design a clear survey question, collect data from multiple respondents, and present it in an organized frequency table with correct totals.",
+      differentiation:"Easier: Provide a pre-made tally chart and focus on reading it. | Harder: Calculate mean, median, and mode for numerical data sets."
+    },
+    {
+      title:"Line Plots with Fractional Measurements",
+      objective:"Make a line plot to display a data set of measurements in fractions of a unit (½, ¼, ⅛) and solve problems using the data.",
+      warmup:"Measure 5 pencils to the nearest ¼ inch. Write each measurement on a sticky note.",
+      mainActivity:"Collect real measurement data: measure the length of 12-15 objects (leaves, books, hand spans) to the nearest ¼ or ½ inch. Create a line plot: draw a number line from the smallest to largest measurement, marking each ¼ increment. Plot each data point with an X above the number line. Analyze: What's the most common length? The range? How many objects are longer than 5½ inches?",
+      game:"Bean Bag Toss Data: Toss 10 bean bags at a target. Measure the distance from the target to the nearest ¼ foot. Plot the data. Find the pattern.",
+      homeConnection:"Measure the heights of everyone in your family to the nearest ½ inch. Create a line plot and compare.",
+      assessment:"Given a set of 12 measurements in eighths of an inch, can create an accurate line plot and answer three questions about the data.",
+      differentiation:"Easier: Use halves and quarters only. | Harder: Use eighths and add/subtract the fractional data points to find totals."
+    },
+    {
+      title:"Bar Graphs & Picture Graphs",
+      objective:"Create scaled bar graphs and picture graphs to represent data sets, and solve put-together and compare problems using information from the graphs.",
+      warmup:"Look at a simple bar graph from a newspaper or textbook. What three things can you learn from it?",
+      mainActivity:"Use the survey data from Week 1. Create a bar graph on graph paper: title, labeled axes, consistent scale, bars with equal spacing. Then create a picture graph using symbols (e.g., each emoji = 2 votes). Discuss when to use each type: bar graphs for comparing quantities, picture graphs for visual appeal. Write 3 questions that can be answered from your graph.",
+      game:"Graph Creator Challenge: Roll 4 dice to get numbers for 4 categories. Create a bar graph from the data. Fastest accurate graph wins.",
+      homeConnection:"Look at bar graphs in news articles or online. Discuss what the data shows and whether the graph is misleading in any way.",
+      assessment:"Can create a properly labeled and scaled bar graph from collected data and write comparison statements about the information shown.",
+      differentiation:"Easier: Use a scale of 1. | Harder: Use a scale of 2, 5, or 10, and create double bar graphs comparing two data sets."
+    },
+    {
+      title:"Line Graphs & Data Stories",
+      objective:"Create line graphs to show change over time and write 'data stories' that interpret trends in the data.",
+      warmup:"Track your pulse: sit quietly for 1 minute and count heartbeats. Do 20 jumping jacks and count again. Rest 2 minutes and count again. What pattern do you see?",
+      mainActivity:"Use time-series data: daily temperatures for a week, plant growth over 10 days, or savings account balance over 6 months. Create a line graph with time on the x-axis. Plot points and connect with line segments. Analyze: Is the trend increasing, decreasing, or staying the same? Are there any sharp changes? Write a 'data story' in 3-5 sentences that explains what happened and why the trend might look the way it does.",
+      game:"Graph Match: Given 6 line graphs and 6 short stories (e.g., 'Tom's savings grew steadily, then he bought a bike'), match each graph to its story.",
+      homeConnection:"Track the high temperature for 7 days using a weather app. Create a line graph and write a sentence about the trend.",
+      assessment:"Can create a properly constructed line graph from time-series data, identify the trend, and write a coherent data story explaining the pattern.",
+      differentiation:"Easier: Provide pre-plotted data points and focus on interpretation. | Harder: Compare two data sets on the same graph (e.g., this week vs. last week's temperatures)."
+    }
+  ],
+  project:'Conduct a "Data Investigation": Choose a question, survey at least 20 people, and create a portfolio displaying the data in 3 different graph types (line plot, bar graph, and line graph or picture graph). Write a one-page analysis of the findings and present to the family.',
+  materials:['Graph paper','Ruler','Colored pencils','Survey forms','Poster board for presentation']
+},
+'June':{
+  icon:'fa-trophy',
+  color:'from-amber-400 to-orange-500',
+  focus:'Review & Real-World Math',
+  skills:['Problem solving','Mixed operations','Math games','Portfolio & reflection'],
+  weeks:[
+    {
+      title:"Number Sense & Operations Review",
+      objective:"Review and demonstrate fluency with all four operations on whole numbers, decimals, and fractions.",
+      warmup:"Number of the Day: Start with 24. Multiply by 10. Divide by 6. Add 1.5. What do you get? Create a chain with your own operations.",
+      mainActivity:"Station rotation with 5 stations: (1) Whole number multiplication/division, (2) Decimal addition/subtraction, (3) Fraction multiplication, (4) Fraction division, (5) Mixed word problems. Spend 8 minutes at each station. Check answers with a partner and discuss strategies.",
+      game:"Math Jeopardy: Create a Jeopardy-style game with 5 categories (Place Value, Multiplication, Division, Fractions, Decimals) and 5 point levels each. Play in teams.",
+      homeConnection:"Help plan a family meal budget: Calculate total cost with decimals, adjust quantities using fractions, and determine cost per person using division.",
+      assessment:"Scores 80%+ on a comprehensive review quiz covering all operations with whole numbers, decimals, and fractions.",
+      differentiation:"Easier: Focus review on the 3 topics the student finds most challenging. | Harder: Create their own review quiz for a family member to take."
+    },
+    {
+      title:"Geometry & Measurement Review",
+      objective:"Review coordinate graphing, volume, shape classification, and measurement conversions.",
+      warmup:"Quick draw: In 2 minutes, sketch as many different quadrilaterals as you can. Label each one.",
+      mainActivity:"Review stations: (1) Plot 5 shapes on a coordinate grid and calculate perimeters/areas, (2) Calculate volumes of 3 rectangular prisms, (3) Classify 8 shapes into a hierarchy chart, (4) Convert 10 measurements between units, (5) Solve 3 composite figure volume problems. Students self-assess their confidence at each station.",
+      game:"Geometry Pictionary: Draw shapes, angles, or coordinate plane figures for a partner to guess. Points for correct guesses within 30 seconds.",
+      homeConnection:"Measure a room and calculate the volume. If you wanted to fill it with water, how many gallons would it take? (1 cubic foot ≈ 7.5 gallons)",
+      assessment:"Can solve a multi-step problem involving coordinate graphing, volume calculation, and unit conversion in a real-world context.",
+      differentiation:"Easier: Review one area of choice in depth. | Harder: Connect geometry to algebra by finding unknown coordinates."
+    },
+    {
+      title:"Math in the Real World Project",
+      objective:"Apply all fifth-grade math skills to a comprehensive real-world project.",
+      warmup:"Brainstorm: What jobs or situations use math every day? List as many as you can in 2 minutes.",
+      mainActivity:"Choose one project: (A) Plan a Vacation — set a budget, research flights/hotels in decimals, calculate distances, convert currencies. (B) Design a Dream Bedroom — measure in fractions, draw to scale on a coordinate grid, calculate floor area and room volume, price furniture with decimal arithmetic. (C) Run a Lemonade Stand — calculate ingredient costs (fractions), project profits (decimals), graph sales over time (line graph). Work on it all week with a final presentation.",
+      game:"Real World Problem Swap: Each family member writes a real-world math problem. Swap and solve. Vote on the most creative problem.",
+      homeConnection:"Shadow a family member at their job or look up a career of interest. Identify all the ways math is used in that job.",
+      assessment:"Can complete the chosen project with accurate calculations across at least 4 different math skill areas, presented clearly.",
+      differentiation:"Easier: Focus on two math skills in the project. | Harder: Add a written reflection comparing estimated vs. actual results."
+    },
+    {
+      title:"Math Portfolio & Celebration",
+      objective:"Reflect on the year's mathematical growth, compile a portfolio, and celebrate achievements.",
+      warmup:"Look back at the very first thing you learned in September (place value to millions). How easy does it feel now?",
+      mainActivity:"Compile a Math Portfolio: select best work from each month, including at least one page from each major topic. Write a reflection: 'My favorite math topic was ___ because ___.' 'The hardest thing I learned was ___ and I overcame it by ___.' 'One thing I want to keep practicing is ___.' Create a 'Math Autobiography' poster showing the journey from September to June.",
+      game:"Math Escape Room: Set up 6 puzzle stations around the house, one for each major topic. Each puzzle reveals a letter. Unscramble the letters for a final message leading to a celebration treat.",
+      homeConnection:"Host a 'Math Night' for the family: teach a mini-lesson on your favorite topic, play a math game together, and share your portfolio.",
+      assessment:"Portfolio is complete with work samples from each month, a thoughtful written reflection, and a positive attitude toward continued math learning.",
+      differentiation:"Easier: Verbally reflect on learning with a parent. | Harder: Write a letter to next year's math student giving advice and tips."
+    }
+  ],
+  project:'Complete the Math Portfolio: Decorate a folder or binder cover with math symbols and colors. Organize work from each month. Include the written reflection and Math Autobiography. Present the portfolio to family, teaching them one concept you mastered this year.',
+  materials:['Folder or binder','All saved work from the year','Colored pencils','Stickers','Poster board']
+}
+};
+
+const LS_MONTH='math-10-month';
+const LS_DONE='math-10-done';
+let currentMonth=localStorage.getItem(LS_MONTH)||'September';
+let completed=JSON.parse(localStorage.getItem(LS_DONE)||'{}');
+
+function saveProgress(){localStorage.setItem(LS_MONTH,currentMonth);localStorage.setItem(LS_DONE,JSON.stringify(completed));}
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent(currentMonth);
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  saveProgress();
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function toggleWeekDone(e,id){
+  e.stopPropagation();
+  completed[id]=!completed[id];
+  saveProgress();
+  const btn=e.currentTarget;
+  btn.classList.toggle('done',completed[id]);
+  btn.innerHTML=completed[id]?'<i class="fas fa-check"></i>':'';
+  const row=btn.closest('.week-row');
+  row.classList.toggle('completed',completed[id]);
+  updateProgressBar();
+}
+
+function updateProgressBar(){
+  const months=Object.keys(curriculumData);
+  const total=months.reduce((s,m)=>s+curriculumData[m].weeks.length,0);
+  const done=Object.values(completed).filter(Boolean).length;
+  const bar=document.getElementById('progressFill');
+  if(bar)bar.style.width=(done/total*100)+'%';
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  const total=months.reduce((s,mo)=>s+curriculumData[mo].weeks.length,0);
+  const doneCount=Object.values(completed).filter(Boolean).length;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--ct9);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--ct8);margin-bottom:6px;">${doneCount} of ${total} weeks completed</div>
+    <div class="progress-bar-wrap" style="margin-bottom:24px;"><div class="progress-bar-fill" id="progressFill" style="width:${doneCount/total*100}%;"></div></div>
+    <div class="month-grid">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>{
+            const wid=m+'-'+i;
+            const isDone=!!completed[wid];
+            return `
+            <div class="week-row${isDone?' completed':''}">
+              <div class="week-header" onclick="toggleWeek('${wid}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;">
+                  <p class="week-title-text" style="font-size:14px;font-weight:700;color:var(--ct);margin-bottom:4px;">${w.title}</p>
+                  <p style="font-size:13px;color:var(--ct3);line-height:1.55;">${w.objective}</p>
+                  <p style="font-size:11px;color:var(--ct8);margin-top:6px;"><i class="fas fa-hand-pointer" style="margin-right:4px;"></i>Tap to view full lesson plan</p>
+                </div>
+                <button class="week-check${isDone?' done':''}" onclick="toggleWeekDone(event,'${wid}')">${isDone?'<i class="fas fa-check"></i>':''}</button>
+                <i class="fas fa-chevron-down" id="chev-${wid}" style="color:var(--ct8);font-size:11px;margin-top:4px;transition:transform 0.25s cubic-bezier(0.4,0,0.2,1);"></i>
+              </div>
+              <div class="week-detail" id="wd-${wid}">
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-bullseye" style="color:var(--al);font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:var(--al);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Objective</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.objective}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(249,115,22,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-fire" style="color:#fb923c;font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:#fb923c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Warm-Up</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.warmup}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-book-open" style="color:var(--al);font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:var(--al);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Main Activity</p>
+                    <p style="font-size:13px;color:var(--ct2);line-height:1.5;">${w.mainActivity}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(139,92,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-gamepad" style="color:#a78bfa;font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Game</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.game}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-home" style="color:#34d399;font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Home Connection</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.homeConnection}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(236,72,153,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-check-circle" style="color:#f472b6;font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:#f472b6;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Check for Understanding</p>
+                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.assessment}</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;margin-bottom:4px;">
+                  <div style="width:24px;height:24px;border-radius:6px;background:var(--cs4);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-layer-group" style="color:var(--ct7);font-size:11px;"></i></div>
+                  <div>
+                    <p style="font-size:11px;font-weight:700;color:var(--ct7);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Differentiation</p>
+                    <p style="font-size:13px;color:var(--ct4);line-height:1.5;font-style:italic;">${w.differentiation}</p>
+                  </div>
+                </div>
+              </div>
+            </div>`;}).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:var(--cs1);border:1px solid var(--br1);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:var(--ct4);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:var(--ct4);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--br1);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid var(--br2);background:var(--cs3);color:var(--ct4);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid var(--br2);background:var(--cs3);color:var(--ct4);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const isOpen=d.classList.contains('open');
+  d.classList.toggle('open',!isOpen);
+  c.style.transform=isOpen?'':'rotate(180deg)';
+}
+
+
+init();
+</script>
+<script src="paywall.js"></script>
+</body>
+</html>

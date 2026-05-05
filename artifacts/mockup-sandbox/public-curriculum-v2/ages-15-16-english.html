@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GED English — Ages 15–16 | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#eab308;--a2:#f97316;--al:#fde047;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(234,179,8,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(234,179,8,0.12);border:1px solid rgba(234,179,8,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+.toggle-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;color:rgba(255,255,255,0.5);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(234,179,8,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.ged-banner{background:linear-gradient(135deg,rgba(234,179,8,0.1),rgba(249,115,22,0.08));border:1px solid rgba(234,179,8,0.2);border-radius:14px;padding:18px 22px;margin-bottom:32px;display:flex;align-items:center;gap:16px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+body.light{background:#eeedf8;color:#0d0d1a;}
+body.light header{background:rgba(238,237,248,0.9);}
+body.light .glass{background:rgba(255,255,255,0.75);border-color:rgba(0,0,0,0.08);}
+body.light .skill-card{background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.08);}
+body.light .sched-card{background:rgba(255,255,255,0.55);}
+body.light .month-tab{background:rgba(255,255,255,0.6);color:rgba(13,13,26,0.55);}
+body.light .week-row{border-color:rgba(0,0,0,0.07);}
+body.light .week-detail{background:rgba(0,0,0,0.02);}
+body.light .section-label{color:rgba(13,13,26,0.4);}
+body.light .back-btn{color:rgba(13,13,26,0.55);}
+body.light footer{border-top-color:rgba(0,0,0,0.08);}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:white;">GED Preparation</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 15–16</div>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-book" style="margin-right:5px;"></i>Reasoning Through Language Arts</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 15–16</span>
+      <button class="toggle-btn" onclick="toggleDark()"><i class="fas fa-moon" id="themeIcon"></i></button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="ged-banner">
+    <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(234,179,8,0.2),rgba(249,115,22,0.15));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-certificate" style="color:#fde047;font-size:18px;"></i></div>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#fde047;margin-bottom:3px;">GED Test — Reasoning Through Language Arts (RLA)</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);">The GED RLA test (150 min) includes reading comprehension, language/grammar questions, and one Extended Response essay (45 min). Reading is ~75% nonfiction. Passing score: 145.</div>
+    </div>
+  </div>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">GED Preparation · Ages 15–16</p>
+    <h2 class="page-title">Language Arts & Writing</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:640px;margin:0 auto;line-height:1.75;">Master reading comprehension across fiction and nonfiction texts, grammar and usage conventions, and evidence-based Extended Response essay writing aligned to the GED RLA exam format.</p>
+  </section>
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(234,179,8,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-book-open" style="color:#fde047;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Reading Comprehension</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Fiction, nonfiction, inference</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-spell-check" style="color:#fb923c;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Grammar & Usage</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Sentence structure, mechanics</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pen-fancy" style="color:#34d399;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Extended Response Essay</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Argument writing from sources</div>
+      </div>
+      <div class="skill-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(99,102,241,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-search" style="color:#a5b4fc;font-size:15px;"></i></div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Text Analysis</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Author's purpose, rhetoric, tone</div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly RLA Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">GED Reasoning Through Language Arts · Ages 15–16</p>
+</footer>
+<script>
+const curriculumData={
+'September':{icon:'fa-book-open',color:'',focus:'Reading Comprehension Foundations',skills:['Main idea & details','Inference & implication','Vocabulary in context','Text structure'],weeks:['Main idea identification in fiction and nonfiction passages of 400–900 words','Making inferences and drawing conclusions using textual evidence only','Vocabulary in context: using surrounding sentences to determine word meaning','Text structures: compare/contrast, cause/effect, sequence, problem/solution'],project:'Complete 10 GED-style reading passages (5 fiction, 5 nonfiction) with comprehension questions; track accuracy by category',materials:['GED RLA prep book','Reading passage packet','Highlighters','Error log notebook']},
+'October':{icon:'fa-paragraph',color:'',focus:'Analyzing Arguments & Author\'s Purpose',skills:['Claim & evidence','Author\'s purpose','Point of view','Bias & tone'],weeks:['Identifying the author\'s claim and the evidence used to support it in opinion texts','Analyzing author\'s purpose (inform, persuade, entertain) through word choice and structure','Point of view: how narrator\'s perspective shapes the text in fiction and nonfiction','Recognizing bias, tone, and rhetorical techniques (appeals to logos, ethos, pathos)'],project:'Analyze two opposing editorials on the same topic: compare claims, evidence quality, and rhetorical techniques in a 3-page essay',materials:['Two contrasting editorial printouts','Argument analysis graphic organizer','Essay rubric','Pen & lined paper']},
+'November':{icon:'fa-spell-check',color:'',focus:'Grammar & Sentence Structure',skills:['Subject-verb agreement','Pronoun reference','Modifier placement','Comma & semicolon rules'],weeks:['Subject-verb agreement with compound subjects, collective nouns, and indefinite pronouns','Pronoun-antecedent agreement; avoiding ambiguous and vague pronoun reference','Misplaced and dangling modifiers: identifying and correcting in sentences','Comma usage (7 rules), semicolons, colons — when and how to use each correctly'],project:'Edit a 500-word essay draft with 25 intentional grammar errors; rewrite corrected version with annotations explaining each change',materials:['Grammar workbook or worksheet set','Error-filled essay handout','Grammar reference card','Pen']},
+'December':{icon:'fa-pen-fancy',color:'',focus:'Extended Response Essay Writing',skills:['Understanding the prompt','Reading source texts','Building an argument','45-minute drafting'],weeks:['Deconstructing the Extended Response prompt: task, audience, purpose, scoring criteria','Annotating two source documents for key claims, evidence, and counterarguments','Planning an evidence-based essay: thesis, 3 supporting points, counterargument','Drafting a complete Extended Response in 45 minutes; self-scoring using official rubric'],project:'Write 3 complete Extended Response essays on different prompts; submit to a parent for scoring using the official GED rubric',materials:['GED Extended Response rubric','Practice prompt packets with two source texts each','Timer','Lined paper']},
+'January':{icon:'fa-book',color:'',focus:'Literary Fiction Reading',skills:['Theme & character','Figurative language','Plot & conflict','Comparing texts'],weeks:['Reading literary fiction excerpts: analyzing character motivation and development','Identifying and interpreting figurative language (metaphor, simile, symbolism) in context','Plot analysis: exposition, conflict, rising action, climax, resolution in GED passages','Comparing two fiction excerpts: theme, tone, and author\'s craft across texts'],project:'Complete a GED-style literary fiction section: 5 passages with 4 questions each; analyze patterns in errors',materials:['GED RLA practice test (fiction section)','Literary analysis graphic organizer','Highlighters','GED prep book']},
+'February':{icon:'fa-file-contract',color:'',focus:'Informational & Workplace Texts',skills:['Charts & graphs in text','Workplace documents','Summarizing nonfiction','Functional text'],weeks:['Reading informational passages with embedded data (tables, graphs, timelines) — integrating text and data','Workplace texts: memos, emails, job applications, employee handbooks — reading and responding','Summarizing nonfiction: identifying key points without distorting or editorializing','Functional texts: warranties, instructions, contracts — reading for precise meaning'],project:'Analyze a real-world document (lease agreement, employee handbook excerpt, or IRS instruction page) and answer 10 comprehension questions',materials:['Sample workplace documents (printable)','Nonfiction article set','Comprehension question worksheet','Highlighters']},
+'March':{icon:'fa-edit',color:'',focus:'Language & Editing Skills',skills:['Sentence combining','Parallel structure','Wordiness & clarity','Organizational flow'],weeks:['Sentence combining: joining choppy sentences with subordinating conjunctions and relative clauses','Parallel structure in lists, comparisons, and compound predicates','Eliminating wordiness, redundancy, and vague language for clarity and precision','Organizational flow: transitions, topic sentences, and logical paragraph order'],project:'Revise a 400-word poorly written passage: improve sentence variety, eliminate errors, and enhance clarity — before and after comparison',materials:['Poorly written passage handout','Grammar checklist','Revision guide','Colored pens for markup']},
+'April':{icon:'fa-history',color:'',focus:'Foundational U.S. Documents',skills:['Declaration of Independence','Gettysburg Address','Inaugural speeches','Constitutional amendments'],weeks:['Analyzing the Declaration of Independence: structure, argument, Enlightenment ideas','Abraham Lincoln\'s Gettysburg Address and Second Inaugural: rhetoric and historical context','Presidential inaugural speeches as persuasive texts (FDR, JFK, Obama excerpts)','Constitutional amendments as texts: 1st, 13th, 14th, 19th — language, intent, impact'],project:'Write a 5-paragraph analytical essay comparing the argument and rhetoric of two foundational US documents',materials:['Primary document printouts','Rhetoric analysis template','Essay rubric','GED prep book (foundational documents section)']},
+'May':{icon:'fa-clock',color:'',focus:'Timed Reading & Test Strategies',skills:['Time management (150 min)','Passage skimming','Question type strategies','Extended Response planning'],weeks:['Time management strategy: 35 min Extended Response + 95 min for reading & language questions','Skimming and scanning: reading passage strategically before answering questions','Question type strategies: main idea, inference, detail, vocabulary, author\'s purpose','Extended Response in 45 minutes: 5 min plan, 35 min draft, 5 min revise — practice cycle'],project:'Complete a full timed 150-minute GED RLA practice test under real exam conditions; analyze results by section',materials:['Full-length GED RLA practice test','Timer','Scratch paper','Scoring guide']},
+'June':{icon:'fa-trophy',color:'',focus:'GED RLA Practice Tests & Review',skills:['Full practice exams','Error analysis','Writing portfolio review','Test readiness'],weeks:['Full-length GED RLA practice test #2 under timed conditions; score and review every item','Error log analysis: categorize missed questions by reading, language, or Extended Response','Review two best Extended Response essays; identify strengths and one area to improve','GED Ready official RLA practice test (MyGED.com) — target score 145+'],project:'Complete the official GED Ready RLA exam; review essay score and create a final 1-week study checklist before test day',materials:['GED Ready app/MyGED.com access','All practice essays','Error log','GED prep workbook']}
+};
+let currentMonth='September';
+let isDark=true;
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{
+    btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);
+  });
+  loadContent(m);
+}
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-book" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">${w} — reading passages, practice questions, and a short writing or editing exercise.</p></div>
+                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Evening: 30 minutes of independent reading plus vocabulary review with flashcards.</p></div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+function toggleDark(){
+  isDark=!isDark;
+  document.body.classList.toggle('light',!isDark);
+  document.getElementById('themeIcon').className=isDark?'fas fa-moon':'fas fa-sun';
+}
+init();
+</script>
+<script src="paywall.js"></script>
+</body>
+</html>

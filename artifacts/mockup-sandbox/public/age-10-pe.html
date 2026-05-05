@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Physical Education & Fitness — Grade 5 (Age 10) | Curriculum Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#10b981;--a2:#06b6d4;--al:#6ee7b7;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,0.1),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.08),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(16,185,129,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Grade 5</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Age 10</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-running" style="margin-right:5px;"></i>PE</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Age 10</span>
+
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Grade 5 · Age 10</p>
+    <h2 class="page-title">Physical Education & Fitness</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Developing cardiovascular fitness, team sports strategy, flexibility, and strength through engaging physical activities designed for 5th graders.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(239,68,68,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-heartbeat" style="color:#f87171;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Cardiovascular Fitness</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Running, jumping, heart health</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-users" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Team Sports & Strategy</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Soccer, basketball, teamwork</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-child" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Flexibility & Balance</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Stretching, yoga, coordination</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-dumbbell" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Strength & Conditioning</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Bodyweight exercises, core strength</div></div>
+    </div>
+  </section>
+
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Training Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grade 5 PE · Age 10</p>
+</footer>
+
+<script>
+const curriculumData={
+'September': {
+  icon: 'fa-heartbeat',
+  color: 'from-emerald-400 to-teal-500',
+  focus: 'Fitness Foundations',
+  skills: ['Heart rate tracking', 'Goal setting', 'Baseline testing', 'Endurance'],
+  project: 'Create a personal fitness log and complete initial baseline fitness assessments.',
+  materials: ['Stopwatch/Timer', 'Fitness log notebook', 'Measuring tape', 'Cones or markers', 'Jump rope', 'Water bottle', 'Comfortable athletic shoes'],
+  weeks: [
+    {
+      title: "Understanding Heart Rate",
+      objective: "Learn to find resting and active heart rates and understand target heart rate zones.",
+      warmup: "5-minute brisk walk or light jog to elevate heart rate.",
+      mainActivity: "Teach how to find pulse on wrist or neck. Measure resting heart rate for 60 seconds. Do 2 minutes of jumping jacks, then measure active heart rate.",
+      game: "Red Light, Green Light with exercises (squats on red, high knees on green).",
+      homeConnection: "Measure heart rate of family members before and after a family walk.",
+      assessment: "Can accurately find and count heart rate and explain the difference between resting and active rates.",
+      differentiation: "Easier: Count for 30 seconds and multiply by 2. Harder: Calculate target heart rate zones using age-based formulas."
+    },
+    {
+      title: "Baseline Fitness Assessments",
+      objective: "Perform standardized fitness tests to establish a baseline for future growth.",
+      warmup: "Dynamic stretching: arm circles, leg swings, torso twists.",
+      mainActivity: "Conduct 1-mile walk/run test, 1-minute sit-up test, and push-up test. Record all results in the fitness log.",
+      game: "Shuttle Run: Sprint back and forth between two lines 30 feet apart, picking up a block each time.",
+      homeConnection: "Discuss personal fitness goals with a parent based on the test results.",
+      assessment: "Completes all baseline tests safely and records data accurately.",
+      differentiation: "Easier: Modify push-ups to knee push-ups. Harder: Add a flexibility sit-and-reach test to the baseline."
+    },
+    {
+      title: "Setting SMART Fitness Goals",
+      objective: "Learn to set Specific, Measurable, Achievable, Relevant, and Time-bound fitness goals.",
+      warmup: "10-minute continuous movement (mix of jogging, skipping, galloping).",
+      mainActivity: "Review baseline results. Guide the student in writing 2-3 SMART goals for the semester (e.g., 'I will improve my 1-mile run time by 30 seconds by December').",
+      game: "Obstacle course focusing on agility and speed.",
+      homeConnection: "Post fitness goals on the fridge or a visible board.",
+      assessment: "Writes at least two valid SMART goals related to physical fitness.",
+      differentiation: "Easier: Focus on one simple, short-term goal. Harder: Create a weekly action plan to achieve the goals."
+    },
+    {
+      title: "Introduction to Aerobic Exercise",
+      objective: "Understand aerobic exercise and build cardiovascular endurance.",
+      warmup: "Jump rope for 3 minutes.",
+      mainActivity: "20-minute continuous aerobic circuit: 5 stations (jumping jacks, high knees, mountain climbers, burpees, fast feet) 45 seconds on, 15 seconds off.",
+      game: "Tag games (e.g., freeze tag) to keep heart rate elevated.",
+      homeConnection: "Identify 3 aerobic activities they enjoy doing outside of structured PE time.",
+      assessment: "Sustains moderate-to-vigorous physical activity for 20 minutes.",
+      differentiation: "Easier: 30 seconds on, 30 seconds off for the circuit. Harder: Increase station time to 60 seconds."
+    }
+  ]
+},
+'October': {
+  icon: 'fa-futbol',
+  color: 'from-green-400 to-emerald-500',
+  focus: 'Soccer & Field Sports',
+  skills: ['Dribbling control', 'Passing accuracy', 'Shooting technique', 'Field positions'],
+  project: 'Design a soccer drill and teach it to a family member or friend.',
+  materials: ['Soccer ball', 'Cones (or substitute objects)', 'Pop-up goals (or markers)', 'Whistle', 'Shin guards (optional)', 'Cleats/Athletic shoes', 'Water bottle'],
+  weeks: [
+    {
+      title: "Dribbling Mastery",
+      objective: "Control the soccer ball using both feet while moving at varying speeds.",
+      warmup: "Jogging while gently passing the ball side-to-side between feet (tick-tocks).",
+      mainActivity: "Set up a cone slalom course. Practice dribbling through cones using inside/outside of feet. Focus on keeping the ball close.",
+      game: "Sharks and Minnows: Try to dribble across a designated area without getting the ball kicked out by the 'shark'.",
+      homeConnection: "Practice dribbling around obstacles (trees, chairs) in the yard for 15 minutes.",
+      assessment: "Can navigate a 5-cone slalom course keeping the ball within 3 feet of their body.",
+      differentiation: "Easier: Walk through the slalom course. Harder: Dribble using only the non-dominant foot."
+    },
+    {
+      title: "Precision Passing",
+      objective: "Execute accurate push passes using the inside of the foot.",
+      warmup: "Partner passing back and forth, gradually increasing distance.",
+      mainActivity: "Target practice: Set up cones as 'gates'. Practice passing the ball through the gates from different distances and angles.",
+      game: "Keep Away: Try to complete a set number of passes (e.g., 5) with a partner while a defender tries to intercept.",
+      homeConnection: "Pass against a wall or rebounder for 10 minutes, focusing on correct foot placement.",
+      assessment: "Successfully completes 8 out of 10 passes through a 3-foot gate from 10 feet away.",
+      differentiation: "Easier: Decrease distance to the gate. Harder: Receive a pass, control it, and pass it back in one fluid motion."
+    },
+    {
+      title: "Shooting Mechanics",
+      objective: "Learn proper technique for striking the ball with the instep (laces) for power.",
+      warmup: "Dynamic leg swings and light jogging.",
+      mainActivity: "Demonstrate proper plant foot placement and striking with the laces. Practice shooting on goal from a stationary position, then from a slow dribble.",
+      game: "Penalty Shootout: Take turns shooting and playing goalie.",
+      homeConnection: "Watch a professional soccer highlight reel and observe players' shooting form.",
+      assessment: "Demonstrates correct plant foot position and strikes the ball with the instep rather than the toe.",
+      differentiation: "Easier: Shoot a stationary ball from close range. Harder: Shoot a rolling ball from a pass."
+    },
+    {
+      title: "Positions & Game Strategy",
+      objective: "Understand basic soccer positions (forward, midfielder, defender, goalie) and spacing.",
+      warmup: "Shadow defending: mirror a partner's movements without the ball.",
+      mainActivity: "Discuss the roles of different positions. Set up a small-sided game (e.g., 2v2 or 3v3) focusing on maintaining spacing and passing rather than just clustering around the ball.",
+      game: "Mini-scrimmage enforcing a 'two-pass minimum' rule before shooting.",
+      homeConnection: "Draw a soccer field diagram and label the standard positions.",
+      assessment: "Can explain the primary responsibility of a defender versus a forward and demonstrates basic spacing during play.",
+      differentiation: "Easier: Play a game focusing only on offense vs. defense concepts. Harder: Introduce the concept of offsides."
+    }
+  ]
+},
+'November': {
+  icon: 'fa-basketball-ball',
+  color: 'from-orange-400 to-amber-500',
+  focus: 'Basketball & Court Sports',
+  skills: ['Dribbling (both hands)', 'Shooting form (BEEF)', 'Defensive stance', 'Court awareness'],
+  project: 'Track shooting percentage over 4 weeks and chart the improvement.',
+  materials: ['Basketball', 'Basketball hoop', 'Cones/Chalk', 'Timer', 'Comfortable shoes', 'Jump rope', 'Water bottle'],
+  weeks: [
+    {
+      title: "Ball Handling & Dribbling",
+      objective: "Develop control dribbling with both dominant and non-dominant hands while keeping eyes up.",
+      warmup: "Ball wraps (around waist, knees, head) to get a feel for the ball.",
+      mainActivity: "Practice stationary dribbling (high, low, crossovers). Then practice dribbling while walking, jogging, and changing direction using cones.",
+      game: "Dribble Knockout: Dribble your ball while trying to knock away others' balls (if playing with siblings/friends).",
+      homeConnection: "Practice dribbling with the non-dominant hand for 10 minutes daily.",
+      assessment: "Can dribble a ball while walking across the court without looking down at the ball.",
+      differentiation: "Easier: Focus on stationary dribbling with eyes up. Harder: Practice between-the-legs and behind-the-back dribbles."
+    },
+    {
+      title: "Shooting Form (BEEF)",
+      objective: "Learn and apply the BEEF principle (Balance, Eyes, Elbow, Follow-through).",
+      warmup: "Form shooting (no ball): practice the shooting motion emphasizing the flick of the wrist.",
+      mainActivity: "Practice form shooting close to the basket (wall or hoop). Gradually step back. Focus on the elbow staying in and the 'gooseneck' follow-through.",
+      game: "H-O-R-S-E or P-I-G: Take turns attempting shots; if made, the other must match it.",
+      homeConnection: "Practice form shooting lying on the back, shooting the ball straight up into the air.",
+      assessment: "Demonstrates the BEEF principles consistently during stationary shots.",
+      differentiation: "Easier: Shoot at a lower basket or with a lighter ball. Harder: Practice shooting off the dribble (jump stops)."
+    },
+    {
+      title: "Passing & Pivoting",
+      objective: "Execute chest passes, bounce passes, and proper pivoting techniques.",
+      warmup: "Line jumps (side-to-side, front-to-back) for footwork.",
+      mainActivity: "Partner passing drills (chest and bounce). Teach the forward and reverse pivot, emphasizing keeping one foot planted.",
+      game: "Monkey in the Middle (with passing).",
+      homeConnection: "Practice pivoting in the living room holding a pillow.",
+      assessment: "Completes strong chest passes and demonstrates a legal pivot without traveling.",
+      differentiation: "Easier: Focus on just the chest pass. Harder: Combine a pivot, fake pass, and bounce pass."
+    },
+    {
+      title: "Defense & Rebounding",
+      objective: "Learn proper defensive stance, sliding, and boxing out for rebounds.",
+      warmup: "Defensive slides (zig-zag pattern down the court).",
+      mainActivity: "Teach the athletic defensive stance (knees bent, back straight, hands active). Practice boxing out an opponent when a shot goes up to secure the rebound.",
+      game: "1-on-1 Scrimmage focusing heavily on staying between the offensive player and the basket.",
+      homeConnection: "Watch a basketball game and focus only on the defensive players' footwork.",
+      assessment: "Maintains a proper defensive stance and slides without crossing feet.",
+      differentiation: "Easier: Practice sliding without an offensive player. Harder: Teach closing out on a shooter under control."
+    }
+  ]
+},
+'December': {
+  icon: 'fa-child',
+  color: 'from-cyan-400 to-blue-500',
+  focus: 'Gymnastics & Movement',
+  skills: ['Tumbling basics', 'Static balance', 'Flexibility routines', 'Body control'],
+  project: 'Choreograph a 1-minute gymnastics/movement routine combining tumbling and balance.',
+  materials: ['Gymnastics mat (or thick carpet/blankets)', 'Open space', 'Stopwatch', 'Music player', 'Yoga blocks (optional)', 'Water bottle'],
+  weeks: [
+    {
+      title: "Tumbling Fundamentals",
+      objective: "Safely execute forward rolls, backward rolls, and log rolls.",
+      warmup: "Animal walks (bear crawl, crab walk, inchworm) to build core strength.",
+      mainActivity: "Review safety (tucking chin). Practice log rolls. Progress to forward rolls from a squat, then backward rolls on an incline if possible.",
+      game: "Relay race incorporating animal walks and log rolls.",
+      homeConnection: "Practice safe tuck-and-rolls on a soft surface or grass.",
+      assessment: "Performs a smooth forward roll, tucking the chin and rolling squarely on the back.",
+      differentiation: "Easier: Stick to log rolls and basic tucks. Harder: Attempt a dive roll over a soft obstacle."
+    },
+    {
+      title: "Balance & Control",
+      objective: "Hold static balance poses and walk a balance beam (or line).",
+      warmup: "Single-leg stands (eyes open, then eyes closed).",
+      mainActivity: "Practice specific poses (arabesque, stork stand, V-sit) holding for 10 seconds. Walk forward, backward, and sideways on a taped line or low beam.",
+      game: "Statues: Freeze in a specific balance pose when the music stops.",
+      homeConnection: "Try brushing teeth while standing on one foot (switch halfway).",
+      assessment: "Holds an arabesque (one leg extended back) for 10 seconds without falling.",
+      differentiation: "Easier: Use a wall for light support during static holds. Harder: Perform a full turn (pirouette) on the line."
+    },
+    {
+      title: "Flexibility & Stretching",
+      objective: "Improve range of motion through active and passive stretching techniques.",
+      warmup: "Light jogging and jumping jacks to warm muscles.",
+      mainActivity: "Go through a comprehensive stretching routine targeting major muscle groups (hamstrings, quads, shoulders, back). Introduce the straddle stretch and bridge (backbend).",
+      game: "Twister (incorporates flexibility and awkward positioning).",
+      homeConnection: "Perform a 5-minute stretch routine before bed every night.",
+      assessment: "Demonstrates proper form in basic stretches without bouncing (static stretching).",
+      differentiation: "Easier: Modify the bridge to a simple glute bridge. Harder: Attempt to push up into a full backbend from the floor."
+    },
+    {
+      title: "Routine Choreography",
+      objective: "Combine learned skills into a fluid, continuous sequence.",
+      warmup: "Freestyle dance to warm up and encourage creativity.",
+      mainActivity: "Design a routine that includes: 2 tumbling skills, 2 balance holds, and 1 jump. Practice connecting the moves smoothly with 'graceful' transitions.",
+      game: "Showcase: Perform the routine for family/friends with chosen music.",
+      homeConnection: "Refine and practice the routine focusing on straight legs and pointed toes.",
+      assessment: "Remembers and executes a sequence of 5 distinct gymnastic/movement elements.",
+      differentiation: "Easier: Create a 3-element routine. Harder: Include a cartwheel or round-off in the routine."
+    }
+  ]
+},
+'January': {
+  icon: 'fa-apple-alt',
+  color: 'from-blue-400 to-indigo-500',
+  focus: 'Wellness & Nutrition',
+  skills: ['Macronutrient knowledge', 'Label reading', 'Mindfulness/Yoga', 'Sleep hygiene'],
+  project: 'Keep a 5-day food and sleep journal, analyzing energy levels.',
+  materials: ['Food labels/packages', 'Journal/Notebook', 'Yoga mat', 'Internet access (for research)', 'MyPlate chart', 'Water bottle'],
+  weeks: [
+    {
+      title: "Fueling the Body",
+      objective: "Understand macronutrients (carbs, proteins, fats) and the MyPlate guidelines.",
+      warmup: "10-minute brisk walk to discuss what food was eaten for breakfast.",
+      mainActivity: "Review the MyPlate model. Discuss the roles of carbohydrates (energy), protein (muscle repair), and fats (brain health). Categorize common foods.",
+      game: "Food Relay: Run to sort food picture cards into correct macronutrient buckets.",
+      homeConnection: "Help plan and prepare a balanced dinner using the MyPlate guidelines.",
+      assessment: "Can identify primary food sources for protein, carbohydrates, and healthy fats.",
+      differentiation: "Easier: Focus simply on sorting 'sometimes' foods vs. 'everyday' foods. Harder: Calculate the protein needs based on body weight."
+    },
+    {
+      title: "Reading Nutrition Labels",
+      objective: "Learn to read and interpret nutrition facts labels on packaged foods.",
+      warmup: "High knees and butt kicks (3 sets of 30 seconds).",
+      mainActivity: "Gather various packaged foods. Teach how to find serving size, total calories, added sugars, and sodium. Compare a healthy snack vs. a sugary snack.",
+      game: "Label Scavenger Hunt: Find an item in the pantry with less than 5g of sugar, etc.",
+      homeConnection: "Examine the label of a favorite cereal and determine the actual serving size.",
+      assessment: "Accurately identifies the serving size and added sugars on a provided nutrition label.",
+      differentiation: "Easier: Focus only on finding sugar content. Harder: Calculate total calories if eating the entire package."
+    },
+    {
+      title: "Mindfulness & Yoga",
+      objective: "Practice stress reduction and body awareness through basic yoga flows and deep breathing.",
+      warmup: "Box breathing technique (inhale 4s, hold 4s, exhale 4s, hold 4s).",
+      mainActivity: "Learn a basic Sun Salutation sequence (Mountain, Forward Fold, Plank, Downward Dog). Focus on linking breath with movement.",
+      game: "Yoga Freeze Dance: Freeze in a specific yoga pose.",
+      homeConnection: "Lead a 5-minute deep breathing or stretching session for the family.",
+      assessment: "Demonstrates 4 basic yoga poses with correct form and focused breathing.",
+      differentiation: "Easier: Practice seated stretches and breathing. Harder: Attempt more challenging balance poses like Tree or Crow pose."
+    },
+    {
+      title: "The Importance of Sleep & Hydration",
+      objective: "Understand how sleep and water intake affect physical performance and recovery.",
+      warmup: "Light stretching and discussion about how they feel when tired vs. rested.",
+      mainActivity: "Calculate daily water needs (approx. half body weight in ounces). Discuss sleep hygiene (screen time, dark room) and the goal of 9-11 hours for 5th graders.",
+      game: "Hydration Tag: 'Tagged' players must pretend to drink a glass of water to be freed.",
+      homeConnection: "Track water intake for one day using a marked water bottle.",
+      assessment: "Can state their daily water intake goal and identify 2 good sleep hygiene practices.",
+      differentiation: "Easier: Set a simple goal of 5 glasses of water a day. Harder: Research the phases of sleep (REM vs. Deep sleep)."
+    }
+  ]
+},
+'February': {
+  icon: 'fa-volleyball-ball',
+  color: 'from-purple-400 to-pink-500',
+  focus: 'Volleyball & Racquet Sports',
+  skills: ['Bumping (forearm pass)', 'Serving', 'Hand-eye coordination', 'Racket control'],
+  project: 'Invent a new wall-ball or racket game with specific rules and scoring.',
+  materials: ['Volleyball (or light playground ball)', 'Tennis/Badminton racket', 'Tennis ball or shuttlecock', 'Net (or string tied between trees)', 'Wall space', 'Water bottle'],
+  weeks: [
+    {
+      title: "Volleyball: The Forearm Pass (Bump)",
+      objective: "Learn proper hand placement and platform for the forearm pass.",
+      warmup: "Jumping jacks and arm circles.",
+      mainActivity: "Teach hand grip (wrap one hand around the other, thumbs parallel). Practice creating a flat 'platform' with forearms. Toss and bump against a wall or to a partner.",
+      game: "Keep It Up: See how many consecutive bumps can be made against a wall.",
+      homeConnection: "Practice the bumping motion (without a ball) in a mirror to check form.",
+      assessment: "Demonstrates correct hand grip and uses legs (not just arms) to bump the ball.",
+      differentiation: "Easier: Use a balloon or beach ball for slower descent. Harder: Practice bumping while moving side-to-side."
+    },
+    {
+      title: "Volleyball: Setting & Serving",
+      objective: "Learn the overhead set and underhand serve techniques.",
+      warmup: "Finger push-ups against a wall to warm up hands.",
+      mainActivity: "Setting: Make a triangle with thumbs and index fingers above the forehead; push up. Serving: Practice underhand serve over a line or net.",
+      game: "Serve Accuracy: Try to serve the ball into a hula hoop target on the ground.",
+      homeConnection: "Practice setting a ball straight up in the air 10 times in a row.",
+      assessment: "Successfully serves the ball over a 6-foot high line/net using an underhand motion.",
+      differentiation: "Easier: Practice setting a balloon. Harder: Introduce the overhand serve mechanics."
+    },
+    {
+      title: "Racket Sports: Forehand & Backhand",
+      objective: "Develop hand-eye coordination for basic racket strokes.",
+      warmup: "Wrist rolls and gentle jogging.",
+      mainActivity: "Practice the 'shake hands' grip. Practice forehand swings (palm facing target) and backhand swings (back of hand facing target) hitting a ball against a wall.",
+      game: "Wall Ball Rally: Count how many consecutive hits can be made against the wall.",
+      homeConnection: "Bounce a tennis ball on the racket face (ups) as many times as possible.",
+      assessment: "Distinguishes between and executes both forehand and backhand strokes.",
+      differentiation: "Easier: Use a larger racket (badminton/pickleball) and a wiffle ball. Harder: Practice alternating forehand and backhand on every hit."
+    },
+    {
+      title: "Net Games & Strategy",
+      objective: "Apply volleyball and racket skills in a modified game setting.",
+      warmup: "Agility ladder drills (or chalk lines on the driveway).",
+      mainActivity: "Set up a low net. Play modified badminton, pickleball, or 1v1 volleyball (allowing one bounce if needed). Focus on positioning and returning to 'home base' center court.",
+      game: "King/Queen of the Court mini-games.",
+      homeConnection: "Teach the rules of the invented project game to a family member and play it.",
+      assessment: "Demonstrates spatial awareness by moving to the ball and returning to a central position after a hit.",
+      differentiation: "Easier: Allow the ball to bounce twice before hitting. Harder: Play standard rules for the chosen sport."
+    }
+  ]
+},
+'March': {
+  icon: 'fa-running',
+  color: 'from-pink-400 to-rose-500',
+  focus: 'Track & Field',
+  skills: ['Sprint form', 'Pacing', 'Broad/High jump', 'Throwing mechanics'],
+  project: 'Host a personal decathlon (10 mini-events) and record personal bests.',
+  materials: ['Stopwatch', 'Measuring tape', 'Cones', 'Baton (or rolled paper)', 'Softball or shotput substitute', 'Chalk', 'Water bottle'],
+  weeks: [
+    {
+      title: "Sprint Mechanics",
+      objective: "Learn proper running form for speed (arm drive, knee lift).",
+      warmup: "A-skips, B-skips, and high knees.",
+      mainActivity: "Focus on 'cheek to cheek' arm swing (face to back pocket) and running on the balls of the feet. Practice 40-yard dashes, timing each attempt.",
+      game: "Reaction Sprints: Start from different positions (lying down, sitting, facing backward) on a whistle.",
+      homeConnection: "Analyze a slow-motion video of an Olympic sprinter's form.",
+      assessment: "Demonstrates active arm drive and runs on the forefoot during a sprint.",
+      differentiation: "Easier: Focus only on arm swing while walking. Harder: Sprint against resistance (parachute or hill sprints)."
+    },
+    {
+      title: "Distance & Pacing",
+      objective: "Understand how to pace energy over a longer distance.",
+      warmup: "5-minute light jog.",
+      mainActivity: "Discuss the difference between aerobic (distance) and anaerobic (sprint). Run a 400m or 800m route, aiming for consistent lap times rather than starting too fast.",
+      game: "Pacer Test (Beep Test) introduction (running 20m back and forth to a set tempo).",
+      homeConnection: "Go for a 15-minute continuous run/walk with a family member.",
+      assessment: "Completes a 400m run without stopping, maintaining a relatively steady pace.",
+      differentiation: "Easier: Run/walk intervals (1 min run, 1 min walk). Harder: Attempt a timed 1-mile run aiming to beat the September baseline."
+    },
+    {
+      title: "Jumping Events",
+      objective: "Learn the mechanics of the standing broad jump and running long jump.",
+      warmup: "Ankle bounces, squat jumps, and lunges.",
+      mainActivity: "Standing broad jump: focus on arm swing and two-foot landing. Running long jump: practice the run-up, one-foot takeoff, and two-foot landing in a soft area (sand or mats).",
+      game: "Frog Jump Relay: See how few jumps it takes to cross a designated area.",
+      homeConnection: "Mark a broad jump distance on the driveway and try to beat it over the week.",
+      assessment: "Demonstrates a two-foot landing in the broad jump and uses arm swing for momentum.",
+      differentiation: "Easier: Focus solely on the standing broad jump. Harder: Introduce the triple jump footwork (hop, step, jump)."
+    },
+    {
+      title: "Throwing Events & Relays",
+      objective: "Practice shot put form and baton handoffs.",
+      warmup: "Arm circles, shoulder stretches, light jogging.",
+      mainActivity: "Shot put (using a softball): practice 'pushing' the ball from the neck rather than throwing it like a baseball. Relay: practice blind baton handoffs with a partner.",
+      game: "4x100m Relay (if enough people) or shuttle relay.",
+      homeConnection: "Practice throwing a tennis ball for maximum distance in an open field.",
+      assessment: "Executes a 'push' motion for the shot put; successfully hands off a baton while moving.",
+      differentiation: "Easier: Practice throwing a lighter object (beanbag). Harder: Practice the glide technique for the shot put."
+    }
+  ]
+},
+'April': {
+  icon: 'fa-music',
+  color: 'from-fuchsia-400 to-purple-500',
+  focus: 'Dance & Rhythm',
+  skills: ['Rhythm recognition', 'Choreography', 'Coordination', 'Cultural dance'],
+  project: 'Learn a traditional cultural dance and present its history, or choreograph a modern routine.',
+  materials: ['Music player', 'Open space', 'Comfortable clothing', 'Internet for research/videos', 'Water bottle'],
+  weeks: [
+    {
+      title: "Finding the Beat",
+      objective: "Identify the 8-count beat in various styles of music and step in time.",
+      warmup: "Clapping to the beat of different songs (fast, slow, syncopated).",
+      mainActivity: "Learn to count 8-beat phrasing. Practice basic steps (grapevine, step-touch, box step) exactly on the beat to different tempos.",
+      game: "Freeze Dance with a twist: Must freeze exactly on the 8th count.",
+      homeConnection: "Listen to a favorite song and tap out the 8-counts.",
+      assessment: "Can accurately clap and step to a standard 4/4 8-count beat.",
+      differentiation: "Easier: Use very clear, heavy-beat music (like a march). Harder: Identify the off-beat (syncopation)."
+    },
+    {
+      title: "Line Dancing & Formations",
+      objective: "Learn a standard line dance focusing on memory and directional changes.",
+      warmup: "Joint isolations (shoulders, hips, knees).",
+      mainActivity: "Learn a classic line dance (e.g., Electric Slide, Cupid Shuffle, or a country line dance). Focus on quarter-turns and repeating the sequence.",
+      game: "Follow the Leader: Take turns leading spontaneous dance moves that others must copy.",
+      homeConnection: "Teach the learned line dance to the family after dinner.",
+      assessment: "Memorizes and executes a 32-count line dance including directional turns.",
+      differentiation: "Easier: Learn a 16-count dance with no turns. Harder: Learn a complex dance like the Macarena or a K-Pop routine."
+    },
+    {
+      title: "Cultural & Folk Dance",
+      objective: "Explore dance as a form of cultural expression and storytelling.",
+      warmup: "Stretching and discussing the origins of dance.",
+      mainActivity: "Research and learn basic steps of a specific cultural dance (e.g., Irish step dancing, Hula, Greek Syrtos, or Salsa). Discuss the clothing and history.",
+      game: "Create a 'Dance Passport' and collect stamps for different styles tried.",
+      homeConnection: "Watch a video of a professional performance of the chosen cultural dance.",
+      assessment: "Performs basic steps of a cultural dance and can state one fact about its origin.",
+      differentiation: "Easier: Focus on the upper body movements (like in Hula). Harder: Learn a full traditional sequence."
+    },
+    {
+      title: "Choreography Workshop",
+      objective: "Combine learned steps into an original 8-count sequence.",
+      warmup: "Freestyle warm-up to favorite music.",
+      mainActivity: "Choose a song. Work to choreograph at least four 8-counts (32 beats) of original movement. Focus on changing levels (high/low) and directions.",
+      game: "Performance Showcase.",
+      homeConnection: "Perform the final choreographed piece for a video recording.",
+      assessment: "Creates and performs a continuous 32-beat dance routine independently.",
+      differentiation: "Easier: Choreograph two 8-counts. Harder: Include floor work and jumps in the choreography."
+    }
+  ]
+},
+'May': {
+  icon: 'fa-mountain',
+  color: 'from-emerald-400 to-green-500',
+  focus: 'Outdoor Adventure',
+  skills: ['Orienteering', 'Hiking stamina', 'Nature navigation', 'Survival fitness'],
+  project: 'Design an outdoor obstacle course using natural elements (logs, hills).',
+  materials: ['Compass', 'Map of local park/area', 'Hiking shoes', 'Backpack with water/snacks', 'First aid kit', 'Stopwatch'],
+  weeks: [
+    {
+      title: "Hiking & Trail Stamina",
+      objective: "Build endurance for uneven terrain and understand trail safety.",
+      warmup: "Ankle rolls, calf stretches, and checking equipment (shoelaces).",
+      mainActivity: "Go for a 2-3 mile hike on a local trail. Discuss pacing on inclines (shorter steps) and trail etiquette (Leave No Trace).",
+      game: "Nature Scavenger Hunt while hiking.",
+      homeConnection: "Pack a healthy trail mix snack for the next hike.",
+      assessment: "Completes a 2-mile hike maintaining a steady pace without excessive resting.",
+      differentiation: "Easier: Walk a paved, flat trail for 1 mile. Harder: Hike a trail with significant elevation gain wearing a weighted backpack."
+    },
+    {
+      title: "Introduction to Orienteering",
+      objective: "Learn to read a compass and navigate using cardinal directions.",
+      warmup: "Jumping jacks facing North, South, East, and West.",
+      mainActivity: "Teach how a compass works (red in the shed). Practice taking a bearing. Set up a simple 4-point course in a park using degrees (e.g., walk 20 paces at 90 degrees).",
+      game: "Compass Treasure Hunt: Follow clues based on compass headings to find a prize.",
+      homeConnection: "Draw a map of the backyard or house with a compass rose.",
+      assessment: "Accurately navigates to a specific location using a given compass bearing and pace count.",
+      differentiation: "Easier: Use only N, S, E, W directions. Harder: Navigate a complex course using a topographical map and compass."
+    },
+    {
+      title: "Agility in Nature",
+      objective: "Use natural terrain to develop agility, balance, and core strength.",
+      warmup: "Light jog and dynamic stretches.",
+      mainActivity: "Find a safe outdoor area. Practice balancing on fallen logs, rock hopping (safely), hill sprints, and broad jumping over small obstacles/puddles.",
+      game: "Follow the Leader: The leader chooses the path over/under/around natural obstacles.",
+      homeConnection: "Practice balancing on a curb or low wall while walking.",
+      assessment: "Demonstrates dynamic balance when moving across uneven or unstable natural surfaces.",
+      differentiation: "Easier: Practice walking on a flat, wide log. Harder: Time the natural obstacle course for speed."
+    },
+    {
+      title: "Basic Survival Fitness & First Aid",
+      objective: "Learn physical tasks related to outdoor survival and basic first aid carries.",
+      warmup: "Bear crawls and crab walks to simulate moving under brush.",
+      mainActivity: "Practice gathering heavy 'firewood' (lifting mechanics), dragging a heavy object (tarp/sled), and learning the two-person carry or fireman's carry (with a light sibling/dummy).",
+      game: "Rescue Relay: Drag or carry an object a set distance, apply a mock bandage, and return.",
+      homeConnection: "Help assemble or check the family's first aid kit.",
+      assessment: "Demonstrates proper lifting technique (using legs, keeping back straight) when moving heavy objects.",
+      differentiation: "Easier: Focus solely on lifting form with light objects. Harder: Complete a full simulated rescue scenario."
+    }
+  ]
+},
+'June': {
+  icon: 'fa-medal',
+  color: 'from-amber-400 to-yellow-500',
+  focus: 'Sports Festival & Reflection',
+  skills: ['Culminating fitness', 'Sportsmanship', 'Goal review', 'Personal records'],
+  project: 'Host a Mini-Olympics event and complete final baseline fitness testing.',
+  materials: ['Scorecards', 'Stopwatch', 'Measuring tape', 'Equipment from previous months', 'Certificates/Medals (optional)', 'Water bottle'],
+  weeks: [
+    {
+      title: "Final Fitness Assessments",
+      objective: "Re-test baseline exercises to measure growth over the school year.",
+      warmup: "Dynamic stretching routine led by the student.",
+      mainActivity: "Conduct the 1-mile run, 1-minute sit-up, and push-up tests. Compare results to the September data.",
+      game: "Student's choice of their favorite game from the year.",
+      homeConnection: "Review the SMART goals set in September and evaluate if they were met.",
+      assessment: "Completes all assessments and can identify areas of improvement.",
+      differentiation: "Easier: Provide encouragement for effort regardless of numerical improvement. Harder: Graph the results showing the percentage of improvement."
+    },
+    {
+      title: "Mini-Olympics: Track & Field Day",
+      objective: "Compete in various events focusing on personal bests and sportsmanship.",
+      warmup: "Olympic parade: walk a lap with a homemade flag.",
+      mainActivity: "Host 4 events: 50m dash, broad jump, softball throw, and an endurance event. Record scores. Discuss the importance of trying one's best and shaking hands.",
+      game: "Water balloon toss or three-legged race for fun.",
+      homeConnection: "Design a gold medal out of cardboard and foil.",
+      assessment: "Demonstrates good sportsmanship (cheering, positive attitude) during competition.",
+      differentiation: "Easier: Focus on completion rather than time/distance. Harder: Compete against historical personal bests for 'medals'."
+    },
+    {
+      title: "Tournament Week",
+      objective: "Apply skills in a full game setting of the student's favorite sport.",
+      warmup: "Sport-specific warm-up drills.",
+      mainActivity: "Dedicate the session to playing a full game (soccer, basketball, or volleyball) with family or friends. Focus on applying strategy, rules, and fair play.",
+      game: "The game itself is the focus.",
+      homeConnection: "Discuss a favorite sports memory from the year.",
+      assessment: "Understands and abides by the rules of the chosen sport without arguing.",
+      differentiation: "Easier: Play a modified, shorter game. Harder: Have the student referee a portion of the game."
+    },
+    {
+      title: "Year-End Reflection & Celebration",
+      objective: "Celebrate physical achievements and set a summer activity plan.",
+      warmup: "Free play.",
+      mainActivity: "Create a 'Summer Action Plan' detailing how to stay active over the break (swimming, biking, camps). Discuss favorite units and areas they want to explore more.",
+      game: "Obstacle Course Extravaganza incorporating elements from every month.",
+      homeConnection: "Celebrate with a healthy family dinner and present a completion certificate.",
+      assessment: "Produces a written plan with at least 3 active hobbies for the summer.",
+      differentiation: "Easier: Draw pictures of summer activities. Harder: Create a weekly summer schedule including daily exercise."
+    }
+  ]
+}
+};
+
+let currentMonth='September';
+
+
+function init(){
+  const tabs=document.getElementById('monthTabs');
+  Object.keys(curriculumData).forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
+    btn.onclick=()=>selectMonth(m);
+    tabs.appendChild(btn);
+  });
+  loadContent('September');
+}
+
+function selectMonth(m){
+  currentMonth=m;
+  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
+  loadContent(m);
+}
+
+function loadContent(m){
+  const d=curriculumData[m];
+  const months=Object.keys(curriculumData);
+  const idx=months.indexOf(m);
+  const prev=idx>0?months[idx-1]:null;
+  const next=idx<months.length-1?months[idx+1]:null;
+  document.getElementById('monthContent').innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
+        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.weeks.map((w,i)=>`
+            <div class="week-row">
+              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
+                <div class="week-num">${i+1}</div>
+                <div style="flex:1;"><p style="font-size:13.5px;font-weight:600;color:white;line-height:1.4;">${w.title}</p><p style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px;">${w.objective}</p></div>
+                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
+              </div>
+              <div class="week-detail" id="wd-${m}-${i}">
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-fire" style="color:var(--a2);margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Warm-up:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.warmup}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-running" style="color:var(--a1);margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Main Activity:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.mainActivity}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-gamepad" style="color:#34d399;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Game/Movement:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.game}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-home" style="color:#60a5fa;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Home Connection:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.homeConnection}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <i class="fas fa-check-circle" style="color:#fbbf24;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Assessment:</span> <p style="font-size:13px;color:rgba(255,255,255,0.6);display:inline;">${w.assessment}</p></div>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;margin-top:4px;">
+                    <i class="fas fa-layer-group" style="color:#a78bfa;margin-top:2px;font-size:13px;width:14px;text-align:center;"></i>
+                    <div><span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;">Differentiation:</span> <p style="font-size:13px;color:rgba(255,255,255,0.55);display:inline;">${w.differentiation}</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
+      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
+      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
+    </div>`;
+}
+
+function toggleWeek(id){
+  const d=document.getElementById('wd-'+id);
+  const c=document.getElementById('chev-'+id);
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  c.style.transform=open?'':'rotate(180deg)';
+}
+
+
+
+init();
+</script>
+</body>
+</html>
