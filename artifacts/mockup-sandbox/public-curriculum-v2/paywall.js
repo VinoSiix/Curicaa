@@ -12,16 +12,46 @@
     a.href = 'hub-premium.html';
   });
 
-  // No inline paywall modal — redirecting to hub-premium.html checkout instead
+  // --- Paywall Modal HTML ---
+  var modal = document.createElement('div');
+  modal.id = 'paywallModal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(14px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = '\
+    <div style="background:#0b0b1d;border:1px solid rgba(255,255,255,0.13);border-radius:24px;padding:30px;max-width:440px;width:100%;animation:pwIn 0.25s cubic-bezier(.22,.68,0,1.2);color:rgba(255,255,255,0.85);">\
+      <div style="text-align:center;margin-bottom:24px;">\
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#818cf8,#a78bfa);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">\
+          <i class="fas fa-lock" style="font-size:22px;color:white;"></i>\
+        </div>\
+        <h3 style="font-size:20px;font-weight:700;margin-bottom:6px;">This Month is Locked</h3>\
+        <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6;">You only get September for free. To unlock all 10 months of lesson plans, projects, and activities, upgrade your plan.</p>\
+      </div>\
+      <a href="hub-premium.html#checkout" style="display:block;width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#818cf8,#c084fc);color:white;font-size:14px;font-weight:600;cursor:pointer;transition:opacity 0.2s;box-shadow:0 4px 16px rgba(129,140,248,0.25);font-family:\'Inter\',sans-serif;text-align:center;text-decoration:none;" onmouseover="this.style.opacity=\'0.88\'" onmouseout="this.style.opacity=\'1\'">\
+        Unlock Full Curriculum\
+      </a>\
+      <button onclick="document.getElementById(\'paywallModal\').style.display=\'none\';document.body.style.overflow=\'\';" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:rgba(255,255,255,0.4);font-size:12px;font-weight:500;cursor:pointer;margin-top:8px;font-family:\'Inter\',sans-serif;" onmouseover="this.style.color=\'rgba(255,255,255,0.6)\'" onmouseout="this.style.color=\'rgba(255,255,255,0.4)\'">\
+        Continue with free preview\
+      </button>\
+      <div style="text-align:center;margin-top:16px;font-size:11px;color:rgba(255,255,255,0.25);">\
+        <i class="fas fa-shield-alt" style="margin-right:4px;"></i>One-time payment · Instant access\
+      </div>\
+    </div>';
+  document.body.appendChild(modal);
 
   var pwStyle = document.createElement('style');
   pwStyle.textContent = '@keyframes pwIn{from{opacity:0;transform:scale(0.94) translateY(12px);}to{opacity:1;transform:scale(1) translateY(0);}}';
   document.head.appendChild(pwStyle);
 
-  // --- Show paywall (redirect to checkout) ---
+  // --- Show paywall popup ---
   function showPaywall() {
-    window.location.href = 'hub-premium.html#checkout';
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
   }
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
 
   var FREE_MONTH = 'September';
 
@@ -185,4 +215,11 @@
     setTimeout(boot, 50);
   }
 
+  // ESC to close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
 })();
