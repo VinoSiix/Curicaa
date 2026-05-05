@@ -1,4 +1,7 @@
 {
-  "buildCommand": "pnpm --filter @workspace/mockup-sandbox build",
-  "outputDirectory": "artifacts/mockup-sandbox/dist"
+  "outputDirectory": "artifacts/mockup-sandbox/public-curriculum-v2",
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/", "destination": "/hub-premium.html", "permanent": false }
+  ]
 }
