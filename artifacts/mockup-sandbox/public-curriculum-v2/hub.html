@@ -550,7 +550,7 @@
 
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-num" style="color:#a78bfa;">7</div>
+                    <div class="hero-stat-num" style="color:#a78bfa;">8</div>
                     <div class="hero-stat-lbl">Grade Levels</div>
                 </div>
                 <div class="hero-stat-sep"></div>
@@ -580,7 +580,7 @@
                         <i class="fas fa-child" style="font-size:19px;"></i>
                     </div>
                     <div style="text-align:center;">
-                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#d8b4fe;">Early Elementary</h3>
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#d8b4fe;">Level 1</h3>
                         <div class="age-badge" style="color:#c4b5fd;">Ages 5–7</div>
                         <div class="subject-list">
                             <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Foundation building</p>
@@ -602,7 +602,7 @@
                         <i class="fas fa-star" style="font-size:19px;"></i>
                     </div>
                     <div style="text-align:center;">
-                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#93c5fd;">Grade 3</h3>
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#93c5fd;">Level 2</h3>
                         <div class="age-badge" style="color:#93c5fd;">Age 8</div>
                         <div class="subject-list">
                             <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Skill development</p>
@@ -624,7 +624,7 @@
                         <i class="fas fa-book" style="font-size:19px;"></i>
                     </div>
                     <div style="text-align:center;">
-                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#6ee7b7;">Grade 4</h3>
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#6ee7b7;">Level 3</h3>
                         <div class="age-badge" style="color:#6ee7b7;">Age 9</div>
                         <div class="subject-list">
                             <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Knowledge expansion</p>
@@ -646,7 +646,7 @@
                         <i class="fas fa-rocket" style="font-size:19px;"></i>
                     </div>
                     <div style="text-align:center;">
-                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fdba74;">Grade 5</h3>
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fdba74;">Level 4</h3>
                         <div class="age-badge" style="color:#fdba74;">Age 10</div>
                         <div class="subject-list">
                             <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Advanced basics</p>
@@ -701,7 +701,7 @@
                                 <li><span class="dot" style="background:#ef4444;"></span>Algebra I</li>
                                 <li><span class="dot" style="background:#ef4444;"></span>9th Grade English</li>
                                 <li><span class="dot" style="background:#ef4444;"></span>Biology</li>
-                                <li><span class="dot" style="background:#ef4444;"></span>Art & PE</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>Social Studies</li>
                             </ul>
                         </div>
                         <button class="btn-cta" style="background:linear-gradient(135deg,#ef4444,#ec4899);color:white;">
@@ -710,8 +710,7 @@
                     </div>
                 </div>
 
-                <div class="card card-yellow coming-soon-card" onclick="return false;">
-                    <span class="coming-soon-sticker">Coming Soon</span>
+                <div class="card card-yellow" onclick="openSubjectModal('ages-15-16')">
                     <div class="icon-ring" style="background:linear-gradient(135deg,#eab308,#f97316);">
                         <i class="fas fa-certificate" style="font-size:19px;"></i>
                     </div>
@@ -727,14 +726,13 @@
                                 <li><span class="dot" style="background:#eab308;"></span>Social Studies</li>
                             </ul>
                         </div>
-                        <button class="btn-cta" disabled style="background:rgba(255,255,255,0.05);color:var(--text-muted);cursor:not-allowed;opacity:0.6;">
-                            Coming Soon <i class="fas fa-clock" style="font-size:10px;"></i>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#eab308,#f97316);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
                         </button>
                     </div>
                 </div>
 
-                <div class="card card-orange coming-soon-card" onclick="return false;">
-                    <span class="coming-soon-sticker">Coming Soon</span>
+                <div class="card card-orange" onclick="openSubjectModal('ages-17-18')">
                     <div class="icon-ring" style="background:linear-gradient(135deg,#f97316,#ef4444);">
                         <i class="fas fa-trophy" style="font-size:19px;"></i>
                     </div>
@@ -744,14 +742,14 @@
                         <div class="subject-list">
                             <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">SAT preparation</p>
                             <ul>
-                                <li><span class="dot" style="background:#f97316;"></span>SAT/ACT strategies</li>
-                                <li><span class="dot" style="background:#f97316;"></span>College readiness</li>
-                                <li><span class="dot" style="background:#f97316;"></span>Practice exams</li>
-                                <li><span class="dot" style="background:#f97316;"></span>College applications</li>
+                                <li><span class="dot" style="background:#f97316;"></span>SAT Math</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Reading & Writing</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Test Strategies & Pacing</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Full Practice Tests</li>
                             </ul>
                         </div>
-                        <button class="btn-cta" disabled style="background:rgba(255,255,255,0.05);color:var(--text-muted);cursor:not-allowed;opacity:0.6;">
-                            Coming Soon <i class="fas fa-clock" style="font-size:10px;"></i>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#f97316,#ef4444);color:white;">
+                            View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>
                         </button>
                     </div>
                 </div>
@@ -1024,10 +1022,10 @@
 
         let currentProgram = '';
         const labels = {
-            'ages-5-7': 'Early Elementary — Ages 5–7',
-            'age-8': 'Grade 3 — Age 8',
-            'age-9': 'Grade 4 — Age 9',
-            'age-10': 'Grade 5 — Age 10',
+            'ages-5-7': 'Level 1 — Ages 5–7',
+            'age-8': 'Level 2 — Age 8',
+            'age-9': 'Level 3 — Age 9',
+            'age-10': 'Level 4 — Age 10',
             'ages-11-12': 'Middle School — Ages 11–12',
             'age-14': 'High School — Age 14',
             'ages-15-16': 'GED — Ages 15–16',
@@ -1037,12 +1035,16 @@
         function openSubjectModal(p) {
             currentProgram = p;
             document.getElementById('modalTitle').textContent = labels[p] || 'Choose a Subject';
-            const isSocialStudies = p === 'ages-15-16';
+            const isSocialStudies = p === 'ages-15-16' || p === 'age-14';
+            const isSAT = p === 'ages-17-18';
             document.getElementById('fourthSubjectTitle').textContent = isSocialStudies ? 'Social Studies' : 'Art & PE';
             document.getElementById('fourthSubjectDesc').textContent = isSocialStudies ? 'History, civics, geography' : 'Creative arts, music, PE';
             document.getElementById('fourthSubjectIconEl').className = isSocialStudies ? 'fas fa-globe' : 'fas fa-palette';
             document.getElementById('fourthSubjectIconEl').style.color = isSocialStudies ? '#facc15' : '#f472b6';
             document.getElementById('fourthSubjectIcon').style.background = isSocialStudies ? 'rgba(234,179,8,0.14)' : 'rgba(236,72,153,0.14)';
+            // Hide Science and 4th subject for SAT
+            document.querySelector('.subject-btn[onclick="goToSubject(\'science\')"]').style.display = isSAT ? 'none' : '';
+            document.getElementById('fourthSubjectBtn').style.display = isSAT ? 'none' : '';
             document.getElementById('subjectModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -1060,7 +1062,7 @@
         }
         function goToFourthSubject() {
             if (!currentProgram) return;
-            const subject = currentProgram === 'ages-15-16' ? 'social-studies' : 'art';
+            const subject = (currentProgram === 'ages-15-16' || currentProgram === 'age-14') ? 'social-studies' : 'art';
             window.location.href = currentProgram + '-' + subject + '.html';
         }
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSubjectModal(); });
