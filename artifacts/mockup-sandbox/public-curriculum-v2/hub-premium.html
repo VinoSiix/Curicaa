@@ -441,6 +441,12 @@
                 grid-template-columns: repeat(2, 1fr) !important;
                 max-width: 600px !important;
             }
+            #whatyouget > div:nth-child(2) {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+            #testimonials > div:nth-child(2) {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
         }
 
         @media (max-width: 767px) {
@@ -479,6 +485,13 @@
                 max-width: 400px !important;
             }
 
+            #whatyouget > div:nth-child(2) {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            #testimonials > div:nth-child(2) {
+                grid-template-columns: 1fr !important;
+            }
+
             #about > div { grid-template-columns: 1fr !important; gap: 24px !important; }
             .card { padding: 20px 16px 16px !important; }
             footer > div {
@@ -486,6 +499,53 @@
                 text-align: center !important;
                 gap: 16px !important;
             }
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            margin-bottom: 10px;
+        }
+        .faq-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-icon-ring);
+        }
+        .faq-item.open {
+            border-color: rgba(129,140,248,0.35);
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .faq-chevron {
+            transition: transform 0.3s ease;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, margin-top 0.35s ease, opacity 0.35s ease;
+            opacity: 0;
+            color: var(--text-secondary);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            margin-top: 14px;
+            opacity: 1;
         }
 
         @media (max-width: 479px) {
@@ -496,6 +556,15 @@
             .hero-stats { flex-direction: column !important; gap: 8px !important; border-radius: 20px !important; padding: 20px !important; }
             .hero-stat-sep { display: none !important; }
             .pricing-grid { max-width: 100% !important; }
+            #whatyouget > div:nth-child(2) {
+                grid-template-columns: 1fr !important;
+            }
+            #whatyouget > div:nth-child(2) > div {
+                padding: 20px 14px !important;
+            }
+            #whatyouget > div:nth-child(2) > div > div:first-child {
+                width: 34px !important; height: 34px !important;
+            }
         }
     </style>
 </head>
@@ -976,6 +1045,101 @@
             </div>
         </section>
 
+        <!-- What You Get -->
+        <section id="whatyouget" class="reveal" style="margin-top:88px;margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">By the numbers</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">What You Get</h2>
+                <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">A complete K–12 curriculum — ready to teach, ready to learn.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:960px;margin:0 auto;">
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(167,139,250,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(167,139,250,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-calendar-week" style="color:#a78bfa;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#a78bfa;">320<span style="font-size:20px;">+</span></div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Weeks of Lessons</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(103,232,249,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(103,232,249,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-book-open" style="color:#67e8f9;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#67e8f9;">32</div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Subjects Covered</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(74,222,128,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(74,222,128,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-graduation-cap" style="color:#4ade80;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#4ade80;">8</div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Grade Levels</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(251,191,36,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(251,191,36,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-dollar-sign" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#fbbf24;">1</div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">One-Time Payment</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(244,114,182,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(244,114,182,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-wifi" style="color:#f472b6;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#f472b6;">100<span style="font-size:20px;">%</span></div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Offline Ready</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="reveal" style="margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">Loved by families</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">What Parents Say</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto;">
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:20px;padding:26px 22px;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--border-icon-ring)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="margin-bottom:16px;">
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                    </div>
+                    <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"We've tried so many curriculum options and this is the first one that actually feels designed for real families. My daughter asks to do her lessons now."</p>
+                    <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                    <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Sarah M.</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling 2 kids, ages 6 &amp; 9</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:20px;padding:26px 22px;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--border-icon-ring)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="margin-bottom:16px;">
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                    </div>
+                    <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"The weekly breakdowns are a lifesaver. I open the page on Monday morning and everything is laid out. No prep stress, no guessing."</p>
+                    <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                    <div style="font-size:13px;font-weight:600;color:var(--text-primary);">David R.</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Dad of a 10-year-old</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:20px;padding:26px 22px;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--border-icon-ring)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="margin-bottom:16px;">
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                    </div>
+                    <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"As a single mom on a tight budget, the fact that this uses household materials for science experiments means everything. Quality education without breaking the bank."</p>
+                    <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                    <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Maria L.</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling since 2023</div>
+                </div>
+            </div>
+        </section>
+
         <!-- Pricing -->
         <section id="pricing" class="reveal" style="margin-top:88px;margin-bottom:88px;">
             <div style="text-align:center;margin-bottom:44px;">
@@ -1011,7 +1175,7 @@
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Assessments & projects</div>
                         <div class="x-row" style="margin-bottom:0;"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);font-size:11px;"></i>Multiple grade levels</div>
                     </div>
-                    <button onclick="openCheckout('single')" style="width:100%;padding:11px;border-radius:12px;border:none;background:linear-gradient(135deg,#818cf8,#a78bfa);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Choose Grade</button>
+                    <button onclick="openCheckout('single')" style="width:100%;padding:11px;border-radius:12px;border:none;background:linear-gradient(135deg,#818cf8,#a78bfa);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Choose Grades</button>
                 </div>
 
                 <!-- Full Bundle -->
@@ -1037,6 +1201,58 @@
                 <span><i class="fas fa-check-circle" style="margin-right:5px;color:#4ade80;"></i>One-Time Payment</span>
                 <span><i class="fas fa-bolt" style="margin-right:5px;color:#4ade80;"></i>Instant Access</span>
                 <span><i class="fas fa-shield-alt" style="margin-right:5px;color:#4ade80;"></i>30-Day Money Back</span>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="reveal" style="margin-top:88px;margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">Common questions</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Frequently Asked Questions</h2>
+            </div>
+            <div style="max-width:680px;margin:0 auto;">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Is this a subscription?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">No. Curriculum Hub is a one-time payment. You pay once and get lifetime access to the materials. No recurring charges, no hidden fees.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What if I have multiple children in different grades?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">The Full K–12 Bundle is perfect for families with multiple kids. You get access to all 8 grade levels, so each child can work at their own pace.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Can I switch grade levels after purchasing?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">If you buy a Single Grade plan, you can upgrade to the Full Bundle at any time by paying the difference. Contact us and we'll sort it out.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Do I need to be a teacher to use this?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Not at all. Every lesson includes step-by-step parent guides, warm-up activities, and assessment tips. If you can read, you can teach with this.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What materials do I need?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Most activities use common household items like paper, pencils, measuring cups, and kitchen supplies. We specifically design for low-budget, accessible learning.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Is there a money-back guarantee?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Yes. We offer a full 30-day money-back guarantee. If you're not satisfied for any reason, just let us know and we'll refund your purchase.</div>
+                </div>
             </div>
         </section>
 
@@ -1172,7 +1388,7 @@
             <div id="checkoutSummary" style="background:var(--bg-subtle);border:1px solid var(--border-faint);border-radius:12px;padding:14px;margin-bottom:20px;"></div>
             <!-- Grade selector (single grade only) -->
             <div id="gradeSelector" style="display:none;margin-bottom:16px;">
-                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Choose Your Grade Level</label>
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Choose Grade Levels <span style="font-weight:400;color:var(--text-muted);">(select one or more — $19 each)</span></label>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
                     <button type="button" class="grade-opt" data-grade="ages-5-7" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
                         <div style="font-size:13px;color:var(--text-primary);">Level 1</div>
@@ -1343,13 +1559,13 @@
                 </button>
             </div>
 
-            <!-- Reset Progress -->
-            <div style="margin-bottom:20px;">
-                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Data</label>
-                <button onclick="resetProgress()" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(248,113,113,0.25);background:rgba(248,113,113,0.08);color:#f87171;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;" onmouseover="this.style.background='rgba(248,113,113,0.15)'" onmouseout="this.style.background='rgba(248,113,113,0.08)'">
-                    <i class="fas fa-redo" style="margin-right:6px;font-size:11px;"></i>Reset All Progress
-                </button>
-                <div style="font-size:10px;color:var(--text-muted);margin-top:6px;text-align:center;">Clears saved settings and week check marks</div>
+            <!-- Change Name -->
+            <div id="changeNameSection" style="margin-bottom:20px;display:none;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Change Display Name</label>
+                <div style="display:flex;gap:8px;">
+                    <input type="text" id="newNameInput" placeholder="Enter new name" class="form-input" style="flex:1;">
+                    <button onclick="changeName()" style="padding:10px 18px;border-radius:10px;border:none;background:linear-gradient(135deg,#818cf8,#a78bfa);color:white;font-size:12px;font-weight:600;cursor:pointer;transition:opacity 0.2s;font-family:'Inter',sans-serif;white-space:nowrap;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Save</button>
+                </div>
             </div>
 
             <!-- Account Info -->
@@ -1433,7 +1649,8 @@
                     badge.style.background = 'rgba(129,140,248,0.15)';
                     badge.style.color = '#a5b4fc';
                 } else if (user.plan === 'single') {
-                    badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> Single Grade';
+                    var gradeCount = user.grades ? user.grades.length : 1;
+                    badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> ' + gradeCount + ' Grade' + (gradeCount !== 1 ? 's' : '');
                     badge.style.background = 'rgba(74,222,128,0.15)';
                     badge.style.color = '#4ade80';
                 } else {
@@ -1503,10 +1720,14 @@
             // Populate account info
             var user = CuricaaAuth.getUser();
             var infoEl = document.getElementById('settingsAccountInfo');
+            var nameSection = document.getElementById('changeNameSection');
             if (user) {
-                var planLabel = user.plan === 'bundle' ? 'Full K-12 Bundle' : user.plan === 'single' ? 'Single Grade' : 'Free Plan';
+                nameSection.style.display = 'block';
+                document.getElementById('newNameInput').placeholder = user.name;
+                var planLabel = user.plan === 'bundle' ? 'Full K-12 Bundle' : user.plan === 'single' ? (user.grades ? user.grades.length : 1) + ' Grade' + ((user.grades ? user.grades.length : 1) !== 1 ? 's' : '') : 'Free Plan';
                 infoEl.innerHTML = '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;">' + user.name.charAt(0).toUpperCase() + '</div><div><div style="font-weight:600;color:var(--text-primary);">' + user.name + '</div><div style="font-size:11px;color:var(--text-muted);">' + user.email + '</div></div></div><div style="display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(129,140,248,0.12);color:#a5b4fc;">' + planLabel + '</div>';
             } else {
+                nameSection.style.display = 'none';
                 infoEl.innerHTML = '<span style="color:var(--text-muted);">Sign in to view account details</span>';
             }
             // Restore saved font size
@@ -1568,15 +1789,31 @@
             }
         }
 
-        function resetProgress() {
-            if (confirm('This will clear all saved settings and progress. Continue?')) {
-                localStorage.removeItem('curicaa-font');
-                localStorage.removeItem('curicaa-anim');
-                document.documentElement.style.fontSize = '';
-                highlightFontBtn('medium');
-                updateAnimToggle(true);
-                closeSettings();
+        function changeName() {
+            var newName = document.getElementById('newNameInput').value.trim();
+            if (!newName) return;
+            var user = CuricaaAuth.getUser();
+            if (!user) return;
+            // Update name in localStorage
+            var accounts = JSON.parse(localStorage.getItem('curicaa_accounts') || '[]');
+            for (var i = 0; i < accounts.length; i++) {
+                if (accounts[i].email === user.email) {
+                    accounts[i].name = newName;
+                    break;
+                }
             }
+            localStorage.setItem('curicaa_accounts', JSON.stringify(accounts));
+            // Update session
+            var session = JSON.parse(localStorage.getItem('curicaa_session') || '{}');
+            session.name = newName;
+            localStorage.setItem('curicaa_session', JSON.stringify(session));
+            document.getElementById('newNameInput').value = '';
+            document.getElementById('newNameInput').placeholder = newName;
+            updateAuthUI();
+            // Re-render account info in settings
+            openSettings();
+            document.getElementById('settingsModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
         }
 
         // Restore saved settings on load
@@ -1668,6 +1905,11 @@
         // Also run on load
         updatePricingVisibility();
 
+        // Auto-open checkout if hash is #checkout
+        if (window.location.hash === '#checkout') {
+            setTimeout(function() { openCheckout('single'); }, 300);
+        }
+
         // Enter key support for login/signup forms
         document.getElementById('loginPassword').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleLogin(); });
         document.getElementById('signupPassword').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleSignup(); });
@@ -1753,19 +1995,30 @@
 
         // Checkout flow
         let selectedPlan = '';
-        let selectedGrade = '';
+        let selectedGrades = [];
         function selectGrade(btn) {
-            document.querySelectorAll('.grade-opt').forEach(function(b) {
-                b.style.borderColor = 'var(--border-card)';
-                b.style.background = 'var(--bg-subtle)';
-            });
-            btn.style.borderColor = 'rgba(129,140,248,0.6)';
-            btn.style.background = 'rgba(129,140,248,0.12)';
-            selectedGrade = btn.dataset.grade;
+            var grade = btn.dataset.grade;
+            var idx = selectedGrades.indexOf(grade);
+            if (idx === -1) {
+                selectedGrades.push(grade);
+                btn.style.borderColor = 'rgba(129,140,248,0.6)';
+                btn.style.background = 'rgba(129,140,248,0.12)';
+            } else {
+                selectedGrades.splice(idx, 1);
+                btn.style.borderColor = 'var(--border-card)';
+                btn.style.background = 'var(--bg-subtle)';
+            }
+            // Update price dynamically
+            if (selectedPlan === 'single' && selectedGrades.length > 0) {
+                var total = selectedGrades.length * 19;
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">' + selectedGrades.length + ' Grade' + (selectedGrades.length > 1 ? 's' : '') + '</div><div style="font-size:11px;color:var(--text-muted);">$19 each · All 4 subjects per grade</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$' + total + '</div></div>';
+            } else if (selectedPlan === 'single') {
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $19 each</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$19</div></div>';
+            }
         }
         function openCheckout(plan) {
             selectedPlan = plan;
-            selectedGrade = '';
+            selectedGrades = [];
             const isBundle = plan === 'bundle';
             document.getElementById('checkoutTitle').textContent = isBundle ? 'Full K-12 Bundle' : 'Single Grade Access';
             document.getElementById('gradeSelector').style.display = isBundle ? 'none' : 'block';
@@ -1776,7 +2029,7 @@
             });
             document.getElementById('checkoutSummary').innerHTML = isBundle
                 ? '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Full K-12 Bundle</div><div style="font-size:11px;color:var(--text-muted);">All 8 levels · All subjects · Lifetime</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$97</div></div>'
-                : '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Single Grade Level</div><div style="font-size:11px;color:var(--text-muted);">Pick a grade below · All 4 subjects</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$19</div></div>';
+                : '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $19 each</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$19</div></div>';
             document.getElementById('checkoutModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -1786,13 +2039,22 @@
         }
         function handlePurchase() {
             // Validate grade selection for single plan
-            if (selectedPlan === 'single' && !selectedGrade) {
-                alert('Please select a grade level.');
+            if (selectedPlan === 'single' && selectedGrades.length === 0) {
+                alert('Please select at least one grade level.');
                 return;
             }
             // Update user plan
             if (CuricaaAuth && CuricaaAuth.isLoggedIn()) {
-                CuricaaAuth.updatePlan(selectedPlan, selectedGrade ? [selectedGrade] : []);
+                // If buying additional grades on single plan, merge with existing
+                var existingUser = CuricaaAuth.getUser();
+                var existingGrades = (existingUser && existingUser.plan === 'single' && existingUser.grades) ? existingUser.grades : [];
+                var mergedGrades = existingGrades.slice();
+                for (var i = 0; i < selectedGrades.length; i++) {
+                    if (mergedGrades.indexOf(selectedGrades[i]) === -1) {
+                        mergedGrades.push(selectedGrades[i]);
+                    }
+                }
+                CuricaaAuth.updatePlan(selectedPlan === 'bundle' ? 'bundle' : 'single', selectedPlan === 'bundle' ? [] : mergedGrades);
                 updateAuthUI();
             }
             closeCheckout();
@@ -1803,6 +2065,15 @@
         function closeSuccess() {
             document.getElementById('successModal').classList.remove('open');
             document.body.style.overflow = '';
+        }
+
+        // FAQ accordion
+        function toggleFaq(el) {
+            var wasOpen = el.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(function(item) {
+                item.classList.remove('open');
+            });
+            if (!wasOpen) el.classList.add('open');
         }
 
         document.addEventListener('keydown', e => {
