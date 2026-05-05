@@ -1,7 +1,6 @@
 {
-  "buildCommand": "vite build",
-  "outputDirectory": "dist",
-  "installCommand": "pnpm install",
+  "installCommand": "echo 'skip'",
+  "outputDirectory": "public",
   "cleanUrls": true,
   "redirects": [
     { "source": "/", "destination": "/hub.html", "permanent": false }
