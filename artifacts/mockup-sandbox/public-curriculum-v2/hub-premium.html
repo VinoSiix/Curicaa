@@ -680,9 +680,6 @@
                 </div>
                 <!-- Auth: Logged in -->
                 <div id="authLoggedIn" style="display:none;align-items:center;gap:10px;">
-                    <a class="nav-cta" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">
-                        Start Learning <i class="fas fa-arrow-right" style="font-size:11px;"></i>
-                    </a>
                     <div style="position:relative;" id="userMenuWrap">
                         <button onclick="toggleUserMenu()" style="display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:10px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">
                             <div style="width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;" id="userAvatar">J</div>
@@ -1162,46 +1159,116 @@
                 <p class="section-label">Loved by families</p>
                 <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">What Parents Say</h2>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto;">
-                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:20px;padding:26px 22px;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--border-icon-ring)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
-                    <div style="margin-bottom:16px;">
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+            <div class="carousel-wrap" id="reviewCarousel">
+                <button class="carousel-arrow carousel-arrow-left" onclick="slideCarousel(-1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"We've tried so many curriculum options and this is the first one that actually feels designed for real families. My daughter asks to do her lessons now."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Sarah M.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling 2 kids, ages 6 &amp; 9</div>
                     </div>
-                    <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"We've tried so many curriculum options and this is the first one that actually feels designed for real families. My daughter asks to do her lessons now."</p>
-                    <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
-                    <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Sarah M.</div>
-                    <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling 2 kids, ages 6 &amp; 9</div>
-                </div>
-                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:20px;padding:26px 22px;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--border-icon-ring)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
-                    <div style="margin-bottom:16px;">
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"The weekly breakdowns are a lifesaver. I open the page on Monday morning and everything is laid out. No prep stress, no guessing."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">David R.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Dad of a 10-year-old</div>
                     </div>
-                    <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"The weekly breakdowns are a lifesaver. I open the page on Monday morning and everything is laid out. No prep stress, no guessing."</p>
-                    <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
-                    <div style="font-size:13px;font-weight:600;color:var(--text-primary);">David R.</div>
-                    <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Dad of a 10-year-old</div>
-                </div>
-                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:20px;padding:26px 22px;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--border-icon-ring)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
-                    <div style="margin-bottom:16px;">
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
-                        <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"As a single mom on a tight budget, the fact that this uses household materials for science experiments means everything. Quality education without breaking the bank."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Maria L.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling since 2023</div>
                     </div>
-                    <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"As a single mom on a tight budget, the fact that this uses household materials for science experiments means everything. Quality education without breaking the bank."</p>
-                    <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
-                    <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Maria L.</div>
-                    <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling since 2023</div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"I pulled my son out of public school mid-year and was panicking about curriculum. This gave me everything I needed from day one. The parent guides are incredible."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Jessica T.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Mom of a 7th grader</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star-half-alt" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"My kids love the science experiments. Last week we built a volcano with baking soda and vinegar — they talked about it for three days. Real learning, real fun."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Marcus W.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Dad of twins, age 8</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"I was skeptical at first — $97 for a full K-12 curriculum? But it's genuinely worth every penny. The structure and quality surprised me. Wish I found this sooner."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Rachel K.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling 3 kids</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"We're a military family and move a lot. Having a complete curriculum that works offline and doesn't depend on a school district has been a game-changer for us."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Angela P.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Military spouse, 2 kids ages 5 &amp; 11</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"The SAT prep section alone is worth the price. My son's practice scores went up 120 points in six weeks. The pacing strategies really work."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Linda C.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Son preparing for college</div>
+                    </div>
                 </div>
+                <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel(1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </section>
 
@@ -2203,6 +2270,98 @@
 
         // Init billing UI
         updateBillingUI();
+
+        // Testimonial Carousel
+        (function() {
+            var track = document.getElementById('carouselTrack');
+            var dotsWrap = document.getElementById('carouselDots');
+            if (!track || !dotsWrap) return;
+            var cards = track.querySelectorAll('.carousel-card');
+            var currentIndex = 0;
+
+            function getVisibleCount() {
+                var w = window.innerWidth;
+                if (w < 520) return 1;
+                if (w < 768) return 1;
+                if (w < 1024) return 2;
+                return 3;
+            }
+
+            function getMaxIndex() {
+                return Math.max(0, cards.length - getVisibleCount());
+            }
+
+            function buildDots() {
+                dotsWrap.innerHTML = '';
+                var max = getMaxIndex();
+                for (var i = 0; i <= max; i++) {
+                    var dot = document.createElement('button');
+                    dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+                    dot.setAttribute('data-index', i);
+                    dot.onclick = function() {
+                        currentIndex = parseInt(this.getAttribute('data-index'));
+                        scrollTo(currentIndex);
+                    };
+                    dotsWrap.appendChild(dot);
+                }
+            }
+
+            function scrollTo(idx) {
+                currentIndex = Math.max(0, Math.min(idx, getMaxIndex()));
+                var card = cards[currentIndex];
+                if (card) {
+                    track.scrollTo({ left: card.offsetLeft - track.offsetLeft - 4, behavior: 'smooth' });
+                }
+                updateDots();
+            }
+
+            function updateDots() {
+                var dots = dotsWrap.querySelectorAll('.carousel-dot');
+                dots.forEach(function(d, i) {
+                    d.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            // Arrow controls
+            window.slideCarousel = function(dir) {
+                scrollTo(currentIndex + dir);
+            };
+
+            // Touch/swipe support
+            var startX = 0;
+            var isDragging = false;
+            track.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+            track.addEventListener('touchend', function(e) {
+                if (!isDragging) return;
+                isDragging = false;
+                var diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) {
+                    scrollTo(currentIndex + (diff > 0 ? 1 : -1));
+                }
+            }, { passive: true });
+
+            // Snap dot update on manual scroll
+            track.addEventListener('scroll', function() {
+                var scrollLeft = track.scrollLeft;
+                var closest = 0;
+                var minDist = Infinity;
+                cards.forEach(function(card, i) {
+                    var dist = Math.abs(card.offsetLeft - track.offsetLeft - scrollLeft);
+                    if (dist < minDist) { minDist = dist; closest = i; }
+                });
+                currentIndex = closest;
+                updateDots();
+            });
+
+            buildDots();
+            window.addEventListener('resize', function() {
+                buildDots();
+                scrollTo(Math.min(currentIndex, getMaxIndex()));
+            });
+        })();
 
         // FAQ accordion
         function toggleFaq(el) {
