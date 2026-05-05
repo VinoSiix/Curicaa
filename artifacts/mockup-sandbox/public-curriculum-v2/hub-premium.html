@@ -444,9 +444,6 @@
             #whatyouget > div:nth-child(2) {
                 grid-template-columns: repeat(3, 1fr) !important;
             }
-            #testimonials > div:nth-child(2) {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
         }
 
         @media (max-width: 767px) {
@@ -488,9 +485,6 @@
             #whatyouget > div:nth-child(2) {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
-            #testimonials > div:nth-child(2) {
-                grid-template-columns: 1fr !important;
-            }
 
             #about > div { grid-template-columns: 1fr !important; gap: 24px !important; }
             .card { padding: 20px 16px 16px !important; }
@@ -499,6 +493,77 @@
                 text-align: center !important;
                 gap: 16px !important;
             }
+        }
+
+        /* Testimonial Carousel */
+        .carousel-wrap { position: relative; max-width: 960px; margin: 0 auto; }
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 8px 4px 16px;
+        }
+        .carousel-track::-webkit-scrollbar { display: none; }
+        .carousel-card {
+            flex: 0 0 calc(33.333% - 11px);
+            scroll-snap-align: start;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 26px 22px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            min-width: 280px;
+        }
+        .carousel-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-icon-ring);
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--border-card);
+            background: var(--bg-card);
+            color: var(--text-icon-btn);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 5;
+            font-size: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .carousel-arrow:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-icon-ring);
+            color: var(--text-primary);
+        }
+        .carousel-arrow-left { left: -20px; }
+        .carousel-arrow-right { right: -20px; }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .carousel-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--border-card);
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            padding: 0;
+        }
+        .carousel-dot.active {
+            background: #818cf8;
+            box-shadow: 0 0 8px rgba(129,140,248,0.4);
+            transform: scale(1.2);
         }
 
         .faq-item {
@@ -593,7 +658,7 @@
             </div>
 
             <!-- Nav links (center) -->
-            <nav id="desktopNav" style="display:flex;align-items:center;gap:2px;">
+            <nav id="desktopNav" style="display:flex;align-items:center;gap:2px;position:absolute;left:50%;transform:translateX(-50%);">
                 <a class="nav-link" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
                 <a class="nav-link" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Features</a>
                 <a class="nav-link" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
@@ -1147,6 +1212,17 @@
                 <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Choose Your Plan</h2>
                 <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Monthly or annual billing. Cancel anytime.</p>
             </div>
+            <!-- Billing toggle -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:32px;">
+                <span id="annualSavingsTag" style="font-size:10px;font-weight:700;color:#4ade80;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);padding:3px 10px;border-radius:20px;letter-spacing:0.03em;transition:opacity 0.25s,visibility 0.25s;height:22px;line-height:16px;">SAVE UP TO 40%</span>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <span id="toggleLabelMonthly" style="font-size:13px;font-weight:600;color:var(--text-muted);transition:color 0.2s;">Monthly</span>
+                    <button id="billingToggle" onclick="toggleBilling()" style="width:52px;height:28px;border-radius:14px;border:none;cursor:pointer;position:relative;transition:background 0.25s;background:linear-gradient(135deg,#818cf8,#a78bfa);">
+                        <div id="billingDot" style="width:22px;height:22px;border-radius:50%;background:white;position:absolute;top:3px;transition:left 0.25s,right 0.25s;right:3px;left:auto;box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>
+                    </button>
+                    <span id="toggleLabelAnnual" style="font-size:13px;font-weight:600;color:#a5b4fc;transition:color 0.2s;">Annual</span>
+                </div>
+            </div>
             <div class="pricing-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:0 auto;">
                 <!-- Free Preview -->
                 <div class="pricing-card">
@@ -1166,8 +1242,11 @@
                 <!-- Single Grade -->
                 <div class="pricing-card">
                     <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">Single Grade</div>
-                    <div style="font-size:42px;font-weight:800;letter-spacing:-0.04em;margin-bottom:4px;">$19</div>
-                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:24px;">One-time payment</div>
+                    <div style="position:relative;display:inline-block;">
+                        <span class="price-amount" data-monthly="9" data-annual="69" style="font-size:42px;font-weight:800;letter-spacing:-0.04em;">$69</span>
+                    </div>
+                    <div class="price-period" style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
+                    <div class="price-savings" style="font-size:11px;color:#4ade80;margin-bottom:20px;">Save $39 vs monthly</div>
                     <div style="text-align:left;margin-bottom:24px;">
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>All 40 weeks, one grade level</div>
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>All 4 subjects included</div>
@@ -1175,22 +1254,24 @@
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Assessments & projects</div>
                         <div class="x-row" style="margin-bottom:0;"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);font-size:11px;"></i>Multiple grade levels</div>
                     </div>
-                    <button onclick="openCheckout('single')" style="width:100%;padding:11px;border-radius:12px;border:none;background:linear-gradient(135deg,#818cf8,#a78bfa);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Choose Grades</button>
+                    <button onclick="openCheckout('single')" style="width:100%;padding:11px;border-radius:12px;border:none;background:linear-gradient(135deg,#818cf8,#a78bfa);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Choose Grade</button>
                 </div>
 
                 <!-- Full Bundle -->
                 <div class="pricing-card pricing-featured">
                     <div class="best-value-badge">Best Value</div>
                     <div style="font-size:13px;font-weight:600;color:#a5b4fc;margin-bottom:6px;margin-top:8px;">Full K-12 Bundle</div>
-                    <div style="font-size:42px;font-weight:800;letter-spacing:-0.04em;margin-bottom:4px;">$97</div>
-                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">One-time payment</div>
-                    <div style="font-size:11px;color:#4ade80;margin-bottom:24px;">Save $55 vs buying individually</div>
+                    <div style="position:relative;display:inline-block;">
+                        <span class="price-amount" data-monthly="19" data-annual="129" style="font-size:42px;font-weight:800;letter-spacing:-0.04em;">$129</span>
+                    </div>
+                    <div class="price-period" style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
+                    <div class="price-savings" style="font-size:11px;color:#4ade80;margin-bottom:20px;">Save $99 vs monthly</div>
                     <div style="text-align:left;margin-bottom:24px;">
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>All 8 grade levels</div>
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>All 4 subjects per level</div>
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>40 weeks per subject</div>
-                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Lifetime access</div>
-                        <div class="check-row" style="margin-bottom:0;"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Priority updates</div>
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Priority updates</div>
+                        <div class="check-row" style="margin-bottom:0;"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Cancel anytime</div>
                     </div>
                     <button onclick="openCheckout('bundle')" style="width:100%;padding:11px;border-radius:12px;border:none;background:linear-gradient(135deg,#818cf8,#c084fc);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;box-shadow:0 4px 20px rgba(129,140,248,0.3);" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Get Full Access</button>
                 </div>
@@ -1198,7 +1279,7 @@
             <!-- Trust bar -->
             <div style="text-align:center;margin-top:28px;font-size:12px;color:var(--text-muted);display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
                 <span><i class="fas fa-lock" style="margin-right:5px;color:#4ade80;"></i>Secure Checkout</span>
-                <span><i class="fas fa-check-circle" style="margin-right:5px;color:#4ade80;"></i>One-Time Payment</span>
+                <span><i class="fas fa-times-circle" style="margin-right:5px;color:#4ade80;"></i>Cancel Anytime</span>
                 <span><i class="fas fa-bolt" style="margin-right:5px;color:#4ade80;"></i>Instant Access</span>
                 <span><i class="fas fa-shield-alt" style="margin-right:5px;color:#4ade80;"></i>30-Day Money Back</span>
             </div>
@@ -1216,7 +1297,14 @@
                         <span>Is this a subscription?</span>
                         <i class="fas fa-chevron-down faq-chevron"></i>
                     </div>
-                    <div class="faq-answer">No. Curriculum Hub is a one-time payment. You pay once and get lifetime access to the materials. No recurring charges, no hidden fees.</div>
+                    <div class="faq-answer">Yes — but with no long-term commitment. Choose monthly or annual billing. You can cancel anytime, and you'll keep access through the end of your billing period. No hidden fees, no contracts.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What happens if I cancel?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">You keep full access through the end of your current billing period. No partial charges, no penalties. Your progress is saved in case you want to come back later.</div>
                 </div>
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
@@ -1227,10 +1315,10 @@
                 </div>
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>Can I switch grade levels after purchasing?</span>
+                        <span>Can I switch from monthly to annual?</span>
                         <i class="fas fa-chevron-down faq-chevron"></i>
                     </div>
-                    <div class="faq-answer">If you buy a Single Grade plan, you can upgrade to the Full Bundle at any time by paying the difference. Contact us and we'll sort it out.</div>
+                    <div class="faq-answer">Absolutely. You can upgrade to annual billing at any time from your account settings. We'll prorate the difference so you never overpay.</div>
                 </div>
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
@@ -1388,7 +1476,7 @@
             <div id="checkoutSummary" style="background:var(--bg-subtle);border:1px solid var(--border-faint);border-radius:12px;padding:14px;margin-bottom:20px;"></div>
             <!-- Grade selector (single grade only) -->
             <div id="gradeSelector" style="display:none;margin-bottom:16px;">
-                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Choose Grade Levels <span style="font-weight:400;color:var(--text-muted);">(select one or more — $19 each)</span></label>
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Choose Grade Levels</label>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
                     <button type="button" class="grade-opt" data-grade="ages-5-7" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
                         <div style="font-size:13px;color:var(--text-primary);">Level 1</div>
@@ -1905,11 +1993,6 @@
         // Also run on load
         updatePricingVisibility();
 
-        // Auto-open checkout if hash is #checkout
-        if (window.location.hash === '#checkout') {
-            setTimeout(function() { openCheckout('single'); }, 300);
-        }
-
         // Enter key support for login/signup forms
         document.getElementById('loginPassword').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleLogin(); });
         document.getElementById('signupPassword').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleSignup(); });
@@ -2009,17 +2092,22 @@
                 btn.style.background = 'var(--bg-subtle)';
             }
             // Update price dynamically
+            var unitPrice = billingPeriod === 'annual' ? 69 : 9;
+            var periodLabel = billingPeriod === 'annual' ? '/yr' : '/mo';
             if (selectedPlan === 'single' && selectedGrades.length > 0) {
-                var total = selectedGrades.length * 19;
-                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">' + selectedGrades.length + ' Grade' + (selectedGrades.length > 1 ? 's' : '') + '</div><div style="font-size:11px;color:var(--text-muted);">$19 each · All 4 subjects per grade</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$' + total + '</div></div>';
+                var total = selectedGrades.length * unitPrice;
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">' + selectedGrades.length + ' Grade' + (selectedGrades.length > 1 ? 's' : '') + '</div><div style="font-size:11px;color:var(--text-muted);">$' + unitPrice + periodLabel + ' each · All 4 subjects per grade</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$' + total + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
             } else if (selectedPlan === 'single') {
-                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $19 each</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$19</div></div>';
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + unitPrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$' + unitPrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
             }
         }
         function openCheckout(plan) {
             selectedPlan = plan;
             selectedGrades = [];
-            const isBundle = plan === 'bundle';
+            var isBundle = plan === 'bundle';
+            var periodLabel = billingPeriod === 'annual' ? '/yr' : '/mo';
+            var bundlePrice = billingPeriod === 'annual' ? 129 : 19;
+            var singlePrice = billingPeriod === 'annual' ? 69 : 9;
             document.getElementById('checkoutTitle').textContent = isBundle ? 'Full K-12 Bundle' : 'Single Grade Access';
             document.getElementById('gradeSelector').style.display = isBundle ? 'none' : 'block';
             // Reset grade selection
@@ -2028,8 +2116,8 @@
                 b.style.background = 'var(--bg-subtle)';
             });
             document.getElementById('checkoutSummary').innerHTML = isBundle
-                ? '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Full K-12 Bundle</div><div style="font-size:11px;color:var(--text-muted);">All 8 levels · All subjects · Lifetime</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$97</div></div>'
-                : '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $19 each</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$19</div></div>';
+                ? '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Full K-12 Bundle</div><div style="font-size:11px;color:var(--text-muted);">All 8 levels · All subjects · Billed ' + billingPeriod + '</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$' + bundlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>'
+                : '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + singlePrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#a5b4fc;">$' + singlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
             document.getElementById('checkoutModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -2066,6 +2154,55 @@
             document.getElementById('successModal').classList.remove('open');
             document.body.style.overflow = '';
         }
+
+        // --- Billing Toggle ---
+        let billingPeriod = 'annual'; // default to annual
+
+        function toggleBilling() {
+            billingPeriod = billingPeriod === 'annual' ? 'monthly' : 'annual';
+            updateBillingUI();
+        }
+
+        function updateBillingUI() {
+            var dot = document.getElementById('billingDot');
+            var labelM = document.getElementById('toggleLabelMonthly');
+            var labelA = document.getElementById('toggleLabelAnnual');
+            var savingsTag = document.getElementById('annualSavingsTag');
+            var toggle = document.getElementById('billingToggle');
+
+            if (billingPeriod === 'annual') {
+                dot.style.right = '3px';
+                dot.style.left = 'auto';
+                labelA.style.color = '#a5b4fc';
+                labelM.style.color = 'var(--text-muted)';
+                toggle.style.background = 'linear-gradient(135deg,#818cf8,#a78bfa)';
+                savingsTag.style.visibility = 'visible';
+                savingsTag.style.opacity = '1';
+            } else {
+                dot.style.left = '3px';
+                dot.style.right = 'auto';
+                labelM.style.color = '#a5b4fc';
+                labelA.style.color = 'var(--text-muted)';
+                toggle.style.background = 'var(--bg-card-hover)';
+                savingsTag.style.visibility = 'hidden';
+                savingsTag.style.opacity = '0';
+            }
+
+            // Update price displays
+            document.querySelectorAll('.price-amount').forEach(function(el) {
+                var price = billingPeriod === 'annual' ? el.dataset.annual : el.dataset.monthly;
+                el.textContent = '$' + price;
+            });
+            document.querySelectorAll('.price-period').forEach(function(el) {
+                el.textContent = billingPeriod === 'annual' ? '/year' : '/month';
+            });
+            document.querySelectorAll('.price-savings').forEach(function(el) {
+                el.style.display = billingPeriod === 'annual' ? '' : 'none';
+            });
+        }
+
+        // Init billing UI
+        updateBillingUI();
 
         // FAQ accordion
         function toggleFaq(el) {
