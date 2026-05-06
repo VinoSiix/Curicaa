@@ -1,5 +1,5 @@
 {
-  "buildCommand": "mkdir -p dist && cp hub-premium.html dist/",
+  "buildCommand": "node -e \"const fs=require('fs');fs.mkdirSync('dist',{recursive:true});fs.copyFileSync('hub-premium.html','dist/hub-premium.html')\"",
   "installCommand": "echo 'skip'",
   "framework": null,
   "outputDirectory": "dist",
