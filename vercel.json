@@ -1,8 +1,8 @@
 {
-  "buildCommand": "echo 'Static HTML — no build needed'",
+  "buildCommand": "mkdir -p dist && cp hub-premium.html dist/",
   "installCommand": "echo 'skip'",
   "framework": null,
-  "outputDirectory": "public",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "redirects": [
     { "source": "/", "destination": "/hub-premium.html", "permanent": false }
