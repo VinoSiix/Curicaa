@@ -2,7 +2,7 @@
   "buildCommand": "echo 'Static HTML — no build needed'",
   "installCommand": "echo 'skip'",
   "framework": null,
-  "outputDirectory": ".",
+  "outputDirectory": "public",
   "cleanUrls": true,
   "redirects": [
     { "source": "/", "destination": "/hub-premium.html", "permanent": false }
