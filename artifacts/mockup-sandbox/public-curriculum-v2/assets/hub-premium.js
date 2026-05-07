@@ -1217,15 +1217,16 @@
         // Lead magnet capture
         function handleLeadCapture() {
             var email = document.getElementById('leadEmail').value.trim();
+            var grade = document.getElementById('leadGrade').value;
             if (!email || email.indexOf('@') === -1) {
                 alert('Please enter a valid email address.');
                 return;
             }
             var leads = JSON.parse(localStorage.getItem('curicaa_leads') || '[]');
-            leads.push({ email: email, date: new Date().toISOString() });
+            leads.push({ email: email, grade: grade, date: new Date().toISOString() });
             localStorage.setItem('curicaa_leads', JSON.stringify(leads));
             var btn = document.querySelector('#leadmagnet button');
-            btn.textContent = 'Got it! We\u2019ll be in touch \u2713';
+            btn.textContent = 'Got it! We\'ll be in touch \u2713';
             btn.style.background = 'linear-gradient(135deg, #4ade80, #22d3ee)';
             btn.style.cursor = 'default';
             document.getElementById('leadEmail').value = '';
@@ -1234,6 +1235,64 @@
                 btn.style.background = 'linear-gradient(135deg,#f59e0b,#f97316)';
                 btn.style.cursor = 'pointer';
             }, 4000);
+        }
+
+        // ===== ANNOUNCEMENT BAR =====
+        function closeAnnounce() {
+            var bar = document.getElementById('announceBar');
+            bar.classList.add('hidden');
+            localStorage.setItem('curicaa_announce_closed', '1');
+        }
+        (function() {
+            if (localStorage.getItem('curicaa_announce_closed') === '1') {
+                var bar = document.getElementById('announceBar');
+                if (bar) bar.classList.add('hidden');
+            }
+        })();
+
+        // ===== SAVINGS CALCULATOR =====
+        var calcKidsCount = 1;
+        function calcKids(delta) {
+            calcKidsCount = Math.max(1, Math.min(6, calcKidsCount + delta));
+            document.getElementById('calcKidsNum').textContent = calcKidsCount;
+            var tradCost = calcKidsCount * 1000;
+            var curicaaCost = 129;
+            var savings = tradCost - curicaaCost;
+            document.getElementById('calcTrad').textContent = '$' + tradCost.toLocaleString();
+            document.getElementById('calcCuricaa').textContent = '$' + curicaaCost;
+            document.getElementById('calcSave').textContent = '$' + savings.toLocaleString();
+        }
+
+        // ===== STICKY MOBILE CTA =====
+        (function() {
+            var sticky = document.getElementById('stickyMobileCta');
+            if (!sticky) return;
+            var heroSection = document.querySelector('.hero-badge');
+            window.addEventListener('scroll', function() {
+                if (!heroSection) return;
+                var heroBottom = heroSection.getBoundingClientRect().bottom;
+                if (heroBottom < -200) {
+                    sticky.classList.add('visible');
+                } else {
+                    sticky.classList.remove('visible');
+                }
+            }, { passive: true });
+        })();
+
+        // ===== NEWSLETTER =====
+        function handleNewsletter() {
+            var email = document.getElementById('newsletterEmail').value.trim();
+            if (!email || email.indexOf('@') === -1) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            var leads = JSON.parse(localStorage.getItem('curicaa_newsletter') || '[]');
+            leads.push({ email: email, date: new Date().toISOString() });
+            localStorage.setItem('curicaa_newsletter', JSON.stringify(leads));
+            var btn = document.querySelector('footer button');
+            btn.textContent = 'Subscribed \u2713';
+            document.getElementById('newsletterEmail').value = '';
+            setTimeout(function() { btn.textContent = 'Subscribe'; }, 3000);
         }
 
 

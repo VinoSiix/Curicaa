@@ -6,7 +6,7 @@
     <title>Complete K-12 Homeschool Curriculum — Curicaa | $129/Year Family Plan</title>
     <link rel="stylesheet" href="assets/font-awesome.css">
     <link rel="stylesheet" href="assets/fonts/inter.css">
-    <meta name="description" content="Complete K-12 homeschool curriculum. 320+ weeks of lesson plans from age 5 to SAT prep. Zero prep required, works offline. Starting at $129/year.">
+    <meta name="description" content="Complete K-12 homeschool curriculum. 320+ weeks of open-and-go lesson plans from age 5 to SAT prep. Zero prep, works offline, Common Core aligned. Starting at $129/year for the whole family.">
     <meta property="og:title" content="Curicaa — Complete K-12 Homeschool Curriculum">
     <meta property="og:description" content="Full year of lesson plans for every grade. Designed by parents, for parents. No teaching degree required.">
     <meta property="og:type" content="website">
@@ -25,7 +25,7 @@
         "@context": "https://schema.org",
         "@type": "EducationalOrganization",
         "name": "Curicaa",
-        "description": "Complete K-12 homeschool curriculum with 320+ weeks of lesson plans.",
+        "description": "Complete K-12 homeschool curriculum with 320+ weeks of open-and-go lesson plans. Ages 5-18, all subjects, Common Core aligned.",
         "url": "https://curicaa.com",
         "aggregateRating": {
             "@type": "AggregateRating",
@@ -36,7 +36,40 @@
             "@type": "Offer",
             "price": "129",
             "priceCurrency": "USD",
-            "description": "Full K-12 Bundle - Annual"
+            "description": "Full K-12 Bundle - Annual",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Curicaa Full K-12 Homeschool Curriculum",
+        "description": "320+ weeks of open-and-go lesson plans covering ages 5-18. All subjects including Math, English, Science, and Art. Common Core and NGSS aligned.",
+        "brand": { "@type": "Brand", "name": "Curicaa" },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Full K-12 Bundle - Annual",
+                "price": "129.00",
+                "priceCurrency": "USD",
+                "billingPeriod": "P1Y",
+                "availability": "https://schema.org/InStock"
+            },
+            {
+                "@type": "Offer",
+                "name": "Single Grade - Annual",
+                "price": "69.00",
+                "priceCurrency": "USD",
+                "billingPeriod": "P1Y",
+                "availability": "https://schema.org/InStock"
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "2400"
         }
     }
     </script>
@@ -58,6 +91,17 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Announcement Banner -->
+    <div id="announceBar" class="announce-bar">
+        <div class="announce-bar-inner">
+            <span class="announce-bar-icon"><i class="fas fa-fire"></i></span>
+            <span class="announce-bar-text"><strong>Limited Time</strong> — Full K-12 curriculum at <strong>40% off</strong>. Annual plan only $129/year for the whole family.</span>
+            <a class="announce-bar-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});closeAnnounce();">Get the Deal <i class="fas fa-arrow-right" style="font-size:10px;"></i></a>
+            <button class="announce-bar-close" onclick="closeAnnounce()" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
     <div class="bg-orb bg-orb-3"></div>
@@ -165,31 +209,36 @@
     <main id="main-content" style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:64px 20px 88px;">
 
         <!-- Hero -->
-        <section style="text-align:center;margin-bottom:80px;" class="reveal">
+        <section style="text-align:center;margin-bottom:64px;" class="reveal">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
                 Complete K–12 Homeschool Curriculum
             </div>
 
             <h1 style="margin-bottom:20px;">
-                <span class="hero-title" style="display:block;font-size:clamp(44px,7vw,80px);font-weight:800;line-height:1.06;letter-spacing:-0.038em;">
-                    Your Child's Education,<br>In Your Hands.
+                <span class="hero-title" style="display:block;font-size:clamp(42px,7vw,78px);font-weight:800;line-height:1.06;letter-spacing:-0.038em;">
+                    Teach at Home.<br>Confidently.
                 </span>
             </h1>
 
-            <p style="color:var(--text-hero);max-width:520px;margin:0 auto;font-size:16px;line-height:1.75;font-weight:400;">
-                A full year of lesson plans for every grade — from first phonics to SAT prep. Designed by parents, for parents. No teaching degree required.
+            <p style="color:var(--text-hero);max-width:560px;margin:0 auto;font-size:16px;line-height:1.75;font-weight:400;">
+                320 weeks of open-and-go lesson plans. Ages 5–18. All subjects. Zero prep required. <span style="color:#4ade80;font-weight:500;">Works offline.</span>
             </p>
 
             <!-- Hero CTA Buttons -->
             <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:32px;flex-wrap:wrap;">
-                <a class="nav-cta-solid" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})" style="padding:14px 32px;font-size:15px;border-radius:14px;box-shadow:0 4px 24px rgba(245,158,11,0.4);">
+                <a class="nav-cta-solid hero-cta-btn" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})" style="padding:14px 32px;font-size:15px;border-radius:14px;box-shadow:0 4px 24px rgba(245,158,11,0.4);">
                     Start Learning Free <i class="fas fa-arrow-right" style="font-size:12px;margin-left:4px;"></i>
                 </a>
-
+                <a class="hero-cta-secondary" onclick="document.getElementById('lessonPreview').scrollIntoView({behavior:'smooth'})">
+                    See What's Inside <i class="fas fa-chevron-down" style="font-size:11px;margin-left:4px;"></i>
+                </a>
             </div>
 
-
+            <!-- Friction reducer -->
+            <p style="margin-top:14px;font-size:12px;color:var(--text-faint);">
+                No credit card required · Cancel anytime · Free forever plan available
+            </p>
 
             <div class="hero-divider">
                 <div class="hero-divider-line"></div>
@@ -215,7 +264,26 @@
                     <div class="hero-stat-lbl">Avg. Rating</div>
                 </div>
             </div>
-            <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--text-muted);">★ 4.9/5 from 2,400+ families</p>
+
+            <!-- Trust badges row -->
+            <div class="trust-badges-row">
+                <div class="trust-badge"><i class="fas fa-shield-alt"></i> 30-Day Guarantee</div>
+                <div class="trust-badge"><i class="fas fa-star"></i> 4.9 Stars</div>
+                <div class="trust-badge"><i class="fas fa-users"></i> 2,400+ Families</div>
+                <div class="trust-badge"><i class="fas fa-check-circle"></i> Common Core Aligned</div>
+            </div>
+        </section>
+
+        <!-- As Featured In -->
+        <section class="reveal featured-bar" style="margin-bottom:64px;">
+            <p style="text-align:center;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-very-faint);margin-bottom:18px;">Trusted by homeschool families worldwide</p>
+            <div class="featured-logos">
+                <span class="featured-logo">Homeschool.com</span>
+                <span class="featured-logo">Tech & Learning</span>
+                <span class="featured-logo">Parenting Magazine</span>
+                <span class="featured-logo">Education Week</span>
+                <span class="featured-logo">The Homeschool Mom</span>
+            </div>
         </section>
 
         <!-- Who Is This For? -->
@@ -275,6 +343,54 @@
             <div id="featureGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;"></div>
         </section>
 
+        <!-- Peek Inside a Lesson -->
+        <section id="lessonPreview" class="reveal" style="margin-top:88px;margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">See for yourself</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Peek Inside a Lesson</h2>
+                <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Every week includes warm-ups, core lessons, games, and assessments.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:860px;margin:0 auto;">
+                <!-- Sample Card 1: Ages 5-7 Math -->
+                <div class="lesson-preview-card" style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:20px;overflow:hidden;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(96,165,250,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="padding:18px 22px;border-bottom:1px solid var(--border-faint);display:flex;align-items:center;gap:12px;">
+                        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                            <i class="fas fa-calculator" style="color:white;font-size:14px;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:13px;font-weight:700;color:#93c5fd;">Ages 5–7 · Math</div>
+                            <div style="font-size:11px;color:var(--text-muted);">Week 3 · Number Sense</div>
+                        </div>
+                    </div>
+                    <div style="padding:20px 22px;">
+                        <div class="lesson-row"><div class="lesson-icon" style="background:rgba(251,191,36,0.12);"><i class="fas fa-bullseye" style="color:#fbbf24;font-size:11px;"></i></div><div><div style="font-size:11px;font-weight:600;color:var(--text-label);text-transform:uppercase;letter-spacing:0.06em;">Warm-up · 5 min</div><div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Count objects around the house — spoons, shoes, toys</div></div></div>
+                        <div class="lesson-row"><div class="lesson-icon" style="background:rgba(96,165,250,0.12);"><i class="fas fa-book-open" style="color:#60a5fa;font-size:11px;"></i></div><div><div style="font-size:11px;font-weight:600;color:var(--text-label);text-transform:uppercase;letter-spacing:0.06em;">Main Activity · 20 min</div><div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Number hunt — find numbers 1–10 in your home and match them to written numerals</div></div></div>
+                        <div class="lesson-row"><div class="lesson-icon" style="background:rgba(74,222,128,0.12);"><i class="fas fa-gamepad" style="color:#4ade80;font-size:11px;"></i></div><div><div style="font-size:11px;font-weight:600;color:var(--text-label);text-transform:uppercase;letter-spacing:0.06em;">Game · 10 min</div><div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Roll & Move — roll dice, count steps across the room</div></div></div>
+                        <div class="lesson-row" style="margin-bottom:0;"><div class="lesson-icon" style="background:rgba(251,146,60,0.12);"><i class="fas fa-check-circle" style="color:#fb923c;font-size:11px;"></i></div><div><div style="font-size:11px;font-weight:600;color:var(--text-label);text-transform:uppercase;letter-spacing:0.06em;">Assessment</div><div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Can your child count to 10 reliably and recognize written numerals?</div></div></div>
+                    </div>
+                </div>
+                <!-- Sample Card 2: Age 14 Biology -->
+                <div class="lesson-preview-card" style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:20px;overflow:hidden;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(192,132,252,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="padding:18px 22px;border-bottom:1px solid var(--border-faint);display:flex;align-items:center;gap:12px;">
+                        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#a855f7,#ec4899);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                            <i class="fas fa-flask" style="color:white;font-size:14px;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:13px;font-weight:700;color:#d8b4fe;">Age 14 · Biology</div>
+                            <div style="font-size:11px;color:var(--text-muted);">Week 12 · Cell Biology</div>
+                        </div>
+                    </div>
+                    <div style="padding:20px 22px;">
+                        <div class="lesson-row"><div class="lesson-icon" style="background:rgba(251,191,36,0.12);"><i class="fas fa-bullseye" style="color:#fbbf24;font-size:11px;"></i></div><div><div style="font-size:11px;font-weight:600;color:var(--text-label);text-transform:uppercase;letter-spacing:0.06em;">Warm-up · 5 min</div><div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Cell organelle quick-fire quiz from last week's notes</div></div></div>
+                        <div class="lesson-row"><div class="lesson-icon" style="background:rgba(168,85,247,0.12);"><i class="fas fa-book-open" style="color:#c084fc;font-size:11px;"></i></div><div><div style="font-size:11px;font-weight:600;color:var(--text-label);text-transform:uppercase;letter-spacing:0.06em;">Main Activity · 25 min</div><div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Build a 3D cell model using household items (gelatin, beans, pasta)</div></div></div>
+                        <div class="lesson-row"><div class="lesson-icon" style="background:rgba(74,222,128,0.12);"><i class="fas fa-flask" style="color:#4ade80;font-size:11px;"></i></div><div><div style="font-size:11px;font-weight:600;color:var(--text-label);text-transform:uppercase;letter-spacing:0.06em;">Lab · 20 min</div><div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Osmosis experiment with eggs and vinegar — observe cell membrane behavior</div></div></div>
+                        <div class="lesson-row" style="margin-bottom:0;"><div class="lesson-icon" style="background:rgba(251,146,60,0.12);"><i class="fas fa-check-circle" style="color:#fb923c;font-size:11px;"></i></div><div><div style="font-size:11px;font-weight:600;color:var(--text-label);text-transform:uppercase;letter-spacing:0.06em;">Assessment</div><div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Label a cell diagram from memory — identify 8 key organelles</div></div></div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-muted);">Every week, every grade, every subject — this detailed. <a onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})" style="color:#fbbf24;cursor:pointer;font-weight:600;">Browse all pathways →</a></p>
+        </section>
+
         <!-- What You Get -->
         <section id="whatyouget" class="reveal" style="margin-top:88px;margin-bottom:88px;">
             <div style="text-align:center;margin-bottom:44px;">
@@ -308,6 +424,25 @@
                 <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Choose Your Plan</h2>
                 <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Monthly or annual billing. Cancel anytime.</p>
             </div>
+
+            <!-- Savings Calculator -->
+            <div class="savings-calc reveal" style="max-width:560px;margin:0 auto 36px;background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:24px;text-align:center;">
+                <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-label);margin-bottom:14px;">Savings Calculator</p>
+                <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px;">
+                    <span style="font-size:13px;color:var(--text-secondary);">How many children?</span>
+                    <button onclick="calcKids(-1)" style="width:32px;height:32px;border-radius:8px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-primary);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">−</button>
+                    <span id="calcKidsNum" style="font-size:24px;font-weight:800;color:#fbbf24;min-width:28px;">1</span>
+                    <button onclick="calcKids(1)" style="width:32px;height:32px;border-radius:8px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-primary);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">+</button>
+                </div>
+                <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+                    <div><div style="font-size:11px;color:var(--text-muted);margin-bottom:2px;">Traditional Curriculum</div><div style="font-size:18px;font-weight:800;color:#f87171;text-decoration:line-through;" id="calcTrad">$1,000</div></div>
+                    <div style="font-size:20px;color:var(--text-faint);display:flex;align-items:flex-end;padding-bottom:2px;">→</div>
+                    <div><div style="font-size:11px;color:#4ade80;margin-bottom:2px;">Curicaa</div><div style="font-size:18px;font-weight:800;color:#4ade80;" id="calcCuricaa">$129</div></div>
+                    <div style="font-size:20px;color:var(--text-faint);display:flex;align-items:flex-end;padding-bottom:2px;">=</div>
+                    <div><div style="font-size:11px;color:var(--text-muted);margin-bottom:2px;">You Save</div><div style="font-size:18px;font-weight:800;color:#fbbf24;" id="calcSave">$871</div></div>
+                </div>
+            </div>
+
             <!-- Billing toggle -->
             <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:32px;">
                 <span id="annualSavingsTag" style="font-size:10px;font-weight:700;color:#4ade80;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);padding:3px 10px;border-radius:20px;letter-spacing:0.03em;transition:opacity 0.25s,visibility 0.25s;height:22px;line-height:16px;">2 MONTHS FREE</span>
@@ -448,6 +583,80 @@
                 </div>
             </div>
             <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--text-muted);">Join 2,400+ families who chose Curicaa this year</p>
+
+            <!-- Payment Trust Badges -->
+            <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-top:24px;flex-wrap:wrap;">
+                <span style="font-size:11px;color:var(--text-very-faint);display:flex;align-items:center;gap:5px;"><i class="fas fa-lock" style="font-size:10px;"></i> 256-bit SSL</span>
+                <span style="font-size:11px;color:var(--text-very-faint);display:flex;align-items:center;gap:5px;"><i class="fab fa-cc-visa" style="font-size:14px;"></i></span>
+                <span style="font-size:11px;color:var(--text-very-faint);display:flex;align-items:center;gap:5px;"><i class="fab fa-cc-mastercard" style="font-size:14px;"></i></span>
+                <span style="font-size:11px;color:var(--text-very-faint);display:flex;align-items:center;gap:5px;"><i class="fab fa-cc-amex" style="font-size:14px;"></i></span>
+                <span style="font-size:11px;color:var(--text-very-faint);display:flex;align-items:center;gap:5px;"><i class="fab fa-paypal" style="font-size:14px;"></i></span>
+                <span style="font-size:11px;color:var(--text-very-faint);display:flex;align-items:center;gap:5px;"><i class="fas fa-shield-alt" style="font-size:10px;"></i> Secure checkout</span>
+            </div>
+        </section>
+
+        <!-- Day in the Life -->
+        <section class="reveal" style="margin-top:88px;margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">What it looks like</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">A Day of Homeschooling with Curicaa</h2>
+                <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Here's what a typical Tuesday looks like for a family using our curriculum.</p>
+            </div>
+            <div class="day-timeline" style="max-width:640px;margin:0 auto;">
+                <div class="day-item">
+                    <div class="day-dot" style="background:#fbbf24;"></div>
+                    <div class="day-connector"></div>
+                    <div class="day-card">
+                        <div class="day-time">8:00 AM</div>
+                        <div class="day-title">Morning Warm-up</div>
+                        <div class="day-desc">Start with a quick counting game or vocabulary drill. Takes 5 minutes — gets the brain moving.</div>
+                    </div>
+                </div>
+                <div class="day-item">
+                    <div class="day-dot" style="background:#60a5fa;"></div>
+                    <div class="day-connector"></div>
+                    <div class="day-card">
+                        <div class="day-time">8:05 AM</div>
+                        <div class="day-title">Math Lesson <span class="day-badge-math">30 min</span></div>
+                        <div class="day-desc">Open-and-go lesson with parent guide. Hands-on activity included. No prep — just open the page and teach.</div>
+                    </div>
+                </div>
+                <div class="day-item">
+                    <div class="day-dot" style="background:var(--text-faint);"></div>
+                    <div class="day-connector"></div>
+                    <div class="day-card" style="opacity:0.6;">
+                        <div class="day-time">8:35 AM</div>
+                        <div class="day-title">Break & Snack</div>
+                        <div class="day-desc">15 minutes to stretch, eat, and reset.</div>
+                    </div>
+                </div>
+                <div class="day-item">
+                    <div class="day-dot" style="background:#34d399;"></div>
+                    <div class="day-connector"></div>
+                    <div class="day-card">
+                        <div class="day-time">8:50 AM</div>
+                        <div class="day-title">English & Reading <span class="day-badge-eng">30 min</span></div>
+                        <div class="day-desc">Phonics practice, reading aloud, or essay writing depending on your child's age.</div>
+                    </div>
+                </div>
+                <div class="day-item">
+                    <div class="day-dot" style="background:#c084fc;"></div>
+                    <div class="day-connector"></div>
+                    <div class="day-card">
+                        <div class="day-time">9:20 AM</div>
+                        <div class="day-title">Science Experiment <span class="day-badge-sci">30 min</span></div>
+                        <div class="day-desc">Today: build a volcano with baking soda and vinegar. Uses household items only.</div>
+                    </div>
+                </div>
+                <div class="day-item">
+                    <div class="day-dot" style="background:#4ade80;border:2px solid rgba(74,222,128,0.3);width:14px;height:14px;margin-left:-2px;margin-top:-2px;"></div>
+                    <div class="day-card" style="border-color:rgba(74,222,128,0.25);">
+                        <div class="day-time" style="color:#4ade80;">9:50 AM</div>
+                        <div class="day-title" style="color:#4ade80;">Done for the day!</div>
+                        <div class="day-desc">That's it. Under 2 hours of focused learning. The rest of the day is yours for play, errands, or whatever your family needs.</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- How We Compare -->
@@ -476,9 +685,45 @@
                         <tr><td style="padding:12px 16px;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);font-weight:500;">Secular</td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td></tr>
                         <tr><td style="padding:12px 16px;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);font-weight:500;">Household materials</td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td></tr>
                         <tr><td style="padding:12px 16px;color:var(--text-secondary);font-weight:500;">Works offline</td><td style="padding:12px 16px;text-align:center;background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-minus" style="color:rgba(255,255,255,0.15);"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-check" style="color:#4ade80;"></i></td></tr>
+                        <tr><td style="padding:12px 16px;color:var(--text-secondary);font-weight:500;">Parent guides included</td><td style="padding:12px 16px;text-align:center;background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td></tr>
+                        <tr><td style="padding:12px 16px;color:var(--text-secondary);font-weight:500;">Extra cost per child</td><td style="padding:12px 16px;text-align:center;background:rgba(251,191,36,0.04);color:#fbbf24;font-weight:700;">$0</td><td style="padding:12px 16px;text-align:center;color:var(--text-muted);">$19.95/mo each</td><td style="padding:12px 16px;text-align:center;color:var(--text-muted);">$0</td><td style="padding:12px 16px;text-align:center;color:var(--text-muted);">$0</td></tr>
+                        <tr><td style="padding:12px 16px;color:var(--text-secondary);font-weight:500;">Hands-on activities</td><td style="padding:12px 16px;text-align:center;background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-minus" style="color:rgba(255,255,255,0.15);"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-minus" style="color:rgba(255,255,255,0.15);"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-check" style="color:#4ade80;"></i></td></tr>
                     </tbody>
                 </table>
                 <p style="text-align:center;font-size:11px;color:var(--text-very-faint);margin-top:12px;">Prices based on publicly available data as of 2026. Competitor prices may vary.</p>
+            </div>
+        </section>
+
+        <!-- Lead Magnet -->
+        <section id="leadmagnet" class="reveal" style="margin-top:88px;margin-bottom:88px;">
+            <div class="lead-magnet-card">
+                <div style="text-align:center;max-width:480px;margin:0 auto;">
+                    <div style="width:52px;height:52px;border-radius:50%;background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;">
+                        <i class="fas fa-gift" style="color:#fbbf24;font-size:20px;"></i>
+                    </div>
+                    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px;">Try a Full Week — Free</h2>
+                    <p style="color:var(--text-secondary);font-size:14px;line-height:1.65;margin-bottom:24px;">Download a complete week of lesson plans for your child's grade level. No credit card, no commitment. See the quality for yourself.</p>
+                    <div style="display:flex;flex-direction:column;gap:10px;max-width:360px;margin:0 auto;">
+                        <div style="display:flex;gap:8px;">
+                            <select id="leadGrade" class="form-input" style="flex:1;appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.4)%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>');background-repeat:no-repeat;background-position:right 12px center;">
+                                <option value="" disabled selected>Select grade level</option>
+                                <option value="ages-5-7">Ages 5–7 (Level 1)</option>
+                                <option value="age-8">Age 8 (Level 2)</option>
+                                <option value="age-9">Age 9 (Level 3)</option>
+                                <option value="age-10">Age 10 (Level 4)</option>
+                                <option value="ages-11-12">Ages 11–12 (Middle School)</option>
+                                <option value="age-14">Age 14 (High School)</option>
+                                <option value="ages-15-16">Ages 15–16 (GED Prep)</option>
+                                <option value="ages-17-18">Ages 17–18 (SAT Prep)</option>
+                            </select>
+                        </div>
+                        <div style="display:flex;gap:8px;">
+                            <input type="email" id="leadEmail" class="form-input" placeholder="Your email address" style="flex:1;">
+                            <button onclick="handleLeadCapture()" style="padding:11px 20px;border-radius:10px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:opacity 0.2s;font-family:'Inter',sans-serif;white-space:nowrap;box-shadow:0 4px 16px rgba(245,158,11,0.25);" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Send Me Week 1</button>
+                        </div>
+                    </div>
+                    <p style="font-size:11px;color:var(--text-faint);margin-top:12px;"><i class="fas fa-lock" style="margin-right:4px;font-size:9px;"></i>No spam. Unsubscribe anytime. We respect your inbox.</p>
+                </div>
             </div>
         </section>
 
@@ -552,19 +797,59 @@
         </section>
     </main>
 
-    <footer style="position:relative;z-index:1;border-top:1px solid var(--border-subtle);margin-top:80px;padding:28px 20px;background:rgba(0,0,0,0.25);" aria-label="Footer">
-        <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
-            <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:26px;height:26px;background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:7px;display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-graduation-cap" style="font-size:11px;"></i>
+    <footer style="position:relative;z-index:1;border-top:1px solid var(--border-subtle);margin-top:80px;padding:0;background:rgba(0,0,0,0.25);" aria-label="Footer">
+        <div style="max-width:1100px;margin:0 auto;padding:40px 20px 28px;">
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:32px;">
+                <!-- Brand column -->
+                <div>
+                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+                        <div style="width:28px;height:28px;background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-graduation-cap" style="font-size:12px;color:white;"></i>
+                        </div>
+                        <span style="font-size:14px;font-weight:700;color:var(--text-primary);">Curicaa</span>
+                    </div>
+                    <p style="font-size:12px;color:var(--text-muted);line-height:1.65;max-width:240px;">Empowering families with world-class, comprehensive K-12 homeschool curriculum. Open-and-go lessons designed by parents, for parents.</p>
+                    <div style="display:flex;gap:10px;margin-top:16px;">
+                        <a href="#" class="footer-social" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                <span style="font-size:13px;font-weight:600;color:var(--text-subtle);">Curicaa</span>
+                <!-- Pathways -->
+                <div>
+                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-label);margin-bottom:14px;">Pathways</div>
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                        <a class="footer-link" href="#" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'});return false;">Curriculum</a>
+                        <a class="footer-link" href="#" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'});return false;">Features</a>
+                        <a class="footer-link" id="footerPricingLink" href="#" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false;">Pricing</a>
+                        <a class="footer-link" href="#" onclick="document.getElementById('lessonPreview').scrollIntoView({behavior:'smooth'});return false;">Sample Lessons</a>
+                    </div>
+                </div>
+                <!-- Company -->
+                <div>
+                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-label);margin-bottom:14px;">Company</div>
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                        <a class="footer-link" href="#" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});return false;">About</a>
+                        <a class="footer-link" href="#" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'});return false;">FAQ</a>
+                        <a class="footer-link" href="#">Terms of Service</a>
+                        <a class="footer-link" href="#">Privacy Policy</a>
+                        <a class="footer-link" href="#">Contact</a>
+                    </div>
+                </div>
+                <!-- Newsletter -->
+                <div>
+                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-label);margin-bottom:14px;">Stay Updated</div>
+                    <p style="font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">Get weekly homeschool tips, new curriculum updates, and exclusive offers.</p>
+                    <div style="display:flex;gap:6px;">
+                        <input type="email" id="newsletterEmail" placeholder="Your email" class="form-input" style="flex:1;padding:8px 12px;font-size:12px;">
+                        <button onclick="handleNewsletter()" style="padding:8px 14px;border-radius:8px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;">Subscribe</button>
+                    </div>
+                </div>
             </div>
-            <p style="font-size:12px;color:var(--text-very-faint);text-align:center;">Made with ♥ for homeschooling families everywhere</p>
-            <div style="display:flex;gap:16px;">
-                <a class="nav-link" style="font-size:12px;" href="#" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'});return false;">Pathways</a>
-                <a class="nav-link" id="footerPricingLink" style="font-size:12px;" href="#" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false;">Pricing</a>
-                <a class="nav-link" style="font-size:12px;" href="#" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});return false;">About</a>
+            <div style="border-top:1px solid var(--border-faint);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+                <p style="font-size:11px;color:var(--text-very-faint);">© 2026 Curicaa Education. All rights reserved.</p>
+                <p style="font-size:11px;color:var(--text-very-faint);">Made with ♥ for homeschooling families everywhere</p>
             </div>
         </div>
     </footer>
@@ -811,6 +1096,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Sticky Mobile CTA -->
+    <div id="stickyMobileCta" class="sticky-mobile-cta">
+        <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+            <div>
+                <div style="font-size:13px;font-weight:700;color:white;">Start Learning Free</div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.5);">$129/year · All grades · Cancel anytime</div>
+            </div>
+            <a class="nav-cta-solid" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})" style="padding:10px 20px;font-size:13px;border-radius:10px;">
+                Get Started <i class="fas fa-arrow-right" style="font-size:10px;margin-left:3px;"></i>
+            </a>
         </div>
     </div>
 
