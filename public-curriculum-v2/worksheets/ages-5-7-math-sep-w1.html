@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Numbers 1 to 5 — Ages 5–7 Math</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #6366f1; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #4f46e5; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+
+  /* Sections */
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #6366f1; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #eef2ff; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .section-body ol { padding-left: 18px; }
+  .section-body ol li { margin-bottom: 3px; }
+
+  /* Checklist */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; font-size: 12.5px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox { width: 14px; height: 14px; border: 1.5px solid #9ca3af; border-radius: 3px; flex-shrink: 0; }
+
+  /* Practice area */
+  .practice-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 10px 0; }
+  .practice-box { border: 1.5px solid #d1d5db; border-radius: 8px; text-align: center; padding: 6px; min-height: 70px; position: relative; }
+  .practice-box .num { font-size: 16px; font-weight: 800; color: #4f46e5; margin-bottom: 2px; }
+
+  /* Counting rows */
+  .count-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #f3f4f6; }
+  .count-row .symbols { font-size: 18px; letter-spacing: 3px; min-width: 120px; }
+  .count-row .equals { font-weight: 700; color: #9ca3af; }
+  .count-row .blank { display: inline-block; width: 30px; border-bottom: 2px solid #4f46e5; text-align: center; font-weight: 700; font-size: 16px; }
+
+  /* Match lines */
+  .match-row { display: flex; align-items: center; gap: 6px; padding: 5px 0; }
+  .match-row .left { font-weight: 800; font-size: 16px; width: 24px; text-align: right; color: #4f46e5; }
+  .match-row .dots { flex: 1; border-bottom: 1.5px dotted #9ca3af; min-width: 40px; }
+  .match-row .right { font-size: 16px; min-width: 100px; }
+
+  /* Tip box */
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+
+  /* Footer */
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Numbers 1 to 5</h1>
+    <p>Early Elementary Math · September Week 1</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Ages 5–7</div><br>
+    Counting & Cardinality
+  </div>
+</div>
+
+<!-- Objective -->
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Recognize numbers 1–5 and match them to quantities using one-to-one correspondence.</p>
+  </div>
+</div>
+
+<!-- Warm-Up -->
+<div class="section">
+  <div class="section-title"><span class="icon">☀️</span> Warm-Up: "Five Little Ducks"</div>
+  <div class="section-body">
+    <p>Sing <strong>"Five Little Ducks"</strong> together. Hold up fingers for each duck as you count down from 5 to 1.</p>
+  </div>
+</div>
+
+<!-- Main Activity -->
+<div class="section">
+  <div class="section-title"><span class="icon">🧱</span> Activity: Number Towers</div>
+  <div class="section-body">
+    <p><strong>You need:</strong> Lego blocks (or similar), index cards with numbers 1–5</p>
+    <ol>
+      <li>Build a tower with <strong>1</strong> block. Place the card <strong>1</strong> next to it.</li>
+      <li>Build a tower with <strong>2</strong> blocks. Place the card <strong>2</strong> next to it.</li>
+      <li>Build a tower with <strong>3</strong> blocks. Place the card <strong>3</strong> next to it.</li>
+      <li>Build a tower with <strong>4</strong> blocks. Place the card <strong>4</strong> next to it.</li>
+      <li>Build a tower with <strong>5</strong> blocks. Place the card <strong>5</strong> next to it.</li>
+    </ol>
+    <p style="margin-top:6px;"><strong>Now mix up the cards!</strong> Can you match each number card to the right tower again?</p>
+  </div>
+</div>
+
+<!-- Practice: Draw the right number -->
+<div class="section">
+  <div class="section-title"><span class="icon">✏️</span> Practice: Draw the Right Number</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Draw the correct number of circles in each box:</p>
+    <div class="practice-grid">
+      <div class="practice-box"><div class="num">1</div><div style="min-height:40px;"></div></div>
+      <div class="practice-box"><div class="num">2</div><div style="min-height:40px;"></div></div>
+      <div class="practice-box"><div class="num">3</div><div style="min-height:40px;"></div></div>
+      <div class="practice-box"><div class="num">4</div><div style="min-height:40px;"></div></div>
+      <div class="practice-box"><div class="num">5</div><div style="min-height:40px;"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Practice: Count and Write -->
+<div class="section">
+  <div class="section-title"><span class="icon">🔢</span> Practice: Count and Write</div>
+  <div class="section-body">
+    <p style="margin-bottom:4px;">Count the objects and write the number:</p>
+    <div class="count-row">
+      <span class="symbols">★ ★ ★ ★</span>
+      <span class="equals">=</span>
+      <span class="blank">&nbsp;</span>
+    </div>
+    <div class="count-row">
+      <span class="symbols">🍎</span>
+      <span class="equals">=</span>
+      <span class="blank">&nbsp;</span>
+    </div>
+    <div class="count-row">
+      <span class="symbols">🐟 🐟</span>
+      <span class="equals">=</span>
+      <span class="blank">&nbsp;</span>
+    </div>
+    <div class="count-row">
+      <span class="symbols">⚽ ⚽ ⚽ ⚽ ⚽</span>
+      <span class="equals">=</span>
+      <span class="blank">&nbsp;</span>
+    </div>
+  </div>
+</div>
+
+<!-- Practice: Match -->
+<div class="section">
+  <div class="section-title"><span class="icon">🔗</span> Practice: Match the Number</div>
+  <div class="section-body">
+    <p style="margin-bottom:4px;">Draw a line from each number to the matching group:</p>
+    <div class="match-row">
+      <span class="left">2</span><span class="dots">&nbsp;</span><span class="right">● ● ● ●</span>
+    </div>
+    <div class="match-row">
+      <span class="left">4</span><span class="dots">&nbsp;</span><span class="right">● ●</span>
+    </div>
+    <div class="match-row">
+      <span class="left">1</span><span class="dots">&nbsp;</span><span class="right">● ● ● ● ●</span>
+    </div>
+    <div class="match-row">
+      <span class="left">5</span><span class="dots">&nbsp;</span><span class="right">●</span>
+    </div>
+    <div class="match-row">
+      <span class="left">3</span><span class="dots">&nbsp;</span><span class="right">● ● ●</span>
+    </div>
+  </div>
+</div>
+
+<!-- Checklist -->
+<div class="section">
+  <div class="section-title"><span class="icon">✅</span> Can Your Child...?</div>
+  <div class="section-body">
+    <ul class="checklist">
+      <li><span class="checkbox"></span> Count 5 objects without skipping any</li>
+      <li><span class="checkbox"></span> Count 5 objects without double-counting</li>
+      <li><span class="checkbox"></span> Match the number "3" to a group of 3 things</li>
+      <li><span class="checkbox"></span> Point to the number "5" when asked</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Tips -->
+<div class="tip-box">
+  <strong>💡 Easier:</strong> Start with only numbers 1, 2, and 3. Don't rush to 5.<br>
+  <strong>💡 Harder:</strong> Have your child write the numbers 1–5 in a tray of sand or salt using their finger.
+</div>
+
+<div class="footer">
+  <span>Curriculum Hub · Ages 5–7 · Math · September Week 1</span>
+  <span>Numbers 1 to 5</span>
+</div>
+
+</body>
+</html>

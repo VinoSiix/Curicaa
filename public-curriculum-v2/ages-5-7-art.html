@@ -1,0 +1,699 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Creative Movement & Art — Ages 5–7 | Curriculum Hub</title>
+<link rel="stylesheet" href="assets/fonts/inter.css">
+<link rel="stylesheet" href="assets/font-awesome.css">
+<script src="assets/tailwind.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#ec4899;--a2:#f97316;--al:#f9a8d4;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(236,72,153,0.1),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.08),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(236,72,153,0.12);border:1px solid rgba(236,72,153,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(236,72,153,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{max-height:0;overflow:hidden;background:rgba(255,255,255,0.025);border-top:1px solid transparent;padding:0 16px;transform-origin:top;transform:translateY(-6px);opacity:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),padding 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s ease,transform 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease;}
+.week-detail.open{max-height:800px;padding:14px 16px;border-top-color:rgba(255,255,255,0.07);transform:translateY(0);opacity:1;}
+.week-check{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,0.09);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all 0.2s;font-size:10px;color:transparent;}
+.week-check:hover{border-color:var(--a1);background:rgba(236,72,153,0.1);}
+.week-check.done{border-color:var(--a1);background:linear-gradient(135deg,var(--a1),var(--a2));color:white;}
+.week-row.completed .week-title-text{text-decoration:line-through;opacity:0.55;}
+.progress-bar-wrap{height:4px;border-radius:4px;background:rgba(255,255,255,0.08);margin-top:10px;overflow:hidden;}
+.progress-bar-fill{height:100%;border-radius:4px;background:linear-gradient(135deg,var(--a1),var(--a2));transition:width 0.4s ease;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.month-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+@media(max-width:768px){
+  .month-grid{grid-template-columns:1fr;}
+}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:white;">Level 1</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 5–7</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-palette" style="margin-right:5px;"></i>Art & PE</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 5–7</span>
+      
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Early Elementary · Ages 5–7</p>
+    <h2 class="page-title">Creative Movement & Art</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Developing creativity, coordination, and self-expression through art projects, music, movement, and physical activities designed for young learners.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Creative Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:var(--ct8);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:var(--ct10);margin-top:6px;">Art & PE · </p>
+</footer>
+
+<script>
+const curriculumData={
+'September': {
+  icon: 'fa-palette',
+  color: 'from-pink-400 to-purple-500',
+  focus: 'Color Theory & Line Exploration',
+  skills: ['Primary colors', 'Line types', 'Color mixing', 'Spatial awareness'],
+  project: 'Create a vibrant mixed-media color wheel and line design portfolio piece.',
+  materials: ['Washable paint (red, yellow, blue)', 'Brushes', 'Construction paper', 'Crayons', 'Painter\'s tape', 'Cups for mixing', 'Markers'],
+  weeks: [
+    {
+      title: "Magic Color Mixing",
+      objective: "Discover primary colors mix to create secondary colors while practicing brush control.",
+      warmup: "30-second color hunt for red, blue, and yellow objects around the room.",
+      mainActivity: "Mix food coloring or water-downed paint in cups: red+blue, red+yellow, blue+yellow. Paint a color wheel with 6 distinct circles.",
+      game: "Color Freeze Dance — music stops, freeze next to a called color.",
+      homeConnection: "Notice color mixing in bath paint, food coloring, rainbows, or sunsets.",
+      assessment: "Names 3 primary colors, predicts secondary results, completes a basic color wheel.",
+      differentiation: "Easier: Pre-mix colors to match. Harder: Mix primary+secondary to make brown, experiment with tints (adding white)."
+    },
+    {
+      title: "Line Dancing with Crayons",
+      objective: "Identify and draw different types of lines (straight, zig-zag, wavy, curly).",
+      warmup: "Follow the Leader: Walk in straight, zig-zag, and wavy patterns across the room.",
+      mainActivity: "Listen to different tempos of music and draw lines that match the feeling of the music (fast=zig-zag, slow=wavy). Fill a page edge-to-edge.",
+      game: "Jump the Line: Place painter's tape lines on the floor and practice different jumps (two feet, one foot, sideways).",
+      homeConnection: "Look for different types of lines in architecture or nature (tree branches, brick walls).",
+      assessment: "Successfully draws at least 3 distinct line types and performs corresponding physical movements.",
+      differentiation: "Easier: Trace over pre-drawn dotted lines. Harder: Create a patterned drawing using only intersecting lines."
+    },
+    {
+      title: "Warm & Cool Handprints",
+      objective: "Categorize warm (red/orange/yellow) and cool (blue/green/purple) colors.",
+      warmup: "Lava and Ice: Run to 'lava' (warm colors) or 'ice' (cool colors) zones when called.",
+      mainActivity: "Trace hand and arm to make a 'tree'. Paint the inside with warm colors and the background with cool colors (or vice versa).",
+      game: "Red Light, Green Light with a twist: Use warm colors for stop/slow, cool colors for go.",
+      homeConnection: "Discuss warm vs. cool feelings associated with colors in clothes or weather.",
+      assessment: "Correctly identifies at least two warm and two cool colors.",
+      differentiation: "Easier: Sort colored items into warm/cool bins before painting. Harder: Mix own warm and cool colors from primaries."
+    },
+    {
+      title: "Tape Resist Masterpieces",
+      objective: "Combine color mixing and line knowledge to create a multi-layered artwork.",
+      warmup: "Crab walk or bear crawl across the room avoiding imaginary tape lines.",
+      mainActivity: "Apply painter's tape to heavy paper in intersecting lines. Paint over the entire paper mixing colors. Peel tape when dry to reveal white lines.",
+      game: "Obstacle Course: Navigate under, over, and around 'tape lasers' (yarn strung across a hallway).",
+      homeConnection: "Find intersecting lines at home (window panes, tiles).",
+      assessment: "Demonstrates fine motor control when peeling tape and gross motor control in obstacle course.",
+      differentiation: "Easier: Use fewer, thicker pieces of tape. Harder: Create a specific shape or letter with the tape."
+    }
+  ]
+},
+'October': {
+  icon: 'fa-leaf',
+  color: 'from-orange-400 to-red-500',
+  focus: 'Fall Nature Art & Outdoor Movement',
+  skills: ['Nature observation', 'Texture rubbing', 'Balance', 'Spatial navigation'],
+  project: 'Assemble a fall nature journal with rubbings, pressed leaves, and observational drawings.',
+  materials: ['Leaves & twigs', 'Crayons (peeled)', 'Paper', 'Glue', 'Small pumpkins/gourds', 'Cardboard'],
+  weeks: [
+    {
+      title: "Leaf Rubbing Magic",
+      objective: "Explore physical texture through crayon rubbings of natural items.",
+      warmup: "Falling Leaves: Float, twirl, and drift to the ground like a leaf falling from a tree.",
+      mainActivity: "Collect different shaped leaves. Place leaves under paper and rub with peeled crayons to reveal veins and textures.",
+      game: "Leaf Relay: Carry a leaf on a spoon or book across the room without dropping it.",
+      homeConnection: "Find textured surfaces at home (brick, wood grain) to do quick rubbings.",
+      assessment: "Understands texture; successfully transfers texture to paper using rubbing technique.",
+      differentiation: "Easier: Tape the leaf down to prevent shifting. Harder: Overlap rubbings with different colors to create a layered composition."
+    },
+    {
+      title: "Nature Mandalas",
+      objective: "Understand radial symmetry and create temporary process art.",
+      warmup: "Mirror Movement: Partner up and mirror each other's slow movements.",
+      mainActivity: "Gather natural items (acorns, leaves, pebbles). Arrange them in a circular, symmetrical pattern starting from the center outward.",
+      game: "Acorn Toss: Practice underhand tossing with acorns or rolled socks into a basket.",
+      homeConnection: "Arrange dinner plate items or toys symmetrically.",
+      assessment: "Creates a basic radial pattern; demonstrates underhand toss form.",
+      differentiation: "Easier: Provide a drawn circle as a guide. Harder: Create a mandala with multiple layers and specific color patterns."
+    },
+    {
+      title: "Pumpkin Painting & Rolling",
+      objective: "Paint on a 3D surface and explore weight/momentum in physical play.",
+      warmup: "Pumpkin patch stretches: Grow from a tiny seed into a big, round pumpkin.",
+      mainActivity: "Paint small pumpkins or gourds using tempera paint, focusing on following the natural ridges.",
+      game: "Pumpkin Roll: Roll pumpkins (or balls) toward a target, noticing how shape affects the roll.",
+      homeConnection: "Discuss how different shapes roll or slide (spheres vs. blocks).",
+      assessment: "Applies paint carefully to a 3D object; demonstrates controlled rolling.",
+      differentiation: "Easier: Use sponges to dab paint. Harder: Paint a specific face or pattern on the pumpkin."
+    },
+    {
+      title: "Shadow Tracing",
+      objective: "Observe how light creates shadows and practice tracing outlines.",
+      warmup: "Shadow Tag: Try to step on the shadow of your partner (requires a sunny day).",
+      mainActivity: "Place toys or natural objects on paper in the sun. Trace the shadows with a pencil, then color in the shapes.",
+      game: "Shadow Shapes: Use your body to create letters or shapes and have someone guess what it is.",
+      homeConnection: "Make hand shadow puppets on the wall before bedtime.",
+      assessment: "Successfully traces an outline and recognizes the relationship between object, light, and shadow.",
+      differentiation: "Easier: Trace larger, simple objects (blocks). Harder: Overlap shadows at different times of day to see how the sun moves."
+    }
+  ]
+},
+'November': {
+  icon: 'fa-theater-masks',
+  color: 'from-yellow-400 to-orange-500',
+  focus: 'Drawing & Self-Portraits',
+  skills: ['Observation', 'Facial proportions', 'Body awareness', 'Emotional expression'],
+  project: 'Create a framed self-portrait and a family portrait gallery.',
+  materials: ['Mirrors', 'Drawing paper', 'Pencils', 'Markers', 'Skin-tone crayons', 'Yarn (for hair)'],
+  weeks: [
+    {
+      title: "Mirror Faces",
+      objective: "Observe and draw facial features with correct basic placement.",
+      warmup: "Face Gymnastics: Make exaggerated happy, sad, surprised, and silly faces.",
+      mainActivity: "Look in a mirror. Draw a large oval, then place eyes (halfway down), nose, and mouth. Add details like eyebrows and hair.",
+      game: "Emotion Charades: Act out an emotion using body language and face, others guess.",
+      homeConnection: "Look at family photos and notice different eye colors and hair textures.",
+      assessment: "Places eyes, nose, and mouth in generally correct relation to each other.",
+      differentiation: "Easier: Provide a pre-drawn oval. Harder: Focus on adding details like eyelashes, nostrils, or teeth."
+    },
+    {
+      title: "Action Figures",
+      objective: "Draw the human body in motion using basic shapes.",
+      warmup: "Simon Says: Focus on specific body parts and dynamic poses (stand on one leg, arms out).",
+      mainActivity: "Use wooden mannequins or take turns posing. Draw the pose using stick figures first, then 'bubble' out the arms and legs.",
+      game: "Pose & Hold: Run around, when music stops, strike a specific sports pose (pitcher, gymnast) and hold for 5 seconds.",
+      homeConnection: "Draw stick figures of family members doing their favorite activities.",
+      assessment: "Captures a sense of movement in drawings; demonstrates balance during posing.",
+      differentiation: "Easier: Stick to drawing basic stick figures. Harder: Try drawing bending joints (elbows, knees)."
+    },
+    {
+      title: "Family Portraits",
+      objective: "Show differences in height, size, and characteristics among people.",
+      warmup: "High/Low: Move around the room as tall as a giant, then as small as a mouse.",
+      mainActivity: "Draw family members standing next to each other. Focus on relative height (adults taller than kids) and unique features (glasses, curly hair).",
+      game: "Size Sort: Quickly line up objects (shoes, books) from smallest to largest.",
+      homeConnection: "Measure heights of family members against a wall.",
+      assessment: "Draws figures showing clear size differences and individual details.",
+      differentiation: "Easier: Focus on drawing just two people. Harder: Include family pets or a detailed background."
+    },
+    {
+      title: "Silly Monster Portraits",
+      objective: "Use imagination to break the rules of portraiture.",
+      warmup: "Monster Mash: Move like different monsters (heavy stomps, light creeping, wiggly arms).",
+      mainActivity: "Roll a die to determine how many eyes, noses, or arms a monster gets. Draw and color the monster.",
+      game: "Monster Tag: One person is the monster, others must freeze in a funny pose when tagged.",
+      homeConnection: "Invent a story about the monster drawn in class.",
+      assessment: "Follows multi-step instructions (dice rolling) and uses creative expression.",
+      differentiation: "Easier: Provide pre-cut monster parts to glue. Harder: Write a descriptive sentence about the monster."
+    }
+  ]
+},
+'December': {
+  icon: 'fa-snowflake',
+  color: 'from-cyan-400 to-blue-500',
+  focus: 'Winter Crafts & World Celebrations',
+  skills: ['Scissor skills', 'Symmetry', 'Rhythm', 'Cultural appreciation'],
+  project: 'Craft a winter wonderland diorama and learn a cultural dance.',
+  materials: ['White paper', 'Scissors', 'Glue', 'Cotton balls', 'Cardboard boxes', 'Tissue paper'],
+  weeks: [
+    {
+      title: "Symmetrical Snowflakes",
+      objective: "Practice scissor safety and understand radial symmetry.",
+      warmup: "Snowflake Spin: Twirl and drift safely without bumping into others.",
+      mainActivity: "Fold paper into triangles and cut shapes from the edges. Unfold to reveal symmetrical snowflakes.",
+      game: "Snowball Toss: Toss crumpled paper 'snowballs' into buckets from varying distances.",
+      homeConnection: "Look for symmetry in nature or household items.",
+      assessment: "Uses scissors safely and understands that folding creates mirror images.",
+      differentiation: "Easier: Pre-fold paper and draw cut lines. Harder: Experiment with 6-pointed vs 8-pointed folds."
+    },
+    {
+      title: "Winter Dioramas",
+      objective: "Create a 3D scene focusing on foreground and background.",
+      warmup: "Ice Skating: Slide around the room on paper plates (or just socks) to simulate skating.",
+      mainActivity: "Use a small box. Paint the background blue/purple. Add cotton balls for snow and create small paper trees or snowmen for the foreground.",
+      game: "Balance Beam: Walk a straight line (tape or low beam) like an ice skater.",
+      homeConnection: "Notice what objects are far away (background) and close (foreground) when looking out a window.",
+      assessment: "Understands and utilizes 3D space (foreground/background).",
+      differentiation: "Easier: Focus only on painting the scene. Harder: Create 3D standing figures with folded paper tabs."
+    },
+    {
+      title: "Rhythm & Celebrations",
+      objective: "Explore cultural rhythms and create a simple instrument.",
+      warmup: "Rhythm Echo: Teacher claps a rhythm, students echo it back.",
+      mainActivity: "Make a drum or shaker using containers, dried beans, or balloons. Decorate it with festive colors.",
+      game: "Musical Islands: Jump from 'island' to 'island' (hoops or mats) keeping time with a drum beat.",
+      homeConnection: "Listen to music from different cultures and find the beat.",
+      assessment: "Can echo a simple rhythm and move in time with a beat.",
+      differentiation: "Easier: Keep a steady single beat. Harder: Echo complex syncopated rhythms."
+    },
+    {
+      title: "Dancing Ribbons",
+      objective: "Coordinate gross motor movement with a prop.",
+      warmup: "Windy Day: Move body like a tree in a gentle breeze, then a strong storm.",
+      mainActivity: "Attach long crepe paper ribbons to a stick or ring. Practice making large circles, figure-eights, and spirals in the air.",
+      game: "Ribbon Limbo: Try to go under a ribbon without touching it, lowering it each time.",
+      homeConnection: "Use a scarf or towel to practice making shapes in the air.",
+      assessment: "Demonstrates crossing the midline (figure-eights) and spatial awareness.",
+      differentiation: "Easier: Make simple up/down waves. Harder: Choreograph a short sequence of 3 ribbon moves."
+    }
+  ]
+},
+'January': {
+  icon: 'fa-cube',
+  color: 'from-purple-400 to-pink-500',
+  focus: 'Sculpture & Building',
+  skills: ['3D construction', 'Balance', 'Fine motor manipulation', 'Problem-solving'],
+  project: 'Build a recycled material city and complete an obstacle course.',
+  materials: ['Recycled boxes/tubes', 'Tape/Glue', 'Play-dough or clay', 'Pipe cleaners', 'Toothpicks', 'Marshmallows'],
+  weeks: [
+    {
+      title: "Clay Pinch Pots",
+      objective: "Develop hand strength and fine motor skills by manipulating clay.",
+      warmup: "Hand Stretches: Squeeze imaginary lemons, stretch fingers wide, make tight fists.",
+      mainActivity: "Roll air-dry clay or play-dough into a ball. Push thumb into the center and pinch the sides while rotating to form a bowl.",
+      game: "Statues: Move freely until the music stops, then freeze like a solid clay statue. Hold for 10 seconds.",
+      homeConnection: "Help knead bread dough or mix thick cookie dough.",
+      assessment: "Demonstrates the 'pinch and rotate' technique to create a hollow form.",
+      differentiation: "Easier: Make simple snakes or balls. Harder: Add texture to the pot using tools (forks, pencils)."
+    },
+    {
+      title: "Toothpick Towers",
+      objective: "Understand structural balance and geometric shapes.",
+      warmup: "Crane Balance: Stand on one foot, extending arms for balance. Switch legs.",
+      mainActivity: "Connect toothpicks (or dry spaghetti) using mini marshmallows or clay balls to build the tallest stable structure possible.",
+      game: "Bridge Builder: Work together to form a bridge using bodies (planks, downward dog) for a toy car to pass under.",
+      homeConnection: "Look at bridges or towers in your neighborhood and notice the shapes (triangles are strong!).",
+      assessment: "Builds a free-standing 3D structure; demonstrates single-leg balance.",
+      differentiation: "Easier: Build flat 2D shapes (squares, triangles). Harder: Challenge to build a structure that can hold a small toy."
+    },
+    {
+      title: "Recycled Robot",
+      objective: "Repurpose materials and practice joining techniques (tape, glue).",
+      warmup: "Robot Walk: Move with stiff, jerky motions and right angles.",
+      mainActivity: "Use small boxes, toilet paper tubes, and bottle caps. Figure out how to attach them securely to create a robot figure. Paint or wrap in foil.",
+      game: "Nuts and Bolts Relay: Run to grab a 'part' (block or ball) and bring it back to build a team tower.",
+      homeConnection: "Identify items in the recycling bin that could be used for art.",
+      assessment: "Successfully attaches multiple 3D objects together securely.",
+      differentiation: "Easier: Use large amounts of masking tape. Harder: Figure out how to use tabs or slots to connect pieces without tape."
+    },
+    {
+      title: "Paper Sculptures",
+      objective: "Transform 2D paper into 3D forms using folding and rolling.",
+      warmup: "Curl and Stretch: Curl into a tight ball on the floor, then stretch out as wide as possible.",
+      mainActivity: "Cut strips of paper. Practice curling them around a pencil, folding them like accordions, and gluing them onto a base to create a 3D abstract sculpture.",
+      game: "Target Jump: Jump over rolled paper 'logs' of increasing height.",
+      homeConnection: "Practice folding paper airplanes or origami.",
+      assessment: "Demonstrates at least two paper manipulation techniques (curl, fold, fringe).",
+      differentiation: "Easier: Stick to simple paper loops. Harder: Create a specific recognizable object (like a paper playground)."
+    }
+  ]
+},
+'February': {
+  icon: 'fa-star',
+  color: 'from-red-400 to-pink-500',
+  focus: 'Famous Artists Study',
+  skills: ['Art history', 'Various painting techniques', 'Emulating styles', 'Visual analysis'],
+  project: 'Host a mini-gallery showing works inspired by four master artists.',
+  materials: ['Watercolors', 'Heavy paper', 'Construction paper', 'Scissors', 'Cotton swabs', 'Tempera paint'],
+  weeks: [
+    {
+      title: "Monet's Water Lilies",
+      objective: "Explore watercolor techniques and impressionist style.",
+      warmup: "Frog Jumps: Leap from 'lily pad' to 'lily pad' (spots on the floor).",
+      mainActivity: "Use watercolors to paint a pond background (blues/greens) wet-on-wet. Once dry, glue on tissue paper water lilies.",
+      game: "Lily Pad Tag: Safe zones are hoops (lily pads).",
+      homeConnection: "Look at pictures of Claude Monet's garden at Giverny.",
+      assessment: "Experiences wet-on-wet watercolor technique; understands 'impressionism' means a blurry, dreamy picture.",
+      differentiation: "Easier: Focus just on color mixing. Harder: Add a bridge using oil pastels before painting (wax resist)."
+    },
+    {
+      title: "Matisse Cut-Outs",
+      objective: "Create composition entirely through cutting shapes ('drawing with scissors').",
+      warmup: "Scissor Legs: Lie on back and open/close legs like scissors to build core strength.",
+      mainActivity: "Look at Henri Matisse's late work. Cut organic (freeform) shapes from brightly colored paper and arrange/glue them on a contrasting background.",
+      game: "Shape Scramble: Scatter paper shapes. Call out a color/shape for kids to run and stand on.",
+      homeConnection: "Cut shapes out of junk mail or magazines.",
+      assessment: "Uses scissors to create shapes without drawing them first; arranges an intentional composition.",
+      differentiation: "Easier: Draw shapes first, then cut. Harder: Create a recognizable scene (like a garden) using only abstract shapes."
+    },
+    {
+      title: "Kandinsky Circles",
+      objective: "Understand concentric circles and rhythm in visual art.",
+      warmup: "Hula Hoop Spin: Keep a hoop spinning on the waist or arm.",
+      mainActivity: "Fold paper into 4 or 6 squares. In each square, paint or color concentric circles (circles within circles) using contrasting colors, inspired by Wassily Kandinsky.",
+      game: "Circle Pass: Sit in a circle and pass a ball using only feet.",
+      homeConnection: "Find concentric circles in nature (tree rings, ripples in water).",
+      assessment: "Draws/paints circles within circles; understands the concept of contrasting colors.",
+      differentiation: "Easier: Trace circular objects. Harder: Ensure every circle layer uses a complementary color pair."
+    },
+    {
+      title: "Seurat Pointillism",
+      objective: "Learn optical color mixing using small dots.",
+      warmup: "Tip-Toe Tag: Play tag but everyone must stay on their tip-toes.",
+      mainActivity: "Look at Georges Seurat's work. Instead of brushes, use cotton swabs to dab dots of paint. Create an image (like an apple) using only dots.",
+      game: "Target Toss: Try to land beanbags on specific 'dots' (spots) on the floor.",
+      homeConnection: "Look closely at a TV or computer screen to see the tiny pixels (dots).",
+      assessment: "Paints using only dots (stippling) rather than strokes; demonstrates patience and fine motor control.",
+      differentiation: "Easier: Fill in a pre-drawn simple shape. Harder: Place yellow and blue dots next to each other to make it look green from far away."
+    }
+  ]
+},
+'March': {
+  icon: 'fa-music',
+  color: 'from-green-400 to-emerald-500',
+  focus: 'Music & Movement',
+  skills: ['Rhythm recognition', 'Auditory processing', 'Kinesthetic response', 'Pattern creation'],
+  project: 'Choreograph a simple dance routine and perform it with homemade instruments.',
+  materials: ['Empty containers', 'Dried beans/rice', 'Rubber bands', 'Shoeboxes', 'Paper plates', 'Bells'],
+  weeks: [
+    {
+      title: "Body Percussion",
+      objective: "Use the body to create and repeat rhythmic patterns.",
+      warmup: "Simon Says (Rhythm): 'Simon says clap twice, stomp once.'",
+      mainActivity: "Learn a 4-beat body percussion sequence (e.g., pat legs, clap, snap, stomp). Draw symbols to represent the pattern on paper.",
+      game: "Follow the Beat: Walk around the room. Change walking speed to match the drumbeat (fast, slow, stop).",
+      homeConnection: "Make a rhythm while brushing teeth or walking up stairs.",
+      assessment: "Can accurately repeat a 4-beat rhythmic pattern physically.",
+      differentiation: "Easier: 2-beat patterns. Harder: Create their own 8-beat pattern."
+    },
+    {
+      title: "Shoebox Guitars",
+      objective: "Explore vibration and pitch by building a stringed instrument.",
+      warmup: "Rubber Band Stretch: Stretch bodies tall and thin, then relax, mimicking a rubber band.",
+      mainActivity: "Stretch rubber bands of different thicknesses over an open shoebox. Pluck them to hear different pitches. Decorate the box.",
+      game: "High/Low Dance: Reach high when hearing a high pitch, crouch low for a low pitch.",
+      homeConnection: "Listen for high and low sounds in the neighborhood (bird chirp vs. truck engine).",
+      assessment: "Understands that different thickness bands make different sounds (pitch).",
+      differentiation: "Easier: Use a pre-cut box. Harder: Add a paper towel tube 'neck' to the guitar."
+    },
+    {
+      title: "Painting to the Tempo",
+      objective: "Translate auditory tempo into visual art.",
+      warmup: "Tempo Trot: Run fast during fast music, walk slow during slow music.",
+      mainActivity: "Play classical music with dramatic tempo changes. Paint with large arm movements matching the speed and energy of the music.",
+      game: "Musical Statues: Freeze when the music stops, paying attention to sudden stops.",
+      homeConnection: "Talk about fast vs. slow songs on the radio.",
+      assessment: "Artwork visually reflects the energy/tempo of the music played.",
+      differentiation: "Easier: Use large finger painting. Harder: Switch paint colors every time the tempo changes."
+    },
+    {
+      title: "Choreography 101",
+      objective: "Sequence movements together to create a short dance.",
+      warmup: "Joint Warmup: Isolate and rotate ankles, knees, hips, shoulders, and wrists.",
+      mainActivity: "Draw 3 movement cards (e.g., Spin, Jump, Slide). Practice putting them in order. Perform the sequence to a favorite song.",
+      game: "Mirror Dance: Face a partner and try to exactly copy their dance moves in real-time.",
+      homeConnection: "Teach the 3-step dance routine to a family member.",
+      assessment: "Can remember and execute a sequence of 3 distinct gross-motor movements.",
+      differentiation: "Easier: 2-step sequence. Harder: Add specific arm movements to the jumps/slides."
+    }
+  ]
+},
+'April': {
+  icon: 'fa-layer-group',
+  color: 'from-blue-400 to-indigo-500',
+  focus: 'Printmaking & Texture',
+  skills: ['Printmaking techniques', 'Pattern repetition', 'Sensory exploration', 'Process art'],
+  project: 'Create a collaborative printed mural and a portfolio of different print techniques.',
+  materials: ['Washable paint', 'Sponges', 'Apples/Potatoes', 'Bubble wrap', 'Stamps', 'Large paper'],
+  weeks: [
+    {
+      title: "Found Object Stamping",
+      objective: "Understand that objects leave a specific footprint when dipped in paint.",
+      warmup: "Animal Tracks: Move around the room leaving imaginary tracks (bear paws, bird hops).",
+      mainActivity: "Dip various items (Lego bricks, toy cars, bottle caps, forks) in paint and stamp them on paper to explore the shapes they make.",
+      game: "Obstacle Hop: Hop only on the colored spots (stamps) on the floor.",
+      homeConnection: "Look at the bottom of shoes to see the 'stamps' they make in dirt.",
+      assessment: "Can identify an object based on the print it leaves behind.",
+      differentiation: "Easier: Use large objects with handles. Harder: Create a specific picture (like a house) using only stamps."
+    },
+    {
+      title: "Vegetable Prints",
+      objective: "Create repeating patterns using natural stamps.",
+      warmup: "Pattern Play: Create physical patterns (jump, clap, jump, clap).",
+      mainActivity: "Use cut apples, celery stalks, or potatoes as stamps. Dip in paint and create an ABAB or ABC pattern on a long strip of paper.",
+      game: "Relay Race: Run and stamp a paper at the end of the room, return, next person goes.",
+      homeConnection: "Find patterns in clothing or rugs at home.",
+      assessment: "Successfully creates and sustains a recognizable pattern.",
+      differentiation: "Easier: Simple AB pattern. Harder: Create a complex ABC pattern or radial pattern."
+    },
+    {
+      title: "Bubble Wrap Stomp",
+      objective: "Explore sensory texture and gross motor force.",
+      warmup: "Stomp and Tip-toe: Practice heavy stomps vs light, quiet tip-toes.",
+      mainActivity: "Tape bubble wrap to the floor or table. Paint over it, press paper on top, and rub to get a textured print. (Or tape to feet and 'stomp' paint onto a floor mural!).",
+      game: "Bubble Pop: Try to pop specific bubbles on a sheet using only thumb and pointer finger (fine motor).",
+      homeConnection: "Feel different fabrics (corduroy, silk, denim) and describe the texture.",
+      assessment: "Engages in sensory exploration and understands how the bumpy texture transfers.",
+      differentiation: "Easier: Hand-rubbing the prints. Harder: Creating overlapping prints with different colors."
+    },
+    {
+      title: "Monoprinting",
+      objective: "Learn a technique that produces a single, unique print.",
+      warmup: "Mirror Image: Partner activity, copying each other's exact movements.",
+      mainActivity: "Paint a picture directly onto a plastic tray, piece of foil, or smooth table. Carefully press a piece of paper on top and peel back to reveal the single print.",
+      game: "Slippery Slide: If on a smooth floor, slide around in socks to understand 'friction' vs 'smooth'.",
+      homeConnection: "Notice reflections in puddles or mirrors.",
+      assessment: "Understands that monoprints cannot be exactly duplicated and image is reversed.",
+      differentiation: "Easier: Abstract finger painting on the tray. Harder: Use Q-tips to draw into the paint before printing."
+    }
+  ]
+},
+'May': {
+  icon: 'fa-sun',
+  color: 'from-pink-400 to-purple-500',
+  focus: 'Outdoor Art & Photography',
+  skills: ['Light observation', 'Composition', 'Framing', 'Nature appreciation'],
+  project: 'Curate a nature photography and sun-print gallery.',
+  materials: ['Sunprint paper (cyanotype)', 'Digital camera/phone', 'Natural objects', 'Chalk', 'Water', 'Brushes'],
+  weeks: [
+    {
+      title: "Sun Prints (Cyanotypes)",
+      objective: "Understand how UV light affects specialized paper to capture silhouettes.",
+      warmup: "Sun Salutations: Basic yoga stretches reaching up to the sun and down to the toes.",
+      mainActivity: "Arrange leaves, keys, or toys on sunprint paper. Leave in the sun until paper turns white, then rinse in water to reveal the blue print.",
+      game: "Shadow Tag: Step on shadows to tag people out.",
+      homeConnection: "Observe how items left in the sun for a long time might fade.",
+      assessment: "Arranges objects deliberately and understands the cause-effect of sun exposure.",
+      differentiation: "Easier: Place one large object. Harder: Arrange a complex scene telling a story with the objects."
+    },
+    {
+      title: "Water Painting",
+      objective: "Engage in temporary process art while practicing gross motor strokes.",
+      warmup: "Evaporation Dance: Start as a puddle on the floor, slowly rise up like vapor into the sky.",
+      mainActivity: "Use large paintbrushes or rollers and buckets of water to 'paint' the sidewalk or fence. Watch it evaporate and disappear.",
+      game: "Water Relay: Carry water in a sponge to a bucket across the yard.",
+      homeConnection: "Help wash the car or water the plants.",
+      assessment: "Uses large arm movements crossing the midline; observes evaporation.",
+      differentiation: "Easier: Use large rollers. Harder: Try to 'write' letters or names before they dry."
+    },
+    {
+      title: "Chalk Shadows",
+      objective: "Track the movement of the sun through tracing over time.",
+      warmup: "Clock Faces: Stand in center and jump to face 12, 3, 6, and 9 o'clock.",
+      mainActivity: "Trace a friend's shadow with chalk on the driveway in the morning. Return at lunch and in the afternoon to trace it again in different colors.",
+      game: "Hopscotch: Draw and play a traditional hopscotch game to practice balance and hopping.",
+      homeConnection: "Look for shadows inside the house at night using a flashlight.",
+      assessment: "Recognizes that shadows change length and direction based on the sun's position.",
+      differentiation: "Easier: Trace a stationary object like a toy. Harder: Add internal details to the chalk outline."
+    },
+    {
+      title: "Nature Framing (Photography)",
+      objective: "Learn basic composition by framing a subject.",
+      warmup: "Binocular Walk: Make 'binoculars' with hands and only look through them during a walk.",
+      mainActivity: "Cut a rectangular 'frame' out of cardboard. Go outside and hold it up to find interesting compositions. Use a phone/camera to take photos through the frame.",
+      game: "I Spy: Play 'I Spy' focusing on small details in the environment.",
+      homeConnection: "Take a photo of a favorite toy using the 'rule of thirds' (not right in the middle).",
+      assessment: "Selects a specific subject to focus on rather than random capturing.",
+      differentiation: "Easier: Just use the cardboard frame. Harder: Actually use a camera to capture the framed image."
+    }
+  ]
+},
+'June': {
+  icon: 'fa-trophy',
+  color: 'from-amber-400 to-orange-500',
+  focus: 'Art Show & Field Day',
+  skills: ['Curation', 'Reflection', 'Teamwork', 'Culminating physical skills'],
+  project: 'Host an end-of-year art exhibition and family field day.',
+  materials: ['Artwork from year', 'Tape/Pins', 'Cardboard', 'Markers', 'Cones', 'Balls', 'Hula hoops'],
+  weeks: [
+    {
+      title: "Portfolio Curation",
+      objective: "Reflect on past work and select pieces for exhibition.",
+      warmup: "Memory Game: Teacher does 3 actions, students repeat from memory.",
+      mainActivity: "Review art saved throughout the year. Have the child pick their top 3 favorites and talk about WHY they like them. Create simple name tags for the pieces.",
+      game: "Clean Up Relay: Practice sorting and organizing materials quickly into the right bins.",
+      homeConnection: "Ask parents to share their favorite piece of art the child made this year.",
+      assessment: "Expresses a personal preference and provides a simple reason.",
+      differentiation: "Easier: Teacher pre-selects 5, child picks 2. Harder: Child writes the title card for the artwork."
+    },
+    {
+      title: "Collaborative Mural",
+      objective: "Work together to create a large-scale piece combining multiple skills.",
+      warmup: "Parachute Play: Work together with a sheet or parachute to bounce soft balls.",
+      mainActivity: "Roll out a huge piece of paper. Work together to paint, draw, and stamp a giant summer scene (beach, park, or space).",
+      game: "Over/Under Relay: Pass a ball overhead, then through legs, down a line of people.",
+      homeConnection: "Draw a picture with a sibling or parent, taking turns adding details.",
+      assessment: "Shares space and materials cooperatively with others.",
+      differentiation: "Easier: Assign a specific section to paint. Harder: Negotiate with peers on what to add to the mural."
+    },
+    {
+      title: "Field Day Prep",
+      objective: "Practice gross motor skills (throwing, jumping, running) for field day.",
+      warmup: "Dynamic Stretching: High knees, butt kicks, arm circles.",
+      mainActivity: "Set up practice stations: Beanbag toss (underhand throw), broad jump (two-foot takeoff/landing), and a short sprint.",
+      game: "Red Rover or Tug-of-War: Classic games focusing on teamwork and strength.",
+      homeConnection: "Practice throwing a ball underhand and overhand in the yard.",
+      assessment: "Demonstrates mature form in at least one fundamental motor skill (run, jump, throw).",
+      differentiation: "Easier: Decrease distances for throws/jumps. Harder: Add targets or obstacles to the stations."
+    },
+    {
+      title: "Exhibition & Celebration",
+      objective: "Celebrate achievements in both visual arts and physical education.",
+      warmup: "Victory Dance: Freestyle dance to a favorite upbeat song.",
+      mainActivity: "Set up the 'gallery' and host a walkthrough. Then, complete a fun, non-competitive obstacle course combining all the physical skills learned this year.",
+      game: "Award Ceremony: Hand out certificates. Everyone gets a chance to stand on a 'podium' (sturdy box).",
+      homeConnection: "Hang a favorite piece of art in a permanent frame at home.",
+      assessment: "Participates with confidence and pride in their work and physical abilities.",
+      differentiation: "Easier: Walk through the course with a guide. Harder: Time the obstacle course for a personal best."
+    }
+  ]
+}
+};
+
+let completed=JSON.parse(localStorage.getItem('art-57-done')||'{}');
+function saveProgress(){localStorage.setItem('art-57-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('art-57-done',JSON.stringify(completed));}
+
+function initCurriculum(){
+  const tabsContainer=document.getElementById('monthTabs');
+  const contentContainer=document.getElementById('monthContent');
+  let firstMonth=Object.keys(curriculumData)[0];
+  let currentMonth=localStorage.getItem('art-57-month')||firstMonth;
+
+  function renderTabs(){
+    tabsContainer.innerHTML='';
+    Object.keys(curriculumData).forEach(month=>{
+      const btn=document.createElement('button');
+      btn.className='month-tab '+(month===currentMonth?'active':'');
+      btn.innerText=month;
+      btn.onclick=()=> { currentMonth=month; saveProgress(); renderTabs(); renderContent(); };
+      tabsContainer.appendChild(btn);
+    });
+  }
+
+  function renderContent(){
+    const data=curriculumData[currentMonth];
+    let skillsHtml = data.skills.map(s=> '<span style="display:inline-block;padding:4px 10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;font-size:12px;margin:0 6px 6px 0;color:var(--ct2);">'+s+'</span>').join('');
+
+    let weeksHtml = data.weeks.map((w,i)=>{
+      const wid=currentMonth+'-'+i;
+      const isDone=!!completed[wid];
+      const wt = typeof w === 'string' ? w : w.title;
+      const wo = typeof w === 'string' ? '' : w.objective;
+      const ww = typeof w === 'string' ? '' : w.warmup;
+      const wm = typeof w === 'string' ? '' : w.mainActivity;
+      const wg = typeof w === 'string' ? '' : w.game;
+      const wh = typeof w === 'string' ? '' : w.homeConnection;
+      const wa = typeof w === 'string' ? '' : w.assessment;
+      const wd = typeof w === 'string' ? '' : w.differentiation;
+      const hasDetail = ww || wm;
+      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
+    }).join('');
+
+    let materialsHtml = data.materials.map(m=> '<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"><\/i><span style="font-size:13px;color:var(--ct4);">'+m+'<\/span><\/div>').join('');
+
+    contentContainer.innerHTML='<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;"><div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 16px rgba(236,72,153,0.25);"><i class="fas '+data.icon+'"><\/i><\/div><div><h3 style="font-size:20px;font-weight:800;color:var(--ct);">'+currentMonth+'<\/h3><p style="font-size:14px;color:var(--ct5);font-weight:500;">'+data.focus+'<\/p><\/div><\/div><div class="month-grid"><div><div style="margin-bottom:20px;"><p class="section-label" style="margin-bottom:10px;">Monthly Goals<\/p><div>'+skillsHtml+'<\/div><\/div><div style="display:flex;flex-direction:column;gap:12px;">'+weeksHtml+'<\/div><\/div><div><div class="sched-card" style="margin-bottom:16px;"><p class="section-label"><i class="fas fa-star" style="color:var(--a1);margin-right:6px;"><\/i>Monthly Project<\/p><p style="font-size:14px;color:var(--ct3);line-height:1.6;">'+data.project+'<\/p><\/div><div class="sched-card"><p class="section-label"><i class="fas fa-box-open" style="color:var(--a1);margin-right:6px;"><\/i>Materials Needed<\/p><div style="margin-top:12px;">'+materialsHtml+'<\/div><\/div><div class="sched-card" style="margin-top:16px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><p class="section-label" style="margin-bottom:0;">Year Progress<\/p><span style="font-size:12px;font-weight:700;color:var(--a1);" id="progress-text">0 of 0 weeks completed<\/span><\/div><div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%;"><\/div><\/div><\/div><div style="display:flex;gap:10px;margin-top:16px;"><button onclick="prevMonth()" style="flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.03);color:var(--ct);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background=\'rgba(255,255,255,0.06)\'" onmouseout="this.style.background=\'rgba(255,255,255,0.03)\'"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:11px;"><\/i> Prev Month<\/button><button onclick="nextMonth()" style="flex:1;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--a1),var(--a2));color:white;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(236,72,153,0.2);transition:all 0.2s;" onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'">Next Month <i class="fas fa-chevron-right" style="margin-left:6px;font-size:11px;"><\/i><\/button><\/div><\/div><\/div>';
+    updateProgress();
+  }
+
+  renderTabs();
+  renderContent();
+}
+
+window.toggleWeek = function(index) {
+  const detail = document.getElementById('detail-'+index);
+  const icon = document.getElementById('icon-'+index);
+  if(detail.classList.contains('open')) { detail.classList.remove('open'); icon.style.transform = 'rotate(0deg)'; }
+  else { detail.classList.add('open'); icon.style.transform = 'rotate(180deg)'; }
+}
+
+window.toggleCheck = function(event, index, wid) {
+  event.stopPropagation();
+  const btn = event.currentTarget;
+  const row = document.getElementById('week-'+index);
+  completed[wid]=!completed[wid];
+  const isDone=completed[wid];
+  btn.classList.toggle('done',isDone);
+  btn.innerHTML=isDone?'<i class="fas fa-check"><\/i>':'';
+  row.classList.toggle('completed',isDone);
+  saveProgress();
+  updateProgress();
+}
+
+window.updateProgress = function() {
+  const months = Object.keys(curriculumData);
+  const total = months.reduce((s,m)=>s+curriculumData[m].weeks.length,0);
+  const done = Object.values(completed).filter(Boolean).length;
+  const pct = Math.round((done/total)*100);
+  const fill = document.getElementById('progress-fill');
+  const text = document.getElementById('progress-text');
+  if(fill) fill.style.width = pct + '%';
+  if(text) text.innerText = done + ' of ' + total + ' weeks completed';
+}
+
+window.prevMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx > 0) document.querySelectorAll('.month-tab')[currIdx-1].click();
+}
+
+window.nextMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx < months.length-1) document.querySelectorAll('.month-tab')[currIdx+1].click();
+}
+
+document.addEventListener('DOMContentLoaded', () => { initCurriculum(); });
+</script>
+<script src="paywall.js"></script>
+</body>
+</html>

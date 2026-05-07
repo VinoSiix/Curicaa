@@ -1,7 +1,7 @@
 {
   "framework": null,
   "installCommand": "true",
-  "buildCommand": "node build.js",
+  "buildCommand": "true",
   "outputDirectory": "public-curriculum-v2",
   "cleanUrls": true
 }
