@@ -32,7 +32,7 @@
         Continue with free preview\
       </button>\
       <div style="text-align:center;margin-top:16px;font-size:11px;color:rgba(255,255,255,0.25);">\
-        <i class="fas fa-shield-alt" style="margin-right:4px;"></i>One-time payment · Instant access\
+        <i class="fas fa-shield-alt" style="margin-right:4px;"></i>Cancel anytime · Instant access\
       </div>\
     </div>';
   document.body.appendChild(modal);

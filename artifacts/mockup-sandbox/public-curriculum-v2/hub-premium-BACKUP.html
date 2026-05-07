@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete K-12 Homeschool Curriculum — Curicaa | $129/Year Family Plan</title>
+    <title>Curicaa - Educational Pathways</title>
+    <script src="assets/tailwind.js"></script>
     <link rel="stylesheet" href="assets/font-awesome.css">
     <link rel="stylesheet" href="assets/fonts/inter.css">
     <meta name="description" content="Complete K-12 homeschool curriculum. 320+ weeks of lesson plans from age 5 to SAT prep. Zero prep required, works offline. Starting at $129/year.">
@@ -11,14 +12,8 @@
     <meta property="og:description" content="Full year of lesson plans for every grade. Designed by parents, for parents. No teaching degree required.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://curicaa.com">
-    <meta property="og:image" content="https://curicaa.com/og-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Curicaa — Complete K-12 Homeschool Curriculum">
-    <meta name="twitter:description" content="Full year of lesson plans for every grade. $129/year for the whole family.">
-    <meta name="twitter:image" content="https://curicaa.com/og-image.jpg">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://curicaa.com">
-    <link rel="icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="assets/hub-premium.css">
     <script type="application/ld+json">
     {
@@ -27,11 +22,6 @@
         "name": "Curicaa",
         "description": "Complete K-12 homeschool curriculum with 320+ weeks of lesson plans.",
         "url": "https://curicaa.com",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "2400"
-        },
         "offers": {
             "@type": "Offer",
             "price": "129",
@@ -40,24 +30,8 @@
         }
     }
     </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {"@type": "Question", "name": "Is this a subscription?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — but with no long-term commitment. Choose monthly or annual billing. Cancel anytime."}},
-            {"@type": "Question", "name": "What happens if I cancel?", "acceptedAnswer": {"@type": "Answer", "text": "You keep full access through the end of your current billing period. No penalties."}},
-            {"@type": "Question", "name": "Do I need to be a teacher to use this?", "acceptedAnswer": {"@type": "Answer", "text": "Not at all. Every lesson includes step-by-step parent guides."}},
-            {"@type": "Question", "name": "What materials do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Most activities use common household items. We design for low-budget, accessible learning."}},
-            {"@type": "Question", "name": "Is there a money-back guarantee?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Full 30-day money-back guarantee."}},
-            {"@type": "Question", "name": "Can I switch from monthly to annual?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Upgrade anytime from account settings with prorated billing."}},
-            {"@type": "Question", "name": "What if I have multiple children in different grades?", "acceptedAnswer": {"@type": "Answer", "text": "The Full K-12 Bundle gives access to all 8 grade levels for the whole family."}}
-        ]
-    }
-    </script>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
     <div class="bg-orb bg-orb-3"></div>
@@ -82,12 +56,12 @@
             </div>
 
             <!-- Nav links (center) -->
-            <nav id="desktopNav" style="display:flex;align-items:center;gap:2px;position:absolute;left:50%;transform:translateX(-50%);" aria-label="Main navigation">
-                <button class="nav-link" onclick="window.scrollTo({top:0,behavior:'smooth'})">How It Works</button>
-                <button class="nav-link" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</button>
-                <button class="nav-link" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})">Reviews</button>
-                <button class="nav-link" id="navPricingLink" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</button>
-                <button class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</button>
+            <nav id="desktopNav" style="display:flex;align-items:center;gap:2px;position:absolute;left:50%;transform:translateX(-50%);">
+                <a class="nav-link" onclick="window.scrollTo({top:0,behavior:'smooth'})">How It Works</a>
+                <a class="nav-link" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                <a class="nav-link" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})">Reviews</a>
+                <a class="nav-link" id="navPricingLink" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
+                <a class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
             </nav>
 
             <!-- Right side -->
@@ -98,7 +72,7 @@
 
                 <!-- Auth: Logged out -->
                 <div id="authLoggedOut" style="display:flex;align-items:center;gap:8px;">
-                    <button class="nav-link" onclick="openLoginModal()" style="font-weight:600;color:var(--text-nav);">Log In</button>
+                    <a class="nav-link" onclick="openLoginModal()" style="font-weight:600;color:var(--text-nav);">Log In</a>
                     <a class="nav-cta-solid" onclick="openSignupModal()">
                         Start Free <i class="fas fa-arrow-right" style="font-size:11px;"></i>
                     </a>
@@ -119,16 +93,16 @@
                                     <i class="fas fa-circle" style="font-size:5px;"></i> Free Plan
                                 </div>
                             </div>
-                            <button id="upgradePlanLink" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});toggleUserMenu();" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-primary);cursor:pointer;transition:background 0.15s;text-decoration:none;background:transparent;border:none;width:100%;text-align:left;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='transparent'">
+                            <a id="upgradePlanLink" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});toggleUserMenu();" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-primary);cursor:pointer;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='transparent'">
                                 <i class="fas fa-crown" style="font-size:12px;color:#fbbf24;width:16px;text-align:center;"></i> Upgrade Plan
-                            </button>
-                            <button onclick="openSettings()" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-primary);cursor:pointer;transition:background 0.15s;text-decoration:none;background:transparent;border:none;width:100%;text-align:left;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='transparent'">
+                            </a>
+                            <a onclick="openSettings()" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-primary);cursor:pointer;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='transparent'">
                                 <i class="fas fa-cog" style="font-size:12px;color:var(--text-muted);width:16px;text-align:center;"></i> Settings
-                            </button>
+                            </a>
                             <div style="height:1px;background:var(--border-faint);margin:4px 0;"></div>
-                            <button onclick="handleLogout()" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:#f87171;cursor:pointer;transition:background 0.15s;text-decoration:none;background:transparent;border:none;width:100%;text-align:left;" onmouseover="this.style.background='rgba(248,113,113,0.08)'" onmouseout="this.style.background='transparent'">
+                            <a onclick="handleLogout()" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:#f87171;cursor:pointer;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='rgba(248,113,113,0.08)'" onmouseout="this.style.background='transparent'">
                                 <i class="fas fa-sign-out-alt" style="font-size:12px;width:16px;text-align:center;"></i> Log Out
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -136,17 +110,17 @@
         </div>
         <!-- Mobile Nav Overlay -->
         <div id="mobileNavOverlay" class="mobile-nav-overlay" onclick="toggleMobileMenu()">
-            <nav class="mobile-nav-content" onclick="event.stopPropagation()" aria-label="Mobile navigation">
+            <nav class="mobile-nav-content" onclick="event.stopPropagation()">
                 <div style="display:flex;justify-content:flex-end;margin-bottom:20px;">
                     <button onclick="toggleMobileMenu()" style="width:34px;height:34px;border-radius:8px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-icon-btn);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)';this.style.color='var(--text-primary)'" onmouseout="this.style.background='var(--bg-subtle)';this.style.color='var(--text-icon-btn)'">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
                 <div style="display:flex;flex-direction:column;gap:15px;align-items:center;">
-                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('pathways').scrollIntoView({behavior:'smooth'})" href="#">Pathways</a>
-                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('features').scrollIntoView({behavior:'smooth'})" href="#">Features</a>
-                    <a class="mobile-nav-link" id="mobilePricingLink" onclick="toggleMobileMenu(); document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" href="#">Pricing</a>
-                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('about').scrollIntoView({behavior:'smooth'})" href="#">About</a>
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('features').scrollIntoView({behavior:'smooth'})">Features</a>
+                    <a class="mobile-nav-link" id="mobilePricingLink" onclick="toggleMobileMenu(); document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
                     <div style="height:1px;width:60px;background:var(--border-faint);margin:4px 0;"></div>
                     <div id="mobileAuthOut">
                         <a class="mobile-nav-link" onclick="toggleMobileMenu(); openLoginModal()">Log In</a>
@@ -162,7 +136,7 @@
 
     </header>
 
-    <main id="main-content" style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:64px 20px 88px;">
+    <main style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:64px 20px 88px;">
 
         <!-- Hero -->
         <section style="text-align:center;margin-bottom:80px;" class="reveal">
@@ -186,7 +160,9 @@
                 <a class="nav-cta-solid" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})" style="padding:14px 32px;font-size:15px;border-radius:14px;box-shadow:0 4px 24px rgba(245,158,11,0.4);">
                     Start Learning Free <i class="fas fa-arrow-right" style="font-size:12px;margin-left:4px;"></i>
                 </a>
-
+                <a class="nav-cta" id="heroPricingBtn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" style="padding:14px 28px;font-size:15px;border-radius:14px;">
+                    <i class="fas fa-play-circle" style="font-size:13px;"></i> See Pricing
+                </a>
             </div>
 
 
@@ -256,11 +232,203 @@
                 <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Curriculum Pathways</h2>
             </div>
 
-            <!-- Row 1: 4 cards (rendered from data) -->
-            <div id="pathwayGrid1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;" class="reveal"></div>
+            <!-- Row 1: 4 cards -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;" class="reveal">
+                <div class="card card-purple" onclick="openSubjectModal('ages-5-7')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#a855f7,#ec4899);">
+                        <i class="fas fa-child" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#d8b4fe;">Level 1</h3>
+                        <div class="age-badge" style="color:#c4b5fd;">Ages 5–7</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Foundation building</p>
+                            <ul>
+                                <li><span class="dot" style="background:#a855f7;"></span>Basic reading</li>
+                                <li><span class="dot" style="background:#a855f7;"></span>Number sense</li>
+                                <li><span class="dot" style="background:#a855f7;"></span>Science discovery</li>
+                                <li><span class="dot" style="background:#a855f7;"></span>Creative arts</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#4ade80;"></i>First month free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#a855f7,#ec4899);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
 
-            <!-- Row 2: 4 cards (rendered from data) -->
-            <div id="pathwayGrid2" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="reveal"></div>
+                <div class="card card-blue" onclick="openSubjectModal('age-8')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);">
+                        <i class="fas fa-star" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#93c5fd;">Level 2</h3>
+                        <div class="age-badge" style="color:#93c5fd;">Age 8</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Skill development</p>
+                            <ul>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Fluent reading</li>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Multiplication</li>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Scientific method</li>
+                                <li><span class="dot" style="background:#3b82f6;"></span>Art techniques</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#4ade80;"></i>First month free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-green" onclick="openSubjectModal('age-9')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#10b981,#34d399);">
+                        <i class="fas fa-book" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#6ee7b7;">Level 3</h3>
+                        <div class="age-badge" style="color:#6ee7b7;">Age 9</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Knowledge expansion</p>
+                            <ul>
+                                <li><span class="dot" style="background:#10b981;"></span>Comprehension</li>
+                                <li><span class="dot" style="background:#10b981;"></span>Division</li>
+                                <li><span class="dot" style="background:#10b981;"></span>Lab reports</li>
+                                <li><span class="dot" style="background:#10b981;"></span>Creative projects</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#4ade80;"></i>First month free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#10b981,#34d399);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-orange" onclick="openSubjectModal('age-10')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#f97316,#ef4444);">
+                        <i class="fas fa-rocket" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fdba74;">Level 4</h3>
+                        <div class="age-badge" style="color:#fdba74;">Age 10</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Advanced basics</p>
+                            <ul>
+                                <li><span class="dot" style="background:#f97316;"></span>Essay writing</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Fractions/decimals</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Research skills</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Art analysis</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#4ade80;"></i>First month free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#f97316,#ef4444);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: 4 cards -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="reveal">
+                <div class="card card-indigo" onclick="openSubjectModal('ages-11-12')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">
+                        <i class="fas fa-brain" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#a5b4fc;">Middle School</h3>
+                        <div class="age-badge" style="color:#a5b4fc;">Ages 11–12</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Preparation focus</p>
+                            <ul>
+                                <li><span class="dot" style="background:#6366f1;"></span>Research essays</li>
+                                <li><span class="dot" style="background:#6366f1;"></span>Pre-algebra</li>
+                                <li><span class="dot" style="background:#6366f1;"></span>Advanced labs</li>
+                                <li><span class="dot" style="background:#6366f1;"></span>Digital arts</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#4ade80;"></i>First month free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-red" onclick="openSubjectModal('age-14')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#ef4444,#ec4899);">
+                        <i class="fas fa-graduation-cap" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fca5a5;">High School</h3>
+                        <div class="age-badge" style="color:#fca5a5;">Age 14</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Critical thinking</p>
+                            <ul>
+                                <li><span class="dot" style="background:#ef4444;"></span>Algebra I</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>9th Grade English</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>Biology</li>
+                                <li><span class="dot" style="background:#ef4444;"></span>Social Studies</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#4ade80;"></i>First month free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#ef4444,#ec4899);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-yellow" onclick="openSubjectModal('ages-15-16')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#eab308,#f97316);">
+                        <i class="fas fa-certificate" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fde047;">GED</h3>
+                        <div class="age-badge" style="color:#fde047;">Ages 15–16</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">GED preparation</p>
+                            <ul>
+                                <li><span class="dot" style="background:#eab308;"></span>English</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Science</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Math</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Social Studies</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#4ade80;"></i>First month free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#eab308,#f97316);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-teal" onclick="openSubjectModal('ages-17-18')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#06b6d4,#22d3ee);">
+                        <i class="fas fa-trophy" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#67e8f9;">SAT</h3>
+                        <div class="age-badge" style="color:#67e8f9;">Ages 17–18</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">SAT preparation</p>
+                            <ul>
+                                <li><span class="dot" style="background:#06b6d4;"></span>SAT Math</li>
+                                <li><span class="dot" style="background:#06b6d4;"></span>Reading & Writing</li>
+                                <li><span class="dot" style="background:#06b6d4;"></span>Test Strategies & Pacing</li>
+                                <li><span class="dot" style="background:#06b6d4;"></span>Full Practice Tests</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#4ade80;"></i>First month free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#06b6d4,#22d3ee);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
 
 
@@ -272,7 +440,116 @@
                 <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.025em;">Platform Features</h2>
                 <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Everything you need to teach confidently at home.</p>
             </div>
-            <div id="featureGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;"></div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;">
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-calendar-alt" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Done-For-You Lesson Plans</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">10 months, week by week</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-check-circle" style="color:#4ade80;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Zero Prep Required</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Open and teach instantly</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-wifi" style="color:#22d3ee;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Works Offline</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">No internet needed to teach</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-mobile-alt" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Any Device, Anywhere</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Phone, tablet, or laptop</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-chalkboard-teacher" style="color:#f59e0b;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Parent-Friendly Guides</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Step-by-step for non-teachers</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-dollar-sign" style="color:#fb923c;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Household Materials Only</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">No expensive supplies to buy</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-chart-line" style="color:#22d3ee;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Track Your Child's Growth</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Built-in progress & assessments</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-layer-group" style="color:#f472b6;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Adapts to Every Learner</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Easier & harder options included</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-flask" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Hands-On Science Experiments</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Real learning, real fun</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-book-open" style="color:#60a5fa;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Curated Reading Lists</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Age-matched book suggestions</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-music" style="color:#f87171;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Art & Music Integrated</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Creativity in every unit</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-award" style="color:#2dd4bf;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Celebrate Every Milestone</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Badges & achievements</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- What You Get -->
@@ -282,7 +559,43 @@
                 <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">What You Get</h2>
                 <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">A complete K–12 curriculum — ready to teach, ready to learn.</p>
             </div>
-            <div id="statsGrid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:960px;margin:0 auto;"></div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:960px;margin:0 auto;">
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(251,191,36,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(251,191,36,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-calendar-week" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#fbbf24;">320<span style="font-size:20px;">+</span></div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Weeks of Lessons</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(103,232,249,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(103,232,249,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-book-open" style="color:#67e8f9;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#67e8f9;">32</div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Subjects Covered</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(74,222,128,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(74,222,128,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-graduation-cap" style="color:#4ade80;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#4ade80;">8</div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Grade Levels</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(251,191,36,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(251,191,36,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-sync-alt" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#fbbf24;">2</div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Flexible Plans</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(244,114,182,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(244,114,182,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-wifi" style="color:#f472b6;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#f472b6;">100<span style="font-size:20px;">%</span></div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Offline Ready</div>
+                </div>
+            </div>
         </section>
 
         <!-- Testimonials -->
@@ -294,6 +607,98 @@
             <div class="carousel-wrap" id="reviewCarousel">
                 <button class="carousel-arrow carousel-arrow-left" onclick="slideCarousel(-1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
                 <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"We've tried so many curriculum options and this is the first one that actually feels designed for real families. My daughter asks to do her lessons now."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Sarah Mitchell</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Austin, TX · Homeschooling 2 kids, ages 6 &amp; 9</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"The weekly breakdowns are a lifesaver. I open the page on Monday morning and everything is laid out. No prep stress, no guessing."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">David Ramirez</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Denver, CO · Dad of a 10-year-old</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"As a single mom on a tight budget, the fact that this uses household materials for science experiments means everything. Quality education without breaking the bank."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Maria Lopez</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Miami, FL · Homeschooling since 2023</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="far fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"I pulled my son out of public school mid-year and was panicking about curriculum. This gave me everything I needed from day one. The parent guides are incredible — I just wish there were more video lessons."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Jessica Thompson</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Portland, OR · Mom of a 7th grader</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"My kids love the science experiments. Last week we built a volcano with baking soda and vinegar — they talked about it for three days. Real learning, real fun."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Marcus Williams</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Atlanta, GA · Dad of twins, age 8</div>
+                    </div>
+
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"We're a military family and move a lot. Having a complete curriculum that works offline and doesn't depend on a school district has been a game-changer for us."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Angela Patterson</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Fort Bragg, NC · Military spouse, 2 kids ages 5 &amp; 11</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"The SAT prep section alone is worth the price. My son's practice scores went up 120 points in six weeks. The pacing strategies really work."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Linda Chen</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Chicago, IL · Son preparing for college</div>
+                    </div>
                 </div>
                 <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel(1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
             </div>
@@ -433,7 +838,7 @@
             </div>
             <!-- Trust bar -->
             <div style="text-align:center;margin-top:28px;font-size:12px;color:var(--text-muted);display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
-                <span><i class="fas fa-bolt" style="margin-right:5px;color:#4ade80;"></i>Instant Access</span>
+                <span><i class="fas fa-lock" style="margin-right:5px;color:#4ade80;"></i>Secure Checkout</span>
                 <span><i class="fas fa-times-circle" style="margin-right:5px;color:#4ade80;"></i>Cancel Anytime</span>
                 <span><i class="fas fa-bolt" style="margin-right:5px;color:#4ade80;"></i>Instant Access</span>
             </div>
@@ -450,45 +855,63 @@
             <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--text-muted);">Join 2,400+ families who chose Curicaa this year</p>
         </section>
 
-        <!-- How We Compare -->
-        <section class="reveal" style="margin-top:88px;margin-bottom:88px;">
-            <div style="text-align:center;margin-bottom:44px;">
-                <p class="section-label">Honest comparison</p>
-                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">How We Compare</h2>
-                <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">See how Curicaa stacks up against the most popular options.</p>
-            </div>
-            <div style="max-width:860px;margin:0 auto;overflow-x:auto;">
-                <table style="width:100%;border-collapse:separate;border-spacing:0;font-size:13px;background:var(--bg-card);border:1px solid var(--border-card);border-radius:16px;overflow:hidden;">
-                    <thead>
-                        <tr style="background:rgba(255,255,255,0.03);">
-                            <th style="padding:14px 16px;text-align:left;font-weight:600;color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--border-faint);"></th>
-                            <th style="padding:14px 16px;text-align:center;font-weight:700;color:#fbbf24;border-bottom:1px solid var(--border-faint);">Curicaa</th>
-                            <th style="padding:14px 16px;text-align:center;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);">Time4Learning</th>
-                            <th style="padding:14px 16px;text-align:center;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);">Khan Academy</th>
-                            <th style="padding:14px 16px;text-align:center;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);">Easy Peasy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td style="padding:12px 16px;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);font-weight:500;">Price (1 child/yr)</td><td style="padding:12px 16px;text-align:center;color:#fbbf24;font-weight:700;border-bottom:1px solid var(--border-faint);background:rgba(251,191,36,0.04);">$129</td><td style="padding:12px 16px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--border-faint);">$479</td><td style="padding:12px 16px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--border-faint);">$0</td><td style="padding:12px 16px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--border-faint);">$0</td></tr>
-                        <tr><td style="padding:12px 16px;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);font-weight:500;">Price (3 kids/yr)</td><td style="padding:12px 16px;text-align:center;color:#fbbf24;font-weight:700;border-bottom:1px solid var(--border-faint);background:rgba(251,191,36,0.04);">$129</td><td style="padding:12px 16px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--border-faint);">~$893</td><td style="padding:12px 16px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--border-faint);">$0</td><td style="padding:12px 16px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--border-faint);">$0</td></tr>
-                        <tr><td style="padding:12px 16px;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);font-weight:500;">Family pricing</td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td></tr>
-                        <tr><td style="padding:12px 16px;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);font-weight:500;">Complete curriculum</td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td></tr>
-                        <tr><td style="padding:12px 16px;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);font-weight:500;">Secular</td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td></tr>
-                        <tr><td style="padding:12px 16px;color:var(--text-secondary);border-bottom:1px solid var(--border-faint);font-weight:500;">Household materials</td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td><td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--border-faint);"><i class="fas fa-check" style="color:#4ade80;"></i></td></tr>
-                        <tr><td style="padding:12px 16px;color:var(--text-secondary);font-weight:500;">Works offline</td><td style="padding:12px 16px;text-align:center;background:rgba(251,191,36,0.04);"><i class="fas fa-check" style="color:#4ade80;"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-minus" style="color:rgba(255,255,255,0.15);"></i></td><td style="padding:12px 16px;text-align:center;"><i class="fas fa-check" style="color:#4ade80;"></i></td></tr>
-                    </tbody>
-                </table>
-                <p style="text-align:center;font-size:11px;color:var(--text-very-faint);margin-top:12px;">Prices based on publicly available data as of 2026. Competitor prices may vary.</p>
-            </div>
-        </section>
-
         <!-- FAQ -->
         <section id="faq" class="reveal" style="margin-top:88px;margin-bottom:88px;">
             <div style="text-align:center;margin-bottom:44px;">
                 <p class="section-label">Common questions</p>
                 <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Frequently Asked Questions</h2>
             </div>
-            <div id="faqContainer" style="max-width:680px;margin:0 auto;"></div>
+            <div style="max-width:680px;margin:0 auto;">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Is this a subscription?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Yes — but with no long-term commitment. Choose monthly or annual billing. You can cancel anytime, and you'll keep access through the end of your billing period. No hidden fees, no contracts.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What happens if I cancel?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">You keep full access through the end of your current billing period. No partial charges, no penalties. Your progress is saved in case you want to come back later.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What if I have multiple children in different grades?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">The Full K–12 Bundle is perfect for families with multiple kids. You get access to all 8 grade levels, so each child can work at their own pace.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Can I switch from monthly to annual?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Absolutely. You can upgrade to annual billing at any time from your account settings. We'll prorate the difference so you never overpay.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Do I need to be a teacher to use this?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Not at all. Every lesson includes step-by-step parent guides, warm-up activities, and assessment tips. If you can read, you can teach with this.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What materials do I need?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Most activities use common household items like paper, pencils, measuring cups, and kitchen supplies. We specifically design for low-budget, accessible learning.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Is there a money-back guarantee?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Yes. We offer a full 30-day money-back guarantee. If you're not satisfied for any reason, just let us know and we'll refund your purchase.</div>
+                </div>
+            </div>
         </section>
 
         <!-- About -->
@@ -552,7 +975,7 @@
         </section>
     </main>
 
-    <footer style="position:relative;z-index:1;border-top:1px solid var(--border-subtle);margin-top:80px;padding:28px 20px;background:rgba(0,0,0,0.25);" aria-label="Footer">
+    <footer style="position:relative;z-index:1;border-top:1px solid var(--border-subtle);margin-top:80px;padding:28px 20px;background:rgba(0,0,0,0.25);">
         <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
             <div style="display:flex;align-items:center;gap:8px;">
                 <div style="width:26px;height:26px;background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:7px;display:flex;align-items:center;justify-content:center;">
@@ -562,15 +985,15 @@
             </div>
             <p style="font-size:12px;color:var(--text-very-faint);text-align:center;">Made with ♥ for homeschooling families everywhere</p>
             <div style="display:flex;gap:16px;">
-                <a class="nav-link" style="font-size:12px;" href="#" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'});return false;">Pathways</a>
-                <a class="nav-link" id="footerPricingLink" style="font-size:12px;" href="#" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false;">Pricing</a>
-                <a class="nav-link" style="font-size:12px;" href="#" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});return false;">About</a>
+                <a class="nav-link" style="font-size:12px;" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                <a class="nav-link" id="footerPricingLink" style="font-size:12px;" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
+                <a class="nav-link" style="font-size:12px;" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
             </div>
         </div>
     </footer>
 
     <!-- Subject Modal (original) -->
-    <div id="subjectModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="handleOverlayClick(event)">
+    <div id="subjectModal" class="modal-overlay" onclick="handleOverlayClick(event)">
         <div class="modal-box">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
                 <div>
@@ -618,7 +1041,7 @@
     </div>
 
     <!-- Checkout Modal -->
-    <div id="checkoutModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle" onclick="if(event.target===this)closeCheckout()">
+    <div id="checkoutModal" class="modal-overlay" onclick="if(event.target===this)closeCheckout()">
         <div class="modal-box" style="max-width:440px;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
                 <div>
@@ -634,32 +1057,66 @@
             <!-- Grade selector (single grade only) -->
             <div id="gradeSelector" style="display:none;margin-bottom:16px;">
                 <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Choose Grade Levels</label>
-                <div id="gradeSelectorGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                    <button type="button" class="grade-opt" data-grade="ages-5-7" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Level 1</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Ages 5–7</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="age-8" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Level 2</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Age 8</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="age-9" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Level 3</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Age 9</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="age-10" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Level 4</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Age 10</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="ages-11-12" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Middle School</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Ages 11–12</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="age-14" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">High School</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Age 14</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="ages-15-16" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">GED Prep</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Ages 15–16</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="ages-17-18" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">SAT Prep</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Ages 17–18</div>
+                    </button>
+                </div>
             </div>
             <!-- Form -->
             <div style="margin-bottom:14px;">
-                <label for="checkoutName" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Full Name</label>
-                <input type="text" id="checkoutName" placeholder="Jane Smith" class="form-input">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Full Name</label>
+                <input type="text" placeholder="Jane Smith" class="form-input">
             </div>
             <div style="margin-bottom:14px;">
-                <label for="checkoutEmail" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label>
-                <input type="email" id="checkoutEmail" placeholder="you@email.com" class="form-input">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label>
+                <input type="email" placeholder="you@email.com" class="form-input">
             </div>
             <div style="margin-bottom:20px;">
-                <label for="checkoutCard" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Card Number</label>
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Card Number</label>
                 <div style="position:relative;">
-                    <input type="text" id="checkoutCard" placeholder="4242 4242 4242 4242" maxlength="19" class="form-input" style="padding-right:38px;">
-                    </div>
+                    <input type="text" placeholder="4242 4242 4242 4242" maxlength="19" class="form-input" style="padding-right:38px;">
+                    <i class="fas fa-lock" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--text-muted);"></i>
+                </div>
             </div>
             <button onclick="handlePurchase()" style="width:100%;padding:13px;border-radius:12px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 20px rgba(245,158,11,0.25);font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
-                Complete Purchase
+                <i class="fas fa-lock" style="margin-right:6px;font-size:12px;"></i>Complete Purchase
             </button>
-            <p style="text-align:center;font-size:11px;color:var(--text-muted);margin-top:12px;"><i class="fas fa-info-circle" style="margin-right:4px;"></i>This is a demo — no real payment is processed</p>
+            <p style="text-align:center;font-size:11px;color:var(--text-muted);margin-top:12px;"><i class="fas fa-shield-alt" style="margin-right:4px;"></i>Your payment info is secure and encrypted</p>
         </div>
     </div>
 
     <!-- Success Modal -->
-    <div id="successModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Purchase successful" onclick="if(event.target===this)closeSuccess()">
+    <div id="successModal" class="modal-overlay" onclick="if(event.target===this)closeSuccess()">
         <div class="modal-box" style="max-width:400px;text-align:center;">
             <div class="success-icon" style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#4ade80,#22d3ee);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;">
                 <i class="fas fa-check" style="color:white;"></i>
@@ -671,7 +1128,7 @@
     </div>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Log in" onclick="if(event.target===this)closeLoginModal()">
+    <div id="loginModal" class="modal-overlay" onclick="if(event.target===this)closeLoginModal()">
         <div class="modal-box" style="max-width:420px;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
                 <div>
@@ -684,11 +1141,11 @@
             </div>
             <div id="loginError" style="display:none;padding:10px 14px;border-radius:10px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25);color:#f87171;font-size:13px;margin-bottom:16px;"></div>
             <div style="margin-bottom:14px;">
-                <label for="loginEmail" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label>
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label>
                 <input type="email" id="loginEmail" placeholder="you@email.com" class="form-input">
             </div>
             <div style="margin-bottom:20px;">
-                <label for="loginPassword" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Password</label>
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Password</label>
                 <input type="password" id="loginPassword" placeholder="Enter your password" class="form-input">
             </div>
             <button onclick="handleLogin()" style="width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Log In</button>
@@ -697,7 +1154,7 @@
     </div>
 
     <!-- Signup Modal -->
-    <div id="signupModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Create account" onclick="if(event.target===this)closeSignupModal()">
+    <div id="signupModal" class="modal-overlay" onclick="if(event.target===this)closeSignupModal()">
         <div class="modal-box" style="max-width:420px;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
                 <div>
@@ -710,15 +1167,15 @@
             </div>
             <div id="signupError" style="display:none;padding:10px 14px;border-radius:10px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25);color:#f87171;font-size:13px;margin-bottom:16px;"></div>
             <div style="margin-bottom:14px;">
-                <label for="signupName" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Full Name</label>
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Full Name</label>
                 <input type="text" id="signupName" placeholder="Jane Smith" class="form-input">
             </div>
             <div style="margin-bottom:14px;">
-                <label for="signupEmail" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label>
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label>
                 <input type="email" id="signupEmail" placeholder="you@email.com" class="form-input">
             </div>
             <div style="margin-bottom:6px;">
-                <label for="signupPassword" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Password</label>
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Password</label>
                 <input type="password" id="signupPassword" placeholder="At least 6 characters" class="form-input">
             </div>
             <p style="font-size:11px;color:var(--text-muted);margin-bottom:20px;">By signing up you agree to our Terms of Service and Privacy Policy.</p>

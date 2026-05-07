@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -35,8 +35,20 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
 .week-header:hover{background:rgba(255,255,255,0.03);}
 .week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
-.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+
+.week-detail{max-height:0;overflow:hidden;background:rgba(255,255,255,0.025);border-top:1px solid transparent;padding:0 16px;transform-origin:top;transform:translateY(-6px);opacity:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),padding 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s ease,transform 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease;}
+.week-detail.open{max-height:800px;padding:14px 16px;border-top-color:rgba(255,255,255,0.07);transform:translateY(0);opacity:1;}
+.week-check{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,0.09);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all 0.2s;font-size:10px;color:transparent;}
+.week-check:hover{border-color:var(--a1);background:rgba(16,185,129,0.1);}
+.week-check.done{border-color:var(--a1);background:linear-gradient(135deg,var(--a1),var(--a2));color:white;}
+.week-row.completed .week-title-text{text-decoration:line-through;opacity:0.55;}
+.progress-bar-wrap{height:4px;border-radius:4px;background:rgba(255,255,255,0.08);margin-top:10px;overflow:hidden;}
+.progress-bar-fill{height:100%;border-radius:4px;background:linear-gradient(135deg,var(--a1),var(--a2));transition:width 0.4s ease;}
 .mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.month-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+@media(max-width:768px){
+  .month-grid{grid-template-columns:1fr;}
+}
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
 </style>
 </head>
@@ -49,7 +61,7 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
     <a href="hub.html" class="back-btn">
       <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
       <div>
-        <div style="font-size:13px;font-weight:700;color:white;">Grade 3</div>
+        <div style="font-size:13px;font-weight:700;color:white;">Level 2</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.4);">Age 8</div>
       </div>
     </a>
@@ -73,10 +85,6 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
   <section style="margin-bottom:48px;">
     <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
-      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-book-reader" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Reading Fluency</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Speed, accuracy, expression</div></div>
-      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pen" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Writing Skills</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Paragraph writing, grammar</div></div>
-      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-language" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Vocabulary</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Word meanings, context clues</div></div>
-      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-microphone" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Communication</div><div style="font-size:12px;color:rgba(255,255,255,0.45);">Speaking, listening, presenting</div></div>
     </div>
   </section>
 
@@ -88,8 +96,8 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
 </main>
 
 <footer>
-  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
-  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Grade 3 English · Age 8</p>
+  <a href="hub.html" style="color:var(--ct8);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:var(--ct10);margin-top:6px;">English · </p>
 </footer>
 
 <script>
@@ -156,90 +164,99 @@ const curriculumData={
 ],project:'Complete the Grade 3 Writing Portfolio. Decorate a binder or folder, organize all major writing projects from the year inside with a Table of Contents, include the Year in Review reflection letter, and present it to the family as a celebration of growth.',materials:['Timer for fluency check','Grammar review worksheets','Performance space setup (snacks, lighting)','Binder or folder for portfolio']}
 };
 
-let currentMonth='September';
+let completed=JSON.parse(localStorage.getItem('eng-8-done')||'{}');
+function saveProgress(){localStorage.setItem('eng-8-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('eng-8-done',JSON.stringify(completed));}
 
+function initCurriculum(){
+  const tabsContainer=document.getElementById('monthTabs');
+  const contentContainer=document.getElementById('monthContent');
+  let firstMonth=Object.keys(curriculumData)[0];
+  let currentMonth=localStorage.getItem('eng-8-month')||firstMonth;
 
-function init(){
-  const tabs=document.getElementById('monthTabs');
-  Object.keys(curriculumData).forEach(m=>{
-    const btn=document.createElement('button');
-    btn.className='month-tab'+(m===currentMonth?' active':'');
-    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
-    btn.onclick=()=>selectMonth(m);
-    tabs.appendChild(btn);
-  });
-  loadContent('September');
+  function renderTabs(){
+    tabsContainer.innerHTML='';
+    Object.keys(curriculumData).forEach(month=>{
+      const btn=document.createElement('button');
+      btn.className='month-tab '+(month===currentMonth?'active':'');
+      btn.innerText=month;
+      btn.onclick=()=> { currentMonth=month; saveProgress(); renderTabs(); renderContent(); };
+      tabsContainer.appendChild(btn);
+    });
+  }
+
+  function renderContent(){
+    const data=curriculumData[currentMonth];
+    let skillsHtml = data.skills.map(s=> '<span style="display:inline-block;padding:4px 10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;font-size:12px;margin:0 6px 6px 0;color:var(--ct2);">'+s+'</span>').join('');
+
+    let weeksHtml = data.weeks.map((w,i)=>{
+      const wid=currentMonth+'-'+i;
+      const isDone=!!completed[wid];
+      const wt = typeof w === 'string' ? w : w.title;
+      const wo = typeof w === 'string' ? '' : w.objective;
+      const ww = typeof w === 'string' ? '' : w.warmup;
+      const wm = typeof w === 'string' ? '' : w.mainActivity;
+      const wg = typeof w === 'string' ? '' : w.game;
+      const wh = typeof w === 'string' ? '' : w.homeConnection;
+      const wa = typeof w === 'string' ? '' : w.assessment;
+      const wd = typeof w === 'string' ? '' : w.differentiation;
+      const hasDetail = ww || wm;
+      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
+    }).join('');
+
+    let materialsHtml = data.materials.map(m=> '<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"><\/i><span style="font-size:13px;color:var(--ct4);">'+m+'<\/span><\/div>').join('');
+
+    contentContainer.innerHTML='<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;"><div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 16px rgba(16,185,129,0.25);"><i class="fas '+data.icon+'"><\/i><\/div><div><h3 style="font-size:20px;font-weight:800;color:var(--ct);">'+currentMonth+'<\/h3><p style="font-size:14px;color:var(--ct5);font-weight:500;">'+data.focus+'<\/p><\/div><\/div><div class="month-grid"><div><div style="margin-bottom:20px;"><p class="section-label" style="margin-bottom:10px;">Monthly Goals<\/p><div>'+skillsHtml+'<\/div><\/div><div style="display:flex;flex-direction:column;gap:12px;">'+weeksHtml+'<\/div><\/div><div><div class="sched-card" style="margin-bottom:16px;"><p class="section-label"><i class="fas fa-star" style="color:var(--a1);margin-right:6px;"><\/i>Monthly Project<\/p><p style="font-size:14px;color:var(--ct3);line-height:1.6;">'+data.project+'<\/p><\/div><div class="sched-card"><p class="section-label"><i class="fas fa-box-open" style="color:var(--a1);margin-right:6px;"><\/i>Materials Needed<\/p><div style="margin-top:12px;">'+materialsHtml+'<\/div><\/div><div class="sched-card" style="margin-top:16px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><p class="section-label" style="margin-bottom:0;">Year Progress<\/p><span style="font-size:12px;font-weight:700;color:var(--a1);" id="progress-text">0 of 0 weeks completed<\/span><\/div><div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%;"><\/div><\/div><\/div><div style="display:flex;gap:10px;margin-top:16px;"><button onclick="prevMonth()" style="flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.03);color:var(--ct);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background=\'rgba(255,255,255,0.06)\'" onmouseout="this.style.background=\'rgba(255,255,255,0.03)\'"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:11px;"><\/i> Prev Month<\/button><button onclick="nextMonth()" style="flex:1;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--a1),var(--a2));color:white;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(16,185,129,0.2);transition:all 0.2s;" onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'">Next Month <i class="fas fa-chevron-right" style="margin-left:6px;font-size:11px;"><\/i><\/button><\/div><\/div><\/div>';
+    updateProgress();
+  }
+
+  renderTabs();
+  renderContent();
 }
 
-function selectMonth(m){
-  currentMonth=m;
-  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
-  loadContent(m);
+window.toggleWeek = function(index) {
+  const detail = document.getElementById('detail-'+index);
+  const icon = document.getElementById('icon-'+index);
+  if(detail.classList.contains('open')) { detail.classList.remove('open'); icon.style.transform = 'rotate(0deg)'; }
+  else { detail.classList.add('open'); icon.style.transform = 'rotate(180deg)'; }
 }
 
-function loadContent(m){
-  const d=curriculumData[m];
-  const months=Object.keys(curriculumData);
-  const idx=months.indexOf(m);
-  const prev=idx>0?months[idx-1]:null;
-  const next=idx<months.length-1?months[idx+1]:null;
-  document.getElementById('monthContent').innerHTML=`
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
-      <div>
-        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
-        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">
-        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
-      <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          ${d.weeks.map((w,i)=>`
-            <div class="week-row">
-              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
-                <div class="week-num">${i+1}</div>
-                <div style="flex:1;"><p style="font-size:13px;font-weight:600;color:white;margin-bottom:3px;">${w.title}</p><p style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;">${w.objective}</p></div>
-                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
-              </div>
-              <div class="week-detail" id="wd-${m}-${i}">
-                <div style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;"><i class="fas fa-fire" style="color:#fb923c;font-size:11px;"></i><span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;">Warmup</span></div><p style="font-size:12.5px;color:rgba(255,255,255,0.8);line-height:1.5;">${w.warmup}</p></div>
-                <div style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;"><i class="fas fa-book-open" style="color:var(--a1);font-size:11px;"></i><span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;">Main Activity</span></div><p style="font-size:12.5px;color:rgba(255,255,255,0.8);line-height:1.55;">${w.mainActivity}</p></div>
-                <div style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;"><i class="fas fa-gamepad" style="color:var(--a2);font-size:11px;"></i><span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;">Game/Play</span></div><p style="font-size:12.5px;color:rgba(255,255,255,0.8);line-height:1.5;">${w.game}</p></div>
-                <div style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;"><i class="fas fa-home" style="color:#a855f7;font-size:11px;"></i><span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;">Home Connection</span></div><p style="font-size:12.5px;color:rgba(255,255,255,0.8);line-height:1.5;">${w.homeConnection}</p></div>
-                <div style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;"><i class="fas fa-bullseye" style="color:#ef4444;font-size:11px;"></i><span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;">Assessment</span></div><p style="font-size:12.5px;color:rgba(255,255,255,0.8);line-height:1.5;">${w.assessment}</p></div>
-                <div><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;"><i class="fas fa-layer-group" style="color:#10b981;font-size:11px;"></i><span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;">Differentiation</span></div><p style="font-size:12.5px;color:rgba(255,255,255,0.8);line-height:1.5;">${w.differentiation}</p></div>
-              </div>
-            </div>`).join('')}
-        </div>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.6;">${d.project}</p></div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
-        <div style="display:flex;flex-direction:column;gap:9px;">
-          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.7);">${mat}</span></div>`).join('')}
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
-      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
-      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
-    </div>`;
+window.toggleCheck = function(event, index, wid) {
+  event.stopPropagation();
+  const btn = event.currentTarget;
+  const row = document.getElementById('week-'+index);
+  completed[wid]=!completed[wid];
+  const isDone=completed[wid];
+  btn.classList.toggle('done',isDone);
+  btn.innerHTML=isDone?'<i class="fas fa-check"><\/i>':'';
+  row.classList.toggle('completed',isDone);
+  saveProgress();
+  updateProgress();
 }
 
-function toggleWeek(id){
-  const d=document.getElementById('wd-'+id);
-  const c=document.getElementById('chev-'+id);
-  const open=d.style.display==='block';
-  d.style.display=open?'none':'block';
-  c.style.transform=open?'':'rotate(180deg)';
+window.updateProgress = function() {
+  const months = Object.keys(curriculumData);
+  const total = months.reduce((s,m)=>s+curriculumData[m].weeks.length,0);
+  const done = Object.values(completed).filter(Boolean).length;
+  const pct = Math.round((done/total)*100);
+  const fill = document.getElementById('progress-fill');
+  const text = document.getElementById('progress-text');
+  if(fill) fill.style.width = pct + '%';
+  if(text) text.innerText = done + ' of ' + total + ' weeks completed';
 }
 
+window.prevMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx > 0) document.querySelectorAll('.month-tab')[currIdx-1].click();
+}
 
-init();
+window.nextMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx < months.length-1) document.querySelectorAll('.month-tab')[currIdx+1].click();
+}
+
+document.addEventListener('DOMContentLoaded', () => { initCurriculum(); });
 </script>
 <script src="paywall.js"></script>
 </body>

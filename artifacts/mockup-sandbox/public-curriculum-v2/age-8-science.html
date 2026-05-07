@@ -20,6 +20,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-fi
 .back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
 .subject-badge{padding:5px 14px;border-radius:20px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
 .age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+
 main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
 .glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
 .section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
@@ -62,6 +63,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
   .subject-badge{display:none;}
 }
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+
 </style>
 </head>
 <body>
@@ -72,14 +74,14 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
   <div class="header-inner">
     <a href="hub.html" class="back-btn">
       <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
-      <div><div style="font-size:13px;font-weight:700;color:var(--ct);">Grade 3</div><div style="font-size:11px;color:var(--ct7);">Age 8</div></div>
+      <div><div style="font-size:13px;font-weight:700;color:var(--ct);">Level</div><div style="font-size:11px;color:var(--ct7);"></div></div>
     </a>
     <div style="display:flex;align-items:center;gap:8px;">
       <span class="subject-badge"><i class="fas fa-flask" style="margin-right:5px;"></i>Science</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="age-pill">Age 8</span>
-      
+      <span class="age-pill"></span>
+
     </div>
   </div>
 </header>
@@ -94,7 +96,7 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
   <section style="margin-bottom:48px;">
     <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
     <div class="skills-grid">
-      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-microscope" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Scientific Method</div><div style="font-size:12px;color:var(--ct6);">Hypothesis, experiment, conclude</div></div>
+<div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-microscope" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Scientific Method</div><div style="font-size:12px;color:var(--ct6);">Hypothesis, experiment, conclude</div></div>
       <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-leaf" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Life Science</div><div style="font-size:12px;color:var(--ct6);">Plants, animals, ecosystems</div></div>
       <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-bolt" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Physical Science</div><div style="font-size:12px;color:var(--ct6);">Forces, matter, energy</div></div>
       <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-globe-americas" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Earth & Space</div><div style="font-size:12px;color:var(--ct6);">Weather, rocks, solar system</div></div>
@@ -110,7 +112,7 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
 
 <footer>
   <a href="hub.html" style="color:var(--ct8);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
-  <p style="font-size:12px;color:var(--ct10);margin-top:6px;">Grade 3 Science · Age 8</p>
+  <p style="font-size:12px;color:var(--ct10);margin-top:6px;">Science · </p>
 </footer>
 
 <script>
@@ -617,171 +619,99 @@ const curriculumData={
 }
 };
 
-const LS_MONTH='sci-8-month';
-const LS_DONE='sci-8-done';
-let currentMonth=localStorage.getItem(LS_MONTH)||'September';
+let completed=JSON.parse(localStorage.getItem('curriculum-done')||'{}');
+function saveProgress(){localStorage.setItem('curriculum-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('curriculum-done',JSON.stringify(completed));}
 
-let completed=JSON.parse(localStorage.getItem(LS_DONE)||'{}');
+function initCurriculum(){
+  const tabsContainer=document.getElementById('monthTabs');
+  const contentContainer=document.getElementById('monthContent');
+  let firstMonth=Object.keys(curriculumData)[0];
+  let currentMonth=localStorage.getItem('curriculum-month')||firstMonth;
 
-function saveProgress(){localStorage.setItem(LS_MONTH,currentMonth);localStorage.setItem(LS_DONE,JSON.stringify(completed));}
+  function renderTabs(){
+    tabsContainer.innerHTML='';
+    Object.keys(curriculumData).forEach(month=>{
+      const btn=document.createElement('button');
+      btn.className='month-tab '+(month===currentMonth?'active':'');
+      btn.innerText=month;
+      btn.onclick=()=> { currentMonth=month; saveProgress(); renderTabs(); renderContent(); };
+      tabsContainer.appendChild(btn);
+    });
+  }
 
-function init(){
-  const tabs=document.getElementById('monthTabs');
-  Object.keys(curriculumData).forEach(m=>{
-    const btn=document.createElement('button');
-    btn.className='month-tab'+(m===currentMonth?' active':'');
-    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
-    btn.onclick=()=>selectMonth(m);
-    tabs.appendChild(btn);
-  });
-  loadContent(currentMonth);
+  function renderContent(){
+    const data=curriculumData[currentMonth];
+    let skillsHtml = data.skills.map(s=> '<span style="display:inline-block;padding:4px 10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;font-size:12px;margin:0 6px 6px 0;color:var(--ct2);">'+s+'</span>').join('');
+
+    let weeksHtml = data.weeks.map((w,i)=>{
+      const wid=currentMonth+'-'+i;
+      const isDone=!!completed[wid];
+      const wt = typeof w === 'string' ? w : w.title;
+      const wo = typeof w === 'string' ? '' : w.objective;
+      const ww = typeof w === 'string' ? '' : w.warmup;
+      const wm = typeof w === 'string' ? '' : w.mainActivity;
+      const wg = typeof w === 'string' ? '' : w.game;
+      const wh = typeof w === 'string' ? '' : w.homeConnection;
+      const wa = typeof w === 'string' ? '' : w.assessment;
+      const wd = typeof w === 'string' ? '' : w.differentiation;
+      const hasDetail = ww || wm;
+      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
+    }).join('');
+
+    let materialsHtml = data.materials.map(m=> '<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"><\/i><span style="font-size:13px;color:var(--ct4);">'+m+'<\/span><\/div>').join('');
+
+    contentContainer.innerHTML='<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;"><div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 16px rgba(168,85,247,0.25);"><i class="fas '+data.icon+'"><\/i><\/div><div><h3 style="font-size:20px;font-weight:800;color:var(--ct);">'+currentMonth+'<\/h3><p style="font-size:14px;color:var(--ct5);font-weight:500;">'+data.focus+'<\/p><\/div><\/div><div class="month-grid"><div><div style="margin-bottom:20px;"><p class="section-label" style="margin-bottom:10px;">Monthly Goals<\/p><div>'+skillsHtml+'<\/div><\/div><div style="display:flex;flex-direction:column;gap:12px;">'+weeksHtml+'<\/div><\/div><div><div class="sched-card" style="margin-bottom:16px;"><p class="section-label"><i class="fas fa-star" style="color:var(--a1);margin-right:6px;"><\/i>Monthly Project<\/p><p style="font-size:14px;color:var(--ct3);line-height:1.6;">'+data.project+'<\/p><\/div><div class="sched-card"><p class="section-label"><i class="fas fa-box-open" style="color:var(--a1);margin-right:6px;"><\/i>Materials Needed<\/p><div style="margin-top:12px;">'+materialsHtml+'<\/div><\/div><div class="sched-card" style="margin-top:16px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><p class="section-label" style="margin-bottom:0;">Year Progress<\/p><span style="font-size:12px;font-weight:700;color:var(--a1);" id="progress-text">0 of 0 weeks completed<\/span><\/div><div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%;"><\/div><\/div><\/div><div style="display:flex;gap:10px;margin-top:16px;"><button onclick="prevMonth()" style="flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.03);color:var(--ct);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background=\'rgba(255,255,255,0.06)\'" onmouseout="this.style.background=\'rgba(255,255,255,0.03)\'"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:11px;"><\/i> Prev Month<\/button><button onclick="nextMonth()" style="flex:1;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--a1),var(--a2));color:white;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(168,85,247,0.2);transition:all 0.2s;" onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'">Next Month <i class="fas fa-chevron-right" style="margin-left:6px;font-size:11px;"><\/i><\/button><\/div><\/div><\/div>';
+    updateProgress();
+  }
+
+  renderTabs();
+  renderContent();
 }
 
-function selectMonth(m){
-  currentMonth=m;
+window.toggleWeek = function(index) {
+  const detail = document.getElementById('detail-'+index);
+  const icon = document.getElementById('icon-'+index);
+  if(detail.classList.contains('open')) { detail.classList.remove('open'); icon.style.transform = 'rotate(0deg)'; }
+  else { detail.classList.add('open'); icon.style.transform = 'rotate(180deg)'; }
+}
+
+window.toggleCheck = function(event, index, wid) {
+  event.stopPropagation();
+  const btn = event.currentTarget;
+  const row = document.getElementById('week-'+index);
+  completed[wid]=!completed[wid];
+  const isDone=completed[wid];
+  btn.classList.toggle('done',isDone);
+  btn.innerHTML=isDone?'<i class="fas fa-check"><\/i>':'';
+  row.classList.toggle('completed',isDone);
   saveProgress();
-  document.querySelectorAll('.month-tab').forEach((btn,i)=>{btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);});
-  loadContent(m);
+  updateProgress();
 }
 
-function toggleWeekDone(e,id){
-  e.stopPropagation();
-  completed[id]=!completed[id];
-  saveProgress();
-  const btn=e.currentTarget;
-  btn.classList.toggle('done',completed[id]);
-  btn.innerHTML=completed[id]?'<i class="fas fa-check"></i>':'';
-  const row=btn.closest('.week-row');
-  row.classList.toggle('completed',completed[id]);
-  updateProgressBar();
+window.updateProgress = function() {
+  const months = Object.keys(curriculumData);
+  const total = months.reduce((s,m)=>s+curriculumData[m].weeks.length,0);
+  const done = Object.values(completed).filter(Boolean).length;
+  const pct = Math.round((done/total)*100);
+  const fill = document.getElementById('progress-fill');
+  const text = document.getElementById('progress-text');
+  if(fill) fill.style.width = pct + '%';
+  if(text) text.innerText = done + ' of ' + total + ' weeks completed';
 }
 
-function updateProgressBar(){
-  const months=Object.keys(curriculumData);
-  const total=months.reduce((s,m)=>s+curriculumData[m].weeks.length,0);
-  const done=Object.values(completed).filter(Boolean).length;
-  const bar=document.getElementById('progressFill');
-  if(bar)bar.style.width=(done/total*100)+'%';
+window.prevMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx > 0) document.querySelectorAll('.month-tab')[currIdx-1].click();
 }
 
-function loadContent(m){
-  const d=curriculumData[m];
-  const months=Object.keys(curriculumData);
-  const idx=months.indexOf(m);
-  const prev=idx>0?months[idx-1]:null;
-  const next=idx<months.length-1?months[idx+1]:null;
-  const total=months.reduce((s,mo)=>s+curriculumData[mo].weeks.length,0);
-  const doneCount=Object.values(completed).filter(Boolean).length;
-  document.getElementById('monthContent').innerHTML=`
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
-      <div>
-        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--ct9);margin-bottom:4px;">Monthly Focus</div>
-        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">
-        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
-      </div>
-    </div>
-    <div style="font-size:12px;color:var(--ct8);margin-bottom:6px;">${doneCount} of ${total} weeks completed</div>
-    <div class="progress-bar-wrap" style="margin-bottom:24px;"><div class="progress-bar-fill" id="progressFill" style="width:${doneCount/total*100}%;"></div></div>
-    <div class="month-grid">
-      <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          ${d.weeks.map((w,i)=>{
-            const wid=m+'-'+i;
-            const isDone=!!completed[wid];
-            return `
-            <div class="week-row${isDone?' completed':''}">
-              <div class="week-header" onclick="toggleWeek('${wid}')">
-                <div class="week-num">${i+1}</div>
-                <div style="flex:1;">
-                  <p class="week-title-text" style="font-size:14px;font-weight:700;color:var(--ct);margin-bottom:4px;">${w.title}</p>
-                  <p style="font-size:13px;color:var(--ct3);line-height:1.55;">${w.objective}</p>
-                  <p style="font-size:11px;color:var(--ct8);margin-top:6px;"><i class="fas fa-hand-pointer" style="margin-right:4px;"></i>Tap to view full lesson plan</p>
-                </div>
-                <button class="week-check${isDone?' done':''}" onclick="toggleWeekDone(event,'${wid}')">${isDone?'<i class="fas fa-check"></i>':''}</button>
-                <i class="fas fa-chevron-down" id="chev-${wid}" style="color:var(--ct8);font-size:11px;margin-top:4px;transition:transform 0.25s cubic-bezier(0.4,0,0.2,1);"></i>
-              </div>
-              <div class="week-detail" id="wd-${wid}">
-                <div style="display:flex;gap:10px;margin-bottom:12px;">
-                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(168,85,247,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-bullseye" style="color:var(--al);font-size:11px;"></i></div>
-                  <div>
-                    <p style="font-size:11px;font-weight:700;color:var(--al);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Objective</p>
-                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.objective}</p>
-                  </div>
-                </div>
-                <div style="display:flex;gap:10px;margin-bottom:12px;">
-                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(249,115,22,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-fire" style="color:#fb923c;font-size:11px;"></i></div>
-                  <div>
-                    <p style="font-size:11px;font-weight:700;color:#fb923c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Warm-Up</p>
-                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.warmup}</p>
-                  </div>
-                </div>
-                <div style="display:flex;gap:10px;margin-bottom:12px;">
-                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(168,85,247,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-flask" style="color:var(--al);font-size:11px;"></i></div>
-                  <div>
-                    <p style="font-size:11px;font-weight:700;color:var(--al);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Main Experiment</p>
-                    <p style="font-size:13px;color:var(--ct2);line-height:1.5;">${w.mainActivity}</p>
-                  </div>
-                </div>
-                <div style="display:flex;gap:10px;margin-bottom:12px;">
-                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-gamepad" style="color:#60a5fa;font-size:11px;"></i></div>
-                  <div>
-                    <p style="font-size:11px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Game / Active Play</p>
-                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.game}</p>
-                  </div>
-                </div>
-                <div style="display:flex;gap:10px;margin-bottom:12px;">
-                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-home" style="color:#34d399;font-size:11px;"></i></div>
-                  <div>
-                    <p style="font-size:11px;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Home Connection</p>
-                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.homeConnection}</p>
-                  </div>
-                </div>
-                <div style="display:flex;gap:10px;margin-bottom:12px;">
-                  <div style="width:24px;height:24px;border-radius:6px;background:rgba(236,72,153,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-check-circle" style="color:#f472b6;font-size:11px;"></i></div>
-                  <div>
-                    <p style="font-size:11px;font-weight:700;color:#f472b6;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Check for Understanding</p>
-                    <p style="font-size:13px;color:var(--ct3);line-height:1.5;">${w.assessment}</p>
-                  </div>
-                </div>
-                <div style="display:flex;gap:10px;margin-bottom:4px;">
-                  <div style="width:24px;height:24px;border-radius:6px;background:var(--cs4);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-layer-group" style="color:var(--ct7);font-size:11px;"></i></div>
-                  <div>
-                    <p style="font-size:11px;font-weight:700;color:var(--ct7);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Differentiation</p>
-                    <p style="font-size:13px;color:var(--ct4);line-height:1.5;font-style:italic;">${w.differentiation}</p>
-                  </div>
-                </div>
-              </div>
-            </div>`;}).join('')}
-        </div>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
-        <div style="background:var(--cs1);border:1px solid var(--br1);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:var(--ct4);line-height:1.7;">${d.project}</p></div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
-        <div style="display:flex;flex-direction:column;gap:9px;">
-          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:var(--ct4);">${mat}</span></div>`).join('')}
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--br1);display:flex;justify-content:space-between;">
-      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid var(--br2);background:var(--cs3);color:var(--ct4);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
-      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid var(--br2);background:var(--cs3);color:var(--ct4);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
-    </div>`;
+window.nextMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx < months.length-1) document.querySelectorAll('.month-tab')[currIdx+1].click();
 }
 
-function toggleWeek(id){
-  const d=document.getElementById('wd-'+id);
-  const c=document.getElementById('chev-'+id);
-  const isOpen=d.classList.contains('open');
-  d.classList.toggle('open',!isOpen);
-  c.style.transform=isOpen?'':'rotate(180deg)';
-}
-
-
-init();
+document.addEventListener('DOMContentLoaded', () => { initCurriculum(); });
 </script>
 <script src="paywall.js"></script>
 </body>

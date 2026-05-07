@@ -8,18 +8,19 @@
 <script src="assets/tailwind.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-:root{--a1:#10b981;--a2:#06b6d4;--al:#6ee7b7;}
+:root{--a1:#10b981;--a2:#06b6d4;--al:#6ee7b7;--ct:white;--ct2:rgba(255,255,255,0.85);--ct3:rgba(255,255,255,0.7);--ct4:rgba(255,255,255,0.6);--ct5:rgba(255,255,255,0.48);--ct6:rgba(255,255,255,0.45);--ct7:rgba(255,255,255,0.4);--ct8:rgba(255,255,255,0.3);--ct9:rgba(255,255,255,0.28);--ct10:rgba(255,255,255,0.15);--cs1:rgba(255,255,255,0.03);--cs2:rgba(255,255,255,0.025);--cs3:rgba(255,255,255,0.04);--cs4:rgba(255,255,255,0.08);--br1:rgba(255,255,255,0.07);--br2:rgba(255,255,255,0.09);}
 body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
-.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,0.12),transparent 70%);top:-100px;right:-100px;}
-.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.09),transparent 70%);bottom:100px;left:-100px;}
-header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,0.11),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.08),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
 .back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
 .back-btn:hover{color:white;}
 .back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
 .subject-badge{padding:5px 14px;border-radius:20px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
 .age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+
 main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
 .glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
 .section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
@@ -35,161 +36,334 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
 .week-header:hover{background:rgba(255,255,255,0.03);}
 .week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
-.week-detail{display:none;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);padding:14px 16px;}
+.week-detail{max-height:0;overflow:hidden;background:rgba(255,255,255,0.025);border-top:1px solid transparent;padding:0 16px;transform-origin:top;transform:translateY(-6px);opacity:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),padding 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s ease,transform 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease;}
+.week-detail.open{max-height:800px;padding:14px 16px;border-top-color:rgba(255,255,255,0.07);transform:translateY(0);opacity:1;}
 .mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.month-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.week-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--br2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all 0.2s;font-size:10px;color:transparent;}
+.week-check:hover{border-color:var(--a1);background:rgba(16,185,129,0.1);}
+.week-check.done{border-color:var(--a1);background:linear-gradient(135deg,var(--a1),var(--a2));color:white;}
+.week-row.completed .week-title-text{text-decoration:line-through;opacity:0.55;}
+.progress-bar-wrap{height:4px;border-radius:4px;background:var(--cs4);margin-top:10px;overflow:hidden;}
+.progress-bar-fill{height:100%;border-radius:4px;background:linear-gradient(135deg,var(--a1),var(--a2));transition:width 0.4s ease;}
+@media(max-width:768px){
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+  .month-grid{grid-template-columns:1fr;}
+  .header-inner{flex-wrap:wrap;gap:10px;}
+  h2.page-title{font-size:1.8rem;}
+  main{padding:32px 16px;}
+  #monthContent{padding:20px 16px !important;}
+}
+@media(max-width:480px){
+  .skills-grid{grid-template-columns:1fr;}
+  h2.page-title{font-size:1.5rem;}
+  header{padding:10px 16px;}
+  .header-inner{gap:8px;}
+  .subject-badge{display:none;}
+}
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+
 </style>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
+
 <header>
   <div class="header-inner">
     <a href="hub.html" class="back-btn">
       <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
-      <div>
-        <div style="font-size:13px;font-weight:700;color:white;">Middle School</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 11–12</div>
-      </div>
+      <div><div style="font-size:13px;font-weight:700;color:var(--ct);">Level 5</div><div style="font-size:11px;color:var(--ct7);">Ages 11–12</div></div>
     </a>
     <div style="display:flex;align-items:center;gap:8px;">
       <span class="subject-badge"><i class="fas fa-book" style="margin-right:5px;"></i>English Language Arts</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
       <span class="age-pill">Ages 11–12</span>
-      
+
     </div>
   </div>
 </header>
+
 <main>
   <section style="text-align:center;margin-bottom:56px;">
     <p class="section-label">Middle School · Ages 11–12</p>
     <h2 class="page-title">Reading, Writing & Literature</h2>
-    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:620px;margin:0 auto;line-height:1.75;">Developing critical reading skills through literature analysis, building strong essay writing with evidence-based arguments, and expanding vocabulary and grammar for clear, confident communication.</p>
+    <p style="color:var(--ct5);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Developing critical reading skills through literature analysis, building strong essay writing with evidence-based arguments, and expanding vocabulary and grammar for clear, confident communication.</p>
   </section>
+
   <section style="margin-bottom:48px;">
     <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
-      <div class="skill-card">
-        <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-book-open" style="color:#6ee7b7;font-size:15px;"></i></div>
-        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Literature Analysis</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Theme, character, plot, point of view</div>
-      </div>
-      <div class="skill-card">
-        <div style="width:38px;height:38px;border-radius:10px;background:rgba(6,182,212,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pen-fancy" style="color:#22d3ee;font-size:15px;"></i></div>
-        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Essay Writing</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Argument, informative, narrative</div>
-      </div>
-      <div class="skill-card">
-        <div style="width:38px;height:38px;border-radius:10px;background:rgba(99,102,241,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-spell-check" style="color:#a5b4fc;font-size:15px;"></i></div>
-        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Grammar & Mechanics</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Sentence structure, punctuation</div>
-      </div>
-      <div class="skill-card">
-        <div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-search" style="color:#fb923c;font-size:15px;"></i></div>
-        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Research Skills</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);">Nonfiction, citations, note-taking</div>
-      </div>
+    <div class="skills-grid">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-book-open" style="color:#6ee7b7;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Literature Analysis</div><div style="font-size:12px;color:var(--ct6);">Theme, character, plot, point of view</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(6,182,212,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pen-fancy" style="color:#22d3ee;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Essay Writing</div><div style="font-size:12px;color:var(--ct6);">Argument, informative, narrative</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(99,102,241,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-spell-check" style="color:#a5b4fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Grammar & Mechanics</div><div style="font-size:12px;color:var(--ct6);">Sentence structure, punctuation</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-search" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Research Skills</div><div style="font-size:12px;color:var(--ct6);">Nonfiction, citations, note-taking</div></div>
     </div>
   </section>
+
   <section>
     <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly ELA Themes</h3></div>
     <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
     <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
   </section>
 </main>
+
 <footer>
-  <a href="hub.html" style="color:rgba(255,255,255,0.3);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
-  <p style="font-size:12px;color:rgba(255,255,255,0.15);margin-top:6px;">Middle School English · Ages 11–12</p>
+  <a href="hub.html" style="color:var(--ct8);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:var(--ct10);margin-top:6px;">Middle School English · Ages 11–12</p>
 </footer>
+
 <script>
 const curriculumData={
-'September':{icon:'fa-book-open',color:'',focus:'Fiction & Story Elements',skills:['Plot structure','Character analysis','Setting & mood','Point of view'],weeks:['Story elements review: plot, character, setting, conflict, resolution','Character motivation and development in short fiction (O. Henry, Ray Bradbury)','Setting and mood analysis in selected short stories','Point of view — first, third limited, third omniscient — with practice passages'],project:'Write a 3-page short story using all five story elements with a clear beginning, middle, and end',materials:['Short story anthology','Sticky notes','Story map graphic organizer','Writing journal']},
-'October':{icon:'fa-mask',color:'',focus:'Theme & Author\'s Craft',skills:['Identifying theme','Figurative language','Symbolism','Author\'s purpose'],weeks:['Identifying explicit and implied themes in short stories and poems','Figurative language: simile, metaphor, personification, hyperbole in context','Symbolism and motifs in "The Outsiders" or "Hatchet"','Author\'s purpose (inform, persuade, entertain) and how craft choices support it'],project:'Thematic analysis essay (4 paragraphs) comparing theme in two short stories with textual evidence',materials:['Selected novel','Highlighters','Essay graphic organizer','Thesaurus']},
-'November':{icon:'fa-pen-fancy',color:'',focus:'Argumentative Writing',skills:['Claim & thesis','Evidence from text','Counterargument','Concluding statements'],weeks:['Introduction to argumentative writing: claim, evidence, warrant (CEW model)','Finding and citing textual evidence to support a claim','Addressing counterarguments and refutation techniques','Writing strong conclusions that synthesize rather than repeat'],project:'Write a 5-paragraph argumentative essay responding to a school-relevant debate topic with 3 cited sources',materials:['Argument graphic organizer','3 nonfiction articles on chosen topic','MLA citation guide','Peer review checklist']},
-'December':{icon:'fa-feather-alt',color:'',focus:'Poetry & Creative Expression',skills:['Poetic devices','Meter & rhyme','Free verse writing','Imagery'],weeks:['Poetic devices: alliteration, assonance, onomatopoeia, repetition','Meter and rhyme schemes in sonnets and ballads (Shakespeare, Poe)','Free verse poetry: writing with imagery and sensory details','Spoken word poetry: voice, performance, and emotional impact'],project:'Create a poetry chapbook with 8 original poems in at least 4 different forms (haiku, sonnet, free verse, ode)',materials:['Poetry anthology','Chapbook paper','Pen and markers','Recording device for spoken word']},
-'January':{icon:'fa-newspaper',color:'',focus:'Informational Texts & Research',skills:['Text structure','Main idea & details','Note-taking','Summarizing'],weeks:['Informational text structures: cause/effect, compare/contrast, problem/solution','Identifying main idea and supporting details in nonfiction articles','Cornell note-taking system applied to a nonfiction chapter','Summarizing and paraphrasing vs. quoting — avoiding plagiarism'],project:'Research a historical figure or scientific discovery; write a 2-page informational report with bibliography',materials:['Library access or internet','Cornell note-taking template','MLA format guide','Index cards for research notes']},
-'February':{icon:'fa-gavel',color:'',focus:'Debate & Speaking Skills',skills:['Debate structure','Persuasive speaking','Active listening','Rebuttal skills'],weeks:['Introduction to formal debate: proposition, opposition, evidence, rebuttal','Preparing debate positions with research and organized evidence cards','Practice rounds with structured feedback from partner and parent','Full class (or family) formal debate with scoring rubric'],project:'Prepare and deliver a 3-minute persuasive speech on a chosen topic, followed by a Q&A round',materials:['Debate topic list','Evidence cards','Scoring rubric','Timer']},
-'March':{icon:'fa-book',color:'',focus:'Novel Study — Realistic Fiction',skills:['Extended reading','Journal responses','Character arc','Conflict & resolution'],weeks:['Introduce novel; read chapters 1–8; journal: first impressions and predictions','Chapters 9–16: character arc — how does the protagonist change? Evidence?','Chapters 17–24: analyze conflict types (internal, external) and their resolution','Final chapters: evaluate theme and author\'s message with evidence'],project:'Novel study portfolio: reading log, 3 journal responses, 1 character map, 1 thematic essay (5 paragraphs)',materials:['Class novel (e.g. "The Giver," "Hatchet," or "Esperanza Rising")','Reading journal','Character map template','Essay rubric']},
-'April':{icon:'fa-spell-check',color:'',focus:'Grammar & Sentence Craft',skills:['Clause types','Sentence variety','Comma rules','Pronoun agreement'],weeks:['Independent and dependent clauses; simple, compound, complex sentences','Sentence variety: varying length and structure for style and clarity','Comma rules: lists, introductory phrases, coordinating conjunctions, appositives','Pronoun-antecedent agreement and avoiding ambiguous pronouns'],project:'Revise a previous essay draft applying all grammar rules learned; create a "before and after" comparison page',materials:['Grammar workbook or worksheet pack','Previous essay draft','Red pen for editing','Grammar reference card']},
-'May':{icon:'fa-globe',color:'',focus:'Multicultural Literature & Voices',skills:['Cultural context','Perspective & bias','Comparing texts','Empathy in reading'],weeks:['Reading diverse short stories and poems from world literature with cultural context','Analyzing perspective and how culture shapes a narrator\'s worldview','Comparing texts from different cultures on the same universal theme','Reflecting on how reading diverse voices builds empathy and understanding'],project:'Write a personal narrative inspired by your own cultural background or family story (3 pages)',materials:['World literature anthology or selected articles','Personal narrative graphic organizer','Family photos or mementos (optional)','Writing journal']},
-'June':{icon:'fa-trophy',color:'',focus:'Portfolio & Presentation',skills:['Self-assessment','Revision','Public speaking','Year review'],weeks:['Select best writing pieces from the year and revise for the final portfolio','Write a reflective introduction explaining growth as a reader and writer','Prepare a 5-minute reading/presentation from one portfolio piece','Portfolio presentations to family or peers with Q&A'],project:'Final Reading-Writing Portfolio with introduction letter, 3 revised pieces, and a reading list of books completed',materials:['Portfolio binder or folder','All year\'s writing samples','Presentation checklist','Reading log']}
+'September':{icon:'fa-book-open',color:'from-emerald-500 to-cyan-500',focus:'Fiction & Story Elements',skills:['Plot structure','Character analysis','Setting & mood','Point of view'],weeks:[
+  {title:'Story Elements Review', objective:'Identify and define the five key story elements: plot, character, setting, conflict, and resolution.', warmup:'Think of your favorite movie. Name the main character, where it takes place, and the big problem they face.', mainActivity:'Read a short story (e.g., a fable or fairy tale). Use a story map graphic organizer to identify all five elements. Discuss how removing any one element would change the story. Practice summarizing a story in exactly 3 sentences using the elements.', game:'Story Element Bingo: Create bingo cards with story element terms. Read a short story aloud and mark each element as you find it.', homeConnection:'Watch a 20-minute animated short and identify all five story elements at dinner.', assessment:'Can correctly identify and explain all five story elements in a given text using a graphic organizer.', differentiation:'Easier: Use a familiar fairy tale with a clear structure. Harder: Analyze a story with a non-linear plot or ambiguous resolution.'},
+  {title:'Character Motivation & Development', objective:'Analyze how and why characters change over the course of a story, citing textual evidence.', warmup:'Describe a time you changed your mind about something important. What caused the change?', mainActivity:'Read a short story by O. Henry or Ray Bradbury. Track the protagonist on a character arc chart: beginning traits → key events → ending traits. Discuss what motivates the character (internal vs. external motivation). Write a paragraph analyzing one character\'s change using at least one quote from the text.', game:'Character Interview: One person acts as a character from the story. The other asks questions about their motivations and feelings.', homeConnection:'Ask a family member about a book character who reminds them of themselves and why.', assessment:'Can write a paragraph analyzing character change with at least one piece of textual evidence.', differentiation:'Easier: Focus on identifying beginning vs. ending traits. Harder: Compare two characters\' motivations and how they conflict.'},
+  {title:'Setting & Mood Analysis', objective:'Explain how an author uses setting to create mood and atmosphere in a story.', warmup:'Close your eyes for 30 seconds. Imagine a dark forest at midnight vs. a sunny beach at noon. How does each make you feel?', mainActivity:'Read two short stories with contrasting settings. Highlight descriptive language (adjectives, sensory details) that creates mood. Create a two-column chart: Setting Details on one side, Mood Created on the other. Write a paragraph explaining how the author\'s word choices create a specific mood.', game:'Mood Charades: Act out a mood (creepy, joyful, tense) using only body language and facial expressions. Others guess.', homeConnection:'Watch the opening scene of a movie with the sound off. Describe the mood created by just the visuals.', assessment:'Can identify specific words/phrases an author uses to create mood and explain their effect.', differentiation:'Easier: Focus on identifying whether the mood is positive or negative. Harder: Analyze how mood shifts within a single story.'},
+  {title:'Point of View in Fiction', objective:'Identify and compare first person, third person limited, and third person omniscient narration.', warmup:'Tell a 30-second story about what you did this morning using "I." Now retell it using "he/she." What changed?', mainActivity:'Read three short passages, each written from a different point of view. Identify the narrator type in each. Discuss how the point of view changes what the reader knows. Rewrite a paragraph from one story in a different point of view and compare how the information available to the reader changes.', game:'POV Switch-Up: Read a familiar fairy tale and rewrite a scene from the villain\'s first-person perspective.', homeConnection:'Notice whose perspective a TV show or movie is told from. Whose thoughts do we hear?', assessment:'Can correctly identify the point of view in a passage and explain how it affects the reader\'s experience.', differentiation:'Easier: Focus on first vs. third person only. Harder: Analyze how an unreliable narrator affects the story.'}
+],project:'Write a 3-page short story using all five story elements with a clear beginning, middle, and end.',materials:['Short story anthology','Sticky notes','Story map graphic organizer','Writing journal']},
+'October':{icon:'fa-mask',color:'from-amber-500 to-orange-500',focus:'Theme & Author\'s Craft',skills:['Identifying theme','Figurative language','Symbolism','Author\'s purpose'],weeks:[
+  {title:'Identifying Theme in Stories & Poems', objective:'Distinguish between explicit and implied themes and state a theme as a universal message.', warmup:'What is the moral or lesson of "The Tortoise and the Hare"? How do you know?', mainActivity:'Read two short stories with clear themes. For each, ask: "What is the author saying about life or human nature?" Practice stating themes as complete sentences (not single words). Compare how two stories address the same theme differently. Identify textual evidence that supports each theme.', game:'Theme Match-Up: Match theme statements to the correct short stories on cards. Race to complete all matches.', homeConnection:'Watch a Pixar short film and discuss the theme as a family.', assessment:'Can state a story\'s theme as a complete sentence and support it with at least two pieces of evidence from the text.', differentiation:'Easier: Use stories with clearly stated morals. Harder: Identify multiple themes in a single complex story.'},
+  {title:'Figurative Language in Context', objective:'Identify and interpret simile, metaphor, personification, and hyperbole in literature.', warmup:'Complete this sentence three ways: "The rain sounded like..."', mainActivity:'Read selected poems and story excerpts. Highlight and label each type of figurative language found. For each example, write what the author literally said vs. what they actually meant. Create an original example of each type. Discuss why authors use figurative language instead of plain description.', game:'Figurative Language Scavenger Hunt: Find 10 examples of figurative language in song lyrics. Label each type.', homeConnection:'Listen to a favorite song and identify at least 3 examples of figurative language in the lyrics.', assessment:'Can identify the four main types of figurative language and explain the literal meaning behind each.', differentiation:'Easier: Focus on simile and metaphor only. Harder: Find examples of extended metaphors and analyze how they develop across a text.'},
+  {title:'Symbolism & Motifs in Literature', objective:'Identify symbols in a novel and explain what they represent in the context of the story.', warmup:'What does a dove usually represent? A red rose? A chains?', mainActivity:'Begin reading "The Outsiders" or "Hatchet." Identify key symbols (e.g., the greaser hair in "The Outsiders," the hatchet itself). For each symbol, create a chart: Object → What it represents → Evidence from text. Discuss how the symbol deepens the meaning of the story beyond the literal plot.', game:'Symbol Pictionary: Draw common symbols and have others guess what they represent. Then create an original symbol for an abstract concept.', homeConnection:'Find three objects in your house that could be symbols for something bigger (e.g., a family photo = connection).', assessment:'Can identify at least two symbols in the text and explain their deeper meaning with evidence.', differentiation:'Easier: Use the most obvious symbols with clear meanings. Harder: Track how a symbol\'s meaning changes throughout the novel.'},
+  {title:'Author\'s Purpose & Craft Choices', objective:'Identify whether an author\'s purpose is to inform, persuade, or entertain, and analyze specific craft choices that support it.', warmup:'Read three short texts: a news article, an advertisement, and a poem. What was each author trying to do?', mainActivity:'Analyze author\'s purpose across multiple texts. For each, identify specific craft choices: word choice, sentence length, tone, structure. Discuss how an author\'s purpose affects every decision they make. Write a paragraph analyzing one author\'s craft choices and how they serve the purpose.', game:'Purpose Sort: Read 10 short texts and sort them into Inform, Persuade, or Entertain categories. Defend your choices.', homeConnection:'Pick up a magazine and identify the purpose of three different articles or ads.', assessment:'Can state an author\'s purpose and point to at least two specific craft choices that support it.', differentiation:'Easier: Focus on distinguishing fiction (entertain) from nonfiction (inform). Harder: Analyze texts that serve multiple purposes simultaneously.'}
+],project:'Write a thematic analysis essay (4 paragraphs) comparing theme in two short stories with textual evidence.',materials:['Selected novel','Highlighters','Essay graphic organizer','Thesaurus']},
+'November':{icon:'fa-pen-fancy',color:'from-red-400 to-pink-500',focus:'Argumentative Writing',skills:['Claim & thesis','Evidence from text','Counterargument','Concluding statements'],weeks:[
+  {title:'Claims, Evidence & Warrant (CEW Model)', objective:'Write a clear claim and support it with relevant evidence and logical reasoning.', warmup:'Make a claim: "The best pizza topping is pepperoni." Now give one reason why. That\'s a claim + evidence.', mainActivity:'Learn the CEW structure: Claim (what you believe), Evidence (proof from a text or source), Warrant (how the evidence proves the claim). Read a short article about a school-relevant debate (e.g., school uniforms). Practice writing CEW paragraphs: state a claim, quote evidence from the article, explain the connection. Write three CEW paragraphs on different topics.', game:'Claim-a-thon: Present a claim about a silly topic (best superhero, best food). Others challenge with counter-evidence.', homeConnection:'At dinner, make a claim about something and back it up with evidence. Let family members challenge it.', assessment:'Can write a CEW paragraph with a clear claim, properly cited evidence, and logical reasoning connecting them.', differentiation:'Easier: Provide the claim and evidence; student writes only the warrant. Harder: Find evidence independently from multiple sources.'},
+  {title:'Finding & Citing Textual Evidence', objective:'Locate relevant quotes in a text and cite them properly using MLA format.', warmup:'What does it mean to "cite your sources"? Why do writers do this?', mainActivity:'Read three short nonfiction articles on a chosen debate topic. Use highlighters to mark potential evidence. Learn MLA in-text citation format (Author page). Practice embedding quotes into sentences using signal phrases: "According to Smith,..." "As the author states,..." Build a source card for each article with key quotes and citations.', game:'Evidence Relay: Teams race to find the strongest piece of evidence for a given claim in a shared text.', homeConnection:'Look at a newspaper article and find how the journalist uses quotes from sources.', assessment:'Can locate relevant textual evidence and cite it correctly using MLA format with signal phrases.', differentiation:'Easier: Provide pre-selected quotes to embed. Harder: Evaluate which of several quotes is the strongest evidence for a specific claim.'},
+  {title:'Addressing Counterarguments', objective:'Acknowledge an opposing viewpoint and write a refutation that strengthens the original argument.', warmup:'Someone says "Kids shouldn\'t have chores." What\'s the best argument against that?', mainActivity:'Learn why strong arguments address counterarguments. Read an argumentative essay and identify where the author addresses the other side. Practice writing counterargument-refutation paragraphs: "Some may argue that... However, ..." Role-play: defend a position while a family member plays devil\'s advocate. Write a full paragraph addressing a counterargument to your essay topic.', game:'Devil\'s Advocate Debate: One student argues FOR a position, the other argues AGAINST. Switch sides halfway.', homeConnection:'Discuss a family disagreement and practice acknowledging the other person\'s viewpoint before responding.', assessment:'Can write a counterargument-refutation paragraph that acknowledges the opposing view and explains why the original position is stronger.', differentiation:'Easier: Provide the counterargument; student writes only the refutation. Harder: Address two different counterarguments in the same essay.'},
+  {title:'Writing Strong Conclusions', objective:'Write a conclusion that synthesizes the essay\'s arguments rather than simply repeating them.', warmup:'Read a sample essay conclusion. Does it just repeat the intro, or does it add something new?', mainActivity:'Learn three conclusion strategies: (1) Call to action, (2) Connect to a bigger picture, (3) End with a powerful quote or question. Read sample conclusions and identify which strategy each uses. Write a conclusion for the argumentative essay that synthesizes the main points and ends with impact. Avoid beginning with "In conclusion."', game:'Conclusion Race: Given a thesis and three body paragraphs, race to write the strongest conclusion in 5 minutes.', homeConnection:'Watch a TED Talk and analyze how the speaker ends their presentation. What technique did they use?', assessment:'Can write a conclusion that synthesizes arguments and uses a recognized conclusion strategy without mere repetition.', differentiation:'Easier: Use a provided conclusion template. Harder: Write two different conclusions using different strategies and evaluate which is stronger.'}
+],project:'Write a 5-paragraph argumentative essay responding to a school-relevant debate topic with 3 cited sources.',materials:['Argument graphic organizer','3 nonfiction articles on chosen topic','MLA citation guide','Peer review checklist']},
+'December':{icon:'fa-feather-alt',color:'from-indigo-400 to-purple-500',focus:'Poetry & Creative Expression',skills:['Poetic devices','Meter & rhyme','Free verse writing','Imagery'],weeks:[
+  {title:'Poetic Devices: Sound & Meaning', objective:'Identify and analyze alliteration, assonance, onomatopoeia, and repetition in poetry.', warmup:'Say "Peter Piper picked a peck of pickled peppers" three times fast. What makes it hard?', mainActivity:'Read poems by Poe, Silverstein, and Angelou. Highlight examples of each sound device. For each device, write: What it is → Example from the poem → Why the poet used it (what effect it creates). Practice writing original lines using each device. Perform a poem aloud, emphasizing the sound devices.', game:'Alliteration Challenge: Pick a letter and write a 5-word sentence where every word starts with that letter.', homeConnection:'Listen to a rap or spoken word piece and count how many sound devices you can identify.', assessment:'Can identify all four sound devices in a poem and explain the effect of at least two examples.', differentiation:'Easier: Focus on alliteration and onomatopoeia. Harder: Analyze how sound devices create tone in a complex poem.'},
+  {title:'Meter, Rhyme & Form (Sonnets & Ballads)', objective:'Analyze rhyme scheme and meter in structured poetic forms.', warmup:'Clap along to a nursery rhyme. Where do the beats fall?', mainActivity:'Learn to mark rhyme schemes (ABAB, AABB, etc.) by labeling end sounds. Read a Shakespearean sonnet (Sonnet 18) and mark its rhyme scheme (ABABCDCDEFEFGG). Count syllables per line (iambic pentameter = 10 syllables). Read a ballad and note the difference in rhythm and structure. Write a simple 4-line stanza with a rhyme scheme.', game:'Rhyme Scheme Race: Given a poem, race to correctly label the rhyme scheme first.', homeConnection:'Find a greeting card poem and analyze its rhyme scheme and meter.', assessment:'Can correctly identify the rhyme scheme of a sonnet and explain how meter affects the poem\'s rhythm.', differentiation:'Easier: Use simple AABB poems. Harder: Write an original sonnet following the Shakespearean rhyme scheme.'},
+  {title:'Free Verse & Imagery Writing', objective:'Write original free verse poetry using vivid sensory imagery.', warmup:'Describe an orange using all five senses without using the word "orange."', mainActivity:'Study free verse poems by Walt Whitman and modern poets. Discuss how they create rhythm without rhyme or meter. Learn sensory imagery: sight, sound, smell, touch, taste. Practice writing free verse about a personal experience, using at least one image for each sense. Share poems aloud and discuss which images were most powerful.', game:'Sensory Detail Showdown: Show an image (photo). Everyone writes one line with a sensory detail. Best line wins.', homeConnection:'Go outside for 2 minutes. Write down every sensory detail you notice. Use them to write a 5-line poem.', assessment:'Can write a free verse poem of at least 10 lines incorporating sensory imagery from at least 3 different senses.', differentiation:'Easier: Write a 5-line poem using 2 senses. Harder: Use a specific extended metaphor throughout a 15-line free verse poem.'},
+  {title:'Spoken Word Poetry & Performance', objective:'Understand how voice, pacing, and emotion enhance the performance of poetry.', warmup:'Read the same sentence three ways: whispering, shouting, and monotone. How does delivery change meaning?', mainActivity:'Watch a spoken word performance (e.g., Sarah Kay, Shane Koyczan). Discuss: How does the performer\'s voice, speed, volume, and pauses add meaning? Choose an original poem from this month. Practice performing it with deliberate voice choices. Perform for the family. Receive feedback on delivery and emotional impact.', game:'Poetry Slam: Each person performs a poem. Score on voice projection, emotion, and eye contact (1-5 each).', homeConnection:'Watch a spoken word performance on YouTube with a family member and discuss what made it powerful.', assessment:'Can perform an original poem with clear voice modulation, appropriate pacing, and emotional expression.', differentiation:'Easier: Read a published poem aloud with expression. Harder: Write and perform an original spoken word piece with deliberate choreography.'}
+],project:'Create a poetry chapbook with 8 original poems in at least 4 different forms (haiku, sonnet, free verse, ode).',materials:['Poetry anthology','Chapbook paper','Pen and markers','Recording device for spoken word']},
+'January':{icon:'fa-newspaper',color:'from-blue-400 to-indigo-500',focus:'Informational Texts & Research',skills:['Text structure','Main idea & details','Note-taking','Summarizing'],weeks:[
+  {title:'Informational Text Structures', objective:'Identify cause/effect, compare/contrast, problem/solution, chronological, and descriptive text structures.', warmup:'Read a recipe. What structure is it organized in? (Chronological/sequence).', mainActivity:'Read five short articles, each using a different text structure. Identify signal words for each (e.g., "because" = cause/effect, "similarly" = compare/contrast). Create a reference chart with structure name, signal words, and a visual organizer for each. Practice outlining a text using the correct graphic organizer for its structure.', game:'Structure Sort: Read 10 short passages and sort them into the five text structure categories.', homeConnection:'Find three different text structures in newspaper articles, recipes, or instruction manuals at home.', assessment:'Can correctly identify the text structure of a passage and list at least 3 signal words for each type.', differentiation:'Easier: Focus on cause/effect and compare/contrast only. Harder: Analyze a text that uses multiple structures and explain why the author switched.'},
+  {title:'Main Idea & Supporting Details', objective:'Identify the main idea of a nonfiction text and distinguish it from supporting details.', warmup:'What is this paragraph about in one sentence: "Dogs need exercise. Walking helps their heart. Playing fetch builds muscles. Running prevents obesity."', mainActivity:'Read nonfiction articles of increasing complexity. For each, identify: Topic (1-2 words), Main Idea (1 sentence), Key Details (3-4 facts that support it). Practice distinguishing between a detail (specific fact) and the main idea (the big picture). Write a summary paragraph stating the main idea with two supporting details.', game:'Main Idea Ball Toss: Read a paragraph, state the main idea, then toss a ball. Catcher must add a supporting detail.', homeConnection:'Read a news article together and discuss: "What\'s the main idea? What are the key details?"', assessment:'Can accurately state the main idea of a nonfiction text and identify at least 3 supporting details.', differentiation:'Easier: Use short paragraphs with clearly stated main ideas. Harder: Find the implied main idea in a text where it is not directly stated.'},
+  {title:'Cornell Note-Taking System', objective:'Use the Cornell method to take organized, effective notes from a nonfiction chapter.', warmup:'How do you usually take notes? What works? What doesn\'t?', mainActivity:'Learn the Cornell format: Divide page into Cue Column (left), Notes (right), Summary (bottom). Read a nonfiction chapter together. Model taking Cornell notes: key terms in the cue column, detailed notes on the right, 2-sentence summary at the bottom. Practice independently with a second chapter. Review notes by covering the right side and quizzing from the cues.', game:'Note Race: Read a 2-page article. Race to create the most complete Cornell notes in 10 minutes. Compare.', homeConnection:'Use Cornell notes while watching a 10-minute educational video. Review notes afterward.', assessment:'Can create Cornell notes with clear cue words, organized notes, and a summary for a given text.', differentiation:'Easier: Provide partially completed Cornell templates. Harder: Take Cornell notes on a complex text and use them to write a summary without looking back.'},
+  {title:'Summarizing, Paraphrasing & Avoiding Plagiarism', objective:'Summarize and paraphrase text accurately without plagiarizing, and understand when to quote directly.', warmup:'Explain the plot of your favorite movie in exactly 2 sentences. That\'s a summary!', mainActivity:'Learn the difference: Summary (main points in your own words, shorter), Paraphrase (specific passage in your own words, same length), Direct Quote (exact words with citation). Practice all three with the same paragraph. Discuss plagiarism: what it is, why it matters, and how to avoid it. Rewrite three passages using each technique.', game:'Original or Not?: Read 5 passages. Guess whether each is a summary, paraphrase, or direct quote.', homeConnection:'Find a news headline and summarize the story to a family member in one sentence.', assessment:'Can correctly summarize, paraphrase, and quote a passage, demonstrating understanding of when each is appropriate.', differentiation:'Easier: Focus on summarizing only. Harder: Write a research paragraph using all three techniques with proper MLA citations.'}
+],project:'Research a historical figure or scientific discovery; write a 2-page informational report with bibliography.',materials:['Library access or internet','Cornell note-taking template','MLA format guide','Index cards for research notes']},
+'February':{icon:'fa-gavel',color:'from-violet-400 to-fuchsia-500',focus:'Debate & Speaking Skills',skills:['Debate structure','Persuasive speaking','Active listening','Rebuttal skills'],weeks:[
+  {title:'Introduction to Formal Debate', objective:'Understand the structure of a formal debate: proposition, opposition, opening statements, rebuttals, and closing.', warmup:'Should kids have homework? State your position in one sentence.', mainActivity:'Learn debate roles: First Proposition, First Opposition, Rebuttal speakers. Discuss what makes a strong argument (claim + evidence + reasoning). Watch a short clip of a middle school debate. Identify each speaker\'s role. Practice writing a 1-minute opening statement for a simple topic ("Should school start later?").', game:'Mini-Debate: Quick 2-minute debate on a fun topic (cats vs. dogs, pancakes vs. waffles).', homeConnection:'Discuss a family decision and practice making arguments for both sides.', assessment:'Can explain the structure of a formal debate and write an opening statement with a clear claim and supporting evidence.', differentiation:'Easier: Focus on writing a single argument. Harder: Write opening statements for both sides of the same topic.'},
+  {title:'Preparing Debate Positions with Research', objective:'Research and organize evidence to support a debate position using structured evidence cards.', warmup:'Pick a side: "Video games are good for kids." Brainstorm 3 reasons without looking anything up.', mainActivity:'Choose a debate topic. Research both sides using at least 3 sources. Create evidence cards: each card has Source, Quote/Fact, and How it supports your argument. Organize cards into: Opening Statement, Key Arguments, Potential Counterarguments. Practice delivering arguments with eye contact and clear pacing.', game:'Evidence Card Speed Sort: Organize 10 evidence cards into "For" and "Against" piles as fast as possible.', homeConnection:'Watch a political debate clip with a parent and discuss who made stronger arguments and why.', assessment:'Can create organized evidence cards from multiple sources and arrange them into a coherent debate position.', differentiation:'Easier: Provide pre-selected sources and evidence. Harder: Find sources independently and evaluate their credibility.'},
+  {title:'Practice Rounds & Structured Feedback', objective:'Deliver debate arguments with confidence and provide constructive peer feedback.', warmup:'Stand up, look at a wall, and deliver your opening statement. Now deliver it to a real person. What changed?', mainActivity:'Run a practice debate round with a partner. Each side delivers a 2-minute opening statement. Listen actively and take notes on the opponent\'s arguments. Practice rebuttal: specifically address what the other side said, then explain why your position is stronger. Partners provide structured feedback using a rubric (eye contact, evidence quality, rebuttal strength).', game:'Rebuttal Tennis: Partner makes a claim. You rebut it. They rebut your rebuttal. Keep the rally going.', homeConnection:'Practice your opening statement in front of a mirror, focusing on eye contact and posture.', assessment:'Can deliver a 2-minute debate argument with evidence and respond to at least one counterargument.', differentiation:'Easier: Read from prepared notes. Harder: Respond to unrehearsed counterarguments on the spot.'},
+  {title:'Formal Debate & Scoring', objective:'Participate in a full formal debate, demonstrating structured argumentation and persuasive speaking.', warmup:'Take three deep breaths. Shake out your hands. You\'re ready.', mainActivity:'Hold a formal debate using the full structure: Proposition opening, Opposition opening, Rebuttal rounds, Closing statements. Each speaker has a defined time limit. Use a scoring rubric evaluating: clarity of claim, quality of evidence, rebuttal effectiveness, delivery and presence. Debrief after the debate: What worked? What could be improved? What did you learn from the other side?', game:'Debate Awards: Vote on "Best Evidence," "Most Persuasive," and "Best Rebuttal."', homeConnection:'Discuss the debate topic with family members and see if they agree with the outcome.', assessment:'Can participate in a structured debate, deliver clear arguments, and respond to counterarguments using evidence.', differentiation:'Easier: Debate in a team of 2 with shared speaking roles. Harder: Debate solo in a 1-on-1 format with extended rebuttal rounds.'}
+],project:'Prepare and deliver a 3-minute persuasive speech on a chosen topic, followed by a Q&A round.',materials:['Debate topic list','Evidence cards','Scoring rubric','Timer']},
+'March':{icon:'fa-book',color:'from-teal-400 to-emerald-500',focus:'Novel Study — Realistic Fiction',skills:['Extended reading','Journal responses','Character arc','Conflict & resolution'],weeks:[
+  {title:'Novel Introduction & First Impressions', objective:'Begin reading the class novel, tracking initial impressions and making predictions.', warmup:'Look at the cover and read the back of the book. What do you predict this story will be about?', mainActivity:'Introduce the novel (e.g., "The Giver," "Hatchet," or "Esperanza Rising"). Read chapters 1–4 together and independently. Set up a reading journal: each entry has Date, Chapters Read, Summary (3 sentences), and Personal Response (1 paragraph). Discuss first impressions: What do we know about the protagonist? What questions do we have? Make 3 predictions.', game:'Prediction Wall: Write predictions on sticky notes and post them. Revisit at the end of the book.', homeConnection:'Read for 20 minutes independently. Tell a family member what happened and what you think will happen next.', assessment:'Can write a journal entry that summarizes the reading and makes at least one text-based prediction.', differentiation:'Easier: Provide guided reading questions for each chapter. Harder: Track multiple characters and their relationships simultaneously.'},
+  {title:'Character Arc Analysis', objective:'Track how the protagonist changes over the middle section of the novel and identify the events that cause change.', warmup:'Who was the main character in chapter 1? Are they the same person now? What changed?', mainActivity:'Read chapters 5–12. Create a character arc timeline: list 5-7 key events and how the protagonist reacted to each. Identify the protagonist\'s internal conflict (fear, doubt, desire). Write a journal response analyzing one major change in the character, citing specific events from the text. Discuss: Do characters change all at once or gradually?', game:'Character Timeline Race: Race to put 8 plot events in chronological order based on character development.', homeConnection:'Interview a family member: "What was a time you changed as a person? What caused it?"', assessment:'Can identify at least 3 key events that changed the protagonist and explain the cause-and-effect relationship.', differentiation:'Easier: Track only one character trait change. Harder: Compare the protagonist\'s arc to a secondary character\'s arc.'},
+  {title:'Analyzing Conflict Types', objective:'Identify internal and external conflicts in the novel and analyze how they drive the plot.', warmup:'List 3 problems the main character has faced so far. Which are inside their head? Which are outside?', mainActivity:'Read chapters 13–20. Create a conflict chart: for each conflict, identify Type (Person vs. Self, Person vs. Person, Person vs. Nature, Person vs. Society), Description, and Resolution Status. Discuss which conflict is the most important and why. Write a paragraph analyzing the central conflict and how it pushes the story toward its climax.', game:'Conflict Sort: Read scenarios from the book and sort them into the four conflict types.', homeConnection:'Discuss: What is the biggest conflict in your life right now? Is it internal or external?', assessment:'Can identify and classify at least 4 conflicts in the novel and explain which is the central conflict.', differentiation:'Easier: Focus on Person vs. Person and Person vs. Self only. Harder: Analyze how multiple conflicts interconnect and affect each other.'},
+  {title:'Theme, Resolution & Final Evaluation', objective:'Evaluate the novel\'s theme and resolution, supporting analysis with evidence from the text.', warmup:'Were your chapter-1 predictions correct? What surprised you?', mainActivity:'Read the final chapters. Identify the novel\'s theme and support it with 3 pieces of evidence from across the book. Evaluate the resolution: Was it satisfying? Realistic? Write a final journal response reflecting on the entire book: What did you learn? What would you change about the ending? Rate the book 1-5 stars with a written justification.', game:'Book Talk Speed Round: Summarize the entire novel in exactly 60 seconds.', homeConnection:'Recommend (or not recommend) the book to a family member with specific reasons why.', assessment:'Can state the novel\'s theme as a complete sentence and support it with at least 3 pieces of textual evidence.', differentiation:'Easier: Focus on whether the ending was satisfying or not. Harder: Compare the novel\'s theme to another book read this year.'}
+],project:'Novel study portfolio: reading log, 3 journal responses, 1 character map, 1 thematic essay (5 paragraphs).',materials:['Class novel (e.g. "The Giver," "Hatchet," or "Esperanza Rising")','Reading journal','Character map template','Essay rubric']},
+'April':{icon:'fa-spell-check',color:'from-cyan-400 to-blue-500',focus:'Grammar & Sentence Craft',skills:['Clause types','Sentence variety','Comma rules','Pronoun agreement'],weeks:[
+  {title:'Clauses & Sentence Types', objective:'Identify independent and dependent clauses and write simple, compound, and complex sentences.', warmup:'Read this sentence: "I ate dinner, and I watched a movie." Is it one idea or two? How do you know?', mainActivity:'Learn clause types: Independent (stands alone as a complete thought) and Dependent (cannot stand alone, starts with a subordinating word). Build sentences from clauses: Simple (1 independent), Compound (2 independent joined by a conjunction), Complex (1 independent + 1 dependent). Practice identifying and writing each type. Analyze a paragraph from a published essay and label every sentence.', game:'Sentence Builder: Draw clause cards and build the longest correct sentence possible.', homeConnection:'Find examples of all three sentence types in a newspaper article or book.', assessment:'Can correctly identify sentence types and write one of each from given clause prompts.', differentiation:'Easier: Focus on simple vs. compound only. Harder: Write compound-complex sentences and identify them in published texts.'},
+  {title:'Sentence Variety for Style', objective:'Vary sentence length and structure to improve writing flow and readability.', warmup:'Read two versions of the same paragraph—one with all short sentences, one with varied lengths. Which sounds better?', mainActivity:'Analyze a professional essay for sentence variety: count short (1-8 words), medium (9-15), and long (16+) sentences. Discuss how variety creates rhythm and emphasis. Take a previously written essay and revise it: combine choppy sentences, break run-ons, add variety. Read revised version aloud and compare to the original.', game:'Rhythm Check: Read your revised paragraph aloud. Clap on each period. Does it have a natural rhythm?', homeConnection:'Read a page from a favorite book and notice how the author varies sentence length.', assessment:'Can revise a paragraph to include at least 3 different sentence structures with varied lengths.', differentiation:'Easier: Focus on combining two short sentences into one. Harder: Analyze how sentence variety creates specific effects (suspense, urgency, calm).'},
+  {title:'Comma Rules & Application', objective:'Apply the four most common comma rules correctly in writing.', warmup:'Read: "Let\'s eat Grandma" vs. "Let\'s eat, Grandma." Why does the comma matter?', mainActivity:'Learn four key comma rules: (1) Items in a list, (2) Introductory phrases, (3) Joining independent clauses with FANBOYS, (4) Non-essential information (appositives). Practice each rule with 5 example sentences. Then, edit a paragraph with missing commas, applying all four rules. Discuss common comma mistakes (comma splices).', game:'Comma Police: Read 10 sentences. Half need commas added. Find and fix the errors.', homeConnection:'Find a piece of mail or an email with a comma error and explain what rule was broken.', assessment:'Can correctly apply all four comma rules in original writing and identify comma errors in given text.', differentiation:'Easier: Focus on lists and FANBOYS only. Harder: Learn the distinction between essential and non-essential clauses and how commas change meaning.'},
+  {title:'Pronoun-Antecedent Agreement', objective:'Ensure pronouns agree with their antecedents in number, gender, and person, and avoid ambiguous pronoun references.', warmup:'Read: "The dog chased the cat because it was hungry." What does "it" refer to? Can you tell?', mainActivity:'Learn pronoun-antecedent agreement rules: Singular antecedent = singular pronoun, plural = plural. Identify and fix errors in practice sentences. Discuss ambiguous pronouns (when "it" or "they" could refer to multiple things) and how to fix them by replacing with the specific noun. Edit a paragraph with pronoun errors.', game:'Pronoun Fix-Up: Read sentences with pronoun errors and race to correct them.', homeConnection:'Listen to a news broadcast and count how many times they use ambiguous pronouns.', assessment:'Can identify and correct pronoun-antecedent agreement errors and rewrite ambiguous pronoun references.', differentiation:'Easier: Focus on singular/plural agreement only. Harder: Address indefinite pronouns (everyone, each) and their tricky agreement rules.'}
+],project:'Revise a previous essay draft applying all grammar rules learned; create a "before and after" comparison page.',materials:['Grammar workbook or worksheet pack','Previous essay draft','Red pen for editing','Grammar reference card']},
+'May':{icon:'fa-globe',color:'from-rose-400 to-pink-500',focus:'Multicultural Literature & Voices',skills:['Cultural context','Perspective & bias','Comparing texts','Empathy in reading'],weeks:[
+  {title:'Reading Diverse World Literature', objective:'Read and discuss short stories and poems from different cultural traditions, identifying cultural context.', warmup:'Name a story, food, or tradition from a culture different than yours that you enjoy. Why?', mainActivity:'Read 2-3 short stories or poems from world literature (e.g., African folktales, Japanese haiku, Latin American magical realism). Before reading, briefly research the cultural context. While reading, note cultural references, values, or traditions that are different from your own. After reading, discuss: What universal themes connect this story to stories from your own culture?', game:'World Story Shuffle: Read 5 story openings from different cultures. Match each to its country of origin.', homeConnection:'Ask a family member about a story or proverb from their childhood. Where does it come from?', assessment:'Can identify at least 2 cultural elements in a text and explain how they shape the story\'s meaning.', differentiation:'Easier: Read heavily illustrated multicultural picture books. Harder: Compare texts from two different cultures on the same theme.'},
+  {title:'Analyzing Perspective & Bias', objective:'Identify how a narrator\'s cultural background shapes their perspective and recognize bias in storytelling.', warmup:'Tell the story of the Three Little Pigs from the wolf\'s perspective. How does it change?', mainActivity:'Read two accounts of the same historical event from different cultural perspectives. Discuss: Who is telling the story? What do they emphasize? What do they leave out? Learn the concept of bias (a preference that prevents impartial judgment). Practice identifying bias in news articles and stories. Write a short response analyzing one narrator\'s perspective.', game:'Perspective Flip: Retell a familiar story from a secondary character\'s point of view.', homeConnection:'Watch two different news channels cover the same story. Discuss the differences.', assessment:'Can identify bias in a text and explain how the narrator\'s background affects what is told and how.', differentiation:'Easier: Use clearly biased texts with obvious slant. Harder: Find subtle bias in a text that appears objective.'},
+  {title:'Comparing Texts Across Cultures', objective:'Compare and contrast how two texts from different cultures address the same universal theme.', warmup:'What themes do ALL stories share, no matter where they\'re from? (Love, family, courage, loss?)', mainActivity:'Choose one universal theme (e.g., coming of age, family bonds, overcoming adversity). Read two stories from different cultures on that theme. Create a Venn diagram comparing: How each culture presents the theme, what\'s similar, what\'s different. Write a compare/contrast paragraph analyzing how culture shapes the expression of universal human experiences.', game:'Theme Connection: Draw two random story cards from different cultures. Find the shared theme and explain it.', homeConnection:'Share what you learned with a family member. Ask: "What stories from our culture teach about this theme?"', assessment:'Can write a compare/contrast paragraph analyzing how two texts from different cultures treat the same theme.', differentiation:'Easier: Use a provided Venn diagram template. Harder: Write a full essay comparing three texts from three different cultures.'},
+  {title:'Personal Narrative & Cultural Identity', objective:'Write a personal narrative inspired by your own cultural background or family story.', warmup:'What is a story your family tells over and over? Why is it important to you?', mainActivity:'Brainstorm personal stories connected to your culture, family, or identity. Choose one story and plan it using a narrative arc (hook, rising action, climax, resolution). Write a 2-3 page personal narrative using sensory details, dialogue, and reflection. Include a reflection paragraph: What does this story say about who you are? Share the narrative with a family member for feedback.', game:'Story Swap: Exchange narratives with a partner. Each person asks one question about the other\'s story.', homeConnection:'Read your narrative to a parent or grandparent. Ask them to add details you might have missed.', assessment:'Can write a personal narrative with a clear narrative arc, sensory details, and cultural/personal reflection.', differentiation:'Easier: Write a 1-page narrative with a beginning, middle, and end. Harder: Weave cultural research into the narrative to add context for readers from other backgrounds.'}
+],project:'Write a personal narrative inspired by your own cultural background or family story (3 pages).',materials:['World literature anthology or selected articles','Personal narrative graphic organizer','Family photos or mementos (optional)','Writing journal']},
+'June':{icon:'fa-trophy',color:'from-amber-400 to-yellow-500',focus:'Portfolio & Presentation',skills:['Self-assessment','Revision','Public speaking','Year review'],weeks:[
+  {title:'Selecting & Revising Portfolio Pieces', objective:'Choose the 3 strongest writing pieces from the year and revise them for a final portfolio.', warmup:'Look through your writing journal from September. How has your writing changed?', mainActivity:'Review all writing from the year. Select 3 pieces: one essay, one creative piece, and one choice piece. For each, use a revision checklist: Is the thesis/main idea clear? Is there sufficient evidence? Are sentence types varied? Are grammar and spelling correct? Revise each piece using the checklist. Mark changes in a different color to show growth.', game:'Revision Relay: Given a sample essay with errors, race to find and fix all issues in 5 minutes.', homeConnection:'Share a before-and-after piece with a family member. Discuss what changed and why.', assessment:'Can revise a writing piece using a structured checklist and explain the improvements made.', differentiation:'Easier: Focus on fixing grammar and spelling. Harder: Restructure the essay\'s organization and strengthen the thesis.'},
+  {title:'Writing a Reflective Introduction', objective:'Write a reflective introduction letter explaining growth as a reader and writer over the year.', warmup:'If you could tell your September self one thing about writing, what would it be?', mainActivity:'Review your three portfolio pieces side by side. Write a reflective introduction letter (2-3 paragraphs): Paragraph 1: Who I was as a reader/writer in September. Paragraph 2: My biggest areas of growth (cite specific examples from your pieces). Paragraph 3: My goals for next year. Use specific examples from your portfolio to prove your growth.', game:'Growth Gallery Walk: Display revised pieces. Walk around and read each other\'s growth reflections.', homeConnection:'Write a thank-you note to someone who helped you become a better reader or writer this year.', assessment:'Can write a reflective letter that identifies specific areas of growth with evidence from their own writing.', differentiation:'Easier: Use sentence starters provided. Harder: Write a detailed self-assessment referencing specific standards and skills.'},
+  {title:'Preparing a Reading Presentation', objective:'Prepare and practice a 5-minute reading/presentation from one portfolio piece.', warmup:'What makes a good presentation? List 3 things.', mainActivity:'Choose one portfolio piece to present. Practice reading it aloud with expression and pacing. Prepare a 1-minute introduction explaining why you chose this piece and what you learned while writing it. Practice in front of a mirror, then in front of a partner. Focus on: eye contact, volume, pace, and posture. Time yourself to ensure you stay within 5 minutes.', game:'Presentation Warm-Up: Stand up and describe your favorite food for 60 seconds without stopping.', homeConnection:'Perform your presentation for your family. Ask for feedback on delivery.', assessment:'Can deliver a 5-minute presentation with clear introduction, expressive reading, and appropriate delivery skills.', differentiation:'Easier: Read from the portfolio with a brief intro. Harder: Present without reading directly from the page, using only note cards.'},
+  {title:'Portfolio Presentation & Year Celebration', objective:'Present the final portfolio to an audience and reflect on the year\'s learning journey.', warmup:'Take a deep breath. You\'ve worked hard all year. Be proud of what you\'ve built.', mainActivity:'Host a portfolio presentation event. Present your portfolio to family or peers. Read one selected piece aloud. Answer questions about your writing process, challenges, and growth. Celebrate the year\'s accomplishments. Create a "reading list" of books you want to read over the summer based on genres or authors you discovered this year.', game:'Literary Trivia: Create 20 trivia questions covering all the literature, writing techniques, and grammar learned this year.', homeConnection:'Celebrate with a family activity of your choice. You completed a full year of middle school English!', assessment:'Can present a polished portfolio and articulate their growth as a reader and writer with confidence.', differentiation:'Easier: Present one piece and answer pre-prepared questions. Harder: Give a formal presentation with a visual aid and take impromptu questions from the audience.'}
+],project:'Final Reading-Writing Portfolio with introduction letter, 3 revised pieces, and a reading list of books completed.',materials:['Portfolio binder or folder','All year\'s writing samples','Presentation checklist','Reading log']}
 };
-let currentMonth='September';
-function init(){
-  const tabs=document.getElementById('monthTabs');
-  Object.keys(curriculumData).forEach(m=>{
-    const btn=document.createElement('button');
-    btn.className='month-tab'+(m===currentMonth?' active':'');
-    btn.innerHTML=`<i class="fas ${curriculumData[m].icon}" style="margin-right:6px;"></i>${m}`;
-    btn.onclick=()=>selectMonth(m);
-    tabs.appendChild(btn);
-  });
-  loadContent('September');
-}
-function selectMonth(m){
-  currentMonth=m;
-  document.querySelectorAll('.month-tab').forEach((btn,i)=>{
-    btn.classList.toggle('active',Object.keys(curriculumData)[i]===m);
-  });
-  loadContent(m);
-}
-function loadContent(m){
-  const d=curriculumData[m];
-  const months=Object.keys(curriculumData);
-  const idx=months.indexOf(m);
-  const prev=idx>0?months[idx-1]:null;
-  const next=idx<months.length-1?months[idx+1]:null;
-  document.getElementById('monthContent').innerHTML=`
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
-      <div>
-        <div style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:4px;">Monthly Focus</div>
-        <h4 style="font-size:1.35rem;font-weight:800;letter-spacing:-0.025em;">${m}: <span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">${d.focus}</span></h4>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">
-        ${d.skills.map(s=>`<span style="padding:5px 12px;border-radius:50px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);font-size:11.5px;font-weight:500;color:var(--al);">${s}</span>`).join('')}
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
-      <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Weekly Topics</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          ${d.weeks.map((w,i)=>`
-            <div class="week-row">
-              <div class="week-header" onclick="toggleWeek('${m}-${i}')">
-                <div class="week-num">${i+1}</div>
-                <div style="flex:1;"><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55;">${w}</p><p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">Tap for details</p></div>
-                <i class="fas fa-chevron-down" id="chev-${m}-${i}" style="color:rgba(255,255,255,0.3);font-size:11px;margin-top:4px;transition:transform 0.2s;"></i>
-              </div>
-              <div class="week-detail" id="wd-${m}-${i}">
-                <div style="display:flex;gap:8px;margin-bottom:8px;"><i class="fas fa-pen" style="color:var(--a1);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">${w} — guided reading, discussion questions, and a short written response.</p></div>
-                <div style="display:flex;gap:8px;"><i class="fas fa-home" style="color:var(--a2);margin-top:2px;font-size:12px;"></i><p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.55;">Home practice: 30 minutes of assigned reading plus a journal reflection prompt.</p></div>
-              </div>
-            </div>`).join('')}
+
+let completed=JSON.parse(localStorage.getItem('eng-1112-done')||'{}');
+function saveProgress(){localStorage.setItem('eng-1112-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('eng-1112-done',JSON.stringify(completed));}
+
+function initCurriculum(){
+  const tabsContainer=document.getElementById('monthTabs');
+  const contentContainer=document.getElementById('monthContent');
+  let firstMonth=Object.keys(curriculumData)[0];
+  let currentMonth=localStorage.getItem('eng-1112-month')||firstMonth;
+
+  function renderTabs(){
+    tabsContainer.innerHTML='';
+    Object.keys(curriculumData).forEach(month=>{
+      const btn=document.createElement('button');
+      btn.className=`month-tab ${month===currentMonth?'active':''}`;
+      btn.innerText=month;
+      btn.onclick=()=> { currentMonth=month; saveProgress(); renderTabs(); renderContent(); };
+      tabsContainer.appendChild(btn);
+    });
+  }
+
+  function renderContent(){
+    const data=curriculumData[currentMonth];
+    let skillsHtml = data.skills.map(s=> `<span style="display:inline-block;padding:4px 10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;font-size:12px;margin:0 6px 6px 0;color:var(--ct2);">${s}</span>`).join('');
+    
+    let weeksHtml = data.weeks.map((w,i)=>{
+      const wid=currentMonth+'-'+i;
+      const isDone=!!completed[wid];
+      return `
+      <div class="week-row${isDone?' completed':''}" id="week-${i}">
+        <div class="week-header" onclick="toggleWeek(${i})">
+          <button class="week-check${isDone?' done':''}" onclick="toggleCheck(event, ${i},'${wid}')">${isDone?'<i class="fas fa-check"></i>':''}</button>
+          <div class="week-num">${i+1}</div>
+          <div style="flex-grow:1;">
+            <h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">${w.title}</h4>
+            <p style="font-size:13px;color:var(--ct6);line-height:1.4;">${w.objective}</p>
+          </div>
+          <i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-${i}"></i>
+        </div>
+        <div class="week-detail" id="detail-${i}">
+          <div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Warm-up:</strong> <span style="font-size:13px;color:var(--ct4);">${w.warmup}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Main Activity:</strong> <span style="font-size:13px;color:var(--ct4);">${w.mainActivity}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Game/Play:</strong> <span style="font-size:13px;color:var(--ct4);">${w.game}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Home Connection:</strong> <span style="font-size:13px;color:var(--ct4);">${w.homeConnection}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Assessment:</strong> <span style="font-size:13px;color:var(--ct4);">${w.assessment}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:4px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Differentiation:</strong> <span style="font-size:13px;color:var(--ct4);">${w.differentiation}</span></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Monthly Project</div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px;margin-bottom:22px;"><p style="font-size:13.5px;color:rgba(255,255,255,0.62);line-height:1.7;">${d.project}</p></div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--al);margin-bottom:14px;">Materials Needed</div>
-        <div style="display:flex;flex-direction:column;gap:9px;">
-          ${d.materials.map(mat=>`<div class="mat-item"><i class="fas fa-check-circle" style="color:var(--a1);font-size:13px;"></i><span style="font-size:13px;color:rgba(255,255,255,0.62);">${mat}</span></div>`).join('')}
+    `}).join('');
+
+    let materialsHtml = data.materials.map(m=> `<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"></i><span style="font-size:13px;color:var(--ct4);">${m}</span></div>`).join('');
+
+    contentContainer.innerHTML=`
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 16px rgba(16,185,129,0.25);">
+          <i class="fas ${data.icon}"></i>
+        </div>
+        <div>
+          <h3 style="font-size:20px;font-weight:800;color:var(--ct);">${currentMonth}</h3>
+          <p style="font-size:14px;color:var(--ct5);font-weight:500;">${data.focus}</p>
         </div>
       </div>
-    </div>
-    <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;">
-      <button onclick="${prev?`selectMonth('${prev}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${prev?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${prev?1:0.3};"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:10px;"></i>Previous</button>
-      <button onclick="${next?`selectMonth('${next}')`:'void(0)'}" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);cursor:${next?'pointer':'default'};font-size:13px;font-family:'Inter',sans-serif;opacity:${next?1:0.3};">Next<i class="fas fa-chevron-right" style="margin-left:6px;font-size:10px;"></i></button>
-    </div>`;
+
+      <div class="month-grid">
+        <div>
+          <div style="margin-bottom:20px;">
+            <p class="section-label" style="margin-bottom:10px;">Monthly Goals</p>
+            <div>${skillsHtml}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            ${weeksHtml}
+          </div>
+        </div>
+        
+        <div>
+          <div class="sched-card" style="margin-bottom:16px;">
+            <p class="section-label"><i class="fas fa-star" style="color:var(--a1);margin-right:6px;"></i>Monthly Project</p>
+            <p style="font-size:14px;color:var(--ct3);line-height:1.6;">${data.project}</p>
+          </div>
+          
+          <div class="sched-card">
+            <p class="section-label"><i class="fas fa-box-open" style="color:var(--a1);margin-right:6px;"></i>Materials Needed</p>
+            <div style="margin-top:12px;">${materialsHtml}</div>
+          </div>
+
+          <div class="sched-card" style="margin-top:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <p class="section-label" style="margin-bottom:0;">Year Progress</p>
+              <span style="font-size:12px;font-weight:700;color:var(--a1);" id="progress-text">0 of 0 weeks completed</span>
+            </div>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%;"></div></div>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:16px;">
+            <button onclick="prevMonth()" style="flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.03);color:var(--ct);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:11px;"></i> Prev Month</button>
+            <button onclick="nextMonth()" style="flex:1;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--a1),var(--a2));color:white;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(16,185,129,0.2);transition:all 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Next Month <i class="fas fa-chevron-right" style="margin-left:6px;font-size:11px;"></i></button>
+          </div>
+        </div>
+      </div>
+    `;
+    updateProgress();
+  }
+  
+  renderTabs();
+  renderContent();
 }
-function toggleWeek(id){
-  const d=document.getElementById('wd-'+id);
-  const c=document.getElementById('chev-'+id);
-  const open=d.style.display==='block';
-  d.style.display=open?'none':'block';
-  c.style.transform=open?'':'rotate(180deg)';
+
+window.toggleWeek = function(index) {
+  const detail = document.getElementById(`detail-${index}`);
+  const icon = document.getElementById(`icon-${index}`);
+  if(detail.classList.contains('open')) {
+    detail.classList.remove('open');
+    icon.style.transform = 'rotate(0deg)';
+  } else {
+    detail.classList.add('open');
+    icon.style.transform = 'rotate(180deg)';
+  }
 }
-init();
+
+window.toggleCheck = function(event, index, wid) {
+  event.stopPropagation();
+  const btn = event.currentTarget;
+  const row = document.getElementById(`week-${index}`);
+  completed[wid]=!completed[wid];
+  const isDone=completed[wid];
+  btn.classList.toggle('done',isDone);
+  btn.innerHTML=isDone?'<i class="fas fa-check"></i>':'';
+  row.classList.toggle('completed',isDone);
+  saveProgress();
+  updateProgress();
+}
+
+window.updateProgress = function() {
+  const months = Object.keys(curriculumData);
+  const total = months.reduce((s,m)=>s+curriculumData[m].weeks.length,0);
+  const done = Object.values(completed).filter(Boolean).length;
+  const pct = Math.round((done/total)*100);
+  const fill = document.getElementById('progress-fill');
+  const text = document.getElementById('progress-text');
+  if(fill) fill.style.width = pct + '%';
+  if(text) text.innerText = done + ' of ' + total + ' weeks completed';
+}
+
+window.prevMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx > 0) {
+    document.querySelectorAll('.month-tab')[currIdx-1].click();
+  }
+}
+
+window.nextMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx < months.length-1) {
+    document.querySelectorAll('.month-tab')[currIdx+1].click();
+  }
+}
+
+
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+
+  initCurriculum();
+});
 </script>
 <script src="paywall.js"></script>
 </body>
