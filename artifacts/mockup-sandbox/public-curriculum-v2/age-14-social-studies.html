@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Social Studies — Grade 9 | Curriculum Hub</title>
-<link rel="stylesheet" href="assets/fonts/inter.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/font-awesome.css">
 <script src="assets/tailwind.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--a1:#ec4899;--a2:#f97316;--al:#f9a8d4;--ct:white;--ct2:rgba(255,255,255,0.85);--ct3:rgba(255,255,255,0.7);--ct4:rgba(255,255,255,0.6);--ct5:rgba(255,255,255,0.48);--ct6:rgba(255,255,255,0.45);--ct7:rgba(255,255,255,0.4);--ct8:rgba(255,255,255,0.3);--ct9:rgba(255,255,255,0.28);--ct10:rgba(255,255,255,0.15);--cs1:rgba(255,255,255,0.03);--cs2:rgba(255,255,255,0.025);--cs3:rgba(255,255,255,0.04);--cs4:rgba(255,255,255,0.08);--br1:rgba(255,255,255,0.07);--br2:rgba(255,255,255,0.09);}
-body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0f1119;color:white;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background:repeating-conic-gradient(rgba(255,255,255,0.008) 0% 25%,transparent 0% 50%) 0 0/3px 3px;pointer-events:none;z-index:0}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
 .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(236,72,153,0.11),transparent 70%);top:-100px;right:-100px;}
 .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.08),transparent 70%);bottom:100px;left:-100px;}
-header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
 .back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
 .back-btn:hover{color:white;}
@@ -28,7 +31,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
 .skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
 .sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
-.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'DM Sans',system-ui,sans-serif;}
 .month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
 .month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(236,72,153,0.35);}
 .week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
@@ -273,6 +276,7 @@ window.nextMonth = function() {
 
 document.addEventListener('DOMContentLoaded', () => { initCurriculum(); });
 </script>
+<script src="quiz.js"></script>
 <script src="paywall.js"></script>
 </body>
 </html>

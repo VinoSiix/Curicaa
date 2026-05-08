@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Foundation Mathematics — Ages 5–7 | Curriculum Hub</title>
-<link rel="stylesheet" href="assets/fonts/inter.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/font-awesome.css">
 <script src="assets/tailwind.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--a1:#3b82f6;--a2:#06b6d4;--al:#93c5fd;--ct:white;--ct2:rgba(255,255,255,0.85);--ct3:rgba(255,255,255,0.7);--ct4:rgba(255,255,255,0.6);--ct5:rgba(255,255,255,0.48);--ct6:rgba(255,255,255,0.45);--ct7:rgba(255,255,255,0.4);--ct8:rgba(255,255,255,0.3);--ct9:rgba(255,255,255,0.28);--ct10:rgba(255,255,255,0.15);--cs1:rgba(255,255,255,0.03);--cs2:rgba(255,255,255,0.025);--cs3:rgba(255,255,255,0.04);--cs4:rgba(255,255,255,0.08);--br1:rgba(255,255,255,0.07);--br2:rgba(255,255,255,0.09);}
-body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0f1119;color:white;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background:repeating-conic-gradient(rgba(255,255,255,0.008) 0% 25%,transparent 0% 50%) 0 0/3px 3px;pointer-events:none;z-index:0}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
 .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.11),transparent 70%);top:-100px;right:-100px;}
 .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.08),transparent 70%);bottom:100px;left:-100px;}
-header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
 .back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
 .back-btn:hover{color:white;}
@@ -28,7 +31,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
 .skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
 .sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
-.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'DM Sans',system-ui,sans-serif;}
 .month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
 .month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(59,130,246,0.35);}
 .week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
@@ -195,6 +198,51 @@ const curriculumData={
 ],project:'Complete the Math Portfolio. Decorate a folder, organize the year\'s projects inside, and present it to family members explaining the work.',materials:['Real coins','Analog clock','Board game supplies','Folder for portfolio']}
 };
 
+// External worksheet links — one per week, keyed by "Month-WeekIndex"
+const worksheetLinks={
+'September-0':{name:'Counting to 5 Practice',url:'https://math-drills.com/numbersense/ten_frames_completed_numbers_increasing_001.php'},
+'September-1':{name:'Counting 6–10 Practice',url:'https://math-drills.com/numbersense/before_between_after_000to012_001.php'},
+'September-2':{name:'Comparing Numbers',url:'https://math-drills.com/numbersense/comparing_numbers_to_09_001.php'},
+'September-3':{name:'Number Recognition 1–10',url:'https://www.commoncoresheets.com/counting-worksheets'},
+'October-0':{name:'Making 10',url:'https://www.commoncoresheets.com/addition-worksheets'},
+'October-1':{name:'Teen Numbers 11–15',url:'https://math-drills.com/numbersense/before_between_after_000to020_001.php'},
+'October-2':{name:'Teen Numbers 16–20',url:'https://math-drills.com/numbersense/ordering_0120_0decimal_001.php'},
+'October-3':{name:'Counting On',url:'https://www.commoncoresheets.com/counting-worksheets'},
+'November-0':{name:'Number Bonds (Part-Part-Whole)',url:'https://www.commoncoresheets.com/addition-worksheets'},
+'November-1':{name:'Addition Word Problems',url:'https://www.commoncoresheets.com/addition-worksheets'},
+'November-2':{name:'Addition Equations to 5',url:'https://math-drills.com/addition/addition_upto_05_001.php'},
+'November-3':{name:'Addition Facts to 5',url:'https://math-drills.com/addition/addition_upto_05_001.php'},
+'December-0':{name:'Subtraction Take Away',url:'https://www.commoncoresheets.com/subtraction-worksheets'},
+'December-1':{name:'Subtraction Stories',url:'https://www.commoncoresheets.com/subtraction-worksheets'},
+'December-2':{name:'Subtraction Equations',url:'https://math-drills.com/subtraction/sub01to09_001.php'},
+'December-3':{name:'Fact Families',url:'https://math-drills.com/factfamilyworksheets/fact_family_addition_subtraction_0505_001.php'},
+'January-0':{name:'2D Shapes',url:'https://math-drills.com/geometry/shapes_identify_regular_triangle_to_octagon_001.php'},
+'January-1':{name:'Composing Shapes',url:'https://www.commoncoresheets.com/shapes'},
+'January-2':{name:'3D Shapes',url:'https://math-drills.com/geometry/shapes_identify_regular_triangle_to_octagon_001.php'},
+'January-3':{name:'Positional Words',url:'https://www.commoncoresheets.com/counting-worksheets'},
+'February-0':{name:'Measuring Length',url:'https://www.commoncoresheets.com/measurement-worksheets'},
+'February-1':{name:'Comparing Weight',url:'https://www.commoncoresheets.com/measurement-worksheets'},
+'February-2':{name:'Capacity & Volume',url:'https://www.commoncoresheets.com/measurement-worksheets'},
+'February-3':{name:'Sorting & Graphing',url:'https://www.commoncoresheets.com/bar-graph-worksheets'},
+'March-0':{name:'Hundreds Chart',url:'https://math-drills.com/numbersense/hundred_chart_single_right_filled.php'},
+'March-1':{name:'Skip Counting by 10s',url:'https://math-drills.com/numbersense/skip_counting_cars_010_001.php'},
+'March-2':{name:'Skip Counting by 5s & 2s',url:'https://math-drills.com/numbersense/skip_counting_cars_002_001.php'},
+'March-3':{name:'Comparing Two-Digit Numbers',url:'https://math-drills.com/numbersense/comparing_numbers_to_25_001.php'},
+'April-0':{name:'Friends of 10',url:'https://www.commoncoresheets.com/addition-worksheets'},
+'April-1':{name:'Addition: Counting On',url:'https://www.commoncoresheets.com/math-drills-worksheets'},
+'April-2':{name:'Subtraction: Counting Back',url:'https://www.commoncoresheets.com/subtraction-worksheets'},
+'April-3':{name:'Mixed Word Problems',url:'https://www.commoncoresheets.com/multistep-problem-worksheets'},
+'May-0':{name:'Base Ten Blocks',url:'https://math-drills.com/baseten/baseten_represent_number_ones_tens_001.php'},
+'May-1':{name:'Decomposing Teen Numbers',url:'https://www.commoncoresheets.com/value-and-place-value-worksheets'},
+'May-2':{name:'Add & Subtract 10',url:'https://www.commoncoresheets.com/math-drills-worksheets'},
+'May-3':{name:'2-Digit + 1-Digit Addition',url:'https://www.commoncoresheets.com/addition-worksheets'},
+'June-0':{name:'Time & Money',url:'https://www.commoncoresheets.com/money-worksheets'},
+'June-1':{name:'Shapes & Measurement Review',url:'https://www.commoncoresheets.com/measurement-worksheets'},
+'June-2':{name:'Addition & Subtraction Games',url:'https://www.commoncoresheets.com/math-drills-worksheets'},
+'June-3':{name:'Year-End Review',url:'https://www.commoncoresheets.com/math-drills-worksheets'}
+};
+
+
 let completed=JSON.parse(localStorage.getItem('math-5-7-done')||'{}');
 function saveProgress(){localStorage.setItem('math-5-7-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('math-5-7-done',JSON.stringify(completed));}
 
@@ -231,7 +279,9 @@ function initCurriculum(){
       const wa = typeof w === 'string' ? '' : w.assessment;
       const wd = typeof w === 'string' ? '' : w.differentiation;
       const hasDetail = ww || wm;
-      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
+      const wsLink = worksheetLinks[currentMonth+'-'+i];
+      const wsHtml = wsLink ? '<div style="display:flex;gap:12px;margin-bottom:14px;padding:8px 12px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:10px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-print"></i></div><div><a href="'+wsLink.url+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--al);text-decoration:none;">'+wsLink.name+'</a><span style="font-size:11px;color:var(--ct7);margin-left:8px;">↗ Free printable</span></div></div>' : '';
+      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+wsHtml+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
     }).join('');
 
     let materialsHtml = data.materials.map(m=> '<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"><\/i><span style="font-size:13px;color:var(--ct4);">'+m+'<\/span><\/div>').join('');
@@ -289,6 +339,7 @@ window.nextMonth = function() {
 
 document.addEventListener('DOMContentLoaded', () => { initCurriculum(); });
 </script>
+<script src="quiz.js"></script>
 <script src="paywall.js"></script>
 </body>
 </html>

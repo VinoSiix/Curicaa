@@ -62,7 +62,7 @@
                     ]
                 },
                 {
-                    id: 'high-school', title: 'High School', ageRange: 'Age 14', colorClass: 'card-red',
+                    id: 'high-school', title: 'High School', ageRange: 'Ages 13\u201314', colorClass: 'card-red',
                     iconClass: 'fas fa-graduation-cap', gradientBg: 'linear-gradient(135deg,#ef4444,#ec4899)',
                     sectionLabel: 'Critical thinking', onclickParam: 'age-14',
                     titleColor: '#fca5a5', ageBadgeColor: '#fca5a5',
@@ -99,15 +99,15 @@
                 }
             ],
             features: [
-                {iconClass: 'fas fa-calendar-alt', iconColor: '#fbbf24', title: 'Done-For-You Lesson Plans', subtitle: '10 months, week by week'},
+                {iconClass: 'fas fa-calendar-alt', iconColor: '#d4a54a', title: 'Done-For-You Lesson Plans', subtitle: '10 months, week by week'},
                 {iconClass: 'fas fa-check-circle', iconColor: '#4ade80', title: 'Zero Prep Required', subtitle: 'Open and teach instantly'},
                 {iconClass: 'fas fa-wifi', iconColor: '#22d3ee', title: 'Works Offline', subtitle: 'No internet needed to teach'},
-                {iconClass: 'fas fa-mobile-alt', iconColor: '#fbbf24', title: 'Any Device, Anywhere', subtitle: 'Phone, tablet, or laptop'},
-                {iconClass: 'fas fa-chalkboard-teacher', iconColor: '#f59e0b', title: 'Parent-Friendly Guides', subtitle: 'Step-by-step for non-teachers'},
+                {iconClass: 'fas fa-mobile-alt', iconColor: '#d4a54a', title: 'Any Device, Anywhere', subtitle: 'Phone, tablet, or laptop'},
+                {iconClass: 'fas fa-chalkboard-teacher', iconColor: '#d4a54a', title: 'Parent-Friendly Guides', subtitle: 'Step-by-step for non-teachers'},
                 {iconClass: 'fas fa-dollar-sign', iconColor: '#fb923c', title: 'Household Materials Only', subtitle: 'No expensive supplies to buy'},
                 {iconClass: 'fas fa-chart-line', iconColor: '#22d3ee', title: 'Track Your Child\'s Growth', subtitle: 'Built-in progress & assessments'},
                 {iconClass: 'fas fa-layer-group', iconColor: '#f472b6', title: 'Adapts to Every Learner', subtitle: 'Easier & harder options included'},
-                {iconClass: 'fas fa-flask', iconColor: '#fbbf24', title: 'Hands-On Science Experiments', subtitle: 'Real learning, real fun'},
+                {iconClass: 'fas fa-flask', iconColor: '#d4a54a', title: 'Hands-On Science Experiments', subtitle: 'Real learning, real fun'},
                 {iconClass: 'fas fa-book-open', iconColor: '#60a5fa', title: 'Curated Reading Lists', subtitle: 'Age-matched book suggestions'},
                 {iconClass: 'fas fa-music', iconColor: '#f87171', title: 'Art & Music Integrated', subtitle: 'Creativity in every unit'},
                 {iconClass: 'fas fa-award', iconColor: '#2dd4bf', title: 'Celebrate Every Milestone', subtitle: 'Badges & achievements'}
@@ -131,10 +131,10 @@
                 {question: 'Is there a money-back guarantee?', answer: 'Yes. We offer a full 30-day money-back guarantee. If you\u2019re not satisfied for any reason, just let us know and we\u2019ll refund your purchase.'}
             ],
             stats: [
-                {iconClass: 'fas fa-calendar-week', iconColor: '#fbbf24', number: '320', suffix: '+', label: 'Weeks of Lessons', iconBg: 'rgba(251,191,36,0.12)'},
-                {iconClass: 'fas fa-book-open', iconColor: '#67e8f9', number: '32', suffix: '', label: 'Subjects Covered', iconBg: 'rgba(103,232,249,0.12)'},
+                {iconClass: 'fas fa-calendar-week', iconColor: '#d4a54a', number: '320', suffix: '+', label: 'Weeks of Lessons', iconBg: 'rgba(251,191,36,0.12)'},
+                {iconClass: 'fas fa-book-open', iconColor: '#67e8f9', number: '4', suffix: '', label: 'Core Subjects', iconBg: 'rgba(103,232,249,0.12)'},
                 {iconClass: 'fas fa-graduation-cap', iconColor: '#4ade80', number: '8', suffix: '', label: 'Grade Levels', iconBg: 'rgba(74,222,128,0.12)'},
-                {iconClass: 'fas fa-sync-alt', iconColor: '#fbbf24', number: '2', suffix: '', label: 'Flexible Plans', iconBg: 'rgba(251,191,36,0.12)'},
+                {iconClass: 'fas fa-sync-alt', iconColor: '#d4a54a', number: '4', suffix: '', label: 'Flexible Plans', iconBg: 'rgba(212,165,74,0.12)'},
                 {iconClass: 'fas fa-wifi', iconColor: '#f472b6', number: '100', suffix: '%', label: 'Offline Ready', iconBg: 'rgba(244,114,182,0.12)'}
             ],
             grades: [
@@ -143,7 +143,7 @@
                 {dataGrade: 'age-9', title: 'Level 3', ageLabel: 'Age 9'},
                 {dataGrade: 'age-10', title: 'Level 4', ageLabel: 'Age 10'},
                 {dataGrade: 'ages-11-12', title: 'Middle School', ageLabel: 'Ages 11\u201312'},
-                {dataGrade: 'age-14', title: 'High School', ageLabel: 'Age 14'},
+                {dataGrade: 'age-14', title: 'High School', ageLabel: 'Ages 13\u201314'},
                 {dataGrade: 'ages-15-16', title: 'GED Prep', ageLabel: 'Ages 15\u201316'},
                 {dataGrade: 'ages-17-18', title: 'SAT Prep', ageLabel: 'Ages 17\u201318'}
             ]
@@ -218,8 +218,8 @@
                 var starsHtml = '';
                 for (var s = 0; s < 5; s++) {
                     starsHtml += s < t.stars
-                        ? '<i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>'
-                        : '<i class="far fa-star" style="color:#fbbf24;font-size:12px;"></i>';
+                        ? '<i class="fas fa-star" style="color:#d4a54a;font-size:12px;"></i>'
+                        : '<i class="far fa-star" style="color:#d4a54a;font-size:12px;"></i>';
                 }
                 card.innerHTML =
                     '<div style="margin-bottom:16px;">' + starsHtml + '</div>' +
@@ -380,10 +380,14 @@
                 document.getElementById('menuUserEmail').textContent = user.email;
                 document.getElementById('mobileUserName').textContent = user.name;
                 var badge = document.getElementById('menuPlanBadge');
-                if (user.plan === 'bundle') {
+                if (user.plan === 'pro') {
+                    badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> Curicaa Pro';
+                    badge.style.background = 'rgba(167,139,250,0.15)';
+                    badge.style.color = '#a78bfa';
+                } else if (user.plan === 'bundle') {
                     badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> Full Bundle';
                     badge.style.background = 'rgba(245,158,11,0.15)';
-                    badge.style.color = '#fbbf24';
+                    badge.style.color = '#d4a54a';
                 } else if (user.plan === 'single') {
                     var gradeCount = user.grades ? user.grades.length : 1;
                     badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> ' + gradeCount + ' Grade' + (gradeCount !== 1 ? 's' : '');
@@ -414,7 +418,7 @@
                 var grade = gradeMatch[1];
 
                 var hasAccess = false;
-                if (user && user.plan === 'bundle') hasAccess = true;
+                if (user && (user.plan === 'bundle' || user.plan === 'pro')) hasAccess = true;
                 if (user && user.plan === 'single' && user.grades) {
                     for (var i = 0; i < user.grades.length; i++) {
                         if (user.grades[i] === grade) { hasAccess = true; break; }
@@ -461,12 +465,12 @@
             if (user) {
                 nameSection.style.display = 'block';
                 document.getElementById('newNameInput').placeholder = user.name;
-                var planLabel = user.plan === 'bundle' ? 'Full K-12 Bundle' : user.plan === 'single' ? (user.grades ? user.grades.length : 1) + ' Grade' + ((user.grades ? user.grades.length : 1) !== 1 ? 's' : '') : 'Free Plan';
+                var planLabel = user.plan === 'bundle' ? 'Full K-12 Bundle' : user.plan === 'single' ? (user.grades ? user.grades.length : 1) + ' Grade' + ((user.grades ? user.grades.length : 1) !== 1 ? 's' : '') : user.plan === 'pro' ? 'Pro Plan' : 'Free Plan';
                 // Build DOM safely — no innerHTML with user data (XSS prevention)
                 var infoWrap = document.createElement('div');
                 infoWrap.style.cssText = 'display:flex;align-items:center;gap:10px;margin-bottom:8px;';
                 var avatarDiv = document.createElement('div');
-                avatarDiv.style.cssText = 'width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#f59e0b,#f97316);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;';
+                avatarDiv.style.cssText = 'width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#d4a54a,#f97316);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;';
                 avatarDiv.textContent = user.name.charAt(0).toUpperCase();
                 var textDiv = document.createElement('div');
                 var nameDiv = document.createElement('div');
@@ -479,14 +483,55 @@
                 textDiv.appendChild(emailDiv);
                 infoWrap.appendChild(avatarDiv);
                 infoWrap.appendChild(textDiv);
-                var planBadge = document.createElement('div');
-                planBadge.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(245,158,11,0.12);color:#fbbf24;';
-                planBadge.textContent = planLabel;
                 infoEl.innerHTML = '';
                 infoEl.appendChild(infoWrap);
-                infoEl.appendChild(planBadge);
+
+                // Build subscription card
+                var subCard = document.getElementById('subscriptionCard');
+                subCard.innerHTML = '';
+                var planIcon = document.createElement('div');
+                var planDetailWrap = document.createElement('div');
+                planDetailWrap.style.cssText = 'flex:1;min-width:0;';
+                var planTitleDiv = document.createElement('div');
+                planTitleDiv.style.cssText = 'font-size:14px;font-weight:700;color:var(--text-primary);';
+                planTitleDiv.textContent = planLabel;
+                var planDescDiv = document.createElement('div');
+                planDescDiv.style.cssText = 'font-size:11px;color:var(--text-muted);margin-top:2px;';
+
+                var isPaid = user.plan === 'bundle' || user.plan === 'single' || user.plan === 'pro';
+                if (user.plan === 'bundle') {
+                    planIcon.style.cssText = 'width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#d4a54a,#f97316);display:flex;align-items:center;justify-content:center;flex-shrink:0;';
+                    planIcon.innerHTML = '<i class="fas fa-crown" style="color:white;font-size:15px;"></i>';
+                    planDescDiv.textContent = 'All grades · All subjects · $169/year';
+                } else if (user.plan === 'pro') {
+                    planIcon.style.cssText = 'width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;flex-shrink:0;';
+                    planIcon.innerHTML = '<i class="fas fa-rocket" style="color:white;font-size:15px;"></i>';
+                    planDescDiv.textContent = 'All grades + coaching + priority support';
+                } else if (user.plan === 'single') {
+                    planIcon.style.cssText = 'width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center;flex-shrink:0;';
+                    planIcon.innerHTML = '<i class="fas fa-graduation-cap" style="color:white;font-size:15px;"></i>';
+                    planDescDiv.textContent = (user.grades ? user.grades.join(', ') : '1 grade') + ' · Access to selected grades';
+                } else {
+                    planIcon.style.cssText = 'width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.06);border:1px solid var(--border-faint);display:flex;align-items:center;justify-content:center;flex-shrink:0;';
+                    planIcon.innerHTML = '<i class="fas fa-user" style="color:var(--text-muted);font-size:15px;"></i>';
+                    planDescDiv.textContent = 'Limited free lessons · Upgrade for full access';
+                }
+                planDetailWrap.appendChild(planTitleDiv);
+                planDetailWrap.appendChild(planDescDiv);
+                subCard.appendChild(planIcon);
+                subCard.appendChild(planDetailWrap);
+
+                // Upgrade button for free users
+                if (!isPaid) {
+                    var upgradeBtn = document.createElement('button');
+                    upgradeBtn.style.cssText = 'padding:7px 14px;border-radius:8px;border:none;background:linear-gradient(135deg,#d4a54a,#f97316);color:white;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font-body);white-space:nowrap;';
+                    upgradeBtn.textContent = 'Upgrade';
+                    upgradeBtn.onclick = function() { closeSettings(); document.getElementById('pricing').scrollIntoView({behavior:'smooth'}); };
+                    subCard.appendChild(upgradeBtn);
+                }
+
                 // Show cancel section only for paid plans
-                cancelSection.style.display = (user.plan === 'bundle' || user.plan === 'single') ? 'block' : 'none';
+                cancelSection.style.display = isPaid ? 'block' : 'none';
                 document.getElementById('cancelConfirmStep').style.display = 'none';
                 document.getElementById('cancelSuccessMsg').style.display = 'none';
                 document.getElementById('cancelSubBtn').style.display = 'block';
@@ -497,6 +542,7 @@
             } else {
                 nameSection.style.display = 'none';
                 infoEl.innerHTML = '<span style="color:var(--text-muted);">Sign in to view account details</span>';
+                document.getElementById('subscriptionCard').innerHTML = '';
                 cancelSection.style.display = 'none';
             }
             // Restore saved font size
@@ -539,7 +585,7 @@
                 var infoWrap = document.createElement('div');
                 infoWrap.style.cssText = 'display:flex;align-items:center;gap:10px;margin-bottom:8px;';
                 var avatarDiv = document.createElement('div');
-                avatarDiv.style.cssText = 'width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#f59e0b,#f97316);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;';
+                avatarDiv.style.cssText = 'width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#d4a54a,#f97316);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;';
                 avatarDiv.textContent = user.name.charAt(0).toUpperCase();
                 var textDiv = document.createElement('div');
                 var nameDiv = document.createElement('div');
@@ -598,7 +644,7 @@
             var toggle = document.getElementById('animToggle');
             var dot = document.getElementById('animDot');
             if (on) {
-                toggle.style.background = 'linear-gradient(135deg,#f59e0b,#f97316)';
+                toggle.style.background = 'linear-gradient(135deg,#d4a54a,#f97316)';
                 dot.style.right = '3px';
                 dot.style.left = 'auto';
             } else {
@@ -656,7 +702,7 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             var particles = [];
-            var colors = ['#f59e0b','#fb923c','#fbbf24','#4ade80','#22d3ee','#34d399','#f472b6','#60a5fa'];
+            var colors = ['#d4a54a','#fb923c','#d4a54a','#4ade80','#22d3ee','#34d399','#f472b6','#60a5fa'];
             for (var i = 0; i < 150; i++) {
                 particles.push({
                     x: canvas.width / 2 + (Math.random() - 0.5) * 200,
@@ -707,7 +753,7 @@
         // --- Hide pricing for annual bundle users ---
         function updatePricingVisibility() {
             var user = CuricaaAuth.getUser();
-            var isAnnualBundle = user && user.plan === 'bundle';
+            var isAnnualBundle = user && (user.plan === 'bundle' || user.plan === 'pro');
             var pricingSection = document.getElementById('pricing');
             if (pricingSection) pricingSection.style.display = isAnnualBundle ? 'none' : '';
 
@@ -765,7 +811,7 @@
 
         // Stars
         const starsEl = document.getElementById('stars');
-        for (let i = 0; i < 90; i++) {
+        for (let i = 0; i < 30; i++) {
             const s = document.createElement('div');
             s.className = 'star';
             s.style.left = Math.random() * 100 + '%';
@@ -877,7 +923,7 @@
             'age-9': 'Level 3 — Age 9',
             'age-10': 'Level 4 — Age 10',
             'ages-11-12': 'Middle School — Ages 11–12',
-            'age-14': 'High School — Age 14',
+            'age-14': 'High School — Ages 13\u201314',
             'ages-15-16': 'GED — Ages 15–16',
             'ages-17-18': 'SAT — Ages 17–18'
         };
@@ -931,13 +977,13 @@
                 btn.style.background = 'var(--bg-subtle)';
             }
             // Update price dynamically
-            var unitPrice = billingPeriod === 'annual' ? 69 : 9;
+            var unitPrice = billingPeriod === 'annual' ? 79 : 9;
             var periodLabel = billingPeriod === 'annual' ? '/yr' : '/mo';
             if (selectedPlan === 'single' && selectedGrades.length > 0) {
                 var total = selectedGrades.length * unitPrice;
-                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">' + selectedGrades.length + ' Grade' + (selectedGrades.length > 1 ? 's' : '') + '</div><div style="font-size:11px;color:var(--text-muted);">$' + unitPrice + periodLabel + ' each · All 4 subjects per grade</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + total + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">' + selectedGrades.length + ' Grade' + (selectedGrades.length > 1 ? 's' : '') + '</div><div style="font-size:11px;color:var(--text-muted);">$' + unitPrice + periodLabel + ' each · All 4 subjects per grade</div></div><div style="font-size:18px;font-weight:800;color:#d4a54a;">$' + total + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
             } else if (selectedPlan === 'single') {
-                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + unitPrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + unitPrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + unitPrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#d4a54a;">$' + unitPrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
             }
         }
         function handleBuy(plan) {
@@ -951,19 +997,26 @@
             selectedPlan = plan;
             selectedGrades = [];
             var isBundle = plan === 'bundle';
+            var isPro = plan === 'pro';
             var periodLabel = billingPeriod === 'annual' ? '/yr' : '/mo';
-            var bundlePrice = billingPeriod === 'annual' ? 129 : 19;
-            var singlePrice = billingPeriod === 'annual' ? 69 : 9;
-            document.getElementById('checkoutTitle').textContent = isBundle ? 'Full K-12 Bundle' : 'Single Grade Access';
-            document.getElementById('gradeSelector').style.display = isBundle ? 'none' : 'block';
+            var bundlePrice = billingPeriod === 'annual' ? 169 : 19;
+            var proPrice = billingPeriod === 'annual' ? 259 : 29;
+            var singlePrice = billingPeriod === 'annual' ? 79 : 9;
+            var title = isPro ? 'Curicaa Pro' : isBundle ? 'Full K-12 Bundle' : 'Single Grade Access';
+            document.getElementById('checkoutTitle').textContent = title;
+            document.getElementById('gradeSelector').style.display = (isBundle || isPro) ? 'none' : 'block';
             // Reset grade selection
             document.querySelectorAll('.grade-opt').forEach(function(b) {
                 b.style.borderColor = 'var(--border-card)';
                 b.style.background = 'var(--bg-subtle)';
             });
-            document.getElementById('checkoutSummary').innerHTML = isBundle
-                ? '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Full K-12 Bundle</div><div style="font-size:11px;color:var(--text-muted);">All 8 levels · All subjects · Billed ' + billingPeriod + '</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + bundlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>'
-                : '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + singlePrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + singlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            if (isPro) {
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Curicaa Pro</div><div style="font-size:11px;color:var(--text-muted);">All grades + worksheets, tracking, reports · Billed ' + billingPeriod + '</div></div><div style="font-size:18px;font-weight:800;color:#a78bfa;">$' + proPrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            } else if (isBundle) {
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Full K-12 Bundle</div><div style="font-size:11px;color:var(--text-muted);">All 8 levels · All subjects · Billed ' + billingPeriod + '</div></div><div style="font-size:18px;font-weight:800;color:#d4a54a;">$' + bundlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            } else {
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + singlePrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#d4a54a;">$' + singlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            }
             document.getElementById('checkoutModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -994,7 +1047,8 @@
                         mergedGrades.push(selectedGrades[i]);
                     }
                 }
-                CuricaaAuth.updatePlan(selectedPlan === 'bundle' ? 'bundle' : 'single', selectedPlan === 'bundle' ? [] : mergedGrades);
+                var planName = selectedPlan === 'pro' ? 'pro' : selectedPlan === 'bundle' ? 'bundle' : 'single';
+                CuricaaAuth.updatePlan(planName, (selectedPlan === 'bundle' || selectedPlan === 'pro') ? [] : mergedGrades);
                 updateAuthUI();
             }
             closeCheckout();
@@ -1024,14 +1078,14 @@
 
             if (billingPeriod === 'annual') {
                 dot.style.left = '27px';
-                labelA.style.color = '#fbbf24';
+                labelA.style.color = '#d4a54a';
                 labelM.style.color = 'var(--text-muted)';
-                toggle.style.background = 'linear-gradient(135deg,#f59e0b,#f97316)';
+                toggle.style.background = 'linear-gradient(135deg,#d4a54a,#f97316)';
                 savingsTag.style.visibility = 'visible';
                 savingsTag.style.opacity = '1';
             } else {
                 dot.style.left = '3px';
-                labelM.style.color = '#fbbf24';
+                labelM.style.color = '#d4a54a';
                 labelA.style.color = 'var(--text-muted)';
                 toggle.style.background = 'var(--bg-card-hover)';
                 savingsTag.style.visibility = 'hidden';
@@ -1232,7 +1286,7 @@
             document.getElementById('leadEmail').value = '';
             setTimeout(function() {
                 btn.textContent = 'Send Me Week 1';
-                btn.style.background = 'linear-gradient(135deg,#f59e0b,#f97316)';
+                btn.style.background = 'linear-gradient(135deg,#d4a54a,#f97316)';
                 btn.style.cursor = 'pointer';
             }, 4000);
         }
@@ -1256,7 +1310,7 @@
             calcKidsCount = Math.max(1, Math.min(6, calcKidsCount + delta));
             document.getElementById('calcKidsNum').textContent = calcKidsCount;
             var tradCost = calcKidsCount * 1000;
-            var curicaaCost = 129;
+            var curicaaCost = 169;
             var savings = tradCost - curicaaCost;
             document.getElementById('calcTrad').textContent = '$' + tradCost.toLocaleString();
             document.getElementById('calcCuricaa').textContent = '$' + curicaaCost;

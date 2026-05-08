@@ -1,19 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Creative Movement & Art — Ages 5–7 | Curriculum Hub</title>
-<link rel="stylesheet" href="assets/fonts/inter.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/font-awesome.css">
 <script src="assets/tailwind.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--a1:#ec4899;--a2:#f97316;--al:#f9a8d4;}
-body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0f1119;color:white;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background:repeating-conic-gradient(rgba(255,255,255,0.008) 0% 25%,transparent 0% 50%) 0 0/3px 3px;pointer-events:none;z-index:0}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
 .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(236,72,153,0.1),transparent 70%);top:-100px;right:-100px;}
 .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.08),transparent 70%);bottom:100px;left:-100px;}
-header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
 .back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
 .back-btn:hover{color:white;}
@@ -27,7 +30,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
 .skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
 .sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
-.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'DM Sans',system-ui,sans-serif;}
 .month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
 .month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(236,72,153,0.35);}
 .week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
@@ -81,6 +84,10 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
   <section style="margin-bottom:48px;">
     <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-palette" style="color:#f472b6;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Color &amp; Shape</div><div style="font-size:12px;color:var(--ct6);">Primary colors, mixing, warm/cool</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pencil-alt" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Drawing &amp; Craft</div><div style="font-size:12px;color:var(--ct6);">Lines, textures, mixed media</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-music" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Music &amp; Rhythm</div><div style="font-size:12px;color:var(--ct6);">Beat, instruments, movement</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(74,222,128,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-running" style="color:#4ade80;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Physical Skills</div><div style="font-size:12px;color:var(--ct6);">Balance, coordination, outdoor play</div></div>
     </div>
   </section>
 
@@ -600,6 +607,51 @@ const curriculumData={
 }
 };
 
+
+// External worksheet links — one per week, keyed by "Month-WeekIndex"
+const worksheetLinks={
+'September-0':{name:'Color Wheel Coloring',url:'https://artprojectsforkids.org/color-wheel-coloring-page/'},
+'September-1':{name:'Color Mixing Worksheets',url:'https://www.homeschoolshare.com/color-mixing-worksheets/'},
+'September-2':{name:'Warm & Cool Colors',url:'https://kinderart.com/kindercolor/art-101/'},
+'September-3':{name:'Day & Night Art Project',url:'https://www.messylittlemonster.com/2025/10/day-night-art-project-warm-cool-colors.html'},
+'October-0':{name:'Leaf Rubbings',url:'https://www.pbs.org/parents/crafts-and-experiments/make-leaf-and-bark-rubbings'},
+'October-1':{name:'Nature Collage',url:'https://artfulparent.com/how-to-make-a-nature-collage-for-kids/'},
+'October-2':{name:'Nature Loose Parts Art',url:'https://rufflesandrainboots.com/nature-loose-parts-play-printable/'},
+'October-3':{name:'Nature Scavenger Hunt',url:'https://kcedventures.com/nature-scavenger-hunt-free-printable-list/'},
+'November-0':{name:'Types of Lines',url:'https://www.kitchentableclassroom.com/line-in-art/'},
+'November-1':{name:'Lines of All Kinds',url:'https://kinderart.com/art-lessons/drawing/lines-of-all-kinds/'},
+'November-2':{name:'Self-Portrait with Shapes',url:'https://lacountylibrary.org/wp-content/uploads/2025/09/ActivityIdea_Kids_Ages5-12_SelfPortraitWithShapes.pdf'},
+'November-3':{name:'Self-Portrait Template',url:'https://simplyfullofdelight.com/all-about-me-self-portrait-free-printable/'},
+'December-0':{name:'Paper Strip Sculptures',url:'https://www.kohlchildrensmuseum.org/activities/paper-strip-sculptures/'},
+'December-1':{name:'Imaginary Playground Sculpture',url:'https://createart.studioinaschool.org/lesson-plan/imaginary-playground-paper-sculpture/'},
+'December-2':{name:'Recycled Cardboard Sculpture',url:'https://www.kitchentableclassroom.com/recycled-sculpture-cardbaord-tubes/'},
+'December-3':{name:'Paper Clay Creations',url:'https://nysci.org/pdf/Visual-Activity-Guide-Paper-Clay-Creations.pdf'},
+'January-0':{name:'Monet\'s Water Lilies',url:'https://littlebinsforlittlehands.com/claude-monet-water-lily-art-project/'},
+'January-1':{name:'Matisse Cut-Outs',url:'https://littlebinsforlittlehands.com/matisse-art-project-for-kids/'},
+'January-2':{name:'Kandinsky Circles',url:'https://littlebinsforlittlehands.com/kandinsky-circles/'},
+'January-3':{name:'Kandinsky Tree',url:'https://littlebinsforlittlehands.com/kandinsky-tree/'},
+'February-0':{name:'Straw Pan Flutes',url:'https://buggyandbuddy.com/homemade-straw-pan-flutes/'},
+'February-1':{name:'DIY Maracas',url:'https://www.kindergartenworksheetsandgames.com/diy-maracas-musical-instruments-crafts-for-kids/'},
+'February-2':{name:'DIY Kazoo',url:'https://omsi.edu/wp-content/uploads/2022/11/DIY-Design_Kazoo_OneSheet.pdf'},
+'February-3':{name:'Water Glass Xylophone',url:'https://www.thekavanaughreport.com/2015/07/montessorimusic.html'},
+'March-0':{name:'Potato Prints (MFA)',url:'https://www.mfa.org/programs/kids-and-family-programs/junior-artists/junior-artists-at-home/make-a-potato-print'},
+'March-1':{name:'Flower Potato Stamping',url:'https://alittlepinchofperfect.com/flower-potato-stamping-craft-and-the-tiny-seed-free-printables/'},
+'March-2':{name:'Leaf Rubbing Art & Science',url:'https://kcedventures.com/art-and-science-of-leaf-rubbings-nature-activity/'},
+'March-3':{name:'Color Theory Fish Painting',url:'https://www.deepspacesparkle.com/primary-and-secondary-colors-art-lesson/'},
+'April-0':{name:'Photo Scavenger Hunt',url:'https://kcedventures.com/photo-scavenger-hunt/'},
+'April-1':{name:'Nature Photo Hunt',url:'https://www.muminthemadhouse.com/nature-photo-scavenger-hunt-with-free-printable-template/'},
+'April-2':{name:'Story Sequencing',url:'https://www.thekeeperofthememories.com/story-sequencing-worksheets/'},
+'April-3':{name:'4-Seasons Photo Challenge',url:'https://photojeepers.com/4-seasons-photo-scavenger-hunt/'},
+'May-0':{name:'Paper Weaving',url:'https://babbledabbledo.com/art-for-kids-paper-weaving/'},
+'May-1':{name:'Weaving Template',url:'https://www.artisbasic.com/2025/01/easy-paper-weaving-tutorial-with-free-template.html'},
+'May-2':{name:'Finger Knitting Tutorial',url:'https://thecrafttrain.com/finger-knitting-for-kids/'},
+'May-3':{name:'Finger Knitting Instructions',url:'https://onelittleproject.com/finger-knitting/'},
+'June-0':{name:'Art Portfolio Review',url:'https://www.teacherspayteachers.com/Product/K-2-Portfolio-Review-16162175'},
+'June-1':{name:'My Year in Art',url:'https://www.teacherspayteachers.com/Product/Student-Self-Reflection-Sheets-My-Year-in-Art-Elementary-Art-1246081'},
+'June-2':{name:'PE Activity Log',url:'https://howtohomeschoolforfree.com/free-physical-education-activity-log/'},
+'June-3':{name:'30-Day Fitness Challenge',url:'https://homeschoolandhappiness.com/30-day-kids-fitness-challenge-free-printable/'}
+};
+
 let completed=JSON.parse(localStorage.getItem('art-57-done')||'{}');
 function saveProgress(){localStorage.setItem('art-57-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('art-57-done',JSON.stringify(completed));}
 
@@ -636,7 +688,10 @@ function initCurriculum(){
       const wa = typeof w === 'string' ? '' : w.assessment;
       const wd = typeof w === 'string' ? '' : w.differentiation;
       const hasDetail = ww || wm;
-      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
+      const wsLink = worksheetLinks[currentMonth+'-'+i];
+      const wsHtml = wsLink ? '<div style="display:flex;gap:12px;margin-bottom:14px;padding:8px 12px;background:rgba(236,72,153,0.08);border:1px solid rgba(236,72,153,0.15);border-radius:10px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-print"></i></div><div><a href="'+wsLink.url+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--al);text-decoration:none;">'+wsLink.name+'</a><span style="font-size:11px;color:var(--ct7);margin-left:8px;">↗ Free printable</span></div></div>' : '';
+
+      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+wsHtml+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
     }).join('');
 
     let materialsHtml = data.materials.map(m=> '<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"><\/i><span style="font-size:13px;color:var(--ct4);">'+m+'<\/span><\/div>').join('');
@@ -694,6 +749,7 @@ window.nextMonth = function() {
 
 document.addEventListener('DOMContentLoaded', () => { initCurriculum(); });
 </script>
+<script src="quiz.js"></script>
 <script src="paywall.js"></script>
 </body>
 </html>

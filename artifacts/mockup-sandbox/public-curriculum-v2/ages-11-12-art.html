@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Art & Physical Education — Ages 11–12 | Curriculum Hub</title>
-<link rel="stylesheet" href="assets/fonts/inter.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/font-awesome.css">
 <script src="assets/tailwind.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--a1:#ec4899;--a2:#8b5cf6;--al:#f9a8d4;--ct:white;--ct2:rgba(255,255,255,0.85);--ct3:rgba(255,255,255,0.7);--ct4:rgba(255,255,255,0.6);--ct5:rgba(255,255,255,0.48);--ct6:rgba(255,255,255,0.45);--ct7:rgba(255,255,255,0.4);--ct8:rgba(255,255,255,0.3);--ct9:rgba(255,255,255,0.28);--ct10:rgba(255,255,255,0.15);--cs1:rgba(255,255,255,0.03);--cs2:rgba(255,255,255,0.025);--cs3:rgba(255,255,255,0.04);--cs4:rgba(255,255,255,0.08);--br1:rgba(255,255,255,0.07);--br2:rgba(255,255,255,0.09);}
-body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0f1119;color:white;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background:repeating-conic-gradient(rgba(255,255,255,0.008) 0% 25%,transparent 0% 50%) 0 0/3px 3px;pointer-events:none;z-index:0}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
 .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(236,72,153,0.11),transparent 70%);top:-100px;right:-100px;}
 .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(139,92,246,0.08),transparent 70%);bottom:100px;left:-100px;}
-header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
 .back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
 .back-btn:hover{color:white;}
@@ -28,7 +31,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
 .skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
 .sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
-.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'DM Sans',system-ui,sans-serif;}
 .month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
 .month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(236,72,153,0.35);}
 .week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
@@ -619,6 +622,50 @@ const curriculumData={
 }
 };
 
+// External worksheet links — one per week, keyed by "Month-WeekIndex"
+const worksheetLinks={
+'September-0':{name:'Line Quality & Expression',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'September-1':{name:'Shape & Form Studies',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'September-2':{name:'Value & Shading Practice',url:'https://www.artyfactory.com/free-art-lessons/drawing-lessons/pencil-shading-techniques.html'},
+'September-3':{name:'Value Scales & Contrast',url:'https://www.artyfactory.com/free-art-lessons/drawing-lessons/pencil-shading-techniques.html'},
+'October-0':{name:'Color Wheel & Mixing',url:'https://www.artyfactory.com/free-art-lessons/color-theory/color-wheel.html'},
+'October-1':{name:'Watercolor Techniques',url:'https://www.artyfactory.com/free-art-lessons/painting-lessons/watercolour-techniques.html'},
+'October-2':{name:'Warm & Cool Color Studies',url:'https://www.artyfactory.com/free-art-lessons/color-theory/color-wheel.html'},
+'October-3':{name:'Watercolor Landscape',url:'https://www.artyfactory.com/free-art-lessons/painting-lessons/watercolour-techniques.html'},
+'November-0':{name:'Renaissance Art History',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/france/a/monet-the-water-lily-pond'},
+'November-1':{name:'Da Vinci & the Renaissance',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/france/a/monet-the-water-lily-pond'},
+'November-2':{name:'Baroque Art Study',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/france/a/monet-the-water-lily-pond'},
+'November-3':{name:'Art History Timeline Project',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/france/a/monet-the-water-lily-pond'},
+'December-0':{name:'Rhythm & Beat Basics',url:'https://www.classicsforkids.com/'},
+'December-1':{name:'Musical Instruments',url:'https://www.classicsforkids.com/'},
+'December-2':{name:'Song Structure & Composition',url:'https://www.classicsforkids.com/'},
+'December-3':{name:'Music Performance',url:'https://www.classicsforkids.com/'},
+'January-0':{name:'Fitness Testing & Goals',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'January-1':{name:'Cardio & Flexibility',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'January-2':{name:'Nutrition & Wellness',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'January-3':{name:'Healthy Habits',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'February-0':{name:'Impressionism Study',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/france/a/monet-the-water-lily-pond'},
+'February-1':{name:'Acrylic Painting Techniques',url:'https://www.artyfactory.com/free-art-lessons/painting-lessons/color-mixing.html'},
+'February-2':{name:'Monet-Inspired Painting',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/france/a/monet-the-water-lily-pond'},
+'February-3':{name:'Plein Air Painting',url:'https://www.artyfactory.com/free-art-lessons/painting-lessons/color-mixing.html'},
+'March-0':{name:'Clay Sculpture Basics',url:'https://www.tate.org.uk/kids/make/sculpture/modelling-clay'},
+'March-1':{name:'Ceramic Techniques',url:'https://www.tate.org.uk/kids/make/sculpture/modelling-clay'},
+'March-2':{name:'Paper Mache Sculpture',url:'https://www.tate.org.uk/kids/make/sculpture/paper-mache'},
+'March-3':{name:'3D Mixed Media',url:'https://www.tate.org.uk/kids/make/sculpture'},
+'April-0':{name:'Team Sports Fundamentals',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'April-1':{name:'Sports Strategy & Rules',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'April-2':{name:'Sportsmanship & Fair Play',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'April-3':{name:'Team Building Games',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'May-0':{name:'Digital Art Introduction',url:'https://www.tate.org.uk/kids/explore/what-is-art/digital-art'},
+'May-1':{name:'Graphic Design Basics',url:'https://www.tate.org.uk/kids/explore/what-is-art/digital-art'},
+'May-2':{name:'Photo Editing & Filters',url:'https://www.tate.org.uk/kids/make/photography'},
+'May-3':{name:'Digital Portfolio Creation',url:'https://www.tate.org.uk/kids/explore/what-is-art/digital-art'},
+'June-0':{name:'Portfolio Curation',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'June-1':{name:'Artist Statements',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'June-2':{name:'Exhibition Setup',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'June-3':{name:'Art Show & Celebration',url:'https://www.studentartguide.com/articles/art-portfolio-guide'}
+};
+
 let completed=JSON.parse(localStorage.getItem('art-1112-done')||'{}');
 function saveProgress(){localStorage.setItem('art-1112-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('art-1112-done',JSON.stringify(completed));}
 
@@ -646,6 +693,8 @@ function initCurriculum(){
     let weeksHtml = data.weeks.map((w,i)=>{
       const wid=currentMonth+'-'+i;
       const isDone=!!completed[wid];
+      const wsLink = worksheetLinks[currentMonth+'-'+i];
+      const wsHtml = wsLink ? '<div style="display:flex;gap:12px;margin-bottom:14px;padding:8px 12px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:10px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-print"><\/i><\/div><div><a href="'+wsLink.url+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--al);text-decoration:none;">'+wsLink.name+'<\/a><span style="font-size:11px;color:var(--ct7);margin-left:8px;">↗ Free printable<\/span><\/div><\/div>' : '';
       return `
       <div class="week-row${isDone?' completed':''}" id="week-${i}">
         <div class="week-header" onclick="toggleWeek(${i})">
@@ -659,6 +708,7 @@ function initCurriculum(){
         </div>
         <div class="week-detail" id="detail-${i}">
           <div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">
+            ${wsHtml}
             <div style="display:flex;gap:12px;margin-bottom:12px;">
               <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"></i></div>
               <div><strong style="font-size:13px;color:var(--ct2);">Warm-up:</strong> <span style="font-size:13px;color:var(--ct4);">${w.warmup}</span></div>
@@ -805,6 +855,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCurriculum();
 });
 </script>
+<script src="quiz.js"></script>
 <script src="paywall.js"></script>
 </body>
 </html>

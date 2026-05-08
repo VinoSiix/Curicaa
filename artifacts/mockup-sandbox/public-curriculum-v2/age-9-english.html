@@ -1,19 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>English Language Arts — Grade 4 | Curriculum Hub</title>
-<link rel="stylesheet" href="assets/fonts/inter.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/font-awesome.css">
 <script src="assets/tailwind.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--a1:#10b981;--a2:#34d399;--al:#6ee7b7;}
-body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0f1119;color:white;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background:repeating-conic-gradient(rgba(255,255,255,0.008) 0% 25%,transparent 0% 50%) 0 0/3px 3px;pointer-events:none;z-index:0}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
 .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,0.1),transparent 70%);top:-100px;right:-100px;}
 .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(52,211,153,0.08),transparent 70%);bottom:100px;left:-100px;}
-header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
 .back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
 .back-btn:hover{color:white;}
@@ -27,7 +30,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
 .skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
 .sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
-.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'DM Sans',system-ui,sans-serif;}
 .month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
 .month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(16,185,129,0.35);}
 .week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
@@ -87,6 +90,10 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
   <section style="margin-bottom:48px;">
     <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-book-reader" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Close Reading</div><div style="font-size:12px;color:var(--ct6);">Inference, main idea, text evidence</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pen-fancy" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Essay Writing</div><div style="font-size:12px;color:var(--ct6);">Opinion, informational, narrative</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(251,191,36,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-spell-check" style="color:#fbbf24;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Vocabulary</div><div style="font-size:12px;color:var(--ct6);">Context clues, word roots, prefixes</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(244,114,182,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-search" style="color:#f472b6;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Research Skills</div><div style="font-size:12px;color:var(--ct6);">Note-taking, citations, multimedia</div></div>
     </div>
   </section>
 
@@ -166,6 +173,50 @@ const curriculumData={
 ],project:'Create a "Grade 4 ELA Yearbook": include the writing portfolio, reading log summary, favorite vocabulary words, a photo/drawing of the author\'s chair presentation, the summer reading plan, the "Future Self" letter, and a decorated "Class of Grade 4" cover.',materials:['Portfolio binder or folder','Special paper for final copies','Art supplies for cover decoration','Envelope for Future Self letter']}
 };
 
+// External worksheet links — one per week, keyed by "Month-WeekIndex"
+const worksheetLinks={
+'September-0':{name:'Reading Stamina & Chapter Books',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'September-1':{name:'Narrative Fiction Elements',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'September-2':{name:'Personal Narrative Writing',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'September-3':{name:'Reading Response Journals',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'October-0':{name:'Non-Fiction Text Features',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'October-1':{name:'Main Idea & Supporting Details',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'October-2':{name:'Note-Taking Strategies',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'October-3':{name:'Multi-Source Research',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'November-0':{name:'Forming Opinions with Evidence',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'November-1':{name:'Opinion Essay Structure',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'November-2':{name:'Persuasive Techniques',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'November-3':{name:'Debate & Oral Presentation',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'December-0':{name:'Poetry Forms & Structure',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'December-1':{name:'Similes, Metaphors & Personification',url:'https://www.k5learning.com/free-grammar-worksheets/fourth-grade-4'},
+'December-2':{name:'Onomatopoeia & Alliteration',url:'https://www.k5learning.com/free-grammar-worksheets/fourth-grade-4'},
+'December-3':{name:'Poetry Performance',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'January-0':{name:'Sentence Types & Structure',url:'https://www.k5learning.com/free-grammar-worksheets/fourth-grade-4/sentences'},
+'January-1':{name:'Parts of Speech Deep Dive',url:'https://www.k5learning.com/free-grammar-worksheets/fourth-grade-4'},
+'January-2':{name:'Punctuation Mastery',url:'https://www.k5learning.com/free-grammar-worksheets/fourth-grade-4/punctuation'},
+'January-3':{name:'Spelling Patterns',url:'https://www.k5learning.com/free-grammar-worksheets/fourth-grade-4'},
+'February-0':{name:'Expository Essay Structure',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'February-1':{name:'Compare & Contrast Writing',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'February-2':{name:'Cause & Effect Writing',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'February-3':{name:'Transition Words & Academic Vocabulary',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'March-0':{name:'Deep Character Analysis',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'March-1':{name:'Theme vs. Main Idea',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'March-2':{name:'Point of View & Perspective',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'March-3':{name:'Comparing Texts',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'April-0':{name:'Greek & Latin Roots',url:'https://www.k5learning.com/free-grammar-worksheets/fourth-grade-4'},
+'April-1':{name:'Context Clues Strategies',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'April-2':{name:'Multiple Meaning Words',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'April-3':{name:'Dictionary & Thesaurus Skills',url:'https://www.k5learning.com/free-grammar-worksheets/fourth-grade-4'},
+'May-0':{name:'Short Story with Dialogue',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'May-1':{name:'Show Don\'t Tell Technique',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'May-2':{name:'Revision & Peer Review',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'May-3':{name:'Publishing & Sharing Writing',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'June-0':{name:'Writing Portfolio Compilation',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'June-1':{name:'Reading Goals Reflection',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'June-2':{name:'Author\'s Chair Presentations',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'},
+'June-3':{name:'Year-End Celebration',url:'https://www.k5learning.com/reading-comprehension-worksheets/fourth-grade-4'}
+};
+
 let completed=JSON.parse(localStorage.getItem('eng-9-done')||'{}');
 function saveProgress(){localStorage.setItem('eng-9-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('eng-9-done',JSON.stringify(completed));}
 
@@ -202,7 +253,9 @@ function initCurriculum(){
       const wa = typeof w === 'string' ? '' : w.assessment;
       const wd = typeof w === 'string' ? '' : w.differentiation;
       const hasDetail = ww || wm;
-      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
+      const wsLink = worksheetLinks[currentMonth+'-'+i];
+      const wsHtml = wsLink ? '<div style="display:flex;gap:12px;margin-bottom:14px;padding:8px 12px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:10px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-print"><\/i><\/div><div><a href="'+wsLink.url+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--al);text-decoration:none;">'+wsLink.name+'<\/a><span style="font-size:11px;color:var(--ct7);margin-left:8px;">↗ Free printable<\/span><\/div><\/div>' : '';
+      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+wsHtml+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
     }).join('');
 
     let materialsHtml = data.materials.map(m=> '<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"><\/i><span style="font-size:13px;color:var(--ct4);">'+m+'<\/span><\/div>').join('');
@@ -260,6 +313,7 @@ window.nextMonth = function() {
 
 document.addEventListener('DOMContentLoaded', () => { initCurriculum(); });
 </script>
+<script src="quiz.js"></script>
 <script src="paywall.js"></script>
 </body>
 </html>

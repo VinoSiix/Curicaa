@@ -1,19 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Art & Physical Education — Grade 4 | Curriculum Hub</title>
-<link rel="stylesheet" href="assets/fonts/inter.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/font-awesome.css">
 <script src="assets/tailwind.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--a1:#f472b6;--a2:#fb923c;--al:#f9a8d4;}
-body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0f1119;color:white;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background:repeating-conic-gradient(rgba(255,255,255,0.008) 0% 25%,transparent 0% 50%) 0 0/3px 3px;pointer-events:none;z-index:0}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
 .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(244,114,182,0.1),transparent 70%);top:-100px;right:-100px;}
 .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(251,146,60,0.08),transparent 70%);bottom:100px;left:-100px;}
-header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
 .back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
 .back-btn:hover{color:white;}
@@ -27,7 +30,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
 .skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
 .sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
-.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'DM Sans',system-ui,sans-serif;}
 .month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
 .month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(244,114,182,0.35);}
 .week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
@@ -87,6 +90,10 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
   <section style="margin-bottom:48px;">
     <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(236,72,153,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-pencil-alt" style="color:#f472b6;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Observation Drawing</div><div style="font-size:12px;color:var(--ct6);">Contour, shading, perspective</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-paint-brush" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Painting &amp; Color</div><div style="font-size:12px;color:var(--ct6);">Watercolor, mixing, mood</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-cube" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">3D Art &amp; Design</div><div style="font-size:12px;color:var(--ct6);">Sculpture, clay, mixed media</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(74,222,128,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-heartbeat" style="color:#4ade80;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">PE &amp; Fitness</div><div style="font-size:12px;color:var(--ct6);">Flexibility, strength, team sports</div></div>
     </div>
   </section>
 
@@ -166,6 +173,50 @@ const curriculumData={
 ],project:'Present the complete Year-End Portfolio at a family celebration. Display artwork, read your artist statement, share fitness improvement data, and teach your family one dance or exercise from the year.',materials:['Portfolio binder or folder','Self-assessment sheet','Art supplies for independent project','Timer and measuring tape','Scorecard for sports festival','Poster board for summer plan','Paper circles and ribbon for medals']}
 };
 
+// External worksheet links — one per week, keyed by "Month-WeekIndex"
+const worksheetLinks={
+'September-0':{name:'Contour Drawing Practice',url:'https://www.artyfactory.com/free-art-lessons/drawing-lessons/line-drawing.html'},
+'September-1':{name:'Shading Techniques',url:'https://www.artyfactory.com/free-art-lessons/drawing-lessons/pencil-shading-techniques.html'},
+'September-2':{name:'Fitness Testing Basics',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'September-3':{name:'Cardiovascular Endurance',url:'https://www.artyfactory.com/free-art-lessons/elements-of-art/elements-of-art.html'},
+'October-0':{name:'Color Wheel Mastery',url:'https://www.artyfactory.com/free-art-lessons/color-theory/color-wheel.html'},
+'October-1':{name:'Warm vs. Cool Colors',url:'https://www.artyfactory.com/free-art-lessons/color-theory/color-wheel.html'},
+'October-2':{name:'Soccer Fundamentals',url:'https://www.artyfactory.com/free-art-lessons/color-theory/color-wheel.html'},
+'October-3':{name:'Sportsmanship & Team Play',url:'https://www.artyfactory.com/free-art-lessons/color-theory/color-wheel.html'},
+'November-0':{name:'3D Construction Techniques',url:'https://www.tate.org.uk/kids/make/sculpture'},
+'November-1':{name:'Papier-Mâché Projects',url:'https://www.tate.org.uk/kids/make/sculpture/paper-mache'},
+'November-2':{name:'Cooperative Games',url:'https://www.tate.org.uk/kids/make/sculpture'},
+'November-3':{name:'Team Strategy Challenges',url:'https://www.tate.org.uk/kids/make/sculpture'},
+'December-0':{name:'Collage Techniques',url:'https://www.tate.org.uk/kids/make/cut-paste/collage'},
+'December-1':{name:'Printmaking Basics',url:'https://www.tate.org.uk/kids/make/print/printmaking'},
+'December-2':{name:'Circuit Training',url:'https://www.tate.org.uk/kids/make/cut-paste/collage'},
+'December-3':{name:'Yoga & Mindfulness',url:'https://www.tate.org.uk/kids/make/cut-paste/collage'},
+'January-0':{name:'Impressionism Study',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/france/a/monet-the-water-lily-pond'},
+'January-1':{name:'Cubism & Picasso',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/spain/a/picasso-guernica'},
+'January-2':{name:'Balance & Body Control',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/france/a/monet-the-water-lily-pond'},
+'January-3':{name:'Tumbling Basics',url:'https://www.khanacademy.org/humanities/art-history/art-history-basics/art-history-maps/europe/spain/a/picasso-guernica'},
+'February-0':{name:'Weaving Techniques',url:'https://www.kitchentableclassroom.com/weaving-for-kids/'},
+'February-1':{name:'Pattern Design',url:'https://www.kitchentableclassroom.com/weaving-for-kids/'},
+'February-2':{name:'Folk Dance',url:'https://www.kitchentableclassroom.com/weaving-for-kids/'},
+'February-3':{name:'Choreography Basics',url:'https://www.kitchentableclassroom.com/weaving-for-kids/'},
+'March-0':{name:'Photo Composition',url:'https://www.tate.org.uk/kids/make/photography'},
+'March-1':{name:'Visual Storytelling',url:'https://www.tate.org.uk/kids/make/photography'},
+'March-2':{name:'Hiking Safety & Outdoor Skills',url:'https://www.tate.org.uk/kids/make/photography'},
+'March-3':{name:'Outdoor Adventure Challenges',url:'https://www.tate.org.uk/kids/make/photography'},
+'April-0':{name:'Digital Art Tools',url:'https://www.tate.org.uk/kids/explore/what-is-art/digital-art'},
+'April-1':{name:'Graphic Design Basics',url:'https://www.tate.org.uk/kids/explore/what-is-art/digital-art'},
+'April-2':{name:'Sprinting Technique',url:'https://www.tate.org.uk/kids/explore/what-is-art/digital-art'},
+'April-3':{name:'Track & Field Events',url:'https://www.tate.org.uk/kids/explore/what-is-art/digital-art'},
+'May-0':{name:'Art Curation & Exhibition',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'May-1':{name:'Writing Artist Statements',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'May-2':{name:'Team Leadership Games',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'May-3':{name:'Strategic Communication',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'June-0':{name:'Self-Assessment & Reflection',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'June-1':{name:'Independent Art Creation',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'June-2':{name:'Multi-Event Competition',url:'https://www.studentartguide.com/articles/art-portfolio-guide'},
+'June-3':{name:'Goal Review & Celebration',url:'https://www.studentartguide.com/articles/art-portfolio-guide'}
+};
+
 let completed=JSON.parse(localStorage.getItem('art-9-done')||'{}');
 function saveProgress(){localStorage.setItem('art-9-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('art-9-done',JSON.stringify(completed));}
 
@@ -202,7 +253,9 @@ function initCurriculum(){
       const wa = typeof w === 'string' ? '' : w.assessment;
       const wd = typeof w === 'string' ? '' : w.differentiation;
       const hasDetail = ww || wm;
-      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
+      const wsLink = worksheetLinks[currentMonth+'-'+i];
+      const wsHtml = wsLink ? '<div style="display:flex;gap:12px;margin-bottom:14px;padding:8px 12px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:10px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-print"><\/i><\/div><div><a href="'+wsLink.url+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--al);text-decoration:none;">'+wsLink.name+'<\/a><span style="font-size:11px;color:var(--ct7);margin-left:8px;">↗ Free printable<\/span><\/div><\/div>' : '';
+      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+wsHtml+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
     }).join('');
 
     let materialsHtml = data.materials.map(m=> '<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"><\/i><span style="font-size:13px;color:var(--ct4);">'+m+'<\/span><\/div>').join('');
@@ -260,6 +313,7 @@ window.nextMonth = function() {
 
 document.addEventListener('DOMContentLoaded', () => { initCurriculum(); });
 </script>
+<script src="quiz.js"></script>
 <script src="paywall.js"></script>
 </body>
 </html>

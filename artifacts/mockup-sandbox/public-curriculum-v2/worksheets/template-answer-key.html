@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Answer Key — {{HEADER_TOPIC}} — {{HEADER_GRADE}} {{HEADER_SUBJECT}}</title>
+<style>
+  @page { size: A4; margin: 14mm 12mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.6; }
+
+  .header { border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 12px; }
+  .header-top { font-size: 11px; color: #666; margin-bottom: 2px; letter-spacing: 0.03em; }
+  .header-title { font-size: 16px; font-weight: 700; }
+  .header-badge { display: inline-block; background: #f0f0f0; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-left: 8px; vertical-align: middle; }
+
+  .instructions { font-size: 12px; margin-bottom: 8px; font-weight: 500; }
+
+  .answer-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-bottom: 12px; }
+  .answer-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 20px; margin-bottom: 12px; }
+
+  .ans { display: flex; align-items: baseline; gap: 6px; padding: 3px 0; font-size: 13px; }
+  .ans .num { min-width: 20px; font-weight: 600; color: #444; font-size: 12px; }
+  .ans .answer { font-weight: 700; color: #000; background: #f5f5f5; padding: 1px 6px; border-radius: 2px; }
+
+  .section-divider { border: none; border-top: 1px solid #ddd; margin: 10px 0; }
+
+  .bonus { margin-top: 8px; padding-top: 6px; border-top: 1px dashed #ccc; }
+  .bonus-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 4px; }
+  .bonus-answer { font-size: 12px; font-weight: 600; }
+
+  .footer { margin-top: 20px; padding-top: 6px; border-top: 1px solid #ddd; font-size: 9px; color: #999; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">{{HEADER_GRADE}} · {{HEADER_SUBJECT}} · {{HEADER_WEEK}}</div>
+  <div class="header-title">{{HEADER_TOPIC}} <span class="header-badge">Answer Key</span></div>
+</div>
+
+<!-- ANSWERS -->
+<!-- Replace everything below with actual answer content -->
+<!-- Use .answer-grid-2 or .answer-grid-3 for layout -->
+<!-- Each answer: <div class="ans"><span class="num">1.</span> <span class="answer">7</span></div> -->
+
+<div class="instructions">Answers</div>
+
+{{ANSWERS}}
+
+<!-- BONUS ANSWER -->
+<div class="bonus">
+  <div class="bonus-label">Bonus Challenge</div>
+  <div class="bonus-answer">{{BONUS_ANSWER}}</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>Curicaa · {{HEADER_GRADE}} · {{HEADER_SUBJECT}} · {{HEADER_WEEK}} · Answer Key</span>
+  <span>curicaa.com</span>
+</div>
+
+</body>
+</html>
