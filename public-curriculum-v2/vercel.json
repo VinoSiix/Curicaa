@@ -1,0 +1,10 @@
+{
+  "framework": null,
+  "buildCommand": null,
+  "installCommand": null,
+  "outputDirectory": null,
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/", "destination": "/hub.html", "permanent": false }
+  ]
+}

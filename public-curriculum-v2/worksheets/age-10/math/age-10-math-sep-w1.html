@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Whole Number Place Value to Millions — Age 10 Math</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #f97316; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #ea580c; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #fff7ed; color: #ea580c; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+  .name-row { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 12px; color: #374151; }
+  .name-row span { border-bottom: 1px solid #9ca3af; padding: 0 80px 2px 0; }
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #f97316; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #fff7ed; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .section-body ol { padding-left: 18px; }
+  .section-body ol li { margin-bottom: 3px; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; font-size: 12.5px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox { width: 14px; height: 14px; border: 1.5px solid #9ca3af; border-radius: 3px; flex-shrink: 0; }
+  .problem-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid #f3f4f6; }
+  .problem-row:last-child { border-bottom: none; }
+  .problem-num { font-weight: 700; color: #ea580c; min-width: 22px; }
+  .blank { display: inline-block; width: 80px; border-bottom: 2px solid #ea580c; text-align: center; font-weight: 700; }
+  .blank-sm { display: inline-block; width: 50px; border-bottom: 2px solid #ea580c; text-align: center; font-weight: 700; }
+  .blank-lg { display: inline-block; width: 120px; border-bottom: 2px solid #ea580c; text-align: center; font-weight: 700; }
+  .pv-chart { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin: 8px 0; }
+  .pv-chart .cell { border: 1.5px solid #fed7aa; border-radius: 4px; text-align: center; padding: 4px 2px; font-size: 11px; min-height: 28px; }
+  .pv-chart .label { background: #fff7ed; color: #ea580c; font-weight: 700; font-size: 9px; text-transform: uppercase; }
+  .pv-chart .value { font-size: 14px; font-weight: 700; color: #1a1a1a; }
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Whole Number Place Value to Millions</h1>
+    <p>Age 10 Math · September Week 1</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Age 10</div><br>
+    Place Value &amp; Number Sense
+  </div>
+</div>
+
+<div class="name-row">
+  <span>Name: </span>
+  <span>Date: </span>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Read, write, and identify the value of digits in whole numbers up to the millions place. Understand the relationship between each place value and express numbers in multiple forms.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">☀️</span> Warm-Up</div>
+  <div class="section-body">
+    <p>Write the number <strong>7,245,813</strong> on the line below. Read it aloud, then identify which digit is in the ten thousands place.</p>
+    <p style="margin-top:6px;">Number: <span class="blank-lg">&nbsp;</span></p>
+    <p>Ten thousands digit: <span class="blank-sm">&nbsp;</span> &nbsp; Its value: <span class="blank-sm">&nbsp;</span></p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🧱</span> Activity: Place Value Chart</div>
+  <div class="section-body">
+    <p>Fill in the place value chart for each number below:</p>
+    <p style="margin-top:6px;"><strong>Number: 3,612,947</strong></p>
+    <div class="pv-chart">
+      <div class="cell label">Millions</div><div class="cell label">Hund. Thous.</div><div class="cell label">Ten Thous.</div><div class="cell label">Thousands</div><div class="cell label">Hundreds</div><div class="cell label">Tens</div><div class="cell label">Ones</div>
+      <div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div>
+    </div>
+    <p style="margin-top:8px;"><strong>Number: 8,050,326</strong></p>
+    <div class="pv-chart">
+      <div class="cell label">Millions</div><div class="cell label">Hund. Thous.</div><div class="cell label">Ten Thous.</div><div class="cell label">Thousands</div><div class="cell label">Hundreds</div><div class="cell label">Tens</div><div class="cell label">Ones</div>
+      <div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">✏️</span> Practice: Digit Values</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">For the number <strong>6,481,395</strong>, write the value of each underlined digit:</p>
+    <div class="problem-row"><span class="problem-num">1.</span> The <u>6</u> is in the _________ place. Its value is <span class="blank">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">2.</span> The <u>4</u> is in the _________ place. Its value is <span class="blank">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">3.</span> The <u>1</u> is in the _________ place. Its value is <span class="blank">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">4.</span> The <u>9</u> is in the _________ place. Its value is <span class="blank">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔢</span> Practice: Expanded Form</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Write each number in expanded form:</p>
+    <div class="problem-row"><span class="problem-num">5.</span> 5,209,714 = <span class="blank-lg">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">6.</span> 4,760,083 = <span class="blank-lg">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">7.</span> 2,300,651 = <span class="blank-lg">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📝</span> Practice: Word Form &amp; Standard Form</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Convert between word form and standard form:</p>
+    <div class="problem-row"><span class="problem-num">8.</span> "Four million, two hundred sixteen thousand, eight hundred fifty" = <span class="blank">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">9.</span> "Nine million, fifty thousand, seven hundred two" = <span class="blank">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">10.</span> Write 1,037,400 in word form: <span class="blank-lg">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">⚖️</span> Practice: Comparing Large Numbers</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Fill in the blank with &lt;, &gt;, or = :</p>
+    <div class="problem-row"><span class="problem-num">11.</span> 3,482,105 <span class="blank-sm">&nbsp;</span> 3,482,150</div>
+    <div class="problem-row"><span class="problem-num">12.</span> 7,601,299 <span class="blank-sm">&nbsp;</span> 7,610,299</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">⭐</span> Bonus Challenge</div>
+  <div class="section-body">
+    <p>A seven-digit number has a 5 in the millions place, a 3 in the hundred thousands place, a 0 in the ten thousands place, a 7 in the thousands place, a 1 in the hundreds place, a 6 in the tens place, and a 2 in the ones place.</p>
+    <p style="margin-top:4px;">Write the number in standard form: <span class="blank">&nbsp;</span></p>
+    <p>Write it in expanded form: <span class="blank-lg">&nbsp;</span></p>
+  </div>
+</div>
+
+<div class="tip-box">
+  <strong>💡 Easier:</strong> Focus on numbers through the thousands place first. Use a place value chart as a reference.<br>
+  <strong>💡 Harder:</strong> Try numbers in the ten millions. Compare three or more numbers and order them from least to greatest.
+</div>
+
+<div class="footer">
+  <span>Curicaa · Age 10 · Math · September Week 1</span>
+  <span>Whole Number Place Value to Millions</span>
+</div>
+
+</body>
+</html>

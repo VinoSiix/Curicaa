@@ -1,3 +1,5 @@
+        var billingPeriod = 'annual'; // Hoisted — needed before updatePricingVisibility runs
+
         // ===================== PAGE DATA =====================
         var PAGE_DATA = {
             pathways: [
@@ -62,7 +64,7 @@
                     ]
                 },
                 {
-                    id: 'high-school', title: 'High School', ageRange: 'Age 14', colorClass: 'card-red',
+                    id: 'high-school', title: 'High School', ageRange: 'Ages 13\u201314', colorClass: 'card-red',
                     iconClass: 'fas fa-graduation-cap', gradientBg: 'linear-gradient(135deg,#ef4444,#ec4899)',
                     sectionLabel: 'Critical thinking', onclickParam: 'age-14',
                     titleColor: '#fca5a5', ageBadgeColor: '#fca5a5',
@@ -143,7 +145,7 @@
                 {dataGrade: 'age-9', title: 'Level 3', ageLabel: 'Age 9'},
                 {dataGrade: 'age-10', title: 'Level 4', ageLabel: 'Age 10'},
                 {dataGrade: 'ages-11-12', title: 'Middle School', ageLabel: 'Ages 11\u201312'},
-                {dataGrade: 'age-14', title: 'High School', ageLabel: 'Age 14'},
+                {dataGrade: 'age-14', title: 'High School', ageLabel: 'Ages 13\u201314'},
                 {dataGrade: 'ages-15-16', title: 'GED Prep', ageLabel: 'Ages 15\u201316'},
                 {dataGrade: 'ages-17-18', title: 'SAT Prep', ageLabel: 'Ages 17\u201318'}
             ]
@@ -380,7 +382,11 @@
                 document.getElementById('menuUserEmail').textContent = user.email;
                 document.getElementById('mobileUserName').textContent = user.name;
                 var badge = document.getElementById('menuPlanBadge');
-                if (user.plan === 'bundle') {
+                if (user.plan === 'pro') {
+                    badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> Pro';
+                    badge.style.background = 'rgba(139,92,246,0.15)';
+                    badge.style.color = '#a78bfa';
+                } else if (user.plan === 'bundle') {
                     badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> Full Bundle';
                     badge.style.background = 'rgba(245,158,11,0.15)';
                     badge.style.color = '#fbbf24';
@@ -415,6 +421,7 @@
 
                 var hasAccess = false;
                 if (user && user.plan === 'bundle') hasAccess = true;
+                if (user && user.plan === 'pro') hasAccess = true;
                 if (user && user.plan === 'single' && user.grades) {
                     for (var i = 0; i < user.grades.length; i++) {
                         if (user.grades[i] === grade) { hasAccess = true; break; }
@@ -461,7 +468,7 @@
             if (user) {
                 nameSection.style.display = 'block';
                 document.getElementById('newNameInput').placeholder = user.name;
-                var planLabel = user.plan === 'bundle' ? 'Full K-12 Bundle' : user.plan === 'single' ? (user.grades ? user.grades.length : 1) + ' Grade' + ((user.grades ? user.grades.length : 1) !== 1 ? 's' : '') : 'Free Plan';
+                var planLabel = user.plan === 'pro' ? 'Curicaa Pro' : user.plan === 'bundle' ? 'Full K-12 Bundle' : user.plan === 'single' ? (user.grades ? user.grades.length : 1) + ' Grade' + ((user.grades ? user.grades.length : 1) !== 1 ? 's' : '') : 'Free Plan';
                 // Build DOM safely — no innerHTML with user data (XSS prevention)
                 var infoWrap = document.createElement('div');
                 infoWrap.style.cssText = 'display:flex;align-items:center;gap:10px;margin-bottom:8px;';
@@ -480,13 +487,17 @@
                 infoWrap.appendChild(avatarDiv);
                 infoWrap.appendChild(textDiv);
                 var planBadge = document.createElement('div');
-                planBadge.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(245,158,11,0.12);color:#fbbf24;';
+                if (user.plan === 'pro') {
+                    planBadge.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(139,92,246,0.12);color:#a78bfa;';
+                } else {
+                    planBadge.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(245,158,11,0.12);color:#fbbf24;';
+                }
                 planBadge.textContent = planLabel;
                 infoEl.innerHTML = '';
                 infoEl.appendChild(infoWrap);
                 infoEl.appendChild(planBadge);
                 // Show cancel section only for paid plans
-                cancelSection.style.display = (user.plan === 'bundle' || user.plan === 'single') ? 'block' : 'none';
+                cancelSection.style.display = (user.plan === 'bundle' || user.plan === 'single' || user.plan === 'pro') ? 'block' : 'none';
                 document.getElementById('cancelConfirmStep').style.display = 'none';
                 document.getElementById('cancelSuccessMsg').style.display = 'none';
                 document.getElementById('cancelSubBtn').style.display = 'block';
@@ -704,45 +715,194 @@
             requestAnimationFrame(animate);
         }
 
-        // --- Hide pricing for annual bundle users ---
+        // --- Pricing visibility: upgrade-aware ---
         function updatePricingVisibility() {
             var user = CuricaaAuth.getUser();
-            var isAnnualBundle = user && user.plan === 'bundle';
+            var isBundle = user && user.plan === 'bundle';
+            var isPro = user && user.plan === 'pro';
+            var isPaid = user && (isBundle || isPro);
+
             var pricingSection = document.getElementById('pricing');
-            if (pricingSection) pricingSection.style.display = isAnnualBundle ? 'none' : '';
+            var pricingCards = pricingSection ? pricingSection.querySelectorAll('.pricing-card') : [];
 
-            // Nav pricing link
-            var navPricing = document.getElementById('navPricingLink');
-            if (navPricing) navPricing.style.display = isAnnualBundle ? 'none' : '';
+            if (isBundle) {
+                // Show pricing section, but only the Pro card (with upgrade pricing)
+                if (pricingSection) pricingSection.style.display = '';
 
-            // Mobile nav pricing link
-            var mobilePricing = document.getElementById('mobilePricingLink');
-            if (mobilePricing) mobilePricing.style.display = isAnnualBundle ? 'none' : '';
+                // Update section header for upgrade context
+                var upgradeHeaderEl = document.getElementById('upgradePricingHeader');
+                if (!upgradeHeaderEl) {
+                    var sectionLabel = pricingSection ? pricingSection.querySelector('.section-label') : null;
+                    if (sectionLabel) {
+                        upgradeHeaderEl = document.createElement('p');
+                        upgradeHeaderEl.id = 'upgradePricingHeader';
+                        upgradeHeaderEl.className = 'section-label';
+                        upgradeHeaderEl.style.color = '#a78bfa';
+                        upgradeHeaderEl.textContent = 'UPGRADE AVAILABLE';
+                        sectionLabel.parentNode.insertBefore(upgradeHeaderEl, sectionLabel);
+                    }
+                }
+                if (upgradeHeaderEl) upgradeHeaderEl.style.display = '';
 
-            // Hero "See Pricing" button
-            var heroPricing = document.getElementById('heroPricingBtn');
-            if (heroPricing) heroPricing.style.display = isAnnualBundle ? 'none' : '';
+                pricingCards.forEach(function(card, idx) {
+                    // idx 0=Free, 1=Single, 2=Bundle, 3=Pro
+                    card.style.display = (idx === 3) ? '' : 'none';
+                });
 
-            // Footer pricing link
-            var footerPricing = document.getElementById('footerPricingLink');
-            if (footerPricing) footerPricing.style.display = isAnnualBundle ? 'none' : '';
+                // Center the lone Pro card in the grid
+                var pricingGrid = pricingSection ? pricingSection.querySelector('.pricing-grid') : null;
+                if (pricingGrid) {
+                    pricingGrid.style.gridTemplateColumns = '1fr';
+                    pricingGrid.style.maxWidth = '320px';
+                }
 
-            // User menu "Upgrade Plan" link
-            var upgradeLink = document.getElementById('upgradePlanLink');
-            if (upgradeLink) upgradeLink.style.display = isAnnualBundle ? 'none' : '';
+                // Hide price anchoring section for bundle users (they already bought)
+                var anchorRow = pricingSection ? pricingSection.querySelector('div[style*="max-width:700px"]') : null;
+                if (anchorRow) anchorRow.style.display = 'none';
 
-            // Remove card locks & update buttons for bundle users
+                // Show upgrade price on Pro card
+                updateProUpgradePrice();
+
+                // Show nav/mobile/footer pricing links (so bundle users can reach Pro upgrade)
+                showEl('navPricingLink');
+                showEl('mobilePricingLink');
+                showEl('footerPricingLink');
+                showEl('heroPricingBtn');
+
+                // User menu: show "Upgrade to Pro — $90"
+                var upgradeLink = document.getElementById('upgradePlanLink');
+                if (upgradeLink) {
+                    upgradeLink.style.display = '';
+                    upgradeLink.innerHTML = '<i class="fas fa-crown" style="font-size:12px;color:var(--gold);width:16px;text-align:center;"></i> Upgrade to Pro — $90';
+                }
+            } else {
+                // Normal behavior: hide pricing for pro users, show for everyone else
+                if (pricingSection) pricingSection.style.display = isPaid ? 'none' : '';
+                pricingCards.forEach(function(card) { card.style.display = ''; });
+                resetProCardPrice();
+
+                // Restore grid layout
+                var pricingGrid = pricingSection ? pricingSection.querySelector('.pricing-grid') : null;
+                if (pricingGrid) {
+                    pricingGrid.style.gridTemplateColumns = 'repeat(4,1fr)';
+                    pricingGrid.style.maxWidth = '1000px';
+                }
+
+                // Remove upgrade header
+                var upgradeHeader = document.getElementById('upgradePricingHeader');
+                if (upgradeHeader) upgradeHeader.style.display = 'none';
+
+                // Restore anchor section
+                var anchorRow = pricingSection ? pricingSection.querySelector('div[style*="max-width:700px"]') : null;
+                if (anchorRow) anchorRow.style.display = '';
+
+                var hidePaid = !!isPaid;
+                setElDisplay('navPricingLink', hidePaid);
+                setElDisplay('mobilePricingLink', hidePaid);
+                setElDisplay('footerPricingLink', hidePaid);
+                setElDisplay('heroPricingBtn', hidePaid);
+
+                var upgradeLink = document.getElementById('upgradePlanLink');
+                if (upgradeLink) {
+                    upgradeLink.style.display = hidePaid ? 'none' : '';
+                    upgradeLink.innerHTML = '<i class="fas fa-crown" style="font-size:12px;color:var(--gold);width:16px;text-align:center;"></i> Upgrade Plan';
+                }
+            }
+
+            // Remove card locks & update buttons for paid users
             var cards = document.querySelectorAll('#pathways .card');
             cards.forEach(function(card) {
                 var lock = card.querySelector('.card-lock');
-                if (lock) lock.style.display = isAnnualBundle ? 'none' : 'flex';
+                if (lock) lock.style.display = isPaid ? 'none' : 'flex';
                 var freeTag = card.querySelector('.free-tag');
-                if (freeTag && isAnnualBundle) freeTag.remove();
+                if (freeTag && isPaid) freeTag.remove();
                 var btn = card.querySelector('.btn-cta');
-                if (btn && isAnnualBundle) {
+                if (btn && isPaid) {
                     btn.innerHTML = 'View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>';
                 }
             });
+
+            // Update sticky mobile CTA for bundle users
+            var stickyCta = document.getElementById('stickyMobileCta');
+            if (stickyCta) {
+                if (isBundle) {
+                    stickyCta.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div><div style="font-size:13px;font-weight:700;color:white;">Upgrade to Pro</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">$90 · All worksheets & quizzes</div></div><a class="nav-cta-solid" onclick="document.getElementById(\'pricing\').scrollIntoView({behavior:\'smooth\'})" style="padding:10px 20px;font-size:13px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#6366f1);box-shadow:0 4px 20px rgba(139,92,246,0.3);">Upgrade <i class="fas fa-arrow-right" style="font-size:10px;margin-left:3px;"></i></a></div>';
+                } else if (!isPaid) {
+                    stickyCta.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div><div style="font-size:13px;font-weight:700;color:white;">Start Learning Free</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">$169/year · All grades · Cancel anytime</div></div><a class="nav-cta-solid" onclick="document.getElementById(\'pathways\').scrollIntoView({behavior:\'smooth\'})" style="padding:10px 20px;font-size:13px;border-radius:10px;">Get Started <i class="fas fa-arrow-right" style="font-size:10px;margin-left:3px;"></i></a></div>';
+                }
+            }
+
+            // Hide announce bar for bundle users
+            var announceBar = document.getElementById('announceBar');
+            if (announceBar) {
+                announceBar.style.display = isBundle ? 'none' : '';
+            }
+        }
+
+        function showEl(id) { var el = document.getElementById(id); if (el) el.style.display = ''; }
+        function setElDisplay(id, hide) { var el = document.getElementById(id); if (el) el.style.display = hide ? 'none' : ''; }
+
+        // Update the Pro pricing card to show upgrade pricing for bundle users
+        function updateProUpgradePrice() {
+            var proCard = document.querySelector('.pricing-card.pricing-pro');
+            if (!proCard) return;
+
+            var priceEl = proCard.querySelector('.price-amount');
+            var periodEl = proCard.querySelector('.price-period');
+            var savingsEl = proCard.querySelector('.price-savings');
+
+            if (priceEl) {
+                priceEl.dataset.monthly = '10';  // $29 - $19 = $10
+                priceEl.dataset.annual = '90';   // $259 - $169 = $90
+                // Apply current billing period
+                var price = billingPeriod === 'annual' ? '90' : '10';
+                priceEl.textContent = '$' + price;
+            }
+            if (periodEl) {
+                periodEl.textContent = billingPeriod === 'annual' ? '/year' : '/month';
+            }
+            if (savingsEl) {
+                savingsEl.textContent = 'Upgrade credit applied';
+                savingsEl.style.color = '#a78bfa';
+            }
+
+            // Change CTA button text
+            var ctaBtn = proCard.querySelector('button[onclick*="handleBuy(\'pro\')"]');
+            if (ctaBtn) {
+                ctaBtn.textContent = 'Upgrade to Pro';
+            }
+
+            // Change label text
+            var labelEl = document.getElementById('proCardLabel');
+            if (labelEl) {
+                labelEl.textContent = 'Upgrade to Pro';
+            }
+        }
+
+        // Reset the Pro card to normal pricing
+        function resetProCardPrice() {
+            var proCard = document.querySelector('.pricing-card.pricing-pro');
+            if (!proCard) return;
+
+            var priceEl = proCard.querySelector('.price-amount');
+            var savingsEl = proCard.querySelector('.price-savings');
+            var ctaBtn = proCard.querySelector('button[onclick*="handleBuy(\'pro\')"]');
+            var labelEl = document.getElementById('proCardLabel');
+
+            if (priceEl) {
+                priceEl.dataset.monthly = '29';
+                priceEl.dataset.annual = '259';
+            }
+            if (savingsEl) {
+                savingsEl.textContent = '3 months free vs monthly';
+                savingsEl.style.color = '';
+            }
+            if (ctaBtn) {
+                ctaBtn.innerHTML = 'Go Pro';
+            }
+            if (labelEl) {
+                labelEl.textContent = 'Curicaa Pro';
+            }
         }
         // Hook into existing updateAuthUI
         var origUpdateAuthUI = updateAuthUI;
@@ -877,7 +1037,7 @@
             'age-9': 'Level 3 — Age 9',
             'age-10': 'Level 4 — Age 10',
             'ages-11-12': 'Middle School — Ages 11–12',
-            'age-14': 'High School — Age 14',
+            'age-14': 'High School — Ages 13–14',
             'ages-15-16': 'GED — Ages 15–16',
             'ages-17-18': 'SAT — Ages 17–18'
         };
@@ -951,19 +1111,37 @@
             selectedPlan = plan;
             selectedGrades = [];
             var isBundle = plan === 'bundle';
+            var isPro = plan === 'pro';
             var periodLabel = billingPeriod === 'annual' ? '/yr' : '/mo';
             var bundlePrice = billingPeriod === 'annual' ? 129 : 19;
             var singlePrice = billingPeriod === 'annual' ? 69 : 9;
-            document.getElementById('checkoutTitle').textContent = isBundle ? 'Full K-12 Bundle' : 'Single Grade Access';
-            document.getElementById('gradeSelector').style.display = isBundle ? 'none' : 'block';
+
+            // Check if this is a bundle→pro upgrade
+            var currentUser = CuricaaAuth ? CuricaaAuth.getUser() : null;
+            var isUpgrade = isPro && currentUser && currentUser.plan === 'bundle';
+            var proPrice = isUpgrade
+                ? (billingPeriod === 'annual' ? 90 : 10)
+                : (billingPeriod === 'annual' ? 259 : 29);
+
+            var title = isUpgrade ? 'Upgrade to Pro' : isBundle ? 'Full K-12 Bundle' : isPro ? 'Curicaa Pro' : 'Single Grade Access';
+            document.getElementById('checkoutTitle').textContent = title;
+            document.getElementById('gradeSelector').style.display = (isBundle || isPro) ? 'none' : 'block';
             // Reset grade selection
             document.querySelectorAll('.grade-opt').forEach(function(b) {
                 b.style.borderColor = 'var(--border-card)';
                 b.style.background = 'var(--bg-subtle)';
             });
-            document.getElementById('checkoutSummary').innerHTML = isBundle
-                ? '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Full K-12 Bundle</div><div style="font-size:11px;color:var(--text-muted);">All 8 levels · All subjects · Billed ' + billingPeriod + '</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + bundlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>'
-                : '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + singlePrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + singlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            var summaryHtml;
+            if (isUpgrade) {
+                summaryHtml = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Upgrade to Curicaa Pro</div><div style="font-size:11px;color:var(--text-muted);">Bundle credit applied · All worksheets & quizzes · Billed ' + billingPeriod + '</div></div><div style="font-size:18px;font-weight:800;color:#a78bfa;">$' + proPrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            } else if (isBundle) {
+                summaryHtml = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Full K-12 Bundle</div><div style="font-size:11px;color:var(--text-muted);">All 8 levels · All subjects · Billed ' + billingPeriod + '</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + bundlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            } else if (isPro) {
+                summaryHtml = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Curicaa Pro</div><div style="font-size:11px;color:var(--text-muted);">All grades · All worksheets · All quizzes · Billed ' + billingPeriod + '</div></div><div style="font-size:18px;font-weight:800;color:#a78bfa;">$' + proPrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            } else {
+                summaryHtml = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + singlePrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + singlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            }
+            document.getElementById('checkoutSummary').innerHTML = summaryHtml;
             document.getElementById('checkoutModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -994,7 +1172,8 @@
                         mergedGrades.push(selectedGrades[i]);
                     }
                 }
-                CuricaaAuth.updatePlan(selectedPlan === 'bundle' ? 'bundle' : 'single', selectedPlan === 'bundle' ? [] : mergedGrades);
+                var newPlan = selectedPlan === 'bundle' ? 'bundle' : selectedPlan === 'pro' ? 'pro' : 'single';
+                CuricaaAuth.updatePlan(newPlan, (newPlan === 'bundle' || newPlan === 'pro') ? [] : mergedGrades);
                 updateAuthUI();
             }
             closeCheckout();
@@ -1008,7 +1187,6 @@
         }
 
         // --- Billing Toggle ---
-        let billingPeriod = 'annual'; // default to annual
 
         function toggleBilling() {
             billingPeriod = billingPeriod === 'annual' ? 'monthly' : 'annual';
@@ -1075,6 +1253,12 @@
                         el.style.display = 'none';
                     }
                 });
+
+                // Re-apply upgrade pricing if bundle user is viewing pricing
+                var user = CuricaaAuth ? CuricaaAuth.getUser() : null;
+                if (user && user.plan === 'bundle') {
+                    updateProUpgradePrice();
+                }
             }, 180);
         }
 
@@ -1237,6 +1421,20 @@
         }
 
 
+
+        // Announcement bar close
+        function closeAnnounce() {
+            var bar = document.getElementById('announceBar');
+            if (bar) bar.classList.add('hidden');
+            localStorage.setItem('curicaa-announce-closed', '1');
+        }
+        // Restore closed state on load
+        (function() {
+            if (localStorage.getItem('curicaa-announce-closed') === '1') {
+                var bar = document.getElementById('announceBar');
+                if (bar) bar.classList.add('hidden');
+            }
+        })();
 
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {

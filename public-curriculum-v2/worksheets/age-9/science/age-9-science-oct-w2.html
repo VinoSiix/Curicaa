@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building Simple Circuits — Age 9 Science</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #8b5cf6; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #7c3aed; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #ede9fe; color: #7c3aed; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #7c3aed; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #ede9fe; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .section-body ol { padding-left: 18px; }
+  .section-body ol li { margin-bottom: 3px; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; font-size: 12.5px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox { width: 14px; height: 14px; border: 1.5px solid #9ca3af; border-radius: 3px; flex-shrink: 0; }
+  .fill-blank { border-bottom: 2px solid #7c3aed; min-width: 80px; display: inline-block; }
+  .q-item { margin-bottom: 6px; }
+  .q-item strong { color: #7c3aed; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  .data-table th { background: #ede9fe; color: #7c3aed; padding: 6px 8px; border: 1px solid #ddd6fe; font-size: 11.5px; font-weight: 700; text-align: center; }
+  .data-table td { padding: 6px 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 12px; min-height: 28px; }
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Building Simple Circuits</h1>
+    <p>Age 9 Science · October Week 2</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Age 9</div><br>
+    Electricity & Magnetism
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Build a complete series circuit using a battery, wire, and a small light bulb, and understand that electricity needs a closed loop to flow.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">☀️</span> Warm-Up</div>
+  <div class="section-body">
+    <p>Look at a flashlight. Turn it on and off. What's happening inside to make the light turn on? Open it and examine the batteries and the metal contact strip.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔬</span> Activity: Build a Circuit</div>
+  <div class="section-body">
+    <p>Using 1 AA battery, 2 wires, and 1 small bulb, try to light the bulb. Record your results:</p>
+    <table class="data-table">
+      <tr><th>Setup</th><th>Bulb Lights?</th><th>Why or Why Not?</th></tr>
+      <tr><td>1 wire only (battery to bulb)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>2 wires (complete loop)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Remove one wire from loop</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Flip battery direction</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </table>
+    <p style="margin-top:6px;"><strong>Draw your circuit below:</strong></p>
+    <div style="border:1.5px dashed #d1d5db; border-radius:8px; height:100px; margin-top:4px;"></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">❓</span> Practice Questions</div>
+  <div class="section-body">
+    <div class="q-item"><strong>1.</strong> Electricity needs a complete, unbroken path called a <span class="fill-blank">&nbsp;</span>.</div>
+    <div class="q-item"><strong>2.</strong> When the loop is broken, the circuit is called <span class="fill-blank">&nbsp;</span> and the bulb goes out.</div>
+    <div class="q-item"><strong>3.</strong> A battery has two terminals: <span class="fill-blank">&nbsp;</span> (+) and <span class="fill-blank">&nbsp;</span> (−).</div>
+    <div class="q-item"><strong>4.</strong> In a series circuit, if one bulb breaks, the other bulbs <span class="fill-blank">&nbsp;</span>.</div>
+    <div class="q-item"><strong>5.</strong> True or False: Electricity can flow through air without a wire. <span class="fill-blank">&nbsp;</span></div>
+    <div class="q-item"><strong>6.</strong> The three parts needed for a simple circuit are: <span class="fill-blank">&nbsp;</span>, <span class="fill-blank">&nbsp;</span>, and <span class="fill-blank">&nbsp;</span>.</div>
+    <div class="q-item"><strong>7.</strong> A switch works by <span class="fill-blank">&nbsp;</span> the circuit.</div>
+    <div class="q-item"><strong>8.</strong> Why must you NEVER use wall outlets for circuit experiments? <span class="fill-blank">&nbsp;</span></div>
+    <div class="q-item"><strong>9.</strong> Label this circuit: Battery → Wire → <span class="fill-blank">&nbsp;</span> → Wire → back to Battery.</div>
+    <div class="q-item"><strong>10.</strong> Explain what happens when you disconnect one wire in a circuit and why: <span class="fill-blank">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">✅</span> Can Your Child...?</div>
+  <div class="section-body">
+    <ul class="checklist">
+      <li><span class="checkbox"></span> Build a working circuit independently</li>
+      <li><span class="checkbox"></span> Explain that breaking the loop stops electricity flow</li>
+      <li><span class="checkbox"></span> Draw a circuit diagram with battery and bulb symbols</li>
+      <li><span class="checkbox"></span> Use the words "open circuit" and "closed circuit" correctly</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tip-box">
+  <strong>💡 Easier:</strong> Use a battery holder with pre-attached wires and snap connectors.<br>
+  <strong>💡 Harder:</strong> Build a parallel circuit with two bulbs — ask what happens when you unscrew one bulb.
+</div>
+
+<div class="footer">
+  <span>Curriculum Hub · Age 9 · Science · October Week 2</span>
+  <span>Building Simple Circuits</span>
+</div>
+
+</body>
+</html>

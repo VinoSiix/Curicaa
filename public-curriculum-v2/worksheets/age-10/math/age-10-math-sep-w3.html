@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decimal Place Value to Thousandths — Age 10 Math</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #f97316; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #ea580c; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #fff7ed; color: #ea580c; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+  .name-row { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 12px; color: #374151; }
+  .name-row span { border-bottom: 1px solid #9ca3af; padding: 0 80px 2px 0; }
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #f97316; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #fff7ed; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .section-body ol { padding-left: 18px; }
+  .section-body ol li { margin-bottom: 3px; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; font-size: 12.5px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox { width: 14px; height: 14px; border: 1.5px solid #9ca3af; border-radius: 3px; flex-shrink: 0; }
+  .problem-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid #f3f4f6; }
+  .problem-row:last-child { border-bottom: none; }
+  .problem-num { font-weight: 700; color: #ea580c; min-width: 22px; }
+  .blank { display: inline-block; width: 80px; border-bottom: 2px solid #ea580c; text-align: center; font-weight: 700; }
+  .blank-sm { display: inline-block; width: 50px; border-bottom: 2px solid #ea580c; text-align: center; font-weight: 700; }
+  .blank-lg { display: inline-block; width: 120px; border-bottom: 2px solid #ea580c; text-align: center; font-weight: 700; }
+  .pv-chart { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin: 8px 0; }
+  .pv-chart .cell { border: 1.5px solid #fed7aa; border-radius: 4px; text-align: center; padding: 4px 2px; font-size: 11px; min-height: 28px; }
+  .pv-chart .label { background: #fff7ed; color: #ea580c; font-weight: 700; font-size: 9px; text-transform: uppercase; }
+  .pv-chart .value { font-size: 14px; font-weight: 700; color: #1a1a1a; }
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Decimal Place Value to Thousandths</h1>
+    <p>Age 10 Math · September Week 3</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Age 10</div><br>
+    Place Value &amp; Decimals
+  </div>
+</div>
+
+<div class="name-row">
+  <span>Name: </span>
+  <span>Date: </span>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Read, write, and compare decimals to the thousandths place. Understand that a digit in one place represents 10 times as much as it represents in the place to its right and 1/10 of what it represents in the place to its left.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">☀️</span> Warm-Up</div>
+  <div class="section-body">
+    <p>The decimal <strong>4.287</strong> is shown below. Read it aloud: "four and two hundred eighty-seven thousandths."</p>
+    <p style="margin-top:6px;">Which digit is in the hundredths place? <span class="blank-sm">&nbsp;</span></p>
+    <p>Which digit is in the thousandths place? <span class="blank-sm">&nbsp;</span></p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🧱</span> Activity: Decimal Place Value Chart</div>
+  <div class="section-body">
+    <p>Fill in the place value chart for each decimal below:</p>
+    <p style="margin-top:6px;"><strong>Number: 3.516</strong></p>
+    <div class="pv-chart">
+      <div class="cell label">Ones</div><div class="cell label">Tenths</div><div class="cell label">Hundredths</div><div class="cell label">Thousandths</div>
+      <div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div>
+    </div>
+    <p style="margin-top:8px;"><strong>Number: 8.074</strong></p>
+    <div class="pv-chart">
+      <div class="cell label">Ones</div><div class="cell label">Tenths</div><div class="cell label">Hundredths</div><div class="cell label">Thousandths</div>
+      <div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div><div class="cell value">&nbsp;</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">✏️</span> Practice: Digit Values in Decimals</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">For the number <strong>7.452</strong>, write the value of each underlined digit:</p>
+    <div class="problem-row"><span class="problem-num">1.</span> The <u>7</u> is in the _________ place. Its value is <span class="blank">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">2.</span> The <u>4</u> is in the _________ place. Its value is <span class="blank">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">3.</span> The <u>5</u> is in the _________ place. Its value is <span class="blank">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">4.</span> The <u>2</u> is in the _________ place. Its value is <span class="blank">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔢</span> Practice: Writing Decimals in Word Form</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Write each decimal in word form:</p>
+    <div class="problem-row"><span class="problem-num">5.</span> 6.3 = <span class="blank-lg">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">6.</span> 2.58 = <span class="blank-lg">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">7.</span> 0.149 = <span class="blank-lg">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📝</span> Practice: Expanded Decimal Form</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Write each decimal in expanded form:</p>
+    <div class="problem-row"><span class="problem-num">8.</span> 5.37 = <span class="blank-lg">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">9.</span> 1.604 = <span class="blank-lg">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">10.</span> 9.028 = <span class="blank-lg">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">⚖️</span> Practice: Decimal Place Value Relationships</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Use the relationship between place values to answer:</p>
+    <div class="problem-row"><span class="problem-num">11.</span> The 4 in 4.26 is worth 10 times the 4 in which number: 0.426 or 40.2? <span class="blank-sm">&nbsp;</span></div>
+    <div class="problem-row"><span class="problem-num">12.</span> The 3 in 0.03 is worth 1/10 of the 3 in 0.3. True or False? <span class="blank-sm">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">⭐</span> Bonus Challenge</div>
+  <div class="section-body">
+    <p>A decimal has a 6 in the tenths place, a 0 in the hundredths place, and a 3 in the thousandths place. The ones digit is 2.</p>
+    <p style="margin-top:4px;">Write the number in standard form: <span class="blank">&nbsp;</span></p>
+    <p>Write it in expanded form: <span class="blank-lg">&nbsp;</span></p>
+    <p>Write it in word form: <span class="blank-lg">&nbsp;</span></p>
+  </div>
+</div>
+
+<div class="tip-box">
+  <strong>💡 Easier:</strong> Start with decimals to the tenths place only. Use a place value chart to visualize each position.<br>
+  <strong>💡 Harder:</strong> Try decimals with both whole number and decimal parts (e.g., 34.672). Convert between all three forms.
+</div>
+
+<div class="footer">
+  <span>Curicaa · Age 10 · Math · September Week 3</span>
+  <span>Decimal Place Value to Thousandths</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Natural Selection Simulation — Age 10 Science</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #10b981; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #059669; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #d1fae5; color: #059669; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+  .name-row { display: flex; gap: 30px; margin-bottom: 14px; font-size: 12px; }
+  .name-row span { border-bottom: 1px solid #d1d5db; display: inline-block; min-width: 200px; }
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #059669; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #d1fae5; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .fill-blank { border-bottom: 2px solid #10b981; min-width: 80px; display: inline-block; }
+  .q-item { margin-bottom: 6px; }
+  .q-item strong { color: #059669; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  .data-table th { background: #d1fae5; color: #059669; padding: 6px 8px; border: 1px solid #a7f3d0; font-size: 11.5px; font-weight: 700; text-align: center; }
+  .data-table td { padding: 6px 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 12px; min-height: 28px; }
+  .match-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  .match-table td { padding: 6px 8px; border: 1px solid #e5e7eb; font-size: 12.5px; }
+  .match-table td:first-child { font-weight: 700; color: #059669; width: 30px; text-align: center; }
+  .graph-space { border: 1px solid #d1d5db; border-radius: 6px; padding: 10px; margin: 8px 0; min-height: 160px; position: relative; }
+  .graph-space p { color: #9ca3af; font-size: 11px; text-align: center; }
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+  .bonus-box { background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .bonus-box strong { color: #059669; }
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Natural Selection Simulation</h1>
+    <p>Age 10 - Science - September Week 3</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Age 10</div><br>
+    Evolution &amp; Adaptation
+  </div>
+</div>
+
+<div class="name-row">
+  <div>Name: <span>&nbsp;</span></div>
+  <div>Date: <span>&nbsp;</span></div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Understand how natural selection works by simulating how camouflage affects survival across generations. Explain "survival of the fittest" in your own words.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔬</span> Part 1: Simulation — Bean Hunt</div>
+  <div class="section-body">
+    <p><strong>Instructions:</strong> Spread 20 red, 20 green, and 20 white beans on green grass (or a green cloth). Have a partner collect as many beans as they can find in 30 seconds. Record the survivors. Repeat for 3 generations (replenish survivors to 20 each color each round).</p>
+    <table class="data-table">
+      <tr><th>Generation</th><th>Red Beans (surviving)</th><th>Green Beans (surviving)</th><th>White Beans (surviving)</th><th>Total Surviving</th></tr>
+      <tr><td>1 (Start: 20 each)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>2 (Replenished to 20)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>3 (Replenished to 20)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📊</span> Part 2: Bar Graph</div>
+  <div class="section-body">
+    <p>Create a bar graph showing how many of each bean color survived in Generation 3:</p>
+    <div class="graph-space">
+      <p>Draw your bar graph here. Label the x-axis (bean color) and y-axis (number surviving).</p>
+      <br><br><br><br><br><br><br>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">❓</span> Part 3: Short Answer — Adaptation and Camouflage</div>
+  <div class="section-body">
+    <div class="q-item"><strong>1.</strong> Which color bean survived the most? Why? <span class="fill-blank">&nbsp;</span></div>
+    <div class="q-item"><strong>2.</strong> Which color bean was found the most easily? Why? <span class="fill-blank">&nbsp;</span></div>
+    <div class="q-item"><strong>3.</strong> How does camouflage help an organism survive in the wild? <span class="fill-blank">&nbsp;</span></div>
+    <div class="q-item"><strong>4.</strong> If the background were white (like snow) instead of green, which bean color do you think would survive best? <span class="fill-blank">&nbsp;</span></div>
+    <div class="q-item"><strong>5.</strong> What does this simulation tell us about how populations change over time? <span class="fill-blank">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📖</span> Part 4: Survival of the Fittest</div>
+  <div class="section-body">
+    <p>In biology, "fitness" does not mean the strongest or fastest. It means how well an organism <strong>survives and reproduces</strong> in its environment.</p>
+    <div class="q-item" style="margin-top: 6px;"><strong>6.</strong> Explain "survival of the fittest" in your own words: <span class="fill-blank">&nbsp;</span></div>
+    <div class="q-item"><strong>7.</strong> Give one real-world example of an animal that is well-adapted to its environment: <span class="fill-blank">&nbsp;</span></div>
+    <div class="q-item"><strong>8.</strong> What would happen to a population if the environment changed suddenly? <span class="fill-blank">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🐦</span> Part 5: Beak Adaptation Matching</div>
+  <div class="section-body">
+    <p>Match each bird beak to the food it is best adapted to eat:</p>
+    <table class="match-table">
+      <tr><td>A</td><td>Short, thick, strong beak</td><td>&nbsp;</td><td>1. Nectar from flowers</td></tr>
+      <tr><td>B</td><td>Long, thin, curved beak</td><td>&nbsp;</td><td>2. Insects hidden in tree bark</td></tr>
+      <tr><td>C</td><td>Sharp, hooked beak</td><td>&nbsp;</td><td>3. Seeds and nuts (cracking)</td></tr>
+      <tr><td>D</td><td>Long, narrow, pointed beak</td><td>&nbsp;</td><td>4. Small fish and amphibians</td></tr>
+      <tr><td>E</td><td>Wide, flat beak</td><td>&nbsp;</td><td>5. Meat (tearing flesh)</td></tr>
+      <tr><td>F</td><td>Chisel-like beak</td><td>&nbsp;</td><td>6. Plants and filtering water</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="bonus-box">
+  <strong>⭐ Bonus Challenge:</strong> Design your own imaginary animal that is perfectly adapted to survive in a desert. Draw it and label at least three adaptations that help it survive. Explain why each adaptation is useful.
+</div>
+
+<div class="tip-box">
+  <strong>💡 Easier:</strong> Run the simulation with only two bean colors (red and green) and focus on which disappears faster.<br>
+  <strong>💡 Harder:</strong> Calculate the percentage of each color surviving each generation and plot a line graph over all three generations.
+</div>
+
+<div class="footer">
+  <span>Curicaa - Age 10 - Science - September Week 3</span>
+  <span>Natural Selection Simulation</span>
+</div>
+
+</body>
+</html>

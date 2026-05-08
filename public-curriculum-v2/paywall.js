@@ -92,8 +92,34 @@
 
   var FREE_MONTH = 'September';
 
+  // Month abbreviation map for worksheet URL generation
+  var MONTH_ABBR = {
+    'September':'sep','October':'oct','November':'nov','December':'dec',
+    'January':'jan','February':'feb','March':'mar','April':'apr',
+    'May':'may','June':'jun'
+  };
+
   function isFreeMonth(name) {
     return name === FREE_MONTH;
+  }
+
+  // Parse grade and subject from the current page URL
+  // e.g. "ages-5-7-math.html" → { grade:"ages-5-7", subject:"math" }
+  // e.g. "age-14-social-studies.html" → { grade:"age-14", subject:"social-studies" }
+  function parsePageInfo() {
+    var path = window.location.pathname;
+    var filename = path.split('/').pop().replace('.html', '');
+    // Check longer subjects first to avoid partial matches
+    var subjects = ['social-studies','math','english','science','art','pe'];
+    for (var i = 0; i < subjects.length; i++) {
+      if (filename.endsWith('-' + subjects[i])) {
+        return {
+          grade: filename.slice(0, -(subjects[i].length + 1)),
+          subject: subjects[i]
+        };
+      }
+    }
+    return { grade: '', subject: '' };
   }
 
   // --- Check user plan tier ---
@@ -160,12 +186,19 @@
   function gateWorksheets() {
     if (hasProAccess()) return; // Pro sees everything
 
+    // September worksheets are free for all users — don't gate them
+    var currentMonth = getActiveMonth();
+    if (isFreeMonth(currentMonth)) return;
+
     var contentEl = document.getElementById('monthContent');
     if (!contentEl) return;
 
     // Find worksheet links directly — they are <a> tags with target="_blank"
     var wsLinks = contentEl.querySelectorAll('a[target="_blank"]');
     wsLinks.forEach(function(link) {
+      // Skip resources managed by injectResources()
+      if (link.closest && link.closest('#pw-resources-card')) return;
+
       var textWrapper = link.parentElement;
       if (!textWrapper) return;
       var container = textWrapper.parentElement;
@@ -192,25 +225,119 @@
     });
   }
 
+  // --- Inject worksheet links and monthly quiz into subject pages ---
+  function injectResources() {
+    // Worksheets & Quiz section disabled — no resources card is rendered.
+    return;
+    var contentEl = document.getElementById('monthContent');
+    if (!contentEl) return;
+    // Already injected for this render cycle
+    if (document.getElementById('pw-resources-card')) return;
+
+    var info = parsePageInfo();
+    if (!info.grade || !info.subject) return;
+
+    var month = getActiveMonth();
+    var abbr = MONTH_ABBR[month];
+    if (!abbr) return;
+
+    // Determine access: September is free for everyone, other months require Pro
+    var isSeptember = (month === FREE_MONTH);
+    var isPro = hasProAccess();
+    var showLinks = isSeptember || isPro;
+
+    // Find the right column of the month-grid layout
+    var grid = contentEl.querySelector('.month-grid');
+    if (!grid) return;
+    var cols = grid.children;
+    var rightCol = cols.length >= 2 ? cols[1] : null;
+    if (!rightCol) return;
+
+    // Count weeks in current month view
+    var weekRows = contentEl.querySelectorAll('.week-row');
+    var weekCount = weekRows.length;
+    if (weekCount === 0) return;
+
+    var html = '';
+    var prefix = info.grade + '-' + info.subject + '-' + abbr;
+
+    // Worksheet link for each week
+    for (var w = 1; w <= weekCount; w++) {
+      var wsUrl = 'worksheets/' + info.grade + '/' + info.subject + '/' + prefix + '-w' + w + '.html';
+      var akUrl = 'worksheets/' + info.grade + '/' + info.subject + '/answer-keys/' + prefix + '-w' + w + '-answers.html';
+
+      if (showLinks) {
+        html += '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);margin-bottom:8px;">' +
+          '<div style="width:24px;text-align:center;flex-shrink:0;"><i class="fas fa-print" style="font-size:11px;color:rgba(255,255,255,0.4);"></i></div>' +
+          '<div style="flex:1;"><a href="' + wsUrl + '" target="_blank" style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);text-decoration:none;">Week ' + w + ' Worksheet</a></div>' +
+          '<a href="' + akUrl + '" target="_blank" style="font-size:11px;color:rgba(255,255,255,0.4);text-decoration:none;padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.08);" onmouseover="this.style.borderColor=\'rgba(255,255,255,0.2)\'" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.08)\'">Answers</a>' +
+          '</div>';
+      } else {
+        html += '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);margin-bottom:8px;cursor:pointer;" onclick="document.getElementById(\'wsPaywallModal\').style.display=\'flex\';document.body.style.overflow=\'hidden\';">' +
+          '<div style="width:24px;color:#a78bfa;text-align:center;flex-shrink:0;"><i class="fas fa-lock" style="font-size:11px;"></i></div>' +
+          '<div><span style="font-size:13px;font-weight:600;color:#a78bfa;">Week ' + w + ' Worksheet</span>' +
+          '<span style="font-size:11px;color:rgba(255,255,255,0.3);margin-left:8px;"><i class="fas fa-crown" style="font-size:9px;color:#a78bfa;margin-right:3px;"></i>Pro</span></div>' +
+          '</div>';
+      }
+    }
+
+    // Monthly Quiz
+    html += '<div style="height:1px;background:rgba(255,255,255,0.06);margin:14px 0 12px;"></div>';
+    var quizUrl = 'worksheets/' + info.grade + '/' + info.subject + '/' + prefix + '-quiz.html';
+
+    if (showLinks) {
+      html += '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);">' +
+        '<div style="width:24px;color:#60a5fa;text-align:center;flex-shrink:0;"><i class="fas fa-clipboard-check" style="font-size:11px;"></i></div>' +
+        '<div style="flex:1;"><a href="' + quizUrl + '" target="_blank" style="font-size:13px;font-weight:600;color:#93c5fd;text-decoration:none;">Monthly Quiz \u2014 ' + month + '</a></div>' +
+        '</div>';
+    } else {
+      html += '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);cursor:pointer;" onclick="document.getElementById(\'wsPaywallModal\').style.display=\'flex\';document.body.style.overflow=\'hidden\';">' +
+        '<div style="width:24px;color:#a78bfa;text-align:center;flex-shrink:0;"><i class="fas fa-lock" style="font-size:11px;"></i></div>' +
+        '<div><span style="font-size:13px;font-weight:600;color:#a78bfa;">Monthly Quiz \u2014 ' + month + '</span>' +
+        '<span style="font-size:11px;color:rgba(255,255,255,0.3);margin-left:8px;"><i class="fas fa-crown" style="font-size:9px;color:#a78bfa;margin-right:3px;"></i>Pro</span></div>' +
+        '</div>';
+    }
+
+    // Create the resources card
+    var card = document.createElement('div');
+    card.id = 'pw-resources-card';
+    card.className = 'sched-card';
+    card.style.marginBottom = '16px';
+    card.innerHTML = '<p class="section-label"><i class="fas fa-file-alt" style="color:rgba(255,255,255,0.4);margin-right:6px;"></i>Worksheets & Quiz</p>' +
+      '<div style="margin-top:12px;">' + html + '</div>';
+
+    // Insert after the first sched-card (Monthly Project) in the right column
+    var firstCard = rightCol.querySelector('.sched-card');
+    if (firstCard) {
+      firstCard.insertAdjacentElement('afterend', card);
+    } else {
+      rightCol.insertBefore(card, rightCol.firstChild);
+    }
+  }
+
   // Observe DOM changes to re-gate worksheets AND re-lock tabs when month content is re-rendered
   function watchForChanges() {
-    if (hasProAccess() && !isFreeUser()) return;
-
+    // Always watch content changes — all plan types need resource injection
     var contentEl = document.getElementById('monthContent');
     if (contentEl) {
       var wsObserver = new MutationObserver(function() {
-        setTimeout(gateWorksheets, 80);
+        setTimeout(function() {
+          injectResources();
+          if (!hasProAccess()) gateWorksheets();
+        }, 80);
       });
       wsObserver.observe(contentEl, { childList: true, subtree: true });
     }
 
-    // Watch the tab container for re-renders (some pages re-create tabs)
-    var tabsEl = document.getElementById('monthTabs');
-    if (tabsEl) {
-      var tabObserver = new MutationObserver(function() {
-        setTimeout(lockMonthsForFreeUsers, 30);
-      });
-      tabObserver.observe(tabsEl, { childList: true });
+    // Watch the tab container for re-renders — only free users need month locking
+    if (isFreeUser()) {
+      var tabsEl = document.getElementById('monthTabs');
+      if (tabsEl) {
+        var tabObserver = new MutationObserver(function() {
+          setTimeout(lockMonthsForFreeUsers, 30);
+        });
+        tabObserver.observe(tabsEl, { childList: true });
+      }
     }
   }
 
@@ -219,15 +346,13 @@
     // 1. Free users: lock months to September only
     if (isFreeUser()) {
       lockMonthsForFreeUsers();
-      watchForChanges();
-      setTimeout(gateWorksheets, 300);
     }
-    // 2. Non-Pro paid users: gate worksheets
-    else if (!hasProAccess()) {
-      watchForChanges();
-      setTimeout(gateWorksheets, 300);
-    }
-    // Pro: everything unlocked
+    // 2. Always watch for content changes and inject resources
+    watchForChanges();
+    setTimeout(function() {
+      injectResources();
+      if (!hasProAccess()) gateWorksheets();
+    }, 300);
   }
 
   // --- Boot sequence ---

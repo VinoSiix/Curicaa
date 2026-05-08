@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Identifying Theme and Big Ideas — Age 10 English</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #10b981; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #059669; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #ecfdf5; color: #059669; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+  .name-date { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 12px; }
+  .name-date span { display: inline-block; width: 48%; }
+  .name-date .line { border-bottom: 1px solid #9ca3af; display: inline-block; width: 160px; margin-left: 4px; }
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #10b981; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #ecfdf5; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .section-body ol { padding-left: 18px; }
+  .section-body ol li { margin-bottom: 3px; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; font-size: 12.5px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox { width: 14px; height: 14px; border: 1.5px solid #9ca3af; border-radius: 3px; flex-shrink: 0; }
+  .writing-line { display: block; width: 100%; border-bottom: 1px dashed #9ca3af; height: 28px; margin-bottom: 2px; }
+  .writing-line-long { display: block; width: 100%; border-bottom: 1px dashed #9ca3af; height: 32px; margin-bottom: 2px; }
+  .blank { display: inline-block; width: 80px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .blank-sm { display: inline-block; width: 50px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .blank-lg { display: inline-block; width: 120px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .blank-xl { display: inline-block; width: 200px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .tchart { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid #10b981; border-radius: 8px; overflow: hidden; margin: 8px 0; }
+  .tchart .col { padding: 8px 10px; }
+  .tchart .col:first-child { border-right: 1.5px solid #a7f3d0; }
+  .tchart .col-label { font-weight: 700; font-size: 11px; color: #fff; text-transform: uppercase; letter-spacing: 0.04em; margin: -8px -10px 8px -10px; padding: 6px; text-align: center; background: #10b981; }
+  .tchart .entry { border-bottom: 1px dashed #d1d5db; padding: 6px 0; min-height: 30px; font-size: 12px; }
+  .tchart .entry:last-child { border-bottom: none; }
+  .theme-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; }
+  .theme-table th { background: #ecfdf5; color: #059669; font-weight: 700; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.04em; padding: 6px; border: 1px solid #a7f3d0; text-align: left; }
+  .theme-table td { border: 1px solid #d1d5db; padding: 6px; vertical-align: top; }
+  .theme-table .answer-col { width: 50px; text-align: center; }
+  .evidence-box { border: 1.5px solid #a7f3d0; border-radius: 6px; padding: 8px 10px; margin: 6px 0; }
+  .evidence-box .ev-label { font-weight: 700; font-size: 10px; color: #059669; text-transform: uppercase; margin-bottom: 4px; }
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+  .bonus-box { background: #ecfdf5; border: 1.5px solid #a7f3d0; border-radius: 6px; padding: 10px 14px; margin-top: 8px; }
+  .bonus-box strong { color: #059669; }
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Identifying Theme and Big Ideas</h1>
+    <p>Age 10 English · September Week 4</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Age 10</div><br>
+    Reading Comprehension
+  </div>
+</div>
+
+<div class="name-date">
+  <span>Name: <span class="line">&nbsp;</span></span>
+  <span>Date: <span class="line">&nbsp;</span></span>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Determine the theme of a story by analysing what the characters learn and what the author wants the reader to understand about life.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">☀️</span> Warm-Up: Topic vs Theme</div>
+  <div class="section-body">
+    <p>A <strong>topic</strong> is what the story is about in one word (e.g. "friendship"). A <strong>theme</strong> is what the author is saying about that topic (e.g. "True friendship means standing by someone even when it is hard").</p>
+    <p style="margin-top:8px;">Read each topic. Write a possible theme statement on the line.</p>
+    <div style="margin-top:6px;">
+      <div style="padding:4px 0;border-bottom:1px solid #f3f4f6;">
+        <strong>Topic: Courage</strong><br>Theme: <span class="blank-xl">&nbsp;</span>
+      </div>
+      <div style="padding:4px 0;border-bottom:1px solid #f3f4f6;">
+        <strong>Topic: Honesty</strong><br>Theme: <span class="blank-xl">&nbsp;</span>
+      </div>
+      <div style="padding:4px 0;">
+        <strong>Topic: Perseverance</strong><br>Theme: <span class="blank-xl">&nbsp;</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📊</span> Activity: Character Lesson to Theme (T-Chart)</div>
+  <div class="section-body">
+    <p>Think of a story you have read. In the left column, write what a character learned. In the right column, turn it into a theme statement.</p>
+    <p style="margin-top:4px;">Story: <span class="blank-xl">&nbsp;</span></p>
+    <div class="tchart" style="margin-top:8px;">
+      <div class="col">
+        <div class="col-label">What the Character Learned</div>
+        <div class="entry">1.&nbsp;</div>
+        <div class="entry">2.&nbsp;</div>
+        <div class="entry">3.&nbsp;</div>
+      </div>
+      <div class="col">
+        <div class="col-label">Theme Statement</div>
+        <div class="entry">1.&nbsp;</div>
+        <div class="entry">2.&nbsp;</div>
+        <div class="entry">3.&nbsp;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔗</span> Activity: Match the Theme to the Story</div>
+  <div class="section-body">
+    <p>Read each short story description. Match it to the correct theme by writing the letter in the answer column.</p>
+    <div class="word-bank" style="display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;">
+      <span style="display:inline-block;border:1.5px solid #a7f3d0;border-radius:4px;padding:3px 10px;font-size:12px;background:#f0fdf4;">A. Hard work pays off</span>
+      <span style="display:inline-block;border:1.5px solid #a7f3d0;border-radius:4px;padding:3px 10px;font-size:12px;background:#f0fdf4;">B. Appearances can be deceiving</span>
+      <span style="display:inline-block;border:1.5px solid #a7f3d0;border-radius:4px;padding:3px 10px;font-size:12px;background:#f0fdf4;">C. It is important to forgive others</span>
+      <span style="display:inline-block;border:1.5px solid #a7f3d0;border-radius:4px;padding:3px 10px;font-size:12px;background:#f0fdf4;">D. Believe in yourself</span>
+    </div>
+    <table class="theme-table">
+      <tr><th>#</th><th>Story Description</th><th class="answer-col">Theme</th></tr>
+      <tr><td>1</td><td>A small mouse enters a singing competition. Everyone laughs at first, but she practises every day and wins the contest.</td><td class="answer-col"><span class="blank-sm">&nbsp;</span></td></tr>
+      <tr><td>2</td><td>A princess meets a rough, unfriendly dragon. She soon discovers he is lonely and just wants a friend.</td><td class="answer-col"><span class="blank-sm">&nbsp;</span></td></tr>
+      <tr><td>3</td><td>After his friend breaks his favourite toy, a boy stays angry for weeks. He finally realises that holding a grudge only hurts himself.</td><td class="answer-col"><span class="blank-sm">&nbsp;</span></td></tr>
+      <tr><td>4</td><td>A boy trains every morning before school for months. At the athletics day, he finishes first in the race.</td><td class="answer-col"><span class="blank-sm">&nbsp;</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔎</span> Activity: Find the Evidence</div>
+  <div class="section-body">
+    <p>Choose a book or story you have read. Identify what you think the theme is, then find two pieces of evidence from the text that support it.</p>
+    <div class="evidence-box">
+      <div class="ev-label">Story Title</div>
+      <span class="writing-line">&nbsp;</span>
+    </div>
+    <div class="evidence-box">
+      <div class="ev-label">My Theme Statement</div>
+      <span class="writing-line">&nbsp;</span>
+      <span class="writing-line">&nbsp;</span>
+    </div>
+    <div class="evidence-box">
+      <div class="ev-label">Evidence 1 (quote or paraphrase)</div>
+      <span class="writing-line">&nbsp;</span>
+      <span class="writing-line">&nbsp;</span>
+    </div>
+    <div class="evidence-box">
+      <div class="ev-label">Evidence 2 (quote or paraphrase)</div>
+      <span class="writing-line">&nbsp;</span>
+      <span class="writing-line">&nbsp;</span>
+    </div>
+    <p style="margin-top:4px;">How does this evidence support your theme?</p>
+    <span class="writing-line">&nbsp;</span>
+    <span class="writing-line">&nbsp;</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">✍️</span> Activity: Write Your Own Theme Statement</div>
+  <div class="section-body">
+    <p>Read the short passage below, then write a theme statement.</p>
+    <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:10px;margin:6px 0;font-size:12px;">
+      <em>"Every day after school, Mia helped her younger brother with his reading homework even though she wanted to go outside and play with her friends. One rainy afternoon, her brother read his first full sentence by himself. He looked up at Mia with the biggest smile. 'I couldn't have done it without you,' he whispered."</em>
+    </div>
+    <p style="margin-top:6px;">What is one topic of this passage? <span class="blank-lg">&nbsp;</span></p>
+    <p style="margin-top:4px;">What is the theme? Write a full sentence:</p>
+    <span class="writing-line">&nbsp;</span>
+    <span class="writing-line">&nbsp;</span>
+    <p style="margin-top:4px;">What evidence from the passage supports your theme?</p>
+    <span class="writing-line">&nbsp;</span>
+    <span class="writing-line">&nbsp;</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">✅</span> Can Your Child...?</div>
+  <div class="section-body">
+    <ul class="checklist">
+      <li><span class="checkbox"></span> Explain the difference between a topic and a theme</li>
+      <li><span class="checkbox"></span> Identify the theme of a story using character actions as clues</li>
+      <li><span class="checkbox"></span> Support a theme statement with evidence from the text</li>
+      <li><span class="checkbox"></span> Write a clear theme statement in a complete sentence</li>
+    </ul>
+  </div>
+</div>
+
+<div class="bonus-box">
+  <strong>⭐ Bonus Challenge:</strong> Think of two stories that share the same theme but have completely different plots. Write the titles and explain how the theme appears in each one.
+  <p style="margin-top:4px;">Story 1: <span class="blank-xl">&nbsp;</span></p>
+  <p>Story 2: <span class="blank-xl">&nbsp;</span></p>
+  <p>Shared theme: <span class="blank-xl">&nbsp;</span></p>
+  <span class="writing-line">&nbsp;</span>
+  <span class="writing-line">&nbsp;</span>
+  <span class="writing-line">&nbsp;</span>
+</div>
+
+<div class="footer">
+  <span>Curicaa · Age 10 · English · September Week 4</span>
+  <span>Identifying Theme and Big Ideas</span>
+</div>
+
+</body>
+</html>

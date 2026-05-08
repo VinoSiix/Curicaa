@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Genetic Traits and Heredity — Age 10 Science</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #10b981; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #059669; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #d1fae5; color: #059669; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+  .name-row { display: flex; gap: 30px; margin-bottom: 14px; font-size: 12px; }
+  .name-row span { border-bottom: 1px solid #d1d5db; display: inline-block; min-width: 200px; }
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #059669; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #d1fae5; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .section-body ol { padding-left: 18px; }
+  .section-body ol li { margin-bottom: 3px; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; font-size: 12.5px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox { width: 14px; height: 14px; border: 1.5px solid #9ca3af; border-radius: 3px; flex-shrink: 0; }
+  .fill-blank { border-bottom: 2px solid #10b981; min-width: 80px; display: inline-block; }
+  .q-item { margin-bottom: 6px; }
+  .q-item strong { color: #059669; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  .data-table th { background: #d1fae5; color: #059669; padding: 6px 8px; border: 1px solid #a7f3d0; font-size: 11.5px; font-weight: 700; text-align: center; }
+  .data-table td { padding: 6px 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 12px; min-height: 28px; }
+  .match-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  .match-table td { padding: 6px 8px; border: 1px solid #e5e7eb; font-size: 12.5px; }
+  .match-table td:first-child { font-weight: 700; color: #059669; width: 30px; text-align: center; }
+  .punnett { width: 160px; border-collapse: collapse; margin: 10px 0; }
+  .punnett th { background: #d1fae5; color: #059669; padding: 8px; border: 1px solid #a7f3d0; font-size: 13px; font-weight: 700; text-align: center; }
+  .punnett td { padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-size: 13px; font-weight: 600; }
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+  .bonus-box { background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .bonus-box strong { color: #059669; }
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Genetic Traits and Heredity</h1>
+    <p>Age 10 - Science - September Week 2</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Age 10</div><br>
+    DNA &amp; Genetics
+  </div>
+</div>
+
+<div class="name-row">
+  <div>Name: <span>&nbsp;</span></div>
+  <div>Date: <span>&nbsp;</span></div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Understand how traits are inherited through dominant and recessive alleles. Use Punnett squares to predict offspring genotypes and phenotypes.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔬</span> Part 1: Punnett Square Practice</div>
+  <div class="section-body">
+    <p>Complete each Punnett square. <strong>Dominant alleles</strong> are shown with capital letters, <strong>recessive alleles</strong> with lowercase.</p>
+
+    <p style="margin-top: 8px; font-weight: 600;">Problem 1: Tall (T) is dominant over short (t). Cross: Tt × Tt</p>
+    <table class="punnett">
+      <tr><th></th><th>T</th><th>t</th></tr>
+      <tr><th>T</th><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><th>t</th><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </table>
+
+    <p style="font-weight: 600;">Problem 2: Round seeds (R) are dominant over wrinkled (r). Cross: Rr × rr</p>
+    <table class="punnett">
+      <tr><th></th><th>R</th><th>r</th></tr>
+      <tr><th>r</th><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><th>r</th><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </table>
+
+    <p style="font-weight: 600;">Problem 3: Brown eyes (B) are dominant over blue (b). Cross: Bb × Bb</p>
+    <table class="punnett">
+      <tr><th></th><th>B</th><th>b</th></tr>
+      <tr><th>B</th><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><th>b</th><td>&nbsp;</td>&nbsp;</td></tr>
+    </table>
+
+    <p style="font-weight: 600;">Problem 4: Free earlobes (F) are dominant over attached (f). Cross: Ff × ff</p>
+    <table class="punnett">
+      <tr><th></th><th>F</th><th>f</th></tr>
+      <tr><th>f</th><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><th>f</th><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📊</span> Part 2: Genotype vs Phenotype</div>
+  <div class="section-body">
+    <p>For each Punnett square above, fill in the table:</p>
+    <table class="data-table">
+      <tr><th>Cross</th><th>Genotypes (with ratios)</th><th>Phenotypes (with ratios)</th></tr>
+      <tr><td>Tt × Tt</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Rr × rr</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Bb × Bb</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Ff × ff</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">✅</span> Part 3: Trait Survey Checklist</div>
+  <div class="section-body">
+    <p>Check the traits you have, then ask a family member and compare:</p>
+    <table class="data-table">
+      <tr><th>Trait</th><th>Dominant</th><th>Recessive</th><th>Me</th><th>Family Member</th></tr>
+      <tr><td>Earlobes</td><td>Free (unattached)</td><td>Attached</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Tongue rolling</td><td>Can roll</td><td>Cannot roll</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Widow's peak</td><td>Has widow's peak</td><td>Straight hairline</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Dimples</td><td>Has dimples</td><td>No dimples</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Hitchhiker's thumb</td><td>Can bend back</td><td>Straight thumb</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>PTC tasting</td><td>Taster</td><td>Non-taster</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">❓</span> Part 4: Vocabulary Fill-In</div>
+  <div class="section-body">
+    <div class="q-item"><strong>1.</strong> A <span class="fill-blank">&nbsp;</span> is a segment of DNA that codes for a specific trait.</div>
+    <div class="q-item"><strong>2.</strong> An organism with two identical alleles (e.g., TT or tt) is called <span class="fill-blank">&nbsp;</span>.</div>
+    <div class="q-item"><strong>3.</strong> An organism with two different alleles (e.g., Tt) is called <span class="fill-blank">&nbsp;</span>.</div>
+    <div class="q-item"><strong>4.</strong> The <span class="fill-blank">&nbsp;</span> is the physical appearance of a trait.</div>
+    <div class="q-item"><strong>5.</strong> The <span class="fill-blank">&nbsp;</span> is the genetic makeup (allele combination).</div>
+    <div class="q-item"><strong>6.</strong> A <span class="fill-blank">&nbsp;</span> allele masks the effect of a recessive allele.</div>
+  </div>
+</div>
+
+<div class="bonus-box">
+  <strong>⭐ Bonus Challenge:</strong> In guinea pigs, black fur (B) is dominant over white fur (b). A black guinea pig has the genotype Bb. It mates with a white guinea pig. What percentage of the offspring will be black? Show your Punnett square.
+</div>
+
+<div class="tip-box">
+  <strong>💡 Easier:</strong> Start with a single Punnett square and focus on identifying dominant vs recessive before filling in the table.<br>
+  <strong>💡 Harder:</strong> Try a dihybrid cross — what happens when you cross two traits at once? (e.g., TtRr × TtRr)
+</div>
+
+<div class="footer">
+  <span>Curicaa - Age 10 - Science - September Week 2</span>
+  <span>Genetic Traits and Heredity</span>
+</div>
+
+</body>
+</html>

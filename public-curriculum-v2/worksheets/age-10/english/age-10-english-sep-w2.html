@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Deep Dive into Character Analysis — Age 10 English</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #10b981; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #059669; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #ecfdf5; color: #059669; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+  .name-date { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 12px; }
+  .name-date span { display: inline-block; width: 48%; }
+  .name-date .line { border-bottom: 1px solid #9ca3af; display: inline-block; width: 160px; margin-left: 4px; }
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #10b981; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #ecfdf5; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .section-body ol { padding-left: 18px; }
+  .section-body ol li { margin-bottom: 3px; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; font-size: 12.5px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox { width: 14px; height: 14px; border: 1.5px solid #9ca3af; border-radius: 3px; flex-shrink: 0; }
+  .writing-line { display: block; width: 100%; border-bottom: 1px dashed #9ca3af; height: 28px; margin-bottom: 2px; }
+  .writing-line-long { display: block; width: 100%; border-bottom: 1px dashed #9ca3af; height: 32px; margin-bottom: 2px; }
+  .blank { display: inline-block; width: 80px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .blank-sm { display: inline-block; width: 50px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .blank-lg { display: inline-block; width: 120px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .blank-xl { display: inline-block; width: 200px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .organizer { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid #10b981; border-radius: 8px; overflow: hidden; margin: 8px 0; }
+  .organizer .col { padding: 8px 10px; }
+  .organizer .col:first-child { border-right: 1.5px solid #a7f3d0; }
+  .organizer .col-label { font-weight: 700; font-size: 11px; color: #059669; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; text-align: center; background: #ecfdf5; margin: -8px -10px 8px -10px; padding: 5px; }
+  .organizer .trait-line { border-bottom: 1px dashed #d1d5db; height: 26px; margin-bottom: 2px; padding: 0 4px; font-size: 12px; }
+  .steal-chart { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 11.5px; }
+  .steal-chart th { background: #ecfdf5; color: #059669; font-weight: 700; text-transform: uppercase; font-size: 9.5px; letter-spacing: 0.04em; padding: 6px 6px; border: 1px solid #a7f3d0; text-align: left; }
+  .steal-chart td { border: 1px solid #d1d5db; padding: 6px; vertical-align: top; min-height: 28px; }
+  .steal-chart .letter { font-size: 18px; font-weight: 800; color: #10b981; text-align: center; width: 28px; }
+  .word-bank { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .word-bank .word { display: inline-block; border: 1.5px solid #a7f3d0; border-radius: 4px; padding: 3px 10px; font-size: 12px; background: #f0fdf4; }
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+  .bonus-box { background: #ecfdf5; border: 1.5px solid #a7f3d0; border-radius: 6px; padding: 10px 14px; margin-top: 8px; }
+  .bonus-box strong { color: #059669; }
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Deep Dive into Character Analysis</h1>
+    <p>Age 10 English · September Week 2</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Age 10</div><br>
+    Reading Comprehension
+  </div>
+</div>
+
+<div class="name-date">
+  <span>Name: <span class="line">&nbsp;</span></span>
+  <span>Date: <span class="line">&nbsp;</span></span>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Analyse characters in fiction by examining their traits, motivations, and actions using text evidence.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">☀️</span> Warm-Up: Quick Character Think</div>
+  <div class="section-body">
+    <p>Think of your favourite character from any book, movie, or show. Answer below.</p>
+    <p style="margin-top:6px;">Character name: <span class="blank-xl">&nbsp;</span></p>
+    <p style="margin-top:2px;">One word to describe their personality: <span class="blank-lg">&nbsp;</span></p>
+    <p style="margin-top:2px;">One thing they did that shows this trait: <span class="blank-xl">&nbsp;</span></p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🧍</span> Activity: Character Outline Organizer</div>
+  <div class="section-body">
+    <p>Choose a character from a book you are reading. Describe their outside traits (appearance) and inside traits (personality).</p>
+    <p style="margin-top:4px;">Character: <span class="blank-xl">&nbsp;</span> &nbsp; Book: <span class="blank-xl">&nbsp;</span></p>
+    <div class="organizer" style="margin-top:8px;">
+      <div class="col">
+        <div class="col-label">Outside Traits (Appearance)</div>
+        <div class="trait-line">1.&nbsp;</div>
+        <div class="trait-line">2.&nbsp;</div>
+        <div class="trait-line">3.&nbsp;</div>
+      </div>
+      <div class="col">
+        <div class="col-label">Inside Traits (Personality)</div>
+        <div class="trait-line">1.&nbsp;</div>
+        <div class="trait-line">2.&nbsp;</div>
+        <div class="trait-line">3.&nbsp;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔍</span> Activity: The STEAL Method</div>
+  <div class="section-body">
+    <p>Use the STEAL method to gather evidence about your character. Find a quote from the text for each category.</p>
+    <table class="steal-chart">
+      <tr><th style="width:30px;">Letter</th><th style="width:100px;">Category</th><th>What It Means</th><th style="width:200px;">Quote / Evidence from Text</th></tr>
+      <tr><td class="letter">S</td><td><strong>Speech</strong></td><td>What the character says</td><td>&nbsp;</td></tr>
+      <tr><td class="letter">T</td><td><strong>Thoughts</strong></td><td>What the character thinks or feels</td><td>&nbsp;</td></tr>
+      <tr><td class="letter">E</td><td><strong>Effect on Others</strong></td><td>How others react to the character</td><td>&nbsp;</td></tr>
+      <tr><td class="letter">A</td><td><strong>Actions</strong></td><td>What the character does</td><td>&nbsp;</td></tr>
+      <tr><td class="letter">L</td><td><strong>Looks</strong></td><td>How the character appears</td><td>&nbsp;</td></tr>
+    </table>
+    <p style="margin-top:4px;">Based on your STEAL evidence, what kind of person is this character?</p>
+    <span class="writing-line">&nbsp;</span>
+    <span class="writing-line">&nbsp;</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🏷️</span> Activity: Trait Word Bank Matching</div>
+  <div class="section-body">
+    <p>Match each character trait word to its correct definition. Write the letter in the blank.</p>
+    <div class="word-bank">
+      <span class="word">A. Brave</span>
+      <span class="word">B. Curious</span>
+      <span class="word">C. Stubborn</span>
+      <span class="word">D. Generous</span>
+      <span class="word">E. Dishonest</span>
+      <span class="word">F. Confident</span>
+    </div>
+    <div style="margin-top:6px;">
+      <div style="padding:4px 0;border-bottom:1px solid #f3f4f6;">1. Willing to give and share freely with others &nbsp; <span class="blank-sm">&nbsp;</span></div>
+      <div style="padding:4px 0;border-bottom:1px solid #f3f4f6;">2. Refusing to change one's mind even when wrong &nbsp; <span class="blank-sm">&nbsp;</span></div>
+      <div style="padding:4px 0;border-bottom:1px solid #f3f4f6;">3. Eager to learn and explore new things &nbsp; <span class="blank-sm">&nbsp;</span></div>
+      <div style="padding:4px 0;border-bottom:1px solid #f3f4f6;">4. Ready to face danger or difficulty without fear &nbsp; <span class="blank-sm">&nbsp;</span></div>
+      <div style="padding:4px 0;border-bottom:1px solid #f3f4f6;">5. Sure of oneself and one's abilities &nbsp; <span class="blank-sm">&nbsp;</span></div>
+      <div style="padding:4px 0;">6. Lying or not telling the truth &nbsp; <span class="blank-sm">&nbsp;</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📝</span> Activity: Quote Analysis</div>
+  <div class="section-body">
+    <p>Read each quote. Write what it tells you about the character's personality.</p>
+    <p style="margin-top:6px;"><strong>Quote 1:</strong> "I don't care if it takes all night. I'm going to finish this puzzle."</p>
+    <p style="margin-left:8px;">This shows the character is <span class="blank">&nbsp;</span> because <span class="blank-xl">&nbsp;</span></p>
+    <p style="margin-top:8px;"><strong>Quote 2:</strong> "Here, you can have my last piece of cake. You look like you need it more than me."</p>
+    <p style="margin-left:8px;">This shows the character is <span class="blank">&nbsp;</span> because <span class="blank-xl">&nbsp;</span></p>
+    <p style="margin-top:8px;"><strong>Quote 3:</strong> "I know I can do this. I've practised a hundred times."</p>
+    <p style="margin-left:8px;">This shows the character is <span class="blank">&nbsp;</span> because <span class="blank-xl">&nbsp;</span></p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">✅</span> Can Your Child...?</div>
+  <div class="section-body">
+    <ul class="checklist">
+      <li><span class="checkbox"></span> Identify both inside and outside character traits</li>
+      <li><span class="checkbox"></span> Use the STEAL method to find text evidence</li>
+      <li><span class="checkbox"></span> Match character trait words to their definitions</li>
+      <li><span class="checkbox"></span> Explain what a quote reveals about a character</li>
+    </ul>
+  </div>
+</div>
+
+<div class="bonus-box">
+  <strong>⭐ Bonus Challenge:</strong> Write a short paragraph (4–5 sentences) comparing two characters from the same book. How are they similar? How are they different?
+  <span class="writing-line">&nbsp;</span>
+  <span class="writing-line">&nbsp;</span>
+  <span class="writing-line">&nbsp;</span>
+  <span class="writing-line">&nbsp;</span>
+  <span class="writing-line">&nbsp;</span>
+</div>
+
+<div class="footer">
+  <span>Curicaa · Age 10 · English · September Week 2</span>
+  <span>Deep Dive into Character Analysis</span>
+</div>
+
+</body>
+</html>

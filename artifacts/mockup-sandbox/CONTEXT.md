@@ -1,16 +1,17 @@
 # Curriculum Hub - Project Context
 
+> **Last updated**: 2026-05-08
+> **Current live version**: `public-curriculum-v2/hub.html` (572 lines, 97KB)
+
 ## What Is This?
 
-A **K-12 homeschool curriculum website** called "Curriculum Hub" (aka "Curicaa"). It's a collection of static HTML pages that parents can use to teach their kids at home. Each page covers one subject for one age group, organized into monthly themes with weekly lesson plans.
-
-The site is designed as a dark-mode, glass-morphism UI with a light mode toggle. No framework — vanilla HTML/CSS/JS with Tailwind CDN for utility classes and Font Awesome for icons.
+A **K-12 homeschool curriculum website** called "Curicaa". The current live version is a static HTML/CSS/JS site with no framework. The old React SPA version in this `mockup-sandbox/` folder is **abandoned** and no longer the primary focus.
 
 ## Project Structure
 
 ```
-public/                          <-- ORIGINAL working version (DO NOT TOUCH unless asked)
-  hub.html                       <-- Main hub/landing page (mobile-responsive)
+public-curriculum-v2/            <-- CURRENT LIVE SITE (this is where work happens)
+  hub.html                       <-- Main hub/landing page (572 lines, mobile-responsive)
   ages-5-7-{subject}.html        <-- Early Elementary (4 files: math, english, science, art)
   age-8-{subject}.html           <-- Grade 3 (4 files)
   age-9-{subject}.html           <-- Grade 4 (4 files)
@@ -19,17 +20,20 @@ public/                          <-- ORIGINAL working version (DO NOT TOUCH unle
   age-14-{subject}.html          <-- High School (4 files)
   ages-15-16-{subject}.html      <-- GED prep (4 files: math, english, science, social-studies)
   ages-17-18-{subject}.html      <-- SAT prep (4 files)
+  assets/                        <-- Font Awesome, hub-premium.js, favicon
+  worksheets/                    <-- PDF worksheets for lessons
+  auth.js                        <-- Auth state management
+  paywall.js                     <-- Premium content paywall
+  legal.html                     <-- Terms, Privacy, Refund Policy
 
-public-curriculum-v2/            <-- NEW version with deep-researched curriculum
-  hub.html                       <-- Copy of hub.html (links point to same directory)
-  ages-5-7-math.html             <-- FULLY REWRITTEN with 40 detailed weeks
-  ages-5-7-english.html          <-- FULLY REWRITTEN with 40 detailed weeks
-  ages-5-7-science.html          <-- FULLY REWRITTEN with 40 detailed weeks
-  ages-5-7-art.html              <-- FULLY REWRITTEN with 40 detailed weeks
-  age-14-math.html               <-- FULLY REWRITTEN with 40 detailed weeks
-  age-14-english.html            <-- FULLY REWRITTEN with 40 detailed weeks
-  age-14-science.html            <-- FULLY REWRITTEN with 40 detailed weeks
-  age-14-social-studies.html     <-- FULLY REWRITTEN with 40 detailed weeks
+public/                          <-- OLD original version (kept for reference, do not modify)
+  hub.html                       <-- Old version (outdated)
+  ...                            <-- Old subject pages
+
+mockup-sandbox/                  <-- OLD React SPA (abandoned, do not modify)
+  src/                           <-- React components (legacy)
+  public/                        <-- Old static HTML reference files
+  ...                            <-- Vite, Tailwind, etc.
 ```
 
 ## Grade Levels & Subjects
@@ -106,25 +110,30 @@ Each week is an object with:
 The `loadContent()` function renders these with Font Awesome icons (fa-bullseye, fa-fire, fa-book-open/fa-flask/fa-palette, fa-gamepad, fa-home, fa-check-circle, fa-layer-group) in expandable week detail sections.
 
 ## Design Conventions
-- Dark mode default (`#04040e` background), light mode via `body.light` class
+- Dark mode default (`#0f1119` background) — the current live version does NOT have a light mode toggle
 - Each subject has its own accent color: Math=blue, English=green, Science=purple, Art=pink/orange
-- Glass-morphism cards with `rgba(255,255,255,0.035)` backgrounds and subtle borders
+- Glass-morphism cards with `rgba(255,255,255,0.04)` backgrounds and subtle borders
 - Sticky header with backdrop-filter blur
-- Background orbs (fixed, blurred gradient circles) for atmosphere
+- Background orbs (fixed, blurred gradient circles: gold, green, pink) for atmosphere
 - Star twinkle animation on hub page
 - Intersection Observer for scroll-reveal animations
+- Typography: DM Serif Display (headings), DM Sans (body)
+- Gold accent color: `#d4a54a`
 
 ## Key Constraints
-- No frameworks — vanilla HTML/CSS/JS only
-- Tailwind CDN loaded but not heavily used (mostly inline styles + custom CSS)
+- No frameworks — vanilla HTML/CSS/JS only (current live version)
+- All CSS is inline (either in `<style>` tag or inline `style` attributes) — no external CSS files for hub.html
+- Font Awesome icons loaded from `assets/font-awesome.css` (not CDN)
 - All pages are static, no build step — just open in browser
-- Must work offline (except CDN resources like fonts/icons/Tailwind)
+- Must work offline (except CDN resources like Google Fonts)
 - Budget-friendly materials only for activities (household items)
 - Content must be genuinely useful for homeschooling parents
 - The user (Luke) built this for their kids/family
 
 ## User Notes
-- User's name is Luke (see footer easter egg)
-- User prefers a separate folder approach for safety (don't modify originals)
+- User's name is Luke
+- The current live site is in `public-curriculum-v2/` — this is what gets deployed
+- The old React SPA in `mockup-sandbox/` is abandoned — do not modify unless explicitly asked
+- The old `public/` folder contains outdated originals — kept for reference only
 - User values working software — don't break existing functionality
 - The "Dark-Mode" folder name is the project workspace, not a theme toggle feature

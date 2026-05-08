@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Understanding Story Structure and Plot — Age 10 English</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #10b981; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #059669; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #ecfdf5; color: #059669; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+  .name-date { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 12px; }
+  .name-date span { display: inline-block; width: 48%; }
+  .name-date .line { border-bottom: 1px solid #9ca3af; display: inline-block; width: 160px; margin-left: 4px; }
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #10b981; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #ecfdf5; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .section-body ol { padding-left: 18px; }
+  .section-body ol li { margin-bottom: 3px; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; font-size: 12.5px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox { width: 14px; height: 14px; border: 1.5px solid #9ca3af; border-radius: 3px; flex-shrink: 0; }
+  .writing-line { display: block; width: 100%; border-bottom: 1px dashed #9ca3af; height: 28px; margin-bottom: 2px; }
+  .writing-line-long { display: block; width: 100%; border-bottom: 1px dashed #9ca3af; height: 32px; margin-bottom: 2px; }
+  .blank { display: inline-block; width: 80px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .blank-sm { display: inline-block; width: 50px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .blank-lg { display: inline-block; width: 120px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .blank-xl { display: inline-block; width: 200px; border-bottom: 2px solid #10b981; text-align: center; font-weight: 700; }
+  .plot-mountain { position: relative; width: 100%; margin: 12px 0; }
+  .plot-mountain svg { width: 100%; height: auto; }
+  .mountain-labels { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 4px; margin: 4px 0 12px; }
+  .mountain-labels .m-label { text-align: center; font-size: 10px; font-weight: 700; color: #059669; text-transform: uppercase; }
+  .mountain-labels .m-box { border: 1.5px solid #a7f3d0; border-radius: 4px; padding: 6px; min-height: 48px; font-size: 11px; }
+  .sequence-box { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 8px 0; }
+  .sequence-box .seq { border: 1.5px solid #a7f3d0; border-radius: 6px; padding: 6px; text-align: center; }
+  .sequence-box .seq-num { font-weight: 700; font-size: 10px; color: #059669; }
+  .sequence-box .seq-input { border-bottom: 1px dashed #9ca3af; height: 36px; margin-top: 4px; }
+  .match-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; }
+  .match-table th { background: #ecfdf5; color: #059669; font-weight: 700; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.04em; padding: 6px; border: 1px solid #a7f3d0; text-align: left; }
+  .match-table td { border: 1px solid #d1d5db; padding: 6px; vertical-align: top; }
+  .match-table .answer-col { width: 40px; text-align: center; }
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+  .bonus-box { background: #ecfdf5; border: 1.5px solid #a7f3d0; border-radius: 6px; padding: 10px 14px; margin-top: 8px; }
+  .bonus-box strong { color: #059669; }
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Understanding Story Structure and Plot</h1>
+    <p>Age 10 English · September Week 3</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Age 10</div><br>
+    Reading Comprehension
+  </div>
+</div>
+
+<div class="name-date">
+  <span>Name: <span class="line">&nbsp;</span></span>
+  <span>Date: <span class="line">&nbsp;</span></span>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Identify and describe the five elements of plot structure (exposition, rising action, climax, falling action, resolution) in a fiction text.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">☀️</span> Warm-Up: Parts of a Story</div>
+  <div class="section-body">
+    <p>Before we learn the fancy terms, think about a story you know well (a film, book, or fairy tale).</p>
+    <p style="margin-top:6px;">1. Story: <span class="blank-xl">&nbsp;</span></p>
+    <p>2. How does the story begin? <span class="blank-xl">&nbsp;</span></p>
+    <p>3. What is the most exciting part? <span class="blank-xl">&nbsp;</span></p>
+    <p>4. How does it end? <span class="blank-xl">&nbsp;</span></p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">⛰️</span> Activity: Plot Mountain Diagram</div>
+  <div class="section-body">
+    <p>Every story follows a "plot mountain." The five parts are shown below. Fill in what happens at each stage of a story you are reading.</p>
+    <p style="margin-top:4px;">Story title: <span class="blank-xl">&nbsp;</span></p>
+    <div class="plot-mountain" style="margin-top:10px;">
+      <svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="10,120 90,120 180,60 250,15 320,70 410,120 490,120" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="90" cy="120" r="4" fill="#059669"/>
+        <circle cx="180" cy="60" r="4" fill="#059669"/>
+        <circle cx="250" cy="15" r="5" fill="#059669"/>
+        <circle cx="320" cy="70" r="4" fill="#059669"/>
+        <circle cx="410" cy="120" r="4" fill="#059669"/>
+        <text x="90" y="136" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">EXPOSITION</text>
+        <text x="180" y="52" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">RISING</text>
+        <text x="180" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">ACTION</text>
+        <text x="250" y="9" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">CLIMAX</text>
+        <text x="320" y="90" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">FALLING</text>
+        <text x="320" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">ACTION</text>
+        <text x="410" y="136" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">RESOLUTION</text>
+      </svg>
+    </div>
+    <div class="mountain-labels">
+      <div><div class="m-label">Exposition</div><div class="m-box">&nbsp;</div></div>
+      <div><div class="m-label">Rising Action</div><div class="m-box">&nbsp;</div></div>
+      <div><div class="m-label">Climax</div><div class="m-box">&nbsp;</div></div>
+      <div><div class="m-label">Falling Action</div><div class="m-box">&nbsp;</div></div>
+      <div><div class="m-label">Resolution</div><div class="m-box">&nbsp;</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔢</span> Activity: Story Event Sequencing</div>
+  <div class="section-body">
+    <p>Put these events from a familiar story in order (1 = first, 5 = last). Write the number in each box.</p>
+    <p style="margin-top:4px;">Story: <em>"Little Red Riding Hood"</em></p>
+    <div class="sequence-box" style="margin-top:8px;">
+      <div class="seq"><div class="seq-num">&nbsp;</div><div class="seq-input">&nbsp;</div><div style="font-size:10px;margin-top:4px;">The woodcutter saves Little Red</div></div>
+      <div class="seq"><div class="seq-num">&nbsp;</div><div class="seq-input">&nbsp;</div><div style="font-size:10px;margin-top:4px;">Red meets the wolf in the forest</div></div>
+      <div class="seq"><div class="seq-num">&nbsp;</div><div class="seq-input">&nbsp;</div><div style="font-size:10px;margin-top:4px;">Red sets off to visit her grandmother</div></div>
+      <div class="seq"><div class="seq-num">&nbsp;</div><div class="seq-input">&nbsp;</div><div style="font-size:10px;margin-top:4px;">The wolf disguises himself as Granny</div></div>
+      <div class="seq"><div class="seq-num">&nbsp;</div><div class="seq-input">&nbsp;</div><div style="font-size:10px;margin-top:4px;">Red and Granny celebrate together</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔗</span> Activity: Plot Element Matching</div>
+  <div class="section-body">
+    <p>Match each plot term to its definition. Write the correct letter in the blank.</p>
+    <table class="match-table" style="margin-top:6px;">
+      <tr><th>Term</th><th>Answer</th><th>Definition</th></tr>
+      <tr><td><strong>1. Exposition</strong></td><td class="answer-col"><span class="blank-sm">&nbsp;</span></td><td>a. The turning point or most intense moment of the story</td></tr>
+      <tr><td><strong>2. Rising Action</strong></td><td class="answer-col"><span class="blank-sm">&nbsp;</span></td><td>b. The problems start to resolve and things calm down</td></tr>
+      <tr><td><strong>3. Climax</strong></td><td class="answer-col"><span class="blank-sm">&nbsp;</span></td><td>c. The introduction of characters, setting, and situation</td></tr>
+      <tr><td><strong>4. Falling Action</strong></td><td class="answer-col"><span class="blank-sm">&nbsp;</span></td><td>d. Events build tension and lead toward the peak</td></tr>
+      <tr><td><strong>5. Resolution</strong></td><td class="answer-col"><span class="blank-sm">&nbsp;</span></td><td>e. The story wraps up and loose ends are tied</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📝</span> Activity: Story Analysis</div>
+  <div class="section-body">
+    <p>Choose a short story or a chapter from your reading book. Describe each plot element below.</p>
+    <p style="margin-top:4px;"><strong>Exposition</strong> — Who are the main characters? What is the setting?</p>
+    <span class="writing-line">&nbsp;</span>
+    <span class="writing-line">&nbsp;</span>
+    <p style="margin-top:4px;"><strong>Climax</strong> — What was the most exciting or tense moment?</p>
+    <span class="writing-line">&nbsp;</span>
+    <span class="writing-line">&nbsp;</span>
+    <p style="margin-top:4px;"><strong>Resolution</strong> — How was the main problem solved?</p>
+    <span class="writing-line">&nbsp;</span>
+    <span class="writing-line">&nbsp;</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">✅</span> Can Your Child...?</div>
+  <div class="section-body">
+    <ul class="checklist">
+      <li><span class="checkbox"></span> Name all five parts of the plot mountain in order</li>
+      <li><span class="checkbox"></span> Place story events in the correct sequence</li>
+      <li><span class="checkbox"></span> Match each plot term to its definition</li>
+      <li><span class="checkbox"></span> Identify the climax and resolution in a story they have read</li>
+    </ul>
+  </div>
+</div>
+
+<div class="bonus-box">
+  <strong>⭐ Bonus Challenge:</strong> Create your own short story outline using the plot mountain. Write one sentence for each of the five stages.
+  <p style="margin-top:4px;"><strong>Exposition:</strong> <span class="blank-xl">&nbsp;</span></p>
+  <p><strong>Rising Action:</strong> <span class="blank-xl">&nbsp;</span></p>
+  <p><strong>Climax:</strong> <span class="blank-xl">&nbsp;</span></p>
+  <p><strong>Falling Action:</strong> <span class="blank-xl">&nbsp;</span></p>
+  <p><strong>Resolution:</strong> <span class="blank-xl">&nbsp;</span></p>
+</div>
+
+<div class="footer">
+  <span>Curicaa · Age 10 · English · September Week 3</span>
+  <span>Understanding Story Structure and Plot</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Value Scales & Shading — Age 10 Art</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #ec4899; padding-bottom: 10px; margin-bottom: 18px; }
+  .header-left h1 { font-size: 20px; font-weight: 800; color: #db2777; margin-bottom: 2px; }
+  .header-left p { font-size: 11px; color: #6b7280; }
+  .header-right { text-align: right; font-size: 11px; color: #6b7280; }
+  .header-right .badge { display: inline-block; background: #fdf2f8; color: #db2777; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 11px; }
+  .section { margin-bottom: 16px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #db2777; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .section-title .icon { width: 18px; height: 18px; background: #fdf2f8; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+  .section-body { padding-left: 24px; }
+  .section-body p { margin-bottom: 4px; }
+  .draw-box { border: 1.5px solid #d1d5db; border-radius: 6px; min-height: 80px; margin: 4px 0; }
+  .value-scale { display: flex; gap: 3px; margin: 8px 0; }
+  .value-step { flex: 1; border: 1.5px solid #d1d5db; height: 40px; border-radius: 3px; }
+  .draw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+  .draw-cell { border: 1.5px solid #e5e7eb; border-radius: 6px; padding: 6px; min-height: 90px; position: relative; }
+  .draw-cell .label { font-size: 10px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .label-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid #f3f4f6; font-size: 12.5px; }
+  .label-row:last-child { border-bottom: none; }
+  .label-num { font-weight: 700; color: #db2777; min-width: 22px; }
+  .label-blank { display: inline-block; width: 100px; border-bottom: 2px solid #ec4899; }
+  .tip-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 11.5px; margin-top: 6px; }
+  .tip-box strong { color: #b45309; }
+  .footer { margin-top: 20px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 9.5px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Value Scales &amp; Shading</h1>
+    <p>Age 10 Art &middot; September Week 3</p>
+  </div>
+  <div class="header-right">
+    <div class="badge">Age 10</div><br>
+    Elements of Art
+  </div>
+</div>
+
+<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:16px;">
+  <span>Name <span style="display:inline-block;width:180px;border-bottom:1px solid #999;margin-left:4px;">&nbsp;</span></span>
+  <span>Date <span style="display:inline-block;width:120px;border-bottom:1px solid #999;margin-left:4px;">&nbsp;</span></span>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">&#127912;</span> Learning Goal</div>
+  <div class="section-body">
+    <p>Create a smooth transition of value from light to dark and understand how a light source affects shading on 3D objects.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">&#127912;</span> Part 1: 7-Step Value Scale</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Shade each box from white (left) to black (right). Create smooth, even transitions between each step.</p>
+    <div class="value-scale">
+      <div class="value-step"></div>
+      <div class="value-step"></div>
+      <div class="value-step"></div>
+      <div class="value-step"></div>
+      <div class="value-step"></div>
+      <div class="value-step"></div>
+      <div class="value-step"></div>
+    </div>
+    <p style="font-size:10px;color:#9ca3af;margin-top:2px;">White &larr; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &rarr; Black</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">&#128302;</span> Part 2: Shading a Sphere</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Draw a sphere in the box below. Draw an arrow showing the light source direction, then shade the sphere to show: highlight, mid-tone, core shadow, cast shadow, and reflected light.</p>
+    <div class="draw-box" style="min-height:120px;"></div>
+    <p style="margin-top:6px;">Label each part of your shading:</p>
+    <div class="label-row"><span class="label-num">1.</span> Highlight = <span class="label-blank">&nbsp;</span></div>
+    <div class="label-row"><span class="label-num">2.</span> Mid-tone = <span class="label-blank">&nbsp;</span></div>
+    <div class="label-row"><span class="label-num">3.</span> Core shadow = <span class="label-blank">&nbsp;</span></div>
+    <div class="label-row"><span class="label-num">4.</span> Cast shadow = <span class="label-blank">&nbsp;</span></div>
+    <div class="label-row"><span class="label-num">5.</span> Reflected light = <span class="label-blank">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">&#9999;&#65039;</span> Part 3: Cross-Hatching Practice</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">Use cross-hatching to shade each box from light (left) to dark (right). More layers = darker value.</p>
+    <div class="draw-grid">
+      <div class="draw-cell"><div class="label">Light</div></div>
+      <div class="draw-cell"><div class="label">Medium</div></div>
+      <div class="draw-cell"><div class="label">Dark</div></div>
+      <div class="draw-cell"><div class="label">Very Dark</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">&#128161;</span> Part 4: Light Source Identification</div>
+  <div class="section-body">
+    <p style="margin-bottom:6px;">For each description, draw an arrow showing where the light source must be.</p>
+    <div class="label-row"><span class="label-num">1.</span> The left side of a ball is bright, the right side is dark. Light is from the: <span class="label-blank">&nbsp;</span></div>
+    <div class="label-row"><span class="label-num">2.</span> A cup's shadow falls to the right. Light is from the: <span class="label-blank">&nbsp;</span></div>
+    <div class="label-row"><span class="label-num">3.</span> The top of a box is the brightest part. Light is from: <span class="label-blank">&nbsp;</span></div>
+  </div>
+</div>
+
+<div class="tip-box">
+  <strong>Tip:</strong> Always establish your light source BEFORE you start shading. Every shading decision flows from where the light is coming from.
+</div>
+
+<div class="section" style="margin-top:14px;">
+  <div class="section-title"><span class="icon">&#11088;</span> Bonus Challenge</div>
+  <div class="section-body">
+    <p>Place a simple object (egg, mug, or ball) under a single lamp in a dark room. Draw it below, focusing on accurate shading.</p>
+    <div class="draw-box" style="min-height:100px;"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>Curicaa &middot; Age 10 &middot; Art &middot; September Week 3</span>
+  <span>Value Scales &amp; Shading</span>
+</div>
+
+</body>
+</html>
