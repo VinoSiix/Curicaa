@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Science & Engineering — Ages 11–12 | Curriculum Hub</title>
+<link rel="stylesheet" href="assets/fonts/inter.css">
+<link rel="stylesheet" href="assets/font-awesome.css">
+<script src="assets/tailwind.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#8b5cf6;--a2:#6366f1;--al:#c084fc;--ct:white;--ct2:rgba(255,255,255,0.85);--ct3:rgba(255,255,255,0.7);--ct4:rgba(255,255,255,0.6);--ct5:rgba(255,255,255,0.48);--ct6:rgba(255,255,255,0.45);--ct7:rgba(255,255,255,0.4);--ct8:rgba(255,255,255,0.3);--ct9:rgba(255,255,255,0.28);--ct10:rgba(255,255,255,0.15);--cs1:rgba(255,255,255,0.03);--cs2:rgba(255,255,255,0.025);--cs3:rgba(255,255,255,0.04);--cs4:rgba(255,255,255,0.08);--br1:rgba(255,255,255,0.07);--br2:rgba(255,255,255,0.09);}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,0.11),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(99,102,241,0.08),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.12);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.9);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(139,92,246,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.week-row:hover{border-color:rgba(255,255,255,0.12);}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.week-detail{max-height:0;overflow:hidden;background:rgba(255,255,255,0.025);border-top:1px solid transparent;padding:0 16px;transform-origin:top;transform:translateY(-6px);opacity:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),padding 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s ease,transform 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease;}
+.week-detail.open{max-height:800px;padding:14px 16px;border-top-color:rgba(255,255,255,0.07);transform:translateY(0);opacity:1;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.month-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.week-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--br2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all 0.2s;font-size:10px;color:transparent;}
+.week-check:hover{border-color:var(--a1);background:rgba(139,92,246,0.1);}
+.week-check.done{border-color:var(--a1);background:linear-gradient(135deg,var(--a1),var(--a2));color:white;}
+.week-row.completed .week-title-text{text-decoration:line-through;opacity:0.55;}
+.progress-bar-wrap{height:4px;border-radius:4px;background:var(--cs4);margin-top:10px;overflow:hidden;}
+.progress-bar-fill{height:100%;border-radius:4px;background:linear-gradient(135deg,var(--a1),var(--a2));transition:width 0.4s ease;}
+@media(max-width:768px){
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+  .month-grid{grid-template-columns:1fr;}
+  .header-inner{flex-wrap:wrap;gap:10px;}
+  h2.page-title{font-size:1.8rem;}
+  main{padding:32px 16px;}
+  #monthContent{padding:20px 16px !important;}
+}
+@media(max-width:480px){
+  .skills-grid{grid-template-columns:1fr;}
+  h2.page-title{font-size:1.5rem;}
+  header{padding:10px 16px;}
+  .header-inner{gap:8px;}
+  .subject-badge{display:none;}
+}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div><div style="font-size:13px;font-weight:700;color:var(--ct);">Level 5</div><div style="font-size:11px;color:var(--ct7);">Ages 11–12</div></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-flask" style="margin-right:5px;"></i>Science</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 11–12</span>
+
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">Middle School · Ages 11–12</p>
+    <h2 class="page-title">Science & Engineering</h2>
+    <p style="color:var(--ct5);font-size:15px;max-width:600px;margin:0 auto;line-height:1.75;">Deepening scientific inquiry with NGSS-aligned labs, real-world data analysis, engineering design challenges, and complex systems thinking.</p>
+  </section>
+
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div class="skills-grid">
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(59,130,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-search" style="color:#60a5fa;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Scientific Method</div><div style="font-size:12px;color:var(--ct6);">Variables, data, hypothesis</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-globe-americas" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Earth Systems</div><div style="font-size:12px;color:var(--ct6);">Geology, climate, astronomy</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(249,115,22,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-dna" style="color:#fb923c;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Life Science</div><div style="font-size:12px;color:var(--ct6);">Cells, ecosystems, biology</div></div>
+      <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-atom" style="color:#c084fc;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Physical Science</div><div style="font-size:12px;color:var(--ct6);">Matter, energy, physics</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Science Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:var(--ct8);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:var(--ct10);margin-top:6px;">Middle School Science · Ages 11–12</p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{
+  icon:'fa-microscope',
+  color:'from-purple-500 to-indigo-500',
+  focus:'Scientific Inquiry & Engineering Design (MS-ETS1)',
+  skills:['Scientific Method','Variables','Data Analysis','Engineering Design'],
+  weeks:[
+    {
+      title: "The Scientific Method",
+      objective: "Understand and apply the steps of the scientific method: question, hypothesis, experiment, data, conclusion.",
+      warmup: "Observe a phenomenon (e.g., a paper airplane flying). Ask 3 testable questions about it.",
+      mainActivity: "Conduct a simple experiment: 'Does water temperature affect how fast an Alka-Seltzer tablet dissolves?' Write a formal hypothesis ('If...then...because...'). Perform the experiment with ice, room temp, and hot water. Record times.",
+      game: "Method Mix-Up: Write the steps of the scientific method on cards. Scramble them and race to put them in the correct order.",
+      homeConnection: "Identify a problem at home (e.g., 'Why does the bread get moldy?') and formulate a hypothesis on how to prevent it.",
+      assessment: "Can correctly list the steps of the scientific method and write a valid 'If-Then-Because' hypothesis.",
+      differentiation: "Easier: Focus on the basic steps and simple observations. | Harder: Introduce peer review and the importance of reproducible results."
+    },
+    {
+      title: "Variables & Experimental Design",
+      objective: "Identify and control independent, dependent, and controlled variables in an experiment.",
+      warmup: "Define 'variable' (something that changes). Give examples from everyday life (e.g., weather, mood, traffic).",
+      mainActivity: "Design an experiment to test the best paper towel brand for absorbency. Identify the Independent Variable (brand of towel), Dependent Variable (amount of water absorbed), and Controlled Variables (size of towel sheet, amount of starting water, time soaked).",
+      game: "Variable Hunt: Read short experiment scenarios and quickly identify the independent and dependent variables.",
+      homeConnection: "Analyze a TV commercial claim (e.g., 'Cleans 2x better!'). What variables would need to be controlled to actually test this?",
+      assessment: "Can accurately identify IV, DV, and controlled variables in a given experimental scenario.",
+      differentiation: "Easier: Use visual aids (IV = what *I* change, DV = Data collected). | Harder: Discuss confounding variables and how they invalidate results."
+    },
+    {
+      title: "Data Collection & Analysis",
+      objective: "Organize data into tables and graphs, and calculate mean, median, and identify outliers.",
+      warmup: "Review basic graph types (bar, line, pie) and discuss when to use each.",
+      mainActivity: "Conduct a 'Reaction Time' test. Drop a ruler between the student's open fingers and record where they catch it (in cm). Do 10 trials. Create a data table. Calculate the mean (average) reaction time and identify any outlier trials.",
+      game: "Graph It: Take the reaction time data and create a line graph showing the trials. Does reaction time improve with practice?",
+      homeConnection: "Find a graph in a news article or online. Explain what the axes represent and what the data tells you.",
+      assessment: "Can create a clear, labeled data table and graph, and correctly calculate the mean of a data set.",
+      differentiation: "Easier: Focus on calculating mean and creating a simple bar graph. | Harder: Calculate median and mode, and discuss why an outlier might occur (e.g., got distracted)."
+    },
+    {
+      title: "Engineering Design Process",
+      objective: "Apply the engineering design process (define, research, imagine, plan, create, test, improve).",
+      warmup: "Discuss the difference between a scientist (discovers how things work) and an engineer (designs solutions to problems).",
+      mainActivity: "The Bridge Challenge: Design a bridge using only 2 pieces of paper and 10 inches of tape that spans a 6-inch gap between two books. Plan it on paper first. Build, test with pennies as weight, and redesign to hold more weight.",
+      game: "Failure is Good: Discuss famous engineering failures (e.g., Tacoma Narrows Bridge) and how engineers learn from them.",
+      homeConnection: "Look around the house for an 'engineered' solution (e.g., a door hinge, a can opener) and reverse-engineer how it solves a problem.",
+      assessment: "Can explain the stages of the engineering design process and actively improve a design based on testing.",
+      differentiation: "Easier: Provide a few bridge template ideas. | Harder: Restrict materials further (e.g., no tape) or increase the span distance."
+    }
+  ],
+  project:'Design, build, and iteratively test a paper bridge to hold the maximum amount of weight (pennies). Document the design process.',
+  materials:['Alka-Seltzer tablets','Thermometer','Paper towels of different brands','Ruler','Paper & Tape','Pennies/Weights']
+},
+'October':{
+  icon:'fa-mountain',
+  color:'from-amber-600 to-orange-600',
+  focus:'Earth Systems: Rocks & Plate Tectonics (MS-ESS2)',
+  skills:['Rock Cycle','Minerals','Plate Boundaries','Earthquakes'],
+  weeks:[
+    {
+      title: "The Rock Cycle",
+      objective: "Understand how rocks change over time between igneous, sedimentary, and metamorphic forms.",
+      warmup: "Examine a rock from outside. Ask: 'How old do you think this rock is? Has it always looked like this?'",
+      mainActivity: "Crayon Rock Cycle: Shave different colored crayons (sediment). Press them together hard (sedimentary rock). Apply heat/friction with hands or a warm cup (metamorphic rock). Finally, melt them completely over hot water/candle and let cool (igneous rock).",
+      game: "Rock Cycle Relay: Call out a process ('heat and pressure!', 'melting!') and the student must shout the resulting rock type.",
+      homeConnection: "Look at the building materials of your house or local buildings (granite countertops, brick, concrete) and categorize them.",
+      assessment: "Can draw the rock cycle diagram, labeling the three main types and the processes (heat/pressure, melting/cooling, weathering/erosion) that change them.",
+      differentiation: "Easier: Focus on the 3 main types and simple definitions. | Harder: Introduce specific rock names (obsidian, limestone, marble) and place them in the cycle."
+    },
+    {
+      title: "Minerals & Their Properties",
+      objective: "Identify minerals based on physical properties like hardness, luster, streak, and cleavage.",
+      warmup: "Discuss the difference between a rock (a mixture) and a mineral (a pure substance with a specific structure).",
+      mainActivity: "Mineral Testing Lab: Use a Mohs Hardness Scale kit (or household items: fingernail, penny, glass, steel nail) to test the hardness of various samples (quartz, talc, mica). Test for 'streak' by rubbing on a white tile. Describe 'luster' (metallic vs. non-metallic).",
+      game: "Mystery Mineral: Give the properties of a mineral (e.g., 'I have a hardness of 10 and a brilliant luster') and guess the mineral (Diamond).",
+      homeConnection: "Find items at home made from minerals (pencil lead/graphite, salt/halite, jewelry/gold).",
+      assessment: "Can perform and explain at least three tests (hardness, streak, luster) used to identify minerals.",
+      differentiation: "Easier: Focus on visual properties and simple scratch tests. | Harder: Discuss crystal lattice structures and how they determine cleavage/fracture."
+    },
+    {
+      title: "Plate Tectonics Theory",
+      objective: "Understand continental drift, seafloor spreading, and the mechanics of tectonic plates.",
+      warmup: "Look at a world map. Notice how South America and Africa look like puzzle pieces that fit together.",
+      mainActivity: "Graham Cracker Tectonics: Use frosting (magma/mantle) and graham crackers (crust plates). Demonstrate Divergent boundaries (pulling apart, creating new crust/frosting), Convergent boundaries (pushing together, one sliding under or buckling into mountains), and Transform boundaries (sliding past each other).",
+      game: "Pangea Puzzle: Cut out the continents from a map and try to fit them together into the supercontinent Pangea based on shape and fossil evidence.",
+      homeConnection: "Research which tectonic plate you live on and identify the nearest plate boundary.",
+      assessment: "Can model and explain the three types of plate boundaries and the resulting geological features (mountains, trenches, rifts).",
+      differentiation: "Easier: Focus on the puzzle-piece concept of Pangea. | Harder: Discuss convection currents in the mantle as the driving force behind plate movement."
+    },
+    {
+      title: "Earthquakes & Volcanoes",
+      objective: "Relate earthquakes and volcanoes to plate boundaries and understand how they are measured.",
+      warmup: "Watch a short video clip of an earthquake or volcanic eruption. Discuss the massive release of energy.",
+      mainActivity: "Build a Seismograph: Suspend a marker over a roll of paper using a shoebox and string. Shake the box (simulating an earthquake) while pulling the paper to record the 'seismic waves'. Discuss the Richter scale.",
+      game: "Ring of Fire Mapping: Plot the locations of recent earthquakes/volcanoes on a world map and observe how they outline the Pacific Plate.",
+      homeConnection: "Discuss an emergency action plan for an earthquake or natural disaster in your area.",
+      assessment: "Can explain how faults cause earthquakes and where volcanoes are most likely to form globally.",
+      differentiation: "Easier: Focus on safety and simple causes of shaking. | Harder: Differentiate between P-waves and S-waves and how they determine the epicenter."
+    }
+  ],
+  project:'Construct a 3D model of a specific plate boundary (divergent, convergent, or transform) showing the mantle, crust, and resulting surface features.',
+  materials:['Crayons','Foil/Hot water','Mineral kit or household testing items (penny, nail, tile)','Graham crackers & Frosting','Shoebox, marker, string, paper roll']
+},
+'November':{
+  icon:'fa-cloud-showers-heavy',
+  color:'from-blue-500 to-cyan-500',
+  focus:'Weather, Climate & Water Cycle (MS-ESS2)',
+  skills:['Water Cycle','Air Masses/Fronts','Weather Data','Climate Zones'],
+  weeks:[
+    {
+      title: "The Advanced Water Cycle",
+      objective: "Trace the path of water through evaporation, condensation, precipitation, transpiration, and groundwater flow.",
+      warmup: "Breathe on a cold mirror to demonstrate condensation from water vapor in breath.",
+      mainActivity: "Build a Mini-Aquifer: Layer gravel, sand, and soil in a clear plastic cup. Pour colored water on top and watch it infiltrate down to become groundwater. Discuss how plants draw this up and release it (transpiration).",
+      game: "Water Cycle Journey: Roll a die to travel between 'stations' (Ocean, Cloud, Glacier, Groundwater, Animal). Track the journey.",
+      homeConnection: "Observe the dew on grass in the morning or condensation on a cold glass. Explain where the water came from.",
+      assessment: "Can draw a complete water cycle including transpiration, runoff, and infiltration, not just the basic three steps.",
+      differentiation: "Easier: Review basic evaporation, condensation, precipitation. | Harder: Discuss how the sun's energy drives the entire cycle."
+    },
+    {
+      title: "Air Masses & Fronts",
+      objective: "Understand how cold and warm air masses interact to create weather fronts and storms.",
+      warmup: "Open the freezer door and feel the cold air sink to the floor while warm air rises.",
+      mainActivity: "Fronts in a Tank: Fill a clear plastic shoebox with room temperature water. Pour freezing cold blue water in one end and hot red water in the other. Observe the cold (dense) water slide under the warm (lighter) water, mimicking a cold front.",
+      game: "Forecast the Front: Look at weather map symbols (blue triangles, red semicircles) and predict what the weather will do as they pass.",
+      homeConnection: "Watch a local weather forecast and listen for terms like 'cold front' or 'low pressure system'.",
+      assessment: "Can explain that a cold front occurs when dense cold air pushes under warm air, often causing storms.",
+      differentiation: "Easier: Focus on 'hot air rises, cold air sinks'. | Harder: Connect pressure systems (High = clear, Low = stormy) to the fronts."
+    },
+    {
+      title: "Weather Patterns & Data",
+      objective: "Read weather maps and construct instruments to measure barometric pressure and wind.",
+      warmup: "Check the current barometric pressure on a weather app. Is it rising or falling?",
+      mainActivity: "Build a Barometer: Stretch a balloon tightly over a glass jar and secure with a rubber band. Tape a straw to the center of the balloon, pointing to a card. High pressure pushes the balloon down (straw goes up); low pressure lets it bulge up (straw goes down). Track for a week.",
+      game: "Anemometer Race: Build a simple wind speed meter using paper cups crossed on sticks. Take it outside and count rotations per minute.",
+      homeConnection: "Compare the homemade barometer readings to the official local weather data each day.",
+      assessment: "Can explain how barometric pressure relates to weather changes (dropping pressure = incoming storm).",
+      differentiation: "Easier: Focus on wind speed/direction. | Harder: Chart pressure vs. precipitation over two weeks to find the correlation."
+    },
+    {
+      title: "Climate vs. Weather",
+      objective: "Differentiate between short-term weather and long-term climate, and identify global climate zones.",
+      warmup: "Discuss the phrase: 'Climate is what you expect, weather is what you get.'",
+      mainActivity: "Latitude and Climate Activity: Shine a flashlight straight onto a globe at the equator (concentrated energy). Shine it at an angle near the poles (spread out energy). Discuss how this unequal heating creates the tropical, temperate, and polar climate zones.",
+      game: "Climate Match: Given a set of clothing items or animals, match them to their correct climate zone (e.g., parka = polar, cactus = arid).",
+      homeConnection: "Research the historical climate data (average temp/rainfall) for your city and compare it to today's specific weather.",
+      assessment: "Can clearly define the difference between weather and climate and explain why the equator is warmer than the poles.",
+      differentiation: "Easier: Identify the 3 main climate zones. | Harder: Discuss how ocean currents (like the Gulf Stream) affect regional climates."
+    }
+  ],
+  project:'Construct a working weather station (barometer, anemometer, rain gauge) and record daily data for two weeks to predict local weather.',
+  materials:['Clear cups/gravel/sand','Red/Blue food coloring','Balloons, jars, straws, rubber bands','Paper cups/sticks','Flashlight and Globe']
+},
+'December':{
+  icon:'fa-space-shuttle',
+  color:'from-slate-700 to-indigo-800',
+  focus:'Space Systems (MS-ESS1)',
+  skills:['Earth-Sun-Moon','Gravity & Orbits','Solar System Scale','Stars & Universe'],
+  weeks:[
+    {
+      title: "Earth-Sun-Moon System",
+      objective: "Explain the phases of the moon, eclipses, and how Earth's tilt causes seasons.",
+      warmup: "Ask: 'Why is it hotter in summer?' (Address the common misconception that Earth is closer to the sun).",
+      mainActivity: "Seasons Modeling: Use a styrofoam ball with a toothpick through it (Earth's axis) tilted at 23.5 degrees. Move it around a lamp (Sun) in a circle, keeping the tilt pointing in the same direction. Observe how the northern hemisphere gets direct light in summer and indirect light in winter.",
+      game: "Eclipse Shadow Play: Use a small ball (Moon), large ball (Earth), and flashlight (Sun) to create a Solar Eclipse (Moon shadow on Earth) and Lunar Eclipse (Earth shadow on Moon).",
+      homeConnection: "Observe the current moon phase tonight and predict what it will look like in exactly one week.",
+      assessment: "Can demonstrate with models how the tilt of the Earth causes seasons, not the distance from the sun.",
+      differentiation: "Easier: Focus thoroughly on Moon phases using a flashlight and ball. | Harder: Calculate the angle of the sun at solar noon during different solstices."
+    },
+    {
+      title: "Gravity in the Solar System",
+      objective: "Understand how gravity keeps planets in orbit and how mass/distance affect gravitational pull.",
+      warmup: "Drop a heavy book and a light pen. Which has more gravity pulling on it? (The book, but they fall at the same rate due to inertia).",
+      mainActivity: "Gravity Well Demonstration: Stretch a large piece of spandex or a bedsheet tightly over a hoop or table edges. Place a heavy bowling ball or melon in the center (Sun). Roll marbles (planets) across the sheet to see how the 'curvature of spacetime' (gravity) creates orbits. Observe how friction eventually causes them to spiral in.",
+      game: "Escape Velocity: Try to roll a marble fast enough to escape the 'gravity well' without flying out of bounds.",
+      homeConnection: "Calculate your weight on different planets using an online calculator. Discuss why you weigh less on Mars.",
+      assessment: "Can explain that gravity depends on mass and distance, and that orbits are a balance of forward momentum and gravitational pull.",
+      differentiation: "Easier: Focus on larger mass = more gravity. | Harder: Introduce Newton's Law of Universal Gravitation and the inverse-square law concept."
+    },
+    {
+      title: "Scale of the Solar System",
+      objective: "Comprehend the massive distances and relative sizes of planets in the solar system.",
+      warmup: "Guess how many Earths could fit inside the Sun (Answer: about 1.3 million!).",
+      mainActivity: "Toilet Paper Solar System: Use a roll of toilet paper to map out distances. If the Sun is at the start, Mercury is 1 sheet away, Venus 1.8 sheets, Earth 2.5 sheets, Mars 3.8, Jupiter 13.2, Saturn 24.2, Uranus 48.6, Neptune 76.3. Unroll it down a long hallway or sidewalk.",
+      game: "Planet ID: Flash cards of planetary features (e.g., 'Great Red Spot', 'Tilted on its side') and name the planet quickly.",
+      homeConnection: "Look at the night sky. The stars you see are entirely outside our solar system, unimaginably far away.",
+      assessment: "Can accurately describe the relative spacing of the inner vs. outer planets (inner are clustered, outer are vastly far apart).",
+      differentiation: "Easier: Do a relative size model using different sized balls/fruits. | Harder: Calculate the time it takes light to travel from the Sun to each planet."
+    },
+    {
+      title: "Stars, Galaxies & the Universe",
+      objective: "Understand the life cycle of stars and the basic structure of the Milky Way galaxy.",
+      warmup: "Look at the Sun (never directly!). Discuss that it is an average-sized, middle-aged star.",
+      mainActivity: "Star Life Cycle Flowchart: Create a visual flowchart showing how a nebula becomes a protostar, then an average star (like our Sun) which will become a red giant, then a white dwarf. Contrast this with a massive star that becomes a red supergiant, goes supernova, and leaves a neutron star or black hole.",
+      game: "Galaxy Sort: Look at images of Spiral, Elliptical, and Irregular galaxies and sort them by shape.",
+      homeConnection: "Download a stargazing app (like Sky Guide) and identify one constellation or star (like Sirius) outside.",
+      assessment: "Can sequence the life cycle of a low/medium mass star (like our Sun) and name our home galaxy.",
+      differentiation: "Easier: Focus on constellations and the idea that stars are other suns. | Harder: Discuss the Big Bang theory and the concept of an expanding universe (redshift)."
+    }
+  ],
+  project:'Create a physically accurate scaled model of the solar system (distances OR sizes) using household materials and a long outdoor space.',
+  materials:['Styrofoam balls & toothpicks','Flashlight','Spandex sheet or large blanket','Heavy ball & marbles','Toilet paper roll']
+},
+'January':{
+  icon:'fa-leaf',
+  color:'from-green-500 to-emerald-600',
+  focus:'Ecosystems & Energy Dynamics (MS-LS2)',
+  skills:['Trophic Levels','Food Webs','Population Dynamics','Human Impact'],
+  weeks:[
+    {
+      title: "Ecosystem Components",
+      objective: "Distinguish between biotic and abiotic factors and classify organisms as producers, consumers, or decomposers.",
+      warmup: "Go outside and list 5 living things (biotic) and 5 non-living things (abiotic) in your yard.",
+      mainActivity: "Eco-Mapping: Draw a detailed map of a local ecosystem (pond, forest, or even the backyard). Color-code producers (green), consumers (red), decomposers (brown), and abiotic factors (blue). Discuss how they interact (e.g., plants need abiotic water).",
+      game: "Biotic/Abiotic Relay: Sort a bucket of items (rocks, leaves, plastic bugs, soil, water) into biotic and abiotic piles.",
+      homeConnection: "Look inside the fridge. Are the items biotic (once living, like an apple) or abiotic (like water/salt)?",
+      assessment: "Can accurately classify elements as biotic/abiotic and define producer, consumer, and decomposer.",
+      differentiation: "Easier: Focus heavily on living vs. non-living. | Harder: Introduce primary, secondary, and tertiary consumers."
+    },
+    {
+      title: "Food Webs & Energy Transfer",
+      objective: "Construct complex food webs and understand the 10% rule of energy transfer.",
+      warmup: "Draw a simple food chain: Grass -> Rabbit -> Fox. Discuss the arrows (points to where the energy goes).",
+      mainActivity: "Yarn Food Web: Use pictures of 10-15 organisms in an ecosystem. Pass a ball of yarn from the Sun to a producer, then to primary consumers, secondary consumers, etc. Observe the complex web created. Discuss the 10% Rule: calculate how much energy a hawk gets if the grass starts with 10,000 units.",
+      game: "Remove a Link: In the yarn web, have the 'grasshoppers' drop their strings (simulate a pesticide). See how many other organisms are affected.",
+      homeConnection: "Trace your dinner back to the Sun. (e.g., Hamburger -> Cow -> Grass -> Sun).",
+      assessment: "Can construct a food web with correct arrow direction and calculate energy loss across trophic levels.",
+      differentiation: "Easier: Stick to simple linear food chains. | Harder: Create an Energy Pyramid diagram mathematically showing the 90% energy loss at each step."
+    },
+    {
+      title: "Population Dynamics",
+      objective: "Analyze how limiting factors and carrying capacity affect population sizes.",
+      warmup: "Imagine putting 100 fish in a small fishbowl. What happens? Why? (Space/oxygen run out).",
+      mainActivity: "Oh Deer! Game (Adapted): Use dried beans as 'Deer' and a grid. Start with 2 deer. Double them each 'year' (reproduction). Introduce limiting factors: remove 3 for a harsh winter (weather), remove 2 for predators. Graph the population over 10 'years' to find the 'Carrying Capacity' (the max number the environment can support).",
+      game: "Predator-Prey Tag: Play tag where 'wolves' tag 'rabbits'. If wolves don't tag enough, they 'starve' and become rabbits next round. Watch the populations fluctuate.",
+      homeConnection: "Research a local animal population (e.g., deer, coyotes) and discuss what limits their numbers.",
+      assessment: "Can define 'carrying capacity' and list at least 3 limiting factors (food, water, space, predators).",
+      differentiation: "Easier: Focus on the basic needs of animals to survive. | Harder: Analyze historical data graphs of the classic Lynx-Hare predator-prey cycle."
+    },
+    {
+      title: "Human Impact on Ecosystems",
+      objective: "Evaluate how human activities disrupt ecosystems and propose conservation solutions.",
+      warmup: "Discuss: 'What happens to the trash when you throw it away?'",
+      mainActivity: "Oil Spill Clean-up: Fill a pan with water and add a few feathers (birds). Pour in cooking oil mixed with cocoa powder (crude oil). Provide tools: cotton balls, dish soap, spoons, sponges. Challenge: Clean the water and the feathers. Note how difficult and imperfect the process is.",
+      game: "Recycling Sorter: Time a race to correctly sort a bin of clean trash into Recyclables (paper/plastic), Compost (food scraps), and Landfill.",
+      homeConnection: "Conduct a 'waste audit' at home for one day. How much single-use plastic was thrown away?",
+      assessment: "Can describe a specific human impact (e.g., pollution, deforestation) and explain its effect on a food web.",
+      differentiation: "Easier: Focus on recycling and not littering. | Harder: Research bioaccumulation/biomagnification (e.g., DDT in bald eagles or mercury in fish)."
+    }
+  ],
+  project:'Design and build a self-sustaining mini-ecosystem in a sealed glass jar (terrarium), balancing soil, moisture, plants, and light.',
+  materials:['Yarn/String','Dried beans or tokens','Pan, cooking oil, cocoa powder, feathers, dish soap','Glass jar, soil, small plants/moss']
+},
+'February':{
+  icon:'fa-dna',
+  color:'from-rose-500 to-pink-600',
+  focus:'Cells & Organisms (MS-LS1)',
+  skills:['Cell Theory','Organelles','Body Systems','Photosynthesis'],
+  weeks:[
+    {
+      title: "Cell Theory & Cell Types",
+      objective: "Understand Cell Theory and differentiate between prokaryotic/eukaryotic and plant/animal cells.",
+      warmup: "Look closely at skin. Discuss that you are made of trillions of tiny living building blocks called cells.",
+      mainActivity: "Microscope Viewing (or Virtual Microscope): If available, look at an onion skin cell and a cheek swab cell. Identify the basic parts (membrane, nucleus, cytoplasm). Draw and compare them. Note that the plant cell is rigid (cell wall) while the animal cell is flexible.",
+      game: "Pro or Eu?: Flash characteristics (Has a nucleus! Has DNA! Is bacteria!) and sort them into Prokaryote or Eukaryote.",
+      homeConnection: "Compare a brick house (plant cell with rigid walls) to a water balloon (animal cell with flexible membrane).",
+      assessment: "Can state the 3 parts of Cell Theory and list 2 differences between plant and animal cells.",
+      differentiation: "Easier: Focus solely on Plant vs. Animal cells. | Harder: Discuss the scale of cells using micrometers and scientific notation."
+    },
+    {
+      title: "Cell Organelles & Functions",
+      objective: "Identify major organelles (nucleus, mitochondria, chloroplast, etc.) and their functions.",
+      warmup: "Compare a cell to a city. What would be the mayor? (Nucleus). The power plant? (Mitochondria).",
+      mainActivity: "Edible Cell Model: Use a large bowl of Jello (cytoplasm). Before it fully sets, push in candies to represent organelles: a large plum (nucleus), jelly beans (mitochondria), gummy worms (ER), green grapes (chloroplasts if plant cell). Create a labeled key.",
+      game: "Organelle CatchPhrase: Describe an organelle's job without saying its name ('I make the energy!', 'I control everything!') until guessed.",
+      homeConnection: "As you eat the edible cell, review the function of the organelle you are eating.",
+      assessment: "Can accurately pair at least 5 organelles with their specific functions.",
+      differentiation: "Easier: Limit to nucleus, cell membrane, cytoplasm, and mitochondria. | Harder: Include ribosomes, Golgi apparatus, lysosomes, and vacuoles."
+    },
+    {
+      title: "Body Systems Interactions",
+      objective: "Explain how hierarchical organization (cells -> tissues -> organs -> systems) keeps an organism alive.",
+      warmup: "Hold your breath for 10 seconds. What body system was paused? (Respiratory). What system was still pumping? (Circulatory).",
+      mainActivity: "The Digestion Simulation: Put a cracker/bread in a ziplock bag (stomach). Add a little water (saliva) and orange juice/vinegar (stomach acid). Mash the bag with hands (muscle contractions). Cut a small hole to squeeze it into a pantyhose/tights leg (intestines) over a bowl to absorb liquid, leaving solid waste.",
+      game: "System Charades: Act out an action (sneezing, eating, running) and identify all the body systems involved.",
+      homeConnection: "Take your pulse resting, then do jumping jacks for 1 minute and take it again. Discuss how systems work together to deliver oxygen.",
+      assessment: "Can explain the hierarchy (cell to system) and describe how the respiratory and circulatory systems work together.",
+      differentiation: "Easier: Focus on the major organs of 3 main systems. | Harder: Diagram how oxygen enters the lungs, diffuses to the blood, and reaches a muscle cell."
+    },
+    {
+      title: "Photosynthesis & Cellular Respiration",
+      objective: "Understand the flow of energy and the chemical relationship between photosynthesis and respiration.",
+      warmup: "Breathe in deeply. Where did that oxygen come from? Breathe out. Where does that carbon dioxide go?",
+      mainActivity: "The Chemistry Equation Balance: Use different colored mini-marshmallows and toothpicks to build molecules. Build CO2 and H2O. Rearrange the exact same marshmallows to build Glucose (C6H12O6) and Oxygen (O2). Visually prove that the inputs of photosynthesis are the outputs of respiration, and vice versa.",
+      game: "Energy Relay: Plants run to get 'sunlight', 'water', and 'CO2' to make a sugar card. Animals trade 'sugar' and 'oxygen' cards to get an 'ATP Energy' card.",
+      homeConnection: "Place a fresh leaf in a bowl of water in the sun. Observe the tiny oxygen bubbles forming on the leaf (photosynthesis in action).",
+      assessment: "Can write or verbalize the basic word equations for both photosynthesis and cellular respiration, noting they are opposites.",
+      differentiation: "Easier: Focus on the word concepts (Plants need light, water, air to make food). | Harder: Balance the actual chemical equations (6CO2 + 6H2O -> C6H12O6 + 6O2)."
+    }
+  ],
+  project:'Construct a highly detailed 3D model of a plant or animal cell using craft materials or food, complete with a functional legend mapping organelle jobs to city analogies.',
+  materials:['Microscope (optional)','Jello and assorted candies/fruits','Ziplock bags, crackers, vinegar, tights (for digestion lab)','Mini-marshmallows & toothpicks']
+},
+'March':{
+  icon:'fa-vial',
+  color:'from-fuchsia-500 to-purple-600',
+  focus:'Matter & Its Interactions (MS-PS1)',
+  skills:['Phase Changes','Periodic Table','Chemical Reactions','Mixtures'],
+  weeks:[
+    {
+      title: "States of Matter & Phase Changes",
+      objective: "Model particle movement in solids, liquids, and gases, and describe phase changes based on thermal energy.",
+      warmup: "Melt an ice cube in a hot pan until it boils away. Name the three states you just saw.",
+      mainActivity: "Particle Dance: Use marbles in a small tray. Pack them tight, vibrate slightly (Solid). Remove a few, swirl tray so they slide past each other (Liquid). Shake vigorously so they bounce everywhere (Gas). Discuss adding/removing thermal energy (heat). Define melting, freezing, evaporation, and condensation.",
+      game: "Dry Ice Sublimation (Adult Supervision): Observe dry ice (solid CO2) in warm water. It skips the liquid phase and turns straight to gas (sublimation).",
+      homeConnection: "Make popsicles (freezing) and boil pasta (evaporation) to see phase changes in the kitchen.",
+      assessment: "Can draw particle diagrams for the three states and explain how thermal energy drives phase changes.",
+      differentiation: "Easier: Focus on simple particle spacing. | Harder: Graph a heating curve for water, showing the plateaus during phase changes."
+    },
+    {
+      title: "Atoms, Elements & Periodic Table",
+      objective: "Understand atomic structure (protons, neutrons, electrons) and how to read the Periodic Table.",
+      warmup: "Look at a Periodic Table. Why do you think it's organized in columns and rows?",
+      mainActivity: "Build an Atom: Choose an element (e.g., Carbon). Look at its atomic number (6). Use playdough balls or M&Ms to build the nucleus with 6 protons and 6 neutrons. Place 6 electrons in orbital rings (2 in the inner ring, 4 in the outer ring).",
+      game: "Element Scavenger Hunt: Find household items that contain specific elements (e.g., foil = Aluminum, coins = Copper/Zinc, salt = Sodium/Chlorine).",
+      homeConnection: "Find the symbol 'Fe' on a cereal box nutrition label. Discuss how iron the element is used in our blood.",
+      assessment: "Can determine the number of protons, neutrons, and electrons in an atom given its atomic number and atomic mass.",
+      differentiation: "Easier: Focus on protons = atomic number. | Harder: Introduce valence electrons and how they determine chemical reactivity (groups)."
+    },
+    {
+      title: "Chemical Reactions & Conservation of Mass",
+      objective: "Identify signs of a chemical reaction and prove the Law of Conservation of Mass.",
+      warmup: "Tear a piece of paper (physical change). Burn a piece of paper safely (chemical change). Discuss the difference.",
+      mainActivity: "Conservation in a Bag: Measure 1 tsp of baking soda into a tissue. Pour 2 tbsp vinegar into a ziplock bag. WEIGH the bag and contents on a digital kitchen scale. Drop the tissue in, quickly seal the bag. Watch it inflate (chemical reaction: gas produced). WEIGH it again. The mass should be exactly the same!",
+      game: "Reaction or Physical?: Sort scenarios into physical changes (melting ice, chopping wood) or chemical changes (rusting iron, baking a cake).",
+      homeConnection: "Bake cookies. Discuss how the ingredients undergo a chemical change to become a new substance.",
+      assessment: "Can state the Law of Conservation of Mass and list 3 signs of a chemical reaction (color change, gas produced, temperature change).",
+      differentiation: "Easier: Focus on identifying chemical vs physical changes. | Harder: Write the simple chemical equation for the baking soda/vinegar reaction."
+    },
+    {
+      title: "Mixtures, Solutions & Separations",
+      objective: "Differentiate between homogeneous and heterogeneous mixtures and employ separation techniques.",
+      warmup: "Compare a bowl of trail mix with a glass of Kool-Aid. Both are mixtures, but how are they different?",
+      mainActivity: "The Separation Challenge: Create a messy mixture of sand, salt, iron filings, and small pebbles. Task: Separate them all. Use a magnet for iron, a sieve/screen for pebbles, add water and filter paper for sand, and finally evaporate the water to recover the salt.",
+      game: "Solvent or Solute?: Call out parts of a solution (e.g., sugar and water) and identify the solute (what dissolves) and solvent (does the dissolving).",
+      homeConnection: "Look at salad dressing (oil and vinegar). Shake it up (suspension), watch it separate based on density.",
+      assessment: "Can successfully separate a complex mixture and define homogeneous vs. heterogeneous.",
+      differentiation: "Easier: Separate a simple mixture visually (trail mix). | Harder: Discuss distillation and chromatography as advanced separation methods."
+    }
+  ],
+  project:'Design and execute a series of 3 safe kitchen chemistry experiments, documenting physical vs. chemical changes, reactants, and products in a lab report.',
+  materials:['Marbles/Tray','Playdough or M&Ms for atoms','Digital kitchen scale, baking soda, vinegar, ziplock bags','Sand, salt, iron filings, magnets, filters']
+},
+'April':{
+  icon:'fa-rocket',
+  color:'from-red-500 to-orange-500',
+  focus:'Forces, Motion & Energy (MS-PS2 & MS-PS3)',
+  skills:['Newton\'s Laws','Speed/Velocity','Types of Energy','Energy Transfer'],
+  weeks:[
+    {
+      title: "Newton's Laws of Motion",
+      objective: "Understand and demonstrate inertia, F=ma, and action/reaction pairs.",
+      warmup: "Yank a tablecloth out from under a plastic cup. Why didn't the cup move? (Inertia!).",
+      mainActivity: "Newton's Stations: Station 1 (1st Law): Flick a card out from under a coin over a cup. Coin drops straight down. Station 2 (2nd Law): Push a heavy box, then an empty box with the same force. Measure distance. Station 3 (3rd Law): Blow up a balloon and let it go. Air pushes backward (action), balloon moves forward (reaction).",
+      game: "Bumper Cars: Roll toy cars into each other. Discuss how the forces are equal and opposite (3rd law).",
+      homeConnection: "Notice how your body pushes forward against the seatbelt when a car brakes suddenly (1st law).",
+      assessment: "Can state the three laws of motion in their own words and give a real-world example for each.",
+      differentiation: "Easier: Focus on Inertia (things want to keep doing what they are doing). | Harder: Perform basic F=ma calculations."
+    },
+    {
+      title: "Forces & Motion (Speed & Velocity)",
+      objective: "Calculate speed and graph distance vs. time for a moving object.",
+      warmup: "What's the difference between speed (50 mph) and velocity (50 mph North)?",
+      mainActivity: "Ramp Racers: Build a cardboard ramp. Roll a toy car down it. Use a stopwatch to time how long it takes to travel 1 meter, 2 meters, and 3 meters. Calculate the average speed (Speed = Distance / Time). Graph the results on a Distance-Time graph.",
+      game: "Friction Slow-Down: Change the surface of the ramp (add a towel, sandpaper) and recalculate the speed to see the effect of friction.",
+      homeConnection: "Calculate the average speed of a car trip (e.g., drove 60 miles in 2 hours = 30 mph).",
+      assessment: "Can correctly calculate speed using the formula S=D/T and interpret a distance-time graph (steeper slope = faster).",
+      differentiation: "Easier: Focus on the concept of speed and simple division. | Harder: Calculate acceleration (change in velocity over time)."
+    },
+    {
+      title: "Types of Energy",
+      objective: "Differentiate between potential and kinetic energy, and identify other energy forms.",
+      warmup: "Hold a ball in the air. Does it have energy? (Yes, gravitational potential energy). Drop it. (Kinetic energy).",
+      mainActivity: "Energy Pendulum: Build a simple pendulum with string and a heavy washer. Pull it back and map the energy. At the highest point: Max Potential, Zero Kinetic. At the lowest point: Max Kinetic, Zero Potential. Discuss how energy shifts back and forth but is never lost.",
+      game: "Energy Scavenger Hunt: Find examples in the house of Thermal (stove), Electrical (lamp), Chemical (food/battery), and Mechanical (moving fan) energy.",
+      homeConnection: "Examine a flashlight: Chemical energy (battery) -> Electrical energy (wires) -> Radiant/Light energy (bulb).",
+      assessment: "Can identify the point of maximum potential and kinetic energy in a moving system (like a roller coaster or pendulum).",
+      differentiation: "Easier: Sort pictures into 'stored energy' vs 'moving energy'. | Harder: Calculate Potential Energy (PE = mgh) and Kinetic Energy (KE = 1/2mv^2)."
+    },
+    {
+      title: "Energy Transfer & Conservation",
+      objective: "Understand conduction, convection, and radiation, and the Law of Conservation of Energy.",
+      warmup: "How does the sun warm the Earth if space is empty? (Radiation).",
+      mainActivity: "Heat Transfer Lab: Conduction: Place a metal spoon in hot water and feel the handle get warm. Convection: Put a drop of food coloring in hot water and watch the colored water rise, cool, and sink in a circular current. Radiation: Hold hands near (not touching) an incandescent lightbulb to feel the heat.",
+      game: "Insulator Design: Wrap an ice cube in different materials (foil, cotton, paper, bubble wrap). See which is the best insulator (slows down heat transfer).",
+      homeConnection: "Look at the heating system in your house. Does it use forced air (convection) or radiators?",
+      assessment: "Can explain the three methods of heat transfer and state that energy cannot be created or destroyed, only transferred.",
+      differentiation: "Easier: Associate conduction with touch, convection with fluids/air, radiation with waves. | Harder: Discuss specific heat capacity and why water takes longer to heat than metal."
+    }
+  ],
+  project:'Design and construct a Rube Goldberg machine using at least 5 distinct steps that demonstrates kinetic/potential energy transfers and Newton\'s laws.',
+  materials:['Card/Coins/Cups','Toy cars, cardboard ramps, stopwatch','String & heavy washers','Hot water, metal spoons, food coloring','Building materials for Rube Goldberg']
+},
+'May':{
+  icon:'fa-globe',
+  color:'from-teal-500 to-cyan-600',
+  focus:'Human Impact & Environmental Engineering (MS-ESS3)',
+  skills:['Natural Resources','Hazards & Mitigation','Climate Change','Eco-Engineering'],
+  weeks:[
+    {
+      title: "Natural Resources & Distribution",
+      objective: "Categorize renewable vs. nonrenewable resources and understand why they are unevenly distributed.",
+      warmup: "Look around the room. Name 3 things made from oil (plastics) and 3 things made from trees (paper/wood).",
+      mainActivity: "Resource Mapping: Look at a global resource map. Why is oil abundant in the Middle East but not everywhere? (Requires ancient oceans). Why is solar power viable in Arizona but less so in Seattle? Map out the distribution of coal, fresh water, and arable land.",
+      game: "Cookie Mining: Give the student a chocolate chip cookie and a toothpick. They must 'mine' the chips (coal) without destroying the cookie (environment). Discuss the difficulty of extraction and land reclamation.",
+      homeConnection: "Check the electricity bill or local utility website to see where your local power comes from (coal, hydro, nuclear, wind?).",
+      assessment: "Can define renewable/nonrenewable and explain that geological history determines where resources are found.",
+      differentiation: "Easier: Sort flashcards of resources into renewable/nonrenewable. | Harder: Debate the economic vs. environmental impacts of extracting a specific resource."
+    },
+    {
+      title: "Natural Hazards & Mitigation",
+      objective: "Analyze historical data to predict natural hazards and design mitigation strategies.",
+      warmup: "What is the difference between a natural hazard (a hurricane) and a natural disaster (hurricane hits a city)?",
+      mainActivity: "Earthquake Resistant Engineering: Build a multi-story tower out of toothpicks and marshmallows. Place it on a pan of jello (liquefaction soil) or a shake table. Shake it. Modify the design by adding cross-bracing (triangles) or a wider base, and test again until it survives.",
+      game: "Hazard Risk Map: Research your specific state/region. Color code a map based on risk for tornadoes, earthquakes, floods, and wildfires.",
+      homeConnection: "Create or review your family's emergency 'Go-Bag' and evacuation plan for your most likely local hazard.",
+      assessment: "Can explain how engineers use geometric shapes (triangles) and base-isolation to mitigate earthquake damage.",
+      differentiation: "Easier: Focus on basic emergency preparedness. | Harder: Analyze historical USGS earthquake data to calculate recurrence intervals for a specific fault."
+    },
+    {
+      title: "Human-Caused Climate Change",
+      objective: "Understand the greenhouse effect, analyze carbon footprint, and look at evidence for climate change.",
+      warmup: "Have you ever gotten into a car on a hot summer day? Why is it hotter inside the car than outside? (The Greenhouse Effect).",
+      mainActivity: "Greenhouse in a Jar: Place two thermometers in the sun. Cover one with a clear glass jar. Record the temperatures every 5 minutes for 30 minutes. The jar traps the heat (like CO2 in the atmosphere). Graph the difference.",
+      game: "Carbon Footprint Calculator: Use an online calculator (like the EPA's) to estimate your family's carbon footprint. Brainstorm 3 realistic ways to lower it.",
+      homeConnection: "Commit to one energy-saving action for the week (e.g., shorter showers, turning off lights, eating a meatless dinner).",
+      assessment: "Can explain the greenhouse effect mechanism and distinguish between natural climate cycles and human-accelerated change.",
+      differentiation: "Easier: Focus on simple ways to reduce pollution. | Harder: Analyze ice core data graphs showing historic CO2 levels vs. temperature."
+    },
+    {
+      title: "Engineering Solutions for Environmental Problems",
+      objective: "Apply the engineering design process to solve a specific environmental challenge.",
+      warmup: "Look at a picture of heavily polluted water. How could we make it drinkable?",
+      mainActivity: "Water Filtration Challenge: Cut the bottom off a plastic water bottle and invert it. Layer cotton balls, coffee filters, sand, and gravel. Mix dirt, oil, and food coloring into a cup of water. Pour it through the filter. Analyze the clarity of the output. Redesign the layers to improve the result.",
+      game: "Renewable Energy Brainstorm: Sketch a design for a new machine that runs purely on wind or solar power to accomplish a household chore.",
+      homeConnection: "Identify one single-use item you use frequently (e.g., paper towels, plastic baggies) and engineer a reusable alternative.",
+      assessment: "Can design, test, and improve a filtration system, demonstrating the iterative nature of engineering.",
+      differentiation: "Easier: Provide specific instructions for the filter layers. | Harder: Require the filtered water to pass a specific pH or clarity test, adjusting materials chemically (like adding activated charcoal)."
+    }
+  ],
+  project:'Design a comprehensive \"Green City\" model or blueprint that incorporates renewable energy, water conservation, sustainable farming, and hazard mitigation.',
+  materials:['Chocolate chip cookies & toothpicks','Marshmallows & toothpicks, Jello pan','Thermometers, Glass jars','Plastic bottles, sand, gravel, cotton, dirty water']
+},
+'June':{
+  icon:'fa-award',
+  color:'from-yellow-500 to-amber-600',
+  focus:'Science Fair & Portfolio Reflection',
+  skills:['Independent Research','Experimental Design','Data Presentation','Public Speaking'],
+  weeks:[
+    {
+      title: "Designing a Science Fair Project",
+      objective: "Select a testable question, conduct background research, and formulate a hypothesis.",
+      warmup: "Brainstorming session: 'What is something you've always wondered about how the world works?'",
+      mainActivity: "Project Selection: Choose a topic (e.g., 'Does the color of light affect plant growth?'). Ensure it is a *testable experiment* with variables, not just a demonstration (like a volcano). Write the formal Research Question and a 3-paragraph background research summary.",
+      game: "Testable vs. Non-Testable: Read questions and vote if they are good science fair projects. (e.g., 'How do volcanoes work?' = No. 'Does vinegar ratio affect volcano eruption height?' = Yes).",
+      homeConnection: "Gather all necessary materials for the chosen experiment from around the house or a quick store trip.",
+      assessment: "Has a finalized, approved, testable question and a clearly identified independent and dependent variable.",
+      differentiation: "Easier: Provide 3 specific project options to choose from. | Harder: Require primary source citations for the background research."
+    },
+    {
+      title: "Conducting the Experiment",
+      objective: "Execute the experimental procedure accurately, controlling variables and collecting quantitative data.",
+      warmup: "Review the data table format before starting to ensure you know exactly what you are recording.",
+      mainActivity: "The Experiment: Set up the experiment. Take photos of the setup. Conduct the trials (minimum of 3 trials for reliability). Record all data meticulously in a raw data table. Note any unexpected errors or uncontrolled variables.",
+      game: "Error Analysis: Discuss what went wrong. Did you spill some water? Did the temperature drop in the room? Learn that 'mistakes' are just data in science.",
+      homeConnection: "Discuss the progress of the experiment at dinner. Explain what the data is looking like so far.",
+      assessment: "Has completed the experiment safely and has a full raw data table with multiple trials.",
+      differentiation: "Easier: Assist heavily with setting up the control group. | Harder: Require a larger sample size or more complex statistical analysis (standard deviation)."
+    },
+    {
+      title: "Creating a Display Board",
+      objective: "Analyze data via graphs and communicate results clearly on a standard tri-fold display board.",
+      warmup: "Look at examples of winning science fair boards online. Note the clean layout, large fonts, and clear graphs.",
+      mainActivity: "Board Assembly: Calculate averages and create final, colorful graphs (using software or neatly by hand). Write the Conclusion (Was the hypothesis supported? Why or why not?). Assemble the board logically: Title, Question, Hypothesis, Materials, Procedure, Data/Graphs, Conclusion.",
+      game: "Elevator Pitch: Practice summarizing the entire project in exactly 60 seconds.",
+      homeConnection: "Present the board to the family. Practice standing tall, making eye contact, and answering questions.",
+      assessment: "Has a completed, organized, and visually clear display board that accurately reflects the scientific method.",
+      differentiation: "Easier: Provide printed templates for the board sections. | Harder: Require an abstract and a 'Future Research' section."
+    },
+    {
+      title: "Science Portfolio & Year Review",
+      objective: "Reflect on a year of scientific growth, synthesize major concepts, and organize previous work.",
+      warmup: "Look back through the science notebook/journal from September. Notice how much more complex the work has become.",
+      mainActivity: "Portfolio Assembly: Gather the best lab reports, projects, and tests from the year. Put them in a binder. Write a 1-page reflection on: 1) Favorite topic learned, 2) Most difficult concept mastered, 3) How your view of science has changed.",
+      game: "Science Trivia Challenge: Parents create a 20-question trivia game covering all domains studied (Earth, Life, Physical, Engineering).",
+      homeConnection: "Host an end-of-year 'Science Fair Showcase' where the student presents their final project to friends or extended family.",
+      assessment: "Can articulate their scientific growth and successfully answer questions about their independent research project.",
+      differentiation: "Easier: Verbal reflection instead of written. | Harder: Present the project to an unfamiliar audience or upload a video presentation online."
+    }
+  ],
+  project:'Complete an independent Science Fair project, from hypothesis to final display board presentation.',
+  materials:['Tri-fold display board','Markers, glue, printed photos','Experiment-specific materials','Data tables and graphs']
+}
+};
+
+let completed=JSON.parse(localStorage.getItem('sci-1112-done')||'{}');
+function saveProgress(){localStorage.setItem('sci-1112-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('sci-1112-done',JSON.stringify(completed));}
+
+function initCurriculum(){
+  const tabsContainer=document.getElementById('monthTabs');
+  const contentContainer=document.getElementById('monthContent');
+  let firstMonth=Object.keys(curriculumData)[0];
+  let currentMonth=localStorage.getItem('sci-1112-month')||firstMonth;
+
+  function renderTabs(){
+    tabsContainer.innerHTML='';
+    Object.keys(curriculumData).forEach(month=>{
+      const btn=document.createElement('button');
+      btn.className=`month-tab ${month===currentMonth?'active':''}`;
+      btn.innerText=month;
+      btn.onclick=()=> { currentMonth=month; saveProgress(); renderTabs(); renderContent(); };
+      tabsContainer.appendChild(btn);
+    });
+  }
+
+  function renderContent(){
+    const data=curriculumData[currentMonth];
+    let skillsHtml = data.skills.map(s=> `<span style="display:inline-block;padding:4px 10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;font-size:12px;margin:0 6px 6px 0;color:var(--ct2);">${s}</span>`).join('');
+    
+    let weeksHtml = data.weeks.map((w,i)=>{
+      const wid=currentMonth+'-'+i;
+      const isDone=!!completed[wid];
+      return `
+      <div class="week-row${isDone?' completed':''}" id="week-${i}">
+        <div class="week-header" onclick="toggleWeek(${i})">
+          <button class="week-check${isDone?' done':''}" onclick="toggleCheck(event, ${i},'${wid}')">${isDone?'<i class="fas fa-check"></i>':''}</button>
+          <div class="week-num">${i+1}</div>
+          <div style="flex-grow:1;">
+            <h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">${w.title}</h4>
+            <p style="font-size:13px;color:var(--ct6);line-height:1.4;">${w.objective}</p>
+          </div>
+          <i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-${i}"></i>
+        </div>
+        <div class="week-detail" id="detail-${i}">
+          <div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Warm-up:</strong> <span style="font-size:13px;color:var(--ct4);">${w.warmup}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-flask"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Main Activity:</strong> <span style="font-size:13px;color:var(--ct4);">${w.mainActivity}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Game/Play:</strong> <span style="font-size:13px;color:var(--ct4);">${w.game}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Home Connection:</strong> <span style="font-size:13px;color:var(--ct4);">${w.homeConnection}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:12px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Assessment:</strong> <span style="font-size:13px;color:var(--ct4);">${w.assessment}</span></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-bottom:4px;">
+              <div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"></i></div>
+              <div><strong style="font-size:13px;color:var(--ct2);">Differentiation:</strong> <span style="font-size:13px;color:var(--ct4);">${w.differentiation}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `}).join('');
+
+    let materialsHtml = data.materials.map(m=> `<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"></i><span style="font-size:13px;color:var(--ct4);">${m}</span></div>`).join('');
+
+    contentContainer.innerHTML=`
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 16px rgba(139,92,246,0.25);">
+          <i class="fas ${data.icon}"></i>
+        </div>
+        <div>
+          <h3 style="font-size:20px;font-weight:800;color:var(--ct);">${currentMonth}</h3>
+          <p style="font-size:14px;color:var(--ct5);font-weight:500;">${data.focus}</p>
+        </div>
+      </div>
+
+      <div class="month-grid">
+        <div>
+          <div style="margin-bottom:20px;">
+            <p class="section-label" style="margin-bottom:10px;">Monthly Goals</p>
+            <div>${skillsHtml}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            ${weeksHtml}
+          </div>
+        </div>
+        
+        <div>
+          <div class="sched-card" style="margin-bottom:16px;">
+            <p class="section-label"><i class="fas fa-star" style="color:var(--a1);margin-right:6px;"></i>Monthly Project</p>
+            <p style="font-size:14px;color:var(--ct3);line-height:1.6;">${data.project}</p>
+          </div>
+          
+          <div class="sched-card">
+            <p class="section-label"><i class="fas fa-box-open" style="color:var(--a1);margin-right:6px;"></i>Materials Needed</p>
+            <div style="margin-top:12px;">${materialsHtml}</div>
+          </div>
+
+          <div class="sched-card" style="margin-top:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <p class="section-label" style="margin-bottom:0;">Year Progress</p>
+              <span style="font-size:12px;font-weight:700;color:var(--a1);" id="progress-text">0 of 0 weeks completed</span>
+            </div>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%;"></div></div>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:16px;">
+            <button onclick="prevMonth()" style="flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.03);color:var(--ct);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:11px;"></i> Prev Month</button>
+            <button onclick="nextMonth()" style="flex:1;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--a1),var(--a2));color:white;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(139,92,246,0.2);transition:all 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Next Month <i class="fas fa-chevron-right" style="margin-left:6px;font-size:11px;"></i></button>
+          </div>
+        </div>
+      </div>
+    `;
+    updateProgress();
+  }
+  
+  renderTabs();
+  renderContent();
+}
+
+window.toggleWeek = function(index) {
+  const detail = document.getElementById(`detail-${index}`);
+  const icon = document.getElementById(`icon-${index}`);
+  if(detail.classList.contains('open')) {
+    detail.classList.remove('open');
+    icon.style.transform = 'rotate(0deg)';
+  } else {
+    detail.classList.add('open');
+    icon.style.transform = 'rotate(180deg)';
+  }
+}
+
+window.toggleCheck = function(event, index, wid) {
+  event.stopPropagation();
+  const btn = event.currentTarget;
+  const row = document.getElementById(`week-${index}`);
+  completed[wid]=!completed[wid];
+  const isDone=completed[wid];
+  btn.classList.toggle('done',isDone);
+  btn.innerHTML=isDone?'<i class="fas fa-check"></i>':'';
+  row.classList.toggle('completed',isDone);
+  saveProgress();
+  updateProgress();
+}
+
+window.updateProgress = function() {
+  const months = Object.keys(curriculumData);
+  const total = months.reduce((s,m)=>s+curriculumData[m].weeks.length,0);
+  const done = Object.values(completed).filter(Boolean).length;
+  const pct = Math.round((done/total)*100);
+  const fill = document.getElementById('progress-fill');
+  const text = document.getElementById('progress-text');
+  if(fill) fill.style.width = pct + '%';
+  if(text) text.innerText = done + ' of ' + total + ' weeks completed';
+}
+
+window.prevMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx > 0) {
+    document.querySelectorAll('.month-tab')[currIdx-1].click();
+  }
+}
+
+window.nextMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx < months.length-1) {
+    document.querySelectorAll('.month-tab')[currIdx+1].click();
+  }
+}
+
+
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+
+  initCurriculum();
+});
+</script>
+<script src="paywall.js"></script>
+</body>
+</html>

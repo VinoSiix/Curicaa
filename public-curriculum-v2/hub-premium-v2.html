@@ -1,0 +1,2537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curicaa — Homeschool Curriculum for K–12</title>
+    <script src="assets/tailwind.js"></script>
+    <link rel="stylesheet" href="assets/font-awesome.css">
+    <link rel="stylesheet" href="assets/fonts/inter.css">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+
+        :root {
+            --bg-page: #04040e;
+            --bg-header: rgba(4, 4, 14, 0.82);
+            --bg-card: rgba(255,255,255,0.035);
+            --bg-card-hover: rgba(255,255,255,0.055);
+            --bg-subtle: rgba(255,255,255,0.04);
+            --bg-subtle-hover: rgba(255,255,255,0.09);
+            --bg-subject-list: rgba(255,255,255,0.03);
+            --bg-badge: rgba(255,255,255,0.07);
+            --bg-pill: rgba(255,255,255,0.035);
+            --bg-pill-hover: rgba(255,255,255,0.065);
+            --bg-stats: rgba(255,255,255,0.04);
+            --bg-btn: rgba(255,255,255,0.035);
+            --bg-btn-hover: rgba(255,255,255,0.075);
+            --bg-modal-overlay: rgba(0,0,0,0.72);
+            --bg-modal-box: #0b0b1d;
+            --bg-subject-btn: rgba(255,255,255,0.04);
+            --bg-subject-btn-hover: rgba(255,255,255,0.085);
+            --bg-mini-card: rgba(251,191,36,0.08);
+
+            --border-subtle: rgba(255,255,255,0.055);
+            --border-card: rgba(255,255,255,0.075);
+            --border-faint: rgba(255,255,255,0.07);
+            --border-thin: rgba(255,255,255,0.09);
+            --border-icon-ring: rgba(255,255,255,0.13);
+            --border-badge: rgba(255,255,255,0.11);
+            --border-header: rgba(255,255,255,0.07);
+
+            --text-hero: rgba(255,255,255,0.48);
+            --text-primary: rgba(255,255,255,0.85);
+            --text-secondary: rgba(255,255,255,0.55);
+            --text-muted: rgba(255,255,255,0.38);
+            --text-subtle: rgba(255,255,255,0.4);
+            --text-faint: rgba(255,255,255,0.3);
+            --text-very-faint: rgba(255,255,255,0.2);
+            --text-label: rgba(255,255,255,0.28);
+            --text-nav: rgba(255,255,255,0.45);
+            --text-list: rgba(255,255,255,0.6);
+            --text-icon-btn: rgba(255,255,255,0.5);
+            --text-close-btn: rgba(255,255,255,0.55);
+            --text-section-subject: rgba(255,255,255,0.28);
+        }
+
+        body {
+            background: var(--bg-page);
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+        }
+        .bg-orb-1 { width: 700px; height: 700px; background: #f59e0b; top: -300px; left: -200px; }
+        .bg-orb-2 { width: 600px; height: 600px; background: #34d399; bottom: -150px; right: -150px; }
+        .bg-orb-3 { width: 400px; height: 400px; background: #fb7185; top: 35%; left: 38%; }
+
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .star {
+            position: absolute; width: 2px; height: 2px;
+            background: white; border-radius: 50%; opacity: 0;
+            animation: twinkle var(--dur) ease-in-out infinite var(--delay);
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(1); }
+            50% { opacity: 0.55; transform: scale(1.6); }
+        }
+
+        header {
+            position: sticky; top: 0; z-index: 50;
+            background: var(--bg-header);
+            backdrop-filter: blur(28px);
+            border-bottom: 1px solid var(--border-header);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+        .nav-link {
+            font-size: 13px; font-weight: 500; color: var(--text-nav);
+            text-decoration: none; padding: 6px 12px; border-radius: 8px;
+            transition: color 0.2s, background 0.2s; cursor: pointer;
+        }
+        .nav-link:hover { color: var(--text-primary); background: var(--bg-subtle); }
+        .nav-cta {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 8px 18px; border-radius: 10px;
+            background: linear-gradient(135deg, rgba(251,191,36,0.2), rgba(249,115,22,0.2));
+            border: 1px solid rgba(251,191,36,0.3);
+            font-size: 13px; font-weight: 600; color: #fbbf24;
+            cursor: pointer; transition: all 0.2s;
+            text-decoration: none;
+        }
+        .nav-cta:hover {
+            background: linear-gradient(135deg, rgba(251,191,36,0.32), rgba(249,115,22,0.32));
+            border-color: rgba(251,191,36,0.5);
+            color: #fde68a;
+        }
+        .nav-cta-solid {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 8px 18px; border-radius: 10px;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            border: none;
+            font-size: 13px; font-weight: 600; color: white;
+            cursor: pointer; transition: all 0.2s;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(245,158,11,0.3);
+        }
+        .nav-cta-solid:hover { opacity: 0.88; }
+        .logo-glow {
+            position: absolute; inset: -4px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .logo-wrap:hover .logo-glow { opacity: 0.5; }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 26px 22px 22px;
+            transition: transform 0.32s cubic-bezier(.22,.68,0,1.2), box-shadow 0.32s ease, border-color 0.32s ease, background 0.32s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .card::before {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: 20px;
+            background: var(--card-glow, transparent);
+            opacity: 0;
+            transition: opacity 0.32s ease;
+        }
+        .card:hover {
+            transform: translateY(-7px) scale(1.015);
+            border-color: var(--ring-color, rgba(255,255,255,0.2));
+            background: var(--bg-card-hover);
+            box-shadow: 0 0 0 1px var(--ring-color, rgba(255,255,255,0.15)), 0 0 28px 0 var(--ring-glow, rgba(245,158,11,0.2)), 0 16px 40px rgba(0,0,0,0.4);
+        }
+        .card:hover::before { opacity: 1; }
+
+        .card-purple { --card-glow: radial-gradient(ellipse at top, rgba(251,191,36,0.12) 0%, transparent 65%); --ring-color: rgba(245,158,11,0.55); --ring-glow: rgba(245,158,11,0.22); }
+        .card-blue   { --card-glow: radial-gradient(ellipse at top, rgba(45,212,191,0.12) 0%, transparent 65%);  --ring-color: rgba(45,212,191,0.55);  --ring-glow: rgba(45,212,191,0.22); }
+        .card-green  { --card-glow: radial-gradient(ellipse at top, rgba(52,211,153,0.12) 0%, transparent 65%);  --ring-color: rgba(16,185,129,0.55);  --ring-glow: rgba(16,185,129,0.22); }
+        .card-orange { --card-glow: radial-gradient(ellipse at top, rgba(251,146,60,0.12) 0%, transparent 65%);  --ring-color: rgba(249,115,22,0.55);  --ring-glow: rgba(249,115,22,0.22); }
+        .card-indigo { --card-glow: radial-gradient(ellipse at top, rgba(251,113,133,0.12) 0%, transparent 65%); --ring-color: rgba(251,113,133,0.55);  --ring-glow: rgba(251,113,133,0.22); }
+        .card-red    { --card-glow: radial-gradient(ellipse at top, rgba(249,115,22,0.12) 0%, transparent 65%); --ring-color: rgba(249,115,22,0.55);   --ring-glow: rgba(249,115,22,0.22); }
+        .card-yellow { --card-glow: radial-gradient(ellipse at top, rgba(250,204,21,0.12) 0%, transparent 65%);  --ring-color: rgba(234,179,8,0.55);   --ring-glow: rgba(234,179,8,0.22); }
+
+        .icon-ring {
+            width: 52px; height: 52px; border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            position: relative;
+        }
+        .icon-ring::after {
+            content: '';
+            position: absolute; inset: -2px;
+            border-radius: 17px;
+            border: 1px solid var(--border-icon-ring);
+        }
+
+        .age-badge {
+            display: inline-block;
+            padding: 3px 11px;
+            border-radius: 100px;
+            font-size: 10.5px; font-weight: 600;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            background: var(--bg-badge);
+            border: 1px solid var(--border-badge);
+            margin-bottom: 14px;
+        }
+
+        .subject-list {
+            background: var(--bg-subject-list);
+            border: 1px solid var(--border-faint);
+            border-radius: 11px; padding: 12px 14px; margin-bottom: 18px; text-align: left;
+        }
+        .subject-list ul { list-style: none; padding: 0; margin: 0; }
+        .subject-list li {
+            display: flex; align-items: center; gap: 8px;
+            padding: 3px 0; font-size: 12px; color: var(--text-list);
+        }
+        .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+        .btn-cta {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 9px 18px; border-radius: 10px;
+            font-size: 12.5px; font-weight: 600; border: none; cursor: pointer;
+            transition: opacity 0.2s, transform 0.18s;
+        }
+        .btn-cta:hover { opacity: 0.85; transform: scale(1.04); }
+
+        .feature-pill {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-card);
+            border-radius: 14px; padding: 18px;
+            display: flex; align-items: center; gap: 14px;
+            transition: background 0.22s, border-color 0.22s;
+        }
+        .feature-pill:hover { background: var(--bg-pill-hover); border-color: var(--border-icon-ring); }
+        .feature-icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: var(--bg-modal-overlay);
+            backdrop-filter: blur(14px);
+            z-index: 60; display: none;
+            align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: var(--bg-modal-box);
+            border: 1px solid var(--border-icon-ring);
+            border-radius: 24px; padding: 30px;
+            max-width: 520px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
+            animation: modalIn 0.22s cubic-bezier(.22,.68,0,1.2);
+            color: var(--text-primary);
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.94) translateY(14px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .subject-btn {
+            background: var(--bg-subject-btn);
+            border: 1px solid var(--border-faint);
+            border-radius: 14px; padding: 20px;
+            text-align: center; cursor: pointer;
+            transition: all 0.22s ease; color: var(--text-primary); width: 100%;
+        }
+        .subject-btn:hover {
+            background: var(--bg-subject-btn-hover);
+            border-color: var(--border-icon-ring);
+            transform: translateY(-2px);
+        }
+
+        .hero-title {
+            background: linear-gradient(135deg, #fde68a 0%, #f59e0b 25%, #fb923c 55%, #34d399 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+        .hero-accent {
+            background: linear-gradient(90deg, #f472b6 0%, #fb923c 50%, #fbbf24 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; border-radius: 100px;
+            background: rgba(245,158,11,0.1);
+            border: 1px solid rgba(245,158,11,0.28);
+            font-size: 11px; font-weight: 600; color: #fbbf24;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+        .hero-badge .badge-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #f59e0b;
+            box-shadow: 0 0 6px rgba(245,158,11,0.8);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.75); }
+        }
+        .hero-divider {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            margin: 28px auto 0; max-width: 320px;
+        }
+        .hero-divider-line {
+            flex: 1; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(245,158,11,0.3), transparent);
+        }
+        .hero-divider-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(245,158,11,0.5); }
+        .hero-stats {
+            display: inline-flex; align-items: center; gap: 24px;
+            padding: 12px 28px; border-radius: 100px;
+            background: var(--bg-stats);
+            border: 1px solid var(--border-card);
+            margin-top: 32px;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat-num { font-size: 18px; font-weight: 800; letter-spacing: -0.03em; }
+        .hero-stat-lbl { font-size: 10px; font-weight: 500; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 1px; }
+        .hero-stat-sep { width: 1px; height: 32px; background: var(--border-icon-ring); }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .section-label {
+            font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--text-label); margin-bottom: 8px;
+        }
+
+        .card-lock {
+            position: absolute; top: 16px; right: 16px; z-index: 5;
+            width: 28px; height: 28px; border-radius: 8px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .free-tag {
+            font-size: 10px; color: rgba(255,255,255,0.28);
+            margin-bottom: 14px;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 20px; padding: 30px 24px;
+            text-align: center; position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-icon-ring);
+        }
+        .pricing-featured {
+            border: 2px solid rgba(245,158,11,0.5);
+            box-shadow: 0 0 30px rgba(245,158,11,0.12);
+        }
+        .pricing-featured:hover {
+            border-color: rgba(245,158,11,0.7);
+            box-shadow: 0 0 40px rgba(245,158,11,0.18);
+        }
+        .best-value-badge {
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white; font-size: 9.5px; font-weight: 700;
+            letter-spacing: 0.07em; text-transform: uppercase;
+            padding: 4px 16px; border-radius: 20px;
+        }
+        .check-row {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 10px; font-size: 13px; color: var(--text-list);
+        }
+        .x-row {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 10px; font-size: 13px; color: var(--text-muted);
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-header);
+            backdrop-filter: blur(16px);
+            z-index: 100;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-nav-overlay.open {
+            display: block;
+            opacity: 1;
+        }
+        .mobile-nav-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: var(--bg-page);
+            border-bottom: 1px solid var(--border-header);
+            transform: translateY(-100%);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .mobile-nav-overlay.open .mobile-nav-content {
+            transform: translateY(0);
+        }
+        .mobile-nav-link {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        .mobile-nav-link:hover {
+            background: var(--bg-subtle);
+        }
+
+        .form-input {
+            width: 100%; padding: 10px 14px; border-radius: 10px;
+            border: 1px solid var(--border-card);
+            background: var(--bg-subtle);
+            color: var(--text-primary);
+            font-size: 14px; font-family: 'Inter', sans-serif;
+            outline: none; transition: border-color 0.2s;
+        }
+        .form-input:focus { border-color: rgba(245,158,11,0.5); }
+        .form-input::placeholder { color: var(--text-muted); }
+
+        @keyframes successPop {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .success-icon { animation: successPop 0.5s cubic-bezier(.22,.68,0,1.2); }
+
+        @keyframes priceFlipOut {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-14px) scale(0.92); opacity: 0; }
+        }
+        @keyframes priceFlipIn {
+            0% { transform: translateY(14px) scale(0.92); opacity: 0; }
+            60% { transform: translateY(-3px) scale(1.03); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        .price-flip-out { animation: priceFlipOut 0.18s ease-in forwards; }
+        .price-flip-in { animation: priceFlipIn 0.32s cubic-bezier(.22,.68,0,1.2) forwards; }
+        @keyframes savingsSlide {
+            0% { transform: translateY(-6px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .savings-slide-in { animation: savingsSlide 0.35s cubic-bezier(.22,.68,0,1.2) forwards; }
+
+        @media (max-width: 1023px) {
+            #pathways > div:nth-child(2),
+            #pathways > div:nth-child(3) {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            #features > div:nth-child(2) {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                max-width: 600px !important;
+            }
+            #whatyouget > div:nth-child(2) {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #desktopNav { display: none !important; }
+            #mobileMenuToggle { display: flex !important; }
+            .nav-cta { display: none !important; }
+            #authLoggedIn { display: none !important; }
+            #authLoggedOut { display: none !important; }
+
+            main { padding: 40px 16px 60px !important; }
+            section { margin-bottom: 50px !important; }
+            #about { margin-top: 50px !important; }
+
+            .hero-title { font-size: clamp(38px, 10vw, 50px) !important; }
+            .hero-stats {
+                padding: 12px 20px !important;
+                gap: 16px !important;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-stat-sep { height: 24px !important; }
+
+            .bg-orb-1 { width: 400px !important; height: 400px !important; top: -150px !important; left: -100px !important; }
+            .bg-orb-2 { width: 350px !important; height: 350px !important; bottom: -50px !important; right: -50px !important; }
+            .bg-orb-3 { width: 200px !important; height: 200px !important; }
+
+            #pathways > div:nth-child(2),
+            #pathways > div:nth-child(3) {
+                grid-template-columns: 1fr !important;
+            }
+            #features > div:nth-child(2) {
+                grid-template-columns: 1fr !important;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr !important;
+                max-width: 400px !important;
+            }
+
+            #whatyouget > div:nth-child(2) {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            #about > div { grid-template-columns: 1fr !important; gap: 24px !important; }
+            .card { padding: 20px 16px 16px !important; }
+
+            #howitworks > div:nth-child(2) {
+                grid-template-columns: 1fr !important;
+            }
+
+            footer > div {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 16px !important;
+            }
+        }
+
+        /* Testimonial Carousel */
+        .carousel-wrap { position: relative; max-width: 960px; margin: 0 auto; }
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 8px 4px 16px;
+        }
+        .carousel-track::-webkit-scrollbar { display: none; }
+        .carousel-card {
+            flex: 0 0 calc(33.333% - 11px);
+            scroll-snap-align: start;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 26px 22px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            min-width: 280px;
+        }
+        .carousel-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-icon-ring);
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--border-card);
+            background: var(--bg-card);
+            color: var(--text-icon-btn);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 5;
+            font-size: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .carousel-arrow:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-icon-ring);
+            color: var(--text-primary);
+        }
+        .carousel-arrow-left { left: -20px; }
+        .carousel-arrow-right { right: -20px; }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            margin-bottom: 10px;
+        }
+        .faq-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-icon-ring);
+        }
+        .faq-item.open {
+            border-color: rgba(245,158,11,0.35);
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .faq-chevron {
+            transition: transform 0.3s ease;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, margin-top 0.35s ease, opacity 0.35s ease;
+            opacity: 0;
+            color: var(--text-secondary);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            margin-top: 14px;
+            opacity: 1;
+        }
+
+        @media (max-width: 479px) {
+            #about > div > div:last-child {
+                grid-template-columns: 1fr !important;
+            }
+            .modal-box { padding: 20px !important; }
+            .hero-stats { flex-direction: column !important; gap: 8px !important; border-radius: 20px !important; padding: 20px !important; }
+            .hero-stat-sep { display: none !important; }
+            .pricing-grid { max-width: 100% !important; }
+            #whatyouget > div:nth-child(2) {
+                grid-template-columns: 1fr !important;
+            }
+            #whatyouget > div:nth-child(2) > div {
+                padding: 20px 14px !important;
+            }
+            #whatyouget > div:nth-child(2) > div > div:first-child {
+                width: 34px !important; height: 34px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="stars" id="stars"></div>
+
+    <!-- Header -->
+    <header>
+        <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:60px;position:relative;z-index:1;">
+
+            <!-- Logo -->
+            <div style="display:flex;align-items:center;gap:10px;cursor:pointer;" class="logo-wrap">
+                <div style="position:relative;flex-shrink:0;">
+                    <div class="logo-glow"></div>
+                    <div style="position:relative;width:34px;height:34px;background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:10px;display:flex;align-items:center;justify-content:center;z-index:1;">
+                        <i class="fas fa-graduation-cap" style="font-size:14px;color:white;"></i>
+                    </div>
+                </div>
+                <div>
+                    <div style="font-weight:700;font-size:15px;letter-spacing:-0.025em;line-height:1.2;color:var(--text-primary);" class="logo-text-title">Curicaa</div>
+                    <div style="font-size:10px;color:var(--text-faint);font-weight:500;letter-spacing:0.04em;line-height:1.2;" class="logo-text-subtitle">Homeschool Curriculum</div>
+                </div>
+            </div>
+
+            <!-- Nav links (center) -->
+            <nav id="desktopNav" style="display:flex;align-items:center;gap:2px;position:absolute;left:50%;transform:translateX(-50%);">
+                <a class="nav-link" onclick="document.getElementById('howitworks').scrollIntoView({behavior:'smooth'})">How It Works</a>
+                <a class="nav-link" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                <a class="nav-link" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})">Reviews</a>
+                <a class="nav-link" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
+                <a class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+            </nav>
+
+            <!-- Right side -->
+            <div style="display:flex;align-items:center;gap:10px;">
+                <button id="mobileMenuToggle" onclick="toggleMobileMenu()" style="width:34px;height:34px;border-radius:8px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-icon-btn);font-size:13px;display:none;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)';this.style.color='var(--text-primary)'" onmouseout="this.style.background='var(--bg-subtle)';this.style.color='var(--text-icon-btn)'">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Auth: Logged out -->
+                <div id="authLoggedOut" style="display:flex;align-items:center;gap:8px;">
+                    <a class="nav-link" onclick="openLoginModal()" style="font-weight:600;color:var(--text-nav);">Log In</a>
+                    <a class="nav-cta-solid" onclick="openSignupModal()">
+                        Start Free <i class="fas fa-arrow-right" style="font-size:11px;"></i>
+                    </a>
+                </div>
+                <!-- Auth: Logged in -->
+                <div id="authLoggedIn" style="display:none;align-items:center;gap:10px;">
+                    <div style="position:relative;" id="userMenuWrap">
+                        <button onclick="toggleUserMenu()" style="display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:10px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">
+                            <div style="width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#f59e0b,#f97316);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;" id="userAvatar">J</div>
+                            <span style="font-size:13px;font-weight:600;color:var(--text-primary);" id="userDisplayName">Jane</span>
+                            <i class="fas fa-chevron-down" style="font-size:9px;color:var(--text-muted);"></i>
+                        </button>
+                        <div id="userMenu" style="display:none;position:absolute;top:48px;right:0;background:var(--bg-modal-box);border:1px solid var(--border-icon-ring);border-radius:14px;padding:6px;min-width:200px;z-index:70;box-shadow:0 16px 48px rgba(0,0,0,0.5);">
+                            <div style="padding:10px 12px;border-bottom:1px solid var(--border-faint);margin-bottom:4px;">
+                                <div style="font-size:13px;font-weight:600;color:var(--text-primary);" id="menuUserName">Jane</div>
+                                <div style="font-size:11px;color:var(--text-muted);" id="menuUserEmail">jane@email.com</div>
+                                <div style="margin-top:6px;display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:0.04em;" id="menuPlanBadge">
+                                    <i class="fas fa-circle" style="font-size:5px;"></i> Free Plan
+                                </div>
+                            </div>
+                            <a onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});toggleUserMenu();" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-primary);cursor:pointer;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='transparent'">
+                                <i class="fas fa-crown" style="font-size:12px;color:#fbbf24;width:16px;text-align:center;"></i> Upgrade Plan
+                            </a>
+                            <a onclick="openSettings()" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-primary);cursor:pointer;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='transparent'">
+                                <i class="fas fa-cog" style="font-size:12px;color:var(--text-muted);width:16px;text-align:center;"></i> Settings
+                            </a>
+                            <div style="height:1px;background:var(--border-faint);margin:4px 0;"></div>
+                            <a onclick="handleLogout()" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:#f87171;cursor:pointer;transition:background 0.15s;text-decoration:none;" onmouseover="this.style.background='rgba(248,113,113,0.08)'" onmouseout="this.style.background='transparent'">
+                                <i class="fas fa-sign-out-alt" style="font-size:12px;width:16px;text-align:center;"></i> Log Out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Nav Overlay -->
+        <div id="mobileNavOverlay" class="mobile-nav-overlay" onclick="toggleMobileMenu()">
+            <nav class="mobile-nav-content" onclick="event.stopPropagation()">
+                <div style="display:flex;justify-content:flex-end;margin-bottom:20px;">
+                    <button onclick="toggleMobileMenu()" style="width:34px;height:34px;border-radius:8px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-icon-btn);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)';this.style.color='var(--text-primary)'" onmouseout="this.style.background='var(--bg-subtle)';this.style.color='var(--text-icon-btn)'">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:15px;align-items:center;">
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('features').scrollIntoView({behavior:'smooth'})">Features</a>
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
+                    <a class="mobile-nav-link" onclick="toggleMobileMenu(); document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+                    <div style="height:1px;width:60px;background:var(--border-faint);margin:4px 0;"></div>
+                    <div id="mobileAuthOut">
+                        <a class="mobile-nav-link" onclick="toggleMobileMenu(); openLoginModal()">Log In</a>
+                        <a class="mobile-nav-link" onclick="toggleMobileMenu(); openSignupModal()" style="color:#fbbf24;">Sign Up</a>
+                    </div>
+                    <div id="mobileAuthIn" style="display:none;">
+                        <a class="mobile-nav-link" id="mobileUserName" style="color:#fbbf24;">Jane</a>
+                        <a class="mobile-nav-link" onclick="toggleMobileMenu(); handleLogout()" style="color:#f87171;">Log Out</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+
+    <main style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:64px 20px 88px;">
+
+        <!-- Hero -->
+        <section style="text-align:center;margin-bottom:80px;" class="reveal">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Complete K–12 Homeschool Curriculum
+            </div>
+
+            <h1 style="margin-bottom:20px;">
+                <span class="hero-title" style="display:block;font-size:clamp(44px,7vw,80px);font-weight:800;line-height:1.06;letter-spacing:-0.038em;">
+                    Your Child's Education,<br>In Your Hands.
+                </span>
+            </h1>
+
+            <p style="color:var(--text-hero);max-width:520px;margin:0 auto;font-size:16px;line-height:1.75;font-weight:400;">
+                A full year of lesson plans for every grade — from first phonics to SAT prep. Designed by parents, for parents. No teaching degree required.
+            </p>
+
+            <!-- Hero CTA Buttons -->
+            <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:32px;flex-wrap:wrap;">
+                <a class="nav-cta-solid" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})" style="padding:14px 32px;font-size:15px;border-radius:14px;box-shadow:0 4px 24px rgba(245,158,11,0.4);">
+                    Start Learning Free <i class="fas fa-arrow-right" style="font-size:12px;margin-left:4px;"></i>
+                </a>
+                <a class="nav-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" style="padding:14px 28px;font-size:15px;border-radius:14px;">
+                    <i class="fas fa-play-circle" style="font-size:13px;"></i> See Pricing
+                </a>
+            </div>
+
+            <div class="hero-divider">
+                <div class="hero-divider-line"></div>
+                <div class="hero-divider-dot"></div>
+                <div class="hero-divider-dot" style="opacity:0.5;"></div>
+                <div class="hero-divider-dot" style="opacity:0.25;"></div>
+                <div class="hero-divider-line"></div>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-num" style="color:#fbbf24;">320+</div>
+                    <div class="hero-stat-lbl">Weeks of Lessons</div>
+                </div>
+                <div class="hero-stat-sep"></div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num" style="color:#34d399;">8</div>
+                    <div class="hero-stat-lbl">Grade Levels</div>
+                </div>
+                <div class="hero-stat-sep"></div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num" style="color:#2dd4bf;">Free</div>
+                    <div class="hero-stat-lbl">Try Before You Buy</div>
+                </div>
+            </div>
+                <div class="hero-stat-sep"></div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num" style="color:#67e8f9;">2,400<span style="font-size:14px;">+</span></div>
+                    <div class="hero-stat-lbl">Families Enrolled</div>
+                </div>
+                <div class="hero-stat-sep"></div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num" style="color:#4ade80;">4.9 <i class="fas fa-star" style="font-size:12px;color:#fbbf24;"></i></div>
+                    <div class="hero-stat-lbl">Avg. Rating</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who Is This For? -->
+        <section id="audience" style="margin-bottom:88px;" class="reveal">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">Built for real families</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Is This Right For You?</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:0 auto;">
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:26px 22px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(245,158,11,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(245,158,11,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                        <i class="fas fa-home" style="color:#fbbf24;font-size:18px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:700;margin-bottom:8px;">First-Time Homeschoolers</div>
+                    <div style="font-size:12.5px;color:var(--text-secondary);line-height:1.65;">Pulling your child out of school? Our step-by-step parent guides mean you can start teaching confidently on day one — no experience needed.</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:26px 22px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(74,222,128,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(74,222,128,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                        <i class="fas fa-users" style="color:#4ade80;font-size:18px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:700;margin-bottom:8px;">Multi-Child Families</div>
+                    <div style="font-size:12.5px;color:var(--text-secondary);line-height:1.65;">Teaching kids at different grade levels? The Full Bundle covers ages 5–18 so every child learns at their own pace with one subscription.</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:26px 22px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(251,191,36,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(251,191,36,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                        <i class="fas fa-wallet" style="color:#fbbf24;font-size:18px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:700;margin-bottom:8px;">Budget-Conscious Parents</div>
+                    <div style="font-size:12.5px;color:var(--text-secondary);line-height:1.65;">Traditional curriculum costs $500–2,000 per child. We designed every activity to use household items — quality education without the price tag.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="howitworks" style="margin-bottom:88px;" class="reveal">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">Simple as 1-2-3</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">How It Works</h2>
+                <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">No complicated setup. No teaching experience needed. Just open and teach.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;max-width:860px;margin:0 auto;">
+                <div style="text-align:center;padding:28px 20px;background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;">
+                    <div style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:18px;font-weight:800;background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(249,115,22,0.15));border:1px solid rgba(245,158,11,0.3);color:#fbbf24;">1</div>
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(251,191,36,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-child" style="font-size:20px;color:#fbbf24;"></i>
+                    </div>
+                    <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Pick Your Child's Level</div>
+                    <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Choose from 8 grade levels spanning ages 5 through 18. Each covers Math, English, Science, and more.</div>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:18px;padding-top:28px;">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div style="text-align:center;padding:28px 20px;background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;">
+                    <div style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:18px;font-weight:800;background:linear-gradient(135deg,rgba(52,211,153,0.15),rgba(45,212,191,0.15));border:1px solid rgba(52,211,153,0.3);color:#34d399;">2</div>
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(52,211,153,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-calendar-week" style="font-size:20px;color:#34d399;"></i>
+                    </div>
+                    <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Open the Weekly Plan</div>
+                    <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Every week is laid out for you — warm-ups, main activities, games, and assessments. Just follow along.</div>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:18px;padding-top:28px;">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div style="text-align:center;padding:28px 20px;background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;">
+                    <div style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:18px;font-weight:800;background:linear-gradient(135deg,rgba(45,212,191,0.15),rgba(34,211,238,0.15));border:1px solid rgba(45,212,191,0.3);color:#2dd4bf;">3</div>
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(45,212,191,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-heart" style="font-size:20px;color:#2dd4bf;"></i>
+                    </div>
+                    <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Teach With Confidence</div>
+                    <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Parent guides walk you through every lesson step by step. You don't need to be an expert — just present.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section id="pathways" style="margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;" class="reveal">
+                <p class="section-label">Choose a Grade Level</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Curriculum Pathways</h2>
+            </div>
+
+            <!-- Row 1: 4 cards -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;" class="reveal">
+                <div class="card card-purple" onclick="openSubjectModal('ages-5-7')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#f59e0b,#f97316);">
+                        <i class="fas fa-child" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fbbf24;">Early Elementary</h3>
+                        <div class="age-badge" style="color:#fbbf24;">Ages 5–7</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Foundation building</p>
+                            <ul>
+                                <li><span class="dot" style="background:#f59e0b;"></span>Basic reading</li>
+                                <li><span class="dot" style="background:#f59e0b;"></span>Number sense</li>
+                                <li><span class="dot" style="background:#f59e0b;"></span>Science discovery</li>
+                                <li><span class="dot" style="background:#f59e0b;"></span>Creative arts</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#34d399;"></i>Try it free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#f59e0b,#f97316);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-blue" onclick="openSubjectModal('age-8')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#2dd4bf,#34d399);">
+                        <i class="fas fa-star" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#5eead4;">Level 2</h3>
+                        <div class="age-badge" style="color:#5eead4;">Age 8</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Skill development</p>
+                            <ul>
+                                <li><span class="dot" style="background:#2dd4bf;"></span>Fluent reading</li>
+                                <li><span class="dot" style="background:#2dd4bf;"></span>Multiplication</li>
+                                <li><span class="dot" style="background:#2dd4bf;"></span>Scientific method</li>
+                                <li><span class="dot" style="background:#2dd4bf;"></span>Art techniques</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#34d399;"></i>Try it free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#2dd4bf,#34d399);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-green" onclick="openSubjectModal('age-9')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#34d399,#6ee7b7);">
+                        <i class="fas fa-book" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#6ee7b7;">Level 3</h3>
+                        <div class="age-badge" style="color:#6ee7b7;">Age 9</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Knowledge expansion</p>
+                            <ul>
+                                <li><span class="dot" style="background:#34d399;"></span>Comprehension</li>
+                                <li><span class="dot" style="background:#34d399;"></span>Division</li>
+                                <li><span class="dot" style="background:#34d399;"></span>Lab reports</li>
+                                <li><span class="dot" style="background:#34d399;"></span>Creative projects</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#34d399;"></i>Try it free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#34d399,#6ee7b7);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-orange" onclick="openSubjectModal('age-10')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#fb923c,#fdba74);">
+                        <i class="fas fa-rocket" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fdba74;">Level 4</h3>
+                        <div class="age-badge" style="color:#fdba74;">Age 10</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Advanced basics</p>
+                            <ul>
+                                <li><span class="dot" style="background:#fb923c;"></span>Essay writing</li>
+                                <li><span class="dot" style="background:#fb923c;"></span>Fractions/decimals</li>
+                                <li><span class="dot" style="background:#fb923c;"></span>Research skills</li>
+                                <li><span class="dot" style="background:#fb923c;"></span>Art analysis</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#34d399;"></i>Try it free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#fb923c,#fdba74);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: 4 cards -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="reveal">
+                <div class="card card-indigo" onclick="openSubjectModal('ages-11-12')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#fb7185,#f9a8d4);">
+                        <i class="fas fa-brain" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fda4af;">Middle School</h3>
+                        <div class="age-badge" style="color:#fda4af;">Ages 11–12</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Preparation focus</p>
+                            <ul>
+                                <li><span class="dot" style="background:#fb7185;"></span>Research essays</li>
+                                <li><span class="dot" style="background:#fb7185;"></span>Pre-algebra</li>
+                                <li><span class="dot" style="background:#fb7185;"></span>Advanced labs</li>
+                                <li><span class="dot" style="background:#fb7185;"></span>Digital arts</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#34d399;"></i>Try it free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#fb7185,#f9a8d4);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-red" onclick="openSubjectModal('age-14')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#f97316,#ef4444);">
+                        <i class="fas fa-graduation-cap" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fb923c;">High School</h3>
+                        <div class="age-badge" style="color:#fb923c;">Age 14</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">Critical thinking</p>
+                            <ul>
+                                <li><span class="dot" style="background:#f97316;"></span>Algebra I</li>
+                                <li><span class="dot" style="background:#f97316;"></span>9th Grade English</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Biology</li>
+                                <li><span class="dot" style="background:#f97316;"></span>Social Studies</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#34d399;"></i>Try it free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#f97316,#ef4444);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-yellow" onclick="openSubjectModal('ages-15-16')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#eab308,#f97316);">
+                        <i class="fas fa-certificate" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#fde047;">GED</h3>
+                        <div class="age-badge" style="color:#fde047;">Ages 15–16</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">GED preparation</p>
+                            <ul>
+                                <li><span class="dot" style="background:#eab308;"></span>English</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Science</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Math</li>
+                                <li><span class="dot" style="background:#eab308;"></span>Social Studies</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#34d399;"></i>Try it free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#eab308,#f97316);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card card-orange" onclick="openSubjectModal('ages-17-18')">
+                    <div class="card-lock"><i class="fas fa-lock" style="font-size:10px;color:rgba(255,255,255,0.35);"></i></div>
+                    <div class="icon-ring" style="background:linear-gradient(135deg,#4ade80,#22d3ee);">
+                        <i class="fas fa-trophy" style="font-size:19px;"></i>
+                    </div>
+                    <div style="text-align:center;">
+                        <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;color:#4ade80;">SAT Prep</h3>
+                        <div class="age-badge" style="color:#4ade80;">Ages 17–18</div>
+                        <div class="subject-list">
+                            <p style="font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-section-subject);margin-bottom:7px;">SAT preparation</p>
+                            <ul>
+                                <li><span class="dot" style="background:#4ade80;"></span>SAT Math</li>
+                                <li><span class="dot" style="background:#4ade80;"></span>Reading & Writing</li>
+                                <li><span class="dot" style="background:#4ade80;"></span>Test Strategies & Pacing</li>
+                                <li><span class="dot" style="background:#4ade80;"></span>Full Practice Tests</li>
+                            </ul>
+                        </div>
+                        <p class="free-tag"><i class="fas fa-gift" style="margin-right:4px;color:#34d399;"></i>Try it free</p>
+                        <button class="btn-cta" style="background:linear-gradient(135deg,#4ade80,#22d3ee);color:white;">
+                            Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="reveal">
+            <div style="text-align:center;margin-bottom:34px;">
+                <p class="section-label">What's included</p>
+                <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.025em;">What Makes This Different</h2>
+                <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Everything you need to teach confidently at home — no teaching degree required.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;">
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-calendar-alt" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Done-For-You Lesson Plans</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">10 months, week by week</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-check-circle" style="color:#4ade80;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Zero Prep Required</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Open and teach instantly</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-wifi" style="color:#22d3ee;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Works Offline</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">No internet needed to teach</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-mobile-alt" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Any Device, Anywhere</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Phone, tablet, or laptop</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-chalkboard-teacher" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Parent-Friendly Guides</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Step-by-step for non-teachers</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-dollar-sign" style="color:#fb923c;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Household Materials Only</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">No expensive supplies to buy</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-chart-line" style="color:#22d3ee;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Track Your Child's Growth</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Built-in progress & assessments</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-layer-group" style="color:#f472b6;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Adapts to Every Learner</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Easier & harder options included</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-flask" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Hands-On Science Experiments</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Real learning, real fun</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-book-open" style="color:#60a5fa;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Curated Reading Lists</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Age-matched book suggestions</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-music" style="color:#f87171;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Art & Music Integrated</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Creativity in every unit</div>
+                    </div>
+                </div>
+                <div class="feature-pill">
+                    <div class="feature-icon" style="background:var(--bg-mini-card);">
+                        <i class="fas fa-award" style="color:#2dd4bf;font-size:15px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;font-weight:600;margin-bottom:2px;">Celebrate Every Milestone</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);">Badges & achievements</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What You Get -->
+        <section id="whatyouget" class="reveal" style="margin-top:88px;margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">By the numbers</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">What You Get</h2>
+                <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">A complete K–12 curriculum — ready to teach, ready to learn.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:960px;margin:0 auto;">
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(251,191,36,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(251,191,36,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-calendar-week" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#fbbf24;">320<span style="font-size:20px;">+</span></div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Weeks of Lessons</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(103,232,249,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(103,232,249,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-book-open" style="color:#67e8f9;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#67e8f9;">32</div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Subjects Covered</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(74,222,128,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(74,222,128,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-graduation-cap" style="color:#4ade80;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#4ade80;">8</div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Grade Levels</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(251,191,36,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(251,191,36,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-sync-alt" style="color:#fbbf24;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#fbbf24;">2</div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Flexible Plans</div>
+                </div>
+                <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:18px;padding:28px 16px;text-align:center;transition:transform 0.3s ease,border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(244,114,182,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border-card)'">
+                    <div style="width:40px;height:40px;border-radius:11px;background:rgba(244,114,182,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                        <i class="fas fa-wifi" style="color:#f472b6;font-size:15px;"></i>
+                    </div>
+                    <div style="font-size:36px;font-weight:800;letter-spacing:-0.04em;color:#f472b6;">100<span style="font-size:20px;">%</span></div>
+                    <div style="font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Offline Ready</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="reveal" style="margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">Loved by families</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">What Parents Say</h2>
+            </div>
+            <div class="carousel-wrap" id="reviewCarousel">
+                <button class="carousel-arrow carousel-arrow-left" onclick="slideCarousel(-1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"We've tried so many curriculum options and this is the first one that actually feels designed for real families. My daughter asks to do her lessons now."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Sarah M.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling 2 kids, ages 6 &amp; 9</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"The weekly breakdowns are a lifesaver. I open the page on Monday morning and everything is laid out. No prep stress, no guessing."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">David R.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Dad of a 10-year-old</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"As a single mom on a tight budget, the fact that this uses household materials for science experiments means everything. Quality education without breaking the bank."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Maria L.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling since 2023</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"I pulled my son out of public school mid-year and was panicking about curriculum. This gave me everything I needed from day one. The parent guides are incredible."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Jessica T.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Mom of a 7th grader</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star-half-alt" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"My kids love the science experiments. Last week we built a volcano with baking soda and vinegar — they talked about it for three days. Real learning, real fun."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Marcus W.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Dad of twins, age 8</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"I was skeptical at first — $97 for a full K-12 curriculum? But it's genuinely worth every penny. The structure and quality surprised me. Wish I found this sooner."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Rachel K.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Homeschooling 3 kids</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"We're a military family and move a lot. Having a complete curriculum that works offline and doesn't depend on a school district has been a game-changer for us."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Angela P.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Military spouse, 2 kids ages 5 &amp; 11</div>
+                    </div>
+                    <div class="carousel-card">
+                        <div style="margin-bottom:16px;">
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                            <i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">"The SAT prep section alone is worth the price. My son's practice scores went up 120 points in six weeks. The pacing strategies really work."</p>
+                        <div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Linda C.</div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Son preparing for college</div>
+                    </div>
+                </div>
+                <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel(1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing" class="reveal" style="margin-top:88px;margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">Invest in their future</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Choose Your Plan</h2>
+                <p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Less than a textbook per subject. A full year of lessons.</p>
+            </div>
+            <!-- Billing toggle -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:32px;">
+                <span id="annualSavingsTag" style="font-size:10px;font-weight:700;color:#4ade80;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);padding:3px 10px;border-radius:20px;letter-spacing:0.03em;transition:opacity 0.25s,visibility 0.25s;height:22px;line-height:16px;">SAVE UP TO 40%</span>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <span id="toggleLabelMonthly" style="font-size:13px;font-weight:600;color:var(--text-muted);transition:color 0.2s;">Monthly</span>
+                    <button id="billingToggle" onclick="toggleBilling()" style="width:52px;height:28px;border-radius:14px;border:none;cursor:pointer;position:relative;transition:background 0.25s;background:linear-gradient(135deg,#f59e0b,#f97316);">
+                        <div id="billingDot" style="width:22px;height:22px;border-radius:50%;background:white;position:absolute;top:3px;left:27px;transition:left 0.3s cubic-bezier(.22,.68,0,1.2);box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>
+                    </button>
+                    <span id="toggleLabelAnnual" style="font-size:13px;font-weight:600;color:#fbbf24;transition:color 0.2s;">Annual</span>
+                </div>
+            </div>
+            <div class="pricing-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:0 auto;">
+                <!-- Free Preview -->
+                <div class="pricing-card">
+                    <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">Free Preview</div>
+                    <div style="font-size:42px;font-weight:800;letter-spacing:-0.04em;margin-bottom:4px;">$0</div>
+                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:24px;">No credit card needed</div>
+                    <div style="text-align:left;margin-bottom:24px;">
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>First month of every subject</div>
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Full hub access</div>
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Feature overview</div>
+                        <div class="x-row"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);font-size:11px;"></i>Full 40-week curriculum</div>
+                        <div class="x-row" style="margin-bottom:0;"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);font-size:11px;"></i>Assessments & projects</div>
+                    </div>
+                    <button onclick="closeSubjectModal()" style="width:100%;padding:11px;border-radius:12px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">Start Free</button>
+                </div>
+
+                <!-- Single Grade -->
+                <div class="pricing-card">
+                    <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">Single Grade</div>
+                    <div style="position:relative;display:inline-block;">
+                        <span class="price-amount" data-monthly="9" data-annual="69" style="font-size:42px;font-weight:800;letter-spacing:-0.04em;">$69</span>
+                    </div>
+                    <div class="price-period" style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
+                    <div class="price-savings" style="font-size:11px;color:#4ade80;margin-bottom:20px;">Save $39 vs monthly</div>
+                    <div style="text-align:left;margin-bottom:24px;">
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>All 40 weeks, one grade level</div>
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>All 4 subjects included</div>
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Parent guides & answer keys</div>
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Assessments & projects</div>
+                        <div class="x-row" style="margin-bottom:0;"><i class="fas fa-times" style="color:rgba(255,255,255,0.2);font-size:11px;"></i>Multiple grade levels</div>
+                    </div>
+                    <button onclick="openCheckout('single')" style="width:100%;padding:11px;border-radius:12px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Choose Grade</button>
+                </div>
+
+                <!-- Full Bundle -->
+                <div class="pricing-card pricing-featured">
+                    <div class="best-value-badge">Best Value</div>
+                    <div style="font-size:13px;font-weight:600;color:#fbbf24;margin-bottom:6px;margin-top:8px;">Full K-12 Bundle</div>
+                    <div style="position:relative;display:inline-block;">
+                        <span class="price-amount" data-monthly="19" data-annual="129" style="font-size:42px;font-weight:800;letter-spacing:-0.04em;">$129</span>
+                    </div>
+                    <div class="price-period" style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
+                    <div class="price-savings" style="font-size:11px;color:#4ade80;margin-bottom:20px;">Save $99 vs monthly</div>
+                    <div style="text-align:left;margin-bottom:24px;">
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>All 8 grade levels</div>
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>All 4 subjects per level</div>
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>40 weeks per subject</div>
+                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Priority updates</div>
+                        <div class="check-row" style="margin-bottom:0;"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>Cancel anytime</div>
+                    </div>
+                    <button onclick="openCheckout('bundle')" style="width:100%;padding:11px;border-radius:12px;border:none;background:linear-gradient(135deg,#f59e0b,#fb923c);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;box-shadow:0 4px 20px rgba(245,158,11,0.3);" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Get Full Access</button>
+                </div>
+            </div>
+            <!-- Trust bar -->
+            <div style="text-align:center;margin-top:28px;font-size:12px;color:var(--text-muted);display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+                <span><i class="fas fa-lock" style="margin-right:5px;color:#4ade80;"></i>Secure Checkout</span>
+                <span><i class="fas fa-times-circle" style="margin-right:5px;color:#4ade80;"></i>Cancel Anytime</span>
+                <span><i class="fas fa-bolt" style="margin-right:5px;color:#4ade80;"></i>Instant Access</span>
+                <span><i class="fas fa-shield-alt" style="margin-right:5px;color:#4ade80;"></i>30-Day Money Back</span>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="reveal" style="margin-top:88px;margin-bottom:88px;">
+            <div style="text-align:center;margin-bottom:44px;">
+                <p class="section-label">Common questions</p>
+                <h2 style="font-size:25px;font-weight:700;letter-spacing:-0.025em;">Frequently Asked Questions</h2>
+            </div>
+            <div style="max-width:680px;margin:0 auto;">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Is this a subscription?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Yes — but with no long-term commitment. Choose monthly or annual billing. You can cancel anytime, and you'll keep access through the end of your billing period. No hidden fees, no contracts.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What happens if I cancel?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">You keep full access through the end of your current billing period. No partial charges, no penalties. Your progress is saved in case you want to come back later.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What if I have multiple children in different grades?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">The Full K–12 Bundle is perfect for families with multiple kids. You get access to all 8 grade levels, so each child can work at their own pace.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Can I switch from monthly to annual?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Absolutely. You can upgrade to annual billing at any time from your account settings. We'll prorate the difference so you never overpay.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Do I need to be a teacher to use this?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Not at all. Every lesson includes step-by-step parent guides, warm-up activities, and assessment tips. If you can read, you can teach with this.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What materials do I need?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Most activities use common household items like paper, pencils, measuring cups, and kitchen supplies. We specifically design for low-budget, accessible learning.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Is there a money-back guarantee?</span>
+                        <i class="fas fa-chevron-down faq-chevron"></i>
+                    </div>
+                    <div class="faq-answer">Yes. We offer a full 30-day money-back guarantee. If you're not satisfied for any reason, just let us know and we'll refund your purchase.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="reveal">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+                <!-- Left: text -->
+                <div>
+                    <p class="section-label" style="margin-bottom:10px;">Our story</p>
+                    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;margin-bottom:16px;">
+                        Built by a parent,<br>for every family.
+                    </h2>
+                    <p style="color:var(--text-icon-btn);font-size:14.5px;line-height:1.75;margin-bottom:20px;">
+                        Curicaa started the way most good things do — a parent couldn't find what they needed, so they built it. We wanted a curriculum that was complete, affordable, and didn't assume we had a teaching degree.
+                    </p>
+                    <p style="color:var(--text-subtle);font-size:14px;line-height:1.75;">
+                        Every lesson plan was crafted with real homeschooling in mind — kitchen-table science experiments, budget-friendly materials, and step-by-step guides that any parent can follow. Because your child's education deserves nothing less.
+                    </p>
+                </div>
+                <!-- Right: cards -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                    <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.15);border-radius:16px;padding:20px;">
+                        <div style="width:36px;height:36px;border-radius:10px;background:rgba(251,191,36,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+                            <i class="fas fa-heart" style="color:#fbbf24;font-size:14px;"></i>
+                        </div>
+                        <div style="font-size:13px;font-weight:700;margin-bottom:4px;">Made With Care</div>
+                        <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">Every lesson crafted by a real parent</div>
+                    </div>
+                    <div style="background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.15);border-radius:16px;padding:20px;">
+                        <div style="width:36px;height:36px;border-radius:10px;background:rgba(52,211,153,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+                            <i class="fas fa-users" style="color:#34d399;font-size:14px;"></i>
+                        </div>
+                        <div style="font-size:13px;font-weight:700;margin-bottom:4px;">For Every Family</div>
+                        <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">Works for any budget, any schedule</div>
+                    </div>
+                    <div style="background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.15);border-radius:16px;padding:20px;">
+                        <div style="width:36px;height:36px;border-radius:10px;background:rgba(249,115,22,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+                            <i class="fas fa-dollar-sign" style="color:#fb923c;font-size:14px;"></i>
+                        </div>
+                        <div style="font-size:13px;font-weight:700;margin-bottom:4px;">Budget-Friendly</div>
+                        <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">Household materials, not expensive kits</div>
+                    </div>
+                    <div style="background:rgba(251,113,133,0.08);border:1px solid rgba(251,113,133,0.15);border-radius:16px;padding:20px;">
+                        <div style="width:36px;height:36px;border-radius:10px;background:rgba(251,113,133,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+                            <i class="fas fa-seedling" style="color:#fb7185;font-size:14px;"></i>
+                        </div>
+                        <div style="font-size:13px;font-weight:700;margin-bottom:4px;">Grows With You</div>
+                        <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">Ages 5 through 18, all in one place</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="position:relative;z-index:1;border-top:1px solid var(--border-subtle);margin-top:80px;padding:28px 20px;background:rgba(0,0,0,0.25);">
+        <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:26px;height:26px;background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:7px;display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-graduation-cap" style="font-size:11px;"></i>
+                </div>
+                <span style="font-size:13px;font-weight:600;color:var(--text-subtle);">Curicaa</span>
+            </div>
+            <p style="font-size:12px;color:var(--text-very-faint);text-align:center;">Made with ♥ for homeschooling families everywhere</p>
+            <div style="display:flex;gap:16px;">
+                <a class="nav-link" style="font-size:12px;" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</a>
+                <a class="nav-link" style="font-size:12px;" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
+                <a class="nav-link" style="font-size:12px;" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Subject Modal (original) -->
+    <div id="subjectModal" class="modal-overlay" onclick="handleOverlayClick(event)">
+        <div class="modal-box">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
+                <div>
+                    <p style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-label);margin-bottom:5px;">Select a subject</p>
+                    <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.025em;" id="modalTitle">Choose a Subject</h3>
+                </div>
+                <button onclick="closeSubjectModal()" style="width:34px;height:34px;border-radius:9px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-close-btn);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;">
+                <button class="subject-btn" onclick="goToSubject('math')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:var(--bg-mini-card);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-calculator" style="color:#60a5fa;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">Mathematics</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);">Numbers, algebra, geometry</div>
+                </button>
+                <button class="subject-btn" onclick="goToSubject('english')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:var(--bg-mini-card);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-book" style="color:#34d399;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">English</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);">Reading, writing, grammar</div>
+                </button>
+                <button class="subject-btn" onclick="goToSubject('science')">
+                    <div style="width:42px;height:42px;border-radius:12px;background:var(--bg-mini-card);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;">
+                        <i class="fas fa-flask" style="color:#fbbf24;font-size:17px;"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;">Science</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);">Biology, chemistry, physics</div>
+                </button>
+                <button class="subject-btn" id="fourthSubjectBtn" onclick="goToFourthSubject()">
+                    <div style="width:42px;height:42px;border-radius:12px;background:var(--bg-mini-card);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;" id="fourthSubjectIcon">
+                        <i class="fas fa-palette" style="color:#f472b6;font-size:17px;" id="fourthSubjectIconEl"></i>
+                    </div>
+                    <div style="font-size:14px;font-weight:600;margin-bottom:3px;" id="fourthSubjectTitle">Art & PE</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);" id="fourthSubjectDesc">Creative arts, music, PE</div>
+                </button>
+            </div>
+            <button onclick="closeSubjectModal()" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-card);color:var(--text-subtle);cursor:pointer;font-size:13px;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='var(--bg-card-hover)'" onmouseout="this.style.background='var(--bg-card)'">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal-overlay" onclick="if(event.target===this)closeCheckout()">
+        <div class="modal-box" style="max-width:440px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
+                <div>
+                    <p style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-label);margin-bottom:5px;">Checkout</p>
+                    <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.025em;" id="checkoutTitle">Complete Your Purchase</h3>
+                </div>
+                <button onclick="closeCheckout()" style="width:34px;height:34px;border-radius:9px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-close-btn);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <!-- Plan summary -->
+            <div id="checkoutSummary" style="background:var(--bg-subtle);border:1px solid var(--border-faint);border-radius:12px;padding:14px;margin-bottom:20px;"></div>
+            <!-- Grade selector (single grade only) -->
+            <div id="gradeSelector" style="display:none;margin-bottom:16px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Choose Grade Levels</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                    <button type="button" class="grade-opt" data-grade="ages-5-7" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Level 1</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Ages 5–7</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="age-8" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Level 2</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Age 8</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="age-9" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Level 3</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Age 9</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="age-10" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Level 4</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Age 10</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="ages-11-12" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">Middle School</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Ages 11–12</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="age-14" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">High School</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Age 14</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="ages-15-16" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">GED Prep</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Ages 15–16</div>
+                    </button>
+                    <button type="button" class="grade-opt" data-grade="ages-17-18" onclick="selectGrade(this)" style="padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;text-align:left;">
+                        <div style="font-size:13px;color:var(--text-primary);">SAT Prep</div>
+                        <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Ages 17–18</div>
+                    </button>
+                </div>
+            </div>
+            <!-- Form -->
+            <div style="margin-bottom:14px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Full Name</label>
+                <input type="text" placeholder="Jane Smith" class="form-input">
+            </div>
+            <div style="margin-bottom:14px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label>
+                <input type="email" placeholder="you@email.com" class="form-input">
+            </div>
+            <div style="margin-bottom:20px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Card Number</label>
+                <div style="position:relative;">
+                    <input type="text" placeholder="4242 4242 4242 4242" maxlength="19" class="form-input" style="padding-right:38px;">
+                    <i class="fas fa-lock" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--text-muted);"></i>
+                </div>
+            </div>
+            <button onclick="handlePurchase()" style="width:100%;padding:13px;border-radius:12px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 20px rgba(245,158,11,0.25);font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                <i class="fas fa-lock" style="margin-right:6px;font-size:12px;"></i>Complete Purchase
+            </button>
+            <p style="text-align:center;font-size:11px;color:var(--text-muted);margin-top:12px;"><i class="fas fa-shield-alt" style="margin-right:4px;"></i>Your payment info is secure and encrypted</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal-overlay" onclick="if(event.target===this)closeSuccess()">
+        <div class="modal-box" style="max-width:400px;text-align:center;">
+            <div class="success-icon" style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#4ade80,#22d3ee);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;">
+                <i class="fas fa-check" style="color:white;"></i>
+            </div>
+            <h3 style="font-size:22px;font-weight:700;margin-bottom:8px;">Access Unlocked!</h3>
+            <p style="color:var(--text-secondary);font-size:14px;line-height:1.6;margin-bottom:24px;">Welcome aboard! You now have full access to the entire curriculum. Start exploring right away.</p>
+            <button onclick="closeSuccess()" style="padding:12px 32px;border-radius:12px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Start Learning <i class="fas fa-arrow-right" style="margin-left:6px;font-size:12px;"></i></button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal-overlay" onclick="if(event.target===this)closeLoginModal()">
+        <div class="modal-box" style="max-width:420px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
+                <div>
+                    <p style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-label);margin-bottom:5px;">Welcome back</p>
+                    <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.025em;">Log In</h3>
+                </div>
+                <button onclick="closeLoginModal()" style="width:34px;height:34px;border-radius:9px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-close-btn);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="loginError" style="display:none;padding:10px 14px;border-radius:10px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25);color:#f87171;font-size:13px;margin-bottom:16px;"></div>
+            <div style="margin-bottom:14px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label>
+                <input type="email" id="loginEmail" placeholder="you@email.com" class="form-input">
+            </div>
+            <div style="margin-bottom:20px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" class="form-input">
+            </div>
+            <button onclick="handleLogin()" style="width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Log In</button>
+            <p style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:16px;">Don't have an account? <a onclick="closeLoginModal();openSignupModal()" style="color:#fbbf24;cursor:pointer;font-weight:600;">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal-overlay" onclick="if(event.target===this)closeSignupModal()">
+        <div class="modal-box" style="max-width:420px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
+                <div>
+                    <p style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-label);margin-bottom:5px;">Get started free</p>
+                    <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.025em;">Create Account</h3>
+                </div>
+                <button onclick="closeSignupModal()" style="width:34px;height:34px;border-radius:9px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-close-btn);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="signupError" style="display:none;padding:10px 14px;border-radius:10px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25);color:#f87171;font-size:13px;margin-bottom:16px;"></div>
+            <div style="margin-bottom:14px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Full Name</label>
+                <input type="text" id="signupName" placeholder="Jane Smith" class="form-input">
+            </div>
+            <div style="margin-bottom:14px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label>
+                <input type="email" id="signupEmail" placeholder="you@email.com" class="form-input">
+            </div>
+            <div style="margin-bottom:6px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Password</label>
+                <input type="password" id="signupPassword" placeholder="At least 6 characters" class="form-input">
+            </div>
+            <p style="font-size:11px;color:var(--text-muted);margin-bottom:20px;">By signing up you agree to our Terms of Service and Privacy Policy.</p>
+            <button onclick="handleSignup()" style="width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Create Account</button>
+            <p style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:16px;">Already have an account? <a onclick="closeSignupModal();openLoginModal()" style="color:#fbbf24;cursor:pointer;font-weight:600;">Log in</a></p>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal-overlay" onclick="if(event.target===this)closeSettings()">
+        <div class="modal-box" style="max-width:440px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;">
+                <div>
+                    <p style="font-size:10.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-label);margin-bottom:5px;">Preferences</p>
+                    <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.025em;">Settings</h3>
+                </div>
+                <button onclick="closeSettings()" style="width:34px;height:34px;border-radius:9px;border:1px solid var(--border-thin);background:var(--bg-subtle);cursor:pointer;color:var(--text-close-btn);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background 0.2s;" onmouseover="this.style.background='var(--bg-subtle-hover)'" onmouseout="this.style.background='var(--bg-subtle)'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Font Size -->
+            <div style="margin-bottom:20px;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Font Size</label>
+                <div style="display:flex;gap:8px;">
+                    <button class="font-opt" data-size="small" onclick="setFont(this)" style="flex:1;padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;">
+                        <div style="font-size:11px;">Aa</div>
+                        <div style="font-size:9px;color:var(--text-muted);margin-top:2px;">Small</div>
+                    </button>
+                    <button class="font-opt" data-size="medium" onclick="setFont(this)" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(245,158,11,0.6);background:rgba(245,158,11,0.12);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;">
+                        <div style="font-size:14px;">Aa</div>
+                        <div style="font-size:9px;color:var(--text-muted);margin-top:2px;">Medium</div>
+                    </button>
+                    <button class="font-opt" data-size="large" onclick="setFont(this)" style="flex:1;padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;">
+                        <div style="font-size:17px;">Aa</div>
+                        <div style="font-size:9px;color:var(--text-muted);margin-top:2px;">Large</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Animations -->
+            <div style="margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;padding:14px;border-radius:12px;background:var(--bg-subtle);border:1px solid var(--border-faint);">
+                <div>
+                    <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Animations</div>
+                    <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">Scroll reveals & transitions</div>
+                </div>
+                <button id="animToggle" onclick="toggleAnim()" style="width:44px;height:24px;border-radius:12px;background:linear-gradient(135deg,#f59e0b,#f97316);border:none;cursor:pointer;position:relative;transition:background 0.2s;">
+                    <div id="animDot" style="width:18px;height:18px;border-radius:50%;background:white;position:absolute;top:3px;right:3px;transition:left 0.2s,right 0.2s;"></div>
+                </button>
+            </div>
+
+            <!-- Change Name -->
+            <div id="changeNameSection" style="margin-bottom:20px;display:none;">
+                <label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Change Display Name</label>
+                <div style="display:flex;gap:8px;">
+                    <input type="text" id="newNameInput" placeholder="Enter new name" class="form-input" style="flex:1;">
+                    <button onclick="changeName()" style="padding:10px 18px;border-radius:10px;border:none;background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-size:12px;font-weight:600;cursor:pointer;transition:opacity 0.2s;font-family:'Inter',sans-serif;white-space:nowrap;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Save</button>
+                </div>
+            </div>
+
+            <!-- Account Info -->
+            <div id="settingsAccount" style="padding:14px;border-radius:12px;background:var(--bg-subtle);border:1px solid var(--border-faint);">
+                <div style="font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:8px;">Account</div>
+                <div id="settingsAccountInfo" style="font-size:13px;color:var(--text-secondary);">Sign in to view account details</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        // Auth UI
+        function openLoginModal() { document.getElementById('loginModal').classList.add('open'); document.getElementById('loginError').style.display='none'; document.body.style.overflow='hidden'; }
+        function closeLoginModal() { document.getElementById('loginModal').classList.remove('open'); document.body.style.overflow=''; }
+        function openSignupModal() { document.getElementById('signupModal').classList.add('open'); document.getElementById('signupError').style.display='none'; document.body.style.overflow='hidden'; }
+        function closeSignupModal() { document.getElementById('signupModal').classList.remove('open'); document.body.style.overflow=''; }
+
+        function handleLogin() {
+            var email = document.getElementById('loginEmail').value;
+            var password = document.getElementById('loginPassword').value;
+            var result = CuricaaAuth.login(email, password);
+            if (!result.ok) {
+                document.getElementById('loginError').textContent = result.error;
+                document.getElementById('loginError').style.display = 'block';
+                return;
+            }
+            closeLoginModal();
+            updateAuthUI();
+        }
+
+        function handleSignup() {
+            var name = document.getElementById('signupName').value;
+            var email = document.getElementById('signupEmail').value;
+            var password = document.getElementById('signupPassword').value;
+            var result = CuricaaAuth.signup(name, email, password);
+            if (!result.ok) {
+                document.getElementById('signupError').textContent = result.error;
+                document.getElementById('signupError').style.display = 'block';
+                return;
+            }
+            closeSignupModal();
+            updateAuthUI();
+        }
+
+        function handleLogout() {
+            CuricaaAuth.logout();
+            updateAuthUI();
+            closeUserMenu();
+        }
+
+        function toggleUserMenu() {
+            var menu = document.getElementById('userMenu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+        function closeUserMenu() {
+            document.getElementById('userMenu').style.display = 'none';
+        }
+
+        function updateAuthUI() {
+            var user = CuricaaAuth.getUser();
+            var loggedIn = document.getElementById('authLoggedIn');
+            var loggedOut = document.getElementById('authLoggedOut');
+            var mobileOut = document.getElementById('mobileAuthOut');
+            var mobileIn = document.getElementById('mobileAuthIn');
+            if (user) {
+                loggedOut.style.display = 'none';
+                loggedIn.style.display = 'flex';
+                mobileOut.style.display = 'none';
+                mobileIn.style.display = 'block';
+                var initial = user.name.charAt(0).toUpperCase();
+                var firstName = user.name.split(' ')[0];
+                document.getElementById('userAvatar').textContent = initial;
+                document.getElementById('userDisplayName').textContent = firstName;
+                document.getElementById('menuUserName').textContent = user.name;
+                document.getElementById('menuUserEmail').textContent = user.email;
+                document.getElementById('mobileUserName').textContent = user.name;
+                var badge = document.getElementById('menuPlanBadge');
+                if (user.plan === 'bundle') {
+                    badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> Full Bundle';
+                    badge.style.background = 'rgba(245,158,11,0.15)';
+                    badge.style.color = '#a5b4fc';
+                } else if (user.plan === 'single') {
+                    var gradeCount = user.grades ? user.grades.length : 1;
+                    badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> ' + gradeCount + ' Grade' + (gradeCount !== 1 ? 's' : '');
+                    badge.style.background = 'rgba(74,222,128,0.15)';
+                    badge.style.color = '#4ade80';
+                } else {
+                    badge.innerHTML = '<i class="fas fa-circle" style="font-size:5px;"></i> Free Plan';
+                    badge.style.background = 'rgba(255,255,255,0.06)';
+                    badge.style.color = 'var(--text-muted)';
+                }
+            } else {
+                loggedOut.style.display = 'flex';
+                loggedIn.style.display = 'none';
+                mobileOut.style.display = 'block';
+                mobileIn.style.display = 'none';
+            }
+            updateCardUI();
+        }
+
+        // Update pathway cards based on paid access
+        function updateCardUI() {
+            var user = CuricaaAuth.getUser();
+            var cards = document.querySelectorAll('#pathways .card');
+            cards.forEach(function(card) {
+                var onclickStr = card.getAttribute('onclick') || '';
+                var gradeMatch = onclickStr.match(/openSubjectModal\('([^']+)'\)/);
+                if (!gradeMatch) return;
+                var grade = gradeMatch[1];
+
+                var hasAccess = false;
+                if (user && user.plan === 'bundle') hasAccess = true;
+                if (user && user.plan === 'single' && user.grades) {
+                    for (var i = 0; i < user.grades.length; i++) {
+                        if (user.grades[i] === grade) { hasAccess = true; break; }
+                    }
+                }
+
+                // Lock icon
+                var lock = card.querySelector('.card-lock');
+                if (lock) lock.style.display = hasAccess ? 'none' : 'flex';
+
+                // Free tag
+                var freeTag = card.querySelector('.free-tag');
+                if (freeTag) freeTag.style.display = hasAccess ? 'none' : 'block';
+
+                // Button text
+                var btn = card.querySelector('.btn-cta');
+                if (btn) {
+                    btn.innerHTML = hasAccess
+                        ? 'View Curriculum <i class="fas fa-arrow-right" style="font-size:10px;"></i>'
+                        : 'Free Preview <i class="fas fa-arrow-right" style="font-size:10px;"></i>';
+                }
+            });
+        }
+
+        // Close user menu on outside click
+        document.addEventListener('click', function(e) {
+            var wrap = document.getElementById('userMenuWrap');
+            if (wrap && !wrap.contains(e.target)) closeUserMenu();
+        });
+
+        // Init auth UI on load
+        updateAuthUI();
+
+        // --- Settings ---
+        function openSettings() {
+            closeUserMenu();
+            document.getElementById('settingsModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            // Populate account info
+            var user = CuricaaAuth.getUser();
+            var infoEl = document.getElementById('settingsAccountInfo');
+            var nameSection = document.getElementById('changeNameSection');
+            if (user) {
+                nameSection.style.display = 'block';
+                document.getElementById('newNameInput').placeholder = user.name;
+                var planLabel = user.plan === 'bundle' ? 'Full K-12 Bundle' : user.plan === 'single' ? (user.grades ? user.grades.length : 1) + ' Grade' + ((user.grades ? user.grades.length : 1) !== 1 ? 's' : '') : 'Free Plan';
+                infoEl.innerHTML = '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#f59e0b,#f97316);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;">' + user.name.charAt(0).toUpperCase() + '</div><div><div style="font-weight:600;color:var(--text-primary);">' + user.name + '</div><div style="font-size:11px;color:var(--text-muted);">' + user.email + '</div></div></div><div style="display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(245,158,11,0.12);color:#fbbf24;">' + planLabel + '</div>';
+            } else {
+                nameSection.style.display = 'none';
+                infoEl.innerHTML = '<span style="color:var(--text-muted);">Sign in to view account details</span>';
+            }
+            // Restore saved font size
+            var savedFont = localStorage.getItem('curicaa-font') || 'medium';
+            highlightFontBtn(savedFont);
+            // Restore anim toggle
+            var animOn = localStorage.getItem('curicaa-anim') !== 'off';
+            updateAnimToggle(animOn);
+        }
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function setFont(btn) {
+            var size = btn.dataset.size;
+            localStorage.setItem('curicaa-font', size);
+            applyFont(size);
+            highlightFontBtn(size);
+        }
+        function highlightFontBtn(size) {
+            document.querySelectorAll('.font-opt').forEach(function(b) {
+                if (b.dataset.size === size) {
+                    b.style.borderColor = 'rgba(245,158,11,0.6)';
+                    b.style.background = 'rgba(245,158,11,0.12)';
+                } else {
+                    b.style.borderColor = 'var(--border-card)';
+                    b.style.background = 'var(--bg-subtle)';
+                }
+            });
+        }
+        function applyFont(size) {
+            var scale = size === 'small' ? '14px' : size === 'large' ? '18px' : '16px';
+            document.documentElement.style.fontSize = scale;
+        }
+
+        function toggleAnim() {
+            var animOn = localStorage.getItem('curicaa-anim') !== 'off';
+            animOn = !animOn;
+            localStorage.setItem('curicaa-anim', animOn ? 'on' : 'off');
+            updateAnimToggle(animOn);
+            // Toggle reveal animations
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                el.style.transition = animOn ? '' : 'none';
+                if (!animOn) el.classList.add('visible');
+            });
+        }
+        function updateAnimToggle(on) {
+            var toggle = document.getElementById('animToggle');
+            var dot = document.getElementById('animDot');
+            if (on) {
+                toggle.style.background = 'linear-gradient(135deg,#f59e0b,#f97316)';
+                dot.style.right = '3px';
+                dot.style.left = 'auto';
+            } else {
+                toggle.style.background = 'var(--bg-card)';
+                dot.style.left = '3px';
+                dot.style.right = 'auto';
+            }
+        }
+
+        function changeName() {
+            var newName = document.getElementById('newNameInput').value.trim();
+            if (!newName) return;
+            var user = CuricaaAuth.getUser();
+            if (!user) return;
+            // Update name in localStorage
+            var accounts = JSON.parse(localStorage.getItem('curicaa_accounts') || '[]');
+            for (var i = 0; i < accounts.length; i++) {
+                if (accounts[i].email === user.email) {
+                    accounts[i].name = newName;
+                    break;
+                }
+            }
+            localStorage.setItem('curicaa_accounts', JSON.stringify(accounts));
+            // Update session
+            var session = JSON.parse(localStorage.getItem('curicaa_session') || '{}');
+            session.name = newName;
+            localStorage.setItem('curicaa_session', JSON.stringify(session));
+            document.getElementById('newNameInput').value = '';
+            document.getElementById('newNameInput').placeholder = newName;
+            updateAuthUI();
+            // Re-render account info in settings
+            openSettings();
+            document.getElementById('settingsModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Restore saved settings on load
+        (function() {
+            var savedFont = localStorage.getItem('curicaa-font');
+            if (savedFont) applyFont(savedFont);
+            if (localStorage.getItem('curicaa-anim') === 'off') {
+                document.querySelectorAll('.reveal').forEach(function(el) {
+                    el.style.transition = 'none';
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        // --- Confetti on purchase ---
+        function launchConfetti() {
+            var canvas = document.createElement('canvas');
+            canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;pointer-events:none;';
+            document.body.appendChild(canvas);
+            var ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            var particles = [];
+            var colors = ['#fbbf24','#fb923c','#34d399','#4ade80','#22d3ee','#f59e0b','#f472b6','#2dd4bf'];
+            for (var i = 0; i < 150; i++) {
+                particles.push({
+                    x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 18,
+                    vy: Math.random() * -18 - 4,
+                    w: Math.random() * 8 + 4,
+                    h: Math.random() * 6 + 3,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                    rotSpeed: (Math.random() - 0.5) * 12,
+                    gravity: 0.35 + Math.random() * 0.2,
+                    opacity: 1
+                });
+            }
+            var frame = 0;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                var alive = false;
+                for (var i = 0; i < particles.length; i++) {
+                    var p = particles[i];
+                    p.x += p.vx;
+                    p.vy += p.gravity;
+                    p.y += p.vy;
+                    p.rotation += p.rotSpeed;
+                    p.vx *= 0.99;
+                    if (frame > 40) p.opacity -= 0.015;
+                    if (p.opacity <= 0) continue;
+                    alive = true;
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rotation * Math.PI / 180);
+                    ctx.globalAlpha = Math.max(0, p.opacity);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    ctx.restore();
+                }
+                frame++;
+                if (alive && frame < 180) {
+                    requestAnimationFrame(animate);
+                } else {
+                    canvas.remove();
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // --- Hide pricing for bundle users ---
+        function updatePricingVisibility() {
+            var user = CuricaaAuth.getUser();
+            var pricingSection = document.getElementById('pricing');
+            if (!pricingSection) return;
+            if (user && user.plan === 'bundle') {
+                pricingSection.style.display = 'none';
+            } else {
+                pricingSection.style.display = '';
+            }
+        }
+        // Hook into existing updateAuthUI
+        var origUpdateAuthUI = updateAuthUI;
+        updateAuthUI = function() {
+            origUpdateAuthUI();
+            updatePricingVisibility();
+        };
+        // Also run on load
+        updatePricingVisibility();
+
+        // Enter key support for login/signup forms
+        document.getElementById('loginPassword').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleLogin(); });
+        document.getElementById('signupPassword').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleSignup(); });
+
+        // Stars
+        const starsEl = document.getElementById('stars');
+        for (let i = 0; i < 90; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            s.style.left = Math.random() * 100 + '%';
+            s.style.top = Math.random() * 100 + '%';
+            s.style.setProperty('--dur', (2.5 + Math.random() * 4) + 's');
+            s.style.setProperty('--delay', (Math.random() * 6) + 's');
+            if (Math.random() > 0.7) { s.style.width = '3px'; s.style.height = '3px'; }
+            starsEl.appendChild(s);
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 90);
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            if (overlay.classList.contains('open')) {
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+            } else {
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Subject modal
+        let currentProgram = '';
+        const labels = {
+            'ages-5-7': 'Level 1 — Ages 5–7',
+            'age-8': 'Level 2 — Age 8',
+            'age-9': 'Level 3 — Age 9',
+            'age-10': 'Level 4 — Age 10',
+            'ages-11-12': 'Middle School — Ages 11–12',
+            'age-14': 'High School — Age 14',
+            'ages-15-16': 'GED — Ages 15–16',
+            'ages-17-18': 'SAT — Ages 17–18'
+        };
+
+        function openSubjectModal(p) {
+            currentProgram = p;
+            document.getElementById('modalTitle').textContent = labels[p] || 'Choose a Subject';
+            const isSocialStudies = p === 'ages-15-16' || p === 'age-14';
+            const isSAT = p === 'ages-17-18';
+            document.getElementById('fourthSubjectTitle').textContent = isSocialStudies ? 'Social Studies' : 'Art & PE';
+            document.getElementById('fourthSubjectDesc').textContent = isSocialStudies ? 'History, civics, geography' : 'Creative arts, music, PE';
+            document.getElementById('fourthSubjectIconEl').className = isSocialStudies ? 'fas fa-globe' : 'fas fa-palette';
+            document.getElementById('fourthSubjectIconEl').style.color = isSocialStudies ? '#facc15' : '#f472b6';
+            document.getElementById('fourthSubjectIcon').style.background = isSocialStudies ? 'rgba(234,179,8,0.14)' : 'rgba(236,72,153,0.14)';
+            document.querySelector('.subject-btn[onclick="goToSubject(\'science\')"]').style.display = isSAT ? 'none' : '';
+            document.getElementById('fourthSubjectBtn').style.display = isSAT ? 'none' : '';
+            document.getElementById('subjectModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSubjectModal() {
+            document.getElementById('subjectModal').classList.remove('open');
+            document.body.style.overflow = '';
+            currentProgram = '';
+        }
+        function handleOverlayClick(e) {
+            if (e.target === document.getElementById('subjectModal')) closeSubjectModal();
+        }
+        function goToSubject(subject) {
+            if (!currentProgram) return;
+            window.location.href = currentProgram + '-' + subject + '.html';
+        }
+        function goToFourthSubject() {
+            if (!currentProgram) return;
+            const subject = (currentProgram === 'ages-15-16' || currentProgram === 'age-14') ? 'social-studies' : 'art';
+            window.location.href = currentProgram + '-' + subject + '.html';
+        }
+
+        // Checkout flow
+        let selectedPlan = '';
+        let selectedGrades = [];
+        function selectGrade(btn) {
+            var grade = btn.dataset.grade;
+            var idx = selectedGrades.indexOf(grade);
+            if (idx === -1) {
+                selectedGrades.push(grade);
+                btn.style.borderColor = 'rgba(245,158,11,0.6)';
+                btn.style.background = 'rgba(245,158,11,0.12)';
+            } else {
+                selectedGrades.splice(idx, 1);
+                btn.style.borderColor = 'var(--border-card)';
+                btn.style.background = 'var(--bg-subtle)';
+            }
+            // Update price dynamically
+            var unitPrice = billingPeriod === 'annual' ? 69 : 9;
+            var periodLabel = billingPeriod === 'annual' ? '/yr' : '/mo';
+            if (selectedPlan === 'single' && selectedGrades.length > 0) {
+                var total = selectedGrades.length * unitPrice;
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">' + selectedGrades.length + ' Grade' + (selectedGrades.length > 1 ? 's' : '') + '</div><div style="font-size:11px;color:var(--text-muted);">$' + unitPrice + periodLabel + ' each · All 4 subjects per grade</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + total + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            } else if (selectedPlan === 'single') {
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + unitPrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + unitPrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            }
+        }
+        function openCheckout(plan) {
+            selectedPlan = plan;
+            selectedGrades = [];
+            var isBundle = plan === 'bundle';
+            var periodLabel = billingPeriod === 'annual' ? '/yr' : '/mo';
+            var bundlePrice = billingPeriod === 'annual' ? 129 : 19;
+            var singlePrice = billingPeriod === 'annual' ? 69 : 9;
+            document.getElementById('checkoutTitle').textContent = isBundle ? 'Full K-12 Bundle' : 'Single Grade Access';
+            document.getElementById('gradeSelector').style.display = isBundle ? 'none' : 'block';
+            // Reset grade selection
+            document.querySelectorAll('.grade-opt').forEach(function(b) {
+                b.style.borderColor = 'var(--border-card)';
+                b.style.background = 'var(--bg-subtle)';
+            });
+            document.getElementById('checkoutSummary').innerHTML = isBundle
+                ? '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Full K-12 Bundle</div><div style="font-size:11px;color:var(--text-muted);">All 8 levels · All subjects · Billed ' + billingPeriod + '</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + bundlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>'
+                : '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + singlePrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + singlePrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+            document.getElementById('checkoutModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function handlePurchase() {
+            // Validate grade selection for single plan
+            if (selectedPlan === 'single' && selectedGrades.length === 0) {
+                alert('Please select at least one grade level.');
+                return;
+            }
+            // Update user plan
+            if (CuricaaAuth && CuricaaAuth.isLoggedIn()) {
+                // If buying additional grades on single plan, merge with existing
+                var existingUser = CuricaaAuth.getUser();
+                var existingGrades = (existingUser && existingUser.plan === 'single' && existingUser.grades) ? existingUser.grades : [];
+                var mergedGrades = existingGrades.slice();
+                for (var i = 0; i < selectedGrades.length; i++) {
+                    if (mergedGrades.indexOf(selectedGrades[i]) === -1) {
+                        mergedGrades.push(selectedGrades[i]);
+                    }
+                }
+                CuricaaAuth.updatePlan(selectedPlan === 'bundle' ? 'bundle' : 'single', selectedPlan === 'bundle' ? [] : mergedGrades);
+                updateAuthUI();
+            }
+            closeCheckout();
+            launchConfetti();
+            document.getElementById('successModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSuccess() {
+            document.getElementById('successModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // --- Billing Toggle ---
+        let billingPeriod = 'annual'; // default to annual
+
+        function toggleBilling() {
+            billingPeriod = billingPeriod === 'annual' ? 'monthly' : 'annual';
+            updateBillingUI();
+        }
+
+        function updateBillingUI() {
+            var dot = document.getElementById('billingDot');
+            var labelM = document.getElementById('toggleLabelMonthly');
+            var labelA = document.getElementById('toggleLabelAnnual');
+            var savingsTag = document.getElementById('annualSavingsTag');
+            var toggle = document.getElementById('billingToggle');
+
+            if (billingPeriod === 'annual') {
+                dot.style.left = '27px';
+                labelA.style.color = '#a5b4fc';
+                labelM.style.color = 'var(--text-muted)';
+                toggle.style.background = 'linear-gradient(135deg,#f59e0b,#f97316)';
+                savingsTag.style.visibility = 'visible';
+                savingsTag.style.opacity = '1';
+            } else {
+                dot.style.left = '3px';
+                labelM.style.color = '#a5b4fc';
+                labelA.style.color = 'var(--text-muted)';
+                toggle.style.background = 'var(--bg-card-hover)';
+                savingsTag.style.visibility = 'hidden';
+                savingsTag.style.opacity = '0';
+            }
+
+            // Animate price change
+            var priceEls = document.querySelectorAll('.price-amount');
+            priceEls.forEach(function(el) {
+                el.classList.remove('price-flip-out', 'price-flip-in');
+                // Force reflow to restart animation
+                void el.offsetWidth;
+                el.classList.add('price-flip-out');
+            });
+
+            setTimeout(function() {
+                priceEls.forEach(function(el) {
+                    var price = billingPeriod === 'annual' ? el.dataset.annual : el.dataset.monthly;
+                    el.textContent = '$' + price;
+                    el.classList.remove('price-flip-out');
+                    void el.offsetWidth;
+                    el.classList.add('price-flip-in');
+                });
+
+                // Animate period labels
+                document.querySelectorAll('.price-period').forEach(function(el) {
+                    el.textContent = billingPeriod === 'annual' ? '/year' : '/month';
+                    el.classList.remove('price-flip-in');
+                    void el.offsetWidth;
+                    el.classList.add('price-flip-in');
+                });
+
+                // Animate savings tags
+                document.querySelectorAll('.price-savings').forEach(function(el) {
+                    if (billingPeriod === 'annual') {
+                        el.style.display = '';
+                        el.classList.remove('savings-slide-in');
+                        void el.offsetWidth;
+                        el.classList.add('savings-slide-in');
+                    } else {
+                        el.style.display = 'none';
+                    }
+                });
+            }, 180);
+        }
+
+        // Init billing UI
+        updateBillingUI();
+
+        // Testimonial Carousel (seamless infinite loop)
+        (function() {
+            var track = document.getElementById('carouselTrack');
+            if (!track) return;
+            var originals = Array.from(track.querySelectorAll('.carousel-card'));
+            var total = originals.length;
+            if (total === 0) return;
+
+            // Clone ALL cards: [clones of all originals] [originals] [clones of all originals]
+            for (var i = 0; i < total; i++) {
+                var clAfter = originals[i].cloneNode(true);
+                clAfter.classList.add('carousel-clone');
+                track.appendChild(clAfter);
+            }
+            for (var j = total - 1; j >= 0; j--) {
+                var clBefore = originals[j].cloneNode(true);
+                clBefore.classList.add('carousel-clone');
+                track.insertBefore(clBefore, track.firstChild);
+            }
+
+            var allCards = track.querySelectorAll('.carousel-card');
+            var realIndex = 0; // 0-based index into originals
+            var isAnimating = false;
+            var cardWidth = 0;
+
+            function measure() {
+                // Measure distance between first two cards
+                if (allCards.length >= 2) {
+                    cardWidth = allCards[1].offsetLeft - allCards[0].offsetLeft;
+                }
+                if (!cardWidth || cardWidth < 50) {
+                    cardWidth = (allCards[0] && allCards[0].offsetWidth) ? allCards[0].offsetWidth + 16 : 320;
+                }
+            }
+
+            function getRealLeft(idx) {
+                // Position of real card at index idx (in the originals block)
+                // The originals start at position total * cardWidth
+                return (total + idx) * cardWidth;
+            }
+
+            function jumpInstant(idx) {
+                measure();
+                realIndex = ((idx % total) + total) % total;
+                track.scrollLeft = getRealLeft(realIndex);
+            }
+
+            function smoothScroll(targetLeft, onDone) {
+                isAnimating = true;
+                // Animate using requestAnimationFrame
+                var startLeft = track.scrollLeft;
+                var distance = targetLeft - startLeft;
+                var duration = 380; // ms
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var elapsed = timestamp - startTime;
+                    var progress = Math.min(elapsed / duration, 1);
+                    // Ease out cubic
+                    var ease = 1 - Math.pow(1 - progress, 3);
+                    track.scrollLeft = startLeft + distance * ease;
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        track.scrollLeft = targetLeft;
+                        isAnimating = false;
+                        if (onDone) onDone();
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
+            window.slideCarousel = function(dir) {
+                if (isAnimating) return;
+                measure();
+                var targetIdx = realIndex + dir;
+                var targetLeft = getRealLeft(targetIdx);
+                realIndex = targetIdx;
+                smoothScroll(targetLeft, function() {
+                    // Normalize back into the originals zone instantly
+                    var normalized = ((realIndex % total) + total) % total;
+                    if (normalized !== realIndex) {
+                        realIndex = normalized;
+                        track.scrollLeft = getRealLeft(normalized);
+                    }
+                });
+            };
+
+            // Touch/swipe support
+            var startX = 0;
+            var touchStartLeft = 0;
+            track.addEventListener('touchstart', function(e) {
+                if (isAnimating) return;
+                startX = e.touches[0].clientX;
+                touchStartLeft = track.scrollLeft;
+            }, { passive: true });
+            track.addEventListener('touchmove', function(e) {
+                var diff = startX - e.touches[0].clientX;
+                track.scrollLeft = touchStartLeft + diff;
+            }, { passive: true });
+            track.addEventListener('touchend', function(e) {
+                if (isAnimating) return;
+                var diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) {
+                    window.slideCarousel(diff > 0 ? 1 : -1);
+                } else {
+                    // Snap back to current position
+                    measure();
+                    smoothScroll(getRealLeft(realIndex));
+                }
+            }, { passive: true });
+
+            // Initialize
+            measure();
+            jumpInstant(0);
+
+            // Re-measure on resize
+            window.addEventListener('resize', function() {
+                measure();
+                jumpInstant(realIndex);
+            });
+        })();
+
+        // FAQ accordion
+        function toggleFaq(el) {
+            var wasOpen = el.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(function(item) {
+                item.classList.remove('open');
+            });
+            if (!wasOpen) el.classList.add('open');
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeSubjectModal();
+                closeCheckout();
+                closeSuccess();
+                closeLoginModal();
+                closeSignupModal();
+                closeSettings();
+            }
+        });
+    </script>
+</body>
+</html>

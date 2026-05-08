@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GED Science — Ages 15–16 | Curriculum Hub</title>
+<link rel="stylesheet" href="assets/fonts/inter.css">
+<link rel="stylesheet" href="assets/font-awesome.css">
+<script src="assets/tailwind.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--a1:#eab308;--a2:#f97316;--al:#fde047;}
+body{font-family:'Inter',sans-serif;background:#04040e;color:white;min-height:100vh;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(234,179,8,0.12),transparent 70%);top:-100px;right:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.09),transparent 70%);bottom:100px;left:-100px;}
+header{position:sticky;top:0;z-index:50;background:rgba(4,4,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 24px;}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.65);font-size:14px;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:white;}
+.back-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:14px;}
+.subject-badge{padding:5px 14px;border-radius:20px;background:rgba(234,179,8,0.12);border:1px solid rgba(234,179,8,0.25);color:var(--al);font-size:12px;font-weight:600;letter-spacing:0.04em;}
+.age-pill{padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,var(--a1),var(--a2));font-size:12px;font-weight:700;}
+main{max-width:1100px;margin:0 auto;padding:48px 24px;position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:8px;}
+h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;transition:background 0.2s,border-color 0.2s;}
+.skill-card:hover{background:rgba(255,255,255,0.055);}
+.sched-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.month-tab{padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:all 0.25s;font-family:'Inter',sans-serif;}
+.month-tab:hover{background:rgba(255,255,255,0.08);}
+.month-tab.active{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:white;box-shadow:0 0 18px rgba(234,179,8,0.35);}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;}
+.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s;}
+.week-header:hover{background:rgba(255,255,255,0.03);}
+.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+
+.week-detail{max-height:0;overflow:hidden;background:rgba(255,255,255,0.025);border-top:1px solid transparent;padding:0 16px;transform-origin:top;transform:translateY(-6px);opacity:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),padding 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s ease,transform 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease;}
+.week-detail.open{max-height:800px;padding:14px 16px;border-top-color:rgba(255,255,255,0.07);transform:translateY(0);opacity:1;}
+.week-check{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,0.09);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all 0.2s;font-size:10px;color:transparent;}
+.week-check:hover{border-color:var(--a1);background:rgba(168,85,247,0.1);}
+.week-check.done{border-color:var(--a1);background:linear-gradient(135deg,var(--a1),var(--a2));color:white;}
+.week-row.completed .week-title-text{text-decoration:line-through;opacity:0.55;}
+.progress-bar-wrap{height:4px;border-radius:4px;background:rgba(255,255,255,0.08);margin-top:10px;overflow:hidden;}
+.progress-bar-fill{height:100%;border-radius:4px;background:linear-gradient(135deg,var(--a1),var(--a2));transition:width 0.4s ease;}
+.mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.month-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.ged-banner{background:linear-gradient(135deg,rgba(234,179,8,0.1),rgba(249,115,22,0.08));border:1px solid rgba(234,179,8,0.2);border-radius:14px;padding:18px 22px;margin-bottom:32px;display:flex;align-items:center;gap:16px;}
+@media(max-width:768px){
+  .month-grid{grid-template-columns:1fr;}
+}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<header>
+  <div class="header-inner">
+    <a href="hub.html" class="back-btn">
+      <div class="back-icon"><i class="fas fa-arrow-left"></i></div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:white;">Level 7</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);">Ages 15–16</div>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="subject-badge"><i class="fas fa-flask" style="margin-right:5px;"></i>Science</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="age-pill">Ages 15–16</span>
+      
+    </div>
+  </div>
+</header>
+<main>
+  <div class="ged-banner">
+    <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(234,179,8,0.2),rgba(249,115,22,0.15));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-certificate" style="color:#fde047;font-size:18px;"></i></div>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#fde047;margin-bottom:3px;">GED Test — Science</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);">The GED Science test (90 min) covers Life Science (~40%), Physical Science (~40%), and Earth/Space Science (~20%). Questions emphasize reading graphs, interpreting experiments, and reasoning from evidence. Passing score: 145.</div>
+    </div>
+  </div>
+  <section style="text-align:center;margin-bottom:56px;">
+    <p class="section-label">GED Preparation · Ages 15–16</p>
+    <h2 class="page-title">Science Reasoning</h2>
+    <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:640px;margin:0 auto;line-height:1.75;">Develop the science reasoning skills tested on the GED: interpreting experiments, reading data displays, and applying life science, physical science, and Earth science concepts to real-world scenarios.</p>
+  </section>
+  <section style="margin-bottom:48px;">
+    <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-bottom:24px;"><p class="section-label">Sep – Jun Curriculum</p><h3 style="font-size:18px;font-weight:700;"><i class="fas fa-calendar-alt" style="color:var(--al);margin-right:10px;"></i>Monthly Science Themes</h3></div>
+    <div id="monthTabs" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+    <div id="monthContent" class="glass" style="padding:28px;min-height:300px;"></div>
+  </section>
+</main>
+
+<footer>
+  <a href="hub.html" style="color:var(--ct8);font-size:13px;text-decoration:none;">← Back to Curriculum Hub</a>
+  <p style="font-size:12px;color:var(--ct10);margin-top:6px;">Science · </p>
+</footer>
+
+<script>
+const curriculumData={
+'September':{icon:'fa-microscope',color:'',focus:'Scientific Practices & Data Literacy',skills:['Scientific method','Reading graphs','Experimental design','Interpreting data tables'],weeks:['GED Science format overview: passage-based questions, data interpretation, and reasoning','Reading and interpreting line graphs, bar graphs, and scatter plots in science contexts','Experimental design: identifying variables (IV, DV, controlled), hypothesis, and controls','Reading data tables: extracting trends, comparing values, and drawing conclusions'],project:'Analyze 5 science graphs/tables from GED practice tests; for each, write 3 observations and 2 conclusions in complete sentences',materials:['GED Science prep book','Graph interpretation worksheets','Pencil & lined paper','Ruler']},
+'October':{icon:'fa-dna',color:'',focus:'Life Science — Cell Biology & Genetics',skills:['Cell structure & function','DNA & protein synthesis','Heredity & Punnett squares','Natural selection'],weeks:['Cell theory, prokaryotic vs eukaryotic cells, organelle functions — GED focus areas','DNA structure, replication, and how genes code for proteins (transcription/translation overview)','Mendelian genetics: dominant/recessive, Punnett squares, probability of traits','Natural selection and evolution: adaptation, fitness, speciation, fossil evidence'],project:'Answer a 20-question GED-style Life Science passage set covering cells, DNA, and genetics; analyze errors',materials:['GED science passages (life science)','Biology reference sheet','Khan Academy Biology videos','Notebook']},
+'November':{icon:'fa-seedling',color:'',focus:'Life Science — Ecosystems & Human Body',skills:['Food webs & energy flow','Ecosystems & biomes','Body systems','Homeostasis'],weeks:['Ecosystems: producers, consumers, decomposers, food webs, energy pyramids, and trophic levels','Biomes and biodiversity: how climate determines organism types; human impact on ecosystems','Human body systems: digestive, respiratory, circulatory, nervous — structure and function','Homeostasis: how the body maintains internal balance (temperature, blood sugar, pH)'],project:'Draw and label a complete food web for a local ecosystem; calculate energy loss at each trophic level using the 10% rule',materials:['Nature reference book or internet','Blank food web template','Colored pencils','GED practice questions']},
+'December':{icon:'fa-atom',color:'',focus:'Physical Science — Matter & Chemistry',skills:['States of matter','Periodic table basics','Chemical vs physical changes','Acids & bases'],weeks:['States of matter: solid, liquid, gas, plasma; phase transitions and molecular motion','Periodic table: element symbols, atomic number, groups, periods, metal/nonmetal/metalloid','Physical vs chemical changes: evidence of chemical reactions (color change, gas, precipitate)','Acids and bases: pH scale, neutralization reactions, everyday examples'],project:'Conduct 3 home chemistry experiments (cabbage pH indicator, baking soda + vinegar, salt water density); write a lab report for each',materials:['Red cabbage','Baking soda & vinegar','Salt, water, eggs','Lab report template']},
+'January':{icon:'fa-bolt',color:'',focus:'Physical Science — Forces, Motion & Energy',skills:['Newton\'s three laws','Kinetic & potential energy','Energy transformation','Waves: light & sound'],weeks:['Newton\'s three laws of motion with calculations (F = ma) and real-world GED applications','Kinetic energy (KE = ½mv²) and potential energy (PE = mgh) — calculating and comparing','Energy transformation: examples from daily life; Law of Conservation of Energy','Waves: properties (wavelength, frequency, amplitude), electromagnetic spectrum, sound waves'],project:'Complete a 25-question GED Physical Science practice set; for each error, write the correct concept and a real-world example',materials:['GED science practice questions','Physics formula reference card','Calculator','Notebook']},
+'February':{icon:'fa-globe',color:'',focus:'Earth Science — Geology & Plate Tectonics',skills:['Rock cycle','Plate boundaries','Earthquakes & volcanoes','Geologic time'],weeks:['Rock types (igneous, sedimentary, metamorphic) and the rock cycle — formation and change','Plate tectonics: continental drift, plate boundaries (convergent, divergent, transform)','Earthquakes: seismic waves, measuring magnitude, epicenter; volcanoes: formation and types','Geologic time scale: eons, eras, periods; fossil record as evidence of life history'],project:'Read a GED-style geology passage with graphs and answer all questions; then create a visual rock cycle diagram with labels',materials:['GED Earth science passages','Rock cycle template','Colored pencils','Internet for geologic time reference']},
+'March':{icon:'fa-cloud-sun',color:'',focus:'Earth Science — Weather, Climate & Space',skills:['Atmosphere layers','Weather vs climate','Water cycle','Solar system & universe'],weeks:['Earth\'s atmosphere: composition, layers (troposphere to exosphere), greenhouse effect','Weather patterns: fronts, pressure systems, meteorology tools, severe weather formation','The water cycle: evaporation, condensation, precipitation, transpiration, and runoff','Solar system, moon phases, seasons, tides, and the expanding universe overview'],project:'Track and record local weather data for 2 weeks; create a weather report with graphs comparing your data to climate averages',materials:['Thermometer','Rain gauge','Weather journal','Graph paper','Local climate data']},
+'April':{icon:'fa-vials',color:'',focus:'Science Reasoning — Passage Analysis',skills:['Reading science passages','Comparing experiments','Making predictions','Evaluating evidence'],weeks:['Reading science passages efficiently: identify the hypothesis, experiment, results, and conclusion','Comparing two experiments on the same topic: what\'s the same, what differs, what can be concluded','Making predictions from data: extending trends, applying findings to new scenarios','Evaluating scientific claims: is the evidence valid? Are there confounding variables?'],project:'Analyze 3 paired GED science passages comparing two experiments; write a 1-page summary of how the evidence supports or challenges each conclusion',materials:['GED paired passages (printable)','Evidence evaluation checklist','Pencil & paper','GED science prep book']},
+'May':{icon:'fa-clock',color:'',focus:'Timed Practice & Test Strategy',skills:['90-minute time management','Skimming passages','Diagram-first strategy','Eliminating wrong answers'],weeks:['GED Science time management: 90 min ÷ ~35 questions = ~2.5 min per question','Passage strategy: read the questions first, then skim the passage for relevant information','Diagram and graph-first strategy: analyze visuals before reading surrounding text','Process of elimination: identifying clearly wrong answers to improve guessing accuracy'],project:'Complete a full 90-minute timed GED Science practice test; record time per question and identify which question types take longest',materials:['Full-length GED Science practice test','Timer','Answer key & scoring guide','Error log']},
+'June':{icon:'fa-trophy',color:'',focus:'GED Science Practice Tests & Review',skills:['Full practice exams','Content area review','Error analysis','Test readiness'],weeks:['Full GED Science practice test #2 (90 min) under real conditions; score by content area','Error analysis: categorize each missed question into Life, Physical, or Earth science','Targeted review session for the weakest content area with additional practice questions','GED Ready official Science practice test (MyGED.com) — target score 145+'],project:'Complete the official GED Ready Science exam and write a 1-page readiness summary: strengths, 2 areas to review, and test-day strategy',materials:['GED Ready app/MyGED.com access','Error log notebook','Content review notes','GED science prep book']}
+};
+
+let completed=JSON.parse(localStorage.getItem('sci-1516-done')||'{}');
+function saveProgress(){localStorage.setItem('sci-1516-month',document.querySelector('.month-tab.active')?.innerText||'September');localStorage.setItem('sci-1516-done',JSON.stringify(completed));}
+
+function initCurriculum(){
+  const tabsContainer=document.getElementById('monthTabs');
+  const contentContainer=document.getElementById('monthContent');
+  let firstMonth=Object.keys(curriculumData)[0];
+  let currentMonth=localStorage.getItem('sci-1516-month')||firstMonth;
+
+  function renderTabs(){
+    tabsContainer.innerHTML='';
+    Object.keys(curriculumData).forEach(month=>{
+      const btn=document.createElement('button');
+      btn.className='month-tab '+(month===currentMonth?'active':'');
+      btn.innerText=month;
+      btn.onclick=()=> { currentMonth=month; saveProgress(); renderTabs(); renderContent(); };
+      tabsContainer.appendChild(btn);
+    });
+  }
+
+  function renderContent(){
+    const data=curriculumData[currentMonth];
+    let skillsHtml = data.skills.map(s=> '<span style="display:inline-block;padding:4px 10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;font-size:12px;margin:0 6px 6px 0;color:var(--ct2);">'+s+'</span>').join('');
+
+    let weeksHtml = data.weeks.map((w,i)=>{
+      const wid=currentMonth+'-'+i;
+      const isDone=!!completed[wid];
+      const wt = typeof w === 'string' ? w : w.title;
+      const wo = typeof w === 'string' ? '' : w.objective;
+      const ww = typeof w === 'string' ? '' : w.warmup;
+      const wm = typeof w === 'string' ? '' : w.mainActivity;
+      const wg = typeof w === 'string' ? '' : w.game;
+      const wh = typeof w === 'string' ? '' : w.homeConnection;
+      const wa = typeof w === 'string' ? '' : w.assessment;
+      const wd = typeof w === 'string' ? '' : w.differentiation;
+      const hasDetail = ww || wm;
+      return '<div class="week-row'+(isDone?' completed':'')+'" id="week-'+i+'"><div class="week-header" onclick="toggleWeek('+i+')"><button class="week-check'+(isDone?' done':'')+'" onclick="toggleCheck(event, '+i+',\''+wid+'\')">'+(isDone?'<i class="fas fa-check"><\/i>':'')+'</button><div class="week-num">'+(i+1)+'</div><div style="flex-grow:1;"><h4 style="font-weight:700;font-size:15px;color:var(--ct);margin-bottom:2px;" class="week-title-text">'+wt+'</h4>'+(wo?'<p style="font-size:13px;color:var(--ct6);line-height:1.4;">'+wo+'</p>':'')+'</div><i class="fas fa-chevron-down" style="color:var(--ct7);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="icon-'+i+'"></i></div>'+(hasDetail?'<div class="week-detail" id="detail-'+i+'"><div style="padding-top:8px;padding-bottom:12px;border-top:1px solid rgba(255,255,255,0.04);margin-top:4px;">'+(ww?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-fire"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Warm-up:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+ww+'<\/span><\/div><\/div>':'')+(wm?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-book-open"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Main Activity:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wm+'<\/span><\/div><\/div>':'')+(wg?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-gamepad"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Game/Play:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wg+'<\/span><\/div><\/div>':'')+(wh?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-home"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Home Connection:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wh+'<\/span><\/div><\/div>':'')+(wa?'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-check-circle"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Assessment:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wa+'<\/span><\/div><\/div>':'')+(wd?'<div style="display:flex;gap:12px;margin-bottom:4px;"><div style="width:24px;color:var(--a1);text-align:center;margin-top:2px;"><i class="fas fa-layer-group"><\/i><\/div><div><strong style="font-size:13px;color:var(--ct2);">Differentiation:<\/strong> <span style="font-size:13px;color:var(--ct4);">'+wd+'<\/span><\/div><\/div>':'')+'<\/div><\/div>':'')+'<\/div>';
+    }).join('');
+
+    let materialsHtml = data.materials.map(m=> '<div class="mat-item"><i class="fas fa-circle" style="font-size:5px;color:var(--a1);"><\/i><span style="font-size:13px;color:var(--ct4);">'+m+'<\/span><\/div>').join('');
+
+    contentContainer.innerHTML='<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;"><div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 16px rgba(234,179,8,0.25);"><i class="fas '+data.icon+'"><\/i><\/div><div><h3 style="font-size:20px;font-weight:800;color:var(--ct);">'+currentMonth+'<\/h3><p style="font-size:14px;color:var(--ct5);font-weight:500;">'+data.focus+'<\/p><\/div><\/div><div class="month-grid"><div><div style="margin-bottom:20px;"><p class="section-label" style="margin-bottom:10px;">Monthly Goals<\/p><div>'+skillsHtml+'<\/div><\/div><div style="display:flex;flex-direction:column;gap:12px;">'+weeksHtml+'<\/div><\/div><div><div class="sched-card" style="margin-bottom:16px;"><p class="section-label"><i class="fas fa-star" style="color:var(--a1);margin-right:6px;"><\/i>Monthly Project<\/p><p style="font-size:14px;color:var(--ct3);line-height:1.6;">'+data.project+'<\/p><\/div><div class="sched-card"><p class="section-label"><i class="fas fa-box-open" style="color:var(--a1);margin-right:6px;"><\/i>Materials Needed<\/p><div style="margin-top:12px;">'+materialsHtml+'<\/div><\/div><div class="sched-card" style="margin-top:16px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><p class="section-label" style="margin-bottom:0;">Year Progress<\/p><span style="font-size:12px;font-weight:700;color:var(--a1);" id="progress-text">0 of 0 weeks completed<\/span><\/div><div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%;"><\/div><\/div><\/div><div style="display:flex;gap:10px;margin-top:16px;"><button onclick="prevMonth()" style="flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.03);color:var(--ct);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background=\'rgba(255,255,255,0.06)\'" onmouseout="this.style.background=\'rgba(255,255,255,0.03)\'"><i class="fas fa-chevron-left" style="margin-right:6px;font-size:11px;"><\/i> Prev Month<\/button><button onclick="nextMonth()" style="flex:1;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--a1),var(--a2));color:white;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(234,179,8,0.2);transition:all 0.2s;" onmouseover="this.style.opacity=\'0.9\'" onmouseout="this.style.opacity=\'1\'">Next Month <i class="fas fa-chevron-right" style="margin-left:6px;font-size:11px;"><\/i><\/button><\/div><\/div><\/div>';
+    updateProgress();
+  }
+
+  renderTabs();
+  renderContent();
+}
+
+window.toggleWeek = function(index) {
+  const detail = document.getElementById('detail-'+index);
+  const icon = document.getElementById('icon-'+index);
+  if(detail.classList.contains('open')) { detail.classList.remove('open'); icon.style.transform = 'rotate(0deg)'; }
+  else { detail.classList.add('open'); icon.style.transform = 'rotate(180deg)'; }
+}
+
+window.toggleCheck = function(event, index, wid) {
+  event.stopPropagation();
+  const btn = event.currentTarget;
+  const row = document.getElementById('week-'+index);
+  completed[wid]=!completed[wid];
+  const isDone=completed[wid];
+  btn.classList.toggle('done',isDone);
+  btn.innerHTML=isDone?'<i class="fas fa-check"><\/i>':'';
+  row.classList.toggle('completed',isDone);
+  saveProgress();
+  updateProgress();
+}
+
+window.updateProgress = function() {
+  const months = Object.keys(curriculumData);
+  const total = months.reduce((s,m)=>s+curriculumData[m].weeks.length,0);
+  const done = Object.values(completed).filter(Boolean).length;
+  const pct = Math.round((done/total)*100);
+  const fill = document.getElementById('progress-fill');
+  const text = document.getElementById('progress-text');
+  if(fill) fill.style.width = pct + '%';
+  if(text) text.innerText = done + ' of ' + total + ' weeks completed';
+}
+
+window.prevMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx > 0) document.querySelectorAll('.month-tab')[currIdx-1].click();
+}
+
+window.nextMonth = function() {
+  const months = Object.keys(curriculumData);
+  const currIdx = months.indexOf(document.querySelector('.month-tab.active').innerText);
+  if(currIdx < months.length-1) document.querySelectorAll('.month-tab')[currIdx+1].click();
+}
+
+document.addEventListener('DOMContentLoaded', () => { initCurriculum(); });
+</script>
+<script src="paywall.js"></script>
+</body>
+</html>
