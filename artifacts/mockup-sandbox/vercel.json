@@ -1,5 +1,5 @@
 {
-  "buildCommand": "vite build",
+  "buildCommand": "vite build && cp -r public-curriculum-v2/* dist/",
   "outputDirectory": "dist",
   "installCommand": "pnpm install",
   "cleanUrls": true,
