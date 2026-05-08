@@ -1,7 +1,7 @@
 {
   "buildCommand": "vite build && cp -r public-curriculum-v2/* dist/",
   "outputDirectory": "dist",
-  "installCommand": "pnpm install",
+  "installCommand": "npm install",
   "cleanUrls": true,
   "redirects": [
     { "source": "/", "destination": "/hub.html", "permanent": false }
