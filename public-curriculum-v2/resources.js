@@ -10,133 +10,133 @@
     'ages-5-7-math': {
       'September': [
         {title:'Khan Academy – Counting to 10',url:'https://www.khanacademy.org/math/cc-kindergarten-math/cc-kindergarten-counting'},
-        {title:'Khan Academy – Numbers 6-10',url:'https://www.khanacademy.org/math/cc-kindergarten-math/cc-kindergarten-counting/topic/k-counting-objects'},
+        {title:'Khan Academy – Numbers 6-10',url:'https://www.khanacademy.org/math/cc-kindergarten-math'},
         {title:'Starfall – Zero to Ten',url:'https://www.starfall.com/h/numbers/'},
-        {title:'ABCya – Connect the Dots',url:'https://www.abcya.com/games/connect_the_dots'}
+        {title:'ABCya – Connect the Dots',url:'https://www.abcya.com/games/category/math'}
       ],
       'October': [
-        {title:'Khan Academy – Teen Numbers',url:'https://www.khanacademy.org/math/cc-kindergarten-math/cc-kindergarten-place-value'},
+        {title:'Khan Academy – Teen Numbers',url:'https://www.khanacademy.org/math/cc-kindergarten-math'},
         {title:'Math Playground – Number Bonds',url:'https://www.mathplayground.com/number_bonds_II.html'},
-        {title:'ABCya – 100 Number Chart',url:'https://www.abcya.com/games/number_grid'},
+        {title:'ABCya – 100 Number Chart',url:'https://www.abcya.com/games/100_number_grid'},
         {title:'Toy Theater – Counting On',url:'https://www.toytheater.com/number-chart/'}
       ],
       'November': [
         {title:'Khan Academy – Addition to 5',url:'https://www.khanacademy.org/math/cc-kindergarten-math/cc-kindergarten-add-subtract'},
         {title:'Math Playground – Addition Blocks',url:'https://www.mathplayground.com/addition_blocks.html'},
-        {title:'Starfall – Addition',url:'https://www.starfall.com/h/add-subtract/'},
-        {title:'ABCya – Marble Math Addition',url:'https://www.abcya.com/games/marble_math_addition'}
+        {title:'Starfall – Addition',url:'https://www.starfall.com/h/numbers/'},
+        {title:'ABCya – Marble Math Addition',url:'https://www.abcya.com/games/addition'}
       ],
       'December': [
-        {title:'Khan Academy – Subtraction to 5',url:'https://www.khanacademy.org/math/cc-kindergarten-math/cc-kindergarten-add-subtract/topic/k-sub-basic'},
-        {title:'Math Playground – Subtraction Blocks',url:'https://www.mathplayground.com/subtraction_blocks.html'},
-        {title:'ABCya – Subtraction Game',url:'https://www.abcya.com/games/sum_subtraction'},
-        {title:'Toy Theater – Fact Families',url:'https://www.toytheater.com/fact-families/'}
+        {title:'Khan Academy – Subtraction to 5',url:'https://www.khanacademy.org/math/cc-kindergarten-math'},
+        {title:'Math Playground – Subtraction Blocks',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Subtraction Game',url:'https://www.abcya.com/games/category/math'},
+        {title:'Toy Theater – Fact Families',url:'https://www.toytheater.com/'}
       ],
       'January': [
         {title:'Khan Academy – Shapes',url:'https://www.khanacademy.org/math/cc-kindergarten-math/cc-kindergarten-geometry'},
-        {title:'ABCya – Shape Match',url:'https://www.abcya.com/games/shape_match'},
+        {title:'ABCya – Shape Match',url:'https://www.abcya.com/games/category/math'},
         {title:'Math is Fun – 3D Shapes',url:'https://www.mathsisfun.com/geometry/solid-geometry.html'},
-        {title:'Toy Theater – Position Words',url:'https://www.toytheater.com/position/'}
+        {title:'Toy Theater – Position Words',url:'https://www.toytheater.com/'}
       ],
       'February': [
-        {title:'Khan Academy – Measurement',url:'https://www.khanacademy.org/math/cc-kindergarten-math/cc-kindergarten-measurement'},
-        {title:'ABCya – Fuzz Bugs Graphing',url:'https://www.abcya.com/games/fuzz_bugs_graphing'},
-        {title:'Math Playground – Balance Scales',url:'https://www.mathplayground.com/balance_scales.html'},
-        {title:'Toy Theater – Sorting',url:'https://www.toytheater.com/sort/'}
+        {title:'Khan Academy – Measurement',url:'https://www.khanacademy.org/math/cc-kindergarten-math'},
+        {title:'ABCya – Fuzz Bugs Graphing',url:'https://www.abcya.com/games/category/math'},
+        {title:'Math Playground – Balance Scales',url:'https://www.mathplayground.com/'},
+        {title:'Toy Theater – Sorting',url:'https://www.toytheater.com/'}
       ],
       'March': [
         {title:'Khan Academy – Counting to 100',url:'https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-place-value'},
-        {title:'ABCya – 100 Number Grid',url:'https://www.abcya.com/games/number_grid'},
+        {title:'ABCya – 100 Number Grid',url:'https://www.abcya.com/games/100_number_grid'},
         {title:'Math is Fun – Skip Counting',url:'https://www.mathsisfun.com/numbers/skip-counting.html'},
-        {title:'Toy Theater – Comparing Numbers',url:'https://www.toytheater.com/comparing-numbers/'}
+        {title:'Toy Theater – Comparing Numbers',url:'https://www.toytheater.com/'}
       ],
       'April': [
         {title:'Khan Academy – Addition to 10',url:'https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-add-subtract'},
-        {title:'Math Playground – Addition to 10',url:'https://www.mathplayground.com/addition_snippets.html'},
-        {title:'ABCya – Math Facts Basketball',url:'https://www.abcya.com/games/math_basketball'},
-        {title:'Toy Theater – Word Problems',url:'https://www.toytheater.com/word-problems/'}
+        {title:'Math Playground – Addition to 10',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Math Facts Basketball',url:'https://www.abcya.com/games/category/math'},
+        {title:'Toy Theater – Word Problems',url:'https://www.toytheater.com/'}
       ],
       'May': [
         {title:'Khan Academy – Place Value',url:'https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-place-value'},
-        {title:'Math Playground – Base Ten Blocks',url:'https://www.mathplayground.com/base_ten.html'},
-        {title:'ABCya – Base Ten Fun',url:'https://www.abcya.com/games/base_ten_fun'},
+        {title:'Math Playground – Base Ten Blocks',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Base Ten Fun',url:'https://www.abcya.com/games/category/math'},
         {title:'Toy Theater – Place Value Cards',url:'https://www.toytheater.com/place-value-cards/'}
       ],
       'June': [
         {title:'Khan Academy – Money & Time',url:'https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-time'},
-        {title:'ABCya – Learn to Tell Time',url:'https://www.abcya.com/games/learning_coins'},
+        {title:'ABCya – Learn to Tell Time',url:'https://www.abcya.com/games/category/math'},
         {title:'Math Playground – Geometry Review',url:'https://www.mathplayground.com/index_geometry.html'},
-        {title:'Toy Theater – Math Review',url:'https://www.toytheater.com/math/'}
+        {title:'Toy Theater – Math Review',url:'https://www.toytheater.com/'}
       ]
     },
     'ages-5-7-english': {
       'September': [
         {title:'Starfall – ABCs',url:'https://www.starfall.com/h/abcs/'},
-        {title:'ABCya – Alphabet Match',url:'https://www.abcya.com/games/alphabet_match'},
+        {title:'ABCya – Alphabet Match',url:'https://www.abcya.com/games/category/reading'},
         {title:'Starfall – Letter Sounds A-M',url:'https://www.starfall.com/h/abcs/'},
-        {title:'ABCya – Alphabet Bingo',url:'https://www.abcya.com/games/alphabet_bingo'}
+        {title:'ABCya – Alphabet Bingo',url:'https://www.abcya.com/games/category/reading'}
       ],
       'October': [
         {title:'Starfall – Letter Sounds N-Z',url:'https://www.starfall.com/h/abcs/'},
-        {title:'ABCya – Rhyming Words',url:'https://www.abcya.com/games/rhyming_words'},
+        {title:'ABCya – Rhyming Words',url:'https://www.abcya.com/games/category/reading'},
         {title:'Starfall – Complete the Alphabet',url:'https://www.starfall.com/h/abcs/'},
-        {title:'ABCya – Syllable Counting',url:'https://www.abcya.com/games/syllables'}
+        {title:'ABCya – Syllable Counting',url:'https://www.abcya.com/games/category/reading'}
       ],
       'November': [
         {title:'Starfall – Word Families',url:'https://www.starfall.com/h/word-machines/'},
-        {title:'ABCya – CVC Word Match',url:'https://www.abcya.com/games/contraction_action'},
+        {title:'ABCya – CVC Word Match',url:'https://www.abcya.com/games/category/reading'},
         {title:'Reading Bear – Short Vowels',url:'https://www.readingbear.org/'},
         {title:'Starfall – Short E Words',url:'https://www.starfall.com/h/word-machines/'}
       ],
       'December': [
-        {title:'ABCya – Sight Word Bingo',url:'https://www.abcya.com/games/sight_word_bingo'},
-        {title:'Starfall – Sentences',url:'https://www.starfall.com/h/its-fun-to-read/'},
-        {title:'Starfall – Punctuation',url:'https://www.starfall.com/h/its-fun-to-read/'},
-        {title:'ABCya – Sight Word Match',url:'https://www.abcya.com/games/spelling_practice'}
+        {title:'ABCya – Sight Word Bingo',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Starfall – Sentences',url:'https://www.starfall.com/h/word-machines/'},
+        {title:'Starfall – Punctuation',url:'https://www.starfall.com/h/word-machines/'},
+        {title:'ABCya – Sight Word Match',url:'https://www.abcya.com/games/category/reading'}
       ],
       'January': [
-        {title:'Starfall – Digraphs',url:'https://www.starfall.com/h/phonics/'},
-        {title:'ABCya – Consonant Blends',url:'https://www.abcya.com/games/consonant_blends'},
+        {title:'Starfall – Digraphs',url:'https://www.starfall.com/h/abcs/'},
+        {title:'ABCya – Consonant Blends',url:'https://www.abcya.com/games/category/reading'},
         {title:'Reading Bear – Blends',url:'https://www.readingbear.org/'},
-        {title:'Starfall – L and R Blends',url:'https://www.starfall.com/h/phonics/'}
+        {title:'Starfall – L and R Blends',url:'https://www.starfall.com/h/abcs/'}
       ],
       'February': [
-        {title:'Starfall – Magic E',url:'https://www.starfall.com/h/phonics/'},
-        {title:'ABCya – Long Vowels',url:'https://www.abcya.com/games/long_vowels'},
+        {title:'Starfall – Magic E',url:'https://www.starfall.com/h/abcs/'},
+        {title:'ABCya – Long Vowels',url:'https://www.abcya.com/games/category/reading'},
         {title:'Reading Bear – Silent E',url:'https://www.readingbear.org/'},
-        {title:'Starfall – Soft C and G',url:'https://www.starfall.com/h/phonics/'}
+        {title:'Starfall – Soft C and G',url:'https://www.starfall.com/h/abcs/'}
       ],
       'March': [
-        {title:'ABCya – Story Maker',url:'https://www.abcya.com/games/story_maker'},
+        {title:'ABCya – Story Maker',url:'https://www.abcya.com/games/category/reading'},
         {title:'Storyline Online – Read Alouds',url:'https://www.storylineonline.net/'},
-        {title:'ABCya – How To Writing',url:'https://www.abcya.com/games/word_clouds'},
+        {title:'ABCya – How To Writing',url:'https://www.abcya.com/games/category/reading'},
         {title:'Storyline Online – Opinion Books',url:'https://www.storylineonline.net/'}
       ],
       'April': [
-        {title:'Starfall – Vowel Teams',url:'https://www.starfall.com/h/phonics/'},
-        {title:'ABCya – Vowel Team Practice',url:'https://www.abcya.com/games/spelling_practice'},
+        {title:'Starfall – Vowel Teams',url:'https://www.starfall.com/h/abcs/'},
+        {title:'ABCya – Vowel Team Practice',url:'https://www.abcya.com/games/category/reading'},
         {title:'Reading Bear – Long O & I',url:'https://www.readingbear.org/'},
-        {title:'Starfall – Bossy R',url:'https://www.starfall.com/h/phonics/'}
+        {title:'Starfall – Bossy R',url:'https://www.starfall.com/h/abcs/'}
       ],
       'May': [
         {title:'Storyline Online – Read Alouds',url:'https://www.storylineonline.net/'},
-        {title:'ABCya – Story Retelling',url:'https://www.abcya.com/games/story_maker'},
-        {title:'Starfall – Reading Practice',url:'https://www.starfall.com/h/its-fun-to-read/'},
+        {title:'ABCya – Story Retelling',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Starfall – Reading Practice',url:'https://www.starfall.com/h/word-machines/'},
         {title:'Storyline Online – Chapter Books',url:'https://www.storylineonline.net/'}
       ],
       'June': [
-        {title:'ABCya – Word Games',url:'https://www.abcya.com/games/spelling_practice'},
+        {title:'ABCya – Word Games',url:'https://www.abcya.com/games/category/reading'},
         {title:'Storyline Online – Summer Reading',url:'https://www.storylineonline.net/'},
-        {title:'Starfall – Nonfiction Reading',url:'https://www.starfall.com/h/its-fun-to-read/'},
-        {title:'ABCya – Summer Reading Bingo',url:'https://www.abcya.com/games/story_maker'}
+        {title:'Starfall – Nonfiction Reading',url:'https://www.starfall.com/h/word-machines/'},
+        {title:'ABCya – Summer Reading Bingo',url:'https://www.abcya.com/games/category/reading'}
       ]
     },
     'ages-5-7-science': {
       'September': [
-        {title:'National Geographic Kids – Plants',url:'https://kids.nationalgeographic.com/nature/plants'},
+        {title:'National Geographic Kids – Plants',url:'https://kids.nationalgeographic.com/science'},
         {title:'Mystery Science – Plant Needs',url:'https://mysteryscience.com/'},
         {title:'Science Buddies – Color Changing Flowers',url:'https://www.sciencebuddies.org/stem-activities/color-changing-flowers'},
-        {title:'National Geographic Kids – Leaves',url:'https://kids.nationalgeographic.com/nature/plants'}
+        {title:'National Geographic Kids – Leaves',url:'https://kids.nationalgeographic.com/science'}
       ],
       'October': [
         {title:'National Geographic Kids – Animals',url:'https://kids.nationalgeographic.com/animals'},
@@ -176,7 +176,7 @@
       ],
       'April': [
         {title:'Mystery Science – Life Cycles',url:'https://mysteryscience.com/'},
-        {title:'National Geographic Kids – Butterflies',url:'https://kids.nationalgeographic.com/animals/insects'},
+        {title:'National Geographic Kids – Butterflies',url:'https://kids.nationalgeographic.com/animals/invertebrates'},
         {title:'National Geographic Kids – Frogs',url:'https://kids.nationalgeographic.com/animals/amphibians'},
         {title:'Science Buddies – Plant Life Cycle',url:'https://www.sciencebuddies.org/'}
       ],
@@ -198,22 +198,22 @@
         {title:'Crayola – Color Mixing',url:'https://www.crayola.com/'},
         {title:'Tate Kids – Line and Shape',url:'https://www.tate.org.uk/kids'},
         {title:'Crayola – Warm & Cool Colors',url:'https://www.crayola.com/'},
-        {title:'Tate Kids – Tape Art',url:'https://www.tate.org.uk/kids/make/paint-draw/mask-tape-art'}
+        {title:'Tate Kids – Tape Art',url:'https://www.tate.org.uk/kids/make/paint-draw'}
       ],
       'October': [
-        {title:'Tate Kids – Leaf Art',url:'https://www.tate.org.uk/kids/make/paint-draw/leaf-art'},
-        {title:'The Artful Parent – Nature Mandalas',url:'https://artfulparent.com/nature-mandala-activities-for-kids/'},
+        {title:'Tate Kids – Leaf Art',url:'https://www.tate.org.uk/kids/make/paint-draw'},
+        {title:'The Artful Parent – Nature Mandalas',url:'https://artfulparent.com/'},
         {title:'Deep Space Sparkle – Pumpkin Art',url:'https://www.deepspacesparkle.com/'},
-        {title:'Tate Kids – Shadow Art',url:'https://www.tate.org.uk/kids/make/paint-draw/shadow-art'}
+        {title:'Tate Kids – Shadow Art',url:'https://www.tate.org.uk/kids/make/paint-draw'}
       ],
       'November': [
         {title:'Deep Space Sparkle – Self Portraits',url:'https://www.deepspacesparkle.com/'},
-        {title:'Tate Kids – Drawing People',url:'https://www.tate.org.uk/kids/make/paint-draw/how-to-draw-people'},
+        {title:'Tate Kids – Drawing People',url:'https://www.tate.org.uk/kids/make/paint-draw'},
         {title:'The Artful Parent – Family Portraits',url:'https://artfulparent.com/'},
         {title:'Tate Kids – Monster Drawing',url:'https://www.tate.org.uk/kids/make/paint-draw'}
       ],
       'December': [
-        {title:'Tate Kids – Paper Snowflakes',url:'https://www.tate.org.uk/kids/make/cut-paste/snowflake-cards'},
+        {title:'Tate Kids – Paper Snowflakes',url:'https://www.tate.org.uk/kids/make/cut-paste'},
         {title:'Deep Space Sparkle – Winter Dioramas',url:'https://www.deepspacesparkle.com/'},
         {title:'The Artful Parent – Homemade Instruments',url:'https://artfulparent.com/'},
         {title:'Tate Kids – Ribbon Dance',url:'https://www.tate.org.uk/kids/make'}
@@ -221,13 +221,13 @@
       'January': [
         {title:'Deep Space Sparkle – Clay Projects',url:'https://www.deepspacesparkle.com/'},
         {title:'The Artful Parent – Toothpick Structures',url:'https://artfulparent.com/'},
-        {title:'Tate Kids – Recycled Art',url:'https://www.tate.org.uk/kids/make/cut-paste/recycled-art'},
+        {title:'Tate Kids – Recycled Art',url:'https://www.tate.org.uk/kids/make/cut-paste'},
         {title:'Deep Space Sparkle – Paper Sculpture',url:'https://www.deepspacesparkle.com/'}
       ],
       'February': [
         {title:'Deep Space Sparkle – Monet Water Lilies',url:'https://www.deepspacesparkle.com/'},
-        {title:'Tate Kids – Matisse Cut-Outs',url:'https://www.tate.org.uk/kids/explore/who-is/henri-matisse'},
-        {title:'Tate Kids – Kandinsky Circles',url:'https://www.tate.org.uk/kids/explore/who-is/wassily-kandinsky'},
+        {title:'Tate Kids – Matisse Cut-Outs',url:'https://www.tate.org.uk/kids/artists/who-henri-matisse'},
+        {title:'Tate Kids – Kandinsky Circles',url:'https://www.tate.org.uk/kids/artists'},
         {title:'The Artful Parent – Pointillism',url:'https://artfulparent.com/'}
       ],
       'March': [
@@ -257,126 +257,126 @@
     },
     'age-9-math': {
       'September': [
-        {title:'Khan Academy – Place Value to Millions',url:'https://www.khanacademy.org/math/cc-4th-grade-math/cc-4th-place-value'},
-        {title:'Math Playground – Large Numbers',url:'https://www.mathplayground.com/place_value.html'},
-        {title:'ABCya – Comparing Numbers',url:'https://www.abcya.com/games/comparing_number_values'},
+        {title:'Khan Academy – Place Value to Millions',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
+        {title:'Math Playground – Large Numbers',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Comparing Numbers',url:'https://www.abcya.com/games/category/math'},
         {title:'IXL – Multi-Digit Addition',url:'https://www.ixl.com/math/grade-4'}
       ],
       'October': [
-        {title:'Khan Academy – Fraction Basics',url:'https://www.khanacademy.org/math/cc-4th-grade-math/cc-4th-fractions-topic'},
+        {title:'Khan Academy – Fraction Basics',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
         {title:'Math Playground – Equivalent Fractions',url:'https://www.mathplayground.com/index_fractions.html'},
-        {title:'ABCya – Fraction Fling',url:'https://www.abcya.com/games/fraction_fling'},
-        {title:'Math is Fun – Comparing Fractions',url:'https://www.mathsisfun.com/numbers/fractions-comparing.html'}
+        {title:'ABCya – Fraction Fling',url:'https://www.abcya.com/games/category/math'},
+        {title:'Math is Fun – Comparing Fractions',url:'https://www.mathsisfun.com/fractions.html'}
       ],
       'November': [
-        {title:'Khan Academy – Adding Fractions',url:'https://www.khanacademy.org/math/cc-4th-grade-math/cc-4th-fractions-topic'},
+        {title:'Khan Academy – Adding Fractions',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
         {title:'Math Playground – Fraction Addition',url:'https://www.mathplayground.com/index_fractions.html'},
-        {title:'ABCya – Mixed Numbers',url:'https://www.abcya.com/games/fraction_fling'},
+        {title:'ABCya – Mixed Numbers',url:'https://www.abcya.com/games/category/math'},
         {title:'IXL – Fraction Operations',url:'https://www.ixl.com/math/grade-4'}
       ],
       'December': [
-        {title:'Khan Academy – Decimals',url:'https://www.khanacademy.org/math/cc-4th-grade-math/cc-4th-decimals'},
+        {title:'Khan Academy – Decimals',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
         {title:'Math Playground – Decimal Games',url:'https://www.mathplayground.com/'},
-        {title:'ABCya – Decimal Dash',url:'https://www.abcya.com/games/math_bingo'},
+        {title:'ABCya – Decimal Dash',url:'https://www.abcya.com/games/math-bingo'},
         {title:'Math is Fun – Decimals',url:'https://www.mathsisfun.com/decimals.html'}
       ],
       'January': [
-        {title:'Khan Academy – Multi-Digit Multiplication',url:'https://www.khanacademy.org/math/cc-4th-grade-math/cc-4th-mult-div-topic'},
-        {title:'Math Playground – Multiplication',url:'https://www.mathplayground.com/times_tables.html'},
-        {title:'ABCya – Multiplication Games',url:'https://www.abcya.com/games/math_bingo'},
+        {title:'Khan Academy – Multi-Digit Multiplication',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
+        {title:'Math Playground – Multiplication',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Multiplication Games',url:'https://www.abcya.com/games/math-bingo'},
         {title:'IXL – Long Division',url:'https://www.ixl.com/math/grade-4'}
       ],
       'February': [
-        {title:'Khan Academy – Geometry',url:'https://www.khanacademy.org/math/cc-4th-grade-math/cc-4th-geometry-topic'},
+        {title:'Khan Academy – Geometry',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
         {title:'Math Playground – Angles',url:'https://www.mathplayground.com/measuringangles.html'},
-        {title:'ABCya – Shape Sort',url:'https://www.abcya.com/games/shape_match'},
+        {title:'ABCya – Shape Sort',url:'https://www.abcya.com/games/category/math'},
         {title:'Math is Fun – Angles',url:'https://www.mathsisfun.com/angles.html'}
       ],
       'March': [
-        {title:'Khan Academy – Measurement',url:'https://www.khanacademy.org/math/cc-4th-grade-math/cc-4th-measurement'},
-        {title:'Math Playground – Area & Perimeter',url:'https://www.mathplayground.com/area_perimeter.html'},
-        {title:'ABCya – Unit Conversion',url:'https://www.abcya.com/games/learning_coins'},
+        {title:'Khan Academy – Measurement',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
+        {title:'Math Playground – Area & Perimeter',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Unit Conversion',url:'https://www.abcya.com/games/category/math'},
         {title:'IXL – Line Plots',url:'https://www.ixl.com/math/grade-4'}
       ],
       'April': [
-        {title:'Khan Academy – Factors & Multiples',url:'https://www.khanacademy.org/math/cc-4th-grade-math/cc-4th-factors-multiples'},
+        {title:'Khan Academy – Factors & Multiples',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
         {title:'Math Playground – Prime Numbers',url:'https://www.mathplayground.com/'},
-        {title:'ABCya – Number Patterns',url:'https://www.abcya.com/games/number_grid'},
+        {title:'ABCya – Number Patterns',url:'https://www.abcya.com/games/100_number_grid'},
         {title:'Math is Fun – Prime Numbers',url:'https://www.mathsisfun.com/prime_numbers.html'}
       ],
       'May': [
-        {title:'Khan Academy – Word Problems',url:'https://www.khanacademy.org/math/cc-4th-grade-math/cc-4th-mult-div-topic'},
+        {title:'Khan Academy – Word Problems',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
         {title:'Math Playground – Logic Puzzles',url:'https://www.mathplayground.com/logicgames.html'},
-        {title:'ABCya – Math Review',url:'https://www.abcya.com/games/math_basketball'},
+        {title:'ABCya – Math Review',url:'https://www.abcya.com/games/category/math'},
         {title:'IXL – Grade 4 Review',url:'https://www.ixl.com/math/grade-4'}
       ],
       'June': [
-        {title:'Khan Academy – Grade 4 Review',url:'https://www.khanacademy.org/math/cc-4th-grade-math'},
+        {title:'Khan Academy – Grade 4 Review',url:'https://www.khanacademy.org/math/cc-fourth-grade-math'},
         {title:'Math Playground – Games',url:'https://www.mathplayground.com/'},
-        {title:'ABCya – Summer Math',url:'https://www.abcya.com/games/math_bingo'},
-        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/puzzles.html'}
+        {title:'ABCya – Summer Math',url:'https://www.abcya.com/games/math-bingo'},
+        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/'}
       ]
     },
     'age-9-english': {
       'September': [
         {title:'Storyline Online – Chapter Books',url:'https://www.storylineonline.net/'},
         {title:'ReadWorks – Reading Stamina',url:'https://www.readworks.org/'},
-        {title:'ABCya – Story Elements',url:'https://www.abcya.com/games/story_maker'},
-        {title:'Scholastic – Reading Response',url:'https://www.scholastic.com/'}
+        {title:'ABCya – Story Elements',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Reading Response',url:'https://www.readworks.org/teachers/'}
       ],
       'October': [
         {title:'ReadWorks – Main Idea',url:'https://www.readworks.org/'},
         {title:'National Geographic Kids – Non-Fiction',url:'https://kids.nationalgeographic.com/'},
-        {title:'ABCya – Note Taking',url:'https://www.abcya.com/games/word_clouds'},
-        {title:'Scholastic – Research Skills',url:'https://www.scholastic.com/'}
+        {title:'ABCya – Note Taking',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Research Skills',url:'https://www.readworks.org/teachers/'}
       ],
       'November': [
         {title:'ReadWorks – Opinion Writing',url:'https://www.readworks.org/'},
-        {title:'ABCya – Persuasive Writing',url:'https://www.abcya.com/games/story_maker'},
-        {title:'Scholastic – Debate',url:'https://www.scholastic.com/'},
+        {title:'ABCya – Persuasive Writing',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Debate',url:'https://www.readworks.org/teachers/'},
         {title:'Storyline Online – Persuasion',url:'https://www.storylineonline.net/'}
       ],
       'December': [
         {title:'Storyline Online – Poetry',url:'https://www.storylineonline.net/'},
         {title:'ReadWorks – Figurative Language',url:'https://www.readworks.org/'},
-        {title:'ABCya – Poetry Creator',url:'https://www.abcya.com/games/word_clouds'},
-        {title:'Scholastic – Poetry Writing',url:'https://www.scholastic.com/'}
+        {title:'ABCya – Poetry Creator',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Poetry Writing',url:'https://www.readworks.org/teachers/'}
       ],
       'January': [
-        {title:'ABCya – Grammar Games',url:'https://www.abcya.com/games/spelling_practice'},
+        {title:'ABCya – Grammar Games',url:'https://www.abcya.com/games/category/reading'},
         {title:'Grammar Bytes – Parts of Speech',url:'https://www.grammarbytes.com/'},
         {title:'ReadWorks – Punctuation',url:'https://www.readworks.org/'},
         {title:'Vocabulary.com – Spelling',url:'https://www.vocabulary.com/'}
       ],
       'February': [
         {title:'ReadWorks – Expository Writing',url:'https://www.readworks.org/'},
-        {title:'ABCya – Compare & Contrast',url:'https://www.abcya.com/games/story_maker'},
-        {title:'Scholastic – Essay Structure',url:'https://www.scholastic.com/'},
+        {title:'ABCya – Compare & Contrast',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Essay Structure',url:'https://www.readworks.org/teachers/'},
         {title:'Vocabulary.com – Academic Words',url:'https://www.vocabulary.com/'}
       ],
       'March': [
         {title:'Storyline Online – Character Study',url:'https://www.storylineonline.net/'},
         {title:'ReadWorks – Theme & Main Idea',url:'https://www.readworks.org/'},
-        {title:'ABCya – Point of View',url:'https://www.abcya.com/games/story_maker'},
-        {title:'Scholastic – Literature Circles',url:'https://www.scholastic.com/'}
+        {title:'ABCya – Point of View',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Literature Circles',url:'https://www.readworks.org/teachers/'}
       ],
       'April': [
         {title:'Vocabulary.com – Greek & Latin Roots',url:'https://www.vocabulary.com/'},
         {title:'ReadWorks – Context Clues',url:'https://www.readworks.org/'},
-        {title:'ABCya – Vocabulary Games',url:'https://www.abcya.com/games/spelling_practice'},
-        {title:'Scholastic – Word Study',url:'https://www.scholastic.com/'}
+        {title:'ABCya – Vocabulary Games',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Word Study',url:'https://www.readworks.org/teachers/'}
       ],
       'May': [
-        {title:'ABCya – Creative Writing',url:'https://www.abcya.com/games/story_maker'},
+        {title:'ABCya – Creative Writing',url:'https://www.abcya.com/games/category/reading'},
         {title:'Storyline Online – Storytelling',url:'https://www.storylineonline.net/'},
         {title:'ReadWorks – Editing Practice',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Publishing',url:'https://www.scholastic.com/'}
+        {title:'Scholastic – Publishing',url:'https://www.readworks.org/teachers/'}
       ],
       'June': [
         {title:'Storyline Online – Year Review',url:'https://www.storylineonline.net/'},
         {title:'ReadWorks – Summer Reading',url:'https://www.readworks.org/'},
-        {title:'ABCya – Word Games',url:'https://www.abcya.com/games/word_clouds'},
-        {title:'Scholastic – Author\'s Chair',url:'https://www.scholastic.com/'}
+        {title:'ABCya – Word Games',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Author\'s Chair',url:'https://www.readworks.org/teachers/'}
       ]
     },
     'age-9-science': {
@@ -414,7 +414,7 @@
         {title:'Mystery Science – Plant Structures',url:'https://mysteryscience.com/'},
         {title:'Science Buddies – Plant Experiments',url:'https://www.sciencebuddies.org/stem-activities/seed-germination'},
         {title:'Generation Genius – Plant Functions',url:'https://www.generationgenius.com/'},
-        {title:'National Geographic Kids – Plants',url:'https://kids.nationalgeographic.com/nature/plants'}
+        {title:'National Geographic Kids – Plants',url:'https://kids.nationalgeographic.com/science'}
       ],
       'March': [
         {title:'Mystery Science – Animal Adaptations',url:'https://mysteryscience.com/'},
@@ -468,7 +468,7 @@
       ],
       'January': [
         {title:'Deep Space Sparkle – Monet',url:'https://www.deepspacesparkle.com/'},
-        {title:'Tate Kids – Picasso',url:'https://www.tate.org.uk/kids/explore/who-is/pablo-picasso'},
+        {title:'Tate Kids – Picasso',url:'https://www.tate.org.uk/kids/artists/who-pablo-picasso'},
         {title:'The Artful Parent – Famous Artists',url:'https://artfulparent.com/'},
         {title:'YouTube – Gymnastics Basics',url:'https://www.youtube.com/results?search_query=gymnastics+for+kids+beginners'}
       ],
@@ -505,126 +505,126 @@
     },
     'age-10-math': {
       'September': [
-        {title:'Khan Academy – Place Value & Decimals',url:'https://www.khanacademy.org/math/cc-5th-grade-math/cc-5th-place-value-decimals'},
+        {title:'Khan Academy – Place Value & Decimals',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
         {title:'Math Playground – Decimal Games',url:'https://www.mathplayground.com/'},
-        {title:'ABCya – Place Value',url:'https://www.abcya.com/games/comparing_number_values'},
+        {title:'ABCya – Place Value',url:'https://www.abcya.com/games/category/math'},
         {title:'IXL – Grade 5 Math',url:'https://www.ixl.com/math/grade-5'}
       ],
       'October': [
-        {title:'Khan Academy – Multi-Digit Multiplication',url:'https://www.khanacademy.org/math/cc-5th-grade-math/cc-5th-mult-div-topic'},
-        {title:'Math Playground – Multiplication',url:'https://www.mathplayground.com/times_tables.html'},
-        {title:'ABCya – Math Bingo',url:'https://www.abcya.com/games/math_bingo'},
+        {title:'Khan Academy – Multi-Digit Multiplication',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
+        {title:'Math Playground – Multiplication',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Math Bingo',url:'https://www.abcya.com/games/math-bingo'},
         {title:'Math is Fun – Multiplication',url:'https://www.mathsisfun.com/numbers/multiplication.html'}
       ],
       'November': [
-        {title:'Khan Academy – Division',url:'https://www.khanacademy.org/math/cc-5th-grade-math/cc-5th-mult-div-topic'},
-        {title:'Math Playground – Division Games',url:'https://www.mathplayground.com/index_division.html'},
-        {title:'ABCya – Division',url:'https://www.abcya.com/games/math_basketball'},
+        {title:'Khan Academy – Division',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
+        {title:'Math Playground – Division Games',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Division',url:'https://www.abcya.com/games/category/math'},
         {title:'IXL – Long Division',url:'https://www.ixl.com/math/grade-5'}
       ],
       'December': [
-        {title:'Khan Academy – Adding Fractions',url:'https://www.khanacademy.org/math/cc-5th-grade-math/cc-5th-fractions-topic'},
+        {title:'Khan Academy – Adding Fractions',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
         {title:'Math Playground – Fraction Games',url:'https://www.mathplayground.com/index_fractions.html'},
-        {title:'ABCya – Fraction Fling',url:'https://www.abcya.com/games/fraction_fling'},
+        {title:'ABCya – Fraction Fling',url:'https://www.abcya.com/games/category/math'},
         {title:'Math is Fun – Fractions',url:'https://www.mathsisfun.com/fractions.html'}
       ],
       'January': [
-        {title:'Khan Academy – Multiply Fractions',url:'https://www.khanacademy.org/math/cc-5th-grade-math/cc-5th-fractions-topic'},
+        {title:'Khan Academy – Multiply Fractions',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
         {title:'Math Playground – Fraction Multiply',url:'https://www.mathplayground.com/index_fractions.html'},
-        {title:'ABCya – Fraction Games',url:'https://www.abcya.com/games/fraction_fling'},
+        {title:'ABCya – Fraction Games',url:'https://www.abcya.com/games/category/math'},
         {title:'IXL – Fraction Operations',url:'https://www.ixl.com/math/grade-5'}
       ],
       'February': [
-        {title:'Khan Academy – Decimal Operations',url:'https://www.khanacademy.org/math/cc-5th-grade-math/cc-5th-place-value-decimals'},
+        {title:'Khan Academy – Decimal Operations',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
         {title:'Math Playground – Decimals',url:'https://www.mathplayground.com/'},
-        {title:'ABCya – Decimal Games',url:'https://www.abcya.com/games/math_bingo'},
+        {title:'ABCya – Decimal Games',url:'https://www.abcya.com/games/math-bingo'},
         {title:'Math is Fun – Decimals',url:'https://www.mathsisfun.com/decimals.html'}
       ],
       'March': [
-        {title:'Khan Academy – Volume',url:'https://www.khanacademy.org/math/cc-5th-grade-math/cc-5th-measurement-topic'},
+        {title:'Khan Academy – Volume',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
         {title:'Math Playground – Volume',url:'https://www.mathplayground.com/'},
-        {title:'ABCya – Measurement',url:'https://www.abcya.com/games/learning_coins'},
+        {title:'ABCya – Measurement',url:'https://www.abcya.com/games/category/math'},
         {title:'IXL – Measurement',url:'https://www.ixl.com/math/grade-5'}
       ],
       'April': [
-        {title:'Khan Academy – Geometry',url:'https://www.khanacademy.org/math/cc-5th-grade-math/cc-5th-geometry-topic'},
+        {title:'Khan Academy – Geometry',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
         {title:'Math Playground – Geometry',url:'https://www.mathplayground.com/index_geometry.html'},
-        {title:'ABCya – Coordinate Planes',url:'https://www.abcya.com/games/number_grid'},
+        {title:'ABCya – Coordinate Planes',url:'https://www.abcya.com/games/100_number_grid'},
         {title:'Math is Fun – Coordinates',url:'https://www.mathsisfun.com/data/cartesian-coordinates.html'}
       ],
       'May': [
-        {title:'Khan Academy – Data & Graphs',url:'https://www.khanacademy.org/math/cc-5th-grade-math/cc-5th-data'},
-        {title:'Math Playground – Data',url:'https://www.mathplayground.com/index_data.html'},
-        {title:'ABCya – Graphing',url:'https://www.abcya.com/games/fuzz_bugs_graphing'},
+        {title:'Khan Academy – Data & Graphs',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
+        {title:'Math Playground – Data',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Graphing',url:'https://www.abcya.com/games/category/math'},
         {title:'IXL – Data Analysis',url:'https://www.ixl.com/math/grade-5'}
       ],
       'June': [
-        {title:'Khan Academy – Grade 5 Review',url:'https://www.khanacademy.org/math/cc-5th-grade-math'},
+        {title:'Khan Academy – Grade 5 Review',url:'https://www.khanacademy.org/math/cc-fifth-grade-math'},
         {title:'Math Playground – Games',url:'https://www.mathplayground.com/'},
-        {title:'ABCya – Math Review',url:'https://www.abcya.com/games/math_bingo'},
-        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/puzzles.html'}
+        {title:'ABCya – Math Review',url:'https://www.abcya.com/games/math-bingo'},
+        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/'}
       ]
     },
     'age-10-english': {
       'September': [
         {title:'ReadWorks – Literary Analysis',url:'https://www.readworks.org/'},
         {title:'Storyline Online – Chapter Books',url:'https://www.storylineonline.net/'},
-        {title:'Scholastic – Reading Skills',url:'https://www.scholastic.com/'},
-        {title:'ABCya – Vocabulary',url:'https://www.abcya.com/games/spelling_practice'}
+        {title:'Scholastic – Reading Skills',url:'https://www.readworks.org/teachers/'},
+        {title:'ABCya – Vocabulary',url:'https://www.abcya.com/games/category/reading'}
       ],
       'October': [
-        {title:'ABCya – Story Maker',url:'https://www.abcya.com/games/story_maker'},
+        {title:'ABCya – Story Maker',url:'https://www.abcya.com/games/category/reading'},
         {title:'ReadWorks – Creative Writing',url:'https://www.readworks.org/'},
         {title:'Storyline Online – Narratives',url:'https://www.storylineonline.net/'},
-        {title:'Scholastic – Writing Workshop',url:'https://www.scholastic.com/'}
+        {title:'Scholastic – Writing Workshop',url:'https://www.readworks.org/teachers/'}
       ],
       'November': [
         {title:'ReadWorks – Informational Text',url:'https://www.readworks.org/'},
         {title:'National Geographic Kids – Research',url:'https://kids.nationalgeographic.com/'},
-        {title:'Scholastic – Research Skills',url:'https://www.scholastic.com/'},
-        {title:'ABCya – Note Taking',url:'https://www.abcya.com/games/word_clouds'}
+        {title:'Scholastic – Research Skills',url:'https://www.readworks.org/teachers/'},
+        {title:'ABCya – Note Taking',url:'https://www.abcya.com/games/category/reading'}
       ],
       'December': [
         {title:'ReadWorks – Opinion Writing',url:'https://www.readworks.org/'},
-        {title:'ABCya – Persuasive Writing',url:'https://www.abcya.com/games/story_maker'},
-        {title:'Scholastic – Argument',url:'https://www.scholastic.com/'},
+        {title:'ABCya – Persuasive Writing',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Argument',url:'https://www.readworks.org/teachers/'},
         {title:'Vocabulary.com – Academic Words',url:'https://www.vocabulary.com/'}
       ],
       'January': [
         {title:'Grammar Bytes – Grammar',url:'https://www.grammarbytes.com/'},
-        {title:'ABCya – Grammar Games',url:'https://www.abcya.com/games/spelling_practice'},
+        {title:'ABCya – Grammar Games',url:'https://www.abcya.com/games/category/reading'},
         {title:'ReadWorks – Language',url:'https://www.readworks.org/'},
         {title:'Vocabulary.com – Conventions',url:'https://www.vocabulary.com/'}
       ],
       'February': [
         {title:'Storyline Online – Poetry',url:'https://www.storylineonline.net/'},
         {title:'ReadWorks – Figurative Language',url:'https://www.readworks.org/'},
-        {title:'ABCya – Poetry Creator',url:'https://www.abcya.com/games/word_clouds'},
-        {title:'Scholastic – Poetry',url:'https://www.scholastic.com/'}
+        {title:'ABCya – Poetry Creator',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Poetry',url:'https://www.readworks.org/teachers/'}
       ],
       'March': [
         {title:'ReadWorks – Research Writing',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Essay Structure',url:'https://www.scholastic.com/'},
-        {title:'ABCya – Writing',url:'https://www.abcya.com/games/story_maker'},
+        {title:'Scholastic – Essay Structure',url:'https://www.readworks.org/teachers/'},
+        {title:'ABCya – Writing',url:'https://www.abcya.com/games/category/reading'},
         {title:'National Geographic Kids – Sources',url:'https://kids.nationalgeographic.com/'}
       ],
       'April': [
         {title:'Storyline Online – Classic Literature',url:'https://www.storylineonline.net/'},
         {title:'ReadWorks – Novel Study',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Literature Circles',url:'https://www.scholastic.com/'},
+        {title:'Scholastic – Literature Circles',url:'https://www.readworks.org/teachers/'},
         {title:'Vocabulary.com – Literature',url:'https://www.vocabulary.com/'}
       ],
       'May': [
         {title:'ReadWorks – Media Literacy',url:'https://www.readworks.org/'},
-        {title:'ABCya – Public Speaking',url:'https://www.abcya.com/games/story_maker'},
-        {title:'Scholastic – Media',url:'https://www.scholastic.com/'},
+        {title:'ABCya – Public Speaking',url:'https://www.abcya.com/games/category/reading'},
+        {title:'Scholastic – Media',url:'https://www.readworks.org/teachers/'},
         {title:'Storyline Online – Performance',url:'https://www.storylineonline.net/'}
       ],
       'June': [
         {title:'Storyline Online – Year Review',url:'https://www.storylineonline.net/'},
         {title:'ReadWorks – Summer Reading',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Portfolio',url:'https://www.scholastic.com/'},
-        {title:'ABCya – Word Games',url:'https://www.abcya.com/games/word_clouds'}
+        {title:'Scholastic – Portfolio',url:'https://www.readworks.org/teachers/'},
+        {title:'ABCya – Word Games',url:'https://www.abcya.com/games/category/reading'}
       ]
     },
     'age-10-science': {
@@ -674,7 +674,7 @@
         {title:'Mystery Science – Plants',url:'https://mysteryscience.com/'},
         {title:'Science Buddies – Plant Science',url:'https://www.sciencebuddies.org/stem-activities/seed-germination'},
         {title:'Generation Genius – Microbiology',url:'https://www.generationgenius.com/'},
-        {title:'National Geographic Kids – Plants',url:'https://kids.nationalgeographic.com/nature/plants'}
+        {title:'National Geographic Kids – Plants',url:'https://kids.nationalgeographic.com/science'}
       ],
       'May': [
         {title:'Science Buddies – Engineering',url:'https://www.sciencebuddies.org/'},
@@ -705,7 +705,7 @@
       'November': [
         {title:'Tate Kids – Painting',url:'https://www.tate.org.uk/kids/make/paint-draw'},
         {title:'Deep Space Sparkle – Color Theory',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Painting',url:'https://artfulparent.com/watercolor-painting-ideas-kids/'},
+        {title:'The Artful Parent – Painting',url:'https://artfulparent.com/'},
         {title:'Crayola – Paint Activities',url:'https://www.crayola.com/'}
       ],
       'December': [
@@ -823,9 +823,9 @@
       ],
       'October': [
         {title:'Khan Academy – Divide Fractions',url:'https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-factors-and-multiples'},
-        {title:'Math Playground – Fraction Division',url:'https://www.mathplayground.com/fractions_div.html'},
+        {title:'Math Playground – Fraction Division',url:'https://www.mathplayground.com/index_fractions.html'},
         {title:'Math is Fun – GCF & LCM',url:'https://www.mathsisfun.com/greatest-common-factor.html'},
-        {title:'ABCya – Fraction Fling',url:'https://www.abcya.com/games/fraction_fling'}
+        {title:'ABCya – Fraction Fling',url:'https://www.abcya.com/games/category/math'}
       ],
       'November': [
         {title:'Khan Academy – Rational Numbers',url:'https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-negative-number-topic'},
@@ -834,88 +834,88 @@
         {title:'IXL – Coordinate Plane',url:'https://www.ixl.com/math/grade-6'}
       ],
       'December': [
-        {title:'Khan Academy – Expressions & Equations',url:'https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-expressions-topic'},
-        {title:'Math Playground – Order of Operations',url:'https://www.mathplayground.com/order_of_operations.html'},
-        {title:'Math is Fun – Expressions',url:'https://www.mathsisfun.com/algebra/expressions.html'},
-        {title:'ABCya – Math Man Jr',url:'https://www.abcya.com/games/math_man_jr'}
+        {title:'Khan Academy – Expressions & Equations',url:'https://www.khanacademy.org/math/cc-sixth-grade-math'},
+        {title:'Math Playground – Order of Operations',url:'https://www.mathplayground.com/'},
+        {title:'Math is Fun – Expressions',url:'https://www.mathsisfun.com/algebra/'},
+        {title:'ABCya – Math Man Jr',url:'https://www.abcya.com/games/category/math'}
       ],
       'January': [
-        {title:'Khan Academy – Equations & Inequalities',url:'https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-equations-inequalities'},
+        {title:'Khan Academy – Equations & Inequalities',url:'https://www.khanacademy.org/math/cc-sixth-grade-math'},
         {title:'Math Playground – Equation Creations',url:'https://www.mathplayground.com/equation_creations.html'},
         {title:'Math is Fun – Solving Equations',url:'https://www.mathsisfun.com/algebra/equations-solving.html'},
         {title:'IXL – One-Step Equations',url:'https://www.ixl.com/math/grade-6'}
       ],
       'February': [
         {title:'Khan Academy – Area & Surface Area',url:'https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-geometry-topic'},
-        {title:'Math Playground – Area Builder',url:'https://www.mathplayground.com/area_builder.html'},
-        {title:'Math is Fun – Surface Area',url:'https://www.mathsisfun.com/geometry/surface-area.html'},
-        {title:'Toy Theater – Volume',url:'https://www.toytheater.com/volume-cubes/'}
+        {title:'Math Playground – Area Builder',url:'https://www.mathplayground.com/'},
+        {title:'Math is Fun – Surface Area',url:'https://www.mathsisfun.com/geometry/'},
+        {title:'Toy Theater – Volume',url:'https://www.toytheater.com/'}
       ],
       'March': [
-        {title:'Khan Academy – Statistics',url:'https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-statistics-probability'},
-        {title:'Math Playground – Data Graphs',url:'https://www.mathplayground.com/data_graphs.html'},
+        {title:'Khan Academy – Statistics',url:'https://www.khanacademy.org/math/cc-sixth-grade-math'},
+        {title:'Math Playground – Data Graphs',url:'https://www.mathplayground.com/'},
         {title:'Math is Fun – Mean Median Mode',url:'https://www.mathsisfun.com/data/frequency-grouped-mean-median-mode.html'},
         {title:'IXL – Statistics',url:'https://www.ixl.com/math/grade-6'}
       ],
       'April': [
-        {title:'Khan Academy – Percent Applications',url:'https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-ratios-prop-topic/cc-6th-percent-topic'},
-        {title:'Math Playground – Percent Panic',url:'https://www.mathplayground.com/percent Panic.html'},
+        {title:'Khan Academy – Percent Applications',url:'https://www.khanacademy.org/math/cc-sixth-grade-math'},
+        {title:'Math Playground – Percent Panic',url:'https://www.mathplayground.com/'},
         {title:'Math is Fun – Percentages',url:'https://www.mathsisfun.com/percentage.html'},
         {title:'IXL – Percent Problems',url:'https://www.ixl.com/math/grade-6'}
       ],
       'May': [
-        {title:'Khan Academy – Variables & Relationships',url:'https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-equations-inequalities/cc-6th-dependent-independent'},
+        {title:'Khan Academy – Variables & Relationships',url:'https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-dependent-independent'},
         {title:'Math Playground – Function Machine',url:'https://www.mathplayground.com/FunctionMachine.html'},
         {title:'Math is Fun – Functions',url:'https://www.mathsisfun.com/sets/function.html'},
         {title:'IXL – Graphing Relationships',url:'https://www.ixl.com/math/grade-6'}
       ],
       'June': [
         {title:'Khan Academy – Year Review',url:'https://www.khanacademy.org/math/cc-sixth-grade-math'},
-        {title:'Math Playground – Math Games',url:'https://www.mathplayground.com/math_games.html'},
-        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/puzzles.html'},
-        {title:'ABCya – Math Bingo',url:'https://www.abcya.com/games/math_bingo'}
+        {title:'Math Playground – Math Games',url:'https://www.mathplayground.com/'},
+        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/'},
+        {title:'ABCya – Math Bingo',url:'https://www.abcya.com/games/math-bingo'}
       ]
     },
     'ages-11-12-english': {
       'September': [
         {title:'ReadWorks – Story Elements',url:'https://www.readworks.org/'},
         {title:'Storyline Online – Fiction Read Alouds',url:'https://storylineonline.net/'},
-        {title:'Scholastic – Plot Structure',url:'https://www.scholastic.com/teachers/'},
-        {title:'ABCya – Story Maker',url:'https://www.abcya.com/games/story_maker'}
+        {title:'Scholastic – Plot Structure',url:'https://www.readworks.org/teachers/teachers/'},
+        {title:'ABCya – Story Maker',url:'https://www.abcya.com/games/category/reading'}
       ],
       'October': [
         {title:'ReadWorks – Author\'s Purpose',url:'https://www.readworks.org/'},
         {title:'Vocabulary.com – Figurative Language',url:'https://www.vocabulary.com/'},
         {title:'Grammar Bytes – Symbolism',url:'https://www.chompchomp.com/'},
-        {title:'Scholastic – Theme Workshop',url:'https://www.scholastic.com/teachers/'}
+        {title:'Scholastic – Theme Workshop',url:'https://www.readworks.org/teachers/teachers/'}
       ],
       'November': [
         {title:'ReadWorks – Argumentative Texts',url:'https://www.readworks.org/'},
         {title:'Vocabulary.com – Claim & Evidence',url:'https://www.vocabulary.com/'},
         {title:'Grammar Bytes – Writing Arguments',url:'https://www.chompchomp.com/'},
-        {title:'Scholastic – Persuasive Writing',url:'https://www.scholastic.com/teachers/'}
+        {title:'Scholastic – Persuasive Writing',url:'https://www.readworks.org/teachers/teachers/'}
       ],
       'December': [
         {title:'ReadWorks – Poetry Passages',url:'https://www.readworks.org/'},
         {title:'Poetry Foundation – Poems for Kids',url:'https://www.poetryfoundation.org/learn/children'},
-        {title:'Scholastic – Poetry Writing',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Poetry Writing',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Storyline Online – Poetry Readings',url:'https://storylineonline.net/'}
       ],
       'January': [
         {title:'ReadWorks – Informational Texts',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Research Skills',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Research Skills',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Note-Taking',url:'https://www.vocabulary.com/'},
         {title:'Grammar Bytes – Summarizing',url:'https://www.chompchomp.com/'}
       ],
       'February': [
         {title:'ReadWorks – Debate Topics',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Debate Workshop',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Debate Workshop',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Persuasive Speaking',url:'https://www.vocabulary.com/'},
         {title:'Storyline Online – Speeches',url:'https://storylineonline.net/'}
       ],
       'March': [
         {title:'ReadWorks – Novel Study',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Realistic Fiction',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Realistic Fiction',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Character Analysis',url:'https://www.vocabulary.com/'},
         {title:'Storyline Online – Chapter Books',url:'https://storylineonline.net/'}
       ],
@@ -923,17 +923,17 @@
         {title:'Grammar Bytes – Clause Types',url:'https://www.chompchomp.com/'},
         {title:'Vocabulary.com – Sentence Variety',url:'https://www.vocabulary.com/'},
         {title:'ReadWorks – Grammar Practice',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Writing Mechanics',url:'https://www.scholastic.com/teachers/'}
+        {title:'Scholastic – Writing Mechanics',url:'https://www.readworks.org/teachers/teachers/'}
       ],
       'May': [
         {title:'ReadWorks – Multicultural Stories',url:'https://www.readworks.org/'},
         {title:'Storyline Online – Diverse Voices',url:'https://storylineonline.net/'},
-        {title:'Scholastic – World Literature',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – World Literature',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Cultural Context',url:'https://www.vocabulary.com/'}
       ],
       'June': [
         {title:'ReadWorks – Portfolio Reflections',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Presentation Skills',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Presentation Skills',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Grammar Bytes – Year Review',url:'https://www.chompchomp.com/'},
         {title:'Storyline Online – Best Of',url:'https://storylineonline.net/'}
       ]
@@ -941,18 +941,18 @@
     'ages-11-12-science': {
       'September': [
         {title:'Science Buddies – Scientific Method',url:'https://www.sciencebuddies.org/science-fair-projects/science-fair/steps-of-the-scientific-method'},
-        {title:'Khan Academy – Engineering Design',url:'https://www.khanacademy.org/science/ms-engineering'},
+        {title:'Khan Academy – Engineering Design',url:'https://www.khanacademy.org/science'},
         {title:'Mystery Science – Inquiry',url:'https://mysteryscience.com/'},
         {title:'Generation Genius – Science Practices',url:'https://www.generationgenius.com/'}
       ],
       'October': [
-        {title:'Khan Academy – Earth Systems',url:'https://www.khanacademy.org/science/ms-earth-and-space-science'},
+        {title:'Khan Academy – Earth Systems',url:'https://www.khanacademy.org/science/ms-biology'},
         {title:'Science Buddies – Rocks & Minerals',url:'https://www.sciencebuddies.org/'},
         {title:'National Geographic Kids – Plate Tectonics',url:'https://kids.nationalgeographic.com/'},
         {title:'Generation Genius – Earth\'s Surface',url:'https://www.generationgenius.com/'}
       ],
       'November': [
-        {title:'Khan Academy – Weather & Climate',url:'https://www.khanacademy.org/science/ms-earth-and-space-science'},
+        {title:'Khan Academy – Weather & Climate',url:'https://www.khanacademy.org/science/ms-biology'},
         {title:'Science Buddies – Water Cycle',url:'https://www.sciencebuddies.org/'},
         {title:'NASA Kids – Weather',url:'https://climatekids.nasa.gov/'},
         {title:'Generation Genius – Water Cycle',url:'https://www.generationgenius.com/'}
@@ -988,7 +988,7 @@
         {title:'Mystery Science – Energy',url:'https://mysteryscience.com/'}
       ],
       'May': [
-        {title:'Khan Academy – Human Impact',url:'https://www.khanacademy.org/science/ms-earth-and-space-science'},
+        {title:'Khan Academy – Human Impact',url:'https://www.khanacademy.org/science/ms-biology'},
         {title:'Science Buddies – Environmental Science',url:'https://www.sciencebuddies.org/'},
         {title:'NASA Kids – Climate Change',url:'https://climatekids.nasa.gov/'},
         {title:'National Geographic Kids – Environment',url:'https://kids.nationalgeographic.com/'}
@@ -1002,22 +1002,22 @@
     },
     'ages-11-12-art': {
       'September': [
-        {title:'Tate Kids – Drawing',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/drawing'},
+        {title:'Tate Kids – Drawing',url:'https://www.tate.org.uk/kids/make/paint-draw'},
         {title:'Deep Space Sparkle – Drawing Basics',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Sketching',url:'https://www.theartfulparent.com/'},
+        {title:'The Artful Parent – Sketching',url:'https://artfulparent.com/'},
         {title:'YouTube – Drawing Fundamentals',url:'https://www.youtube.com/'}
       ],
       'October': [
-        {title:'Tate Kids – Colour Mixing',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/colour'},
+        {title:'Tate Kids – Colour Mixing',url:'https://www.tate.org.uk/kids/make/paint-draw'},
         {title:'Deep Space Sparkle – Watercolor',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Color Theory',url:'https://www.theartfulparent.com/'},
+        {title:'The Artful Parent – Color Theory',url:'https://artfulparent.com/'},
         {title:'Crayola – Watercolor Techniques',url:'https://www.crayola.com/'}
       ],
       'November': [
-        {title:'Tate Kids – Renaissance',url:'https://www.tate.org.uk/kids/explore/who-is/renaissance'},
+        {title:'Tate Kids – Renaissance',url:'https://www.tate.org.uk/kids/artists'},
         {title:'Khan Academy – Renaissance Art',url:'https://www.khanacademy.org/humanities/renaissance-reformation'},
         {title:'Deep Space Sparkle – Art History',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Historical Art',url:'https://www.theartfulparent.com/'}
+        {title:'The Artful Parent – Historical Art',url:'https://artfulparent.com/'}
       ],
       'December': [
         {title:'YouTube – Music Theory Basics',url:'https://www.youtube.com/'},
@@ -1029,36 +1029,36 @@
         {title:'YouTube – Fitness for Kids',url:'https://www.youtube.com/'},
         {title:'GoNoodle – Movement',url:'https://www.gonoodle.com/'},
         {title:'Cosmic Kids Yoga',url:'https://www.cosmickids.com/'},
-        {title:'The Artful Parent – Active Art',url:'https://www.theartfulparent.com/'}
+        {title:'The Artful Parent – Active Art',url:'https://artfulparent.com/'}
       ],
       'February': [
-        {title:'Tate Kids – Impressionism',url:'https://www.tate.org.uk/kids/explore/who-is/impressionism'},
+        {title:'Tate Kids – Impressionism',url:'https://www.tate.org.uk/kids/artists'},
         {title:'Khan Academy – Impressionism',url:'https://www.khanacademy.org/humanities/becoming-modern/avant-garde-france/impressionism'},
         {title:'Deep Space Sparkle – Acrylic Painting',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Painting',url:'https://www.theartfulparent.com/'}
+        {title:'The Artful Parent – Painting',url:'https://artfulparent.com/'}
       ],
       'March': [
-        {title:'Tate Kids – Sculpture',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/sculpture'},
+        {title:'Tate Kids – Sculpture',url:'https://www.tate.org.uk/kids/make'},
         {title:'Deep Space Sparkle – Clay Projects',url:'https://www.deepspacesparkle.com/'},
         {title:'Crayola – 3D Art',url:'https://www.crayola.com/'},
-        {title:'The Artful Parent – Sculpture',url:'https://www.theartfulparent.com/'}
+        {title:'The Artful Parent – Sculpture',url:'https://artfulparent.com/'}
       ],
       'April': [
         {title:'YouTube – Sports Skills',url:'https://www.youtube.com/'},
         {title:'GoNoodle – Team Activities',url:'https://www.gonoodle.com/'},
-        {title:'The Artful Parent – Group Art',url:'https://www.theartfulparent.com/'},
+        {title:'The Artful Parent – Group Art',url:'https://artfulparent.com/'},
         {title:'Deep Space Sparkle – Collaborative Art',url:'https://www.deepspacesparkle.com/'}
       ],
       'May': [
-        {title:'Tate Kids – Digital Art',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/digital-art'},
+        {title:'Tate Kids – Digital Art',url:'https://www.tate.org.uk/kids/make'},
         {title:'Deep Space Sparkle – Digital Design',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Tech Art',url:'https://www.theartfulparent.com/'},
+        {title:'The Artful Parent – Tech Art',url:'https://artfulparent.com/'},
         {title:'YouTube – Digital Drawing',url:'https://www.youtube.com/'}
       ],
       'June': [
-        {title:'Tate Kids – Make a Gallery',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/curate-an-exhibition'},
+        {title:'Tate Kids – Make a Gallery',url:'https://www.tate.org.uk/kids/make'},
         {title:'Deep Space Sparkle – Portfolio',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Art Show',url:'https://www.theartfulparent.com/'},
+        {title:'The Artful Parent – Art Show',url:'https://artfulparent.com/'},
         {title:'Crayola – Display Ideas',url:'https://www.crayola.com/'}
       ]
     },
@@ -1071,19 +1071,19 @@
         {title:'Math is Fun – Algebra',url:'https://www.mathsisfun.com/algebra/'}
       ],
       'October': [
-        {title:'Khan Academy – Linear Equations',url:'https://www.khanacademy.org/math/algebra/one-variable-linear-equations'},
+        {title:'Khan Academy – Linear Equations',url:'https://www.khanacademy.org/math/algebra'},
         {title:'Math Playground – Equation Solving',url:'https://www.mathplayground.com/'},
         {title:'IXL – Equations',url:'https://www.ixl.com/math/algebra-1'},
         {title:'Math is Fun – Solving Equations',url:'https://www.mathsisfun.com/algebra/equations-solving.html'}
       ],
       'November': [
-        {title:'Khan Academy – Functions',url:'https://www.khanacademy.org/math/algebra/algebra-functions'},
+        {title:'Khan Academy – Functions',url:'https://www.khanacademy.org/math/algebra'},
         {title:'Math Playground – Function Machine',url:'https://www.mathplayground.com/FunctionMachine.html'},
         {title:'IXL – Functions',url:'https://www.ixl.com/math/algebra-1'},
         {title:'Math is Fun – Functions',url:'https://www.mathsisfun.com/sets/function.html'}
       ],
       'December': [
-        {title:'Khan Academy – Graphing Lines',url:'https://www.khanacademy.org/math/algebra/two-var-linear-equations'},
+        {title:'Khan Academy – Graphing Lines',url:'https://www.khanacademy.org/math/algebra'},
         {title:'Math Playground – Graphing',url:'https://www.mathplayground.com/'},
         {title:'IXL – Linear Functions',url:'https://www.ixl.com/math/algebra-1'},
         {title:'Math is Fun – Straight Line Graphs',url:'https://www.mathsisfun.com/data/straight_line_graph.html'}
@@ -1095,82 +1095,82 @@
         {title:'Math is Fun – Simultaneous Equations',url:'https://www.mathsisfun.com/algebra/systems-linear-equations.html'}
       ],
       'February': [
-        {title:'Khan Academy – Exponents',url:'https://www.khanacademy.org/math/algebra/exponent-rule'},
+        {title:'Khan Academy – Exponents',url:'https://www.khanacademy.org/math/algebra'},
         {title:'Math Playground – Exponents',url:'https://www.mathplayground.com/'},
         {title:'IXL – Exponents',url:'https://www.ixl.com/math/algebra-1'},
         {title:'Math is Fun – Scientific Notation',url:'https://www.mathsisfun.com/numbers/scientific-notation.html'}
       ],
       'March': [
-        {title:'Khan Academy – Polynomials',url:'https://www.khanacademy.org/math/algebra/multiplying-factoring-expression'},
+        {title:'Khan Academy – Polynomials',url:'https://www.khanacademy.org/math/algebra'},
         {title:'Math Playground – Polynomial Games',url:'https://www.mathplayground.com/'},
         {title:'IXL – Polynomials',url:'https://www.ixl.com/math/algebra-1'},
         {title:'Math is Fun – Polynomials',url:'https://www.mathsisfun.com/algebra/polynomials.html'}
       ],
       'April': [
-        {title:'Khan Academy – Factoring',url:'https://www.khanacademy.org/math/algebra/multiplying-factoring-expression'},
+        {title:'Khan Academy – Factoring',url:'https://www.khanacademy.org/math/algebra'},
         {title:'IXL – Factoring',url:'https://www.ixl.com/math/algebra-1'},
         {title:'Math is Fun – Quadratic Equations',url:'https://www.mathsisfun.com/algebra/quadratic-equation.html'},
         {title:'Math Playground – Factoring Practice',url:'https://www.mathplayground.com/'}
       ],
       'May': [
         {title:'Khan Academy – Data & Statistics',url:'https://www.khanacademy.org/math/statistics-probability'},
-        {title:'Math Playground – Data Graphs',url:'https://www.mathplayground.com/data_graphs.html'},
+        {title:'Math Playground – Data Graphs',url:'https://www.mathplayground.com/'},
         {title:'IXL – Statistics',url:'https://www.ixl.com/math/algebra-1'},
         {title:'Math is Fun – Statistics',url:'https://www.mathsisfun.com/data/'}
       ],
       'June': [
         {title:'Khan Academy – Algebra Review',url:'https://www.khanacademy.org/math/algebra'},
-        {title:'Math Playground – Math Games',url:'https://www.mathplayground.com/math_games.html'},
+        {title:'Math Playground – Math Games',url:'https://www.mathplayground.com/'},
         {title:'IXL – Algebra Review',url:'https://www.ixl.com/math/algebra-1'},
-        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/puzzles.html'}
+        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/'}
       ]
     },
     'age-14-english': {
       'September': [
         {title:'ReadWorks – Short Stories',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Narrative Elements',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Narrative Elements',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Character Analysis',url:'https://www.vocabulary.com/'},
         {title:'Storyline Online – Short Fiction',url:'https://storylineonline.net/'}
       ],
       'October': [
         {title:'ReadWorks – Poetry',url:'https://www.readworks.org/'},
         {title:'Poetry Foundation – Teen Poems',url:'https://www.poetryfoundation.org/'},
-        {title:'Scholastic – Poetry Writing',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Poetry Writing',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Grammar Bytes – Poetry Analysis',url:'https://www.chompchomp.com/'}
       ],
       'November': [
         {title:'ReadWorks – Novel Study',url:'https://www.readworks.org/'},
-        {title:'Scholastic – To Kill a Mockingbird',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – To Kill a Mockingbird',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Novel Vocabulary',url:'https://www.vocabulary.com/'},
         {title:'Storyline Online – Classic Literature',url:'https://storylineonline.net/'}
       ],
       'December': [
         {title:'ReadWorks – Argumentative Texts',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Rhetoric',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Rhetoric',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Grammar Bytes – Argument Writing',url:'https://www.chompchomp.com/'},
         {title:'Vocabulary.com – Persuasive Words',url:'https://www.vocabulary.com/'}
       ],
       'January': [
         {title:'ReadWorks – Shakespeare',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Romeo & Juliet',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Romeo & Juliet',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Shakespeare Vocab',url:'https://www.vocabulary.com/'},
         {title:'Grammar Bytes – Drama Terms',url:'https://www.chompchomp.com/'}
       ],
       'February': [
         {title:'ReadWorks – Research Skills',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Research Writing',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Research Writing',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Academic Vocabulary',url:'https://www.vocabulary.com/'},
         {title:'Grammar Bytes – MLA Format',url:'https://www.chompchomp.com/'}
       ],
       'March': [
         {title:'ReadWorks – Nonfiction',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Informational Texts',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Informational Texts',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Bias Detection',url:'https://www.vocabulary.com/'},
         {title:'Grammar Bytes – Nonfiction Analysis',url:'https://www.chompchomp.com/'}
       ],
       'April': [
         {title:'ReadWorks – Speeches',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Public Speaking',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Public Speaking',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Vocabulary.com – Speaking Skills',url:'https://www.vocabulary.com/'},
         {title:'Grammar Bytes – Presentation Writing',url:'https://www.chompchomp.com/'}
       ],
@@ -1178,11 +1178,11 @@
         {title:'Grammar Bytes – Grammar Review',url:'https://www.chompchomp.com/'},
         {title:'Vocabulary.com – Vocabulary Building',url:'https://www.vocabulary.com/'},
         {title:'ReadWorks – Grammar Practice',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Editing Skills',url:'https://www.scholastic.com/teachers/'}
+        {title:'Scholastic – Editing Skills',url:'https://www.readworks.org/teachers/teachers/'}
       ],
       'June': [
         {title:'ReadWorks – Year Review',url:'https://www.readworks.org/'},
-        {title:'Scholastic – Portfolio',url:'https://www.scholastic.com/teachers/'},
+        {title:'Scholastic – Portfolio',url:'https://www.readworks.org/teachers/teachers/'},
         {title:'Grammar Bytes – Final Review',url:'https://www.chompchomp.com/'},
         {title:'Vocabulary.com – Review',url:'https://www.vocabulary.com/'}
       ]
@@ -1195,7 +1195,7 @@
         {title:'Mystery Science – Scientific Inquiry',url:'https://mysteryscience.com/'}
       ],
       'October': [
-        {title:'Khan Academy – Cell Biology',url:'https://www.khanacademy.org/science/biology/cell-division'},
+        {title:'Khan Academy – Cell Biology',url:'https://www.khanacademy.org/science/biology'},
         {title:'Science Buddies – Cells',url:'https://www.sciencebuddies.org/'},
         {title:'Generation Genius – Cells',url:'https://www.generationgenius.com/'},
         {title:'National Geographic Kids – Microscopic World',url:'https://kids.nationalgeographic.com/'}
@@ -1251,22 +1251,22 @@
     },
     'age-14-social-studies': {
       'September': [
-        {title:'Tate Kids – Drawing Foundations',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/drawing'},
+        {title:'Tate Kids – Drawing Foundations',url:'https://www.tate.org.uk/kids/make/paint-draw'},
         {title:'YouTube – Drawing Basics',url:'https://www.youtube.com/'},
         {title:'Deep Space Sparkle – Contour Drawing',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Shading',url:'https://www.theartfulparent.com/'}
+        {title:'The Artful Parent – Shading',url:'https://artfulparent.com/'}
       ],
       'October': [
-        {title:'Tate Kids – Colour',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/colour'},
+        {title:'Tate Kids – Colour',url:'https://www.tate.org.uk/kids/make/paint-draw'},
         {title:'YouTube – Color Theory',url:'https://www.youtube.com/'},
         {title:'Crayola – Color Mixing',url:'https://www.crayola.com/'},
         {title:'Deep Space Sparkle – Warm & Cool',url:'https://www.deepspacesparkle.com/'}
       ],
       'November': [
-        {title:'Tate Kids – Painting',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/painting'},
+        {title:'Tate Kids – Painting',url:'https://www.tate.org.uk/kids/make/paint-draw'},
         {title:'YouTube – Watercolor Basics',url:'https://www.youtube.com/'},
         {title:'Deep Space Sparkle – Painting',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Flexibility',url:'https://www.theartfulparent.com/'}
+        {title:'The Artful Parent – Flexibility',url:'https://artfulparent.com/'}
       ],
       'December': [
         {title:'Tate Kids – Printmaking',url:'https://www.tate.org.uk/kids/'},
@@ -1275,22 +1275,22 @@
         {title:'Deep Space Sparkle – Print & Stamp',url:'https://www.deepspacesparkle.com/'}
       ],
       'January': [
-        {title:'Tate Kids – Sculpture',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/sculpture'},
+        {title:'Tate Kids – Sculpture',url:'https://www.tate.org.uk/kids/make'},
         {title:'YouTube – Clay Sculpture',url:'https://www.youtube.com/'},
         {title:'Deep Space Sparkle – 3D Art',url:'https://www.deepspacesparkle.com/'},
         {title:'Crayola – Sculpture Ideas',url:'https://www.crayola.com/'}
       ],
       'February': [
-        {title:'Tate Kids – Digital Art',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/digital-art'},
+        {title:'Tate Kids – Digital Art',url:'https://www.tate.org.uk/kids/make'},
         {title:'YouTube – Digital Drawing',url:'https://www.youtube.com/'},
         {title:'Deep Space Sparkle – Digital Design',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Digital Art',url:'https://www.theartfulparent.com/'}
+        {title:'The Artful Parent – Digital Art',url:'https://artfulparent.com/'}
       ],
       'March': [
         {title:'Tate Kids – Photography',url:'https://www.tate.org.uk/kids/'},
         {title:'YouTube – Photography for Kids',url:'https://www.youtube.com/'},
         {title:'Deep Space Sparkle – Photography',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Composition',url:'https://www.theartfulparent.com/'}
+        {title:'The Artful Parent – Composition',url:'https://artfulparent.com/'}
       ],
       'April': [
         {title:'Tate Kids – Mixed Media',url:'https://www.tate.org.uk/kids/'},
@@ -1299,15 +1299,15 @@
         {title:'Crayola – Mixed Media',url:'https://www.crayola.com/'}
       ],
       'May': [
-        {title:'Tate Kids – Art History',url:'https://www.tate.org.uk/kids/explore/who-is'},
+        {title:'Tate Kids – Art History',url:'https://www.tate.org.uk/kids/artists'},
         {title:'Khan Academy – Art History',url:'https://www.khanacademy.org/humanities/art-history'},
         {title:'YouTube – Art History for Kids',url:'https://www.youtube.com/'},
         {title:'Deep Space Sparkle – Art History',url:'https://www.deepspacesparkle.com/'}
       ],
       'June': [
-        {title:'Tate Kids – Portfolio',url:'https://www.tate.org.uk/kids/explore/make/art-techniques/curate-an-exhibition'},
+        {title:'Tate Kids – Portfolio',url:'https://www.tate.org.uk/kids/make'},
         {title:'Deep Space Sparkle – Art Show',url:'https://www.deepspacesparkle.com/'},
-        {title:'The Artful Parent – Gallery',url:'https://www.theartfulparent.com/'},
+        {title:'The Artful Parent – Gallery',url:'https://artfulparent.com/'},
         {title:'Crayola – Display Ideas',url:'https://www.crayola.com/'}
       ]
     },
@@ -1320,19 +1320,19 @@
         {title:'Math Playground – Number Practice',url:'https://www.mathplayground.com/'}
       ],
       'October': [
-        {title:'Khan Academy – Ratios & Proportions',url:'https://www.khanacademy.org/math/pre-algebra/ratios-pre-algebra'},
+        {title:'Khan Academy – Ratios & Proportions',url:'https://www.khanacademy.org/math/cc-sixth-grade-math'},
         {title:'IXL – Ratios & Rates',url:'https://www.ixl.com/math/'},
         {title:'Math is Fun – Percentages',url:'https://www.mathsisfun.com/percentage.html'},
         {title:'Math Playground – Ratio Games',url:'https://www.mathplayground.com/'}
       ],
       'November': [
-        {title:'Khan Academy – Linear Equations',url:'https://www.khanacademy.org/math/algebra/one-variable-linear-equations'},
+        {title:'Khan Academy – Linear Equations',url:'https://www.khanacademy.org/math/algebra'},
         {title:'IXL – Equations',url:'https://www.ixl.com/math/'},
         {title:'Math is Fun – Systems of Equations',url:'https://www.mathsisfun.com/algebra/systems-linear-equations.html'},
         {title:'Math Playground – Algebra Puzzles',url:'https://www.mathplayground.com/'}
       ],
       'December': [
-        {title:'Khan Academy – Functions & Graphing',url:'https://www.khanacademy.org/math/algebra/algebra-functions'},
+        {title:'Khan Academy – Functions & Graphing',url:'https://www.khanacademy.org/math/algebra'},
         {title:'IXL – Linear Functions',url:'https://www.ixl.com/math/'},
         {title:'Math is Fun – Function Grapher',url:'https://www.mathsisfun.com/data/function-grapher.php'},
         {title:'Math Playground – Graphing',url:'https://www.mathplayground.com/'}
@@ -1346,7 +1346,7 @@
       'February': [
         {title:'Khan Academy – Angles & Transformations',url:'https://www.khanacademy.org/math/geometry/hs-geo-transformations'},
         {title:'IXL – Transformations',url:'https://www.ixl.com/math/'},
-        {title:'Math is Fun – Angles',url:'https://www.mathsisfun.com/geometry/angles.html'},
+        {title:'Math is Fun – Angles',url:'https://www.mathsisfun.com/angles.html'},
         {title:'Math Playground – Transformation Games',url:'https://www.mathplayground.com/'}
       ],
       'March': [
@@ -1356,7 +1356,7 @@
         {title:'Math Playground – Data Games',url:'https://www.mathplayground.com/'}
       ],
       'April': [
-        {title:'Khan Academy – Polynomials',url:'https://www.khanacademy.org/math/algebra/multiplying-factoring-expression'},
+        {title:'Khan Academy – Polynomials',url:'https://www.khanacademy.org/math/algebra'},
         {title:'IXL – Factoring',url:'https://www.ixl.com/math/'},
         {title:'Math is Fun – Quadratics',url:'https://www.mathsisfun.com/algebra/quadratic-equation.html'},
         {title:'Math Playground – Advanced Algebra',url:'https://www.mathplayground.com/'}
@@ -1364,14 +1364,14 @@
       'May': [
         {title:'Khan Academy – Word Problems',url:'https://www.khanacademy.org/math/'},
         {title:'IXL – Problem Solving',url:'https://www.ixl.com/math/'},
-        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/puzzles.html'},
+        {title:'Math is Fun – Puzzles',url:'https://www.mathsisfun.com/'},
         {title:'Math Playground – Logic Games',url:'https://www.mathplayground.com/logicgames.html'}
       ],
       'June': [
         {title:'Khan Academy – GED Math',url:'https://www.khanacademy.org/math/'},
         {title:'IXL – GED Review',url:'https://www.ixl.com/math/'},
         {title:'Math is Fun – Review',url:'https://www.mathsisfun.com/'},
-        {title:'Math Playground – Math Games',url:'https://www.mathplayground.com/math_games.html'}
+        {title:'Math Playground – Math Games',url:'https://www.mathplayground.com/'}
       ]
     },
     'ages-15-16-english': {
@@ -1444,7 +1444,7 @@
         {title:'Khan Academy – Reading Graphs',url:'https://www.khanacademy.org/math/statistics-probability'}
       ],
       'October': [
-        {title:'Khan Academy – Cell Biology',url:'https://www.khanacademy.org/science/biology/cell-division'},
+        {title:'Khan Academy – Cell Biology',url:'https://www.khanacademy.org/science/biology'},
         {title:'Science Buddies – Genetics',url:'https://www.sciencebuddies.org/'},
         {title:'Generation Genius – DNA & Heredity',url:'https://www.generationgenius.com/'},
         {title:'Khan Academy – Heredity',url:'https://www.khanacademy.org/science/biology/heredity'}
@@ -1468,13 +1468,13 @@
         {title:'Khan Academy – Newton\'s Laws',url:'https://www.khanacademy.org/science/physics/forces-newtons-laws'}
       ],
       'February': [
-        {title:'Khan Academy – Earth Science',url:'https://www.khanacademy.org/science/ms-earth-and-space-science'},
+        {title:'Khan Academy – Earth Science',url:'https://www.khanacademy.org/science/ms-biology'},
         {title:'Science Buddies – Geology',url:'https://www.sciencebuddies.org/'},
         {title:'Generation Genius – Earth\'s Surface',url:'https://www.generationgenius.com/'},
         {title:'National Geographic Kids – Geology',url:'https://kids.nationalgeographic.com/'}
       ],
       'March': [
-        {title:'Khan Academy – Weather & Climate',url:'https://www.khanacademy.org/science/ms-earth-and-space-science'},
+        {title:'Khan Academy – Weather & Climate',url:'https://www.khanacademy.org/science/ms-biology'},
         {title:'NASA Kids – Climate',url:'https://climatekids.nasa.gov/'},
         {title:'Science Buddies – Space Science',url:'https://www.sciencebuddies.org/'},
         {title:'NASA Space Place – Solar System',url:'https://spaceplace.nasa.gov/'}
@@ -1563,96 +1563,96 @@
     // ======================== HIGH SCHOOL: Ages 17-18 ========================
     'ages-17-18-math': {
       'September': [
-        {title:'Khan Academy – Linear Equations',url:'https://www.khanacademy.org/math/algebra/one-variable-linear-equations'},
+        {title:'Khan Academy – Linear Equations',url:'https://www.khanacademy.org/math/algebra'},
         {title:'Khan Academy – Systems of Equations',url:'https://www.khanacademy.org/math/algebra/systems-of-equations'},
         {title:'IXL – SAT Math',url:'https://www.ixl.com/math/'},
-        {title:'Khan Academy – SAT Practice',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – SAT Practice',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'October': [
-        {title:'Khan Academy – Ratios & Proportions',url:'https://www.khanacademy.org/math/pre-algebra/ratios-pre-algebra'},
+        {title:'Khan Academy – Ratios & Proportions',url:'https://www.khanacademy.org/math/cc-sixth-grade-math'},
         {title:'Khan Academy – Statistics & Probability',url:'https://www.khanacademy.org/math/statistics-probability'},
         {title:'IXL – Data Analysis',url:'https://www.ixl.com/math/'},
-        {title:'Khan Academy – SAT Math Practice',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – SAT Math Practice',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'November': [
-        {title:'Khan Academy – Quadratics',url:'https://www.khanacademy.org/math/algebra/quadratics'},
-        {title:'Khan Academy – Polynomials',url:'https://www.khanacademy.org/math/algebra/multiplying-factoring-expression'},
+        {title:'Khan Academy – Quadratics',url:'https://www.khanacademy.org/math/algebra2'},
+        {title:'Khan Academy – Polynomials',url:'https://www.khanacademy.org/math/algebra'},
         {title:'IXL – Quadratic Equations',url:'https://www.ixl.com/math/'},
-        {title:'Khan Academy – SAT Algebra',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – SAT Algebra',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'December': [
-        {title:'Khan Academy – Functions',url:'https://www.khanacademy.org/math/algebra/algebra-functions'},
-        {title:'Khan Academy – Transformations',url:'https://www.khanacademy.org/math/algebra/algebra-functions'},
+        {title:'Khan Academy – Functions',url:'https://www.khanacademy.org/math/algebra'},
+        {title:'Khan Academy – Transformations',url:'https://www.khanacademy.org/math/algebra'},
         {title:'IXL – Function Notation',url:'https://www.ixl.com/math/'},
-        {title:'Khan Academy – SAT Functions',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – SAT Functions',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'January': [
         {title:'Khan Academy – Geometry',url:'https://www.khanacademy.org/math/geometry'},
         {title:'Khan Academy – Triangles',url:'https://www.khanacademy.org/math/geometry/hs-geo-trig'},
         {title:'IXL – Geometry',url:'https://www.ixl.com/math/'},
-        {title:'Khan Academy – SAT Geometry',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – SAT Geometry',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'February': [
         {title:'Khan Academy – Circles',url:'https://www.khanacademy.org/math/geometry/hs-geo-circles'},
         {title:'Khan Academy – Volume',url:'https://www.khanacademy.org/math/geometry/hs-geo-solids'},
         {title:'IXL – Circle Geometry',url:'https://www.ixl.com/math/'},
-        {title:'Khan Academy – SAT Geometry Practice',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – SAT Geometry Practice',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'March': [
-        {title:'Khan Academy – Rational Expressions',url:'https://www.khanacademy.org/math/algebra2/radical-equations-and-functions'},
+        {title:'Khan Academy – Rational Expressions',url:'https://www.khanacademy.org/math/algebra2'},
         {title:'Khan Academy – Radical Equations',url:'https://www.khanacademy.org/math/algebra2'},
         {title:'IXL – Advanced Algebra',url:'https://www.ixl.com/math/'},
-        {title:'Khan Academy – SAT Advanced Math',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – SAT Advanced Math',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'April': [
-        {title:'Khan Academy – SAT Full Practice',url:'https://www.khanacademy.org/sat'},
-        {title:'Khan Academy – SAT Strategy',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – SAT Full Practice',url:'https://www.khanacademy.org/digital-sat'},
+        {title:'Khan Academy – SAT Strategy',url:'https://www.khanacademy.org/digital-sat'},
         {title:'IXL – SAT Review',url:'https://www.ixl.com/math/'},
-        {title:'Khan Academy – Official SAT Practice',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – Official SAT Practice',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'May': [
-        {title:'Khan Academy – SAT Score Boost',url:'https://www.khanacademy.org/sat'},
-        {title:'Khan Academy – Weak Areas',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – SAT Score Boost',url:'https://www.khanacademy.org/digital-sat'},
+        {title:'Khan Academy – Weak Areas',url:'https://www.khanacademy.org/digital-sat'},
         {title:'IXL – Targeted Practice',url:'https://www.ixl.com/math/'},
-        {title:'Khan Academy – Grid-In Practice',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – Grid-In Practice',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'June': [
-        {title:'Khan Academy – Final SAT Practice',url:'https://www.khanacademy.org/sat'},
-        {title:'Khan Academy – Test Day Tips',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – Final SAT Practice',url:'https://www.khanacademy.org/digital-sat'},
+        {title:'Khan Academy – Test Day Tips',url:'https://www.khanacademy.org/digital-sat'},
         {title:'IXL – Final Review',url:'https://www.ixl.com/math/'},
         {title:'Khan Academy – College Readiness',url:'https://www.khanacademy.org/college-careers-more'}
       ]
     },
     'ages-17-18-english': {
       'September': [
-        {title:'Khan Academy – SAT Reading',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – SAT Reading',url:'https://www.khanacademy.org/digital-sat'},
         {title:'ReadWorks – Reading Comprehension',url:'https://www.readworks.org/'},
         {title:'Vocabulary.com – SAT Vocabulary',url:'https://www.vocabulary.com/'},
-        {title:'Khan Academy – Reading Test Practice',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – Reading Test Practice',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'October': [
-        {title:'Khan Academy – Words in Context',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – Words in Context',url:'https://www.khanacademy.org/digital-sat'},
         {title:'Vocabulary.com – Context Clues',url:'https://www.vocabulary.com/'},
-        {title:'Khan Academy – Craft & Structure',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – Craft & Structure',url:'https://www.khanacademy.org/digital-sat'},
         {title:'ReadWorks – Author\'s Technique',url:'https://www.readworks.org/'}
       ],
       'November': [
         {title:'Grammar Bytes – Grammar Review',url:'https://www.chompchomp.com/'},
-        {title:'Khan Academy – SAT Grammar',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – SAT Grammar',url:'https://www.khanacademy.org/digital-sat'},
         {title:'Vocabulary.com – Grammar Terms',url:'https://www.vocabulary.com/'},
-        {title:'Khan Academy – Standard English',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – Standard English',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'December': [
         {title:'Grammar Bytes – Punctuation',url:'https://www.chompchomp.com/'},
-        {title:'Khan Academy – SAT Punctuation',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – SAT Punctuation',url:'https://www.khanacademy.org/digital-sat'},
         {title:'Vocabulary.com – Punctuation Rules',url:'https://www.vocabulary.com/'},
-        {title:'Khan Academy – Writing & Language',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – Writing & Language',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'January': [
-        {title:'Khan Academy – Transitions & Rhetoric',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – Transitions & Rhetoric',url:'https://www.khanacademy.org/digital-sat'},
         {title:'Grammar Bytes – Transitions',url:'https://www.chompchomp.com/'},
         {title:'Vocabulary.com – Rhetorical Terms',url:'https://www.vocabulary.com/'},
-        {title:'Khan Academy – Expression of Ideas',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – Expression of Ideas',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'February': [
         {title:'Khan Academy – College Essay',url:'https://www.khanacademy.org/college-careers-more'},
@@ -1662,24 +1662,24 @@
       ],
       'March': [
         {title:'Vocabulary.com – SAT Words',url:'https://www.vocabulary.com/'},
-        {title:'Khan Academy – Advanced Reading',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – Advanced Reading',url:'https://www.khanacademy.org/digital-sat'},
         {title:'ReadWorks – Complex Texts',url:'https://www.readworks.org/'},
-        {title:'Khan Academy – Vocabulary Building',url:'https://www.khanacademy.org/sat'}
+        {title:'Khan Academy – Vocabulary Building',url:'https://www.khanacademy.org/digital-sat'}
       ],
       'April': [
-        {title:'Khan Academy – SAT Timed Practice',url:'https://www.khanacademy.org/sat'},
-        {title:'Khan Academy – Digital SAT Strategy',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – SAT Timed Practice',url:'https://www.khanacademy.org/digital-sat'},
+        {title:'Khan Academy – Digital SAT Strategy',url:'https://www.khanacademy.org/digital-sat'},
         {title:'Vocabulary.com – Speed Practice',url:'https://www.vocabulary.com/'},
         {title:'ReadWorks – Timed Reading',url:'https://www.readworks.org/'}
       ],
       'May': [
-        {title:'Khan Academy – Score Maximization',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – Score Maximization',url:'https://www.khanacademy.org/digital-sat'},
         {title:'Vocabulary.com – Weak Areas',url:'https://www.vocabulary.com/'},
-        {title:'Khan Academy – Error Analysis',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – Error Analysis',url:'https://www.khanacademy.org/digital-sat'},
         {title:'Grammar Bytes – Final Review',url:'https://www.chompchomp.com/'}
       ],
       'June': [
-        {title:'Khan Academy – Final SAT Practice',url:'https://www.khanacademy.org/sat'},
+        {title:'Khan Academy – Final SAT Practice',url:'https://www.khanacademy.org/digital-sat'},
         {title:'Khan Academy – College Applications',url:'https://www.khanacademy.org/college-careers-more'},
         {title:'Vocabulary.com – Final Review',url:'https://www.vocabulary.com/'},
         {title:'ReadWorks – Final Practice',url:'https://www.readworks.org/'}
@@ -1688,125 +1688,125 @@
     'age-8-math': {
       'September': [
         {title:'Khan Academy – Place Value (Base Ten)',url:'https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-place-value'},
-        {title:'Math Playground – Round to Nearest 10',url:'https://www.mathplayground.com/ASB_RoundingNumbers.html'},
-        {title:'Khan Academy – Rounding to 100',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-place-value-rounding/cc-third-grade-rounding-2/v/rounding-to-the-nearest-hundred'},
-        {title:'Math is Fun – Addition & Subtraction Patterns',url:'https://www.mathsisfun.com/numbers/number-patterns.html'}
+        {title:'Math Playground – Round to Nearest 10',url:'https://www.mathplayground.com/'},
+        {title:'Khan Academy – Rounding to 100',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
+        {title:'Math is Fun – Addition & Subtraction Patterns',url:'https://www.mathsisfun.com/'}
       ],
       'October': [
-        {title:'Khan Academy – Multiplication as Equal Groups',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-multiplication-and-division/cc-third-grade-mult-as-equal-groups/v/multiplication-as-equal-groups'},
+        {title:'Khan Academy – Multiplication as Equal Groups',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
         {title:'Khan Academy – Multiplication with Arrays',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-multiplication-and-division/cc-third-grade-arrays-mult/v/multiplication-with-arrays'},
-        {title:'Math Playground – Multiplication 2s, 5s, 10s',url:'https://www.mathplayground.com/multiplication01.html'},
-        {title:'ABCya – Multiplication Mine',url:'https://www.abcya.com/games/multiplication_mine'}
+        {title:'Math Playground – Multiplication 2s, 5s, 10s',url:'https://www.mathplayground.com/'},
+        {title:'ABCya – Multiplication Mine',url:'https://www.abcya.com/games/category/math'}
       ],
       'November': [
-        {title:'Khan Academy – Division as Sharing',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-multiplication-and-division/cc-third-grade-divide-equal-groups/v/division-2'},
-        {title:'Khan Academy – Division as Grouping',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-multiplication-and-division/cc-third-grade-divide-equal-groups'},
-        {title:'Math Playground – Fact Families',url:'https://www.mathplayground.com/fact_family.html'},
+        {title:'Khan Academy – Division as Sharing',url:'https://www.khanacademy.org/math/cc-third-grade-math/v/division-2'},
+        {title:'Khan Academy – Division as Grouping',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
+        {title:'Math Playground – Fact Families',url:'https://www.mathplayground.com/'},
         {title:'IXL – Division Word Problems',url:'https://www.ixl.com/math/grade-3/division-word-problems'}
       ],
       'December': [
-        {title:'Khan Academy – Tally Charts & Data',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-measurement/cc-third-grade-picture-graphs'},
+        {title:'Khan Academy – Tally Charts & Data',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
         {title:'Math is Fun – Picture Graphs',url:'https://www.mathsisfun.com/data/pictographs.html'},
-        {title:'Khan Academy – Bar Graphs',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-measurement/cc-third-grade-bar-graphs'},
+        {title:'Khan Academy – Bar Graphs',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
         {title:'Math Playground – Line Plots',url:'https://www.mathplayground.com/grade_3_games.html'}
       ],
       'January': [
-        {title:'Khan Academy – Polygon Attributes',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-geometry/cc-third-grade-quadrilaterals/v/quadrilateral-overview'},
-        {title:'Khan Academy – Quadrilaterals',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-geometry/cc-third-grade-quadrilaterals'},
-        {title:'Khan Academy – Intro to Area',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-measurement/cc-third-grade-area'},
+        {title:'Khan Academy – Polygon Attributes',url:'https://www.khanacademy.org/math/cc-third-grade-math/v/quadrilateral-overview'},
+        {title:'Khan Academy – Quadrilaterals',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
+        {title:'Khan Academy – Intro to Area',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
         {title:'Math is Fun – Perimeter vs. Area',url:'https://www.mathsisfun.com/area.html'}
       ],
       'February': [
         {title:'Khan Academy – Telling Time to the Minute',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-measurement/cc-third-grade-time/v/telling-time-exercise-example-1'},
-        {title:'Math Playground – Elapsed Time',url:'https://www.mathplayground.com/elapsed_time.html'},
-        {title:'Khan Academy – Liquid Volume',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-measurement/cc-third-grade-mass-and-volume'},
-        {title:'Khan Academy – Mass & Weight',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-measurement/cc-third-grade-mass-and-volume/v/mass-and-volume-word-problem'}
+        {title:'Math Playground – Elapsed Time',url:'https://www.mathplayground.com/'},
+        {title:'Khan Academy – Liquid Volume',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
+        {title:'Khan Academy – Mass & Weight',url:'https://www.khanacademy.org/math/cc-third-grade-math/v/mass-and-volume-word-problem'}
       ],
       'March': [
-        {title:'Khan Academy – Unit Fractions',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-fractions/cc-third-grade-fractions-intro/v/unit-fractions'},
-        {title:'Khan Academy – Building Fractions',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-fractions/cc-third-grade-fractions-intro'},
-        {title:'Khan Academy – Fractions on Number Line',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-fractions/cc-third-grade-fractions-on-the-number-line'},
-        {title:'Khan Academy – Equivalent Fractions',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-fractions/cc-third-grade-equivalent-fractions'}
+        {title:'Khan Academy – Unit Fractions',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
+        {title:'Khan Academy – Building Fractions',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
+        {title:'Khan Academy – Fractions on Number Line',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
+        {title:'Khan Academy – Equivalent Fractions',url:'https://www.khanacademy.org/math/cc-third-grade-math'}
       ],
       'April': [
-        {title:'Khan Academy – Area & Multiplication',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-measurement/cc-third-grade-area/v/finding-area-by-multiplying'},
-        {title:'Khan Academy – Area & Distributive Property',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-measurement/cc-third-grade-area/v/area-and-the-distributive-property'},
-        {title:'Khan Academy – Area of Irregular Shapes',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-measurement/cc-third-grade-area/v/decomposing-shapes-to-find-area-grids'},
-        {title:'Math Playground – Perimeter vs Area',url:'https://www.mathplayground.com/area_perimeter.html'}
+        {title:'Khan Academy – Area & Multiplication',url:'https://www.khanacademy.org/math/cc-third-grade-math/v/finding-area-by-multiplying'},
+        {title:'Khan Academy – Area & Distributive Property',url:'https://www.khanacademy.org/math/cc-third-grade-math/v/area-and-the-distributive-property'},
+        {title:'Khan Academy – Area of Irregular Shapes',url:'https://www.khanacademy.org/math/cc-third-grade-math/v/decomposing-shapes-to-find-area-grids'},
+        {title:'Math Playground – Perimeter vs Area',url:'https://www.mathplayground.com/'}
       ],
       'May': [
-        {title:'Khan Academy – Find the Unknown',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-multiplication-and-division/cc-third-grade-multiplication-division-word-problems'},
-        {title:'Math Playground – Number Patterns',url:'https://www.mathplayground.com/number_patterns.html'},
-        {title:'Khan Academy – Two-Step Word Problems',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-third-grade-multiplication-and-division/cc-third-grade-2-step-word-problems'},
+        {title:'Khan Academy – Find the Unknown',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
+        {title:'Math Playground – Number Patterns',url:'https://www.mathplayground.com/'},
+        {title:'Khan Academy – Two-Step Word Problems',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
         {title:'Math is Fun – Estimation',url:'https://www.mathsisfun.com/numbers/estimation.html'}
       ],
       'June': [
         {title:'Khan Academy – 3rd Grade Review',url:'https://www.khanacademy.org/math/cc-third-grade-math'},
         {title:'IXL – 3rd Grade Math Skills',url:'https://www.ixl.com/math/grade-3'},
         {title:'Math Playground – 3rd Grade Games',url:'https://www.mathplayground.com/grade_3_games.html'},
-        {title:'Khan Academy – Math Mission Recap',url:'https://www.khanacademy.org/math/cc-third-grade-math/cc-3rd-mod-7-tg'}
+        {title:'Khan Academy – Math Mission Recap',url:'https://www.khanacademy.org/math/cc-third-grade-math'}
       ]
     },
     'age-8-english': {
       'September': [
         {title:'ReadWorks – Reading Comprehension',url:'https://www.readworks.org/article-a-day'},
-        {title:'ReadWriteThink – Story Elements',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/character-trading-cards-30888.html'},
-        {title:'CommonLit – 3rd Grade Plot',url:'https://www.commonlit.org/en/text-sets/plot'},
+        {title:'ReadWriteThink – Story Elements',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/sharing-favorite-books-using'},
+        {title:'CommonLit – 3rd Grade Plot',url:'https://www.commonlit.org/'},
         {title:'Storyline Online – Read-Alouds',url:'https://storylineonline.net/'}
       ],
       'October': [
-        {title:'ReadWriteThink – Narrative Ideas',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/personal-narrative-finding-text-1136.html'},
+        {title:'ReadWriteThink – Narrative Ideas',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'},
         {title:'ReadWriteThink – Story Map',url:'https://www.readwritethink.org/classroom-resources/student-interactives/story-30008.html'},
-        {title:'ReadWriteThink – Show Don\u2019t Tell',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/show-tell-narrative-elements-1064.html'},
+        {title:'ReadWriteThink – Show Don\u2019t Tell',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'},
         {title:'Purdue OWL – Revising & Editing',url:'https://owl.purdue.edu/owl/general_writing/the_writing_process/proofreading/index.html'}
       ],
       'November': [
         {title:'Khan Academy – Nouns',url:'https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-noun'},
         {title:'Khan Academy – Verbs',url:'https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-verb'},
         {title:'Khan Academy – Adjectives',url:'https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-modifier'},
-        {title:'Khan Academy – Sentences & Paragraphs',url:'https://www.khanacademy.org/humanities/grammar/syntax-sentences-and-clauses/syntax-types-of-sentences'}
+        {title:'Khan Academy – Sentences & Paragraphs',url:'https://www.khanacademy.org/humanities/grammar'}
       ],
       'December': [
         {title:'ReadWorks – Non-Fiction Text Features',url:'https://www.readworks.org/article-a-day'},
-        {title:'ReadWriteThink – Main Idea',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/teaching-main-idea-supporting-30821.html'},
-        {title:'AVID – Note-Taking for Kids',url:'https://www.avid.org/cornell-notes'},
-        {title:'ReadWriteThink – Summarizing',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/summarizing-search-of-essence-249.html'}
+        {title:'ReadWriteThink – Main Idea',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'},
+        {title:'AVID – Note-Taking for Kids',url:'https://www.avid.org/'},
+        {title:'ReadWriteThink – Summarizing',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'}
       ],
       'January': [
-        {title:'Khan Academy – Fact vs. Opinion',url:'https://www.khanacademy.org/ela/cc-3rd-reading-vocab/x6f2e2b5dca48ebc1:cc-3rd-reading-informational-text/x6f2e2b5dca48ebc1:cc-3rd-distinguishing-fact-and-opinion/v/fact-vs-opinion-key-words-reader-spree'},
-        {title:'ReadWriteThink – Opinion Writing',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/persuasive-writing-essential-elements-1052.html'},
+        {title:'Khan Academy – Fact vs. Opinion',url:'https://www.khanacademy.org/ela'},
+        {title:'ReadWriteThink – Opinion Writing',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'},
         {title:'Purdue OWL – Linking Words',url:'https://owl.purdue.edu/owl/general_writing/mechanics/transitions_and_transitional_devices/index.html'},
-        {title:'ReadWriteThink – Persuasive Letters',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/persuade-write-persuasive-letter-150.html'}
+        {title:'ReadWriteThink – Persuasive Letters',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'}
       ],
       'February': [
         {title:'Vocabulary.com – Prefixes',url:'https://www.vocabulary.com/lists/52473'},
-        {title:'Vocabulary.com – Suffixes',url:'https://www.vocabulary.com/lists/52474'},
-        {title:'Khan Academy – Context Clues',url:'https://www.khanacademy.org/ela/cc-3rd-reading-vocab/x6f2e2b5dca48ebc1:cc-3rd-vocab/x6f2e2b5dca48ebc1:cc-3rd-context-clues/v/context-clues-vocabulary-khan-academy'},
-        {title:'ABCya – Dictionary Skills',url:'https://www.abcya.com/games/dictionary'}
+        {title:'Vocabulary.com – Suffixes',url:'https://www.vocabulary.com/'},
+        {title:'Khan Academy – Context Clues',url:'https://www.khanacademy.org/ela'},
+        {title:'ABCya – Dictionary Skills',url:'https://www.abcya.com/games/category/reading'}
       ],
       'March': [
         {title:'Poetry Foundation – Poetry for Kids',url:'https://www.poetryfoundation.org/learn/children'},
-        {title:'ReadWriteThink – Similes & Metaphors',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/teaching-poetry-similes-metaphors-30625.html'},
+        {title:'ReadWriteThink – Similes & Metaphors',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'},
         {title:'Poetry4Kids – Sound Devices',url:'https://www.poetry4kids.com/lessons/'},
-        {title:'ReadWriteThink – Poetry Forms',url:'https://www.readwritethink.org/classroom-resources/student-interactives/diamante-poems-30053.html'}
+        {title:'ReadWriteThink – Poetry Forms',url:'https://www.readwritethink.org/classroom-resources/student-interactives'}
       ],
       'April': [
         {title:'Storyline Online – Fairy Tales',url:'https://storylineonline.net/'},
-        {title:'ReadWriteThink – Comparing Tales',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/comparing-fairy-tales-character-30773.html'},
+        {title:'ReadWriteThink – Comparing Tales',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'},
         {title:'Aesop\u2019s Fables – Library of Congress',url:'https://www.read.gov/aesop/'},
-        {title:'ReadWriteThink – Fractured Fairy Tales',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/fractured-fairy-tales-script-30811.html'}
+        {title:'ReadWriteThink – Fractured Fairy Tales',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'}
       ],
       'May': [
-        {title:'ReadWriteThink – Research Topics',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/research-building-blocks-research-194.html'},
+        {title:'ReadWriteThink – Research Topics',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'},
         {title:'Britannica Kids – Research',url:'https://kids.britannica.com/'},
-        {title:'ReadWriteThink – Organizing Info',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/research-building-blocks-organizing-194.html'},
+        {title:'ReadWriteThink – Organizing Info',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'},
         {title:'Purdue OWL – Editing & Publishing',url:'https://owl.purdue.edu/owl/general_writing/the_writing_process/proofreading/index.html'}
       ],
       'June': [
         {title:'ReadWorks – Fluency Review',url:'https://www.readworks.org/'},
         {title:'Khan Academy – Grammar Review',url:'https://www.khanacademy.org/humanities/grammar'},
         {title:'Poetry Foundation – Children\u2019s Poems',url:'https://www.poetryfoundation.org/learn/children'},
-        {title:'ReadWriteThink – Reflective Writing',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/reflective-writing-creating-1093.html'}
+        {title:'ReadWriteThink – Reflective Writing',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'}
       ]
     },
     'age-8-science': {
@@ -1817,14 +1817,14 @@
         {title:'Science Buddies – Density Tower',url:'https://www.sciencebuddies.org/stem-activities/density-tower'}
       ],
       'October': [
-        {title:'NASA – Balloon Rockets',url:'https://www.jpl.nasa.gov/edu/learn/project/stomp-rockets/'},
+        {title:'NASA – Balloon Rockets',url:'https://www.jpl.nasa.gov/edu/'},
         {title:'Science Buddies – Gravity Drop',url:'https://www.sciencebuddies.org/stem-activities/gravity-drop'},
         {title:'Science Buddies – Friction Cars',url:'https://www.sciencebuddies.org/stem-activities/friction-cars'},
-        {title:'TeachEngineering – Simple Machines',url:'https://www.teachengineering.org/curriculum/view/cub_simple_machines_curriculum'}
+        {title:'TeachEngineering – Simple Machines',url:'https://www.teachengineering.org/'}
       ],
       'November': [
         {title:'Science Buddies – Magnet Exploration',url:'https://www.sciencebuddies.org/stem-activities/magnet-exploration'},
-        {title:'NASA – Magnetic Fields',url:'https://spaceplace.nasa.gov/magnetism/en/'},
+        {title:'NASA – Magnetic Fields',url:'https://spaceplace.nasa.gov/'},
         {title:'Steve Spangler – Magnetic Field Lines',url:'https://www.stevespanglerscience.com/lab/experiments/'},
         {title:'Science Buddies – Static Electricity',url:'https://www.sciencebuddies.org/stem-activities/static-electricity-experiments'}
       ],
@@ -1841,25 +1841,25 @@
         {title:'NASA – Gravity in Space',url:'https://spaceplace.nasa.gov/what-is-gravity/en/'}
       ],
       'February': [
-        {title:'NatGeo Kids – Biomes',url:'https://kids.nationalgeographic.com/science/article/biomes'},
-        {title:'NatGeo Kids – Food Webs',url:'https://kids.nationalgeographic.com/science/article/food-chain'},
+        {title:'NatGeo Kids – Biomes',url:'https://kids.nationalgeographic.com/science'},
+        {title:'NatGeo Kids – Food Webs',url:'https://kids.nationalgeographic.com/science'},
         {title:'NOAA – Habitat Education',url:'https://www.noaa.gov/education/resource-collections/marine-life'},
-        {title:'NatGeo Kids – Fossils',url:'https://kids.nationalgeographic.com/science/article/fossils'}
+        {title:'NatGeo Kids – Fossils',url:'https://kids.nationalgeographic.com/science'}
       ],
       'March': [
         {title:'NatGeo Kids – Bird Beaks',url:'https://kids.nationalgeographic.com/animals/birds/'},
-        {title:'NatGeo Kids – Camouflage',url:'https://kids.nationalgeographic.com/science/article/animal-camouflage'},
+        {title:'NatGeo Kids – Camouflage',url:'https://kids.nationalgeographic.com/science'},
         {title:'NatGeo Kids – Animal Insulation',url:'https://kids.nationalgeographic.com/animals/'},
-        {title:'NatGeo Kids – Inherited Traits',url:'https://kids.nationalgeographic.com/science/article/genes'}
+        {title:'NatGeo Kids – Inherited Traits',url:'https://kids.nationalgeographic.com/science'}
       ],
       'April': [
         {title:'Science Buddies – Seed Germination',url:'https://www.sciencebuddies.org/stem-activities/seed-germination-baggie'},
         {title:'Science Buddies – Capillary Action',url:'https://www.sciencebuddies.org/stem-activities/capillary-action-flowers'},
-        {title:'NatGeo Kids – Photosynthesis',url:'https://kids.nationalgeographic.com/science/article/photosynthesis'},
+        {title:'NatGeo Kids – Photosynthesis',url:'https://kids.nationalgeographic.com/science'},
         {title:'NatGeo Kids – Pollination',url:'https://kids.nationalgeographic.com/animals/invertebrates/facts/honeybee'}
       ],
       'May': [
-        {title:'TeachEngineering – Bridge Building',url:'https://www.teachengineering.org/activities/view/cub_bridges_lesson01_activity1'},
+        {title:'TeachEngineering – Bridge Building',url:'https://www.teachengineering.org/'},
         {title:'Science Buddies – Egg Drop Challenge',url:'https://www.sciencebuddies.org/stem-activities/egg-drop'},
         {title:'TeachEngineering – Paper Towers',url:'https://www.teachengineering.org/activities/view/cub_intro_lesson03_activity1'},
         {title:'Science Buddies – Water Filter',url:'https://www.sciencebuddies.org/stem-activities/clean-water-engineering'}
@@ -1874,62 +1874,62 @@
     'age-8-art': {
       'September': [
         {title:'KinderArt – Lines & Drawing',url:'https://kinderart.com/art-lessons/drawing/'},
-        {title:'Art For Kids Hub – Shape Drawing',url:'https://www.artforkidshub.com/category/how-to-draw/shapes/'},
+        {title:'Art For Kids Hub – Shape Drawing',url:'https://www.artforkidshub.com/category/how-to-draw/people/'},
         {title:'Crayola – Color Mixing',url:'https://www.crayola.com/lesson-plans/color-and-art-techniques/'},
-        {title:'Tate Kids – Warm vs Cool Colors',url:'https://www.tate.org.uk/kids/explore/what-is/colour'}
+        {title:'Tate Kids – Warm vs Cool Colors',url:'https://www.tate.org.uk/kids/make/paint-draw'}
       ],
       'October': [
         {title:'Proko – Contour Drawing for Kids',url:'https://www.proko.com/blind-contour-drawing/'},
-        {title:'Drawing Coach – Shading Basics',url:'https://www.drawingcoach.com/shading-techniques.html'},
-        {title:'Art For Kids Hub – Still Life',url:'https://www.artforkidshub.com/how-to-draw/still-life/'},
+        {title:'Drawing Coach – Shading Basics',url:'https://www.proko.com/blind-contour-drawing/'},
+        {title:'Art For Kids Hub – Still Life',url:'https://www.artforkidshub.com/category/how-to-draw/people/'},
         {title:'Art For Kids Hub – Figure Drawing',url:'https://www.artforkidshub.com/category/how-to-draw/people/'}
       ],
       'November': [
-        {title:'Crayola – Watercolor Wash',url:'https://www.crayola.com/lesson-plans/watercolor-techniques-lesson-plan/'},
+        {title:'Crayola – Watercolor Wash',url:'https://www.crayola.com/crafts/'},
         {title:'KinderArt – Watercolor Texture',url:'https://kinderart.com/art-lessons/painting/'},
-        {title:'KinderArt – Tempera Painting',url:'https://kinderart.com/art-lessons/painting/tempera/'},
+        {title:'KinderArt – Tempera Painting',url:'https://kinderart.com/art-lessons/painting/'},
         {title:'Tate Kids – Nature Painting',url:'https://www.tate.org.uk/kids/make/paint-draw'}
       ],
       'December': [
-        {title:'KinderArt – Clay Pinch Pots',url:'https://kinderart.com/art-lessons/sculpture/clay/'},
-        {title:'KinderArt – Paper Mache',url:'https://kinderart.com/art-lessons/sculpture/paper-mache/'},
+        {title:'KinderArt – Clay Pinch Pots',url:'https://kinderart.com/category/art-lessons/sculpture/clay/clay/'},
+        {title:'KinderArt – Paper Mache',url:'https://kinderart.com/category/art-lessons/sculpture/clay/paper-mache/'},
         {title:'Origami.me – Easy Models',url:'https://origami.me/diagrams/'},
-        {title:'KinderArt – Found Object Sculpture',url:'https://kinderart.com/art-lessons/sculpture/'}
+        {title:'KinderArt – Found Object Sculpture',url:'https://kinderart.com/category/art-lessons/sculpture/clay/'}
       ],
       'January': [
-        {title:'Classics for Kids – Rhythm Lessons',url:'https://www.classicsforkids.com/teachers/lessonplans.html'},
-        {title:'NYP Kidzone – Tempo & Dynamics',url:'https://www.nyphilkids.org/games/main.phtml'},
-        {title:'Classics for Kids – Music Notation',url:'https://www.classicsforkids.com/music/musicalterms.php'},
+        {title:'Classics for Kids – Rhythm Lessons',url:'https://www.classicsforkids.com/'},
+        {title:'NYP Kidzone – Tempo & Dynamics',url:'https://pbskids.org/games/music/'},
+        {title:'Classics for Kids – Music Notation',url:'https://www.classicsforkids.com/'},
         {title:'PBS Kids – Music & Rhythm',url:'https://pbskids.org/games/music/'}
       ],
       'February': [
-        {title:'Tate Kids – Aboriginal Dot Painting',url:'https://www.tate.org.uk/kids/explore/who-is/aboriginal-art'},
-        {title:'KinderArt – Sumi-e Ink Painting',url:'https://kinderart.com/art-lessons/multic/sumie/'},
+        {title:'Tate Kids – Aboriginal Dot Painting',url:'https://www.tate.org.uk/kids/artists/aboriginal-art'},
+        {title:'KinderArt – Sumi-e Ink Painting',url:'https://kinderart.com/art-lessons/'},
         {title:'Smithsonian – African Textiles',url:'https://africa.si.edu/exhibits/textiles/'},
-        {title:'KinderArt – Mexican Folk Art',url:'https://kinderart.com/art-lessons/multic/mexico/'}
+        {title:'KinderArt – Mexican Folk Art',url:'https://kinderart.com/art-lessons/'}
       ],
       'March': [
-        {title:'Drama Resource – Character Voices',url:'https://dramaresource.com/category/games/'},
-        {title:'Drama Resource – Improv Games',url:'https://dramaresource.com/improvisation-games/'},
-        {title:'ReadWriteThink – Reader\u2019s Theater',url:'https://www.readwritethink.org/classroom-resources/lesson-plans/readers-theater-172.html'},
-        {title:'KinderArt – Puppet Making',url:'https://kinderart.com/art-lessons/puppets/'}
+        {title:'Drama Resource – Character Voices',url:'https://dramaresource.com/'},
+        {title:'Drama Resource – Improv Games',url:'https://dramaresource.com/'},
+        {title:'ReadWriteThink – Reader\u2019s Theater',url:'https://www.readwritethink.org/classroom-resources/lesson-plans'},
+        {title:'KinderArt – Puppet Making',url:'https://kinderart.com/art-lessons/'}
       ],
       'April': [
-        {title:'KinderArt – Collage Art',url:'https://kinderart.com/art-lessons/multic/collage/'},
+        {title:'KinderArt – Collage Art',url:'https://kinderart.com/art-lessons/'},
         {title:'KinderArt – Stamp Printing',url:'https://kinderart.com/art-lessons/printmaking/'},
-        {title:'Tate Kids – Monoprinting',url:'https://www.tate.org.uk/kids/make/print'},
+        {title:'Tate Kids – Monoprinting',url:'https://www.tate.org.uk/kids/make'},
         {title:'KinderArt – Recycled Art',url:'https://kinderart.com/art-lessons/recycled/'}
       ],
       'May': [
-        {title:'Tate Kids – Monet & Impressionism',url:'https://www.tate.org.uk/kids/explore/who-is/who-claude-monet'},
-        {title:'Tate Kids – Picasso & Cubism',url:'https://www.tate.org.uk/kids/explore/who-is/who-pablo-picasso'},
-        {title:'Tate Kids – Frida Kahlo',url:'https://www.tate.org.uk/kids/explore/who-is/who-frida-kahlo'},
+        {title:'Tate Kids – Monet & Impressionism',url:'https://www.tate.org.uk/kids/artists/who-claude-monet'},
+        {title:'Tate Kids – Picasso & Cubism',url:'https://www.tate.org.uk/kids/artists/who-pablo-picasso'},
+        {title:'Tate Kids – Frida Kahlo',url:'https://www.tate.org.uk/kids/artists/who-frida-kahlo'},
         {title:'NMWA – Georgia O\u2019Keeffe',url:'https://nmwa.org/art/artists/georgia-okeeffe/'}
       ],
       'June': [
-        {title:'KinderArt – Portfolio Tips',url:'https://kinderart.com/teachers/portfolio/'},
+        {title:'KinderArt – Portfolio Tips',url:'https://kinderart.com/art-lessons/'},
         {title:'MoMA Learning – Curating',url:'https://www.moma.org/learn/'},
-        {title:'KinderArt – Group Mural',url:'https://kinderart.com/art-lessons/multic/mural/'},
+        {title:'KinderArt – Group Mural',url:'https://kinderart.com/art-lessons/'},
         {title:'PE Central – Field Day Activities',url:'https://www.pecentral.org/lessonideas/'}
       ]
     }
