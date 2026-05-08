@@ -1,8 +1,8 @@
 {
   "framework": null,
-  "installCommand": "true",
-  "buildCommand": "true",
-  "outputDirectory": "public-curriculum-v2",
+  "installCommand": "npm install",
+  "buildCommand": "cp -r public-curriculum-v2/* dist/ && ls -la dist/",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "redirects": [
     { "source": "/", "destination": "/hub.html", "permanent": false }
