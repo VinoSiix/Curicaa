@@ -38,16 +38,16 @@
 - **Session management**: Supabase handles JWT automatically
 
 ## Remaining Questions
-1. Social logins (Google, GitHub, etc.) — now or later?
-2. Architecture clarification needed (see below)
+1. ~~Social logins~~ → **Add Google login too**
+2. ~~Test strategy~~ → **No tests, agent-executed QA only**
 
-## Architecture Insight
-With Supabase Auth + Supabase PostgreSQL, the frontend can talk to Supabase **directly** for auth and data reads. Vercel Serverless Functions would only be needed for:
-- Stripe webhooks (when payment is added)
-- Admin-only operations
-- Server-side logic that can't be client-side
-
-This means the plan can be simpler: Supabase handles the backend, frontend uses `@supabase/supabase-js` directly.
+## Final Architecture
+- **Supabase Auth**: email/password + Google sign-in, email verification, password reset, JWT sessions
+- **Supabase PostgreSQL**: user profiles, subscription/plan data, subscription days tracking
+- **Frontend**: Replace `auth.js` (localStorage) with `@supabase/supabase-js` client
+- **Paywall**: Replace `paywall.js` localStorage checks with real Supabase DB reads
+- **Vercel Serverless Functions**: Not needed for this phase. Will be added when payment comes.
+- **No tests**: Agent-executed QA scenarios for verification
 
 ## Scope Boundaries
 - INCLUDE: Real auth, real database, user/subscription data model, frontend integration

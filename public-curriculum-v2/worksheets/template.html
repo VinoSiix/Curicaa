@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{HEADER_TOPIC}} — {{HEADER_GRADE}} {{HEADER_SUBJECT}}</title>
+<style>
+  /* === Math-Aids Style Worksheet Template === */
+  /* Clean, grid-based, functional, minimal decoration. B&W friendly. */
+
+  @page { size: A4; margin: 14mm 12mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.6; }
+
+  /* --- Header --- */
+  .header { border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 10px; }
+  .header-top { font-size: 11px; color: #666; margin-bottom: 2px; letter-spacing: 0.03em; }
+  .header-title { font-size: 16px; font-weight: 700; }
+
+  /* --- Name / Date --- */
+  .name-row { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 12px; }
+  .name-row span { display: inline-block; width: 48%; }
+  .name-line { display: inline-block; width: 70%; border-bottom: 1px solid #999; margin-left: 4px; }
+
+  /* --- Instructions --- */
+  .instructions { font-size: 12px; margin-bottom: 10px; font-weight: 500; }
+
+  /* --- Problem Grids --- */
+  .problem-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 14px; }
+  .problem-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px 20px; margin-bottom: 14px; }
+  .problem-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px 16px; margin-bottom: 14px; }
+  .problem-grid-5 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 8px 12px; margin-bottom: 14px; }
+
+  /* --- Problem Items --- */
+  .prob { display: flex; align-items: baseline; gap: 6px; padding: 3px 0; font-size: 14px; }
+  .prob .num { min-width: 20px; font-weight: 600; color: #444; font-size: 12px; }
+  .prob .eq { font-weight: 600; color: #999; margin: 0 2px; }
+  .blank { display: inline-block; min-width: 36px; border-bottom: 1.5px solid #333; text-align: center; font-weight: 600; }
+
+  /* --- Counting Row (symbols + answer) --- */
+  .count-row { display: flex; align-items: center; gap: 10px; padding: 4px 0; border-bottom: 1px solid #e5e5e5; }
+  .count-row:last-child { border-bottom: none; }
+  .symbols { font-size: 16px; letter-spacing: 2px; min-width: 100px; }
+  .equals { font-weight: 700; color: #999; }
+
+  /* --- Matching Row --- */
+  .match-row { display: flex; align-items: center; gap: 6px; padding: 5px 0; }
+  .match-left { font-weight: 800; font-size: 15px; width: 20px; text-align: right; }
+  .match-dots { flex: 1; border-bottom: 1.5px dotted #999; min-width: 30px; height: 1px; }
+  .match-right { font-size: 15px; }
+
+  /* --- Drawing Box --- */
+  .draw-box { border: 1.5px solid #ccc; border-radius: 4px; min-height: 60px; margin: 4px 0; }
+
+  /* --- Handwriting Lines --- */
+  .writing-lines { width: 100%; margin: 4px 0; }
+  .writing-line { width: 100%; height: 32px; border-bottom: 1.5px solid #999; position: relative; margin-bottom: 2px; }
+  .writing-line::after { content: ''; position: absolute; bottom: 10px; left: 0; right: 0; border-bottom: 1px dashed #bbb; }
+  .writing-line-tall { height: 48px; }
+
+  /* --- Section Divider --- */
+  .section-divider { border: none; border-top: 1px solid #ddd; margin: 12px 0; }
+
+  /* --- Bonus Challenge --- */
+  .bonus { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #ccc; }
+  .bonus-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 4px; }
+  .bonus-content { font-size: 12px; }
+  .bonus-lines { margin-top: 6px; }
+  .bonus-line { width: 100%; border-bottom: 1px solid #ddd; height: 24px; margin-bottom: 3px; }
+
+  /* --- Footer --- */
+  .footer { margin-top: 20px; padding-top: 6px; border-top: 1px solid #ddd; font-size: 9px; color: #999; display: flex; justify-content: space-between; }
+
+  /* --- PLACEHOLDER COMMENTS (remove when generating actual worksheets) --- */
+  /*
+    Available problem layout patterns:
+
+    PATTERN 1: Count and write
+    <div class="instructions">Count the objects. Write the number.</div>
+    <div class="count-row"><span class="symbols">★ ★ ★ ★</span><span class="equals">=</span><span class="blank">&nbsp;</span></div>
+    <div class="count-row"><span class="symbols">★ ★</span><span class="equals">=</span><span class="blank">&nbsp;</span></div>
+
+    PATTERN 2: Equation grid
+    <div class="instructions">Solve.</div>
+    <div class="problem-grid-2">
+      <div class="prob"><span class="num">1.</span> 3 + 4 = <span class="blank">&nbsp;</span></div>
+      <div class="prob"><span class="num">2.</span> 2 + 1 = <span class="blank">&nbsp;</span></div>
+      <div class="prob"><span class="num">3.</span> 5 + 0 = <span class="blank">&nbsp;</span></div>
+      <div class="prob"><span class="num">4.</span> 1 + 3 = <span class="blank">&nbsp;</span></div>
+    </div>
+
+    PATTERN 3: Match
+    <div class="instructions">Draw a line to match each number to the group.</div>
+    <div class="match-row"><span class="match-left">2</span><span class="match-dots"></span><span class="match-right">● ● ● ●</span></div>
+    <div class="match-row"><span class="match-left">4</span><span class="match-dots"></span><span class="match-right">● ●</span></div>
+
+    PATTERN 4: Draw boxes
+    <div class="instructions">Draw the correct number of objects in each box.</div>
+    <div class="problem-grid-5">
+      <div><div style="text-align:center;font-weight:700;font-size:16px;">1</div><div class="draw-box"></div></div>
+      <div><div style="text-align:center;font-weight:700;font-size:16px;">2</div><div class="draw-box"></div></div>
+    </div>
+
+    PATTERN 5: Fill in the blank (horizontal)
+    <div class="instructions">Fill in the missing number.</div>
+    <div class="problem-grid-2">
+      <div class="prob"><span class="num">1.</span> 1, 2, ___, 4, ___</div>
+      <div class="prob"><span class="num">2.</span> 5, ___, 3, 2, ___</div>
+    </div>
+
+    PATTERN 6: Handwriting / letter practice
+    <div class="instructions">Trace and write the letter.</div>
+    <div class="writing-lines">
+      <div class="writing-line"></div>
+      <div class="writing-line"></div>
+      <div class="writing-line"></div>
+    </div>
+  */
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">{{HEADER_GRADE}} · {{HEADER_SUBJECT}} · {{HEADER_WEEK}}</div>
+  <div class="header-title">{{HEADER_TOPIC}}</div>
+</div>
+
+<!-- NAME / DATE -->
+<div class="name-row">
+  <span>Name <span class="name-line">&nbsp;</span></span>
+  <span>Date <span class="name-line">&nbsp;</span></span>
+</div>
+
+<!-- INSTRUCTIONS + PROBLEMS -->
+<!-- Replace everything below with actual worksheet content -->
+<!-- Use the CSS classes above to structure problems -->
+
+<div class="instructions">{{INSTRUCTIONS}}</div>
+
+{{PROBLEMS}}
+
+<!-- BONUS CHALLENGE -->
+<div class="bonus">
+  <div class="bonus-label">Bonus Challenge</div>
+  <div class="bonus-content">{{BONUS}}</div>
+  <div class="bonus-lines">
+    <div class="bonus-line"></div>
+    <div class="bonus-line"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>Curicaa · {{HEADER_GRADE}} · {{HEADER_SUBJECT}} · {{HEADER_WEEK}}</span>
+  <span>curicaa.com</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal — Terms of Service, Privacy Policy & Refund Policy | Curicaa</title>
+    <link rel="stylesheet" href="assets/font-awesome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/favicon.ico">
+    <style>
+:root{--bg-primary:#0f1119;--bg-card:rgba(255,255,255,0.04);--bg-card-hover:rgba(255,255,255,0.07);--bg-subtle:rgba(255,255,255,0.04);--bg-subtle-hover:rgba(255,255,255,0.09);--bg-modal-box:#13151f;--bg-mini-card:rgba(212,165,74,0.08);--border:rgba(255,255,255,0.06);--border-card:rgba(255,255,255,0.075);--border-faint:rgba(255,255,255,0.07);--border-thin:rgba(255,255,255,0.09);--border-icon-ring:rgba(255,255,255,0.13);--border-gold:rgba(212,165,74,0.25);--text-primary:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.68);--text-muted:rgba(255,255,255,0.55);--text-faint:rgba(255,255,255,0.50);--text-very-faint:rgba(255,255,255,0.40);--text-nav:rgba(255,255,255,0.60);--gold:#d4a54a;--gold-light:#e8c36a;--gold-dim:#a07830;--accent-green:#4ade80;--accent-blue:#60a5fa;--accent-purple:#a78bfa;--accent-red:#f87171;--accent-cyan:#22d3ee;--font-display:'DM Serif Display',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;--radius:14px;--radius-lg:20px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}*{font-family:var(--font-body)}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg-primary);min-height:100vh;color:var(--text-primary);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background:repeating-conic-gradient(rgba(255,255,255,0.008) 0% 25%,transparent 0% 50%) 0 0/3px 3px;pointer-events:none;z-index:0}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;opacity:0.08;will-change:transform}
+.bg-orb-1{width:500px;height:500px;background:var(--gold);top:-200px;left:-150px}
+.bg-orb-2{width:400px;height:400px;background:#34d399;bottom:-100px;right:-100px}
+.bg-orb-3{width:300px;height:300px;background:#fb7185;top:35%;left:38%}
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:0;animation:twinkle var(--dur) ease-in-out infinite var(--delay)}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(1)}50%{opacity:0.4;transform:scale(1.5)}}
+header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-filter:blur(28px);border-bottom:1px solid var(--border)}
+.logo-glow{position:absolute;inset:-4px;border-radius:14px;background:linear-gradient(135deg,var(--gold),#f97316);filter:blur(8px);opacity:0;transition:opacity 0.3s}.logo-wrap:hover .logo-glow{opacity:0.5}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1),transform 0.6s cubic-bezier(0.22,1,0.36,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+.section-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.tab-bar{display:flex;gap:6px;margin-bottom:40px;padding:4px;background:var(--bg-card);border:1px solid var(--border-card);border-radius:14px;position:sticky;top:68px;z-index:10;backdrop-filter:blur(16px)}
+.tab-btn{flex:1;padding:12px 16px;border-radius:10px;border:none;background:transparent;color:var(--text-muted);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:all 0.25s;text-align:center}
+.tab-btn:hover{color:var(--text-primary);background:var(--bg-subtle)}
+.tab-btn.active{background:linear-gradient(135deg,var(--gold),#f97316);color:white;box-shadow:0 2px 12px rgba(212,165,74,0.3)}
+.tab-content{display:none}.tab-content.active{display:block}
+.legal-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);padding:28px 28px 24px;margin-bottom:20px}
+.legal-card h2{font-family:var(--font-display);font-size:22px;font-weight:700;margin-bottom:8px;color:var(--text-primary)}
+.legal-card h3{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--gold-light);margin-top:20px}
+.legal-card p,.legal-card li{font-size:14px;line-height:1.75;color:var(--text-secondary);margin-bottom:12px}
+.legal-card ul,.legal-card ol{padding-left:20px;margin-bottom:12px}
+.legal-card li{margin-bottom:6px}
+.toc{background:var(--bg-subtle);border:1px solid var(--border-faint);border-radius:var(--radius);padding:20px 24px;margin-bottom:32px}
+.toc-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:14px}
+.toc a{display:block;font-size:13.5px;color:var(--text-secondary);text-decoration:none;padding:5px 0;transition:color 0.2s;border-bottom:1px solid var(--border-faint)}
+.toc a:last-child{border-bottom:none}
+.toc a:hover{color:var(--gold-light)}
+.toc a::before{content:'§ ';color:var(--gold-dim);font-weight:600}
+.updated-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;background:rgba(255,255,255,0.03);border:1px solid var(--border-faint);font-size:11px;color:var(--text-muted);margin-bottom:28px}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text-nav);text-decoration:none;padding:6px 14px;border-radius:8px;transition:color 0.2s,background 0.2s;cursor:pointer}
+.back-link:hover{color:var(--text-primary);background:var(--bg-subtle)}
+.contact-box{background:var(--bg-mini-card);border:1px solid rgba(212,165,74,0.18);border-radius:var(--radius);padding:18px 22px;margin-top:16px}
+.contact-box .label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:8px}
+.contact-box a{color:var(--gold-light);text-decoration:none;font-weight:600}.contact-box a:hover{text-decoration:underline}
+.footer-link{font-size:12.5px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;cursor:pointer}.footer-link:hover{color:var(--text-primary)}
+@media(max-width:767px){.legal-card{padding:20px 18px 18px}.tab-bar{position:static;flex-direction:column;gap:4px}.tab-btn{padding:10px 14px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){.star{animation:none!important;opacity:0.3}.reveal{opacity:1!important;transform:none!important;transition:none!important}}
+    </style>
+</head>
+<body>
+    <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-orb bg-orb-3"></div><div class="stars" id="stars"></div>
+
+    <header>
+        <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:60px;position:relative;z-index:1;">
+            <div style="display:flex;align-items:center;gap:14px;">
+                <a href="hub.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Hub</a>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;cursor:pointer;" class="logo-wrap">
+                <div style="position:relative;flex-shrink:0;"><div class="logo-glow"></div><div style="position:relative;width:34px;height:34px;background:linear-gradient(135deg,var(--gold),#f97316);border-radius:10px;display:flex;align-items:center;justify-content:center;z-index:1;"><i class="fas fa-graduation-cap" style="font-size:14px;color:white;"></i></div></div>
+                <div><div style="font-weight:700;font-size:15px;letter-spacing:-0.025em;line-height:1.2;color:var(--text-primary);">Curicaa</div><div style="font-size:10px;color:var(--text-faint);font-weight:500;letter-spacing:0.04em;">Homeschool Curriculum</div></div>
+            </div>
+        </div>
+    </header>
+
+    <main style="position:relative;z-index:1;max-width:800px;margin:0 auto;padding:48px 20px 88px;">
+        <div class="reveal">
+            <p class="section-label">Legal</p>
+            <h1 style="font-family:var(--font-display);font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;">Legal Documents</h1>
+            <p style="color:var(--text-secondary);font-size:15px;margin-bottom:12px;">Terms of Service, Privacy Policy, and Refund Policy for Curicaa.</p>
+            <div class="updated-tag"><i class="fas fa-calendar-alt" style="font-size:10px;"></i> Last updated: May 8, 2026</div>
+        </div>
+
+        <div class="tab-bar reveal" id="tabBar">
+            <button class="tab-btn active" onclick="switchTab('tos')" id="tabTos"><i class="fas fa-file-contract" style="margin-right:6px;font-size:12px;"></i>Terms of Service</button>
+            <button class="tab-btn" onclick="switchTab('privacy')" id="tabPrivacy"><i class="fas fa-shield-alt" style="margin-right:6px;font-size:12px;"></i>Privacy Policy</button>
+            <button class="tab-btn" onclick="switchTab('refund')" id="tabRefund"><i class="fas fa-undo-alt" style="margin-right:6px;font-size:12px;"></i>Refund Policy</button>
+        </div>
+
+        <!-- ==================== TERMS OF SERVICE ==================== -->
+        <div class="tab-content active" id="contentTos">
+            <div class="toc reveal">
+                <div class="toc-title">Table of Contents</div>
+                <a href="#tos-acceptance">Acceptance of Terms</a>
+                <a href="#tos-description">Description of Service</a>
+                <a href="#tos-accounts">Account Registration</a>
+                <a href="#tos-subscriptions">Subscriptions & Billing</a>
+                <a href="#tos-ip">Intellectual Property</a>
+                <a href="#tos-ugc">User-Generated Content</a>
+                <a href="#tos-acceptable-use">Acceptable Use</a>
+                <a href="#tos-termination">Termination</a>
+                <a href="#tos-limitation">Limitation of Liability</a>
+                <a href="#tos-disclaimer">Disclaimer of Warranties</a>
+                <a href="#tos-governing">Governing Law</a>
+                <a href="#tos-changes">Changes to Terms</a>
+                <a href="#tos-contact">Contact</a>
+            </div>
+
+            <div class="legal-card reveal" id="tos-acceptance">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing or using the Curicaa website, curriculum materials, and related services (collectively, the "Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you may not access or use the Service.</p>
+                <p>These Terms constitute a legally binding agreement between you ("User," "you," or "your") and Curicaa Education ("Curicaa," "we," "us," or "our").</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-description">
+                <h2>2. Description of Service</h2>
+                <p>Curicaa provides a comprehensive K-12 homeschool curriculum delivered through a web-based platform. The Service includes:</p>
+                <ul>
+                    <li>Open-and-go lesson plans for ages 5 through 18</li>
+                    <li>Curriculum organized by grade level and subject (Mathematics, English, Science, Art & PE, Social Studies)</li>
+                    <li>Weekly lesson structures with warm-ups, main activities, games, and assessments</li>
+                    <li>Parent guides and teaching instructions</li>
+                    <li>Printable worksheets and quiz materials (Pro plan)</li>
+                    <li>Progress tracking and account management features</li>
+                </ul>
+                <p>The Service is designed for use by parents, guardians, and educators in a homeschool setting. It is not a substitute for accredited schooling and does not grant academic credit or diplomas.</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-accounts">
+                <h2>3. Account Registration</h2>
+                <h3>3.1 Eligibility</h3>
+                <p>You must be at least 18 years of age to create an account. By creating an account, you represent that you are at least 18 years old and have the legal capacity to enter into these Terms.</p>
+                <h3>3.2 Account Information</h3>
+                <p>You agree to provide accurate, current, and complete information during registration and to keep your account information updated. You are responsible for:</p>
+                <ul>
+                    <li>Maintaining the confidentiality of your account credentials</li>
+                    <li>All activities that occur under your account</li>
+                    <li>Notifying us immediately of any unauthorized use of your account</li>
+                </ul>
+                <h3>3.3 Account Restrictions</h3>
+                <p>You may not create multiple accounts to abuse free-tier access, share your paid account credentials with non-subscribers, or use another person's account without authorization.</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-subscriptions">
+                <h2>4. Subscriptions & Billing</h2>
+                <h3>4.1 Plans</h3>
+                <p>Curicaa offers the following subscription plans:</p>
+                <ul>
+                    <li><strong>Free Preview</strong> — $0. Access to the first month of every subject and hub features. No credit card required.</li>
+                    <li><strong>Single Grade</strong> — $79/year or $9/month. Full 40-week curriculum for one grade level, all four subjects included.</li>
+                    <li><strong>Full K-12 Bundle</strong> — $169/year or $19/month. Full access to all eight grade levels, all subjects, all 320+ weeks of lessons.</li>
+                    <li><strong>Curicaa Pro</strong> — $259/year or $29/month. Everything in the Full Bundle plus all 10 months of worksheets, answer keys with worked solutions, and end-of-month quizzes for every subject.</li>
+                </ul>
+                <h3>4.2 Billing Cycle</h3>
+                <p>Subscriptions are billed in advance on a monthly or annual basis, depending on the plan selected. Annual subscribers receive three months free compared to the equivalent monthly billing.</p>
+                <h3>4.3 Price Changes</h3>
+                <p>We reserve the right to modify pricing with 30 days' advance notice. Existing subscribers will be grandfathered in at their current rate until the end of their current billing period.</p>
+                <h3>4.4 Family Plan</h3>
+                <p>All paid plans are family plans — one subscription covers all children in a single household. There is no per-child fee.</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-ip">
+                <h2>5. Intellectual Property</h2>
+                <p>All content provided through the Service — including but not limited to lesson plans, worksheets, assessments, parent guides, text, graphics, logos, and software — is the property of Curicaa Education and is protected by copyright, trademark, and other intellectual property laws.</p>
+                <h3>5.1 License Grant</h3>
+                <p>With an active subscription, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use the curriculum materials for personal, non-commercial educational purposes within your household.</p>
+                <h3>5.2 Restrictions</h3>
+                <p>You may not:</p>
+                <ul>
+                    <li>Copy, reproduce, distribute, or share curriculum content with non-subscribers</li>
+                    <li>Modify, adapt, or create derivative works from the materials</li>
+                    <li>Use the content for commercial purposes, including reselling or redistribution</li>
+                    <li>Remove or alter any proprietary notices on the materials</li>
+                    <li>Scrape, extract, or download the curriculum content in bulk</li>
+                </ul>
+            </div>
+
+            <div class="legal-card reveal" id="tos-ugc">
+                <h2>6. User-Generated Content</h2>
+                <p>If the Service allows you to submit, upload, or post content (such as reviews, feedback, or community posts), you grant Curicaa a non-exclusive, worldwide, royalty-free license to use, reproduce, and display that content in connection with the Service.</p>
+                <p>You represent that you have all rights necessary to grant us this license and that your content does not infringe on any third party's intellectual property rights.</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-acceptable-use">
+                <h2>7. Acceptable Use</h2>
+                <p>You agree not to use the Service to:</p>
+                <ul>
+                    <li>Violate any applicable local, state, national, or international law</li>
+                    <li>Transmit any material that is defamatory, obscene, threatening, or otherwise objectionable</li>
+                    <li>Attempt to gain unauthorized access to any portion of the Service or its systems</li>
+                    <li>Interfere with or disrupt the Service or servers connected to the Service</li>
+                    <li>Use automated tools (bots, scrapers) to access the Service</li>
+                    <li>Share access credentials with individuals outside your household</li>
+                    <li>Reverse-engineer, decompile, or disassemble any part of the Service</li>
+                </ul>
+            </div>
+
+            <div class="legal-card reveal" id="tos-termination">
+                <h2>8. Termination</h2>
+                <h3>8.1 By You</h3>
+                <p>You may cancel your subscription at any time through your account settings or by contacting us at support@curicaa.com. Upon cancellation, you will retain access to paid content until the end of your current billing period. No further charges will be applied.</p>
+                <h3>8.2 By Curicaa</h3>
+                <p>We may suspend or terminate your account if you violate these Terms. We will make reasonable efforts to notify you before termination, except in cases of serious or repeated violations.</p>
+                <h3>8.3 Effect of Termination</h3>
+                <p>Upon termination, your right to access paid curriculum materials ceases. Provisions that by their nature should survive — including intellectual property, disclaimers, and limitation of liability — will remain in effect.</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-limitation">
+                <h2>9. Limitation of Liability</h2>
+                <p>To the maximum extent permitted by applicable law, Curicaa Education shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Service, including but not limited to:</p>
+                <ul>
+                    <li>Loss of data, goodwill, or educational progress</li>
+                    <li>Any errors or omissions in curriculum content</li>
+                    <li>Any interruption or cessation of the Service</li>
+                    <li>Any unauthorized access to your account</li>
+                </ul>
+                <p>Our total liability to you for any claims arising from the Service shall not exceed the amount you paid to Curicaa in the 12 months preceding the claim.</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-disclaimer">
+                <h2>10. Disclaimer of Warranties</h2>
+                <p>The Service and all curriculum materials are provided "as is" and "as available" without warranties of any kind, either express or implied.</p>
+                <p>Curicaa does not warrant that:</p>
+                <ul>
+                    <li>The Service will be uninterrupted, secure, or error-free</li>
+                    <li>The curriculum materials will meet your specific educational requirements</li>
+                    <li>The curriculum materials comply with the educational standards or regulations of any particular jurisdiction</li>
+                    <li>Use of the curriculum will result in any specific educational outcome or standardized test performance</li>
+                </ul>
+                <p><strong>Important:</strong> Curicaa's curriculum is designed for homeschooling parents and educators. It is not an accredited educational institution. Parents are responsible for ensuring compliance with their local homeschool regulations and requirements.</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-governing">
+                <h2>11. Governing Law</h2>
+                <p>These Terms shall be governed by and construed in accordance with the laws of the United States, without regard to its conflict of law provisions. Any disputes arising under these Terms shall be resolved in the courts of competent jurisdiction in the United States.</p>
+                <p>For users outside the United States, you agree that any disputes will be resolved through good-faith negotiation first, and you retain any mandatory consumer protections afforded by your local laws.</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-changes">
+                <h2>12. Changes to Terms</h2>
+                <p>We may update these Terms from time to time. When we do, we will:</p>
+                <ul>
+                    <li>Update the "Last updated" date at the top of this page</li>
+                    <li>Notify registered users via email for material changes</li>
+                    <li>Provide at least 14 days' notice before material changes take effect</li>
+                </ul>
+                <p>Continued use of the Service after changes take effect constitutes acceptance of the updated Terms.</p>
+            </div>
+
+            <div class="legal-card reveal" id="tos-contact">
+                <h2>13. Contact</h2>
+                <p>If you have questions about these Terms of Service, please contact us:</p>
+                <div class="contact-box">
+                    <div class="label">Curicaa Education — Legal</div>
+                    <p style="margin-bottom:4px;"><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px;font-size:12px;"></i><a href="mailto:support@curicaa.com">support@curicaa.com</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PRIVACY POLICY ==================== -->
+        <div class="tab-content" id="contentPrivacy">
+            <div class="toc reveal">
+                <div class="toc-title">Table of Contents</div>
+                <a href="#priv-overview">Overview</a>
+                <a href="#priv-collected">Information We Collect</a>
+                <a href="#priv-how">How We Use Your Information</a>
+                <a href="#priv-cookies">Cookies & Tracking</a>
+                <a href="#priv-third">Third-Party Services</a>
+                <a href="#priv-storage">Data Storage & Security</a>
+                <a href="#priv-children">Children's Privacy</a>
+                <a href="#priv-rights">Your Rights</a>
+                <a href="#priv-retention">Data Retention</a>
+                <a href="#priv-international">International Users</a>
+                <a href="#priv-changes">Changes to This Policy</a>
+                <a href="#priv-contact">Contact</a>
+            </div>
+
+            <div class="legal-card reveal" id="priv-overview">
+                <h2>1. Overview</h2>
+                <p>Curicaa Education ("Curicaa," "we," "us," or "our") respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, store, and protect your information when you use our website and curriculum services (the "Service").</p>
+                <p>By using the Service, you consent to the data practices described in this policy.</p>
+            </div>
+
+            <div class="legal-card reveal" id="priv-collected">
+                <h2>2. Information We Collect</h2>
+                <h3>2.1 Information You Provide</h3>
+                <ul>
+                    <li><strong>Account information:</strong> Full name, email address, and password when you register</li>
+                    <li><strong>Payment information:</strong> Credit card number, billing address, and transaction details when you make a purchase (processed by our payment provider — we do not store full card numbers)</li>
+                    <li><strong>Profile information:</strong> Display name, selected grade levels, and preferences</li>
+                    <li><strong>Communications:</strong> Information you provide when contacting our support team</li>
+                </ul>
+                <h3>2.2 Information Collected Automatically</h3>
+                <ul>
+                    <li><strong>Usage data:</strong> Pages visited, features used, lesson progress, and time spent on the platform</li>
+                    <li><strong>Device information:</strong> Browser type, operating system, screen resolution, and device type</li>
+                    <li><strong>Log data:</strong> IP address, access times, and referring URLs</li>
+                </ul>
+                <h3>2.3 Information We Do Not Collect</h3>
+                <p>We do not collect information from children under 13. Our Service is designed for parents and educators — children do not create accounts or submit personal information to us.</p>
+            </div>
+
+            <div class="legal-card reveal" id="priv-how">
+                <h2>3. How We Use Your Information</h2>
+                <p>We use collected information for the following purposes:</p>
+                <ul>
+                    <li><strong>Service delivery:</strong> To provide, maintain, and improve the curriculum platform</li>
+                    <li><strong>Account management:</strong> To create and manage your account, process payments, and handle subscriptions</li>
+                    <li><strong>Personalization:</strong> To remember your preferences, grade selections, and progress</li>
+                    <li><strong>Communication:</strong> To send service-related notifications, billing updates, and (with your consent) marketing emails</li>
+                    <li><strong>Analytics:</strong> To understand how users interact with the Service and improve content quality</li>
+                    <li><strong>Legal compliance:</strong> To comply with applicable laws and respond to legal requests</li>
+                </ul>
+            </div>
+
+            <div class="legal-card reveal" id="priv-cookies">
+                <h2>4. Cookies & Tracking</h2>
+                <h3>4.1 What We Use</h3>
+                <p>We use cookies and similar technologies to:</p>
+                <ul>
+                    <li><strong>Essential cookies:</strong> Keep you logged in, remember your session, and maintain your progress</li>
+                    <li><strong>Preference cookies:</strong> Remember your settings such as font size and animation preferences</li>
+                    <li><strong>Analytics cookies:</strong> Help us understand usage patterns (anonymous, aggregated data only)</li>
+                </ul>
+                <h3>4.2 Third-Party Cookies</h3>
+                <p>Our payment processor may set their own cookies during the checkout process. These are governed by their own privacy policies.</p>
+                <h3>4.3 Managing Cookies</h3>
+                <p>You can manage or disable cookies through your browser settings. Note that disabling essential cookies may affect the functionality of the Service.</p>
+            </div>
+
+            <div class="legal-card reveal" id="priv-third">
+                <h2>5. Third-Party Services</h2>
+                <p>We may share limited information with the following categories of third parties:</p>
+                <ul>
+                    <li><strong>Payment processors:</strong> To securely process subscription payments. Payment processors are PCI-DSS compliant and handle your card data according to their own security standards.</li>
+                    <li><strong>Hosting providers:</strong> To store and serve the website content. Our hosting providers are contractually obligated to protect your data.</li>
+                    <li><strong>Analytics services:</strong> To understand platform usage through anonymized, aggregated data.</li>
+                </ul>
+                <p>We do not sell, rent, or trade your personal information to third parties for their marketing purposes.</p>
+            </div>
+
+            <div class="legal-card reveal" id="priv-storage">
+                <h2>6. Data Storage & Security</h2>
+                <h3>6.1 Data Storage</h3>
+                <p>Your data is stored on secure servers. Account data is stored locally in your browser (using localStorage) and synchronized with our systems when available. Curriculum content and progress data are stored in your browser for offline access capability.</p>
+                <h3>6.2 Security Measures</h3>
+                <ul>
+                    <li>Encrypted data transmission (TLS/SSL)</li>
+                    <li>Passwords are hashed and never stored in plain text</li>
+                    <li>Payment data is handled by PCI-DSS compliant processors</li>
+                    <li>Regular security assessments of our systems</li>
+                </ul>
+                <h3>6.3 Limitations</h3>
+                <p>While we implement reasonable security measures, no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security of your data.</p>
+            </div>
+
+            <div class="legal-card reveal" id="priv-children">
+                <h2>7. Children's Privacy</h2>
+                <p>Curicaa is a platform designed for <strong>parents and educators</strong>. Children do not create accounts, submit personal information, or interact directly with our service.</p>
+                <p>In compliance with the Children's Online Privacy Protection Act (COPPA):</p>
+                <ul>
+                    <li>We do not knowingly collect personal information from children under 13</li>
+                    <li>We do not direct the Service to children — parents act as intermediaries</li>
+                    <li>Progress tracking and lesson data are tied to the parent's account, not to individual children</li>
+                    <li>If we learn that we have inadvertently collected personal information from a child under 13, we will promptly delete it</li>
+                </ul>
+            </div>
+
+            <div class="legal-card reveal" id="priv-rights">
+                <h2>8. Your Rights</h2>
+                <p>You have the following rights regarding your personal information:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of the personal information we hold about you</li>
+                    <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                    <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal retention requirements)</li>
+                    <li><strong>Data portability:</strong> Request your data in a structured, machine-readable format</li>
+                    <li><strong>Objection:</strong> Object to the processing of your data for specific purposes</li>
+                    <li><strong>Withdrawal of consent:</strong> Withdraw consent for data processing that relies on consent</li>
+                </ul>
+                <p>To exercise any of these rights, contact us at <a href="mailto:privacy@curicaa.com" style="color:var(--gold-light);">privacy@curicaa.com</a>. We will respond to your request within 30 days.</p>
+            </div>
+
+            <div class="legal-card reveal" id="priv-retention">
+                <h2>9. Data Retention</h2>
+                <ul>
+                    <li><strong>Account data:</strong> Retained for as long as your account is active. Deleted within 90 days of account deletion.</li>
+                    <li><strong>Payment records:</strong> Retained for 7 years as required by tax and accounting regulations.</li>
+                    <li><strong>Usage analytics:</strong> Anonymized and aggregated within 30 days; anonymized data may be retained indefinitely.</li>
+                    <li><strong>Support communications:</strong> Retained for 2 years after the last interaction.</li>
+                </ul>
+            </div>
+
+            <div class="legal-card reveal" id="priv-international">
+                <h2>10. International Users</h2>
+                <p>Curicaa is operated from the United States. If you are accessing the Service from outside the US, please be aware that your information may be transferred to, stored, and processed in the United States.</p>
+                <p>For users in the European Economic Area (EEA) and United Kingdom:</p>
+                <ul>
+                    <li>We rely on Standard Contractual Clauses (SCCs) for international data transfers</li>
+                    <li>You have additional rights under GDPR, including the right to lodge a complaint with your local supervisory authority</li>
+                    <li>Our legal basis for processing includes: contract performance, legitimate interests, and consent where applicable</li>
+                </ul>
+            </div>
+
+            <div class="legal-card reveal" id="priv-changes">
+                <h2>11. Changes to This Policy</h2>
+                <p>We may update this Privacy Policy periodically. When we do, we will:</p>
+                <ul>
+                    <li>Update the "Last updated" date at the top of this page</li>
+                    <li>Notify registered users via email for material changes</li>
+                    <li>Provide at least 14 days' notice before material changes take effect</li>
+                </ul>
+            </div>
+
+            <div class="legal-card reveal" id="priv-contact">
+                <h2>12. Contact</h2>
+                <p>For any privacy-related questions, requests, or concerns:</p>
+                <div class="contact-box">
+                    <div class="label">Curicaa Education — Privacy</div>
+                    <p style="margin-bottom:4px;"><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px;font-size:12px;"></i><a href="mailto:privacy@curicaa.com">privacy@curicaa.com</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== REFUND POLICY ==================== -->
+        <div class="tab-content" id="contentRefund">
+            <div class="toc reveal">
+                <div class="toc-title">Table of Contents</div>
+                <a href="#refund-guarantee">30-Day Money-Back Guarantee</a>
+                <a href="#refund-eligibility">Refund Eligibility</a>
+                <a href="#refund-request">How to Request a Refund</a>
+                <a href="#refund-processing">Processing & Timeline</a>
+                <a href="#refund-cancellation">Subscription Cancellation</a>
+                <a href="#refund-exceptions">Exceptions & Notes</a>
+                <a href="#refund-contact">Contact</a>
+            </div>
+
+            <div class="legal-card reveal" id="refund-guarantee">
+                <h2>30-Day Money-Back Guarantee</h2>
+                <p>We're confident that Curicaa will transform your homeschooling experience. That's why every paid subscription comes with a <strong>30-day money-back guarantee</strong>.</p>
+                <p>If the curriculum doesn't meet your family's needs within the first 30 days of your purchase, we'll refund your payment in full — no questions asked.</p>
+            </div>
+
+            <div class="legal-card reveal" id="refund-eligibility">
+                <h2>Refund Eligibility</h2>
+                <p>To be eligible for a full refund:</p>
+                <ul>
+                    <li>The refund request must be made within <strong>30 calendar days</strong> of your original purchase date</li>
+                    <li>Your account must be in good standing (not suspended for Terms of Service violations)</li>
+                    <li>The refund applies to your first purchase of a given plan (renewals are handled differently — see below)</li>
+                </ul>
+                <h3>Plan-Specific Details</h3>
+                <ul>
+                    <li><strong>Single Grade ($79/yr or $9/mo):</strong> Full refund within 30 days of initial purchase</li>
+                    <li><strong>Full K-12 Bundle ($169/yr or $19/mo):</strong> Full refund within 30 days of initial purchase</li>
+                    <li><strong>Curicaa Pro ($259/yr or $29/mo):</strong> Full refund within 30 days of initial purchase</li>
+                    <li><strong>Free Preview:</strong> No payment — nothing to refund</li>
+                </ul>
+                <h3>Monthly Subscriptions</h3>
+                <p>For monthly plans, a refund is available within 30 days of your first payment. Subsequent monthly payments are non-refundable but can be cancelled at any time (see Cancellation below).</p>
+            </div>
+
+            <div class="legal-card reveal" id="refund-request">
+                <h2>How to Request a Refund</h2>
+                <p>Requesting a refund is simple:</p>
+                <ol>
+                    <li><strong>Email us</strong> at <a href="mailto:support@curicaa.com" style="color:var(--gold-light);">support@curicaa.com</a> with the subject line "Refund Request"</li>
+                    <li><strong>Include</strong> your account email address and the reason for the refund (optional, but helpful)</li>
+                    <li><strong>We'll confirm</strong> receipt within 1 business day and process your refund</li>
+                </ol>
+                <p>There are no forms to fill out, no phone calls to make, and no hoops to jump through.</p>
+            </div>
+
+            <div class="legal-card reveal" id="refund-processing">
+                <h2>Processing & Timeline</h2>
+                <ul>
+                    <li><strong>Refund initiation:</strong> Within 2 business days of receiving your request</li>
+                    <li><strong>Payment processor:</strong> 3–5 business days for credit card refunds</li>
+                    <li><strong>Your bank:</strong> Up to 5 additional business days to appear on your statement</li>
+                </ul>
+                <p><strong>Total estimated time: 5–10 business days</strong> from your refund request to seeing the funds back in your account.</p>
+                <p>Refunds are issued to the original payment method used for the purchase.</p>
+            </div>
+
+            <div class="legal-card reveal" id="refund-cancellation">
+                <h2>Subscription Cancellation</h2>
+                <h3>How Cancellation Works</h3>
+                <p>You may cancel your subscription at any time, for any reason:</p>
+                <ul>
+                    <li><strong>From your account:</strong> Settings → Subscription → Cancel Subscription</li>
+                    <li><strong>Via email:</strong> Contact support@curicaa.com with "Cancel Subscription" in the subject</li>
+                </ul>
+                <h3>What Happens When You Cancel</h3>
+                <ul>
+                    <li>You keep full access to all paid content until the end of your current billing period</li>
+                    <li>No further charges will be applied</li>
+                    <li>Your account reverts to the Free Preview plan at the end of the billing period</li>
+                    <li>Your progress and preferences are retained in case you resubscribe</li>
+                </ul>
+                <h3>Annual vs. Monthly</h3>
+                <ul>
+                    <li><strong>Annual plans:</strong> Cancellation takes effect at the end of your annual billing period. No partial refunds for unused months after the 30-day guarantee period.</li>
+                    <li><strong>Monthly plans:</strong> Cancellation takes effect at the end of your current monthly billing cycle. No charge for the next month.</li>
+                </ul>
+                <h3>Reactivation</h3>
+                <p>Cancelled subscriptions can be reactivated at any time. Your progress and settings will be restored. If you cancelled within the 30-day guarantee window and received a refund, you may re-subscribe at the current listed price.</p>
+            </div>
+
+            <div class="legal-card reveal" id="refund-exceptions">
+                <h2>Exceptions & Notes</h2>
+                <ul>
+                    <li><strong>No partial refunds</strong> are issued for unused time after the 30-day guarantee period on annual plans</li>
+                    <li><strong>Duplicate charges</strong> will be refunded in full upon verification — contact us immediately</li>
+                    <li><strong>Technical issues</strong> that prevent access to the Service for an extended period may qualify for a credit or refund at our discretion</li>
+                    <li><strong>Price adjustments:</strong> If you purchased within 14 days of a price reduction, contact us for a credit of the difference</li>
+                </ul>
+                <p>We handle every refund request with respect and without judgment. Our goal is to make this process as painless as possible — we want you to be happy, and if Curicaa isn't the right fit, we understand.</p>
+            </div>
+
+            <div class="legal-card reveal" id="refund-contact">
+                <h2>Contact</h2>
+                <p>For refund requests, cancellation inquiries, or billing questions:</p>
+                <div class="contact-box">
+                    <div class="label">Curicaa Education — Billing Support</div>
+                    <p style="margin-bottom:4px;"><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px;font-size:12px;"></i><a href="mailto:support@curicaa.com">support@curicaa.com</a></p>
+                    <p style="margin-bottom:0;font-size:12px;color:var(--text-muted);"><i class="fas fa-clock" style="color:var(--gold-dim);margin-right:8px;font-size:11px;"></i>Response within 1 business day</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="position:relative;z-index:1;border-top:1px solid var(--border);margin-top:80px;padding:0;background:rgba(0,0,0,0.25);">
+        <div style="max-width:1100px;margin:0 auto;padding:40px 20px 28px;">
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+                <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;"><div style="width:28px;height:28px;background:linear-gradient(135deg,var(--gold),#f97316);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-graduation-cap" style="font-size:12px;color:white;"></i></div><span style="font-size:14px;font-weight:700;color:var(--text-primary);">Curicaa</span></div><p style="font-size:12px;color:var(--text-muted);line-height:1.65;max-width:240px;">Empowering families with world-class K-12 homeschool curriculum.</p></div>
+                <div><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:14px;">Navigation</div><div style="display:flex;flex-direction:column;gap:8px;"><a class="footer-link" href="hub.html">Hub</a><a class="footer-link" href="hub.html#pricing">Pricing</a><a class="footer-link" href="hub.html#faq">FAQ</a><a class="footer-link" href="hub.html#about">About</a></div></div>
+                <div><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:14px;">Legal</div><div style="display:flex;flex-direction:column;gap:8px;"><a class="footer-link" href="legal.html#tos-acceptance">Terms of Service</a><a class="footer-link" href="legal.html#priv-overview">Privacy Policy</a><a class="footer-link" href="legal.html#refund-guarantee">Refund Policy</a></div></div>
+            </div>
+            <div style="border-top:1px solid var(--border-faint);padding-top:20px;display:flex;justify-content:center;flex-wrap:wrap;gap:12px;"><p style="font-size:11px;color:var(--text-very-faint);">© 2026 Curicaa Education. All rights reserved.</p><p style="font-size:11px;color:var(--text-very-faint);">Made with ♥ for homeschooling families everywhere</p></div>
+        </div>
+    </footer>
+
+    <script>
+    // Tab switching
+    function switchTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById('content' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
+        document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
+        window.scrollTo({ top: document.getElementById('tabBar').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    // Stars
+    (function() {
+        var c = document.getElementById('stars');
+        for (var i = 0; i < 60; i++) {
+            var s = document.createElement('div');
+            s.className = 'star';
+            s.style.left = Math.random() * 100 + '%';
+            s.style.top = Math.random() * 100 + '%';
+            s.style.setProperty('--dur', (3 + Math.random() * 4) + 's');
+            s.style.setProperty('--delay', (Math.random() * 5) + 's');
+            c.appendChild(s);
+        }
+    })();
+
+    // Scroll reveal
+    var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+    // Deep link to section from URL hash
+    function handleHash() {
+        var hash = window.location.hash.replace('#', '');
+        if (hash.indexOf('tos-') === 0 || hash === 'tos') { switchTab('tos'); }
+        else if (hash.indexOf('priv-') === 0 || hash === 'privacy') { switchTab('privacy'); }
+        else if (hash.indexOf('refund-') === 0 || hash === 'refund') { switchTab('refund'); }
+    }
+    window.addEventListener('hashchange', handleHash);
+    if (window.location.hash) { setTimeout(handleHash, 200); }
+    </script>
+</body>
+</html>

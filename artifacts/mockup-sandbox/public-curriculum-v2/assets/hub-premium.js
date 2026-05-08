@@ -5,7 +5,7 @@
                     id: 'level-1', title: 'Level 1', ageRange: 'Ages 5\u20137', colorClass: 'card-purple',
                     iconClass: 'fas fa-child', gradientBg: 'linear-gradient(135deg,#a855f7,#ec4899)',
                     sectionLabel: 'Foundation building', onclickParam: 'ages-5-7',
-                    titleColor: '#d8b4fe', ageBadgeColor: '#c4b5fd',
+                    titleColor: '#d8b4fe', ageBadgeColor: '#c4b5fd', researched: true,
                     subjects: [
                         {text: 'Basic reading', dotColor: '#a855f7'},
                         {text: 'Number sense', dotColor: '#a855f7'},
@@ -17,7 +17,7 @@
                     id: 'level-2', title: 'Level 2', ageRange: 'Age 8', colorClass: 'card-blue',
                     iconClass: 'fas fa-star', gradientBg: 'linear-gradient(135deg,#3b82f6,#06b6d4)',
                     sectionLabel: 'Skill development', onclickParam: 'age-8',
-                    titleColor: '#93c5fd', ageBadgeColor: '#93c5fd',
+                    titleColor: '#93c5fd', ageBadgeColor: '#93c5fd', researched: true,
                     subjects: [
                         {text: 'Fluent reading', dotColor: '#3b82f6'},
                         {text: 'Multiplication', dotColor: '#3b82f6'},
@@ -29,7 +29,7 @@
                     id: 'level-3', title: 'Level 3', ageRange: 'Age 9', colorClass: 'card-green',
                     iconClass: 'fas fa-book', gradientBg: 'linear-gradient(135deg,#10b981,#34d399)',
                     sectionLabel: 'Knowledge expansion', onclickParam: 'age-9',
-                    titleColor: '#6ee7b7', ageBadgeColor: '#6ee7b7',
+                    titleColor: '#6ee7b7', ageBadgeColor: '#6ee7b7', researched: true,
                     subjects: [
                         {text: 'Comprehension', dotColor: '#10b981'},
                         {text: 'Division', dotColor: '#10b981'},
@@ -41,7 +41,7 @@
                     id: 'level-4', title: 'Level 4', ageRange: 'Age 10', colorClass: 'card-orange',
                     iconClass: 'fas fa-rocket', gradientBg: 'linear-gradient(135deg,#f97316,#ef4444)',
                     sectionLabel: 'Advanced basics', onclickParam: 'age-10',
-                    titleColor: '#fdba74', ageBadgeColor: '#fdba74',
+                    titleColor: '#fdba74', ageBadgeColor: '#fdba74', researched: true,
                     subjects: [
                         {text: 'Essay writing', dotColor: '#f97316'},
                         {text: 'Fractions/decimals', dotColor: '#f97316'},
@@ -53,7 +53,7 @@
                     id: 'middle-school', title: 'Middle School', ageRange: 'Ages 11\u201312', colorClass: 'card-indigo',
                     iconClass: 'fas fa-brain', gradientBg: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
                     sectionLabel: 'Preparation focus', onclickParam: 'ages-11-12',
-                    titleColor: '#a5b4fc', ageBadgeColor: '#a5b4fc',
+                    titleColor: '#a5b4fc', ageBadgeColor: '#a5b4fc', researched: true,
                     subjects: [
                         {text: 'Research essays', dotColor: '#6366f1'},
                         {text: 'Pre-algebra', dotColor: '#6366f1'},
@@ -65,7 +65,7 @@
                     id: 'high-school', title: 'High School', ageRange: 'Ages 13\u201314', colorClass: 'card-red',
                     iconClass: 'fas fa-graduation-cap', gradientBg: 'linear-gradient(135deg,#ef4444,#ec4899)',
                     sectionLabel: 'Critical thinking', onclickParam: 'age-14',
-                    titleColor: '#fca5a5', ageBadgeColor: '#fca5a5',
+                    titleColor: '#fca5a5', ageBadgeColor: '#fca5a5', researched: true,
                     subjects: [
                         {text: 'Algebra I', dotColor: '#ef4444'},
                         {text: '9th Grade English', dotColor: '#ef4444'},
@@ -77,7 +77,7 @@
                     id: 'ged', title: 'GED', ageRange: 'Ages 15\u201316', colorClass: 'card-yellow',
                     iconClass: 'fas fa-certificate', gradientBg: 'linear-gradient(135deg,#eab308,#f97316)',
                     sectionLabel: 'GED preparation', onclickParam: 'ages-15-16',
-                    titleColor: '#fde047', ageBadgeColor: '#fde047',
+                    titleColor: '#fde047', ageBadgeColor: '#fde047', researched: true,
                     subjects: [
                         {text: 'English', dotColor: '#eab308'},
                         {text: 'Science', dotColor: '#eab308'},
@@ -89,7 +89,7 @@
                     id: 'sat', title: 'SAT', ageRange: 'Ages 17\u201318', colorClass: 'card-teal',
                     iconClass: 'fas fa-trophy', gradientBg: 'linear-gradient(135deg,#06b6d4,#22d3ee)',
                     sectionLabel: 'SAT preparation', onclickParam: 'ages-17-18',
-                    titleColor: '#67e8f9', ageBadgeColor: '#67e8f9',
+                    titleColor: '#67e8f9', ageBadgeColor: '#67e8f9', researched: true,
                     subjects: [
                         {text: 'SAT Math', dotColor: '#06b6d4'},
                         {text: 'Reading & Writing', dotColor: '#06b6d4'},
