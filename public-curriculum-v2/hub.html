@@ -106,9 +106,35 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
 .mobile-nav-content{position:absolute;top:0;left:0;right:0;padding:20px;background:var(--bg-primary);border-bottom:1px solid var(--border);transform:translateY(-100%);transition:transform 0.3s cubic-bezier(0.22,1,0.36,1)}.mobile-nav-overlay.open .mobile-nav-content{transform:translateY(0)}
 .mobile-nav-link{font-size:18px;font-weight:600;color:var(--text-primary);text-decoration:none;padding:12px 24px;border-radius:12px;transition:all 0.2s;cursor:pointer;width:100%;text-align:center}.mobile-nav-link:hover{background:var(--bg-subtle)}
 .sticky-mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:55;background:rgba(15,17,25,0.92);backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:12px 16px;transform:translateY(100%);transition:transform 0.35s cubic-bezier(.22,.68,0,1.2)}.sticky-mobile-cta.visible{transform:translateY(0)}
-.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s}.week-row:hover{border-color:rgba(255,255,255,0.12)}.week-header{display:flex;align-items:flex-start;padding:14px 16px;cursor:pointer;gap:14px;transition:background 0.2s}.week-header:hover{background:rgba(255,255,255,0.03)}.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f97316);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}.week-detail{max-height:0;overflow:hidden;background:rgba(255,255,255,0.025);border-top:1px solid transparent;padding:0 16px;transform-origin:top;transform:translateY(-6px);opacity:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),padding 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s ease,transform 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease}.week-detail.open{max-height:800px;padding:14px 16px;border-top-color:rgba(255,255,255,0.07);transform:translateY(0);opacity:1}
+.week-row{border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.2s}.week-row:hover{border-color:rgba(255,255,255,0.12)}.week-header{display:flex;align-items:flex-start;padding:14px 16px;gap:14px;transition:background 0.2s}.week-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f97316);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}.week-detail{max-height:0;overflow:hidden;background:rgba(255,255,255,0.025);border-top:1px solid transparent;padding:0 16px;transform-origin:top;transform:translateY(-6px);opacity:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),padding 0.25s cubic-bezier(0.4,0,0.2,1),border-color 0.25s ease,transform 0.3s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease}.week-detail.open{max-height:2000px;padding:14px 16px;border-top-color:rgba(255,255,255,0.07);transform:translateY(0);opacity:1}
 @media(max-width:1023px){.pricing-grid{grid-template-columns:repeat(2,1fr)!important;max-width:700px!important}#statsGrid{grid-template-columns:repeat(3,1fr)!important}}
 @media(max-width:767px){#desktopNav{display:none!important}#mobileMenuToggle{display:flex!important;width:44px!important;height:44px!important}main{padding:40px 16px 60px!important}section{margin-bottom:50px!important}.hero-stats{padding:12px 20px!important;gap:16px!important;flex-wrap:wrap;justify-content:center}.hero-stat-sep{height:24px!important}#pathways>div:nth-child(2),#pathways>div:nth-child(3){grid-template-columns:1fr!important}#features>div:nth-child(2){grid-template-columns:1fr!important}.pricing-grid{grid-template-columns:1fr!important;max-width:420px!important}#whatyouget>div:nth-child(2){grid-template-columns:repeat(2,1fr)!important}#about>div{grid-template-columns:1fr!important;gap:24px!important}#audience>div:last-child{grid-template-columns:1fr!important}.sticky-mobile-cta{display:block}.carousel-card{flex:0 0 85%!important;min-width:0!important;max-width:380px!important}.carousel-arrow{display:none!important}#lessonPreview .lesson-grid-2col{grid-template-columns:1fr!important}footer>div>div:first-child{grid-template-columns:1fr!important}.announce-bar-inner{flex-wrap:wrap!important;padding:8px 16px!important}.announce-bar-text{white-space:normal!important;font-size:11px!important}.announce-bar-cta{padding:6px 12px!important;font-size:10px!important}.announce-bar-close{position:static!important;transform:none!important;margin-left:auto!important}.nav-link{padding:8px 16px!important;min-height:44px!important}.btn-cta{padding:12px 20px!important;min-height:44px!important}.trust-badge{padding:8px 12px!important;min-height:44px!important}#statsGrid{grid-template-columns:repeat(2,1fr)!important}h2{font-size:clamp(22px,5vw,28px)!important}.section-label{font-size:10px!important}.data-table-wrap{position:relative!important}.data-table-wrap::after{content:''!important;position:absolute!important;top:0!important;right:0!important;bottom:0!important;width:40px!important;background:linear-gradient(90deg,transparent,rgba(0,0,0,0.3))!important;pointer-events:none!important}.data-table th:first-child,.data-table td:first-child{position:sticky!important;left:0!important;background:var(--bg-card)!important;z-index:2!important}.carousel-track{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;scroll-snap-type:x mandatory!important}.carousel-card{scroll-snap-align:center!important}.carousel-track::-webkit-scrollbar{display:none!important}}
+/* Lesson Preview — Premium Showcase */
+.lp-showcase{position:relative;overflow:hidden;border-radius:20px;background:var(--bg-card);border:1px solid var(--border-card);transition:border-color 0.3s,box-shadow 0.3s}.lp-showcase:hover{border-color:var(--border-icon-ring);box-shadow:0 0 40px rgba(0,0,0,0.3)}
+.lp-showcase::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(180deg,rgba(212,165,74,0.06) 0%,transparent 100%);pointer-events:none;border-radius:20px 20px 0 0}
+.lp-card-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:20px 20px 0 0}
+.lp-card-accent-gold{background:linear-gradient(90deg,var(--gold),#fb923c,var(--gold))}
+.lp-card-accent-purple{background:linear-gradient(90deg,#a855f7,#ec4899,#a855f7)}
+.lp-card-head{padding:22px 24px 16px;position:relative;z-index:1}
+.lp-card-body{padding:0 24px 24px;position:relative;z-index:1}
+.lp-activity{display:flex;gap:14px;padding:12px 14px;border-radius:12px;margin-bottom:8px;background:rgba(255,255,255,0.02);border:1px solid transparent;transition:background 0.2s,border-color 0.2s}.lp-activity:hover{background:rgba(255,255,255,0.04);border-color:var(--border-faint)}
+.lp-act-icon{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.lp-act-icon-warm{background:rgba(212,165,74,0.12);color:var(--gold)}.lp-act-icon-main{background:rgba(96,165,250,0.12);color:#60a5fa}.lp-act-icon-game{background:rgba(74,222,128,0.12);color:#4ade80}.lp-act-icon-home{background:rgba(192,132,252,0.12);color:#c084fc}.lp-act-icon-assess{background:rgba(251,146,60,0.12);color:#fb923c}
+.lp-act-label{font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:2px}
+.lp-act-text{font-size:12.5px;color:var(--text-secondary);line-height:1.6}
+.lp-cta-bar{display:flex;align-items:center;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border-faint);flex-wrap:wrap}
+.lp-cta-link{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;font-size:12.5px;font-weight:600;text-decoration:none;transition:all 0.2s;cursor:pointer}
+.lp-cta-primary{background:linear-gradient(135deg,var(--gold),#f97316);color:white;box-shadow:0 2px 12px rgba(212,165,74,0.25)}.lp-cta-primary:hover{opacity:0.88;transform:scale(1.03)}
+.lp-cta-secondary{background:var(--bg-subtle);border:1px solid var(--border-card);color:var(--text-secondary)}.lp-cta-secondary:hover{background:var(--bg-subtle-hover);border-color:var(--border-icon-ring);color:var(--text-primary)}
+.lp-cta-secondary i{color:var(--gold);font-size:11px}
+.lp-age-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:10.5px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase}
+.lp-age-pill-math{background:rgba(96,165,250,0.1);color:#60a5fa;border:1px solid rgba(96,165,250,0.2)}
+.lp-age-pill-sci{background:rgba(192,132,252,0.1);color:#c084fc;border:1px solid rgba(192,132,252,0.2)}
+.lp-header-deco{position:relative;display:inline-block}
+.lp-header-deco::before,.lp-header-deco::after{content:'';position:absolute;width:40px;height:1px;top:50%}
+.lp-header-deco::before{right:calc(100% + 16px);background:linear-gradient(90deg,transparent,rgba(212,165,74,0.3))}
+.lp-header-deco::after{left:calc(100% + 16px);background:linear-gradient(90deg,rgba(212,165,74,0.3),transparent)}
+@media(max-width:767px){.lp-card-head{padding:18px 18px 12px}.lp-card-body{padding:0 18px 20px}.lp-activity{padding:10px 12px;gap:10px}.lp-cta-bar{flex-direction:column;align-items:stretch}.lp-cta-link{justify-content:center}.lp-header-deco::before,.lp-header-deco::after{display:none}}
 @media(max-width:479px){.hero-stats{flex-direction:column!important;gap:8px!important;border-radius:20px!important;padding:20px!important}.hero-stat-sep{display:none!important}.pricing-grid{max-width:100%!important}.modal-box{padding:20px!important}#about>div>div:last-child{grid-template-columns:1fr!important}#whatyouget>div:nth-child(2){grid-template-columns:1fr!important}#statsGrid{grid-template-columns:1fr!important}.modal-box button[onclick*="close"]{width:44px!important;height:44px!important}.data-table th,.data-table td{padding:10px 8px!important;font-size:11px!important}#subjectModal .modal-box>div:nth-child(2){grid-template-columns:1fr!important}#subjectModal .subject-btn{padding:16px!important}#pricing>div>div[style*="display:flex"][style*="align-items:center"][style*="gap:20px"]{flex-direction:column!important}#pricing>div>div[style*="display:flex"][style*="align-items:center"][style*="gap:20px"]>div[style*="font-size:24px"]{display:none!important}#pricing>div:nth-of-type(5){flex-direction:column!important;text-align:center!important;gap:16px!important}#pricing>div:nth-of-type(5)>div:first-child{margin:0 auto!important}}
 @media(prefers-reduced-motion:reduce){.star{animation:none!important;opacity:0.3}.hero-title{animation:none!important}.card:hover{transform:none!important}.reveal{opacity:1!important;transform:none!important;transition:none!important}.pricing-card:hover{transform:none!important}.stat-card-hover:hover{transform:none!important}.carousel-card:hover{transform:none!important}.modal-box{animation:none!important}}
     </style>
@@ -230,47 +256,53 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
             <div id="featureGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;"></div>
         </section>
 
-        <!-- Lesson Preview -->
+        <!-- Lesson Preview — Premium Showcase -->
         <section id="lessonPreview" class="reveal" style="margin-top:88px;margin-bottom:88px;">
-            <div style="text-align:center;margin-bottom:44px;"><p class="section-label">See for yourself</p><h2 style="font-family:var(--font-display);font-size:28px;font-weight:700;">Peek Inside a Lesson</h2><p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Every week includes warm-ups, core lessons, games, and assessments.</p></div>
-            <div style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
-                <!-- Lesson 1: Ages 5-7 Math (starts open) -->
-                <div class="week-row" id="peek-week-0">
-                    <div class="week-header" onclick="togglePeekWeek(0)">
-                        <div class="week-num">1</div>
-                        <div style="flex-grow:1;">
-                            <h4 style="font-weight:700;font-size:15px;color:var(--text-primary);margin-bottom:2px;">Zero &amp; Comparing</h4>
-                            <p style="font-size:13px;color:var(--text-muted);line-height:1.4;">Ages 5–7 · Math · Week 3</p>
+            <div style="text-align:center;margin-bottom:48px;">
+                <div style="display:inline-flex;align-items:center;gap:10px;padding:8px 20px;border-radius:100px;background:rgba(212,165,74,0.08);border:1px solid var(--border-gold);margin-bottom:18px;"><i class="fas fa-eye" style="font-size:12px;color:var(--gold);"></i><span style="font-size:11px;font-weight:600;color:var(--gold-light);letter-spacing:0.06em;text-transform:uppercase;">See for yourself</span></div>
+                <h2 style="font-family:var(--font-display);font-size:30px;font-weight:700;margin-bottom:10px;"><span class="lp-header-deco">Peek Inside a Lesson</span></h2>
+                <p style="color:var(--text-secondary);font-size:14px;max-width:480px;margin:0 auto;line-height:1.65;">Every week includes warm-ups, core lessons, games, and assessments — all with household materials.</p>
+            </div>
+            <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="lesson-grid-2col">
+                <!-- Lesson 1: Ages 5-7 Math -->
+                <div class="lp-showcase" id="peek-week-0">
+                    <div class="lp-card-accent lp-card-accent-gold"></div>
+                    <div class="lp-card-head">
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+                            <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#fb923c);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-calculator" style="font-size:16px;color:white;"></i></div>
+                            <div style="flex-grow:1;"><h4 style="font-weight:700;font-size:16px;color:var(--text-primary);margin-bottom:3px;">Zero &amp; Comparing</h4><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span class="lp-age-pill lp-age-pill-math"><i class="fas fa-child" style="font-size:9px;"></i> Ages 5–7</span><span style="font-size:11px;color:var(--text-muted);">Math · Week 3</span></div></div>
                         </div>
-                        <i class="fas fa-chevron-down" style="color:var(--text-muted);font-size:12px;margin-top:6px;transition:transform 0.3s;transform:rotate(180deg);" id="peek-icon-0"></i>
                     </div>
-                    <div class="week-detail open" id="peek-detail-0">
-                        <div style="padding-top:8px;padding-bottom:4px;">
-                            <div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:var(--gold);"><i class="fas fa-fire"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Warm-up:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Read a counting-down book or sing "Five Green and Speckled Frogs" until there are zero left</span></div></div>
-                            <div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:#60a5fa;"><i class="fas fa-book-open"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Main Activity:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Spindle Box concept — label cups with 0, 1, 2. Give child popsicle sticks to place the correct amount in each cup. Emphasize that the "0" cup stays empty. Then create two piles of blocks and ask "which has more/less?"</span></div></div>
-                            <div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:#4ade80;"><i class="fas fa-gamepad"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Game/Play:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Card War with numbers 1–10 — each player flips a card, the higher number wins both cards</span></div></div>
-                            <div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:#c084fc;"><i class="fas fa-home"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Home Connection:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Ask your child to find "zero" things around the house (empty cups, no apples in the fruit bowl) and practice "which pile has more?" with snacks or toys</span></div></div>
-                            <div style="display:flex;gap:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:#fb923c;"><i class="fas fa-check-circle"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Assessment:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Child correctly identifies empty sets as zero and accurately identifies which of two small groups is larger</span></div></div>
+                    <div class="lp-card-body">
+                        <div class="lp-activity"><div class="lp-act-icon lp-act-icon-warm"><i class="fas fa-fire"></i></div><div><div class="lp-act-label" style="color:var(--gold);">Warm-up</div><div class="lp-act-text">Read a counting-down book or sing "Five Green and Speckled Frogs" until there are zero left</div></div></div>
+                        <div class="lp-activity"><div class="lp-act-icon lp-act-icon-main"><i class="fas fa-book-open"></i></div><div><div class="lp-act-label" style="color:#60a5fa;">Main Activity</div><div class="lp-act-text">Spindle Box concept — label cups with 0, 1, 2. Give child popsicle sticks to place the correct amount in each cup. Emphasize that the "0" cup stays empty. Then create two piles of blocks and ask "which has more/less?"</div></div></div>
+                        <div class="lp-activity"><div class="lp-act-icon lp-act-icon-game"><i class="fas fa-gamepad"></i></div><div><div class="lp-act-label" style="color:#4ade80;">Game / Play</div><div class="lp-act-text">Card War with numbers 1–10 — each player flips a card, the higher number wins both cards</div></div></div>
+                        <div class="lp-activity"><div class="lp-act-icon lp-act-icon-home"><i class="fas fa-home"></i></div><div><div class="lp-act-label" style="color:#c084fc;">Home Connection</div><div class="lp-act-text">Ask your child to find "zero" things around the house (empty cups, no apples in the fruit bowl) and practice "which pile has more?" with snacks or toys</div></div></div>
+                        <div class="lp-activity" style="margin-bottom:0;"><div class="lp-act-icon lp-act-icon-assess"><i class="fas fa-check-circle"></i></div><div><div class="lp-act-label" style="color:#fb923c;">Assessment</div><div class="lp-act-text">Child correctly identifies empty sets as zero and accurately identifies which of two small groups is larger</div></div></div>
+                        <div class="lp-cta-bar">
+                            <a href="ages-5-7-math.html" class="lp-cta-link lp-cta-primary"><i class="fas fa-external-link-alt" style="font-size:10px;"></i> View Full Lesson</a>
+                            <a href="ages-5-7-math-worksheets.html" class="lp-cta-link lp-cta-secondary"><i class="fas fa-file-alt"></i> Worksheets &amp; Activities</a>
                         </div>
                     </div>
                 </div>
-                <!-- Lesson 2: Age 14 Biology (starts closed) -->
-                <div class="week-row" id="peek-week-1">
-                    <div class="week-header" onclick="togglePeekWeek(1)">
-                        <div class="week-num" style="background:linear-gradient(135deg,#a855f7,#ec4899);">2</div>
-                        <div style="flex-grow:1;">
-                            <h4 style="font-weight:700;font-size:15px;color:var(--text-primary);margin-bottom:2px;">Cell Organelles</h4>
-                            <p style="font-size:13px;color:var(--text-muted);line-height:1.4;">Age 14 · Biology · Week 6</p>
+                <!-- Lesson 2: Ages 13-14 Biology -->
+                <div class="lp-showcase" id="peek-week-1">
+                    <div class="lp-card-accent lp-card-accent-purple"></div>
+                    <div class="lp-card-head">
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+                            <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#a855f7,#ec4899);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-flask" style="font-size:16px;color:white;"></i></div>
+                            <div style="flex-grow:1;"><h4 style="font-weight:700;font-size:16px;color:var(--text-primary);margin-bottom:3px;">Cell Organelles</h4><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span class="lp-age-pill lp-age-pill-sci"><i class="fas fa-user-graduate" style="font-size:9px;"></i> Ages 13–14</span><span style="font-size:11px;color:var(--text-muted);">Biology · Week 6</span></div></div>
                         </div>
-                        <i class="fas fa-chevron-down" style="color:var(--text-muted);font-size:12px;margin-top:6px;transition:transform 0.3s;" id="peek-icon-1"></i>
                     </div>
-                    <div class="week-detail" id="peek-detail-1">
-                        <div style="padding-top:8px;padding-bottom:4px;">
-                            <div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:var(--gold);"><i class="fas fa-fire"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Warm-up:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">"A cell is like a city: the nucleus is city hall, mitochondria are power plants, ribosomes are factories. What else?"</span></div></div>
-                            <div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:#c084fc;"><i class="fas fa-book-open"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Main Activity:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Create an organelle reference chart — nucleus (DNA storage), mitochondria (energy/ATP), chloroplasts (photosynthesis), ribosomes (protein synthesis), ER (transport), Golgi (packaging), lysosomes (recycling). Then build a 3D cell model using household items (jello, fruit, candy, pasta)</span></div></div>
-                            <div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:#4ade80;"><i class="fas fa-gamepad"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Game/Play:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Organelle Charades — act out an organelle's function without speaking. Family guesses which one. "I'm the powerhouse!"</span></div></div>
-                            <div style="display:flex;gap:12px;margin-bottom:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:#60a5fa;"><i class="fas fa-home"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Home Connection:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Look at an onion skin under a microscope (or watch a cell video online) and identify the organelles you learned about</span></div></div>
-                            <div style="display:flex;gap:12px;"><div style="width:24px;text-align:center;margin-top:2px;color:#fb923c;"><i class="fas fa-check-circle"></i></div><div><strong style="font-size:13px;color:var(--text-secondary);">Assessment:</strong> <span style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Student correctly identifies and describes the function of 8 organelles and explains the "cell as a city" analogy for each</span></div></div>
+                    <div class="lp-card-body">
+                        <div class="lp-activity"><div class="lp-act-icon lp-act-icon-warm"><i class="fas fa-fire"></i></div><div><div class="lp-act-label" style="color:var(--gold);">Warm-up</div><div class="lp-act-text">"A cell is like a city: the nucleus is city hall, mitochondria are power plants, ribosomes are factories. What else?"</div></div></div>
+                        <div class="lp-activity"><div class="lp-act-icon lp-act-icon-main"><i class="fas fa-book-open"></i></div><div><div class="lp-act-label" style="color:#60a5fa;">Main Activity</div><div class="lp-act-text">Create an organelle reference chart — nucleus (DNA storage), mitochondria (energy/ATP), chloroplasts (photosynthesis), ribosomes (protein synthesis), ER (transport), Golgi (packaging), lysosomes (recycling). Then build a 3D cell model using household items (jello, fruit, candy, pasta)</div></div></div>
+                        <div class="lp-activity"><div class="lp-act-icon lp-act-icon-game"><i class="fas fa-gamepad"></i></div><div><div class="lp-act-label" style="color:#4ade80;">Game / Play</div><div class="lp-act-text">Organelle Charades — act out an organelle's function without speaking. Family guesses which one. "I'm the powerhouse!"</div></div></div>
+                        <div class="lp-activity"><div class="lp-act-icon lp-act-icon-home"><i class="fas fa-home"></i></div><div><div class="lp-act-label" style="color:#c084fc;">Home Connection</div><div class="lp-act-text">Look at an onion skin under a microscope (or watch a cell video online) and identify the organelles you learned about</div></div></div>
+                        <div class="lp-activity" style="margin-bottom:0;"><div class="lp-act-icon lp-act-icon-assess"><i class="fas fa-check-circle"></i></div><div><div class="lp-act-label" style="color:#fb923c;">Assessment</div><div class="lp-act-text">Student correctly identifies and describes the function of 8 organelles and explains the "cell as a city" analogy for each</div></div></div>
+                        <div class="lp-cta-bar">
+                            <a href="age-14-science.html" class="lp-cta-link lp-cta-primary"><i class="fas fa-external-link-alt" style="font-size:10px;"></i> View Full Lesson</a>
+                            <a href="age-14-science-worksheets.html" class="lp-cta-link lp-cta-secondary"><i class="fas fa-file-alt"></i> Worksheets &amp; Activities</a>
                         </div>
                     </div>
                 </div>
@@ -363,7 +395,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
                 <!-- Pro -->
                 <div class="pricing-card pricing-pro">
                     <div class="pro-badge">Pro</div>
-                    <div style="font-size:13px;font-weight:600;color:#a78bfa;margin-bottom:6px;margin-top:8px;">Curicaa Pro</div>
+                    <div id="proCardLabel" style="font-size:13px;font-weight:600;color:#a78bfa;margin-bottom:6px;margin-top:8px;">Curicaa Pro</div>
                     <div style="position:relative;display:inline-block;"><span class="price-amount" data-monthly="29" data-annual="259" style="font-family:var(--font-display);font-size:42px;font-weight:800;letter-spacing:-0.04em;">$259</span></div>
                     <div class="price-period" style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
                     <div class="price-savings" style="font-size:11px;color:#4ade80;margin-bottom:20px;">3 months free vs monthly</div>
@@ -591,18 +623,5 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
 
     <script src="auth.js"></script>
     <script src="assets/hub-premium.js"></script>
-    <script>
-    function togglePeekWeek(index){
-      const detail=document.getElementById('peek-detail-'+index);
-      const icon=document.getElementById('peek-icon-'+index);
-      if(detail.classList.contains('open')){
-        detail.classList.remove('open');
-        icon.style.transform='rotate(0deg)';
-      } else {
-        detail.classList.add('open');
-        icon.style.transform='rotate(180deg)';
-      }
-    }
-    </script>
 </body>
 </html>
