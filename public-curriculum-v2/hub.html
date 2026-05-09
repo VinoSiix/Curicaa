@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/font-awesome.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" integrity="sha384-pmnDSmJdUq5Lg2JkfiNNrzUM+to2ix+G7AgI73hkJL9EXOmyvDGjTH4kbncrgX8z" crossorigin="anonymous">
     <meta name="description" content="Complete K-12 homeschool curriculum. 320+ weeks of open-and-go lesson plans. Zero prep, works on any device.">
     <link rel="icon" href="assets/favicon.ico">
     <style>
@@ -217,14 +217,15 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
             <h1 style="margin-bottom:20px;"><span class="hero-title" style="display:block;font-family:var(--font-display);font-size:clamp(42px,7vw,78px);font-weight:800;line-height:1.06;letter-spacing:-0.03em;">Teach at Home.<br>Confidently.</span></h1>
             <p style="color:var(--text-secondary);max-width:560px;margin:0 auto;font-size:16px;line-height:1.75;">320 weeks of open-and-go lesson plans. Ages 5–18. All subjects. Zero prep required. <span style="color:var(--accent-green);font-weight:500;">Works on any device.</span></p>
             <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:32px;flex-wrap:wrap;"><a class="nav-cta-solid" onclick="if(typeof CuricaaAuth!=='undefined'&&CuricaaAuth.isLoggedIn()){document.getElementById('pathways').scrollIntoView({behavior:'smooth'})}else{openSignupModal()}" style="padding:14px 32px;font-size:15px;border-radius:14px;box-shadow:0 4px 24px rgba(212,165,74,0.4);">Start Learning Free <i class="fas fa-arrow-right" style="font-size:12px;margin-left:4px;"></i></a></div>
-            <p style="margin-top:14px;font-size:12px;color:var(--text-faint);">No credit card required · Cancel anytime · Free forever plan available</p>
+            <p style="margin-top:14px;font-size:12px;color:var(--text-faint);">No credit card required · Cancel anytime · Free plan available</p>
             <div class="hero-divider"><div class="hero-divider-line"></div><div class="hero-divider-dot"></div><div class="hero-divider-dot" style="opacity:0.5;"></div><div class="hero-divider-dot" style="opacity:0.25;"></div><div class="hero-divider-line"></div></div>
             <div class="hero-stats">
                 <div class="hero-stat"><div class="hero-stat-num" data-count-to="320" style="color:var(--gold);"><span class="stat-count">0</span><span style="font-size:14px;">+</span></div><div class="hero-stat-lbl">Weeks of Lessons</div></div>
                 <div class="hero-stat-sep"></div>
-                <div class="hero-stat"><div class="hero-stat-num" data-count-to="2400" data-format="comma" style="color:var(--accent-cyan);"><span class="stat-count">0</span><span style="font-size:14px;">+</span></div><div class="hero-stat-lbl">Families Enrolled</div></div>
+                <!-- COMPLIANCE FIX: FTC advertising — removed unverifiable specific numbers -->
+                <div class="hero-stat"><div class="hero-stat-num" data-count-to="5" style="color:var(--accent-cyan);"><span class="stat-count">0</span></div><div class="hero-stat-lbl">Core Subjects</div></div>
                 <div class="hero-stat-sep"></div>
-                <div class="hero-stat"><div class="hero-stat-num" data-count-to="4.9" data-decimal="1" style="color:var(--accent-green);"><span class="stat-count">0</span> <i class="fas fa-star" style="font-size:12px;color:var(--gold);"></i></div><div class="hero-stat-lbl">Avg. Rating</div></div>
+                <div class="hero-stat"><div class="hero-stat-num" data-count-to="0" style="color:var(--accent-green);font-size:20px;"><i class="fas fa-laptop" style="font-size:18px;"></i></div><div class="hero-stat-lbl">Any Device</div></div>
             </div>
             <div class="trust-badges-row">
                 <div class="trust-badge"><i class="fas fa-shield-alt"></i> 30-Day Money-Back</div>
@@ -282,7 +283,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
                         <div class="lp-activity" style="margin-bottom:0;"><div class="lp-act-icon lp-act-icon-assess"><i class="fas fa-check-circle"></i></div><div><div class="lp-act-label" style="color:#fb923c;">Assessment</div><div class="lp-act-text">Child correctly identifies empty sets as zero and accurately identifies which of two small groups is larger</div></div></div>
                         <div class="lp-cta-bar">
                             <a onclick="if(typeof CuricaaAuth!=='undefined'&&CuricaaAuth.isLoggedIn()){window.location.href='ages-5-7-math.html'}else{openSignupModal()}" class="lp-cta-link lp-cta-primary" style="cursor:pointer;"><i class="fas fa-external-link-alt" style="font-size:10px;"></i> View Full Lesson</a>
-                            <a href="https://www.starfall.com/h/numbers/" target="_blank" rel="noopener" class="lp-cta-link lp-cta-secondary"><i class="fas fa-external-link-alt" style="font-size:10px;"></i> Practice: Zero &amp; Numbers</a>
+                            <a href="https://www.starfall.com/h/numbers/" target="_blank" rel="noopener noreferrer" class="lp-cta-link lp-cta-secondary"><i class="fas fa-external-link-alt" style="font-size:10px;"></i> Practice: Zero &amp; Numbers</a>
+                <p style="font-size:10px;color:var(--text-very-faint);margin-top:8px;"><i class="fas fa-external-link-alt" style="font-size:8px;margin-right:3px;"></i>External links are provided for convenience. Curicaa is not responsible for third-party content.</p>
                         </div>
                     </div>
                 </div>
@@ -303,7 +305,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
                         <div class="lp-activity" style="margin-bottom:0;"><div class="lp-act-icon lp-act-icon-assess"><i class="fas fa-check-circle"></i></div><div><div class="lp-act-label" style="color:#fb923c;">Assessment</div><div class="lp-act-text">Student correctly identifies and describes the function of 8 organelles and explains the "cell as a city" analogy for each</div></div></div>
                         <div class="lp-cta-bar">
                             <a onclick="if(typeof CuricaaAuth!=='undefined'&&CuricaaAuth.isLoggedIn()){window.location.href='age-14-science.html'}else{openSignupModal()}" class="lp-cta-link lp-cta-primary" style="cursor:pointer;"><i class="fas fa-external-link-alt" style="font-size:10px;"></i> View Full Lesson</a>
-                            <a href="https://www.khanacademy.org/science/biology/structure-of-a-cell" target="_blank" rel="noopener" class="lp-cta-link lp-cta-secondary"><i class="fas fa-external-link-alt" style="font-size:10px;"></i> Practice: Cell Organelles</a>
+                            <a href="https://www.khanacademy.org/science/biology/structure-of-a-cell" target="_blank" rel="noopener noreferrer" class="lp-cta-link lp-cta-secondary"><i class="fas fa-external-link-alt" style="font-size:10px;"></i> Practice: Cell Organelles</a>
                         </div>
                     </div>
                 </div>
@@ -316,9 +318,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
             <div id="statsGrid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:960px;margin:0 auto;"></div>
         </section>
 
-        <!-- Testimonials -->
+        <!-- Trust & Guarantees -->
         <section id="testimonials" class="reveal" style="margin-bottom:88px;">
-            <div style="text-align:center;margin-bottom:44px;"><p class="section-label">Loved by families</p><h2 style="font-family:var(--font-display);font-size:28px;font-weight:700;">What Parents Say</h2></div>
+            <div style="text-align:center;margin-bottom:44px;"><p class="section-label">Why families choose Curicaa</p><h2 style="font-family:var(--font-display);font-size:28px;font-weight:700;">Our Promise to You</h2><p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Built with care, backed by guarantees.</p></div>
             <div class="carousel-wrap" id="reviewCarousel">
                 <button class="carousel-arrow carousel-arrow-left" onclick="slideCarousel(-1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
                 <div class="carousel-track" id="carouselTrack"></div>
@@ -390,21 +392,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
                     </div>
                     <button onclick="if(typeof CuricaaAuth!=='undefined'&&CuricaaAuth.isLoggedIn()){document.getElementById('waitlistForm').scrollIntoView({behavior:'smooth',block:'center'})}else{openSignupModal()}" style="width:100%;padding:11px;border-radius:12px;background:var(--bg-subtle);border:1px solid rgba(212,165,74,0.2);color:var(--gold);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="fas fa-clock" style="font-size:11px;margin-right:6px;"></i>Coming Soon</button>
                 </div>
-                <!-- Pro -->
-                <div class="pricing-card pricing-pro">
-                    <div class="pro-badge">Pro</div>
-                    <div style="font-size:13px;font-weight:600;color:#a78bfa;margin-bottom:6px;margin-top:8px;">Curicaa Pro</div>
-                    <div class="price-amount" data-annual="259" data-monthly="29" style="font-family:var(--font-display);font-size:42px;font-weight:800;letter-spacing:-0.04em;">$259</div>
-                    <div class="price-period" style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
-                    <div class="price-savings" style="font-size:11px;color:#4ade80;margin-bottom:20px;">3 months free vs monthly</div>
-                    <div style="text-align:left;margin-bottom:24px;">
-                        <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i> Everything in Full Bundle</div>
-                        <div class="check-row"><i class="fas fa-check" style="color:#a78bfa;font-size:11px;"></i> All 10 months of worksheets</div>
-                        <div class="check-row"><i class="fas fa-check" style="color:#a78bfa;font-size:11px;"></i> Answer keys with worked solutions</div>
-                        <div class="check-row"><i class="fas fa-check" style="color:#a78bfa;font-size:11px;"></i> End-of-month quizzes per subject</div>
-                        <div class="check-row" style="margin-bottom:0;"><i class="fas fa-check" style="color:#a78bfa;font-size:11px;"></i> All subjects, all grades included</div>
-                    </div>
-                    <button onclick="if(typeof CuricaaAuth!=='undefined'&&CuricaaAuth.isLoggedIn()){document.getElementById('waitlistForm').scrollIntoView({behavior:'smooth',block:'center'})}else{openSignupModal()}" style="width:100%;padding:11px;border-radius:12px;background:var(--bg-subtle);border:1px solid rgba(167,139,250,0.2);color:#a78bfa;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="fas fa-clock" style="font-size:11px;margin-right:6px;"></i>Coming Soon</button>
+                <!-- Auto-renewal disclosure -->
+                <div style="grid-column:1/-1;text-align:center;padding:14px 16px 0;">
+                    <p style="font-size:11.5px;color:var(--text-faint);line-height:1.6;"><i class="fas fa-sync-alt" style="font-size:9px;margin-right:4px;"></i>Paid subscriptions renew automatically (annual or monthly, depending on your plan). Cancel anytime from your account settings — no penalties, no hidden fees. You keep access through the end of your billing period.</p>
                 </div>
             </div>
 
@@ -526,7 +516,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
             <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:32px;">
                 <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;"><div style="width:28px;height:28px;background:linear-gradient(135deg,var(--gold),#f97316);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-graduation-cap" style="font-size:12px;color:white;"></i></div><span style="font-size:14px;font-weight:700;color:var(--text-primary);">Curicaa</span></div><p style="font-size:12px;color:var(--text-muted);line-height:1.65;max-width:240px;">Empowering families with world-class K-12 homeschool curriculum.</p></div>
                 <div><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:14px;">Pathways</div><div style="display:flex;flex-direction:column;gap:8px;"><a class="footer-link" href="#" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'});return false;">Curriculum</a><a class="footer-link" href="#" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'});return false;">Features</a><a class="footer-link" id="footerPricingLink" href="#" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false;">Pricing</a><a class="footer-link" href="#" onclick="document.getElementById('lessonPreview').scrollIntoView({behavior:'smooth'});return false;">Sample Lessons</a></div></div>
-                <div><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:14px;">Company</div><div style="display:flex;flex-direction:column;gap:8px;"><a class="footer-link" href="#" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});return false;">About</a><a class="footer-link" href="#" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'});return false;">FAQ</a><a class="footer-link" href="legal.html">Terms of Service</a><a class="footer-link" href="legal.html">Privacy Policy</a><a class="footer-link" href="legal.html">Refund Policy</a></div></div>
+                <div><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:14px;">Company</div><div style="display:flex;flex-direction:column;gap:8px;"><a class="footer-link" href="#" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});return false;">About</a><a class="footer-link" href="#" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'});return false;">FAQ</a><a class="footer-link" href="legal.html">Terms of Service</a><a class="footer-link" href="legal.html">Privacy Policy</a><a class="footer-link" href="legal.html">Refund Policy</a></div><div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border-faint);"><a class="footer-link" href="mailto:Curicaa@proton.me" style="display:flex;align-items:center;gap:8px;"><i class="fas fa-envelope" style="font-size:11px;color:var(--gold);"></i>Curicaa@proton.me</a></div></div>
             </div>
             <div style="border-top:1px solid var(--border-faint);padding-top:20px;display:flex;justify-content:center;flex-wrap:wrap;gap:12px;"><p style="font-size:11px;color:var(--text-very-faint);">© 2026 Curicaa Education. All rights reserved.</p><p style="font-size:11px;color:var(--text-very-faint);">Made with ♥ for homeschooling families everywhere</p></div>
         </div>
@@ -554,9 +544,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
             <div id="gradeSelector" style="display:none;margin-bottom:16px;"><label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Choose Grade Levels</label><div id="gradeSelectorGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"></div></div>
             <div style="margin-bottom:14px;"><label for="checkoutName" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Full Name</label><input type="text" id="checkoutName" placeholder="Jane Smith" class="form-input"></div>
             <div style="margin-bottom:14px;"><label for="checkoutEmail" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email Address</label><input type="email" id="checkoutEmail" placeholder="you@email.com" class="form-input"></div>
-            <div style="margin-bottom:20px;"><label for="checkoutCard" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Card Number</label><input type="text" id="checkoutCard" placeholder="4242 4242 4242 4242" maxlength="19" class="form-input"></div>
-            <button onclick="handlePurchase()" style="width:100%;padding:13px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--gold),#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 20px rgba(212,165,74,0.25);font-family:var(--font-body);">Complete Purchase</button>
-            <p style="text-align:center;font-size:11px;color:var(--text-muted);margin-top:12px;"><i class="fas fa-info-circle" style="margin-right:4px;"></i>Demo — no real payment processed</p>
+            <button onclick="handlePurchase()" style="width:100%;padding:13px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--gold),#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 20px rgba(212,165,74,0.25);font-family:var(--font-body);">Join Waitlist</button>
+            <p style="text-align:center;font-size:11px;color:var(--text-muted);margin-top:12px;"><i class="fas fa-info-circle" style="margin-right:4px;"></i>Paid plans coming soon — you'll be notified when we launch.</p>
         </div>
     </div>
 
@@ -591,9 +580,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
             <div id="signupError" style="display:none;padding:10px 14px;border-radius:10px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25);color:#f87171;font-size:13px;margin-bottom:16px;"></div>
             <div style="margin-bottom:14px;"><label for="signupName" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Full Name</label><input type="text" id="signupName" placeholder="Jane Smith" class="form-input"></div>
             <div style="margin-bottom:14px;"><label for="signupEmail" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Email</label><input type="email" id="signupEmail" placeholder="you@email.com" class="form-input"></div>
-            <div style="margin-bottom:6px;"><label for="signupPassword" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Password</label><input type="password" id="signupPassword" placeholder="At least 6 characters" class="form-input"></div>
-            <p style="font-size:11px;color:var(--text-muted);margin-bottom:20px;">By signing up you agree to our <a href="legal.html" style="color:var(--gold);text-decoration:none;font-weight:600;">Terms of Service</a> and <a href="legal.html" style="color:var(--gold);text-decoration:none;font-weight:600;">Privacy Policy</a>.</p>
-            <button id="signupBtn" onclick="handleSignup()" style="width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--gold),#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font-body);">Create Account</button>
+            <div style="margin-bottom:6px;"><label for="signupPassword" style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:6px;">Password</label><input type="password" id="signupPassword" placeholder="At least 8 characters" class="form-input"></div>
+            <!-- COMPLIANCE FIX: age confirmation + explicit ToS agreement checkbox -->
+            <label style="display:flex;align-items:flex-start;gap:8px;margin:10px 0 14px;cursor:pointer;font-size:11.5px;color:var(--text-muted);line-height:1.5;"><input type="checkbox" id="signupAgree" onchange="document.getElementById('signupBtn').disabled=!this.checked" style="margin-top:2px;width:16px;height:16px;accent-color:var(--gold);flex-shrink:0;"><span>I confirm that I am at least 18 years of age and agree to the <a href="legal.html" style="color:var(--gold);text-decoration:none;font-weight:600;">Terms of Service</a> and <a href="legal.html" style="color:var(--gold);text-decoration:none;font-weight:600;">Privacy Policy</a>.</span></label>
+            <button id="signupBtn" onclick="handleSignup()" disabled style="width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--gold),#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font-body);opacity:0.4;transition:opacity 0.2s;">Create Account</button>
+            <script>document.getElementById('signupAgree').addEventListener('change',function(){var b=document.getElementById('signupBtn');b.disabled=!this.checked;b.style.opacity=this.checked?'1':'0.4'})</script>
             <div style="display:flex;align-items:center;gap:12px;margin:16px 0;"><div style="flex:1;height:1px;background:var(--border-thin);"></div><span style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">or</span><div style="flex:1;height:1px;background:var(--border-thin);"></div></div>
             <button onclick="closeSignupModal();CuricaaAuth.loginWithGoogle()" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font-body);display:flex;align-items:center;justify-content:center;gap:10px;"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Sign up with Google</button>
             <p style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:16px;">Already have an account? <a onclick="closeSignupModal();openLoginModal()" style="color:var(--gold);cursor:pointer;font-weight:600;">Log in</a></p>
@@ -666,6 +657,20 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
                 </div>
             </div>
 
+            <!-- Data & Privacy -->
+            <div style="margin-bottom:20px;">
+                <label style="font-size:12px;font-weight:600;color:var(--text-secondary);display:block;margin-bottom:10px;">Data &amp; Privacy</label>
+                <div style="display:flex;flex-direction:column;gap:8px;">
+                    <button onclick="requestDataExport()" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12.5px;font-weight:500;cursor:pointer;font-family:var(--font-body);width:100%;text-align:left;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(96,165,250,0.4)'" onmouseout="this.style.borderColor='var(--border-card)'"><i class="fas fa-download" style="font-size:12px;color:var(--blue);width:16px;text-align:center;"></i> Export My Data</button>
+                    <button onclick="showDeleteConfirm()" id="deleteAccountBtn" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1px solid rgba(248,113,113,0.15);background:rgba(248,113,113,0.03);color:#f87171;font-size:12.5px;font-weight:500;cursor:pointer;font-family:var(--font-body);width:100%;text-align:left;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(248,113,113,0.3)'" onmouseout="this.style.borderColor='rgba(248,113,113,0.15)'"><i class="fas fa-trash-alt" style="font-size:12px;width:16px;text-align:center;"></i> Delete Account</button>
+                    <div id="deleteConfirmStep" style="display:none;margin-top:4px;">
+                        <p style="font-size:12px;color:var(--text-secondary);margin-bottom:10px;line-height:1.5;">This will permanently delete your account, all progress, and personal data. This action cannot be undone.</p>
+                        <div style="display:flex;gap:8px;"><button onclick="confirmDeleteAccount()" style="flex:1;padding:8px;border-radius:10px;border:none;background:rgba(248,113,113,0.15);color:#f87171;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-body);">Yes, Delete</button><button onclick="hideDeleteConfirm()" style="flex:1;padding:8px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-subtle);color:var(--text-secondary);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--font-body);">Cancel</button></div>
+                    </div>
+                    <div id="deleteSuccessMsg" style="display:none;margin-top:4px;padding:10px 14px;border-radius:10px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);font-size:12px;color:#4ade80;">Account deletion requested. We'll process it and confirm via email within 30 days.</div>
+                </div>
+            </div>
+
             <button onclick="closeSettings()" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border-card);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;font-size:13px;font-weight:500;">Close</button>
         </div>
     </div>
@@ -678,7 +683,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- COMPLIANCE FIX: privacy/localStorage notice banner -->
+    <div id="privacyNotice" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:58;background:rgba(15,17,25,0.95);backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:14px 20px;">
+        <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+            <p style="font-size:12.5px;color:var(--text-secondary);margin:0;line-height:1.5;">We use cookies and local storage to remember your preferences, progress, and authentication session. By continuing, you agree to our <a href="legal.html#priv-cookies" style="color:var(--gold);text-decoration:none;font-weight:600;">Privacy Policy</a>.</p>
+            <button onclick="localStorage.setItem('cookie_consent','accepted');document.getElementById('privacyNotice').style.display='none'" style="padding:8px 20px;border-radius:8px;border:none;background:linear-gradient(135deg,var(--gold),#f97316);color:white;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-body);white-space:nowrap;">Accept</button>
+        </div>
+    </div>
+    <script>if(!localStorage.getItem('cookie_consent')){document.getElementById('privacyNotice').style.display='block'}</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4" integrity="sha384-2zrRDgDHSYB/GN3nFW3fsZXoxEhKIr3N2h63Tc6DEOB9JJdFIu8xMJT2Cph/gBil" crossorigin="anonymous"></script>
     <script src="auth.js"></script>
     <script src="waitlist.js"></script>
     <script src="assets/hub-premium.js"></script>

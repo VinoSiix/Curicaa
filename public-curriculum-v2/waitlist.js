@@ -2,27 +2,18 @@
  * Waitlist Script — Curicaa
  * Handles waitlist submission to Supabase.
  * Requires a logged-in account to join the waitlist.
- * Replace SUPABASE_URL and SUPABASE_ANON_KEY with your project credentials.
+ * Uses the shared Supabase client from auth.js (CuricaaAuth.getClient()).
  */
 (function () {
-  // ─── CONFIG — Replace these with your Supabase project values ───
-  var SUPABASE_URL = 'https://muhtsytbbdzkfeiugdoo.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11aHRzeXRiYmR6a2ZlaXVnZG9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyOTYyNzMsImV4cCI6MjA5Mzg3MjI3M30.JOr0rv0K_GBSarVq8VXFMhCGnznRZz4LZWA2JaPwEWQ';
-
   var supabaseClient = null;
 
-  // ─── Initialize Supabase ───
-  function initSupabase() {
-    if (typeof window.supabase === 'undefined' || !window.supabase.createClient) {
-      console.error('Supabase JS not loaded. Waitlist disabled.');
-      return false;
+  // ─── Initialize using shared client from auth.js ───
+  function initClient() {
+    if (typeof CuricaaAuth !== 'undefined' && CuricaaAuth.getClient) {
+      supabaseClient = CuricaaAuth.getClient();
+      return true;
     }
-    if (SUPABASE_URL === 'YOUR_SUPABASE_URL' || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
-      console.warn('Supabase credentials not configured. Waitlist in demo mode.');
-      return false;
-    }
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    return true;
+    return false;
   }
 
   // ─── Submit to waitlist (requires auth) ───
@@ -33,7 +24,7 @@
     if (!supabaseClient) {
       return new Promise(function (resolve) {
         setTimeout(function () {
-          console.log('[Waitlist Demo] Email submitted:', cleanEmail);
+          // Demo mode — no real submission
           resolve({ demo: true });
         }, 800);
       });
@@ -209,7 +200,12 @@
 
   // ─── Boot ───
   function boot() {
-    initSupabase();
+    // Wait for auth.js to be ready, then get the shared client
+    function waitForClient() {
+      if (initClient()) return;
+      setTimeout(waitForClient, 100);
+    }
+    waitForClient();
 
     // Update waitlist UI when auth state becomes available
     window.addEventListener('curicaa-auth-ready', function () {

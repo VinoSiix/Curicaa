@@ -14,7 +14,9 @@
     '.month-tab.month-locked{opacity:0.35;cursor:not-allowed!important;position:relative;}' +
     '.month-tab.month-locked:hover{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.35);}' +
     '.month-tab.month-free{position:relative;}' +
-    '.month-tab.month-free::after{content:"FREE";position:absolute;top:-7px;right:-8px;font-size:7px;font-weight:700;letter-spacing:0.06em;background:#4ade80;color:#000;padding:1px 5px;border-radius:20px;line-height:1.4;}';
+    '.month-tab.month-free::after{content:"FREE";position:absolute;top:-7px;right:-8px;font-size:7px;font-weight:700;letter-spacing:0.06em;background:#4ade80;color:#000;padding:1px 5px;border-radius:20px;line-height:1.4;}' +
+    '#monthContent{opacity:0;transition:opacity 0.3s;}' +
+    '#monthContent.paywall-ready{opacity:1;}';
   document.head.appendChild(pwStyle);
 
   // --- Month restriction modal (Free users — months locked) ---
@@ -209,7 +211,11 @@
       if (container.dataset.wsGated) return;
       container.dataset.wsGated = 'true';
 
-      var wsName = link.textContent.trim();
+      // Escape worksheet name to prevent XSS
+      var wsNameRaw = link.textContent.trim();
+      var wsDiv = document.createElement('div');
+      wsDiv.textContent = wsNameRaw;
+      var wsName = wsDiv.innerHTML;
 
       // Replace only this specific worksheet row with a locked version
       container.style.background = 'rgba(139,92,246,0.08)';
@@ -352,6 +358,9 @@
     setTimeout(function() {
       injectResources();
       if (!hasProAccess()) gateWorksheets();
+      // Reveal content after paywall has initialized
+      var mc = document.getElementById('monthContent');
+      if (mc) mc.classList.add('paywall-ready');
     }, 300);
   }
 
