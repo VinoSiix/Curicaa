@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /hub.html
+Allow: /hub
+Allow: /legal.html
+Allow: /assets/
+Disallow: /admin.html
+Disallow: /admin
+Disallow: /worksheets/
+Disallow: /code-review-report.html
+Disallow: /curicaa-price-analysis.html
+Disallow: /supabase-schema.sql
+
+Sitemap: https://curicaa.vercel.app/hub.html

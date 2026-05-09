@@ -51,18 +51,33 @@
                    (authUser.user_metadata && authUser.user_metadata.name) || '';
     var email = (authUser.email || '').toLowerCase();
 
-    return sb
-      .from('profiles')
-      .upsert({
-        id: authUser.id,
-        name: metaName || email.split('@')[0],
-        email: email,
-        plan: 'free',
-        grades: []
-      }, { onConflict: 'id' })
-      .then(function () {
-        return loadProfile(authUser.id);
-      });
+    // First check if profile already exists — never overwrite plan/grades
+    return loadProfile(authUser.id).then(function (existing) {
+      if (existing) return existing;
+
+      // Profile doesn't exist yet — create it
+      return sb
+        .from('profiles')
+        .insert({
+          id: authUser.id,
+          name: metaName || email.split('@')[0],
+          email: email,
+          plan: 'free',
+          grades: []
+        })
+        .then(function () {
+          return loadProfile(authUser.id);
+        })
+        .then(function (profile) {
+          return profile || {
+            id: authUser.id,
+            name: metaName || email.split('@')[0],
+            email: email,
+            plan: 'free',
+            grades: []
+          };
+        });
+    });
   }
 
   // ─── Expose to window (same API surface as old localStorage version) ───

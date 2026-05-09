@@ -187,6 +187,27 @@
         var gateEl = document.getElementById('loginGate');
         var dashEl = document.getElementById('dashboard');
 
+        function checkAdminAccess(userId) {
+            return client
+                .from('profiles')
+                .select('role')
+                .eq('id', userId)
+                .single()
+                .then(function(result) {
+                    if (result.error || !result.data) return false;
+                    return result.data.role === 'admin';
+                })
+                .catch(function() { return false; });
+        }
+
+        function denyAccess() {
+            client.auth.signOut();
+            gateEl.style.display = 'flex';
+            dashEl.style.display = 'none';
+            document.getElementById('gateError').textContent = 'Access denied. Admin accounts only.';
+            document.getElementById('gateError').style.display = 'block';
+        }
+
         function showDashboard(email) {
             gateEl.style.display = 'none';
             dashEl.style.display = 'block';
@@ -200,6 +221,7 @@
             gateEl.style.display = 'flex';
             document.getElementById('gateEmail').value = '';
             document.getElementById('gatePassword').value = '';
+            document.getElementById('gateError').textContent = 'Invalid email or password.';
             document.getElementById('gateError').style.display = 'none';
         }
 
@@ -207,7 +229,13 @@
         client.auth.getSession().then(function(result) {
             var session = result.data && result.data.session;
             if (session && session.user) {
-                showDashboard(session.user.email);
+                checkAdminAccess(session.user.id).then(function(isAdmin) {
+                    if (isAdmin) {
+                        showDashboard(session.user.email);
+                    } else {
+                        denyAccess();
+                    }
+                });
             }
         });
 
@@ -232,11 +260,19 @@
                 btn.disabled = false;
                 btn.textContent = 'Sign In';
                 if (result.error) {
+                    document.getElementById('gateError').textContent = 'Invalid email or password.';
                     document.getElementById('gateError').style.display = 'block';
                     document.getElementById('gatePassword').value = '';
                     return;
                 }
-                showDashboard(email);
+                // Verify admin role before granting access
+                checkAdminAccess(result.data.user.id).then(function(isAdmin) {
+                    if (isAdmin) {
+                        showDashboard(email);
+                    } else {
+                        denyAccess();
+                    }
+                });
             });
         }
 

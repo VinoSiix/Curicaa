@@ -1,7 +1,6 @@
 -- ============================================================
 -- Curicaa Full Schema — Supabase
 -- Run ALL of this in Supabase SQL Editor
--- (https://supabase.com/dashboard/project/muhtsytbbdzkfeiugdoo/sql)
 -- ============================================================
 
 
@@ -15,6 +14,7 @@ CREATE TABLE IF NOT EXISTS profiles (
   email TEXT UNIQUE NOT NULL,
   plan TEXT DEFAULT 'free',
   grades JSONB DEFAULT '[]'::jsonb,
+  role TEXT DEFAULT 'user',
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -26,11 +26,25 @@ CREATE POLICY "Users can read own profile"
   TO authenticated
   USING (auth.uid() = id);
 
--- Users can update their own profile
+-- Admin users can read all profiles
+CREATE POLICY "Admin can read all profiles"
+  ON profiles FOR SELECT
+  TO authenticated
+  USING (
+    EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
+  );
+
+-- Users can update their own profile (name only — plan/role locked)
 CREATE POLICY "Users can update own profile"
   ON profiles FOR UPDATE
   TO authenticated
-  USING (auth.uid() = id);
+  USING (auth.uid() = id)
+  WITH CHECK (
+    auth.uid() = id
+    AND (plan, role) = (
+      SELECT plan, role FROM profiles WHERE id = auth.uid()
+    )
+  );
 
 -- Allow inserts during signup (trigger handles this, but also allow direct insert)
 CREATE POLICY "Users can insert own profile"
@@ -51,13 +65,14 @@ LANGUAGE plpgsql
 SECURITY DEFINER
 AS $$
 BEGIN
-  INSERT INTO public.profiles (id, name, email, plan, grades)
+  INSERT INTO public.profiles (id, name, email, plan, grades, role)
   VALUES (
     NEW.id,
     COALESCE(NEW.raw_user_meta_data->>'name', split_part(NEW.email, '@', 1)),
     LOWER(NEW.email),
     'free',
-    '[]'::jsonb
+    '[]'::jsonb,
+    'user'
   );
   RETURN NEW;
 EXCEPTION WHEN OTHERS THEN
@@ -101,14 +116,13 @@ CREATE POLICY "Users can read own waitlist entry"
   TO authenticated
   USING (LOWER(email) = LOWER(auth.jwt() ->> 'email'));
 
--- Admin page reads (anon role, behind password gate)
-CREATE POLICY "Allow admin read on waitlist"
+-- Admin users can read all waitlist entries
+CREATE POLICY "Admin can read all waitlist"
   ON waitlist FOR SELECT
-  TO anon
-  USING (true);
-
--- Service role can read all (for admin dashboard)
--- Note: service_role bypasses RLS by default, no policy needed
+  TO authenticated
+  USING (
+    EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
+  );
 
 
 -- ════════════════════════════════════════════════════════════
@@ -139,10 +153,26 @@ CREATE POLICY "Users can read own discount"
 
 
 -- ════════════════════════════════════════════════════════════
--- MIGRATION: Run AFTER you launch Stripe payments
--- This links waitlisted emails to new accounts and generates
--- unique 30% discount codes.
+-- MIGRATION: Run these statements on your EXISTING database
+-- to add the role column and lock down policies.
 -- ════════════════════════════════════════════════════════════
+
+-- Step 1: Add role column if it doesn't exist
+-- ALTER TABLE profiles ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'user';
+
+-- Step 2: Set your admin account (replace with your actual email)
+-- UPDATE profiles SET role = 'admin' WHERE email = 'YOUR_ADMIN_EMAIL@example.com';
+
+-- Step 3: Drop the old insecure policies
+-- DROP POLICY IF EXISTS "Allow admin read on waitlist" ON waitlist;
+-- DROP POLICY IF EXISTS "Users can update own profile" ON profiles;
+-- DROP POLICY IF EXISTS "Users can read own profile" ON profiles;
+
+-- Step 4: Re-create policies with admin checks (the CREATE POLICY
+-- statements above will work — they use IF NOT EXISTS behavior
+-- via the full schema recreation)
+
+-- Step 5: After Stripe launch — generate discount codes
 /*
 INSERT INTO discount_eligibility (user_id, email, discount_code, discount_percent, source)
 SELECT
