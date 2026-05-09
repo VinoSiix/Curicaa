@@ -267,12 +267,11 @@
           }
           return profile;
         }).then(function (profile) {
-          if (profile && isOAuthReturn) {
+            if (profile && isOAuthReturn) {
             // Clean up the URL hash
             window.history.replaceState(null, '', window.location.pathname + window.location.search);
-            // Check if user needs to set their name
-            if (!profile.name || profile.name.indexOf('@') !== -1 || profile.name.indexOf(' ') === -1) {
-              // Name looks like an email or single word — ask for real name
+            // Check if user needs to set their name (only if name is missing or is just an email prefix)
+            if (!profile.name || profile.name.indexOf('@') !== -1) {
               window.dispatchEvent(new CustomEvent('curicaa-needs-name', { detail: { email: profile.email } }));
             }
           }
