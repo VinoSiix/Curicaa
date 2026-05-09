@@ -623,31 +623,32 @@
                 // Also update the account info section to show Free Plan
                 var user = CuricaaAuth.getUser();
                 var infoEl = document.getElementById('settingsAccountInfo');
-            if (user) {
-                // Build DOM safely — no innerHTML with user data
-                var infoWrap = document.createElement('div');
-                infoWrap.style.cssText = 'display:flex;align-items:center;gap:10px;margin-bottom:8px;';
-                var avatarDiv = document.createElement('div');
-                avatarDiv.style.cssText = 'width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#f59e0b,#f97316);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;';
-                avatarDiv.textContent = user.name.charAt(0).toUpperCase();
-                var textDiv = document.createElement('div');
-                var nameDiv = document.createElement('div');
-                nameDiv.style.cssText = 'font-weight:600;color:var(--text-primary);';
-                nameDiv.textContent = user.name;
-                var emailDiv = document.createElement('div');
-                emailDiv.style.cssText = 'font-size:11px;color:var(--text-muted);';
-                emailDiv.textContent = user.email;
-                textDiv.appendChild(nameDiv);
-                textDiv.appendChild(emailDiv);
-                infoWrap.appendChild(avatarDiv);
-                infoWrap.appendChild(textDiv);
-                var planBadge = document.createElement('div');
-                planBadge.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(255,255,255,0.06);color:var(--text-muted);';
-                planBadge.textContent = 'Free Plan';
-                infoEl.innerHTML = '';
-                infoEl.appendChild(infoWrap);
-                infoEl.appendChild(planBadge);
-            }
+                if (user) {
+                    // Build DOM safely — no innerHTML with user data
+                    var infoWrap = document.createElement('div');
+                    infoWrap.style.cssText = 'display:flex;align-items:center;gap:10px;margin-bottom:8px;';
+                    var avatarDiv = document.createElement('div');
+                    avatarDiv.style.cssText = 'width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#f59e0b,#f97316);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;';
+                    avatarDiv.textContent = user.name.charAt(0).toUpperCase();
+                    var textDiv = document.createElement('div');
+                    var nameDiv = document.createElement('div');
+                    nameDiv.style.cssText = 'font-weight:600;color:var(--text-primary);';
+                    nameDiv.textContent = user.name;
+                    var emailDiv = document.createElement('div');
+                    emailDiv.style.cssText = 'font-size:11px;color:var(--text-muted);';
+                    emailDiv.textContent = user.email;
+                    textDiv.appendChild(nameDiv);
+                    textDiv.appendChild(emailDiv);
+                    infoWrap.appendChild(avatarDiv);
+                    infoWrap.appendChild(textDiv);
+                    var planBadge = document.createElement('div');
+                    planBadge.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(255,255,255,0.06);color:var(--text-muted);';
+                    planBadge.textContent = 'Free Plan';
+                    infoEl.innerHTML = '';
+                    infoEl.appendChild(infoWrap);
+                    infoEl.appendChild(planBadge);
+                }
+            });
         }
 
         function setFont(btn) {
