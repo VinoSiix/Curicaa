@@ -84,7 +84,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
 .pricing-pro{border:1px solid rgba(167,139,250,0.4);box-shadow:0 0 20px rgba(167,139,250,0.08)}.pricing-pro:hover{border-color:rgba(167,139,250,0.6)}
 .best-value-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),#f97316);color:white;font-size:9.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:4px 16px;border-radius:20px}
 .pro-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;font-size:9.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:4px 16px;border-radius:20px}
-.check-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:rgba(255,255,255,0.7)}.x-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:var(--text-muted)}
+.check-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:rgba(255,255,255,0.7)}.x-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:var(--text-muted)}.price-savings{color:#4ade80!important}
 .data-table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border-card);margin:24px 0;background:var(--bg-card)}.data-table{width:100%;border-collapse:collapse;font-size:13px}
 .data-table th{padding:14px 16px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-faint);background:rgba(255,255,255,0.02);white-space:nowrap}
 .data-table td{padding:12px 16px;border-bottom:1px solid var(--border-faint);white-space:nowrap;color:var(--text-secondary)}.data-table tbody tr:hover{background:rgba(212,165,74,0.04)}.data-table .highlight-row{background:rgba(212,165,74,0.06)!important}.data-table .highlight-row td{color:var(--gold-light);font-weight:600}
@@ -330,6 +330,18 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
         <section id="pricing" class="reveal" style="margin-top:88px;margin-bottom:88px;">
             <div style="text-align:center;margin-bottom:44px;"><p class="section-label"><i class="fas fa-bell" style="color:var(--gold);margin-right:6px;"></i>Early Access</p><h2 style="font-family:var(--font-display);font-size:28px;font-weight:700;">Choose Your Plan</h2><p style="color:var(--text-muted);font-size:13.5px;margin-top:8px;">Purchasing opens soon. Join the waitlist for <strong style="color:var(--gold);">30% off all plans</strong> for your first year.</p></div>
 
+            <!-- Monthly / Annual Toggle -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin:0 auto 32px;">
+                <span id="annualSavingsTag" style="font-size:10px;font-weight:700;color:#4ade80;background:rgba(74,222,128,0.1);padding:3px 10px;border-radius:20px;border:1px solid rgba(74,222,128,0.2);transition:opacity 0.25s,visibility 0.25s;">Save 25%</span>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <span id="toggleLabelMonthly" style="font-size:13px;font-weight:600;color:var(--text-muted);transition:color 0.25s;">Monthly</span>
+                    <button id="billingToggle" onclick="toggleBilling()" style="width:52px;height:28px;border-radius:14px;border:none;cursor:pointer;position:relative;background:linear-gradient(135deg,#f59e0b,#f97316);transition:background 0.25s;">
+                        <div id="billingDot" style="width:22px;height:22px;border-radius:50%;background:white;position:absolute;top:3px;left:27px;transition:left 0.3s cubic-bezier(.22,.68,0,1.2);box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>
+                    </button>
+                    <span id="toggleLabelAnnual" style="font-size:13px;font-weight:600;color:#fbbf24;transition:color 0.25s;">Annual</span>
+                </div>
+            </div>
+
             <!-- 4-tier grid (fully visible, buy buttons replaced) -->
             <div class="pricing-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1000px;margin:0 auto;">
                 <!-- Free -->
@@ -350,9 +362,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
                 <!-- Single Grade -->
                 <div class="pricing-card">
                     <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">Single Grade</div>
-                    <div style="font-family:var(--font-display);font-size:42px;font-weight:800;letter-spacing:-0.04em;">$79</div>
-                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
-                    <div style="font-size:11px;color:#4ade80;margin-bottom:20px;">3 months free vs monthly</div>
+                    <div class="price-amount" data-annual="79" data-monthly="9" style="font-family:var(--font-display);font-size:42px;font-weight:800;letter-spacing:-0.04em;">$79</div>
+                    <div class="price-period" style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
+                    <div class="price-savings" style="font-size:11px;color:#4ade80;margin-bottom:20px;">3 months free vs monthly</div>
                     <div style="text-align:left;margin-bottom:24px;">
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i> All 40 weeks, one grade level</div>
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i> All 4 subjects included</div>
@@ -366,9 +378,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
                 <div class="pricing-card pricing-featured">
                     <div class="best-value-badge">Best Value</div>
                     <div style="font-size:13px;font-weight:600;color:var(--gold);margin-bottom:6px;margin-top:8px;">Full K-12 Bundle</div>
-                    <div style="font-family:var(--font-display);font-size:42px;font-weight:800;letter-spacing:-0.04em;">$169</div>
-                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
-                    <div style="font-size:11px;color:#4ade80;margin-bottom:20px;">3 months free vs monthly</div>
+                    <div class="price-amount" data-annual="169" data-monthly="19" style="font-family:var(--font-display);font-size:42px;font-weight:800;letter-spacing:-0.04em;">$169</div>
+                    <div class="price-period" style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
+                    <div class="price-savings" style="font-size:11px;color:#4ade80;margin-bottom:20px;">3 months free vs monthly</div>
                     <div style="text-align:left;margin-bottom:24px;">
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i> All 8 grade levels</div>
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i> All 4 subjects per level</div>
@@ -382,9 +394,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
                 <div class="pricing-card pricing-pro">
                     <div class="pro-badge">Pro</div>
                     <div style="font-size:13px;font-weight:600;color:#a78bfa;margin-bottom:6px;margin-top:8px;">Curicaa Pro</div>
-                    <div style="font-family:var(--font-display);font-size:42px;font-weight:800;letter-spacing:-0.04em;">$259</div>
-                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
-                    <div style="font-size:11px;color:#4ade80;margin-bottom:20px;">3 months free vs monthly</div>
+                    <div class="price-amount" data-annual="259" data-monthly="29" style="font-family:var(--font-display);font-size:42px;font-weight:800;letter-spacing:-0.04em;">$259</div>
+                    <div class="price-period" style="font-size:12px;color:var(--text-muted);margin-bottom:2px;">/year</div>
+                    <div class="price-savings" style="font-size:11px;color:#4ade80;margin-bottom:20px;">3 months free vs monthly</div>
                     <div style="text-align:left;margin-bottom:24px;">
                         <div class="check-row"><i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i> Everything in Full Bundle</div>
                         <div class="check-row"><i class="fas fa-check" style="color:#a78bfa;font-size:11px;"></i> All 10 months of worksheets</div>
