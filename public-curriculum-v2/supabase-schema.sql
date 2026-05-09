@@ -102,10 +102,10 @@ CREATE INDEX IF NOT EXISTS idx_waitlist_email ON waitlist (LOWER(email));
 
 ALTER TABLE waitlist ENABLE ROW LEVEL SECURITY;
 
--- Anyone can join the waitlist (anonymous inserts)
-CREATE POLICY "Allow public to join waitlist"
+-- Authenticated users can join the waitlist
+CREATE POLICY "Authenticated users can join waitlist"
   ON waitlist FOR INSERT
-  TO anon
+  TO authenticated
   WITH CHECK (true);
 
 -- Authenticated users can read their own entry
@@ -184,4 +184,150 @@ INNER JOIN waitlist w ON LOWER(u.email) = LOWER(w.email)
 WHERE NOT EXISTS (
   SELECT 1 FROM discount_eligibility de WHERE de.user_id = u.id
 );
-*/
+
+
+-- ════════════════════════════════════════════════════════════
+-- 5. ADMIN RPC FUNCTIONS
+--    Called from the admin dashboard via supabase.rpc().
+--    SECURITY DEFINER bypasses RLS; the function body checks
+--    that the caller's role in profiles is 'admin'.
+-- ════════════════════════════════════════════════════════════
+
+-- Helper: raise a consistent permission denied error
+CREATE OR REPLACE FUNCTION public.admin_denied()
+RETURNS VOID
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  RAISE EXCEPTION 'Permission denied — admin role required'
+    USING HINT = 'Your account must have role = admin in the profiles table.';
+END;
+$$;
+
+-- 5a. Get all profiles (admin only)
+CREATE OR REPLACE FUNCTION public.get_admin_profiles()
+RETURNS SETOF profiles
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+  IF auth.uid() IS NULL THEN
+    RAISE EXCEPTION 'Not authenticated';
+  END IF;
+
+  IF NOT EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE id = auth.uid() AND role = 'admin'
+  ) THEN
+    PERFORM public.admin_denied();
+  END IF;
+
+  RETURN QUERY SELECT * FROM public.profiles ORDER BY created_at DESC;
+END;
+$$;
+
+-- 5b. Get all waitlist entries (admin only)
+CREATE OR REPLACE FUNCTION public.get_admin_waitlist()
+RETURNS SETOF waitlist
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+  IF auth.uid() IS NULL THEN
+    RAISE EXCEPTION 'Not authenticated';
+  END IF;
+
+  IF NOT EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE id = auth.uid() AND role = 'admin'
+  ) THEN
+    PERFORM public.admin_denied();
+  END IF;
+
+  RETURN QUERY SELECT * FROM public.waitlist ORDER BY created_at DESC;
+END;
+$$;
+
+
+-- ════════════════════════════════════════════════════════════
+-- 6. PLAN MANAGEMENT RPCs (SECURITY DEFINER — bypasses RLS)
+--    Client-side plan changes go through these functions so
+--    the database controls what transitions are allowed.
+-- ════════════════════════════════════════════════════════════
+
+-- 6a. Cancel subscription — downgrades to free (only allowed transition from client)
+CREATE OR REPLACE FUNCTION public.cancel_subscription()
+RETURNS JSONB
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+  v_current_plan TEXT;
+BEGIN
+  IF auth.uid() IS NULL THEN
+    RETURN '{"ok": false, "error": "Not authenticated"}'::jsonb;
+  END IF;
+
+  SELECT plan INTO v_current_plan FROM public.profiles WHERE id = auth.uid();
+
+  IF v_current_plan IS NULL OR v_current_plan = 'free' THEN
+    RETURN '{"ok": false, "error": "No active subscription to cancel"}'::jsonb;
+  END IF;
+
+  UPDATE public.profiles
+  SET plan = 'free', grades = '[]'::jsonb
+  WHERE id = auth.uid();
+
+  RETURN '{"ok": true}'::jsonb;
+END;
+$$;
+
+-- 6b. Verify and update plan — placeholder for Stripe integration
+--     Currently BLOCKS all upgrades from client-side.
+--     When Stripe is integrated, this function (or a webhook handler)
+--     will verify the payment session before updating the plan.
+CREATE OR REPLACE FUNCTION public.verify_and_update_plan(
+  new_plan TEXT,
+  new_grades JSONB DEFAULT '[]'::jsonb
+)
+RETURNS JSONB
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+  v_current_plan TEXT;
+BEGIN
+  IF auth.uid() IS NULL THEN
+    RETURN '{"ok": false, "error": "Not authenticated"}'::jsonb;
+  END IF;
+
+  -- Only allow downgrade to free (cancel subscription)
+  IF new_plan = 'free' THEN
+    UPDATE public.profiles
+    SET plan = 'free', grades = '[]'::jsonb
+    WHERE id = auth.uid();
+    RETURN '{"ok": true}'::jsonb;
+  END IF;
+
+  -- Block all upgrades from client-side — must go through Stripe
+  RETURN jsonb_build_object(
+    'ok', false,
+    'error', 'Plan upgrades must be processed through the payment system'
+  );
+END;
+$$;
+
+
+-- ════════════════════════════════════════════════════════════
+-- MIGRATION: Lock down anon access to PII
+-- DEPLOY ATOMICALLY WITH ADMIN DASHBOARD REWORK
+-- ════════════════════════════════════════════════════════════
+
+-- Remove anon SELECT on profiles (admin now uses get_admin_profiles() RPC)
+DROP POLICY IF EXISTS "Allow admin dashboard read on profiles" ON profiles;
+
+-- Remove anon SELECT on waitlist (admin now uses get_admin_waitlist() RPC)
+DROP POLICY IF EXISTS "Allow admin dashboard read on waitlist" ON waitlist;
+
+-- Remove anon INSERT on waitlist (now requires authentication)
+DROP POLICY IF EXISTS "Allow public to join waitlist" ON waitlist;
