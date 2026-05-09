@@ -103,7 +103,7 @@
             features: [
                 {iconClass: 'fas fa-calendar-alt', iconColor: '#fbbf24', title: 'Done-For-You Lesson Plans', subtitle: '10 months, week by week'},
                 {iconClass: 'fas fa-check-circle', iconColor: '#4ade80', title: 'Zero Prep Required', subtitle: 'Open and teach instantly'},
-                {iconClass: 'fas fa-wifi', iconColor: '#22d3ee', title: 'Works Offline', subtitle: 'No internet needed to teach'},
+                {iconClass: 'fas fa-laptop', iconColor: '#22d3ee', title: 'Works on Any Device', subtitle: 'Phone, tablet, or laptop'},
                 {iconClass: 'fas fa-mobile-alt', iconColor: '#fbbf24', title: 'Any Device, Anywhere', subtitle: 'Phone, tablet, or laptop'},
                 {iconClass: 'fas fa-chalkboard-teacher', iconColor: '#f59e0b', title: 'Parent-Friendly Guides', subtitle: 'Step-by-step for non-teachers'},
                 {iconClass: 'fas fa-dollar-sign', iconColor: '#fb923c', title: 'Household Materials Only', subtitle: 'No expensive supplies to buy'},
