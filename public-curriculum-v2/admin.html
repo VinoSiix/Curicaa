@@ -130,9 +130,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
     (function () {
-        // ─── Admin password (SHA-256 hashed) ───
-        // Plaintext: pkUM0WjGRbCj2U
-        var ADMIN_HASH = 'a45d1e6cfb0e5c2f8d3a7b9c1e4f5d6a9b8c7e6f5d4a3b2c1e0f9d8c7b6a543';
+        // ─── Admin password check (SHA-256 hash only — no plaintext stored) ───
+        var ADMIN_HASH = '636b850528fc6a918987ab00b1e1ce814119b43ea6f87efbad326a762c6fc888';
 
         // Simple hash function for password check
         async function sha256(str) {
@@ -167,9 +166,7 @@
             var input = document.getElementById('gatePassword').value;
             if (!input) return;
             var hash = await sha256(input);
-            // Compare against pre-computed hash of the password
-            var expected = await sha256('pkUM0WjGRbCj2U');
-            if (hash === expected) {
+            if (hash === ADMIN_HASH) {
                 unlock();
             } else {
                 document.getElementById('gateError').style.display = 'block';
