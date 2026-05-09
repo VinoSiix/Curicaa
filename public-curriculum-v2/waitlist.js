@@ -54,6 +54,22 @@
       });
   }
 
+  // ─── Check if user's email is already on the waitlist ───
+  function checkAlreadyOnWaitlist(email) {
+    if (!supabaseClient) return Promise.resolve(false);
+    return supabaseClient
+      .from('waitlist')
+      .select('id')
+      .eq('email', email.trim().toLowerCase())
+      .limit(1)
+      .then(function (result) {
+        return result.data && result.data.length > 0;
+      })
+      .catch(function () {
+        return false;
+      });
+  }
+
   // ─── UI State Management ───
   function setFormState(state, errorMsg) {
     var form = document.getElementById('waitlistForm');
@@ -114,15 +130,22 @@
     if (isLoggedIn) {
       var user = CuricaaAuth.getUser();
       authGate.style.display = 'none';
-      // Only show the form if success isn't already displayed
-      if (successBox && successBox.style.display === 'block') {
-        form.style.display = 'none';
-      } else {
-        form.style.display = 'block';
-      }
       if (userEmailEl && user && user.email) {
         userEmailEl.textContent = 'Signed in as ' + user.email;
       }
+      // Check if this user's email is already on the waitlist
+      checkAlreadyOnWaitlist(user.email).then(function (isOnList) {
+        if (isOnList) {
+          form.style.display = 'none';
+          if (successBox) successBox.style.display = 'block';
+        } else {
+          if (successBox && successBox.style.display === 'block') {
+            form.style.display = 'none';
+          } else {
+            form.style.display = 'block';
+          }
+        }
+      });
     } else {
       authGate.style.display = 'block';
       form.style.display = 'none';
