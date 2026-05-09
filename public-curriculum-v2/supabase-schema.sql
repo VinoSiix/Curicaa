@@ -155,31 +155,33 @@ CREATE POLICY "Users can read own discount"
 -- ════════════════════════════════════════════════════════════
 -- 5. ADMIN RPC FUNCTION
 --    Returns waitlist + profiles for the admin dashboard.
---    Uses SECURITY DEFINER to bypass RLS (server-side only).
---    Only callable by authenticated admin users.
+--    Uses SECURITY DEFINER to bypass RLS.
 -- ════════════════════════════════════════════════════════════
 
-CREATE OR REPLACE FUNCTION admin_get_data()
-RETURNS JSON
+CREATE OR REPLACE FUNCTION public.admin_get_data()
+RETURNS JSONB
 LANGUAGE plpgsql
 SECURITY DEFINER
 AS $$
 DECLARE
-  result JSON;
+  result JSONB;
 BEGIN
-  SELECT json_build_object(
+  SELECT jsonb_build_object(
     'waitlist', (
-      SELECT COALESCE(json_agg(row_to_json(w)), '[]'::json)
+      SELECT COALESCE(jsonb_agg(row_to_json(w)), '[]'::jsonb)
       FROM (SELECT * FROM waitlist ORDER BY created_at DESC LIMIT 500) w
     ),
     'profiles', (
-      SELECT COALESCE(json_agg(row_to_json(p)), '[]'::json)
+      SELECT COALESCE(jsonb_agg(row_to_json(p)), '[]'::jsonb)
       FROM (SELECT * FROM profiles ORDER BY created_at DESC LIMIT 500) p
     )
   ) INTO result;
   RETURN result;
 END;
 $$;
+
+GRANT EXECUTE ON FUNCTION public.admin_get_data() TO anon;
+GRANT EXECUTE ON FUNCTION public.admin_get_data() TO authenticated;
 
 
 -- ════════════════════════════════════════════════════════════
