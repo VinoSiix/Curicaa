@@ -189,7 +189,10 @@
         var ATTEMPTS_KEY = 'curicaa_admin_attempts';
         var SESSION_KEY = 'curicaa_admin_session';
 
-        var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // Force anon role — never inherit auth session from hub.html
+        var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+            auth: { persistSession: false, autoRefreshToken: false }
+        });
         var waitlistRows = [];
         var userRows = [];
 
