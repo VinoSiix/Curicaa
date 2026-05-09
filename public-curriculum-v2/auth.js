@@ -211,6 +211,10 @@
 
   // ─── Boot: restore session from Supabase ───
   function boot() {
+    // Clean up old localStorage auth data (migrated to Supabase)
+    localStorage.removeItem('curicaa_users');
+    localStorage.removeItem('curicaa_session');
+
     if (!init()) {
       // Supabase not available — dispatch ready event anyway
       window.dispatchEvent(new Event('curicaa-auth-ready'));

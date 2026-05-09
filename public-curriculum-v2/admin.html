@@ -47,14 +47,16 @@
         .tab-content{display:none}
         .tab-content.active{display:block}
 
-        /* Password gate */
+        /* Login gate */
         #loginGate{display:flex;align-items:center;justify-content:center;min-height:80vh}
-        .gate-box{text-align:center;max-width:360px;width:100%}
+        .gate-box{text-align:center;max-width:400px;width:100%}
         .gate-box .logo-icon{margin:0 auto 16px}
-        .gate-input{width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:14px;outline:none;text-align:center;letter-spacing:2px;margin-top:16px;transition:border-color 0.2s}
+        .gate-input{width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:14px;outline:none;margin-top:14px;transition:border-color 0.2s}
+        .gate-input:first-of-type{margin-top:20px}
         .gate-input:focus{border-color:rgba(212,165,74,0.5)}
-        .gate-input::placeholder{letter-spacing:0}
-        .gate-btn{width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--gold),#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;font-family:inherit}
+        .gate-input::placeholder{color:var(--text-muted)}
+        .gate-btn{width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--gold),#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;margin-top:14px;font-family:inherit}
+        .gate-btn:disabled{opacity:0.5;cursor:not-allowed}
         .gate-error{color:var(--red);font-size:12px;margin-top:10px;display:none}
 
         #dashboard{display:none}
@@ -63,32 +65,33 @@
     </style>
 </head>
 <body>
-    <!-- Password Gate — always shown on page load -->
+    <!-- Login Gate — requires real Supabase account -->
     <div id="loginGate">
         <div class="gate-box">
             <div class="logo-icon">🔒</div>
             <div style="font-weight:700;font-size:18px;">Admin Dashboard</div>
-            <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Enter password to continue</div>
-            <input type="password" class="gate-input" id="gatePassword" placeholder="Password" autofocus>
-            <button class="gate-btn" id="gateBtn">Unlock</button>
-            <div class="gate-error" id="gateError">Wrong password. Try again.</div>
+            <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Sign in with your Curicaa admin account</div>
+            <input type="email" class="gate-input" id="gateEmail" placeholder="Email">
+            <input type="password" class="gate-input" id="gatePassword" placeholder="Password">
+            <button class="gate-btn" id="gateBtn">Sign In</button>
+            <div class="gate-error" id="gateError">Invalid email or password.</div>
         </div>
     </div>
 
-    <!-- Dashboard (hidden until unlocked) -->
+    <!-- Dashboard (hidden until authenticated) -->
     <div id="dashboard" class="container">
         <div class="header">
             <div class="logo">
                 <div class="logo-icon">📊</div>
                 <div>
                     <div class="logo-text">Curicaa Dashboard</div>
-                    <div class="logo-sub">Admin Panel</div>
+                    <div class="logo-sub" id="adminEmail"></div>
                 </div>
             </div>
             <div style="display:flex;gap:10px;align-items:center;">
                 <button class="btn btn-subtle" onclick="refreshAll()"><i class="fas fa-sync-alt" style="font-size:11px;"></i> Refresh</button>
                 <a class="btn btn-subtle" href="hub.html">← Back to Site</a>
-                <button class="btn btn-subtle" onclick="lockDashboard()"><i class="fas fa-lock" style="font-size:11px;"></i> Lock</button>
+                <button class="btn btn-subtle" onclick="lockDashboard()"><i class="fas fa-sign-out-alt" style="font-size:11px;"></i> Sign Out</button>
             </div>
         </div>
 
@@ -174,55 +177,74 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
     (function () {
-        // ─── Admin password (SHA-256 hash — no plaintext in code) ───
-        var ADMIN_HASH = '7400f452403798907ebc27bffcb46298f32b46765ad5a68443463ea0e1f2cab6';
+        var SUPABASE_URL = 'https://muhtsytbbdzkfeiugdoo.supabase.co';
+        var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11aHRzeXRiYmR6a2ZlaXVnZG9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyOTYyNzMsImV4cCI6MjA5Mzg3MjI3M30.JOr0rv0K_GBSarVq8VXFMhCGnznRZz4LZWA2JaPwEWQ';
 
-        async function sha256(str) {
-            var buf = new TextEncoder().encode(str);
-            var hash = await crypto.subtle.digest('SHA-256', buf);
-            return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
-        }
+        var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        var waitlistRows = [];
+        var userRows = [];
 
-        // ─── Password gate — always asks, never remembers ───
         var gateEl = document.getElementById('loginGate');
         var dashEl = document.getElementById('dashboard');
 
-        function unlock() {
+        function showDashboard(email) {
             gateEl.style.display = 'none';
             dashEl.style.display = 'block';
-            initDashboard();
+            document.getElementById('adminEmail').textContent = email;
+            loadWaitlist();
+            loadUsers();
         }
 
-        // Lock button in dashboard header
-        window.lockDashboard = function () {
+        function showGate() {
             dashEl.style.display = 'none';
             gateEl.style.display = 'flex';
+            document.getElementById('gateEmail').value = '';
             document.getElementById('gatePassword').value = '';
             document.getElementById('gateError').style.display = 'none';
-            document.getElementById('gatePassword').focus();
-        };
-
-        // No sessionStorage check — always require password on page load
-
-        document.getElementById('gateBtn').addEventListener('click', checkPassword);
-        document.getElementById('gatePassword').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') checkPassword();
-        });
-
-        async function checkPassword() {
-            var input = document.getElementById('gatePassword').value;
-            if (!input) return;
-            var hash = await sha256(input);
-            if (hash === ADMIN_HASH) {
-                unlock();
-            } else {
-                document.getElementById('gateError').style.display = 'block';
-                document.getElementById('gatePassword').value = '';
-                document.getElementById('gatePassword').focus();
-            }
         }
 
-        // ─── Tab switching ───
+        // Check existing session on load
+        client.auth.getSession().then(function(result) {
+            var session = result.data && result.data.session;
+            if (session && session.user) {
+                showDashboard(session.user.email);
+            }
+        });
+
+        document.getElementById('gateBtn').addEventListener('click', handleAdminLogin);
+        document.getElementById('gatePassword').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') handleAdminLogin();
+        });
+        document.getElementById('gateEmail').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') document.getElementById('gatePassword').focus();
+        });
+
+        function handleAdminLogin() {
+            var email = document.getElementById('gateEmail').value.trim();
+            var password = document.getElementById('gatePassword').value;
+            if (!email || !password) return;
+
+            var btn = document.getElementById('gateBtn');
+            btn.disabled = true;
+            btn.textContent = 'Signing in...';
+
+            client.auth.signInWithPassword({ email: email, password: password }).then(function(result) {
+                btn.disabled = false;
+                btn.textContent = 'Sign In';
+                if (result.error) {
+                    document.getElementById('gateError').style.display = 'block';
+                    document.getElementById('gatePassword').value = '';
+                    return;
+                }
+                showDashboard(email);
+            });
+        }
+
+        window.lockDashboard = function () {
+            client.auth.signOut().then(function() { showGate(); });
+        };
+
+        // Tabs
         document.querySelectorAll('.tab').forEach(function(tab) {
             tab.addEventListener('click', function() {
                 document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
@@ -232,31 +254,11 @@
             });
         });
 
-        // ─── Supabase config ───
-        var SUPABASE_URL = 'https://muhtsytbbdzkfeiugdoo.supabase.co';
-        var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11aHRzeXRiYmR6a2ZlaXVnZG9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyOTYyNzMsImV4cCI6MjA5Mzg3MjI3M30.JOr0rv0K_GBSarVq8VXFMhCGnznRZz4LZWA2JaPwEWQ';
-
-        var client = null;
-        var waitlistRows = [];
-        var userRows = [];
-
-        function initDashboard() {
-            client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            loadWaitlist();
-            loadUsers();
-        }
-
-        // ─── Load waitlist ───
         function loadWaitlist() {
-            if (!client) return;
-            client.from('waitlist')
-                .select('*')
-                .order('created_at', { ascending: false })
-                .limit(500)
+            client.from('waitlist').select('*').order('created_at', { ascending: false }).limit(500)
                 .then(function (result) {
                     if (result.error) {
-                        document.getElementById('waitlistBody').innerHTML =
-                            '<tr><td colspan="4" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
+                        document.getElementById('waitlistBody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
                         return;
                     }
                     waitlistRows = result.data || [];
@@ -265,17 +267,11 @@
                 });
         }
 
-        // ─── Load registered users (profiles) ───
         function loadUsers() {
-            if (!client) return;
-            client.from('profiles')
-                .select('*')
-                .order('created_at', { ascending: false })
-                .limit(500)
+            client.from('profiles').select('*').order('created_at', { ascending: false }).limit(500)
                 .then(function (result) {
                     if (result.error) {
-                        document.getElementById('usersBody').innerHTML =
-                            '<tr><td colspan="5" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
+                        document.getElementById('usersBody').innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
                         return;
                     }
                     userRows = result.data || [];
@@ -284,7 +280,6 @@
                 });
         }
 
-        // ─── Render tables ───
         function renderWaitlistTable(rows) {
             var tbody = document.getElementById('waitlistBody');
             if (!rows.length) {
@@ -314,8 +309,7 @@
             rows.forEach(function (row, i) {
                 var date = new Date(row.created_at);
                 var dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                var planColors = { free: 'var(--text-muted)', single: 'var(--gold)', bundle: 'var(--blue)', pro: '#a78bfa' };
-                var planColor = planColors[row.plan] || 'var(--text-muted)';
+                var planColor = { free: 'var(--text-muted)', single: 'var(--gold)', bundle: 'var(--blue)', pro: '#a78bfa' }[row.plan] || 'var(--text-muted)';
                 html += '<tr><td style="color:var(--text-muted);">' + (i + 1) + '</td>' +
                     '<td style="font-weight:600;color:var(--text);">' + escapeHtml(row.name || '—') + '</td>' +
                     '<td>' + escapeHtml(row.email) + '</td>' +
@@ -325,26 +319,20 @@
             tbody.innerHTML = html;
         }
 
-        // ─── Stats ───
         function updateStats() {
             document.getElementById('statWaitlist').textContent = waitlistRows.length;
             document.getElementById('statUsers').textContent = userRows.length;
-
             var now = new Date();
             var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
             var weekStart = new Date(now);
             weekStart.setDate(weekStart.getDate() - weekStart.getDay());
             weekStart.setHours(0, 0, 0, 0);
-
-            var todayCount = 0;
-            var weekCount = 0;
-            var all = waitlistRows.concat(userRows);
-            all.forEach(function (row) {
+            var todayCount = 0, weekCount = 0;
+            waitlistRows.concat(userRows).forEach(function (row) {
                 var d = new Date(row.created_at);
                 if (d >= todayStart) todayCount++;
                 if (d >= weekStart) weekCount++;
             });
-
             document.getElementById('statToday').textContent = todayCount;
             document.getElementById('statThisWeek').textContent = weekCount;
         }
@@ -355,45 +343,29 @@
             return div.innerHTML;
         }
 
-        // ─── Refresh ───
-        window.refreshAll = function () {
-            loadWaitlist();
-            loadUsers();
-        };
+        window.refreshAll = function () { loadWaitlist(); loadUsers(); };
 
-        // ─── Search ───
         window.filterWaitlist = function () {
-            var query = document.getElementById('searchWaitlist').value.trim().toLowerCase();
-            if (!query) { renderWaitlistTable(waitlistRows); return; }
-            renderWaitlistTable(waitlistRows.filter(function (r) {
-                return r.email.toLowerCase().indexOf(query) !== -1;
-            }));
+            var q = document.getElementById('searchWaitlist').value.trim().toLowerCase();
+            renderWaitlistTable(q ? waitlistRows.filter(function(r){return r.email.toLowerCase().indexOf(q)!==-1;}) : waitlistRows);
         };
 
         window.filterUsers = function () {
-            var query = document.getElementById('searchUsers').value.trim().toLowerCase();
-            if (!query) { renderUsersTable(userRows); return; }
-            renderUsersTable(userRows.filter(function (r) {
-                return r.name.toLowerCase().indexOf(query) !== -1 || r.email.toLowerCase().indexOf(query) !== -1;
-            }));
+            var q = document.getElementById('searchUsers').value.trim().toLowerCase();
+            renderUsersTable(q ? userRows.filter(function(r){return r.name.toLowerCase().indexOf(q)!==-1||r.email.toLowerCase().indexOf(q)!==-1;}) : userRows);
         };
 
-        // ─── CSV Export ───
         window.exportWaitlistCSV = function () {
-            if (!waitlistRows.length) { alert('No waitlist data to export.'); return; }
+            if (!waitlistRows.length) { alert('No data.'); return; }
             var csv = 'Email,Signed Up,Source\n';
-            waitlistRows.forEach(function (row) {
-                csv += '"' + row.email + '","' + row.created_at + '","' + (row.source || 'landing_page') + '"\n';
-            });
+            waitlistRows.forEach(function(r){csv+='"'+r.email+'","'+r.created_at+'","'+(r.source||'landing_page')+'"\n';});
             downloadCSV(csv, 'curicaa-waitlist');
         };
 
         window.exportUsersCSV = function () {
-            if (!userRows.length) { alert('No user data to export.'); return; }
+            if (!userRows.length) { alert('No data.'); return; }
             var csv = 'Name,Email,Plan,Joined\n';
-            userRows.forEach(function (row) {
-                csv += '"' + (row.name || '') + '","' + row.email + '","' + (row.plan || 'free') + '","' + row.created_at + '"\n';
-            });
+            userRows.forEach(function(r){csv+='"'+(r.name||'')+'","'+r.email+'","'+(r.plan||'free')+'","'+r.created_at+'"\n';});
             downloadCSV(csv, 'curicaa-users');
         };
 
