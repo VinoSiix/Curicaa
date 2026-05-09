@@ -104,15 +104,15 @@
                 {iconClass: 'fas fa-calendar-alt', iconColor: '#fbbf24', title: 'Done-For-You Lesson Plans', subtitle: '10 months, week by week'},
                 {iconClass: 'fas fa-check-circle', iconColor: '#4ade80', title: 'Zero Prep Required', subtitle: 'Open and teach instantly'},
                 {iconClass: 'fas fa-laptop', iconColor: '#22d3ee', title: 'Works on Any Device', subtitle: 'Phone, tablet, or laptop'},
-                {iconClass: 'fas fa-mobile-alt', iconColor: '#fbbf24', title: 'Any Device, Anywhere', subtitle: 'Phone, tablet, or laptop'},
+                {iconClass: 'fas fa-clipboard-check', iconColor: '#fbbf24', title: 'End-of-Month Quizzes', subtitle: 'Test comprehension after each unit'},
                 {iconClass: 'fas fa-chalkboard-teacher', iconColor: '#f59e0b', title: 'Parent-Friendly Guides', subtitle: 'Step-by-step for non-teachers'},
                 {iconClass: 'fas fa-dollar-sign', iconColor: '#fb923c', title: 'Household Materials Only', subtitle: 'No expensive supplies to buy'},
-                {iconClass: 'fas fa-chart-line', iconColor: '#22d3ee', title: 'Track Your Child\'s Growth', subtitle: 'Built-in progress & assessments'},
+                {iconClass: 'fas fa-chart-line', iconColor: '#22d3ee', title: 'Weekly Progress Checks', subtitle: 'Mark lessons complete as you go'},
                 {iconClass: 'fas fa-layer-group', iconColor: '#f472b6', title: 'Adapts to Every Learner', subtitle: 'Easier & harder options included'},
                 {iconClass: 'fas fa-flask', iconColor: '#fbbf24', title: 'Hands-On Science Experiments', subtitle: 'Real learning, real fun'},
-                {iconClass: 'fas fa-book-open', iconColor: '#60a5fa', title: 'Curated Reading Lists', subtitle: 'Age-matched book suggestions'},
+                {iconClass: 'fas fa-book-open', iconColor: '#60a5fa', title: 'Curated Learning Links', subtitle: 'Age-matched practice resources'},
                 {iconClass: 'fas fa-music', iconColor: '#f87171', title: 'Art & Music Integrated', subtitle: 'Creativity in every unit'},
-                {iconClass: 'fas fa-award', iconColor: '#2dd4bf', title: 'Celebrate Every Milestone', subtitle: 'Badges & achievements'}
+                {iconClass: 'fas fa-lightbulb', iconColor: '#2dd4bf', title: 'Home Connection Activities', subtitle: 'Extend learning beyond lesson time'}
             ],
             testimonials: [
                 {stars: 5, quote: 'We\u2019ve tried so many curriculum options and this is the first one that actually feels designed for real families. My daughter asks to do her lessons now.', name: 'Sarah Mitchell', location: 'Austin, TX', detail: 'Homeschooling 2 kids, ages 6 & 9'},
@@ -120,24 +120,24 @@
                 {stars: 5, quote: 'As a single mom on a tight budget, the fact that this uses household materials for science experiments means everything. Quality education without breaking the bank.', name: 'Maria Lopez', location: 'Miami, FL', detail: 'Homeschooling since 2023'},
                 {stars: 4, quote: 'I pulled my son out of public school mid-year and was panicking about curriculum. This gave me everything I needed from day one. The parent guides are incredible \u2014 I just wish there were more video lessons.', name: 'Jessica Thompson', location: 'Portland, OR', detail: 'Mom of a 7th grader'},
                 {stars: 5, quote: 'My kids love the science experiments. Last week we built a volcano with baking soda and vinegar \u2014 they talked about it for three days. Real learning, real fun.', name: 'Marcus Williams', location: 'Atlanta, GA', detail: 'Dad of twins, age 8'},
-                {stars: 5, quote: 'We\u2019re a military family and move a lot. Having a complete curriculum we can access from any device — phone, tablet, laptop — without depending on a school district has been a game-changer for us.', name: 'Angela Patterson', location: 'Fort Bragg, NC', detail: 'Military spouse, 2 kids ages 5 & 11'},
+                {stars: 5, quote: 'We\u2019re a military family and move a lot. Having a complete curriculum we can access from any device — phone, tablet, laptop — without depending on a school district has been a game-changer for us.', name: 'Angela Patterson', location: 'Fort Liberty, NC', detail: 'Military spouse, 2 kids ages 5 & 11'},
                 {stars: 5, quote: 'The SAT prep section alone is worth the price. My son\u2019s practice scores went up 120 points in six weeks. The pacing strategies really work.', name: 'Linda Chen', location: 'Chicago, IL', detail: 'Son preparing for college'}
             ],
             faq: [
-                {question: 'Is this a subscription?', answer: 'Yes \u2014 but with no long-term commitment. Choose monthly or annual billing. You can cancel anytime, and you\u2019ll keep access through the end of your billing period. No hidden fees, no contracts.'},
-                {question: 'What happens if I cancel?', answer: 'You keep full access through the end of your current billing period. No partial charges, no penalties. Your progress is saved in case you want to come back later.'},
-                {question: 'What if I have multiple children in different grades?', answer: 'The Full K\u201312 Bundle is perfect for families with multiple kids. You get access to all 8 grade levels, so each child can work at their own pace.'},
-                {question: 'Can I switch from monthly to annual?', answer: 'Absolutely. You can upgrade to annual billing at any time from your account settings. We\u2019ll prorate the difference so you never overpay.'},
+                {question: 'Is this a subscription?', answer: 'Paid plans aren\u2019t live yet \u2014 we\u2019re in early access. Join the waitlist and you\u2019ll get 30% off your first year when subscriptions launch. At launch, plans will be monthly or annual with no long-term contracts and you\u2019ll be able to cancel anytime.'},
+                {question: 'What happens if I cancel?', answer: 'Once paid plans go live, cancelling keeps you full access through the end of your current billing period \u2014 no partial charges, no penalties. Your account stays intact if you want to come back later.'},
+                {question: 'What if I have multiple children in different grades?', answer: 'The Full K\u201312 Bundle is built for families with multiple kids. One subscription covers all 8 levels (Ages 5\u201318), so each child can work at their own pace.'},
+                {question: 'Can I switch from monthly to annual?', answer: 'Yes \u2014 once paid plans launch, you\u2019ll be able to switch from monthly to annual anytime from your account settings, and we\u2019ll prorate the difference so you never overpay.'},
                 {question: 'Do I need to be a teacher to use this?', answer: 'Not at all. Every lesson includes step-by-step parent guides, warm-up activities, and assessment tips. If you can read, you can teach with this.'},
                 {question: 'What materials do I need?', answer: 'Most activities use common household items like paper, pencils, measuring cups, and kitchen supplies. We specifically design for low-budget, accessible learning.'},
                 {question: 'Is there a money-back guarantee?', answer: 'Yes. We offer a full 30-day money-back guarantee. If you\u2019re not satisfied for any reason, just let us know and we\u2019ll refund your purchase.'}
             ],
             stats: [
                 {iconClass: 'fas fa-calendar-week', iconColor: '#fbbf24', number: '320', suffix: '+', label: 'Weeks of Lessons', iconBg: 'rgba(251,191,36,0.12)'},
-                {iconClass: 'fas fa-book-open', iconColor: '#67e8f9', number: '32', suffix: '', label: 'Subjects Covered', iconBg: 'rgba(103,232,249,0.12)'},
+                {iconClass: 'fas fa-book-open', iconColor: '#67e8f9', number: '32', suffix: '', label: 'Subject-Grade Courses', iconBg: 'rgba(103,232,249,0.12)'},
                 {iconClass: 'fas fa-graduation-cap', iconColor: '#4ade80', number: '8', suffix: '', label: 'Grade Levels', iconBg: 'rgba(74,222,128,0.12)'},
                 {iconClass: 'fas fa-sync-alt', iconColor: '#fbbf24', number: '2', suffix: '', label: 'Flexible Plans', iconBg: 'rgba(251,191,36,0.12)'},
-                {iconClass: 'fas fa-wifi', iconColor: '#f472b6', number: '100', suffix: '%', label: 'Offline Ready', iconBg: 'rgba(244,114,182,0.12)'}
+                {iconClass: 'fas fa-calendar-check', iconColor: '#f472b6', number: '40', suffix: '', label: 'Weeks Per Subject', iconBg: 'rgba(244,114,182,0.12)'}
             ],
             grades: [
                 {dataGrade: 'ages-5-7', title: 'Level 1', ageLabel: 'Ages 5\u20137'},
