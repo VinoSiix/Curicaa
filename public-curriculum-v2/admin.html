@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curicaa — Waitlist Admin</title>
+    <title>Curicaa — Admin Dashboard</title>
     <link rel="icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root{--bg:#0f1119;--bg-card:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.65);--text-muted:rgba(255,255,255,0.45);--gold:#d4a54a;--green:#4ade80;--red:#f87171}
+        :root{--bg:#0f1119;--bg-card:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);--text:rgba(255,255,255,0.88);--text-secondary:rgba(255,255,255,0.65);--text-muted:rgba(255,255,255,0.45);--gold:#d4a54a;--green:#4ade80;--red:#f87171;--blue:#60a5fa}
         *{box-sizing:border-box;margin:0;padding:0;font-family:'DM Sans',system-ui,sans-serif}
         body{background:var(--bg);min-height:100vh;color:var(--text);padding:40px 20px;-webkit-font-smoothing:antialiased}
-        .container{max-width:800px;margin:0 auto}
+        .container{max-width:900px;margin:0 auto}
         .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
         .logo{display:flex;align-items:center;gap:10px}
         .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--gold),#f97316);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;color:white}
@@ -21,7 +21,7 @@
         .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600}
         .badge-gold{background:rgba(212,165,74,0.12);border:1px solid rgba(212,165,74,0.25);color:var(--gold)}
         .card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
-        .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+        .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
         .stat-card{text-align:center;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px}
         .stat-num{font-size:32px;font-weight:800;letter-spacing:-0.03em}
         .stat-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px}
@@ -40,6 +40,12 @@
         .search-input:focus{border-color:rgba(212,165,74,0.4)}
         .search-input::placeholder{color:var(--text-muted)}
         .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:13px}
+        .tab-bar{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid var(--border)}
+        .tab{padding:12px 20px;font-size:13px;font-weight:600;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s}
+        .tab:hover{color:var(--text-secondary)}
+        .tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+        .tab-content{display:none}
+        .tab-content.active{display:block}
 
         /* Password gate */
         #loginGate{display:flex;align-items:center;justify-content:center;min-height:80vh}
@@ -53,11 +59,11 @@
 
         #dashboard{display:none}
 
-        @media(max-width:600px){.stat-grid{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start}}
+        @media(max-width:600px){.stat-grid{grid-template-columns:repeat(2,1fr)}.header{flex-direction:column;align-items:flex-start}}
     </style>
 </head>
 <body>
-    <!-- Password Gate -->
+    <!-- Password Gate — always shown on page load -->
     <div id="loginGate">
         <div class="gate-box">
             <div class="logo-icon">🔒</div>
@@ -75,87 +81,128 @@
             <div class="logo">
                 <div class="logo-icon">📊</div>
                 <div>
-                    <div class="logo-text">Waitlist Admin</div>
-                    <div class="logo-sub">Curicaa Dashboard</div>
+                    <div class="logo-text">Curicaa Dashboard</div>
+                    <div class="logo-sub">Admin Panel</div>
                 </div>
             </div>
             <div style="display:flex;gap:10px;align-items:center;">
-                <span class="badge badge-gold" id="countBadge">0 emails</span>
-                <button class="btn btn-subtle" onclick="refreshList()"><i class="fas fa-sync-alt" style="font-size:11px;"></i> Refresh</button>
+                <button class="btn btn-subtle" onclick="refreshAll()"><i class="fas fa-sync-alt" style="font-size:11px;"></i> Refresh</button>
                 <a class="btn btn-subtle" href="hub.html">← Back to Site</a>
+                <button class="btn btn-subtle" onclick="lockDashboard()"><i class="fas fa-lock" style="font-size:11px;"></i> Lock</button>
             </div>
         </div>
 
         <div class="stat-grid" id="statsGrid">
             <div class="stat-card">
-                <div class="stat-num" id="statTotal" style="color:var(--gold);">—</div>
-                <div class="stat-label">Total Signups</div>
+                <div class="stat-num" id="statWaitlist" style="color:var(--gold);">—</div>
+                <div class="stat-label">Waitlist Emails</div>
             </div>
             <div class="stat-card">
-                <div class="stat-num" id="statToday" style="color:var(--green);">—</div>
-                <div class="stat-label">Today</div>
+                <div class="stat-num" id="statUsers" style="color:var(--green);">—</div>
+                <div class="stat-label">Registered Users</div>
             </div>
             <div class="stat-card">
-                <div class="stat-num" id="statThisWeek" style="color:#60a5fa;">—</div>
+                <div class="stat-num" id="statToday" style="color:var(--blue);">—</div>
+                <div class="stat-label">New Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num" id="statThisWeek" style="color:#a78bfa;">—</div>
                 <div class="stat-label">This Week</div>
             </div>
         </div>
 
-        <div class="search-wrap" style="position:relative;">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search emails..." oninput="filterEmails()">
+        <!-- Tabs -->
+        <div class="tab-bar">
+            <div class="tab active" data-tab="waitlist">Waitlist</div>
+            <div class="tab" data-tab="users">Users</div>
         </div>
 
-        <div class="card" style="padding:0;overflow:hidden;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Email</th>
-                        <th>Signed Up</th>
-                        <th>Source</th>
-                    </tr>
-                </thead>
-                <tbody id="waitlistBody">
-                    <tr><td colspan="4" class="empty-state"><div><i class="fas fa-inbox"></i><div>Loading waitlist...</div></div></td></tr>
-                </tbody>
-            </table>
+        <!-- Waitlist Tab -->
+        <div class="tab-content active" id="tab-waitlist">
+            <div class="search-wrap" style="position:relative;">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchWaitlist" placeholder="Search waitlist emails..." oninput="filterWaitlist()">
+            </div>
+            <div class="card" style="padding:0;overflow:hidden;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Email</th>
+                            <th>Signed Up</th>
+                            <th>Source</th>
+                        </tr>
+                    </thead>
+                    <tbody id="waitlistBody">
+                        <tr><td colspan="4" class="empty-state"><div><i class="fas fa-inbox"></i><div>Loading...</div></div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align:center;margin-top:20px;">
+                <button class="btn btn-gold" onclick="exportWaitlistCSV()"><i class="fas fa-download" style="font-size:11px;"></i> Export Waitlist CSV</button>
+            </div>
         </div>
 
-        <div style="text-align:center;margin-top:24px;">
-            <button class="btn btn-gold" onclick="exportCSV()"><i class="fas fa-download" style="font-size:11px;"></i> Export CSV</button>
+        <!-- Users Tab -->
+        <div class="tab-content" id="tab-users">
+            <div class="search-wrap" style="position:relative;">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchUsers" placeholder="Search users..." oninput="filterUsers()">
+            </div>
+            <div class="card" style="padding:0;overflow:hidden;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Plan</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersBody">
+                        <tr><td colspan="5" class="empty-state"><div><i class="fas fa-inbox"></i><div>Loading...</div></div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align:center;margin-top:20px;">
+                <button class="btn btn-gold" onclick="exportUsersCSV()"><i class="fas fa-download" style="font-size:11px;"></i> Export Users CSV</button>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
     (function () {
-        // ─── Admin password check (SHA-256 hash only — no plaintext stored) ───
+        // ─── Admin password (SHA-256 hash — no plaintext in code) ───
         var ADMIN_HASH = '7400f452403798907ebc27bffcb46298f32b46765ad5a68443463ea0e1f2cab6';
 
-        // Simple hash function for password check
         async function sha256(str) {
             var buf = new TextEncoder().encode(str);
             var hash = await crypto.subtle.digest('SHA-256', buf);
             return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
         }
 
-        // ─── Password gate ───
-        var SESSION_KEY = 'curicaa_admin_ok';
+        // ─── Password gate — always asks, never remembers ───
         var gateEl = document.getElementById('loginGate');
         var dashEl = document.getElementById('dashboard');
 
         function unlock() {
             gateEl.style.display = 'none';
             dashEl.style.display = 'block';
-            sessionStorage.setItem(SESSION_KEY, '1');
             initDashboard();
         }
 
-        // Check session (stays unlocked for the browser tab lifetime)
-        if (sessionStorage.getItem(SESSION_KEY) === '1') {
-            unlock();
-        }
+        // Lock button in dashboard header
+        window.lockDashboard = function () {
+            dashEl.style.display = 'none';
+            gateEl.style.display = 'flex';
+            document.getElementById('gatePassword').value = '';
+            document.getElementById('gateError').style.display = 'none';
+            document.getElementById('gatePassword').focus();
+        };
+
+        // No sessionStorage check — always require password on page load
 
         document.getElementById('gateBtn').addEventListener('click', checkPassword);
         document.getElementById('gatePassword').addEventListener('keydown', function(e) {
@@ -175,18 +222,31 @@
             }
         }
 
+        // ─── Tab switching ───
+        document.querySelectorAll('.tab').forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+                document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+                tab.classList.add('active');
+                document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+
         // ─── Supabase config ───
         var SUPABASE_URL = 'https://muhtsytbbdzkfeiugdoo.supabase.co';
         var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11aHRzeXRiYmR6a2ZlaXVnZG9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyOTYyNzMsImV4cCI6MjA5Mzg3MjI3M30.JOr0rv0K_GBSarVq8VXFMhCGnznRZz4LZWA2JaPwEWQ';
 
         var client = null;
-        var allRows = [];
+        var waitlistRows = [];
+        var userRows = [];
 
         function initDashboard() {
             client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
             loadWaitlist();
+            loadUsers();
         }
 
+        // ─── Load waitlist ───
         function loadWaitlist() {
             if (!client) return;
             client.from('waitlist')
@@ -196,19 +256,39 @@
                 .then(function (result) {
                     if (result.error) {
                         document.getElementById('waitlistBody').innerHTML =
-                            '<tr><td colspan="4" style="text-align:center;padding:32px;color:#f87171;">Error: ' + result.error.message + '</td></tr>';
+                            '<tr><td colspan="4" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
                         return;
                     }
-                    allRows = result.data || [];
-                    renderTable(allRows);
-                    renderStats(allRows);
+                    waitlistRows = result.data || [];
+                    renderWaitlistTable(waitlistRows);
+                    updateStats();
                 });
         }
 
-        function renderTable(rows) {
+        // ─── Load registered users (profiles) ───
+        function loadUsers() {
+            if (!client) return;
+            client.from('profiles')
+                .select('*')
+                .order('created_at', { ascending: false })
+                .limit(500)
+                .then(function (result) {
+                    if (result.error) {
+                        document.getElementById('usersBody').innerHTML =
+                            '<tr><td colspan="5" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
+                        return;
+                    }
+                    userRows = result.data || [];
+                    renderUsersTable(userRows);
+                    updateStats();
+                });
+        }
+
+        // ─── Render tables ───
+        function renderWaitlistTable(rows) {
             var tbody = document.getElementById('waitlistBody');
             if (!rows.length) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:32px;color:var(--text-muted);"><i class="fas fa-inbox" style="font-size:24px;display:block;margin-bottom:8px;opacity:0.4;"></i>No signups yet</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:32px;color:var(--text-muted);"><i class="fas fa-inbox" style="font-size:24px;display:block;margin-bottom:8px;opacity:0.4;"></i>No waitlist emails yet</td></tr>';
                 return;
             }
             var html = '';
@@ -222,10 +302,34 @@
                     '<td><span style="padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(212,165,74,0.1);color:var(--gold);">' + escapeHtml(row.source || 'landing_page') + '</span></td></tr>';
             });
             tbody.innerHTML = html;
-            document.getElementById('countBadge').textContent = rows.length + ' email' + (rows.length !== 1 ? 's' : '');
         }
 
-        function renderStats(rows) {
+        function renderUsersTable(rows) {
+            var tbody = document.getElementById('usersBody');
+            if (!rows.length) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--text-muted);"><i class="fas fa-inbox" style="font-size:24px;display:block;margin-bottom:8px;opacity:0.4;"></i>No registered users yet</td></tr>';
+                return;
+            }
+            var html = '';
+            rows.forEach(function (row, i) {
+                var date = new Date(row.created_at);
+                var dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                var planColors = { free: 'var(--text-muted)', single: 'var(--gold)', bundle: 'var(--blue)', pro: '#a78bfa' };
+                var planColor = planColors[row.plan] || 'var(--text-muted)';
+                html += '<tr><td style="color:var(--text-muted);">' + (i + 1) + '</td>' +
+                    '<td style="font-weight:600;color:var(--text);">' + escapeHtml(row.name || '—') + '</td>' +
+                    '<td>' + escapeHtml(row.email) + '</td>' +
+                    '<td><span style="padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;color:' + planColor + ';background:' + planColor.replace(')', ',0.1)').replace('var(--', 'rgba(') + ';">' + escapeHtml(row.plan || 'free') + '</span></td>' +
+                    '<td>' + dateStr + '</td></tr>';
+            });
+            tbody.innerHTML = html;
+        }
+
+        // ─── Stats ───
+        function updateStats() {
+            document.getElementById('statWaitlist').textContent = waitlistRows.length;
+            document.getElementById('statUsers').textContent = userRows.length;
+
             var now = new Date();
             var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
             var weekStart = new Date(now);
@@ -234,52 +338,74 @@
 
             var todayCount = 0;
             var weekCount = 0;
-            rows.forEach(function (row) {
+            var all = waitlistRows.concat(userRows);
+            all.forEach(function (row) {
                 var d = new Date(row.created_at);
                 if (d >= todayStart) todayCount++;
                 if (d >= weekStart) weekCount++;
             });
 
-            document.getElementById('statTotal').textContent = rows.length;
             document.getElementById('statToday').textContent = todayCount;
             document.getElementById('statThisWeek').textContent = weekCount;
         }
 
         function escapeHtml(str) {
             var div = document.createElement('div');
-            div.appendChild(document.createTextNode(str));
+            div.appendChild(document.createTextNode(str || ''));
             return div.innerHTML;
         }
 
-        window.refreshList = function () {
+        // ─── Refresh ───
+        window.refreshAll = function () {
             loadWaitlist();
+            loadUsers();
         };
 
-        window.filterEmails = function () {
-            var query = document.getElementById('searchInput').value.trim().toLowerCase();
-            if (!query) {
-                renderTable(allRows);
-                return;
-            }
-            renderTable(allRows.filter(function (r) {
+        // ─── Search ───
+        window.filterWaitlist = function () {
+            var query = document.getElementById('searchWaitlist').value.trim().toLowerCase();
+            if (!query) { renderWaitlistTable(waitlistRows); return; }
+            renderWaitlistTable(waitlistRows.filter(function (r) {
                 return r.email.toLowerCase().indexOf(query) !== -1;
             }));
         };
 
-        window.exportCSV = function () {
-            if (!allRows.length) { alert('No data to export.'); return; }
+        window.filterUsers = function () {
+            var query = document.getElementById('searchUsers').value.trim().toLowerCase();
+            if (!query) { renderUsersTable(userRows); return; }
+            renderUsersTable(userRows.filter(function (r) {
+                return r.name.toLowerCase().indexOf(query) !== -1 || r.email.toLowerCase().indexOf(query) !== -1;
+            }));
+        };
+
+        // ─── CSV Export ───
+        window.exportWaitlistCSV = function () {
+            if (!waitlistRows.length) { alert('No waitlist data to export.'); return; }
             var csv = 'Email,Signed Up,Source\n';
-            allRows.forEach(function (row) {
+            waitlistRows.forEach(function (row) {
                 csv += '"' + row.email + '","' + row.created_at + '","' + (row.source || 'landing_page') + '"\n';
             });
+            downloadCSV(csv, 'curicaa-waitlist');
+        };
+
+        window.exportUsersCSV = function () {
+            if (!userRows.length) { alert('No user data to export.'); return; }
+            var csv = 'Name,Email,Plan,Joined\n';
+            userRows.forEach(function (row) {
+                csv += '"' + (row.name || '') + '","' + row.email + '","' + (row.plan || 'free') + '","' + row.created_at + '"\n';
+            });
+            downloadCSV(csv, 'curicaa-users');
+        };
+
+        function downloadCSV(csv, prefix) {
             var blob = new Blob([csv], { type: 'text/csv' });
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
             a.href = url;
-            a.download = 'curicaa-waitlist-' + new Date().toISOString().slice(0, 10) + '.csv';
+            a.download = prefix + '-' + new Date().toISOString().slice(0, 10) + '.csv';
             a.click();
             URL.revokeObjectURL(url);
-        };
+        }
     })();
     </script>
 </body>
