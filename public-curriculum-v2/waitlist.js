@@ -177,6 +177,10 @@
     submitWaitlist(user.email)
       .then(function (result) {
         setFormState('success');
+        // Auto-hide the announcement bar
+        var bar = document.getElementById('announceBar');
+        if (bar) bar.classList.add('hidden');
+        localStorage.setItem('curicaa-announce-closed', '1');
       })
       .catch(function (err) {
         var msg = (err && err.message) || 'Something went wrong. Please try again.';
@@ -188,6 +192,21 @@
       });
   };
 
+  // ─── Auto-hide announcement bar if user is on the waitlist ───
+  function hideAnnounceIfOnWaitlist() {
+    var isLoggedIn = typeof CuricaaAuth !== 'undefined' && CuricaaAuth.isLoggedIn();
+    if (!isLoggedIn) return;
+    var user = CuricaaAuth.getUser();
+    if (!user || !user.email) return;
+    checkAlreadyOnWaitlist(user.email).then(function (isOnList) {
+      if (isOnList) {
+        var bar = document.getElementById('announceBar');
+        if (bar) bar.classList.add('hidden');
+        localStorage.setItem('curicaa-announce-closed', '1');
+      }
+    });
+  }
+
   // ─── Boot ───
   function boot() {
     initSupabase();
@@ -195,6 +214,7 @@
     // Update waitlist UI when auth state becomes available
     window.addEventListener('curicaa-auth-ready', function () {
       updateWaitlistUI();
+      hideAnnounceIfOnWaitlist();
     });
 
     // Hook into updateAuthUI (defined in hub-premium.js) to react to login/signup/logout
