@@ -375,19 +375,29 @@
             showGate();
         };
 
-        // ─── Data loading via RPC (SECURITY DEFINER bypasses RLS) ───
+        // ─── Data loading (direct queries) ───
         function loadData() {
-            client.rpc('admin_get_data').then(function(result) {
-                if (result.error) {
-                    document.getElementById('waitlistBody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
-                    document.getElementById('usersBody').innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
-                    return;
+            Promise.all([
+                client.from('waitlist').select('*').order('created_at', { ascending: false }).limit(500),
+                client.from('profiles').select('*').order('created_at', { ascending: false }).limit(500)
+            ]).then(function(results) {
+                var wlResult = results[0];
+                var uResult = results[1];
+
+                if (wlResult.error) {
+                    document.getElementById('waitlistBody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(wlResult.error.message) + '</td></tr>';
+                } else {
+                    waitlistRows = wlResult.data || [];
+                    renderWaitlistTable(waitlistRows);
                 }
-                var data = result.data || {};
-                waitlistRows = data.waitlist || [];
-                userRows = data.profiles || [];
-                renderWaitlistTable(waitlistRows);
-                renderUsersTable(userRows);
+
+                if (uResult.error) {
+                    document.getElementById('usersBody').innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(uResult.error.message) + '</td></tr>';
+                } else {
+                    userRows = uResult.data || [];
+                    renderUsersTable(userRows);
+                }
+
                 updateStats();
             });
         }

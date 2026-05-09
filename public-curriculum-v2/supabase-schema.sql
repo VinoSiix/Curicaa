@@ -26,13 +26,11 @@ CREATE POLICY "Users can read own profile"
   TO authenticated
   USING (auth.uid() = id);
 
--- Admin users can read all profiles
-CREATE POLICY "Admin can read all profiles"
+-- Admin dashboard reads (password-gated, uses anon key)
+CREATE POLICY "Allow admin dashboard read on profiles"
   ON profiles FOR SELECT
-  TO authenticated
-  USING (
-    EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
-  );
+  TO anon
+  USING (true);
 
 -- Users can update their own profile (name only — plan/role locked)
 CREATE POLICY "Users can update own profile"
@@ -116,13 +114,11 @@ CREATE POLICY "Users can read own waitlist entry"
   TO authenticated
   USING (LOWER(email) = LOWER(auth.jwt() ->> 'email'));
 
--- Admin users can read all waitlist entries
-CREATE POLICY "Admin can read all waitlist"
+-- Admin dashboard reads (password-gated, uses anon key)
+CREATE POLICY "Allow admin dashboard read on waitlist"
   ON waitlist FOR SELECT
-  TO authenticated
-  USING (
-    EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
-  );
+  TO anon
+  USING (true);
 
 
 -- ════════════════════════════════════════════════════════════
@@ -150,38 +146,6 @@ CREATE POLICY "Users can read own discount"
   ON discount_eligibility FOR SELECT
   TO authenticated
   USING (user_id = auth.uid());
-
-
--- ════════════════════════════════════════════════════════════
--- 5. ADMIN RPC FUNCTION
---    Returns waitlist + profiles for the admin dashboard.
---    Uses SECURITY DEFINER to bypass RLS.
--- ════════════════════════════════════════════════════════════
-
-CREATE OR REPLACE FUNCTION public.admin_get_data()
-RETURNS JSONB
-LANGUAGE plpgsql
-SECURITY DEFINER
-AS $$
-DECLARE
-  result JSONB;
-BEGIN
-  SELECT jsonb_build_object(
-    'waitlist', (
-      SELECT COALESCE(jsonb_agg(row_to_json(w)), '[]'::jsonb)
-      FROM (SELECT * FROM waitlist ORDER BY created_at DESC LIMIT 500) w
-    ),
-    'profiles', (
-      SELECT COALESCE(jsonb_agg(row_to_json(p)), '[]'::jsonb)
-      FROM (SELECT * FROM profiles ORDER BY created_at DESC LIMIT 500) p
-    )
-  ) INTO result;
-  RETURN result;
-END;
-$$;
-
-GRANT EXECUTE ON FUNCTION public.admin_get_data() TO anon;
-GRANT EXECUTE ON FUNCTION public.admin_get_data() TO authenticated;
 
 
 -- ════════════════════════════════════════════════════════════
