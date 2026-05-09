@@ -167,10 +167,14 @@
      */
     loginWithGoogle: function () {
       if (!sb) return;
+      // Use the live site URL for redirect
+      var redirectUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? window.location.origin + '/hub.html'
+        : 'https://curicaa.vercel.app/hub.html';
       sb.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: window.location.origin + window.location.pathname.replace('admin.html', 'hub.html')
+          redirectTo: redirectUrl
         }
       });
     },
