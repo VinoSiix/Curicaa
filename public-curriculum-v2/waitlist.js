@@ -1,6 +1,7 @@
 /*
  * Waitlist Script — Curicaa
- * Handles email submission to Supabase waitlist table.
+ * Handles waitlist submission to Supabase.
+ * Requires a logged-in account to join the waitlist.
  * Replace SUPABASE_URL and SUPABASE_ANON_KEY with your project credentials.
  */
 (function () {
@@ -24,17 +25,8 @@
     return true;
   }
 
-  // ─── Email validation ───
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-
-  // ─── Submit to waitlist ───
+  // ─── Submit to waitlist (requires auth) ───
   function submitWaitlist(email) {
-    if (!isValidEmail(email)) {
-      return Promise.reject({ message: 'Please enter a valid email address.' });
-    }
-
     var cleanEmail = email.trim().toLowerCase();
 
     // Demo mode — no Supabase configured
@@ -65,7 +57,7 @@
   // ─── UI State Management ───
   function setFormState(state, errorMsg) {
     var form = document.getElementById('waitlistForm');
-    var input = document.getElementById('waitlistEmail');
+    var authGate = document.getElementById('waitlistAuthGate');
     var btn = document.getElementById('waitlistBtn');
     var btnText = document.getElementById('waitlistBtnText');
     var btnLoader = document.getElementById('waitlistBtnLoader');
@@ -81,11 +73,11 @@
         btnLoader.style.display = 'inline-block';
         errorMsgEl.style.display = 'none';
         successBox.style.display = 'none';
-        input.style.borderColor = 'var(--border-card)';
         break;
 
       case 'success':
         form.style.display = 'none';
+        if (authGate) authGate.style.display = 'none';
         successBox.style.display = 'block';
         errorMsgEl.style.display = 'none';
         break;
@@ -96,7 +88,6 @@
         btnLoader.style.display = 'none';
         errorMsgEl.textContent = errorMsg || 'Something went wrong. Please try again.';
         errorMsgEl.style.display = 'block';
-        input.style.borderColor = '#f87171';
         break;
 
       default: // 'idle'
@@ -109,28 +100,64 @@
     }
   }
 
-  // ─── Form submit handler ───
-  window.handleWaitlistSubmit = function (e) {
-    e.preventDefault();
-    var input = document.getElementById('waitlistEmail');
-    if (!input) return;
+  // ─── Update waitlist UI based on auth state ───
+  function updateWaitlistUI() {
+    var authGate = document.getElementById('waitlistAuthGate');
+    var form = document.getElementById('waitlistForm');
+    var successBox = document.getElementById('waitlistSuccess');
+    var userEmailEl = document.getElementById('waitlistUserEmail');
 
-    var email = input.value.trim();
-    if (!email) {
-      setFormState('error', 'Please enter your email address.');
+    if (!authGate || !form) return;
+
+    var isLoggedIn = typeof CuricaaAuth !== 'undefined' && CuricaaAuth.isLoggedIn();
+
+    if (isLoggedIn) {
+      var user = CuricaaAuth.getUser();
+      authGate.style.display = 'none';
+      // Only show the form if success isn't already displayed
+      if (successBox && successBox.style.display === 'block') {
+        form.style.display = 'none';
+      } else {
+        form.style.display = 'block';
+      }
+      if (userEmailEl && user && user.email) {
+        userEmailEl.textContent = 'Signed in as ' + user.email;
+      }
+    } else {
+      authGate.style.display = 'block';
+      form.style.display = 'none';
+      if (successBox) successBox.style.display = 'none';
+    }
+  }
+
+  // ─── Form submit handler (requires auth) ───
+  window.handleWaitlistSubmit = function (e) {
+    // Allow being called without event (onclick without form)
+    if (e && e.preventDefault) e.preventDefault();
+
+    // Require auth
+    if (typeof CuricaaAuth === 'undefined' || !CuricaaAuth.isLoggedIn()) {
+      if (typeof openSignupModal === 'function') {
+        openSignupModal();
+      }
+      return;
+    }
+
+    var user = CuricaaAuth.getUser();
+    if (!user || !user.email) {
+      setFormState('error', 'Could not detect your email. Please try again.');
       return;
     }
 
     setFormState('loading');
 
-    submitWaitlist(email)
+    submitWaitlist(user.email)
       .then(function (result) {
         setFormState('success');
       })
       .catch(function (err) {
         var msg = (err && err.message) || 'Something went wrong. Please try again.';
         if (msg.indexOf('duplicate') !== -1 || msg.indexOf('unique') !== -1) {
-          // Email already on the list — treat as success
           setFormState('success');
           return;
         }
@@ -142,14 +169,25 @@
   function boot() {
     initSupabase();
 
-    // Pre-fill email if user is logged in
-    if (typeof CuricaaAuth !== 'undefined' && CuricaaAuth.isLoggedIn()) {
-      var user = CuricaaAuth.getUser();
-      var input = document.getElementById('waitlistEmail');
-      if (input && user && user.email) {
-        input.value = user.email;
+    // Update waitlist UI when auth state becomes available
+    window.addEventListener('curicaa-auth-ready', function () {
+      updateWaitlistUI();
+    });
+
+    // Hook into updateAuthUI (defined in hub-premium.js) to react to login/signup/logout
+    function hookAuthUI() {
+      if (typeof updateAuthUI === 'function') {
+        var origFn = updateAuthUI;
+        updateAuthUI = function () {
+          origFn.apply(this, arguments);
+          updateWaitlistUI();
+        };
+      } else {
+        // updateAuthUI not defined yet — retry shortly
+        setTimeout(hookAuthUI, 100);
       }
     }
+    hookAuthUI();
   }
 
   if (document.readyState === 'loading') {
