@@ -1,1 +1,7 @@
-{}
+{
+  "name": "curicaa",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site — no build required' && exit 0"
+  }
+}
