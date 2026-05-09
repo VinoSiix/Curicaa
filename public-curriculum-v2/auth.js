@@ -99,7 +99,8 @@
     signup: function (name, email, password) {
       if (!name || name.trim().length < 2) return Promise.resolve({ ok: false, error: 'Please enter your name.' });
       if (!email || !email.includes('@')) return Promise.resolve({ ok: false, error: 'Please enter a valid email.' });
-      if (!password || password.length < 6) return Promise.resolve({ ok: false, error: 'Password must be at least 6 characters.' });
+      if (!password || password.length < 8) return Promise.resolve({ ok: false, error: 'Password must be at least 8 characters.' });
+      if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) return Promise.resolve({ ok: false, error: 'Password must contain at least one letter and one number.' });
 
       if (!sb) return Promise.resolve({ ok: false, error: 'Auth service not available.' });
 
@@ -113,7 +114,7 @@
         if (result.error) {
           var msg = result.error.message || 'Signup failed.';
           // Friendly error messages
-          if (msg.indexOf('already registered') !== -1) msg = 'An account with this email already exists.';
+          if (msg.indexOf('already registered') !== -1) msg = 'Could not create account. Please try logging in or use a different email.';
           if (msg.indexOf('Password') === 0) msg = 'Password must be at least 6 characters.';
           return { ok: false, error: msg };
         }
@@ -121,29 +122,35 @@
         var authUser = result.data.user;
         if (!authUser) {
           // Email confirmation required — user not logged in yet
-          return { ok: false, error: 'Please check your email to confirm your account, then log in.' };
+          return { ok: false, error: 'If an account exists with this email, you\'ll receive a confirmation. Please check your inbox.' };
         }
 
         // Trigger auto-creates the profile, but it might not be ready yet.
-        // Load it manually with a small delay to let the trigger finish.
+        // Retry up to 3 times with 500ms between attempts.
+        function retryProfile(userId, attempts, resolve) {
+          if (attempts <= 0) {
+            currentUser = {
+              id: authUser.id,
+              name: name.trim(),
+              email: email.trim().toLowerCase(),
+              plan: 'free',
+              grades: []
+            };
+            resolve({ ok: true, user: currentUser });
+            return;
+          }
+          loadProfile(userId).then(function (profile) {
+            if (profile) {
+              resolve({ ok: true, user: profile });
+            } else {
+              setTimeout(function () {
+                retryProfile(userId, attempts - 1, resolve);
+              }, 500);
+            }
+          });
+        }
         return new Promise(function (resolve) {
-          setTimeout(function () {
-            loadProfile(authUser.id).then(function (profile) {
-              if (profile) {
-                resolve({ ok: true, user: profile });
-              } else {
-                // Trigger hasn't fired yet — create profile manually as fallback
-                currentUser = {
-                  id: authUser.id,
-                  name: name.trim(),
-                  email: email.trim().toLowerCase(),
-                  plan: 'free',
-                  grades: []
-                };
-                resolve({ ok: true, user: currentUser });
-              }
-            });
-          }, 500);
+          retryProfile(authUser.id, 3, resolve);
         });
       }).catch(function (e) {
         return { ok: false, error: e.message || 'Signup failed.' };
@@ -182,10 +189,7 @@
      */
     loginWithGoogle: function () {
       if (!sb) return;
-      // Use the live site URL for redirect
-      var redirectUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? window.location.origin + '/hub.html'
-        : 'https://curicaa.vercel.app/hub.html';
+      var redirectUrl = window.location.origin + '/hub.html';
       sb.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -220,6 +224,14 @@
     },
 
     /**
+      * Get the shared Supabase client instance.
+      * Used by waitlist.js and other modules that need direct Supabase access.
+      */
+    getClient: function () {
+      return sb;
+    },
+
+    /**
      * Update the user's name (for Google OAuth users setting their name).
      * Returns Promise<void>
      */
@@ -233,30 +245,76 @@
     },
 
     /**
-     * Update the user's plan and grades.
-     * Returns Promise<void>
-     */
+      * Update the user's plan and grades.
+      * Routes through server-side RPC (verify_and_update_plan) which
+      * only allows downgrades. Upgrades are blocked until Stripe integration.
+      * Returns Promise<{ ok, error? }>
+      */
     updatePlan: function (plan, grades) {
-      if (!currentUser) return Promise.resolve();
-      if (!sb) return Promise.resolve();
+      if (!currentUser) return Promise.resolve({ ok: false, error: 'Not logged in.' });
+      if (!sb) return Promise.resolve({ ok: false, error: 'Auth service not available.' });
 
-      var updates = { plan: plan };
-      if (grades) updates.grades = grades;
+      var oldPlan = currentUser.plan;
+      var oldGrades = currentUser.grades ? currentUser.grades.slice() : [];
 
-      // Optimistic local update
+      // Optimistic UI update
       currentUser.plan = plan;
       if (grades) currentUser.grades = grades;
 
       return sb
-        .from('profiles')
-        .update(updates)
-        .eq('id', currentUser.id)
+        .rpc('verify_and_update_plan', {
+          new_plan: plan,
+          new_grades: grades || []
+        })
         .then(function (result) {
           if (result.error) {
-            console.error('[Auth] Plan update failed:', result.error.message);
-            // Revert optimistic update
-            // (best effort — the UI already changed)
+            console.error('[Auth] Plan update RPC error:', result.error.message);
+            currentUser.plan = oldPlan;
+            currentUser.grades = oldGrades;
+            return { ok: false, error: result.error.message };
           }
+          var data = result.data;
+          if (data && data.ok) {
+            return { ok: true };
+          }
+          // RPC blocked the change — revert
+          currentUser.plan = oldPlan;
+          currentUser.grades = oldGrades;
+          var errMsg = (data && data.error) || 'Plan change not allowed.';
+          console.error('[Auth] Plan update blocked:', errMsg);
+          return { ok: false, error: errMsg };
+        })
+        .catch(function (e) {
+          currentUser.plan = oldPlan;
+          currentUser.grades = oldGrades;
+          return { ok: false, error: e.message || 'Plan update failed.' };
+        });
+    },
+
+    /**
+      * Cancel the user's subscription via server-side RPC.
+      * Downgrades to free plan. Returns Promise<{ ok, error? }>
+      */
+    cancelSubscription: function () {
+      if (!currentUser) return Promise.resolve({ ok: false, error: 'Not logged in.' });
+      if (!sb) return Promise.resolve({ ok: false, error: 'Auth service not available.' });
+
+      return sb
+        .rpc('cancel_subscription')
+        .then(function (result) {
+          if (result.error) {
+            return { ok: false, error: result.error.message };
+          }
+          var data = result.data;
+          if (data && data.ok) {
+            currentUser.plan = 'free';
+            currentUser.grades = [];
+            return { ok: true };
+          }
+          return { ok: false, error: (data && data.error) || 'Cancel failed.' };
+        })
+        .catch(function (e) {
+          return { ok: false, error: e.message || 'Cancel failed.' };
         });
     }
   };
@@ -266,6 +324,8 @@
     // Clean up old localStorage auth data (migrated to Supabase)
     localStorage.removeItem('curicaa_users');
     localStorage.removeItem('curicaa_session');
+    localStorage.removeItem('curicaa_accounts');
+    localStorage.removeItem('curicaa_leads');
 
     if (!init()) {
       window.dispatchEvent(new Event('curicaa-auth-ready'));
