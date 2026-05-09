@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Curicaa — Admin Dashboard</title>
     <link rel="icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,13 +52,13 @@
         #loginGate{display:flex;align-items:center;justify-content:center;min-height:80vh}
         .gate-box{text-align:center;max-width:400px;width:100%}
         .gate-box .logo-icon{margin:0 auto 16px}
-        .gate-input{width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:14px;outline:none;margin-top:14px;transition:border-color 0.2s}
-        .gate-input:first-of-type{margin-top:20px}
+        .gate-input{width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:14px;outline:none;margin-top:20px;transition:border-color 0.2s}
         .gate-input:focus{border-color:rgba(212,165,74,0.5)}
         .gate-input::placeholder{color:var(--text-muted)}
         .gate-btn{width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--gold),#f97316);color:white;font-size:14px;font-weight:600;cursor:pointer;margin-top:14px;font-family:inherit}
         .gate-btn:disabled{opacity:0.5;cursor:not-allowed}
         .gate-error{color:var(--red);font-size:12px;margin-top:10px;display:none}
+        .gate-locked{color:var(--red);font-size:13px;margin-top:14px;font-weight:600}
 
         #dashboard{display:none}
 
@@ -65,33 +66,32 @@
     </style>
 </head>
 <body>
-    <!-- Login Gate — requires real Supabase account -->
+    <!-- Password Gate -->
     <div id="loginGate">
         <div class="gate-box">
             <div class="logo-icon">🔒</div>
             <div style="font-weight:700;font-size:18px;">Admin Dashboard</div>
-            <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Sign in with your Curicaa admin account</div>
-            <input type="email" class="gate-input" id="gateEmail" placeholder="Email">
-            <input type="password" class="gate-input" id="gatePassword" placeholder="Password">
-            <button class="gate-btn" id="gateBtn">Sign In</button>
-            <div class="gate-error" id="gateError">Invalid email or password.</div>
+            <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Enter password to continue</div>
+            <input type="password" class="gate-input" id="gatePassword" placeholder="Password" autocomplete="off">
+            <button class="gate-btn" id="gateBtn">Unlock</button>
+            <div class="gate-error" id="gateError"></div>
         </div>
     </div>
 
-    <!-- Dashboard (hidden until authenticated) -->
+    <!-- Dashboard (hidden until password verified) -->
     <div id="dashboard" class="container">
         <div class="header">
             <div class="logo">
                 <div class="logo-icon">📊</div>
                 <div>
                     <div class="logo-text">Curicaa Dashboard</div>
-                    <div class="logo-sub" id="adminEmail"></div>
+                    <div class="logo-sub">Admin</div>
                 </div>
             </div>
             <div style="display:flex;gap:10px;align-items:center;">
                 <button class="btn btn-subtle" onclick="refreshAll()"><i class="fas fa-sync-alt" style="font-size:11px;"></i> Refresh</button>
                 <a class="btn btn-subtle" href="hub.html">← Back to Site</a>
-                <button class="btn btn-subtle" onclick="lockDashboard()"><i class="fas fa-sign-out-alt" style="font-size:11px;"></i> Sign Out</button>
+                <button class="btn btn-subtle" onclick="lockDashboard()"><i class="fas fa-sign-out-alt" style="font-size:11px;"></i> Lock</button>
             </div>
         </div>
 
@@ -180,6 +180,15 @@
         var SUPABASE_URL = 'https://muhtsytbbdzkfeiugdoo.supabase.co';
         var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11aHRzeXRiYmR6a2ZlaXVnZG9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyOTYyNzMsImV4cCI6MjA5Mzg3MjI3M30.JOr0rv0K_GBSarVq8VXFMhCGnznRZz4LZWA2JaPwEWQ';
 
+        // Stored hash — the actual password is never in source code
+        var ADMIN_HASH = '7400f452403798907ebc27bffcb46298f32b46765ad5a68443463ea0e1f2cab6';
+
+        var MAX_ATTEMPTS = 3;
+        var LOCKOUT_MINUTES = 30;
+        var LOCKOUT_KEY = 'curicaa_admin_lockout';
+        var ATTEMPTS_KEY = 'curicaa_admin_attempts';
+        var SESSION_KEY = 'curicaa_admin_session';
+
         var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         var waitlistRows = [];
         var userRows = [];
@@ -187,100 +196,203 @@
         var gateEl = document.getElementById('loginGate');
         var dashEl = document.getElementById('dashboard');
 
-        function checkAdminAccess(userId) {
-            return client
-                .from('profiles')
-                .select('role')
-                .eq('id', userId)
-                .single()
-                .then(function(result) {
-                    if (result.error || !result.data) return false;
-                    return result.data.role === 'admin';
-                })
-                .catch(function() { return false; });
+        // ─── SHA-256 hash ───
+        async function sha256(text) {
+            var encoder = new TextEncoder();
+            var data = encoder.encode(text);
+            var hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            var hashArray = Array.from(new Uint8Array(hashBuffer));
+            var hexParts = [];
+            for (var i = 0; i < hashArray.length; i++) {
+                var hex = hashArray[i].toString(16);
+                hexParts.push(hex.length === 1 ? '0' + hex : hex);
+            }
+            return hexParts.join('');
         }
 
-        function denyAccess() {
-            client.auth.signOut();
-            gateEl.style.display = 'flex';
-            dashEl.style.display = 'none';
-            document.getElementById('gateError').textContent = 'Access denied. Admin accounts only.';
-            document.getElementById('gateError').style.display = 'block';
+        // ─── Attempt tracking ───
+        function getAttempts() {
+            try {
+                var stored = sessionStorage.getItem(ATTEMPTS_KEY);
+                if (!stored) return { count: 0, lockedAt: null };
+                return JSON.parse(stored);
+            } catch(e) { return { count: 0, lockedAt: null }; }
         }
 
-        function showDashboard(email) {
+        function isLockedOut() {
+            var attempts = getAttempts();
+            if (attempts.count < MAX_ATTEMPTS) return false;
+            if (!attempts.lockedAt) return false;
+            var elapsed = Date.now() - attempts.lockedAt;
+            if (elapsed > LOCKOUT_MINUTES * 60 * 1000) {
+                sessionStorage.removeItem(ATTEMPTS_KEY);
+                return false;
+            }
+            return true;
+        }
+
+        function getLockoutRemaining() {
+            var attempts = getAttempts();
+            if (!attempts.lockedAt) return 0;
+            var elapsed = Date.now() - attempts.lockedAt;
+            var remaining = Math.ceil((LOCKOUT_MINUTES * 60 * 1000 - elapsed) / 60000);
+            return remaining > 0 ? remaining : 0;
+        }
+
+        function recordFailedAttempt() {
+            var attempts = getAttempts();
+            attempts.count = (attempts.count || 0) + 1;
+            if (attempts.count >= MAX_ATTEMPTS) {
+                attempts.lockedAt = Date.now();
+            }
+            sessionStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts));
+            return attempts.count;
+        }
+
+        function clearAttempts() {
+            sessionStorage.removeItem(ATTEMPTS_KEY);
+        }
+
+        // ─── Session persistence (page refresh keeps you logged in) ───
+        function createSession() {
+            try {
+                sessionStorage.setItem(SESSION_KEY, '1');
+            } catch(e) {}
+        }
+
+        function hasSession() {
+            try {
+                return sessionStorage.getItem(SESSION_KEY) === '1';
+            } catch(e) { return false; }
+        }
+
+        function destroySession() {
+            sessionStorage.removeItem(SESSION_KEY);
+        }
+
+        // ─── Dashboard ───
+        function showDashboard() {
+            createSession();
             gateEl.style.display = 'none';
             dashEl.style.display = 'block';
-            document.getElementById('adminEmail').textContent = email;
-            loadWaitlist();
-            loadUsers();
+            loadData();
         }
 
-        function showGate() {
+        function showGate(errorMsg) {
             dashEl.style.display = 'none';
             gateEl.style.display = 'flex';
-            document.getElementById('gateEmail').value = '';
             document.getElementById('gatePassword').value = '';
-            document.getElementById('gateError').textContent = 'Invalid email or password.';
-            document.getElementById('gateError').style.display = 'none';
+            var errorEl = document.getElementById('gateError');
+            if (errorMsg) {
+                errorEl.textContent = errorMsg;
+                errorEl.style.display = 'block';
+            } else {
+                errorEl.style.display = 'none';
+            }
         }
 
-        // Check existing session on load
-        client.auth.getSession().then(function(result) {
-            var session = result.data && result.data.session;
-            if (session && session.user) {
-                checkAdminAccess(session.user.id).then(function(isAdmin) {
-                    if (isAdmin) {
-                        showDashboard(session.user.email);
-                    } else {
-                        denyAccess();
-                    }
-                });
+        // ─── Boot ───
+        function boot() {
+            if (hasSession() && !isLockedOut()) {
+                showDashboard();
+                return;
             }
-        });
 
-        document.getElementById('gateBtn').addEventListener('click', handleAdminLogin);
+            showGate();
+            updateGateState();
+        }
+
+        function updateGateState() {
+            var btn = document.getElementById('gateBtn');
+            var pwField = document.getElementById('gatePassword');
+            var errorEl = document.getElementById('gateError');
+
+            if (isLockedOut()) {
+                var remaining = getLockoutRemaining();
+                btn.disabled = true;
+                pwField.disabled = true;
+                errorEl.textContent = 'Too many attempts. Try again in ' + remaining + ' minute' + (remaining !== 1 ? 's' : '') + '.';
+                errorEl.style.display = 'block';
+                // Auto-refresh lockout timer
+                setTimeout(updateGateState, 10000);
+            } else {
+                btn.disabled = false;
+                pwField.disabled = false;
+                var attempts = getAttempts();
+                if (attempts.count > 0) {
+                    errorEl.textContent = 'Incorrect password. ' + (MAX_ATTEMPTS - attempts.count) + ' attempt' + ((MAX_ATTEMPTS - attempts.count) !== 1 ? 's' : '') + ' remaining.';
+                    errorEl.style.display = 'block';
+                }
+            }
+        }
+
+        // ─── Password verification ───
+        async function verifyPassword(input) {
+            var hash = await sha256(input);
+            return hash === ADMIN_HASH;
+        }
+
+        document.getElementById('gateBtn').addEventListener('click', handleUnlock);
         document.getElementById('gatePassword').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') handleAdminLogin();
-        });
-        document.getElementById('gateEmail').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') document.getElementById('gatePassword').focus();
+            if (e.key === 'Enter') handleUnlock();
         });
 
-        function handleAdminLogin() {
-            var email = document.getElementById('gateEmail').value.trim();
+        async function handleUnlock() {
+            if (isLockedOut()) return;
+
             var password = document.getElementById('gatePassword').value;
-            if (!email || !password) return;
+            if (!password) return;
 
             var btn = document.getElementById('gateBtn');
             btn.disabled = true;
-            btn.textContent = 'Signing in...';
+            btn.textContent = 'Verifying...';
 
-            client.auth.signInWithPassword({ email: email, password: password }).then(function(result) {
+            var match = await verifyPassword(password);
+
+            if (match) {
+                clearAttempts();
+                btn.textContent = 'Unlock';
+                showDashboard();
+            } else {
                 btn.disabled = false;
-                btn.textContent = 'Sign In';
-                if (result.error) {
-                    document.getElementById('gateError').textContent = 'Invalid email or password.';
-                    document.getElementById('gateError').style.display = 'block';
-                    document.getElementById('gatePassword').value = '';
-                    return;
+                btn.textContent = 'Unlock';
+                var count = recordFailedAttempt();
+                var remaining = MAX_ATTEMPTS - count;
+                if (remaining <= 0) {
+                    updateGateState();
+                } else {
+                    var errorEl = document.getElementById('gateError');
+                    errorEl.textContent = 'Incorrect password. ' + remaining + ' attempt' + (remaining !== 1 ? 's' : '') + ' remaining.';
+                    errorEl.style.display = 'block';
                 }
-                // Verify admin role before granting access
-                checkAdminAccess(result.data.user.id).then(function(isAdmin) {
-                    if (isAdmin) {
-                        showDashboard(email);
-                    } else {
-                        denyAccess();
-                    }
-                });
-            });
+                document.getElementById('gatePassword').value = '';
+                document.getElementById('gatePassword').focus();
+            }
         }
 
         window.lockDashboard = function () {
-            client.auth.signOut().then(function() { showGate(); });
+            destroySession();
+            showGate();
         };
 
-        // Tabs
+        // ─── Data loading via RPC (SECURITY DEFINER bypasses RLS) ───
+        function loadData() {
+            client.rpc('admin_get_data').then(function(result) {
+                if (result.error) {
+                    document.getElementById('waitlistBody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
+                    document.getElementById('usersBody').innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
+                    return;
+                }
+                var data = result.data || {};
+                waitlistRows = data.waitlist || [];
+                userRows = data.profiles || [];
+                renderWaitlistTable(waitlistRows);
+                renderUsersTable(userRows);
+                updateStats();
+            });
+        }
+
+        // ─── Tabs ───
         document.querySelectorAll('.tab').forEach(function(tab) {
             tab.addEventListener('click', function() {
                 document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
@@ -290,32 +402,7 @@
             });
         });
 
-        function loadWaitlist() {
-            client.from('waitlist').select('*').order('created_at', { ascending: false }).limit(500)
-                .then(function (result) {
-                    if (result.error) {
-                        document.getElementById('waitlistBody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
-                        return;
-                    }
-                    waitlistRows = result.data || [];
-                    renderWaitlistTable(waitlistRows);
-                    updateStats();
-                });
-        }
-
-        function loadUsers() {
-            client.from('profiles').select('*').order('created_at', { ascending: false }).limit(500)
-                .then(function (result) {
-                    if (result.error) {
-                        document.getElementById('usersBody').innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:#f87171;">Error: ' + escapeHtml(result.error.message) + '</td></tr>';
-                        return;
-                    }
-                    userRows = result.data || [];
-                    renderUsersTable(userRows);
-                    updateStats();
-                });
-        }
-
+        // ─── Render functions ───
         function renderWaitlistTable(rows) {
             var tbody = document.getElementById('waitlistBody');
             if (!rows.length) {
@@ -379,7 +466,7 @@
             return div.innerHTML;
         }
 
-        window.refreshAll = function () { loadWaitlist(); loadUsers(); };
+        window.refreshAll = function () { loadData(); };
 
         window.filterWaitlist = function () {
             var q = document.getElementById('searchWaitlist').value.trim().toLowerCase();
@@ -414,6 +501,8 @@
             a.click();
             URL.revokeObjectURL(url);
         }
+
+        boot();
     })();
     </script>
 </body>

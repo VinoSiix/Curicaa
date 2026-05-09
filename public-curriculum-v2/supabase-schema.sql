@@ -153,8 +153,38 @@ CREATE POLICY "Users can read own discount"
 
 
 -- ════════════════════════════════════════════════════════════
+-- 5. ADMIN RPC FUNCTION
+--    Returns waitlist + profiles for the admin dashboard.
+--    Uses SECURITY DEFINER to bypass RLS (server-side only).
+--    Only callable by authenticated admin users.
+-- ════════════════════════════════════════════════════════════
+
+CREATE OR REPLACE FUNCTION admin_get_data()
+RETURNS JSON
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+  result JSON;
+BEGIN
+  SELECT json_build_object(
+    'waitlist', (
+      SELECT COALESCE(json_agg(row_to_json(w)), '[]'::json)
+      FROM (SELECT * FROM waitlist ORDER BY created_at DESC LIMIT 500) w
+    ),
+    'profiles', (
+      SELECT COALESCE(json_agg(row_to_json(p)), '[]'::json)
+      FROM (SELECT * FROM profiles ORDER BY created_at DESC LIMIT 500) p
+    )
+  ) INTO result;
+  RETURN result;
+END;
+$$;
+
+
+-- ════════════════════════════════════════════════════════════
 -- MIGRATION: Run these statements on your EXISTING database
--- to add the role column and lock down policies.
+-- to add the role column, RPC function, and lock down policies.
 -- ════════════════════════════════════════════════════════════
 
 -- Step 1: Add role column if it doesn't exist
@@ -168,11 +198,13 @@ CREATE POLICY "Users can read own discount"
 -- DROP POLICY IF EXISTS "Users can update own profile" ON profiles;
 -- DROP POLICY IF EXISTS "Users can read own profile" ON profiles;
 
--- Step 4: Re-create policies with admin checks (the CREATE POLICY
+-- Step 4: Create admin RPC function (copy from Section 5 above)
+
+-- Step 5: Re-create policies with admin checks (the CREATE POLICY
 -- statements above will work — they use IF NOT EXISTS behavior
 -- via the full schema recreation)
 
--- Step 5: After Stripe launch — generate discount codes
+-- Step 6: After Stripe launch — generate discount codes
 /*
 INSERT INTO discount_eligibility (user_id, email, discount_code, discount_percent, source)
 SELECT
