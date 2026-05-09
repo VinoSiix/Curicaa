@@ -307,34 +307,43 @@
         function handleLogin() {
             var email = document.getElementById('loginEmail').value;
             var password = document.getElementById('loginPassword').value;
-            var result = CuricaaAuth.login(email, password);
-            if (!result.ok) {
-                document.getElementById('loginError').textContent = result.error;
-                document.getElementById('loginError').style.display = 'block';
-                return;
-            }
-            closeLoginModal();
-            updateAuthUI();
+            var btn = document.getElementById('loginBtn');
+            if (btn) { btn.disabled = true; btn.textContent = 'Logging in...'; }
+            CuricaaAuth.login(email, password).then(function(result) {
+                if (btn) { btn.disabled = false; btn.textContent = 'Log In'; }
+                if (!result.ok) {
+                    document.getElementById('loginError').textContent = result.error;
+                    document.getElementById('loginError').style.display = 'block';
+                    return;
+                }
+                closeLoginModal();
+                updateAuthUI();
+            });
         }
 
         function handleSignup() {
             var name = document.getElementById('signupName').value;
             var email = document.getElementById('signupEmail').value;
             var password = document.getElementById('signupPassword').value;
-            var result = CuricaaAuth.signup(name, email, password);
-            if (!result.ok) {
-                document.getElementById('signupError').textContent = result.error;
-                document.getElementById('signupError').style.display = 'block';
-                return;
-            }
-            closeSignupModal();
-            updateAuthUI();
+            var btn = document.getElementById('signupBtn');
+            if (btn) { btn.disabled = true; btn.textContent = 'Creating account...'; }
+            CuricaaAuth.signup(name, email, password).then(function(result) {
+                if (btn) { btn.disabled = false; btn.textContent = 'Create Account'; }
+                if (!result.ok) {
+                    document.getElementById('signupError').textContent = result.error;
+                    document.getElementById('signupError').style.display = 'block';
+                    return;
+                }
+                closeSignupModal();
+                updateAuthUI();
+            });
         }
 
         function handleLogout() {
-            CuricaaAuth.logout();
-            updateAuthUI();
-            closeUserMenu();
+            CuricaaAuth.logout().then(function() {
+                updateAuthUI();
+                closeUserMenu();
+            });
         }
 
         // Free plan start — opens signup if not logged in, then grants free access
@@ -452,8 +461,10 @@
             if (wrap && !wrap.contains(e.target)) closeUserMenu();
         });
 
-        // Init auth UI on load
-        updateAuthUI();
+        // Init auth UI — wait for Supabase session restore
+        window.addEventListener('curicaa-auth-ready', function () {
+            updateAuthUI();
+        });
 
         // --- Settings ---
         function openSettings() {
@@ -1043,6 +1054,11 @@
         };
 
         function openSubjectModal(p) {
+            // Require login to browse curriculums
+            if (typeof CuricaaAuth !== 'undefined' && !CuricaaAuth.isLoggedIn()) {
+                openSignupModal();
+                return;
+            }
             currentProgram = p;
             document.getElementById('modalTitle').textContent = labels[p] || 'Choose a Subject';
             const isSocialStudies = p === 'ages-15-16' || p === 'age-14';
@@ -1067,10 +1083,20 @@
         }
         function goToSubject(subject) {
             if (!currentProgram) return;
+            if (typeof CuricaaAuth !== 'undefined' && !CuricaaAuth.isLoggedIn()) {
+                closeSubjectModal();
+                openSignupModal();
+                return;
+            }
             window.location.href = currentProgram + '-' + subject + '.html';
         }
         function goToFourthSubject() {
             if (!currentProgram) return;
+            if (typeof CuricaaAuth !== 'undefined' && !CuricaaAuth.isLoggedIn()) {
+                closeSubjectModal();
+                openSignupModal();
+                return;
+            }
             const subject = (currentProgram === 'ages-15-16' || currentProgram === 'age-14') ? 'social-studies' : 'art';
             window.location.href = currentProgram + '-' + subject + '.html';
         }
