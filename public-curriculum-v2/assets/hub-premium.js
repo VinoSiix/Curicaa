@@ -115,13 +115,13 @@
                 {iconClass: 'fas fa-lightbulb', iconColor: '#2dd4bf', title: 'Home Connection Activities', subtitle: 'Extend learning beyond lesson time'}
             ],
             testimonials: [
-                {stars: 5, quote: 'We\u2019ve tried so many curriculum options and this is the first one that actually feels designed for real families. My daughter asks to do her lessons now.', name: 'Sarah Mitchell', location: 'Austin, TX', detail: 'Homeschooling 2 kids, ages 6 & 9'},
-                {stars: 5, quote: 'The weekly breakdowns are a lifesaver. I open the page on Monday morning and everything is laid out. No prep stress, no guessing.', name: 'David Ramirez', location: 'Denver, CO', detail: 'Dad of a 10-year-old'},
-                {stars: 5, quote: 'As a single mom on a tight budget, the fact that this uses household materials for science experiments means everything. Quality education without breaking the bank.', name: 'Maria Lopez', location: 'Miami, FL', detail: 'Homeschooling since 2023'},
-                {stars: 4, quote: 'I pulled my son out of public school mid-year and was panicking about curriculum. This gave me everything I needed from day one. The parent guides are incredible \u2014 I just wish there were more video lessons.', name: 'Jessica Thompson', location: 'Portland, OR', detail: 'Mom of a 7th grader'},
-                {stars: 5, quote: 'My kids love the science experiments. Last week we built a volcano with baking soda and vinegar \u2014 they talked about it for three days. Real learning, real fun.', name: 'Marcus Williams', location: 'Atlanta, GA', detail: 'Dad of twins, age 8'},
-                {stars: 5, quote: 'We\u2019re a military family and move a lot. Having a complete curriculum we can access from any device — phone, tablet, laptop — without depending on a school district has been a game-changer for us.', name: 'Angela Patterson', location: 'Fort Liberty, NC', detail: 'Military spouse, 2 kids ages 5 & 11'},
-                {stars: 5, quote: 'The SAT prep section alone is worth the price. My son\u2019s practice scores went up 120 points in six weeks. The pacing strategies really work.', name: 'Linda Chen', location: 'Chicago, IL', detail: 'Son preparing for college'}
+                {icon: 'fas fa-shield-alt', iconBg: 'rgba(74,222,128,0.12)', iconColor: '#4ade80', title: '30-Day Money-Back Guarantee', subtitle: 'Full refund, no questions asked. Try the entire curriculum risk-free.'},
+                {icon: 'fas fa-laptop', iconBg: 'rgba(96,165,250,0.12)', iconColor: '#60a5fa', title: 'Works on Any Device', subtitle: 'Phone, tablet, or laptop. Access your lessons anywhere, anytime.'},
+                {icon: 'fas fa-users', iconBg: 'rgba(212,165,74,0.12)', iconColor: '#e8c36a', title: 'Built for Real Families', subtitle: 'One subscription covers every child in your household. No per-child fees.'},
+                {icon: 'fas fa-book-open', iconBg: 'rgba(167,139,250,0.12)', iconColor: '#a78bfa', title: '320+ Weeks of Lessons', subtitle: 'Ages 5 through SAT prep. Math, English, Science, Art & PE — all included.'},
+                {icon: 'fas fa-clock', iconBg: 'rgba(251,146,60,0.12)', iconColor: '#fb923c', title: 'Zero Prep Required', subtitle: 'Open and teach. Every lesson has parent guides and step-by-step instructions.'},
+                {icon: 'fas fa-dollar-sign', iconBg: 'rgba(74,222,128,0.12)', iconColor: '#4ade80', title: 'Household Materials Only', subtitle: 'No expensive kits. Science experiments with what you already have at home.'},
+                {icon: 'fas fa-heart', iconBg: 'rgba(244,114,182,0.12)', iconColor: '#f472b6', title: 'Made with Care', subtitle: 'Every lesson thoughtfully crafted by a homeschooling parent, for parents.'}
             ],
             faq: [
                 {question: 'Is this a subscription?', answer: 'Paid plans aren\u2019t live yet \u2014 we\u2019re in early access. Join the waitlist and you\u2019ll get 30% off your first year when subscriptions launch. At launch, plans will be monthly or annual with no long-term contracts and you\u2019ll be able to cancel anytime.'},
@@ -210,25 +210,17 @@
             });
         }
 
-        // T9: Render testimonials carousel
+        // T9: Render trust cards (replaces testimonials during early access)
         function renderTestimonials() {
             var track = document.getElementById('carouselTrack');
             if (!track) return;
             PAGE_DATA.testimonials.forEach(function(t) {
                 var card = document.createElement('div');
                 card.className = 'carousel-card';
-                var starsHtml = '';
-                for (var s = 0; s < 5; s++) {
-                    starsHtml += s < t.stars
-                        ? '<i class="fas fa-star" style="color:#fbbf24;font-size:12px;"></i>'
-                        : '<i class="far fa-star" style="color:#fbbf24;font-size:12px;"></i>';
-                }
                 card.innerHTML =
-                    '<div style="margin-bottom:16px;">' + starsHtml + '</div>' +
-                    '<p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;font-style:italic;margin-bottom:0;">\u201C' + esc(t.quote) + '\u201D</p>' +
-                    '<div style="height:1px;background:var(--border-faint);margin:16px 0;"></div>' +
-                    '<div style="font-size:13px;font-weight:600;color:var(--text-primary);">' + esc(t.name) + '</div>' +
-                    '<div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">' + esc(t.location) + ' \u00B7 ' + esc(t.detail) + '</div>';
+                    '<div style="width:44px;height:44px;border-radius:13px;background:' + t.iconBg + ';display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><i class="' + t.icon + '" style="color:' + t.iconColor + ';font-size:18px;"></i></div>' +
+                    '<div style="font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text-primary);">' + esc(t.title) + '</div>' +
+                    '<p style="color:var(--text-secondary);font-size:13.5px;line-height:1.65;">' + esc(t.subtitle) + '</p>';
                 track.appendChild(card);
             });
         }
@@ -299,12 +291,41 @@
         // ===================== END RENDER FUNCTIONS =====================
 
         // Auth UI
+        // --- Client-side rate limiting ---
+        var _authAttempts = { login: 0, signup: 0 };
+        var _lastAttemptTime = { login: 0, signup: 0 };
+        var RATE_LIMIT_MAX = 5;
+        var RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
+
+        function checkRateLimit(type) {
+            var now = Date.now();
+            if (_authAttempts[type] >= RATE_LIMIT_MAX) {
+                if (now - _lastAttemptTime[type] < RATE_LIMIT_WINDOW) {
+                    return false;
+                }
+                _authAttempts[type] = 0;
+            }
+            return true;
+        }
+        function recordAttempt(type) {
+            _authAttempts[type]++;
+            _lastAttemptTime[type] = Date.now();
+        }
+        function resetAttempts(type) {
+            _authAttempts[type] = 0;
+        }
+
         function openLoginModal() { document.getElementById('loginModal').classList.add('open'); document.getElementById('loginError').style.display='none'; document.body.style.overflow='hidden'; }
         function closeLoginModal() { document.getElementById('loginModal').classList.remove('open'); document.body.style.overflow=''; }
         function openSignupModal() { document.getElementById('signupModal').classList.add('open'); document.getElementById('signupError').style.display='none'; document.body.style.overflow='hidden'; }
         function closeSignupModal() { document.getElementById('signupModal').classList.remove('open'); document.body.style.overflow=''; }
 
         function handleLogin() {
+            if (!checkRateLimit('login')) {
+                document.getElementById('loginError').textContent = 'Too many attempts. Please wait 15 minutes.';
+                document.getElementById('loginError').style.display = 'block';
+                return;
+            }
             var email = document.getElementById('loginEmail').value;
             var password = document.getElementById('loginPassword').value;
             var btn = document.getElementById('loginBtn');
@@ -312,21 +333,29 @@
             CuricaaAuth.login(email, password).then(function(result) {
                 if (btn) { btn.disabled = false; btn.textContent = 'Log In'; }
                 if (!result.ok) {
+                    recordAttempt('login');
                     document.getElementById('loginError').textContent = result.error;
                     document.getElementById('loginError').style.display = 'block';
                     return;
                 }
+                resetAttempts('login');
                 closeLoginModal();
                 updateAuthUI();
             });
         }
 
         function handleSignup() {
+            if (!checkRateLimit('signup')) {
+                document.getElementById('signupError').textContent = 'Too many attempts. Please wait 15 minutes.';
+                document.getElementById('signupError').style.display = 'block';
+                return;
+            }
             var name = document.getElementById('signupName').value;
             var email = document.getElementById('signupEmail').value;
             var password = document.getElementById('signupPassword').value;
             var btn = document.getElementById('signupBtn');
             if (btn) { btn.disabled = true; btn.textContent = 'Creating account...'; }
+            recordAttempt('signup');
             CuricaaAuth.signup(name, email, password).then(function(result) {
                 if (btn) { btn.disabled = false; btn.textContent = 'Create Account'; }
                 if (!result.ok) {
@@ -334,6 +363,7 @@
                     document.getElementById('signupError').style.display = 'block';
                     return;
                 }
+                resetAttempts('signup');
                 closeSignupModal();
                 updateAuthUI();
             });
@@ -577,18 +607,22 @@
         }
 
         function confirmCancelSub() {
-            CuricaaAuth.updatePlan('free', []);
-            document.getElementById('cancelConfirmStep').style.display = 'none';
-            document.getElementById('cancelSuccessMsg').style.display = 'block';
-            var badge = document.getElementById('cancelSubBadge');
-            badge.style.background = 'rgba(255,255,255,0.06)';
-            badge.style.color = 'var(--text-muted)';
-            badge.innerHTML = '<i class="fas fa-circle" style="font-size:4px;"></i> Cancelled';
-            // Refresh UI to reflect plan change
-            updateAuthUI();
-            // Also update the account info section to show Free Plan
-            var user = CuricaaAuth.getUser();
-            var infoEl = document.getElementById('settingsAccountInfo');
+            CuricaaAuth.cancelSubscription().then(function(result) {
+                if (!result || !result.ok) {
+                    alert(result && result.error ? result.error : 'Could not cancel subscription. Please try again.');
+                    return;
+                }
+                document.getElementById('cancelConfirmStep').style.display = 'none';
+                document.getElementById('cancelSuccessMsg').style.display = 'block';
+                var badge = document.getElementById('cancelSubBadge');
+                badge.style.background = 'rgba(255,255,255,0.06)';
+                badge.style.color = 'var(--text-muted)';
+                badge.innerHTML = '<i class="fas fa-circle" style="font-size:4px;"></i> Cancelled';
+                // Refresh UI to reflect plan change
+                updateAuthUI();
+                // Also update the account info section to show Free Plan
+                var user = CuricaaAuth.getUser();
+                var infoEl = document.getElementById('settingsAccountInfo');
             if (user) {
                 // Build DOM safely — no innerHTML with user data
                 var infoWrap = document.createElement('div');
@@ -668,26 +702,16 @@
             if (!newName) return;
             var user = CuricaaAuth.getUser();
             if (!user) return;
-            // Update name in localStorage
-            var accounts = JSON.parse(localStorage.getItem('curicaa_accounts') || '[]');
-            for (var i = 0; i < accounts.length; i++) {
-                if (accounts[i].email === user.email) {
-                    accounts[i].name = newName;
-                    break;
-                }
-            }
-            localStorage.setItem('curicaa_accounts', JSON.stringify(accounts));
-            // Update session
-            var session = JSON.parse(localStorage.getItem('curicaa_session') || '{}');
-            session.name = newName;
-            localStorage.setItem('curicaa_session', JSON.stringify(session));
-            document.getElementById('newNameInput').value = '';
-            document.getElementById('newNameInput').placeholder = newName;
-            updateAuthUI();
-            // Re-render account info in settings
-            openSettings();
-            document.getElementById('settingsModal').classList.add('open');
-            document.body.style.overflow = 'hidden';
+            // Update name via Supabase (shared client handles persistence)
+            CuricaaAuth.updateName(newName).then(function () {
+                document.getElementById('newNameInput').value = '';
+                document.getElementById('newNameInput').placeholder = newName;
+                updateAuthUI();
+                // Re-render account info in settings
+                openSettings();
+                document.getElementById('settingsModal').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
         }
 
         // Restore saved settings on load
@@ -870,9 +894,55 @@
             var stickyCta = document.getElementById('stickyMobileCta');
             if (stickyCta) {
                 if (isBundle) {
-                    stickyCta.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div><div style="font-size:13px;font-weight:700;color:white;">Upgrade to Pro</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">$90 · All worksheets & quizzes</div></div><a class="nav-cta-solid" onclick="document.getElementById(\'pricing\').scrollIntoView({behavior:\'smooth\'})" style="padding:10px 20px;font-size:13px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#6366f1);box-shadow:0 4px 20px rgba(139,92,246,0.3);">Upgrade <i class="fas fa-arrow-right" style="font-size:10px;margin-left:3px;"></i></a></div>';
+                    var ctaDiv = document.createElement('div');
+                    ctaDiv.style.cssText = 'display:flex;align-items:center;justify-content:space-between;width:100%;';
+                    var textDiv = document.createElement('div');
+                    var titleDiv = document.createElement('div');
+                    titleDiv.style.cssText = 'font-size:13px;font-weight:700;color:white;';
+                    titleDiv.textContent = 'Upgrade to Pro';
+                    var subDiv = document.createElement('div');
+                    subDiv.style.cssText = 'font-size:10px;color:rgba(255,255,255,0.5);';
+                    subDiv.textContent = '$90 · All worksheets & quizzes';
+                    textDiv.appendChild(titleDiv);
+                    textDiv.appendChild(subDiv);
+                    var ctaLink = document.createElement('a');
+                    ctaLink.className = 'nav-cta-solid';
+                    ctaLink.style.cssText = 'padding:10px 20px;font-size:13px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#6366f1);box-shadow:0 4px 20px rgba(139,92,246,0.3);';
+                    ctaLink.textContent = 'Upgrade ';
+                    var arrow = document.createElement('i');
+                    arrow.className = 'fas fa-arrow-right';
+                    arrow.style.cssText = 'font-size:10px;margin-left:3px;';
+                    ctaLink.appendChild(arrow);
+                    ctaLink.onclick = function() { document.getElementById('pricing').scrollIntoView({behavior:'smooth'}); };
+                    ctaDiv.appendChild(textDiv);
+                    ctaDiv.appendChild(ctaLink);
+                    stickyCta.innerHTML = '';
+                    stickyCta.appendChild(ctaDiv);
                 } else if (!isPaid) {
-                    stickyCta.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div><div style="font-size:13px;font-weight:700;color:white;">Start Learning Free</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">$169/year · All grades · Cancel anytime</div></div><a class="nav-cta-solid" onclick="document.getElementById(\'pathways\').scrollIntoView({behavior:\'smooth\'})" style="padding:10px 20px;font-size:13px;border-radius:10px;">Get Started <i class="fas fa-arrow-right" style="font-size:10px;margin-left:3px;"></i></a></div>';
+                    var ctaDiv = document.createElement('div');
+                    ctaDiv.style.cssText = 'display:flex;align-items:center;justify-content:space-between;width:100%;';
+                    var textDiv = document.createElement('div');
+                    var titleDiv = document.createElement('div');
+                    titleDiv.style.cssText = 'font-size:13px;font-weight:700;color:white;';
+                    titleDiv.textContent = 'Start Learning Free';
+                    var subDiv = document.createElement('div');
+                    subDiv.style.cssText = 'font-size:10px;color:rgba(255,255,255,0.5);';
+                    subDiv.textContent = '$169/year · All grades · Cancel anytime';
+                    textDiv.appendChild(titleDiv);
+                    textDiv.appendChild(subDiv);
+                    var ctaLink = document.createElement('a');
+                    ctaLink.className = 'nav-cta-solid';
+                    ctaLink.style.cssText = 'padding:10px 20px;font-size:13px;border-radius:10px;';
+                    ctaLink.textContent = 'Get Started ';
+                    var arrow = document.createElement('i');
+                    arrow.className = 'fas fa-arrow-right';
+                    arrow.style.cssText = 'font-size:10px;margin-left:3px;';
+                    ctaLink.appendChild(arrow);
+                    ctaLink.onclick = function() { document.getElementById('pathways').scrollIntoView({behavior:'smooth'}); };
+                    ctaDiv.appendChild(textDiv);
+                    ctaDiv.appendChild(ctaLink);
+                    stickyCta.innerHTML = '';
+                    stickyCta.appendChild(ctaDiv);
                 }
             }
 
@@ -1154,7 +1224,7 @@
             var periodLabel = billingPeriod === 'annual' ? '/yr' : '/mo';
             if (selectedPlan === 'single' && selectedGrades.length > 0) {
                 var total = selectedGrades.length * unitPrice;
-                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">' + selectedGrades.length + ' Grade' + (selectedGrades.length > 1 ? 's' : '') + '</div><div style="font-size:11px;color:var(--text-muted);">$' + unitPrice + periodLabel + ' each · All 4 subjects per grade</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + total + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
+                document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">' + esc(selectedGrades.length + ' Grade' + (selectedGrades.length > 1 ? 's' : '')) + '</div><div style="font-size:11px;color:var(--text-muted);">$' + unitPrice + periodLabel + ' each · All 4 subjects per grade</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + total + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
             } else if (selectedPlan === 'single') {
                 document.getElementById('checkoutSummary').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:13px;font-weight:600;">Select Grade Levels</div><div style="font-size:11px;color:var(--text-muted);">Pick one or more below · $' + unitPrice + periodLabel + ' each</div></div><div style="font-size:18px;font-weight:800;color:#fbbf24;">$' + unitPrice + '<span style="font-size:13px;font-weight:500;">' + periodLabel + '</span></div></div>';
             }
@@ -1220,22 +1290,22 @@
                 alert('Please select at least one grade level.');
                 return;
             }
-            // Update user plan
-            if (CuricaaAuth && CuricaaAuth.isLoggedIn()) {
-                // If buying additional grades on single plan, merge with existing
-                var existingUser = CuricaaAuth.getUser();
-                var existingGrades = (existingUser && existingUser.plan === 'single' && existingUser.grades) ? existingUser.grades : [];
-                var mergedGrades = existingGrades.slice();
-                for (var i = 0; i < selectedGrades.length; i++) {
-                    if (mergedGrades.indexOf(selectedGrades[i]) === -1) {
-                        mergedGrades.push(selectedGrades[i]);
-                    }
-                }
-                var newPlan = selectedPlan === 'bundle' ? 'bundle' : selectedPlan === 'pro' ? 'pro' : 'single';
-                CuricaaAuth.updatePlan(newPlan, (newPlan === 'bundle' || newPlan === 'pro') ? [] : mergedGrades);
-                updateAuthUI();
-            }
+            // SECURITY: Plan upgrades must go through Stripe (server-side).
+            // During waitlist phase, close checkout and show success/witlist message.
+            // When Stripe launches, this will redirect to Stripe Checkout.
             closeCheckout();
+
+            // If user is cancelling, handle via cancelSubscription
+            if (selectedPlan === 'free') {
+                CuricaaAuth.cancelSubscription().then(function(result) {
+                    if (result && result.ok) {
+                        updateAuthUI();
+                    }
+                });
+                return;
+            }
+
+            // Waitlist phase: show success modal (plan not changed — Stripe will do that)
             launchConfetti();
             document.getElementById('successModal').classList.add('open');
             document.body.style.overflow = 'hidden';
@@ -1494,6 +1564,35 @@
                 if (bar) bar.classList.add('hidden');
             }
         })();
+
+        // --- Data Export & Account Deletion (Privacy Policy compliance) ---
+        function requestDataExport() {
+            var user = CuricaaAuth ? CuricaaAuth.getUser() : null;
+            if (!user) { alert('Please log in first.'); return; }
+            var subject = encodeURIComponent('Data Export Request — Curicaa');
+            var body = encodeURIComponent('Hi Curicaa,\n\nI would like to request a full export of my personal data as described in the Privacy Policy.\n\nAccount email: ' + user.email + '\n\nPlease send my data in JSON or CSV format within 30 days as outlined in your Privacy Policy.\n\nThank you.');
+            window.location.href = 'mailto:Curicaa@proton.me?subject=' + subject + '&body=' + body;
+        }
+
+        function showDeleteConfirm() {
+            document.getElementById('deleteConfirmStep').style.display = 'block';
+            document.getElementById('deleteAccountBtn').style.display = 'none';
+        }
+
+        function hideDeleteConfirm() {
+            document.getElementById('deleteConfirmStep').style.display = 'none';
+            document.getElementById('deleteAccountBtn').style.display = 'flex';
+        }
+
+        function confirmDeleteAccount() {
+            var user = CuricaaAuth ? CuricaaAuth.getUser() : null;
+            if (!user) return;
+            var subject = encodeURIComponent('Account Deletion Request — Curicaa');
+            var body = encodeURIComponent('Hi Curicaa,\n\nI would like to permanently delete my account and all associated personal data.\n\nAccount email: ' + user.email + '\n\nPlease process this request within 30 days as outlined in your Privacy Policy.\n\nThank you.');
+            window.location.href = 'mailto:Curicaa@proton.me?subject=' + subject + '&body=' + body;
+            document.getElementById('deleteConfirmStep').style.display = 'none';
+            document.getElementById('deleteSuccessMsg').style.display = 'block';
+        }
 
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
