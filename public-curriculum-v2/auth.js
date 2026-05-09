@@ -45,6 +45,26 @@
       });
   }
 
+  // ─── Create or fix profile (for Google OAuth users) ───
+  function ensureProfile(authUser) {
+    var metaName = (authUser.user_metadata && authUser.user_metadata.full_name) ||
+                   (authUser.user_metadata && authUser.user_metadata.name) || '';
+    var email = (authUser.email || '').toLowerCase();
+
+    return sb
+      .from('profiles')
+      .upsert({
+        id: authUser.id,
+        name: metaName || email.split('@')[0],
+        email: email,
+        plan: 'free',
+        grades: []
+      }, { onConflict: 'id' })
+      .then(function () {
+        return loadProfile(authUser.id);
+      });
+  }
+
   // ─── Expose to window (same API surface as old localStorage version) ───
   window.CuricaaAuth = {
 
@@ -181,6 +201,19 @@
     },
 
     /**
+     * Update the user's name (for Google OAuth users setting their name).
+     * Returns Promise<void>
+     */
+    updateName: function (name) {
+      if (!currentUser || !sb) return Promise.resolve();
+      currentUser.name = name;
+      return sb
+        .from('profiles')
+        .update({ name: name })
+        .eq('id', currentUser.id);
+    },
+
+    /**
      * Update the user's plan and grades.
      * Returns Promise<void>
      */
@@ -216,24 +249,39 @@
     localStorage.removeItem('curicaa_session');
 
     if (!init()) {
-      // Supabase not available — dispatch ready event anyway
       window.dispatchEvent(new Event('curicaa-auth-ready'));
       return;
     }
 
+    // Check if this is a Google OAuth redirect (hash contains access_token)
+    var isOAuthReturn = window.location.hash && window.location.hash.indexOf('access_token') !== -1;
+
     sb.auth.getSession().then(function (result) {
       var session = result.data && result.data.session;
       if (session && session.user) {
-        return loadProfile(session.user.id);
+        // Try loading the profile first
+        return loadProfile(session.user.id).then(function (profile) {
+          if (!profile) {
+            // Profile doesn't exist yet (trigger race) — create it
+            return ensureProfile(session.user);
+          }
+          return profile;
+        }).then(function (profile) {
+          if (profile && isOAuthReturn) {
+            // Clean up the URL hash
+            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+            // Check if user needs to set their name
+            if (!profile.name || profile.name.indexOf('@') !== -1 || profile.name.indexOf(' ') === -1) {
+              // Name looks like an email or single word — ask for real name
+              window.dispatchEvent(new CustomEvent('curicaa-needs-name', { detail: { email: profile.email } }));
+            }
+          }
+          return profile;
+        });
       }
       return null;
     }).then(function () {
-      // Dispatch ready event so other scripts can update UI
       window.dispatchEvent(new Event('curicaa-auth-ready'));
-      // If we just came back from a Google redirect, update the UI immediately
-      if (window.location.hash && window.location.hash.indexOf('access_token') !== -1) {
-        if (typeof updateAuthUI === 'function') updateAuthUI();
-      }
     }).catch(function () {
       window.dispatchEvent(new Event('curicaa-auth-ready'));
     });

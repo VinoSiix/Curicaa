@@ -466,6 +466,39 @@
             updateAuthUI();
         });
 
+        // Google OAuth — ask for name after redirect
+        window.addEventListener('curicaa-needs-name', function (e) {
+            var modal = document.getElementById('nameModal');
+            var input = document.getElementById('googleNameInput');
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            input.focus();
+        });
+
+        window.handleSaveName = function () {
+            var input = document.getElementById('googleNameInput');
+            var name = input.value.trim();
+            if (!name || name.length < 2) {
+                input.style.borderColor = '#f87171';
+                return;
+            }
+            var btn = document.getElementById('nameSaveBtn');
+            btn.disabled = true;
+            btn.textContent = 'Saving...';
+
+            CuricaaAuth.updateName(name).then(function () {
+                document.getElementById('nameModal').classList.remove('open');
+                document.body.style.overflow = '';
+                updateAuthUI();
+            });
+        };
+
+        // Enter key on name input
+        document.getElementById('googleNameInput').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') handleSaveName();
+            this.style.borderColor = 'var(--border-card)';
+        });
+
         // --- Settings ---
         function openSettings() {
             closeUserMenu();
