@@ -46,7 +46,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .progress-bar-fill{height:100%;border-radius:4px;background:linear-gradient(135deg,var(--a1),var(--a2));transition:width 0.4s ease;}
 .mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 .month-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
-@media(max-width:768px){
+@media(max-width:768px){.hide-mobile{display:none!important;}
   .month-grid{grid-template-columns:1fr;}
 }
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
@@ -84,7 +84,7 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
   </section>
 
   <!-- Core Skills -->
-  <section style="margin-bottom:48px;">
+  <section class="hide-mobile" style="margin-bottom:48px;">
     <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
       <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(34,197,94,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-sort-numeric-up" style="color:#4ade80;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Place Value & Operations</div><div style="font-size:12px;color:var(--ct6);">Millions, multi-digit add/subtract</div></div>

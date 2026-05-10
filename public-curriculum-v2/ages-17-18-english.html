@@ -46,7 +46,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
 .mat-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 .month-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
 .sat-banner{background:linear-gradient(135deg,rgba(249,115,22,0.1),rgba(239,68,68,0.08));border:1px solid rgba(249,115,22,0.2);border-radius:14px;padding:18px 22px;margin-bottom:32px;display:flex;align-items:center;gap:16px;}
-@media(max-width:768px){
+@media(max-width:768px){.hide-mobile{display:none!important;}
   .month-grid{grid-template-columns:1fr;}
 }
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
@@ -86,7 +86,7 @@ footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:cente
     <h2 class="page-title">SAT Reading & Writing</h2>
     <p style="color:rgba(255,255,255,0.48);font-size:15px;max-width:640px;margin:0 auto;line-height:1.75;">Master all four content domains of the Digital SAT Reading & Writing section: comprehension and inference across diverse texts, grammar and usage, rhetorical analysis, and effective expression of ideas.</p>
   </section>
-  <section style="margin-bottom:48px;">
+  <section class="hide-mobile" style="margin-bottom:48px;">
     <div style="margin-bottom:20px;"><p class="section-label">Core Skills Overview</p><h3 style="font-size:18px;font-weight:700;">What They'll Learn</h3></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
       <div class="skill-card"><div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i class="fas fa-book-open" style="color:#34d399;font-size:15px;"></i></div><div style="font-weight:700;font-size:14px;margin-bottom:4px;">Reading Comprehension</div><div style="font-size:12px;color:var(--ct6);">Central idea, inferences, cross-text</div></div>
