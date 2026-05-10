@@ -98,7 +98,7 @@
      */
     signup: function (name, email, password) {
       if (!name || name.trim().length < 2) return Promise.resolve({ ok: false, error: 'Please enter your name.' });
-      if (!email || !email.includes('@')) return Promise.resolve({ ok: false, error: 'Please enter a valid email.' });
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return Promise.resolve({ ok: false, error: 'Please enter a valid email address.' });
       if (!password || password.length < 8) return Promise.resolve({ ok: false, error: 'Password must be at least 8 characters.' });
       if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) return Promise.resolve({ ok: false, error: 'Password must contain at least one letter and one number.' });
 
