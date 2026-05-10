@@ -11,13 +11,60 @@
   // --- Inject paywall styles ---
   var pwStyle = document.createElement('style');
   pwStyle.textContent = '@keyframes pwIn{from{opacity:0;transform:scale(0.94) translateY(12px);}to{opacity:1;transform:scale(1) translateY(0);}}' +
-    '.month-tab.month-locked{opacity:0.35;cursor:not-allowed!important;position:relative;}' +
+    '.month-tab.month-locked{opacity:0.35;cursor:not-allowed!important;position:relative;pointer-events:auto!important;}' +
     '.month-tab.month-locked:hover{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.35);}' +
     '.month-tab.month-free{position:relative;}' +
     '.month-tab.month-free::after{content:"FREE";position:absolute;top:-7px;right:-8px;font-size:7px;font-weight:700;letter-spacing:0.06em;background:#4ade80;color:#000;padding:1px 5px;border-radius:20px;line-height:1.4;}' +
-    '#monthContent{opacity:0;transition:opacity 0.3s;}' +
-    '#monthContent.paywall-ready{opacity:1;}';
+    '#monthContent{opacity:0;transition:opacity 0.3s;visibility:hidden;}' +
+    '#monthContent.paywall-ready{opacity:1;visibility:visible;}' +
+    '#monthContent.pw-tampered{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}';
   document.head.appendChild(pwStyle);
+
+  // --- Anti-tamper: re-enforce locks if someone removes classes via DevTools ---
+  var tamperGuardActive = false;
+  function enableTamperGuard() {
+    if (tamperGuardActive) return;
+    tamperGuardActive = true;
+    var tabsEl = document.getElementById('monthTabs');
+    if (!tabsEl) return;
+    var guard = new MutationObserver(function() {
+      // Re-apply locks immediately if tampered
+      if (isFreeUser()) lockMonthsForFreeUsers();
+    });
+    guard.observe(tabsEl, { attributes: true, subtree: true, attributeFilter: ['class', 'style', 'onclick'] });
+  }
+
+  // --- Content integrity: if monthContent becomes visible without paywall-ready, hide it ---
+  function watchContentIntegrity() {
+    var contentEl = document.getElementById('monthContent');
+    if (!contentEl) return;
+    var integrityGuard = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.type === 'attributes' && m.attributeName === 'style') {
+          var el = m.target;
+          if (el.classList.contains('paywall-ready')) return;
+          // Someone forced visibility via style — revert
+          if (el.style.opacity === '1' || el.style.visibility === 'visible') {
+            el.classList.add('pw-tampered');
+            setTimeout(function() { el.classList.remove('pw-tampered'); }, 2000);
+          }
+        }
+      });
+    });
+    integrityGuard.observe(contentEl, { attributes: true, attributeFilter: ['style'] });
+  }
+
+  // --- Disable common DevTools shortcuts (basic deterrent, not foolproof) ---
+  document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.key === 'F12') { e.preventDefault(); return false; }
+    // Ctrl+Shift+I / Cmd+Opt+I (Inspector)
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i')) { e.preventDefault(); return false; }
+    // Ctrl+U / Cmd+U (View Source)
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); return false; }
+    // Ctrl+S / Cmd+S (Save page)
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) { e.preventDefault(); return false; }
+  });
 
   // --- Month restriction modal (Free users — months locked) ---
   var monthModal = document.createElement('div');
@@ -352,9 +399,11 @@
     // 1. Free users: lock months to September only
     if (isFreeUser()) {
       lockMonthsForFreeUsers();
+      enableTamperGuard();
     }
     // 2. Always watch for content changes and inject resources
     watchForChanges();
+    watchContentIntegrity();
     setTimeout(function() {
       injectResources();
       if (!hasProAccess()) gateWorksheets();
