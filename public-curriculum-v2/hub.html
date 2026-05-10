@@ -173,7 +173,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,17,25,0.85);backdrop-
                 <div><div style="font-weight:700;font-size:15px;letter-spacing:-0.025em;line-height:1.2;color:var(--text-primary);">Curicaa</div><div style="font-size:10px;color:var(--text-faint);font-weight:500;letter-spacing:0.04em;">Homeschool Curriculum</div></div>
             </div>
             <nav id="desktopNav" style="display:flex;align-items:center;gap:2px;position:absolute;left:50%;transform:translateX(-50%);">
-                <button class="nav-link" onclick="window.scrollTo({top:0,behavior:'smooth'})">How It Works</button>
+                <button class="nav-link" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Features</button>
                 <button class="nav-link" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Pathways</button>
                 <button class="nav-link" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})">Reviews</button>
                 <button class="nav-link" id="navPricingLink" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</button>
