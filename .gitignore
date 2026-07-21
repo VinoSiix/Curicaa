@@ -41,11 +41,20 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.cursor/rules/nx-rules.mdc
-.github/instructions/nx.instructions.md
-
 # Replit
 .cache/
 .local/
 
 .vercel
+
+# Internal / sensitive files
+admin.html
+security-audit.html
+legal-review.html
+curicaa-launch-audit.html
+AGENT_CONTEXT.md
+PROJECT.md
+auth-override-test.js
+update-month-tabs.ps1
+.sisyphus/
+attached_assets/
