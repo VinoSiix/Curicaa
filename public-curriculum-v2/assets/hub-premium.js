@@ -121,7 +121,7 @@
                 {icon: 'fas fa-book-open', iconBg: 'rgba(167,139,250,0.12)', iconColor: '#a78bfa', title: '320+ Weeks of Lessons', subtitle: 'Ages 5 through SAT prep. Math, English, Science, Art & PE — all included.'},
                 {icon: 'fas fa-clock', iconBg: 'rgba(251,146,60,0.12)', iconColor: '#fb923c', title: 'Zero Prep Required', subtitle: 'Open and teach. Every lesson has parent guides and step-by-step instructions.'},
                 {icon: 'fas fa-dollar-sign', iconBg: 'rgba(74,222,128,0.12)', iconColor: '#4ade80', title: 'Household Materials Only', subtitle: 'No expensive kits. Science experiments with what you already have at home.'},
-                {icon: 'fas fa-heart', iconBg: 'rgba(244,114,182,0.12)', iconColor: '#f472b6', title: 'Made with Care', subtitle: 'Every lesson thoughtfully crafted by a homeschooling parent, for parents.'}
+                {icon: 'fas fa-heart', iconBg: 'rgba(244,114,182,0.12)', iconColor: '#f472b6', title: 'Made with Care', subtitle: 'Every lesson thoughtfully crafted for effective, accessible learning.'}
             ],
             faq: [
                 {question: 'Is this a subscription?', answer: 'Paid plans aren\u2019t live yet \u2014 we\u2019re in early access. Join the waitlist and you\u2019ll get 30% off your first year when subscriptions launch. At launch, plans will be monthly or annual with no long-term contracts and you\u2019ll be able to cancel anytime.'},
@@ -1572,7 +1572,7 @@
             if (!user) { alert('Please log in first.'); return; }
             var subject = encodeURIComponent('Data Export Request — Curicaa');
             var body = encodeURIComponent('Hi Curicaa,\n\nI would like to request a full export of my personal data as described in the Privacy Policy.\n\nAccount email: ' + user.email + '\n\nPlease send my data in JSON or CSV format within 30 days as outlined in your Privacy Policy.\n\nThank you.');
-            window.location.href = 'mailto:Curicaa@proton.me?subject=' + subject + '&body=' + body;
+            window.location.href = 'mailto:timppamsix@gmail.com?subject=' + subject + '&body=' + body;
         }
 
         function showDeleteConfirm() {
@@ -1590,7 +1590,7 @@
             if (!user) return;
             var subject = encodeURIComponent('Account Deletion Request — Curicaa');
             var body = encodeURIComponent('Hi Curicaa,\n\nI would like to permanently delete my account and all associated personal data.\n\nAccount email: ' + user.email + '\n\nPlease process this request within 30 days as outlined in your Privacy Policy.\n\nThank you.');
-            window.location.href = 'mailto:Curicaa@proton.me?subject=' + subject + '&body=' + body;
+            window.location.href = 'mailto:timppamsix@gmail.com?subject=' + subject + '&body=' + body;
             document.getElementById('deleteConfirmStep').style.display = 'none';
             document.getElementById('deleteSuccessMsg').style.display = 'block';
         }

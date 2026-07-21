@@ -19,7 +19,7 @@ export function Footer() {
               <span className="text-xl font-bold text-white tracking-tight">Curicaa</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
-              Empowering families with world-class, comprehensive K-12 homeschool curriculum designed for modern learning.
+              World-class, comprehensive K-12 homeschool curriculum designed for modern learning.
             </p>
           </div>
 
@@ -49,13 +49,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal Column */}
+          {/* Contact Column */}
           <div className="col-span-1">
-            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">Legal</h3>
+            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">Contact</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-sm text-gray-400 hover:text-indigo-400 transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-sm text-gray-400 hover:text-indigo-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-sm text-gray-400 hover:text-indigo-400 transition-colors">Cookie Policy</a></li>
+              <li><a href="mailto:timppamsix@gmail.com" className="text-sm text-gray-400 hover:text-indigo-400 transition-colors">timppamsix@gmail.com</a></li>
+              <li><a href="https://github.com/VinoSiix" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-indigo-400 transition-colors">GitHub</a></li>
+              <li><a href="https://x.com/VinoSiix" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-indigo-400 transition-colors">X (Twitter)</a></li>
             </ul>
           </div>
         </div>
@@ -65,7 +65,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Curicaa Education. All rights reserved.
           </p>
           <div className="text-sm text-gray-500">
-            Built with ❤️ for homeschooling families
+            Built with ❤️ for learners everywhere
           </div>
         </div>
       </div>

@@ -295,58 +295,22 @@ export function HubPage() {
         {/* ABOUT SECTION */}
         <section id="about" className="py-24 overflow-hidden relative">
            <div className="container mx-auto px-6 max-w-[1200px]">
-               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
-                <div className="pr-8">
+               <div className="text-center max-w-2xl mx-auto reveal">
                   <span className="section-label">Our Mission</span>
                   <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white">
-                    Built with love for <br/>
+                    World-class curriculum,<br/>
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
-                      every learner.
+                      accessible to everyone.
                     </span>
                   </h2>
                   <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
                     <p>
-                      Education isn't one-size-fits-all. We've crafted a comprehensive curriculum that adapts to different learning styles, pacing, and interests while maintaining rigorous academic standards.
+                      Curicaa provides open-and-go lesson plans from age 5 through SAT prep, using materials you already have at home. Every lesson is laid out week by week so you can focus on teaching, not planning.
                     </p>
                     <p>
-                      Whether you're homeschooling, supplementing traditional education, or exploring new interests, our pathways provide the structure and flexibility you need to help your child thrive.
+                      If you can read, you can teach with this.
                     </p>
                   </div>
-                  <div className="mt-10">
-                    <div className="flex items-center gap-4 text-white font-medium">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-xl font-bold border-2 border-white/10 shadow-[0_0_20px_rgba(99,102,241,0.4)]">
-                        L
-                      </div>
-                      <div>
-                        <div>Luke</div>
-                        <div className="text-sm text-gray-500 font-normal">Founder & Parent</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
-                  {/* Decorative background glow for the cards */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
-                  
-                  {aboutCards.map((card, index) => (
-                    <div 
-                      key={index}
-                      className="card"
-                      style={{ padding: '32px 24px' }}
-                    >
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                        style={{ background: card.iconBg, color: card.iconColor }}
-                      >
-                        {getIconComponent(card.icon, "w-5 h-5")}
-                      </div>
-                      <h4 className="text-lg font-bold text-white mb-3">{card.title}</h4>
-                      <p className="text-sm text-gray-400 leading-relaxed">
-                        {card.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
               </div>
            </div>
         </section>
