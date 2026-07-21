@@ -50,6 +50,7 @@ h2.page-title{font-size:2.5rem;font-weight:800;letter-spacing:-0.035em;backgroun
   .month-grid{grid-template-columns:1fr;}
 }
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center;position:relative;z-index:1;margin-top:60px;}
+.month-tab.month-locked{opacity:0.35;cursor:not-allowed;}.month-tab.month-locked:hover{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.35);}.month-tab.month-free{position:relative;}.month-tab.month-free::after{content:'FREE';position:absolute;top:-7px;right:-8px;font-size:7px;font-weight:800;background:#4ade80;color:#000;padding:1px 4px;border-radius:4px;letter-spacing:0.05em;}
 </style>
 </head>
 <body>
@@ -185,9 +186,10 @@ function initCurriculum(){
     tabsContainer.innerHTML='';
     Object.keys(curriculumData).forEach(month=>{
       const btn=document.createElement('button');
-      btn.className='month-tab '+(month===currentMonth?'active':'');
+      const isFree=month==='September';
+      btn.className='month-tab '+(isFree?'month-free ':'month-locked ')+(month===currentMonth?'active':'');
       btn.innerText=month;
-      btn.onclick=()=> { currentMonth=month; saveProgress(); renderTabs(); renderContent(); };
+      if(isFree){btn.onclick=()=> { currentMonth=month; saveProgress(); renderTabs(); renderContent(); };}else{btn.onclick=function(e){if(e)e.preventDefault();};}
       tabsContainer.appendChild(btn);
     });
   }
